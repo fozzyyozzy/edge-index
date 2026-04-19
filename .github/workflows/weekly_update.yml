@@ -1,0 +1,192 @@
+# .github/workflows/weekly_update.yml
+#
+# EDGE INDEX — Weekly Data Pipeline
+# ===================================
+# Runs every Thursday at 6:00 AM ET (11:00 UTC) automatically.
+# Also runs Friday at 7:00 AM ET for CFB day-of updates.
+# Can be triggered manually from GitHub Actions tab at any time.
+#
+# Secrets required (set in GitHub repo → Settings → Secrets):
+#   GUMROAD_API_KEY    — optional: auto-notify subscribers on update
+#   DISCORD_WEBHOOK    — optional: post update notification to Discord
+#   TELEGRAM_BOT_TOKEN — optional: Telegram notification
+
+name: Edge Index Weekly Update
+
+on:
+  schedule:
+    # Thursday 6am ET = 11:00 UTC
+    - cron: "0 11 * * 4"
+    # Friday 7am ET = 12:00 UTC (CFB update)
+    - cron: "0 12 * * 5"
+    # Monday 8am ET = 13:00 UTC (results update)
+    - cron: "0 13 * * 1"
+
+  # Manual trigger with inputs
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "NFL Week number"
+        required: true
+        default: "10"
+      season:
+        description: "Season year"
+        required: false
+        default: "2025"
+      force_refresh:
+        description: "Force re-scrape (ignore cache)"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Python Setup ──────────────────────────────────────────────────────
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install playwright
+          playwright install chromium --with-deps
+
+      # ── Restore Parquet Cache ─────────────────────────────────────────────
+      # Cache persists across runs so we only re-scrape new weeks
+      - name: Restore parquet cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/cache/
+            data/processed/
+          key: parquet-cache-${{ github.run_id }}
+          restore-keys: |
+            parquet-cache-
+
+      # ── Determine Week Number ─────────────────────────────────────────────
+      - name: Determine current NFL week
+        id: week
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "week=${{ github.event.inputs.week }}" >> $GITHUB_OUTPUT
+            echo "season=${{ github.event.inputs.season }}" >> $GITHUB_OUTPUT
+          else
+            python3 -c "
+          from datetime import date, timedelta
+          # NFL season week 1 = Thursday after Labor Day
+          # Simple approximation: calculate week from Sept 5 baseline
+          season_start = date(2025, 9, 4)
+          today = date.today()
+          delta = (today - season_start).days
+          week = max(1, min(18, delta // 7 + 1))
+          print(f'week={week}')
+          print(f'season=2025')
+          " >> $GITHUB_OUTPUT
+          fi
+
+      # ── Run Data Pipeline ─────────────────────────────────────────────────
+      - name: Run PFR scraper pipeline
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          REFRESH_FLAG=""
+          if [ "${{ github.event.inputs.force_refresh }}" = "true" ]; then
+            REFRESH_FLAG="--refresh"
+          fi
+          python3 scrapers/pfr_scraper.py \
+            --week ${{ steps.week.outputs.week }} \
+            --season ${{ steps.week.outputs.season }} \
+            --players players.json \
+            $REFRESH_FLAG
+
+      # ── Run Props Model ───────────────────────────────────────────────────
+      - name: Generate weekly pick sheet
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python3 scripts/generate_pick_sheet.py \
+            --week ${{ steps.week.outputs.week }} \
+            --season ${{ steps.week.outputs.season }}
+
+      # ── Save Cache ────────────────────────────────────────────────────────
+      - name: Save parquet cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/cache/
+            data/processed/
+          key: parquet-cache-${{ github.run_id }}
+
+      # ── Commit Updated Data ───────────────────────────────────────────────
+      - name: Commit updated parquet files
+        run: |
+          git config user.name  "Edge Index Bot"
+          git config user.email "bot@edge-index.com"
+          git add data/processed/ data/logs/ outputs/
+          git diff --staged --quiet || \
+            git commit -m "auto: Week ${{ steps.week.outputs.week }} data update [skip ci]"
+          git push
+
+      # ── Discord Notification (optional) ──────────────────────────────────
+      - name: Notify Discord — pick sheet ready
+        if: ${{ secrets.DISCORD_WEBHOOK != '' }}
+        run: |
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"content\": \"**Edge Index — Week ${{ steps.week.outputs.week }} sheet is live.**\nCheck your Gumroad email for the PDF. 🏈\"
+            }"
+
+      # ── Telegram Notification (optional) ─────────────────────────────────
+      - name: Notify Telegram
+        if: ${{ secrets.TELEGRAM_BOT_TOKEN != '' }}
+        run: |
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text="Edge Index Week ${{ steps.week.outputs.week }} pick sheet is ready."
+
+  # ── Results Tracker Update (Monday job) ───────────────────────────────────
+  update-results:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 13 * * 1'  # Monday only
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install pandas pyarrow openpyxl
+
+      - name: Update results tracker
+        run: |
+          python3 scripts/update_results.py \
+            --results-file results/results_tracker.csv
+
+      - name: Commit results
+        run: |
+          git config user.name  "Edge Index Bot"
+          git config user.email "bot@edge-index.com"
+          git add results/
+          git diff --staged --quiet || \
+            git commit -m "auto: results update [skip ci]"
+          git push

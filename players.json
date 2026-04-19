@@ -1,0 +1,28 @@
+{
+  "_comment": "Edge Index player roster. Format: 'Display Name': 'PFR Player ID'",
+  "_note": "Find PFR ID in the URL: /players/H/HillTy00.htm → HillTy00",
+  "_positions": "QB, RB, WR, TE stored separately in generate_pick_sheet.py",
+
+  "Tyreek Hill":          "HillTy00",
+  "Justin Jefferson":     "JeffJu00",
+  "CeeDee Lamb":          "LambCe00",
+  "Davante Adams":        "AdamDa01",
+  "Stefon Diggs":         "DiggSt00",
+  "Amon-Ra St. Brown":    "St.BAm00",
+  "Puka Nacua":           "NacuPu00",
+  "Garrett Wilson":       "WilsGa02",
+  "Travis Kelce":         "KelcTr00",
+  "Sam LaPorta":          "LaPoSa00",
+  "Mark Andrews":         "AndrMa01",
+  "Christian McCaffrey":  "McCAhCh01",
+  "Breece Hall":          "HallBr01",
+  "Derrick Henry":        "HenrDe00",
+  "Bijan Robinson":       "RobiBI00",
+  "De'Von Achane":        "AchaDe00",
+  "Lamar Jackson":        "JackLa02",
+  "Josh Allen":           "AlleJo02",
+  "Patrick Mahomes":      "MahoPa00",
+  "Jalen Hurts":          "HurtJa00",
+  "Dak Prescott":         "PresDa01",
+  "Joe Burrow":           "BurrJo01"
+}
