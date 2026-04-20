@@ -1,0 +1,45 @@
+{
+  "week": 18,
+  "season": 2025,
+  "nfl": [],
+  "cfb": [
+    {
+      "game": "Tennessee @ Georgia",
+      "projection": {
+        "spread": -2.2,
+        "total": 108.3
+      },
+      "spread_edge": {
+        "game": "Tennessee @ Georgia",
+        "bet": "Tennessee ATS",
+        "market_spread": -11.5,
+        "model_spread": -2.2,
+        "edge_pts": -9.3,
+        "cover_prob": 0.245,
+        "confidence": "HIGH",
+        "direction": "AWAY"
+      },
+      "total_edge": {
+        "game": "Tennessee @ Georgia",
+        "bet": "OVER 51.5",
+        "model_total": 108.3,
+        "market_total": 51.5,
+        "edge_pts": 56.8,
+        "over_prob": 1.0,
+        "confidence": "HIGH",
+        "direction": "OVER"
+      },
+      "line_movement": {
+        "signals": [
+          {
+            "type": "spread_movement",
+            "direction": "HOME",
+            "magnitude": 1.5,
+            "note": "Line moved 1.5 pts toward HOME"
+          }
+        ],
+        "sharp_count": 1
+      }
+    }
+  ]
+}
