@@ -31,4 +31,4 @@
 *Edge Index — process over picks. Results posted weekly.*
 
 ---
-*Generated: 2026-05-01*
+*Generated: 2026-05-04*
