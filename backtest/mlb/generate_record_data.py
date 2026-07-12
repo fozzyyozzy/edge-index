@@ -233,6 +233,43 @@ def inject_into_jsx(jsx_path, arrays_text):
         fh.write(new)
 
 
+def _plain(v):
+    """Convert js_str/js_num render values back to plain python for JSON mode."""
+    if isinstance(v, str):
+        if len(v) >= 2 and v[0] == '"' and v[-1] == '"':
+            return v[1:-1]
+        if v == "null": return None
+        if v == "true": return True
+        if v == "false": return False
+        try:
+            return int(v) if "." not in v else float(v)
+        except ValueError:
+            return v
+    return v
+
+
+def emit_json(results_days, fade_days, out_path):
+    from datetime import datetime as _dt
+    payload = {
+        "generated": _dt.now().isoformat(timespec="seconds"),
+        "results": [
+            {"date": d, "sport": "MLB",
+             "plays": [{k: _plain(v) for k, v in p.items()} for p in plays],
+             "parlays": []}
+            for d, plays in results_days
+        ],
+        "fade_results": [
+            {"date": d, "sport": "MLB",
+             "fades": [{k: _plain(v) for k, v in f.items()} for f in fades]}
+            for d, fades in fade_days
+        ],
+    }
+    os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=1)
+    print(f"wrote {out_path} ({len(payload['results'])} days)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cards-dir", default="posted_cards",
@@ -242,6 +279,9 @@ def main():
     ap.add_argument("--inject", default=None,
                     help="path to RecordTracker.jsx to inject data into "
                          "(single-file mode). Overrides --out when set.")
+    ap.add_argument("--json", default=None,
+                    help="also write plain-JSON record data to this path "
+                         "(for the site's runtime fetch)")
     args = ap.parse_args()
 
     pattern = os.path.join(args.cards_dir, "posted_card_*.json")
@@ -268,6 +308,9 @@ def main():
 
         fade_objs = [build_fade(f) for f in fades]
         fade_days.append((date, fade_objs))
+
+    if args.json:
+        emit_json(results_days, fade_days, args.json)
 
     if args.inject:
         arrays_text = build_arrays_text(results_days, fade_days,

@@ -220,6 +220,22 @@ def update_hub():
 
     open(hub, 'w', encoding='utf-8').write(content)
     log(f"  ✓ MLBHub.jsx updated")
+
+    # ── NEW: emit runtime JSON for the K Board (site fetches this at load;
+    #     no rebuild needed for data-only updates) ──
+    data_dir = os.path.join(APP_SRC, "..", "public", "data")
+    os.makedirs(data_dir, exist_ok=True)
+    card_json = {
+        "date": TODAY,
+        "pitcher_plays": plays.get("pitcher_plays", []),
+        "batter_plays": plays.get("batter_plays", []),
+        "fade_plays": plays.get("fade_plays", []),
+        "rl": {"hot": rl.get("hot_plays", []), "cold": rl.get("cold_plays", [])},
+        "power": power if isinstance(power, dict) else {},
+    }
+    with open(os.path.join(data_dir, "daily_card.json"), "w", encoding="utf-8") as fh:
+        json.dump(card_json, fh, indent=1)
+    log(f"  ✓ public/data/daily_card.json written")
     return True
 
 # ── STEP 6.5: Regenerate RecordTracker.jsx from posted cards ──
@@ -234,8 +250,9 @@ def update_record_tracker():
     if not os.path.exists(target):
         log(f"  ✗ RecordTracker.jsx not found at {target} — skipping")
         return False
+    record_json = os.path.join(APP_SRC, "..", "public", "data", "record.json")
     ok = run(
-        f'python "{gen}" --cards-dir "{cards_dir}" --inject "{target}"',
+        f'python "{gen}" --cards-dir "{cards_dir}" --inject "{target}" --json "{record_json}"',
         label="generate record data"
     )
     if ok:

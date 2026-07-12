@@ -1,4 +1,5 @@
 import { useState } from "react";
+import KBoard from "./KBoard";
 import PropHub from "./PropHub";
 import StreakCenter from "./StreakCenter";
 import BankrollManager from "./BankrollManager";
@@ -11,6 +12,16 @@ import PlaybookHub from "./PlaybookHub";
 // Sport section dividers + tabs
 const NAV_SECTIONS = [
   {
+    sport: "MLB",
+    color: "#f5c518",
+    tabs: [
+      { id: "kboard",   label: "K Board",          component: KBoard },
+      { id: "mlb",      label: "Full Card",        component: MLBHub },
+      { id: "record",   label: "Record",           component: RecordTracker },
+      { id: "faq",      label: "FAQ",              component: FAQ },
+    ],
+  },
+  {
     sport: "NFL",
     color: "#00e5ff",
     tabs: [
@@ -21,21 +32,12 @@ const NAV_SECTIONS = [
       { id: "bankroll", label: "Bankroll",          component: BankrollManager },
     ],
   },
-  {
-    sport: "MLB",
-    color: "#f5c518",
-    tabs: [
-      { id: "mlb",      label: "Props",            component: MLBHub },
-      { id: "record",   label: "Record",           component: RecordTracker },
-      { id: "faq",      label: "FAQ",               component: FAQ },
-    ],
-  },
 ];
 
 const ALL_TABS = NAV_SECTIONS.flatMap(s => s.tabs);
 
 export default function App() {
-  const [active, setActive] = useState("mlb");
+  const [active, setActive] = useState("kboard");
   const ActiveComponent = ALL_TABS.find(n => n.id === active)?.component;
 
   return (
@@ -57,7 +59,7 @@ export default function App() {
             <div style={{ fontSize:13, fontWeight:700, color:"#f0f0f0",
               letterSpacing:1 }}>EDGE INDEX</div>
             <div style={{ fontSize:9, color:"#00ff88", letterSpacing:2,
-              marginTop:-2 }}>NFL PROP ANALYTICS</div>
+              marginTop:-2 }}>MLB STRIKEOUT EDGE · NFL PROPS</div>
           </div>
         </div>
 
