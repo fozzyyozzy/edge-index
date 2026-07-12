@@ -1,0 +1,52 @@
+{
+  "date": "2026-06-01",
+  "model": "experimental_tiered",
+  "note": "Tighter .120 threshold + edge ranking. Grade daily vs primary to validate.",
+  "fade_plays": [
+    {
+      "player": "Matt McLain",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -152,
+      "under_odds": 114,
+      "reason": "2-for-30 L14 (.067)",
+      "type": "FADE",
+      "l14_avg": 0.067,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4657,
+      "model": "experimental"
+    },
+    {
+      "player": "Connor Norby",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -164,
+      "under_odds": 123,
+      "reason": "3-for-32 L14 (.094)",
+      "type": "FADE",
+      "l14_avg": 0.094,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4576,
+      "model": "experimental"
+    },
+    {
+      "player": "Nick Loftin",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -157,
+      "under_odds": 118,
+      "reason": "2-for-19 L14 (.105)",
+      "type": "FADE",
+      "l14_avg": 0.105,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4363,
+      "model": "experimental"
+    }
+  ]
+}

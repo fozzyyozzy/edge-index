@@ -1,0 +1,118 @@
+{
+  "date": "2026-06-01",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Miami Marlins",
+      "team": "Washington Nationals",
+      "opp": "Miami Marlins",
+      "home": "Washington Nationals",
+      "is_home": true,
+      "score": -1.54,
+      "diff": -2.05,
+      "tier": "\u2605 T1",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 3.71,
+        "avg_allowed": 5.71,
+        "run_diff": -2.0,
+        "streak": 1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 2.78,
+        "whip": 1.05,
+        "k_per9": 11.15,
+        "name": "Cade Cavalli",
+        "starts": 3
+      },
+      "park": 0.9405,
+      "ump": "Jim Wolf",
+      "ump_tendency": "LOW_K",
+      "ump_adj": -0.037500000000000006,
+      "odds": 140,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Washington Nationals -1.5 (fade Miami Marlins)",
+      "reason": "2-5 L7 cold streak \u00b7 -2.0 run diff \u00b7 pitcher park 0.94x \u00b7 elite SP ERA 2.78 \u00b7 LOW_K ump \u2014 suppressed scoring"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "San Francisco Giants",
+      "team": "Milwaukee Brewers",
+      "opp": "San Francisco Giants",
+      "home": "Milwaukee Brewers",
+      "is_home": true,
+      "score": -4.11,
+      "diff": -7.38,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "win_pct": 0.143,
+        "avg_scored": 5.57,
+        "avg_allowed": 7.71,
+        "run_diff": -2.14,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 10.12,
+        "whip": 2.62,
+        "k_per9": 6.75,
+        "name": "Shane Drohan",
+        "starts": 1
+      },
+      "park": 0.969,
+      "ump": "Ramon De Jesus",
+      "ump_tendency": "NEUTRAL",
+      "ump_adj": 0.001,
+      "odds": 146,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Milwaukee Brewers -1.5 (fade San Francisco Giants)",
+      "reason": "1-6 L7 cold streak \u00b7 -2.1 run diff"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "St. Louis Cardinals",
+      "team": "Texas Rangers",
+      "opp": "St. Louis Cardinals",
+      "home": "St. Louis Cardinals",
+      "is_home": false,
+      "score": -3.15,
+      "diff": -4.12,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 2.14,
+        "avg_allowed": 3.86,
+        "run_diff": -1.71,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 9.0,
+        "whip": 1.56,
+        "k_per9": 8.0,
+        "name": "Jacob deGrom",
+        "starts": 3
+      },
+      "park": 1.05,
+      "ump": "Scott Barry",
+      "ump_tendency": "HIGH_K",
+      "ump_adj": 0.034999999999999996,
+      "odds": 135,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Texas Rangers -1.5 (fade St. Louis Cardinals)",
+      "reason": "2-5 L7 cold streak \u00b7 2.1 RS/g anemic offense \u00b7 -1.7 run diff"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-23",
+  "singles": [
+    {
+      "player": "Carter Jensen",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.944,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.344,
+      "streak": 13,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.573
+    },
+    {
+      "player": "Nasim Nunez",
+      "team": "Washington Nationals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.922,
+      "book_implied": 0.574468085106383,
+      "edge": 0.3475,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 68,
+      "parlay_only": true,
+      "single_ev": 0.605
+    },
+    {
+      "player": "Elias Diaz",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.87,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.2867,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Miami Marlins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 17,
+      "parlay_only": true,
+      "single_ev": 0.491
+    },
+    {
+      "player": "Henry Bolte",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.867,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.267,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 35,
+      "parlay_only": true,
+      "single_ev": 0.445
+    },
+    {
+      "player": "Nicky Lopez",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -147,
+      "tier": "AUTO",
+      "model_prob": 0.845,
+      "book_implied": 0.5951417004048584,
+      "edge": 0.2499,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Miami Marlins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 24,
+      "parlay_only": true,
+      "single_ev": 0.42
+    },
+    {
+      "player": "Casey Schmitt",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "130",
+      "tier": "T1",
+      "model_prob": 0.792,
+      "book_implied": 0.4347826086956522,
+      "edge": 0.3572,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.6,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 69,
+      "parlay_only": "False",
+      "single_ev": 0.822
+    },
+    {
+      "player": "Carlos Rodon",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -148,
+      "tier": "T1",
+      "model_prob": 0.764,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.714,
+      "l5_avg": 6.2,
+      "home": "Detroit Tigers",
+      "opp": "Detroit Tigers",
+      "opp_k_pct": 0.222,
+      "park_adj": 0.004,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 7,
+      "umpire": "Alex MacKay",
+      "ump_adj": 0.038,
+      "ump_tendency": "HIGH_K",
+      "single_ev": 0.28,
+      "edge": 0.1672,
+      "book_implied": 0.5967741935483871
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Caleb Durbin",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 164,
+      "tier": "T1",
+      "model_prob": 0.719,
+      "book_implied": 0.37878787878787884,
+      "edge": 0.3402,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.5,
+      "home": "Colorado Rockies",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 67,
+      "parlay_only": false,
+      "single_ev": 0.898
+    },
+    {
+      "player": "Donovan Walton",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "model_prob": 0.897,
+      "book_implied": 0.607843137254902,
+      "edge": 0.2892,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 21,
+      "parlay_only": true,
+      "single_ev": 0.476
+    },
+    {
+      "player": "Zack Gelof",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -181,
+      "tier": "AUTO",
+      "model_prob": 0.932,
+      "book_implied": 0.6441281138790036,
+      "edge": 0.2879,
+      "streak": 24,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 57,
+      "parlay_only": true,
+      "single_ev": 0.447
+    }
+  ],
+  "parlays": []
+}

@@ -1,0 +1,1045 @@
+{
+  "date": "2026-05-11",
+  "generated": "2026-05-11T15:48:08.898587",
+  "pitcher_plays": [
+    {
+      "player": "Brandon Young",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 127,
+      "tier": "SKIP",
+      "model_prob": 0.259,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.3,
+      "l5_avg": 3.8,
+      "home": "Baltimore Orioles",
+      "opp": "Baltimore Orioles",
+      "opp_k_pct": 0.218,
+      "park_adj": 0.002,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 14
+    },
+    {
+      "player": "Drew Rasmussen",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -114,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.5,
+      "l5_avg": 2.8,
+      "home": "Toronto Blue Jays",
+      "opp": "Toronto Blue Jays",
+      "opp_k_pct": 0.232,
+      "park_adj": 0.006,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 34
+    },
+    {
+      "player": "Joey Cantillo",
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -115,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.3,
+      "l5_avg": 4.8,
+      "home": "Cleveland Guardians",
+      "opp": "Cleveland Guardians",
+      "opp_k_pct": 0.225,
+      "park_adj": 0.006,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 41
+    },
+    {
+      "player": "Kevin Gausman",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -158,
+      "tier": "T2",
+      "model_prob": 0.559,
+      "streak": 2,
+      "l5": 0.6,
+      "l10": 0.7,
+      "l5_avg": 4.6,
+      "home": "Toronto Blue Jays",
+      "opp": "Toronto Blue Jays",
+      "opp_k_pct": 0.232,
+      "park_adj": 0.006,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 41
+    },
+    {
+      "player": "Ryan Weathers",
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -126,
+      "tier": "SKIP",
+      "model_prob": 0.329,
+      "streak": 1,
+      "l5": 0.4,
+      "l10": 0.3,
+      "l5_avg": 4.4,
+      "home": "Baltimore Orioles",
+      "opp": "Baltimore Orioles",
+      "opp_k_pct": 0.218,
+      "park_adj": 0.002,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 12
+    }
+  ],
+  "batter_plays": [
+    {
+      "player": "Chandler Simpson",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 189,
+      "tier": "SKIP",
+      "model_prob": 0.301,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 114,
+      "parlay_only": false
+    },
+    {
+      "player": "Chandler Simpson",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "138",
+      "tier": "SKIP",
+      "model_prob": 0.301,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 114,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Aaron Judge",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -250,
+      "tier": "T1",
+      "model_prob": 0.762,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 172,
+      "parlay_only": true
+    },
+    {
+      "player": "Aaron Judge",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "-110",
+      "tier": "T1",
+      "model_prob": 0.712,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 172,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Adley Rutschman",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.4,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 101,
+      "parlay_only": true
+    },
+    {
+      "player": "Austin Wells",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "SKIP",
+      "model_prob": 0.332,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.5,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 140,
+      "parlay_only": true
+    },
+    {
+      "player": "Ben Rice",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -225,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.4,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 158,
+      "parlay_only": true
+    },
+    {
+      "player": "Ben Rice",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "105",
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.3,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 158,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Ben Williamson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "SKIP",
+      "model_prob": 0.301,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 89,
+      "parlay_only": true
+    },
+    {
+      "player": "Blaze Alexander",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -128,
+      "tier": "SKIP",
+      "model_prob": 0.332,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.5,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 68,
+      "parlay_only": true
+    },
+    {
+      "player": "Brayan Rocchio",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "SKIP",
+      "model_prob": 0.521,
+      "streak": 2,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 124,
+      "parlay_only": true
+    },
+    {
+      "player": "Bryce Teodosio",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 130,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.4,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 51,
+      "parlay_only": true
+    },
+    {
+      "player": "Cedric Mullins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -139,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 141,
+      "parlay_only": true
+    },
+    {
+      "player": "Cody Bellinger",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -235,
+      "tier": "SKIP",
+      "model_prob": 0.527,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.8,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 173,
+      "parlay_only": true
+    },
+    {
+      "player": "Cody Bellinger",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "120",
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.2,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 173,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Daniel Schneemann",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.3,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 138,
+      "parlay_only": true
+    },
+    {
+      "player": "Daulton Varsho",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -158,
+      "tier": "SKIP",
+      "model_prob": 0.471,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 96,
+      "parlay_only": true
+    },
+    {
+      "player": "David Fry",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -158,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.4,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 66,
+      "parlay_only": true
+    },
+    {
+      "player": "Ernie Clement",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -213,
+      "tier": "AUTO",
+      "model_prob": 0.941,
+      "streak": 13,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 178,
+      "parlay_only": true
+    },
+    {
+      "player": "George Springer",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -253,
+      "tier": "T1",
+      "model_prob": 0.691,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 166,
+      "parlay_only": true
+    },
+    {
+      "player": "George Springer",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "122",
+      "tier": "SKIP",
+      "model_prob": 0.471,
+      "streak": 2,
+      "l5": 0.6,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 166,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Gunnar Henderson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "T1",
+      "model_prob": 0.737,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 149,
+      "parlay_only": true
+    },
+    {
+      "player": "Hunter Feduccia",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 105,
+      "tier": "SKIP",
+      "model_prob": 0.206,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.5,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 45,
+      "parlay_only": true
+    },
+    {
+      "player": "Jake Fraley",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -147,
+      "tier": "SKIP",
+      "model_prob": 0.351,
+      "streak": 2,
+      "l5": 0.4,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 85,
+      "parlay_only": true
+    },
+    {
+      "player": "Jeremiah Jackson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "SKIP",
+      "model_prob": 0.332,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.5,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 53,
+      "parlay_only": true
+    },
+    {
+      "player": "Jo Adell",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "SKIP",
+      "model_prob": 0.521,
+      "streak": 2,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 167,
+      "parlay_only": true
+    },
+    {
+      "player": "Jonathan Aranda",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -224,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 119,
+      "parlay_only": true
+    },
+    {
+      "player": "Jonathan Aranda",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "135",
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 1,
+      "l5": 0.2,
+      "l10": 0.3,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 119,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Jorge Soler",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -115,
+      "tier": "SKIP",
+      "model_prob": 0.521,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.8,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 97,
+      "parlay_only": true
+    },
+    {
+      "player": "Junior Caminero",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -247,
+      "tier": "AUTO",
+      "model_prob": 0.826,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 165,
+      "parlay_only": true
+    },
+    {
+      "player": "Junior Caminero",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "109",
+      "tier": "SKIP",
+      "model_prob": 0.421,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.4,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 165,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Kyle Manzardo",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "SKIP",
+      "model_prob": 0.471,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 157,
+      "parlay_only": true
+    },
+    {
+      "player": "Lenyn Sosa",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "AUTO",
+      "model_prob": 0.826,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 152,
+      "parlay_only": true
+    },
+    {
+      "player": "Leody Taveras",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.2,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 68,
+      "parlay_only": true
+    },
+    {
+      "player": "Mike Trout",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -177,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 144,
+      "parlay_only": true
+    },
+    {
+      "player": "Myles Straw",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -128,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.0,
+      "l10": 0.1,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 126,
+      "parlay_only": true
+    },
+    {
+      "player": "Nick Fortes",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -136,
+      "tier": "T1",
+      "model_prob": 0.666,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 95,
+      "parlay_only": true
+    },
+    {
+      "player": "Nolan Schanuel",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "SKIP",
+      "model_prob": 0.446,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.5,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 149,
+      "parlay_only": true
+    },
+    {
+      "player": "Oswald Peraza",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.3,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 108,
+      "parlay_only": true
+    },
+    {
+      "player": "Pete Alonso",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "T1",
+      "model_prob": 0.762,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 176,
+      "parlay_only": true
+    },
+    {
+      "player": "Ryan McMahon",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "SKIP",
+      "model_prob": 0.477,
+      "streak": 1,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 170,
+      "parlay_only": true
+    },
+    {
+      "player": "Steven Kwan",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -250,
+      "tier": "SKIP",
+      "model_prob": 0.521,
+      "streak": 2,
+      "l5": 0.6,
+      "l10": 0.6,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 167,
+      "parlay_only": true
+    },
+    {
+      "player": "Steven Kwan",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "135",
+      "tier": "SKIP",
+      "model_prob": 0.2,
+      "streak": 0,
+      "l5": 0.0,
+      "l10": 0.1,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 167,
+      "parlay_only": "False"
+    },
+    {
+      "player": "Taylor Walls",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -106,
+      "tier": "SKIP",
+      "model_prob": 0.376,
+      "streak": 0,
+      "l5": 0.4,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 102,
+      "parlay_only": true
+    },
+    {
+      "player": "Travis Bazzana",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -131,
+      "tier": "SKIP",
+      "model_prob": 0.301,
+      "streak": 1,
+      "l5": 0.4,
+      "l10": 0.4,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 5,
+      "parlay_only": true
+    },
+    {
+      "player": "Trent Grisham",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -185,
+      "tier": "SKIP",
+      "model_prob": 0.452,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.5,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 158,
+      "parlay_only": true
+    },
+    {
+      "player": "Vaughn Grissom",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -190,
+      "tier": "SKIP",
+      "model_prob": 0.206,
+      "streak": 0,
+      "l5": 0.2,
+      "l10": 0.5,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 10,
+      "parlay_only": true
+    },
+    {
+      "player": "Weston Wilson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 110,
+      "tier": "SKIP",
+      "model_prob": 0.452,
+      "streak": 0,
+      "l5": 0.6,
+      "l10": 0.5,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 46,
+      "parlay_only": true
+    },
+    {
+      "player": "Zach Neto",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "T1",
+      "model_prob": 0.656,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.5,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 128,
+      "parlay_only": true
+    }
+  ],
+  "fade_plays": [
+    {
+      "player": "Andres Gimenez",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-151",
+      "reason": "5-for-37 L14 (.135)",
+      "type": "FADE"
+    },
+    {
+      "player": "Coby Mayo",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-125",
+      "reason": "3-for-32 L14 (.094)",
+      "type": "FADE"
+    },
+    {
+      "player": "Rhys Hoskins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-139",
+      "reason": "3-for-24 L14 (.125)",
+      "type": "FADE"
+    },
+    {
+      "player": "Richie Palacios",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-122",
+      "reason": "0-for-13 L14 (.000)",
+      "type": "FADE"
+    },
+    {
+      "player": "Taylor Ward",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-200",
+      "reason": "3-for-32 L14 (.094)",
+      "type": "FADE"
+    },
+    {
+      "player": "Tyler O'Neill",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": "-155",
+      "reason": "2-for-17 L14 (.118)",
+      "type": "FADE"
+    }
+  ]
+}

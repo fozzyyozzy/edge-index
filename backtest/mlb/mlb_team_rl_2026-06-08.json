@@ -1,0 +1,81 @@
+{
+  "date": "2026-06-08",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Houston Astros",
+      "team": "Los Angeles Angels",
+      "opp": "Houston Astros",
+      "home": "Los Angeles Angels",
+      "is_home": true,
+      "score": -1.2,
+      "diff": -0.88,
+      "tier": "\u25c6 T2",
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "win_pct": 0.429,
+        "avg_scored": 5.14,
+        "avg_allowed": 4.86,
+        "run_diff": 0.29,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 8.44,
+        "whip": 1.71,
+        "k_per9": 8.1,
+        "name": "Grayson Rodriguez",
+        "starts": 3
+      },
+      "park": 0.988,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -144,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Los Angeles Angels -1.5 (fade Houston Astros)",
+      "reason": "Composite signal"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "San Diego Padres",
+      "team": "Cincinnati Reds",
+      "opp": "San Diego Padres",
+      "home": "San Diego Padres",
+      "is_home": false,
+      "score": -2.72,
+      "diff": -0.8,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "win_pct": 0.143,
+        "avg_scored": 2.29,
+        "avg_allowed": 4.29,
+        "run_diff": -2.0,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 3.56,
+        "whip": 1.26,
+        "k_per9": 6.19,
+        "name": "Andrew Abbott",
+        "starts": 3
+      },
+      "park": 1.05,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -190,
+      "line": -1.5,
+      "qualifies": false,
+      "bet": "Cincinnati Reds -1.5 (fade San Diego Padres)",
+      "reason": "1-6 L7 cold streak \u00b7 2.3 RS/g anemic offense \u00b7 -2.0 run diff"
+    }
+  ]
+}

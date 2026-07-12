@@ -1,0 +1,165 @@
+[08:53:34] 
+EDGE INDEX MORNING ROUTINE — 2026-06-25
+[08:53:34] ============================================================
+[08:53:34] 
+============================================================
+STEP 1: Grade yesterday (2026-06-24)
+============================================================
+[08:53:34]   >> results checker
+[08:53:39]        [HIT] FADE Ben Williamson               UNDER 0.5 +129   actual:   0 +$129.00
+[08:53:39]        [MISS] FADE Coby Mayo                    UNDER 0.5 +118   actual:   1 -$100.00
+[08:53:39]        [MISS] FADE Matt Vierling                UNDER 0.5 +182   actual:   1 -$100.00
+[08:53:39]        [VOID] FADE Christian Walker             UNDER 0.5 +140   actual:[VOID] VOID
+[08:53:39]      =================================================================
+[08:53:39]      RESULTS: 22-16 (57.9%)  |  6 voids  |  P&L: $-148.45  (-1.48u)
+[08:53:39]      =================================================================
+[08:53:39]      [HIT] Results saved to mlb_results_2026-06-24.json
+[08:53:39]   >> grade patch
+[08:53:39]      📉 FADES:
+[08:53:39]        ✓ Drake Baldwin                UNDER +150  → 0  +$150.00
+[08:53:39]        ✓ Randy Arozarena              UNDER +150  → 0  +$150.00
+[08:53:39]        — Carlos Cortes                VOID — no result found
+[08:53:39]        ✗ Carlos Narvaez               OVER hit → 1  -$100.00
+[08:53:39]      ============================================================
+[08:53:39]      SINGLES:  9-7 (1 void)    $-150.13
+[08:53:39]      FADES:    2-1 (1 void)    +$200.00
+[08:53:39]      TOTAL:    +$49.87  (+0.50u)
+[08:53:39] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[08:53:39]   >> trade tracker
+[08:53:47]      🔄 ROSTER MOVES DETECTED: 4
+[08:53:47]        Ian Hamilton                 UNKNOWN → ATL New to 40-man roster
+[08:53:47]        Vince Velasquez              UNKNOWN → CHC New to 40-man roster
+[08:53:47]        Justin Lawrence              UNKNOWN → WSH New to 40-man roster
+[08:53:47]        Bryse Wilson                 UNKNOWN → CHC New to 40-man roster
+[08:53:47]      ✓ Cache updated — 2026-06-25
+[08:53:47]        Run daily to track all moves automatically
+[08:53:47]        Add to morning routine before mlb_odds_puller.py
+[08:53:47]   >> roster verify
+[08:53:47]        ✓ Confirmed correct: 206
+[08:53:47]        ⚠️  Mismatches found: 0
+[08:53:47]        — Inactive/unknown:  0
+[08:53:47]      ======================================================================
+[08:53:47]      ✓ ALL CLEAR — all 206 active players on correct teams
+[08:53:47]        Checked: 2026-06-25
+[08:53:47]      Add to morning routine (after trade tracker):
+[08:53:47]        python mlb_roster_verify.py --fix
+[08:53:47] 
+============================================================
+STEP 3: Pull today's lines (2026-06-25)
+============================================================
+[08:53:47]   >> odds puller
+[08:54:21]          Alec Burleson             H OVER 1.5  (170)
+[08:54:21]          Alejandro Kirk            H OVER 0.5  (-196)
+[08:54:21]          Alejandro Osuna           H OVER 0.5  (-130)
+[08:54:21]          Alex Bregman              H OVER 0.5  (-190)
+[08:54:21]          Amed Rosario              H OVER 0.5  (-235)
+[08:54:21]          Andres Gimenez            H OVER 0.5  (-154)
+[08:54:21]          Andrés Chaparro           H OVER 0.5  (-153)
+[08:54:21]          Anthony Seigler           H OVER 0.5  (100)
+[08:54:21]      Saved to mlb_lines_2026-06-25.json
+[08:54:21]   ✓ 1423 props · 18 run lines · 9 games
+[08:54:21] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[08:54:21]   >> current stats
+[08:55:52]          "Daniel Susac": "2-for-20 L14 (.100)",
+[08:55:52]          "Daylen Lile": "5-for-39 L14 (.128)",
+[08:55:52]          "Gabriel Rincones Jr.": "4-for-28 L14 (.143)",
+[08:55:52]          "Hunter Feduccia": "2-for-17 L14 (.118)",
+[08:55:52]          "Jacob Young": "4-for-28 L14 (.143)",
+[08:55:52]          "Jarren Duran": "6-for-44 L14 (.136)",
+[08:55:52]          "Luke Raley": "3-for-23 L14 (.130)",
+[08:55:52]          "Matt Chapman": "3-for-35 L14 (.086)",
+[08:55:52]          "Max Schuemann": "1-for-11 L14 (.091)",
+[08:55:52]          "Randy Arozarena": "1-for-13 L14 (.077)",
+[08:55:52]   >> savant cache
+[07:36:42]      Enriching 174 batters with advanced stats...
+[07:36:42]      ────────────────────────────────────────────────────────────
+[07:36:43]      ✓ Saved 490 players to savant cache
+[07:36:43]   >> pitcher hands
+[07:36:44]      Pulling starter hands for 2026-06-25...
+[07:36:44]        Schedule error: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/schedule?sportId=1&date=2026-06-25&hydrate=probablePitcher%28note%29%2Cteam&gameType=R (Caused by NameResolutionError("HTTPSConnection(host='statsapi.mlb.com', port=443): Failed to resolve 'statsapi.mlb.com' ([Errno 11001] getaddrinfo failed)"))
+[07:36:45]      ✓ Saved 0 teams to cache
+[07:36:45]      STARTER HANDS:
+[07:36:45] 
+============================================================
+STEP 5: Run models
+============================================================
+[07:36:45]   >> run today (props)
+[07:36:49]        Pulling logs: Freddy Peralta... 0 starts
+[07:36:49]        Pulling logs: Jeffrey Springs... 0 starts
+[07:36:49]        Pulling logs: Kevin Gausman... 0 starts
+[07:36:49]        Pulling logs: Landen Roupp... 0 starts
+[07:36:49]        Pulling logs: MacKenzie Gore... 0 starts
+[07:36:49]        Pulling logs: Matthew Boyd... 0 starts
+[07:36:49]        Pulling logs: Seth Lugo... 0 starts
+[07:36:49]        Pulling logs: Tatsuya Imai... 0 starts
+[07:36:49]      Evaluating 174 batter hit props...
+[07:36:49]      ERR: Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_run_today.py", line 745, in <module>
+    row["team"] = verified_team or batter_team
+                              
+[07:36:49]   >> pitcher K unders
+[07:36:52]      Analyzing 0 pitchers for K value...
+[07:36:52]      ─────────────────────────────────────────────────────────────────
+[07:36:52]      No results — check caches exist
+[07:36:52]   >> umpire assignments
+[07:36:53]      HP UMPIRES — 2026-06-25
+[07:36:53]      ======================================================================
+[07:36:53]        API error: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/schedule?sportId=1&date=2026-06-25&hydrate=officials%2Cteams (Caused by NameResolutionError("HTTPSConnection(host='statsapi.mlb.com', port=443): Failed to resolve 'statsapi.mlb.com' ([Errno 11004] getaddrinfo failed)"))
+[07:36:53]        No games found or API unavailable
+[07:36:53]      To build history: python mlb_umpire.py --update --days 60
+[07:36:53]   >> team run lines
+[07:36:54]      TEAM RUN LINE SIGNALS — 2026-06-25
+[07:36:54]      ======================================================================
+[07:36:54]        API error: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/schedule?sportId=1&date=2026-06-25&hydrate=probablePitcher%2Cteam%2Cofficials&gameType=R (Caused by NameResolutionError("HTTPSConnection(host='statsapi.mlb.com', port=443): Failed to resolve 'statsapi.mlb.com' ([Errno 11004] getaddrinfo failed)"))
+[07:36:54]        No schedule data
+[07:36:54]   >> power score
+[07:37:21]            vs Cam Schlittler       FIP:5.28  Resistance:+1.08 [ABOVE AVG — moderate]
+[07:37:21]          🎯 PLUS VALUE: New York Yankees -1.5 (+105) — strong team (+1.54) getting plus odds!
+[07:37:21]        Arizona Diamondbacks @ St. Louis Cardinals
+[07:37:21]          Arizona Diamondbacks           Power:-0.42 (BELOW AVG)
+[07:37:21]            vs Michael McGreevy     FIP:6.3  Resistance:-0.89 [BELOW AVG — hitter-f]
+[07:37:21]          St. Louis Cardinals            Power:-0.03 (BELOW AVG)
+[07:37:21]            vs Zac Gallen           FIP:5.21  Resistance:-2.61 [WEAK — very hitter-f]
+[07:37:21]        Saved to mlb_power_2026-06-25.json
+[07:37:21]   >> parlay builder
+[07:37:21]      No plays file for 2026-06-25
+[07:37:21]      Run: python mlb_run_today.py --date 2026-06-25
+[07:37:21] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[07:37:21]   ✗ mlb_plays file not found — skipping hub update
+[07:37:21] 
+============================================================
+STEP 6.4: Auto-post today's card
+============================================================
+[07:37:21]   >> ['C:\\Python314\\python.exe', 'C:\\Users\\tyose\\edge-index\\backtest\\mlb\\mlb_posted_plays.py', '--date', '2026-06-25', '--auto']
+[07:37:22]      ✗ No plays file for 2026-06-25 — run pipeline first
+[07:37:22]        Auto-pick found no qualifying plays/fades for 2026-06-25
+[07:37:22]          Rules: AUTO -150 to -249, T1 +money to -119, all VALUE_TB; fades l14<.100 + under>=-110
+[07:37:22]   ✓ auto-post step complete
+[07:37:22] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[07:37:22]   >> generate record data
+[07:37:22]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[07:37:22]        38 days  |  457 singles  |  118 fades
+[07:37:22]   ✓ RecordTracker.jsx regenerated from posted cards
+[07:37:22] 
+============================================================
+STEP 9: Summary
+============================================================
+[07:37:22] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-06-25.log
+[07:37:22] 
+  ⚠ No card posted for 2026-06-25 — auto-post may have skipped (no qualifying plays)
+[07:37:22]     Manual post: python mlb_posted_plays.py --date 2026-06-25 --plays '...' --fades '...'
+[07:37:22] 
+✓ Done — 07:37:22

@@ -1,0 +1,196 @@
+{
+  "date": "2026-05-23",
+  "singles": [
+    {
+      "player": "Jesus Sanchez",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -110,
+      "tier": "AUTO",
+      "model_prob": 0.876,
+      "book_implied": 0.5238095238095238,
+      "edge": 0.3522,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 49,
+      "parlay_only": true,
+      "single_ev": 0.672
+    },
+    {
+      "player": "Paul Skenes",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": -122,
+      "tier": "AUTO",
+      "model_prob": 0.85,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.5,
+      "l5_avg": 8.0,
+      "home": "Toronto Blue Jays",
+      "opp": "Toronto Blue Jays",
+      "opp_k_pct": 0.232,
+      "park_adj": 0.006,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 10,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.547,
+      "edge": 0.3005,
+      "book_implied": 0.5495495495495495
+    },
+    {
+      "player": "Ryan Kreidler",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "T1",
+      "model_prob": 0.69,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.09,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 10,
+      "parlay_only": true,
+      "single_ev": 0.15
+    },
+    {
+      "player": "Taj Bradley",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 122,
+      "tier": "T1",
+      "model_prob": 0.671,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.75,
+      "l5_avg": 6.0,
+      "home": "Boston Red Sox",
+      "opp": "Boston Red Sox",
+      "opp_k_pct": 0.222,
+      "park_adj": -0.01,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 8,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.49,
+      "edge": 0.2205,
+      "book_implied": 0.4504504504504505
+    },
+    {
+      "player": "Carlos Narvaez",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.665,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.0817,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 32,
+      "parlay_only": true,
+      "single_ev": 0.14
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Jake Bauers",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.607843137254902,
+      "edge": 0.3422,
+      "streak": 12,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 42,
+      "parlay_only": true,
+      "single_ev": 0.563
+    },
+    {
+      "player": "Nick Sogard",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -185,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.6491228070175439,
+      "edge": 0.2759,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 5,
+      "parlay_only": true,
+      "single_ev": 0.425
+    },
+    {
+      "player": "Spencer Steer",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -222,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6894409937888198,
+      "edge": 0.2606,
+      "streak": 11,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 48,
+      "parlay_only": true,
+      "single_ev": 0.378
+    }
+  ],
+  "parlays": []
+}

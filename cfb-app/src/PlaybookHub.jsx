@@ -667,6 +667,18 @@ export default function PlaybookHub() {
           </div>
         )}
       </div>
+      <div style={{margin:"20px 24px 0",padding:"12px 16px",
+        background:"#ffffff04",border:"1px solid #ffffff08",
+        borderRadius:8,maxWidth:1280,marginLeft:"auto",marginRight:"auto"}}>
+        <div style={{fontSize:9,color:"#444",fontFamily:"'IBM Plex Mono',monospace",
+          lineHeight:1.6,textAlign:"center"}}>
+          ⚠️ ENTERTAINMENT PURPOSES ONLY — Edge Index provides sports analytics
+          and statistical analysis for informational and entertainment purposes only.
+          This is not financial advice. Sports betting involves risk.
+          Please gamble responsibly. Must be 21+ and in a jurisdiction where
+          sports betting is legal. If you have a gambling problem call 1-800-GAMBLER.
+        </div>
+      </div>
     </div>
   );
 }

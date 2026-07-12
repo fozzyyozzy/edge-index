@@ -1,0 +1,146 @@
+{
+  "date": "2026-06-01",
+  "singles": [
+    {
+      "player": "Cole Young",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.839,
+      "book_implied": 0.574468085106383,
+      "edge": 0.2645,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Seattle Mariners",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 61,
+      "parlay_only": true,
+      "single_ev": 0.46
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -141,
+      "tier": "T1",
+      "model_prob": 0.721,
+      "book_implied": 0.5850622406639003,
+      "edge": 0.1359,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 19,
+      "parlay_only": true,
+      "single_ev": 0.232
+    },
+    {
+      "player": "Cade Cavalli",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -105,
+      "tier": "T1",
+      "model_prob": 0.677,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "l5_avg": 6.8,
+      "home": "Washington Nationals",
+      "opp": "Washington Nationals",
+      "opp_k_pct": 0.245,
+      "park_adj": 0.002,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 13,
+      "umpire": "Jim Wolf",
+      "ump_adj": -0.03,
+      "ump_tendency": "LOW_K",
+      "single_ev": 0.322,
+      "edge": 0.1648,
+      "book_implied": 0.5121951219512195
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Jung Hoo Lee",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -234,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.7005988023952096,
+      "edge": 0.2304,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 52,
+      "parlay_only": true,
+      "single_ev": 0.329
+    },
+    {
+      "player": "Spencer Steer",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -211,
+      "tier": "AUTO",
+      "model_prob": 0.884,
+      "book_implied": 0.6784565916398714,
+      "edge": 0.2055,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 57,
+      "parlay_only": true,
+      "single_ev": 0.303
+    },
+    {
+      "player": "Tyler Freeman",
+      "team": "Colorado Rockies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -228,
+      "tier": "AUTO",
+      "model_prob": 0.897,
+      "book_implied": 0.6951219512195121,
+      "edge": 0.2019,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 39,
+      "parlay_only": true,
+      "single_ev": 0.29
+    }
+  ],
+  "parlays": []
+}

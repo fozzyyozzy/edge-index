@@ -1,0 +1,168 @@
+{
+  "date": "2026-07-02",
+  "singles": [
+    {
+      "player": "Nicky Lopez",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -125,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.5555555555555556,
+      "edge": 0.3754,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 33,
+      "parlay_only": true,
+      "single_ev": 0.676
+    },
+    {
+      "player": "Josh Lowe",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -105,
+      "tier": "AUTO",
+      "model_prob": 0.904,
+      "book_implied": 0.5121951219512195,
+      "edge": 0.3918,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Seattle Mariners",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.765
+    },
+    {
+      "player": "Tyler Stephenson",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -115,
+      "tier": "T1",
+      "model_prob": 0.746,
+      "book_implied": 0.5348837209302326,
+      "edge": 0.2111,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 64,
+      "parlay_only": true,
+      "single_ev": 0.395
+    },
+    {
+      "player": "Walbert Urena",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -128,
+      "tier": "T1",
+      "model_prob": 0.686,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "l5_avg": 5.6,
+      "home": "Seattle Mariners",
+      "opp": "Seattle Mariners",
+      "opp_k_pct": 0.228,
+      "park_adj": 0.014,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 13,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.222,
+      "edge": 0.1246,
+      "book_implied": 0.5614035087719298
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Sal Stewart",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "model_prob": 0.906,
+      "book_implied": 0.6226415094339623,
+      "edge": 0.2834,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 85,
+      "parlay_only": true,
+      "single_ev": 0.455
+    },
+    {
+      "player": "Justin Crawford",
+      "team": "Philadelphia Phillies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "model_prob": 0.853,
+      "book_implied": 0.607843137254902,
+      "edge": 0.2452,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 79,
+      "parlay_only": true,
+      "single_ev": 0.403
+    },
+    {
+      "player": "Mookie Betts",
+      "team": "San Diego Padres",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -227,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.6941896024464832,
+      "edge": 0.2308,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 51,
+      "parlay_only": true,
+      "single_ev": 0.332
+    }
+  ],
+  "parlays": []
+}

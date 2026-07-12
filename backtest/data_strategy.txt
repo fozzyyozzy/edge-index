@@ -1,0 +1,117 @@
+
+FREE DATA SOURCES — RANKED BY VALUE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. NFLVERSE (BEST FREE SOURCE - USE THIS FIRST)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+What: Clean NFL data maintained by the R nflverse community
+Coverage: 2000-2025, weekly player stats, play-by-play
+Cost: FREE, no API key needed
+Format: CSV downloads from GitHub releases
+
+Key datasets:
+  Player stats (weekly):
+  https://github.com/nflverse/nflverse-data/releases/download/player_stats/player_stats.csv
+  
+  Snap counts (weekly):
+  https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2024.csv
+  
+  Next gen stats (targets, routes run, air yards):
+  https://github.com/nflverse/nflverse-data/releases/download/nextgen_stats/ngs_receiving_2024.csv
+
+Columns we care about:
+  player_name, recent_team, season, week,
+  targets, receptions, receiving_yards,   ← WR/TE/RB
+  carries, rushing_yards,                  ← RB
+  completions, passing_yards, attempts,    ← QB
+  target_share, snap_pct,                 ← usage selectors
+  air_yards_share, wopr                   ← advanced usage
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. HISTORICAL PROP LINES — THE HARD PART
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FREE options (limited but workable):
+  
+  a) BetUS / SBR archived pages
+     Manual scraping of historical game pages
+     Not structured, requires parsing
+     Coverage: spotty
+  
+  b) DraftKings API (undocumented public endpoint)
+     Current week lines only — no history
+     Works for LIVE tracking starting now
+     
+     URL pattern:
+     https://sportsbook.draftkings.com/sites/US-SB/api/v5/
+     eventgroups/88808/categories/743/subcategories/[ID]
+     
+     Prop subcategory IDs:
+       Receiving yards:  13.5.55
+       Receptions:       13.5.56  
+       Rush yards:       13.5.57
+       Pass yards:       13.5.58
+       Pass attempts:    13.5.59
+
+  c) The Odds API - free tier
+     500 req/month free, $79/mo for historical
+     Get API key at: https://the-odds-api.com
+     
+     Historical endpoint (paid):
+     https://api.the-odds-api.com/v4/sports/americanfootball_nfl/
+     odds-history/?apiKey=KEY&date=2024-10-15&markets=player_props
+
+PAID options (if we upgrade):
+  
+  OddsJam Pro ($79/mo):
+    - Full historical DK/FD/BetMGM lines 2021-present
+    - All player prop types
+    - CSV export
+    - Best option if we upgrade
+    
+  ActionNetwork Pro ($50/mo):
+    - Historical line movement
+    - Consensus % data
+    - Good for understanding market behavior
+    
+  PropGod ($30/mo):
+    - Prop-specific focus
+    - Historical hit rates already calculated
+    - Less raw data, more processed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. PLAYER SELECTION BY USAGE — THE RIGHT WAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For each season, select players by:
+
+WR (top 50):  target_share >= 12% AND snap_pct >= 55%
+QB (top 20):  attempts >= 25/game AND snap_pct >= 85%
+RB (top 30):  carries >= 8/game OR rec_targets >= 3/game
+TE (top 15):  target_share >= 10% AND snap_pct >= 50%
+
+This gives you EXACTLY the players who have lines posted
+every week — no more, no less. Usage drives line availability.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BUILD PLAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Phase 1 (free, this week):
+  1. Download nflverse CSVs for 2023, 2024, 2025
+  2. Auto-select players by usage thresholds
+  3. Use actual weekly stats as game logs
+  4. Use DK public API for current-week lines
+  5. For historical lines: use rolling avg method
+     but flag them as 'estimated' in DB
+     
+Phase 2 (upgrade when ready):
+  1. Subscribe to OddsJam ($79/mo)
+  2. Pull historical lines 2022-2025
+  3. Replace all 'estimated' lines with 'actual'
+  4. Re-run backtest — hit rates become exact
+  5. This is your publication-ready validation
+
+The delta between Phase 1 and Phase 2 is the 
+difference between "our model projects X%" and
+"the model hit X% against real market lines"

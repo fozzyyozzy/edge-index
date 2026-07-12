@@ -1,0 +1,240 @@
+{
+  "date": "2026-07-07",
+  "singles": [
+    {
+      "player": "Tristan Peters",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -115,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.5348837209302326,
+      "edge": 0.3931,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 81,
+      "parlay_only": true,
+      "single_ev": 0.735
+    },
+    {
+      "player": "Connor Wong",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -131,
+      "tier": "AUTO",
+      "model_prob": 0.838,
+      "book_implied": 0.5670995670995671,
+      "edge": 0.2709,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 35,
+      "parlay_only": true,
+      "single_ev": 0.478
+    },
+    {
+      "player": "Brett Baty",
+      "team": "New York Mets",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.801,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.2177,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.6,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 85,
+      "parlay_only": true,
+      "single_ev": 0.373
+    },
+    {
+      "player": "Andrew Alvarez",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -111,
+      "tier": "T1",
+      "model_prob": 0.757,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 5.0,
+      "home": "Washington Nationals",
+      "opp": "Washington Nationals",
+      "opp_k_pct": 0.245,
+      "park_adj": 0.002,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 5,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.439,
+      "edge": 0.2309,
+      "book_implied": 0.5260663507109005
+    },
+    {
+      "player": "Jacob Misiorowski",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 7.5,
+      "odds": -125,
+      "tier": "T1",
+      "model_prob": 0.727,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.9,
+      "l5_avg": 9.6,
+      "home": "St. Louis Cardinals",
+      "opp": "St. Louis Cardinals",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.002,
+      "alt_lines": [
+        6.5,
+        7.0
+      ],
+      "prior_games": 17,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.309,
+      "edge": 0.1714,
+      "book_implied": 0.5555555555555556
+    },
+    {
+      "player": "Otto Lopez",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "128",
+      "tier": "T1",
+      "model_prob": 0.7,
+      "book_implied": 0.43859649122807015,
+      "edge": 0.2614,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Miami Marlins",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 89,
+      "parlay_only": "False",
+      "single_ev": 0.596
+    },
+    {
+      "player": "Isaac Collins",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -137,
+      "tier": "T1",
+      "model_prob": 0.691,
+      "book_implied": 0.5780590717299579,
+      "edge": 0.1129,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 78,
+      "parlay_only": true,
+      "single_ev": 0.195
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Bryson Stott",
+      "team": "Philadelphia Phillies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -197,
+      "tier": "AUTO",
+      "model_prob": 0.949,
+      "book_implied": 0.6632996632996633,
+      "edge": 0.2857,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 85,
+      "parlay_only": true,
+      "single_ev": 0.431
+    },
+    {
+      "player": "Steven Kwan",
+      "team": "Cleveland Guardians",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -178,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.6402877697841727,
+      "edge": 0.2787,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 82,
+      "parlay_only": true,
+      "single_ev": 0.435
+    },
+    {
+      "player": "Gavin Sheets",
+      "team": "San Diego Padres",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -170,
+      "tier": "AUTO",
+      "model_prob": 0.882,
+      "book_implied": 0.6296296296296295,
+      "edge": 0.2524,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "San Diego Padres",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 83,
+      "parlay_only": true,
+      "single_ev": 0.401
+    }
+  ],
+  "parlays": []
+}

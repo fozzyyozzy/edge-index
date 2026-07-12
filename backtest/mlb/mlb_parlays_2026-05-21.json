@@ -1,0 +1,165 @@
+{
+  "date": "2026-05-21",
+  "singles": [
+    {
+      "player": "David Peterson",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -115,
+      "tier": "T1",
+      "model_prob": 0.757,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 5.2,
+      "home": "Washington Nationals",
+      "opp": "Washington Nationals",
+      "opp_k_pct": 0.245,
+      "park_adj": 0.002,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 5,
+      "single_ev": 0.415,
+      "edge": 0.2221,
+      "book_implied": 0.5348837209302326
+    },
+    {
+      "player": "Kyle Stowers",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -143,
+      "tier": "T1",
+      "model_prob": 0.675,
+      "book_implied": 0.5884773662551441,
+      "edge": 0.0865,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Miami Marlins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 27,
+      "parlay_only": true,
+      "single_ev": 0.147
+    },
+    {
+      "player": "Brandon Valenzuela",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -127,
+      "tier": "T1",
+      "model_prob": 0.674,
+      "book_implied": 0.5594713656387665,
+      "edge": 0.1145,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.5,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 27,
+      "parlay_only": true,
+      "single_ev": 0.205
+    },
+    {
+      "player": "Josh Lowe",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -144,
+      "tier": "T1",
+      "model_prob": 0.672,
+      "book_implied": 0.5901639344262295,
+      "edge": 0.0818,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 40,
+      "parlay_only": true,
+      "single_ev": 0.139
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Daulton Varsho",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -157,
+      "tier": "AUTO",
+      "model_prob": 0.869,
+      "book_implied": 0.6108949416342413,
+      "edge": 0.2581,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 46,
+      "parlay_only": true,
+      "single_ev": 0.423
+    },
+    {
+      "player": "Keibert Ruiz",
+      "team": "Washington Nationals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -177,
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.6389891696750902,
+      "edge": 0.218,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 29,
+      "parlay_only": true,
+      "single_ev": 0.341
+    },
+    {
+      "player": "Corbin Carroll",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -250,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.7142857142857143,
+      "edge": 0.2167,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 45,
+      "parlay_only": true,
+      "single_ev": 0.303
+    }
+  ],
+  "parlays": []
+}

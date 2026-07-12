@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-05",
+  "singles": [
+    {
+      "player": "Jung Hoo Lee",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -125,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.5555555555555556,
+      "edge": 0.3944,
+      "streak": 13,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 56,
+      "parlay_only": true,
+      "single_ev": 0.71
+    },
+    {
+      "player": "Donovan Walton",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -128,
+      "tier": "AUTO",
+      "model_prob": 0.9,
+      "book_implied": 0.5614035087719298,
+      "edge": 0.3386,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 10,
+      "parlay_only": true,
+      "single_ev": 0.603
+    },
+    {
+      "player": "Foster Griffin",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 108,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "l5_avg": 6.4,
+      "home": "Arizona Diamondbacks",
+      "opp": "Arizona Diamondbacks",
+      "opp_k_pct": 0.235,
+      "park_adj": -0.004,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 12,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.853,
+      "edge": 0.4102,
+      "book_implied": 0.4807692307692307
+    },
+    {
+      "player": "Oswald Peraza",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.86,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.26,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 55,
+      "parlay_only": true,
+      "single_ev": 0.433
+    },
+    {
+      "player": "Mickey Gasper",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -133,
+      "tier": "AUTO",
+      "model_prob": 0.844,
+      "book_implied": 0.5708154506437768,
+      "edge": 0.2732,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 19,
+      "parlay_only": true,
+      "single_ev": 0.479
+    },
+    {
+      "player": "Coby Mayo",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -136,
+      "tier": "T1",
+      "model_prob": 0.731,
+      "book_implied": 0.576271186440678,
+      "edge": 0.1547,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.268
+    },
+    {
+      "player": "Connor Wong",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -121,
+      "tier": "T1",
+      "model_prob": 0.709,
+      "book_implied": 0.5475113122171946,
+      "edge": 0.1615,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 23,
+      "parlay_only": true,
+      "single_ev": 0.295
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Zack Gelof",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "model_prob": 0.937,
+      "book_implied": 0.6226415094339623,
+      "edge": 0.3144,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 42,
+      "parlay_only": true,
+      "single_ev": 0.505
+    },
+    {
+      "player": "Cole Young",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -168,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.626865671641791,
+      "edge": 0.2921,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 63,
+      "parlay_only": true,
+      "single_ev": 0.466
+    },
+    {
+      "player": "Tyler Soderstrom",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -201,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6677740863787376,
+      "edge": 0.2822,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 59,
+      "parlay_only": true,
+      "single_ev": 0.423
+    }
+  ],
+  "parlays": []
+}

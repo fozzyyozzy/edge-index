@@ -1,0 +1,2854 @@
+# AI & LLM Integration - Documentation Export
+Source: https://docs.oddspapi.io/ai
+
+Download OddsPapi documentation for AI tools, LLMs, and offline use. Machine-readable exports in TXT and OpenAPI JSON formats for ChatGPT, Claude, and other AI assistants.
+
+## Download
+
+* **Docs index:** [`/llms.txt`](/llms.txt)
+* **Full docs bundle:** [`/llms-full.txt`](/llms-full.txt)
+* **OpenAPI (REST reference):** [`/api-reference/openapi.json`](/api-reference/openapi.json)
+
+## Recommended usage
+
+If your AI tool supports fetching URLs, give it:
+
+* `/llms-full.txt` (best for “read everything once”)
+* `/api-reference/openapi.json` (best for endpoint + schema accuracy)
+
+If your tool only supports copy/paste, open `/llms-full.txt` in the browser and paste the contents.
+
+## Notes
+
+* `llms-full.txt` follows the same ordering as the site navigation.
+* WebSocket channels are documented in MDX; REST endpoints are in OpenAPI.
+
+***
+
+## 💬 Ask an AI Assistant
+
+Want to explore or ask questions about this page using your favorite AI?
+
+Click one of the links below — each one opens this page in the selected tool with a pre-filled prompt:
+
+* [Ask ChatGPT](https://chatgpt.com/?prompt=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+with+this+API.)
+* [Ask Claude](https://claude.ai/?prompt=Please+read+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+* [Ask Perplexity](https://www.perplexity.ai/search?q=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt)
+* [Ask Gemini](https://gemini.google.com/app?query=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+
+
+# API Authentication - How to Authenticate Requests
+Source: https://docs.oddspapi.io/api-reference/authentication
+
+Learn how to authenticate OddsPapi API requests using your API key. Simple query parameter authentication for all HTTP endpoints.
+
+All HTTP endpoints require an `apiKey`.
+You will only receive:
+
+1. what you are requesting, filtered by
+2. what you have access for
+
+## How to authenticate
+
+Pass your key as a query parameter:
+
+```bash theme={null}
+curl 'https://v5.oddspapi.io/en/bookmakers?apiKey=YOUR_KEY'
+```
+
+
+# Get Bookmakers
+Source: https://docs.oddspapi.io/api-reference/common/get-bookmakers
+
+/api-reference/openapi.json get /bookmakers
+List bookmakers.
+
+Returns the bookmaker catalog available to the provided apiKey.
+
+Lookup mode: `bookmakers` (optional filter list) + `playerProps` (optional capability filter).
+
+
+
+# Get Currencies
+Source: https://docs.oddspapi.io/api-reference/common/get-currencies
+
+/api-reference/openapi.json get /currencies
+List currencies and conversion values.
+
+Lookup mode: `currency` (optional filter).
+
+
+
+# Get Markets
+Source: https://docs.oddspapi.io/api-reference/common/get-markets
+
+/api-reference/openapi.json get /markets
+List markets.
+
+Lookup mode: `marketIds` OR `sportId` OR `outcomeIds`.
+
+
+
+# Get Participants
+Source: https://docs.oddspapi.io/api-reference/common/get-participants
+
+/api-reference/openapi.json get /participants
+List participants.
+
+Lookup mode: `participantIds` OR `sportId` OR `playerId`.
+
+
+
+# Get Players
+Source: https://docs.oddspapi.io/api-reference/common/get-players
+
+/api-reference/openapi.json get /players
+List players.
+
+Lookup mode: `playerIds` OR `participantId` OR `sportId`.
+
+
+
+# Get Seasons
+Source: https://docs.oddspapi.io/api-reference/common/get-seasons
+
+/api-reference/openapi.json get /seasons
+List seasons.
+
+Lookup mode: `seasonIds` OR `tournamentId`.
+
+
+
+# Get Sports
+Source: https://docs.oddspapi.io/api-reference/common/get-sports
+
+/api-reference/openapi.json get /sports
+List sports.
+
+Lookup mode: `sportIds` (optional filter list).
+
+
+
+# Get Tournaments
+Source: https://docs.oddspapi.io/api-reference/common/get-tournaments
+
+/api-reference/openapi.json get /tournaments
+List tournaments.
+
+Lookup mode: `sportId` OR `tournamentIds`.
+
+Default: if neither is provided, the API uses `sportId=11`.
+
+
+
+# Get Venues
+Source: https://docs.oddspapi.io/api-reference/common/get-venues
+
+/api-reference/openapi.json get /venues
+List venues by explicit IDs.
+
+Name fields are returned in the requested language when available.
+
+
+
+# Core Concepts - IDs, Data Models & Best Practices
+Source: https://docs.oddspapi.io/api-reference/concepts
+
+Understand OddsPapi data models: fixture IDs, market IDs, odds identifiers, entity relationships, timestamps, and implementation best practices for arbitrage detection.
+
+This page explains the core concepts used throughout the Odds API: how IDs are constructed, how entities relate to each other, how timestamps are used, and how to design reliable client-side storage.
+
+***
+
+## Language prefix
+
+All endpoints are prefixed with a language code:
+
+* `/en/...`
+* `/de/...`
+* `/fr/...`
+
+Translated fields (for example names) follow the prefix language when available.
+Identifiers (`sportId`, `fixtureId`, etc.) are language-independent.
+
+***
+
+## Sports, tournaments, seasons
+
+### sportId
+
+* Integer.
+* The **first two digits** embedded into several downstream IDs.
+* Discover via `/sports`.
+
+### tournamentId
+
+* Integer.
+* Belongs to exactly one sport.
+* Discover via `/tournaments`.
+
+### seasonId
+
+* Integer.
+* Belongs to exactly one tournament.
+* Discover via `/seasons`.
+
+***
+
+## Markets and outcomes
+
+### Relationship between `marketId` and `outcomeId`
+
+Markets and outcomes are tightly coupled by design:
+
+* A **market** represents a complete betting market (for example moneyline, 1x2, totals).
+* A **market contains multiple outcomes**.
+* **All outcomes that belong to the same market share the same `marketId`.**
+* **The first `outcomeId` of a market is always equal to the `marketId`.**
+
+This makes it possible to determine which outcomes belong to which market **without additional metadata**.
+
+### ID structure
+
+Both `marketId` and `outcomeId` are integers constructed as:
+
+```
+{sportId (2 digits)} + {incrementing number}
+```
+
+Examples:
+
+* `11xxxx` → basketball market or outcome
+* `14xxxx` → American football market or outcome
+
+This design provides:
+
+* Unlimited markets and outcomes per sport
+* Fast grouping by sport
+* Immediate visibility of market relationships
+
+### Why `marketId` matters (arbitrage & modeling)
+
+All outcomes under a single `marketId` together represent a **complete probability space**.
+
+This makes `marketId` especially useful for:
+
+* Arbitrage detection
+* Overround / margin calculations
+* Probability normalization
+* Market completeness checks
+
+**Recommendation:**
+If you perform arbitrage or pricing logic, always group odds by `marketId`.
+
+***
+
+## Participants and players
+
+### participantId
+
+* Integer.
+* Represents teams or competitors in fixtures.
+* Discover via `/participants`.
+
+### playerId
+
+* Integer.
+* Used for player proposition markets.
+* `playerId = 0` typically represents a non-player market.
+* Discover via `/players`.
+
+***
+
+## Fixture IDs
+
+### fixtureId structure
+
+`fixtureId` is a **string** that encodes multiple pieces of information:
+
+```
+{providerSlug}{sportId}{tournamentId}{providerFixtureId}
+```
+
+Conceptual example:
+
+```
+id1100013262926199
+```
+
+Where:
+
+* `id` → provider identifier / short slug
+* `11` → sportId (2 digits)
+* `000132` → tournamentId (6 digits)
+* `62926199` → provider’s native fixture ID
+
+### Why this matters
+
+From the `fixtureId` alone, you can infer:
+
+* The sport
+* The tournament
+* The upstream provider
+* Global uniqueness
+
+This makes logging, debugging, analytics, and cross-system correlation simpler and more reliable.
+
+***
+
+## Future IDs
+
+### futureId structure
+
+`futureId` follows a similar principle:
+
+```
+{providerSlug}{sportId}{seasonId}{marketId}
+```
+
+This encodes:
+
+* Provider
+* Sport
+* Season
+* Market
+
+Like `fixtureId`, this makes futures:
+
+* Globally unique
+* Self-describing
+* Easy to debug and trace
+
+***
+
+## Odds identifiers
+
+### Fixture odds keys
+
+For fixtures, a single price is uniquely identified by:
+
+```
+{fixtureId}:{bookmaker}:{outcomeId}:{playerId}
+```
+
+Example:
+
+```
+id1400003160574217:bet365:141:0
+```
+
+This combination uniquely defines **one price**.
+
+### Future odds IDs
+
+For futures, odds are uniquely identified by:
+
+```
+{futureId}:{bookmaker}:{participantId}
+```
+
+This fully specifies:
+
+* The future
+* The bookmaker
+* The participant
+
+### Storage recommendation (important)
+
+We strongly recommend using these identifiers as **primary keys** in your storage:
+
+**Fixture odds:**
+
+```
+{fixtureId}:{bookmaker}:{outcomeId}:{playerId}
+```
+
+**Future odds:**
+
+```
+{futureId}:{bookmaker}:{participantId}
+```
+
+This guarantees:
+
+* No duplicates
+* Simple updates
+* Efficient time-series storage
+* Easy reconciliation across snapshots and backfills
+
+***
+
+## Timestamps (seconds vs milliseconds)
+
+This API intentionally uses **both epoch seconds and epoch milliseconds**, depending on context.
+
+### Epoch seconds (UTC)
+
+Used for scheduled or coarse-grained time values:
+
+* `startTime`
+* `startTimeFrom`
+* `startTimeTo`
+
+### Epoch milliseconds (UTC)
+
+Used for high-frequency price updates:
+
+* `changedAt`
+* Odds `since` filters for fixtures
+* Futures odds `createdAt`
+
+### Recommendation
+
+* Store timestamps as integers.
+* Do not assume milliseconds where seconds are documented (or vice versa).
+* Normalize internally only if needed.
+
+***
+
+## Implementation recommendations
+
+### Server Location Matters
+
+To achieve the lowest latency for realtime updates:
+
+* The **fastest delivery regions** are Central Europe (recommended) and US East.
+* For best performance, deploy your backend **in the same datacenters we use**, such as:
+  * [Netcup](https://www.netcup.com/en/?ref=294017)
+  * [Hetzner](https://www.hetzner.com/cloud)
+* If you're building **prediction markets or models sensitive to latency**, consider:
+  * Deploying in **Austria (AT)** via Netcup, or
+  * Using **AWS eu-west-1** (Ireland)
+
+> ⚡ Servers colocated near our streaming infrastructure receive updates faster and with fewer hops.
+
+### Snapshot + realtime pattern
+
+A reliable integration pattern:
+
+1. Fetch **HTTP snapshot** (fixtures, odds, or futures)
+2. Subscribe to **WebSocket** for realtime updates
+3. If WebSocket signals `snapshot_required`:
+   * Re-fetch HTTP snapshot
+   * Resume realtime stream
+
+### Efficient backfills
+
+* Use `since` parameters where available
+* Avoid full historical fetches unless required
+* Store odds keyed by their odds identifiers for deduplication
+
+### Rate limit handling
+
+* Read `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`
+* On HTTP 429, respect `Retry-After` and back off
+
+***
+
+## Summary
+
+This API is designed so that:
+
+* IDs are **self-describing**
+* Relationships are **derivable without joins**
+* Odds identifiers are **globally unique**
+* Arbitrage and storage logic are **straightforward and robust**
+
+Modeling your system around these principles will result in a fast, maintainable, and future-proof integration.
+
+
+# API Error Codes - HTTP Status Codes & Error Handling
+Source: https://docs.oddspapi.io/api-reference/errors
+
+Complete guide to OddsPapi API error responses. HTTP status codes, error formats, rate limit headers, and troubleshooting common error causes.
+
+## Error Format
+
+Most error responses return a JSON object like:
+
+```json theme={null}
+{
+  "error": 401,
+  "message": "invalid apiKey",
+  "code": "invalid_api_key"
+}
+```
+
+| Field     | Type    | Description                  |
+| --------- | ------- | ---------------------------- |
+| `error`   | integer | HTTP status code             |
+| `message` | string  | Human-readable description   |
+| `code`    | string  | Machine-readable reason code |
+
+***
+
+## Rate Limit Headers
+
+All endpoints protected by the rate limiter return these headers:
+
+| Header                  | Description                              |
+| ----------------------- | ---------------------------------------- |
+| `X-RateLimit-Limit`     | Requests allowed per window (per apiKey) |
+| `X-RateLimit-Remaining` | Requests left in the current window      |
+| `X-RateLimit-Reset`     | Unix timestamp when the window resets    |
+
+If you hit the limit (`429`), you also receive:
+
+| Header        | Description                     |
+| ------------- | ------------------------------- |
+| `Retry-After` | Seconds to wait before retrying |
+
+***
+
+## Common Error Responses
+
+### 400 — Bad Request
+
+```json theme={null}
+{
+  "error": 400,
+  "message": "Invalid filters.",
+  "code": "invalid_filters"
+}
+```
+
+Used for syntactically valid requests with invalid parameters.
+
+***
+
+### 401 — Unauthorized
+
+**Missing or invalid `apiKey`.**
+
+```json theme={null}
+{
+  "error": 401,
+  "message": "missing apiKey",
+  "code": "missing_api_key"
+}
+```
+
+```json theme={null}
+{
+  "error": 401,
+  "message": "invalid apiKey",
+  "code": "invalid_api_key"
+}
+```
+
+***
+
+### 403 — Forbidden
+
+**Valid API key, but no access to this channel or feature.**
+
+```json theme={null}
+{
+  "error": 403,
+  "message": "Access denied: apiKey is not allowed to access this endpoint.",
+  "code": "channel_not_allowed"
+}
+```
+
+***
+
+### 422 — Validation Error
+
+Usually returned by FastAPI’s internal validation.
+
+```json theme={null}
+{
+  "error": 422,
+  "message": "Validation error",
+  "code": "validation_error",
+  "details": [
+    {
+      "loc": ["query", "fixtureId"],
+      "msg": "Field required",
+      "type": "missing"
+    }
+  ]
+}
+```
+
+***
+
+### 429 — Rate Limit Exceeded
+
+Triggered when request volume exceeds limits per apiKey.
+
+```json theme={null}
+{
+  "error": 429,
+  "message": "rate limit exceeded",
+  "code": "rate_limited",
+  "limit": 30,
+  "windowSec": 1,
+  "retryAfterSec": 1,
+  "endpoint": "/fixtures/odds",
+  "method": "GET"
+}
+```
+
+Headers:
+
+* `Retry-After: 1`
+* `X-RateLimit-Limit: 30`
+* `X-RateLimit-Remaining: 0`
+* `X-RateLimit-Reset: 1700000000`
+
+***
+
+### 503 — Service Unavailable
+
+If internal systems (e.g. rate limiter) are unavailable:
+
+```json theme={null}
+{
+  "error": 503,
+  "message": "rate limiter unavailable",
+  "code": "rate_limiter_error"
+}
+```
+
+## Notes
+
+* `code` is stable and suitable for programmatic handling.
+* `message` may change (but is designed to help developers).
+* Most endpoints return `429` if rate-limited — check your headers.
+* FastAPI validation errors are always returned as `422`.
+
+***
+
+
+# Fixtures Filtered
+Source: https://docs.oddspapi.io/api-reference/fixtures/fixtures-filtered
+
+/api-reference/openapi.json get /fixtures
+List fixtures.
+
+Lookup mode: `fixtureIds` OR filters (`sportId`, `tournamentId`, `statusId`, optional time range).
+
+If `bookmakers` is present, bookmaker meta is included and results may be filtered by mapping availability.
+
+
+
+# Fixtures Live
+Source: https://docs.oddspapi.io/api-reference/fixtures/fixtures-live
+
+/api-reference/openapi.json get /fixtures/live
+List live fixtures.
+
+Lookup mode: optional filters (`bookmakers`, `sportId`, `tournamentId`).
+
+
+
+# Fixtures Today
+Source: https://docs.oddspapi.io/api-reference/fixtures/fixtures-today
+
+/api-reference/openapi.json get /fixtures/today
+List today's fixtures.
+
+Lookup mode: optional filters (`bookmakers`, `sportId`, `tournamentId`).
+
+
+
+# Fixture Odds
+Source: https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds
+
+/api-reference/openapi.json get /fixtures/odds
+Get current odds for a fixture.
+
+Lookup mode: required `fixtureId` + optional `bookmakers`, optional filtering flags.
+
+If `since` is provided, returns odds updates with `changedAt >= since`.
+
+
+
+# Fixture Odds CLV
+Source: https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds-clv
+
+/api-reference/openapi.json get /fixtures/odds/clv
+Get opening vs closing line values (OLV/CLV) for a fixture.
+
+Lookup mode: required `fixtureId` + optional `bookmakers` OR optional `oddsIds`.
+
+
+
+# Fixture Odds Historical
+Source: https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds-historical
+
+/api-reference/openapi.json get /fixtures/odds/historical
+Get historical odds timeline for a fixture.
+
+Lookup mode: required `fixtureId` + (`bookmaker` required when `oddsIds` is not provided) OR `oddsIds`.
+
+
+
+# Fixtures Odds Main
+Source: https://docs.oddspapi.io/api-reference/fixturesodds/fixtures-odds-main
+
+/api-reference/openapi.json get /fixtures/odds/main
+Get current main odds for multiple fixtures.
+
+Lookup mode: provide exactly one of:
+- `tournamentId` (recommended)
+- `fixtureIds` (fast path)
+
+If `since` is provided, returns odds updates with `changedAt >= since`.
+
+
+
+# Futures Filtered
+Source: https://docs.oddspapi.io/api-reference/futures/futures-filtered
+
+/api-reference/openapi.json get /futures
+List futures.
+
+Lookup mode: `futureIds` OR `sportId` OR `tournamentId` (at least one).
+
+
+
+# Futures Live
+Source: https://docs.oddspapi.io/api-reference/futures/futures-live
+
+/api-reference/openapi.json get /futures/live
+List live futures.
+
+Lookup mode: optional `sportId` / `tournamentId` filters.
+
+
+
+# Future Odds
+Source: https://docs.oddspapi.io/api-reference/futuresodds/future-odds
+
+/api-reference/openapi.json get /futures/odds
+Get latest odds for a future.
+
+Lookup mode: required `futureId` + optional filters (`bookmakers`, `since`, `mainLines`, `includeFuture`).
+
+
+
+# Future Odds CLV
+Source: https://docs.oddspapi.io/api-reference/futuresodds/future-odds-clv
+
+/api-reference/openapi.json get /futures/odds/clv
+Get OLV and CLV for a future’s odds.
+
+Lookup mode: required `futureId` + optional `bookmakers` OR optional `oddsIds`.
+
+
+
+# Future Odds Historical
+Source: https://docs.oddspapi.io/api-reference/futuresodds/future-odds-historical
+
+/api-reference/openapi.json get /futures/odds/historical
+Get historical odds changes for a future.
+
+Lookup mode: required `futureId` + (`bookmakers` required when `oddsIds` is not provided) OR `oddsIds`.
+
+
+
+# Fixture Mapping
+Source: https://docs.oddspapi.io/api-reference/mapping/fixture-mapping
+
+/api-reference/openapi.json get /fixtures/mapping
+List fixture mappings for external bookmakers.
+
+Lookup mode: `bookmaker` (optional) + `fixtureIds` OR `bookmakerFixtureIds`.
+
+
+
+# Future Mapping
+Source: https://docs.oddspapi.io/api-reference/mapping/future-mapping
+
+/api-reference/openapi.json get /futures/mapping
+Map internal future IDs to bookmaker/provider future IDs.
+
+Lookup mode: required `bookmaker` + (`futureIds` OR `bookmakerFutureIds`).
+
+
+
+# Media Bookmaker
+Source: https://docs.oddspapi.io/api-reference/media/media-bookmaker
+
+/api-reference/openapi.json get /media/bookmakers/{slug}
+Get bookmaker logo.
+
+Returns an HTTP redirect to the image asset.
+
+Response: 302 with `Location` header (final resource typically WebP).
+
+
+
+# Media Category
+Source: https://docs.oddspapi.io/api-reference/media/media-category
+
+/api-reference/openapi.json get /media/categories/{category}
+Get category icon.
+
+Returns an HTTP redirect to the image asset.
+
+Response: 302 with `Location` header (final resource typically SVG).
+
+
+
+# Media Participant
+Source: https://docs.oddspapi.io/api-reference/media/media-participant
+
+/api-reference/openapi.json get /media/participants/{participantId}
+Get participant image.
+
+Returns an HTTP redirect to the image asset.
+
+Response: 302 with `Location` header (final resource typically PNG).
+
+
+
+# Media Tournament
+Source: https://docs.oddspapi.io/api-reference/media/media-tournament
+
+/api-reference/openapi.json get /media/tournaments/{tournamentId}
+Get tournament image.
+
+Returns an HTTP redirect to the image asset.
+
+Response: 302 with `Location` header (final resource typically PNG).
+
+
+
+# REST API Overview - HTTP Endpoints for Sports Data
+Source: https://docs.oddspapi.io/api-reference/overview
+
+OddsPapi REST API reference. HTTP endpoints for sports betting data snapshots, metadata retrieval, historical odds, and recovery workflows. Supports 8 languages.
+
+The HTTP API complements WebSockets by providing:
+
+* **Initial snapshots** (bootstrap your local state)
+* **Recovery** after `snapshot_required`
+* **Metadata** (sports, tournaments, bookmakers)
+* **Backfills** (historical odds / CLV) when replay is not possible
+
+If you only need realtime updates, WebSockets may be enough.
+
+## Base URL & languages
+
+All endpoints are prefixed with a language code:
+
+* `https://v5.oddspapi.io/{lang}`
+
+Examples:
+
+* `https://v5.oddspapi.io/en/bookmakers`
+* `https://v5.oddspapi.io/de/sports`
+
+Available languages are: `en`, `es`, `fr`, `pt`, `de`, `it`, `ru`, `zh`.
+
+For simplicity, the documentation is written in English.
+
+## Rate limits
+
+This API enforces request limits per `apiKey` per endpoint.
+
+See **Rate Limits** for the authoritative limits and endpoint groups:
+
+* `api-reference/rate-limits`
+
+***
+
+## 💬 Ask an AI Assistant
+
+Want to explore or ask questions about this page using your favorite AI?
+
+Click one of the links below — each one opens this page in the selected tool with a pre-filled prompt:
+
+* [Ask ChatGPT](https://chatgpt.com/?prompt=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+with+this+API.)
+* [Ask Claude](https://claude.ai/?prompt=Please+read+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+* [Ask Perplexity](https://www.perplexity.ai/search?q=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt)
+* [Ask Gemini](https://gemini.google.com/app?query=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+
+
+# API Rate Limits - Request Quotas & Throttling
+Source: https://docs.oddspapi.io/api-reference/rate-limits
+
+OddsPapi API rate limits and quotas. Request limits per endpoint, rate limit headers, and best practices for handling 429 responses.
+
+Rate limits are counted **per `apiKey`** and by endpoint.
+
+## Limits
+
+### Odds endpoints (high-frequency)
+
+These endpoints allow higher throughput:
+
+* `GET /fixtures/odds`
+* `GET /fixtures/odds/main`
+* `GET /futures/odds`
+
+**Limit:** **10 requests / second**
+
+### All other endpoints
+
+Everything else (metadata, fixtures list, mapping, settlements, historical, media redirects):
+
+**Limit:** **200 requests / minute**
+
+## Rate limit headers
+
+Every response includes:
+
+* `X-RateLimit-Limit`
+* `X-RateLimit-Remaining`
+* `X-RateLimit-Reset`
+
+When limited (429), responses also include:
+
+* `Retry-After`
+
+## What happens when you exceed limits
+
+You’ll receive:
+
+* **429** with `code: "rate_limited"`
+
+Example:
+
+```json theme={null}
+{
+  "error": 429,
+  "message": "rate limit exceeded",
+  "code": "rate_limited",
+  "retryAfterSec": 1
+}
+```
+
+
+# Fixture Settlement
+Source: https://docs.oddspapi.io/api-reference/settlement/fixture-settlement
+
+/api-reference/openapi.json get /fixtures/settlement
+Get settlements for a fixture.
+
+Lookup mode: required `fixtureId` + optional `outcomeId`, optional `playerId`.
+
+
+
+# Future Settlement
+Source: https://docs.oddspapi.io/api-reference/settlement/future-settlement
+
+/api-reference/openapi.json get /futures/settlement
+Get settlements for a future.
+
+Currently not available.
+
+
+
+# API Changelog - Updates, Features & Breaking Changes
+Source: https://docs.oddspapi.io/changelog/index
+
+OddsPapi API changelog. New features, improvements, bug fixes, and breaking changes. Track WebSocket and REST API updates for sports betting data integration.
+
+We continuously improve the Odds API.
+This page lists **new features**, **changes**, **fixes**, and **breaking changes**.
+
+<Note>
+  All timestamps are UTC.
+  If a change affects data shape or behavior, it will be marked as **Breaking**.
+</Note>
+
+***
+
+## 2026-04-09
+
+### ✨ Added
+
+* **Fixture view: `venue` section** — new nested object on all fixture responses with `venueId`, `venueName`, and `venueLocation`. Translated per language.
+* **Fixture view: `clock` section** — new nested object on all fixture responses with `currentPeriod`, `currentTime`, `remainingTime`, `remainingTimeInPeriod`, and `stopped`. All keys present with `null` values until clock data is populated for a fixture.
+* **Fixture view: `participant1ShortName` / `participant2ShortName`** — new fields in the `participants` section of fixture responses, sourced from translated participant data.
+* **Fixture view: `seasonRound`** — new field in the `season` section of fixture responses.
+* **Futures view: `marketId`** — the `market` section in future responses now includes the `marketId` from the futures table. Name fields (`marketName`, `marketType`, `playerMarket`, `participantMarket`) remain `null` for now.
+* **Participants endpoint: `participantShortName`** — the `GET /{lang}/participants` response now includes `participantShortName` for each participant.
+* New REST endpoint: **`GET /{lang}/venues?venueIds=...`** — returns venue data with translated `venueName` and `venueLocation`.
+* New WebSocket channel: **`clocks`** — delivers live clock updates per fixture (same routing as `scores`: filtered by `fixtureId`, sport, tournament). Supports resume/replay.
+
+### ⚠️ Breaking
+
+* **Fixture response shape changed** — all fixture endpoints (REST and WebSocket) now include three new top-level keys: `venue` (object), `clock` (object), and updated `participants` / `season` sections. Clients parsing fixture responses strictly should update their models.
+  * `season` now includes `seasonRound: integer | null`
+  * `participants` now includes `participant1ShortName: string | null` and `participant2ShortName: string | null`
+  * `venue: { venueId, venueName, venueLocation }` added after `season`
+  * `clock: { currentPeriod, currentTime, remainingTime, remainingTimeInPeriod, stopped }` added after `scores`
+* **Future response shape changed** — `market.marketId` is now populated (integer or null) instead of always `null`.
+
+***
+
+## 2025-12-12
+
+### ✨ Added
+
+* WebSocket **resume & replay** support using `entryId` cursors
+* New WebSocket channels:
+  * `injuries`
+  * `lineups`
+  * `stats`
+* AsyncAPI 3.0 reference for WebSocket gateway
+
+### 🔧 Improved
+
+* Reduced WebSocket latency for `odds` and `scores`
+* Better filtering for `sportIds`, `tournamentIds`, and `bookmakers`
+
+### 🐛 Fixed
+
+* Fixed an issue where some `odds` updates were delivered without bookmaker gating
+* Fixed incorrect `live` flag on some fixtures during transitions
+
+***
+
+## 2025-11-28
+
+### ⚠️ Breaking
+
+* `odds.payload.odds` keys are now **always bookmaker-scoped**
+  * Old clients expecting a flat structure must update
+
+### ✨ Added
+
+* Support for `receiveType: "binary"` (MessagePack)
+* Added `entryId` to all update messages
+
+***
+
+## 2025-11-10
+
+### ✨ Added
+
+* Initial WebSocket gateway
+* Channels:
+  * `fixtures`
+  * `scores`
+  * `odds`
+  * `bookmakers`
+
+
+# OddsPapi - B2B Sports Betting Odds API
+Source: https://docs.oddspapi.io/index
+
+B2B low-latency realtime sports odds API. Stream live betting odds, fixtures, scores, lineups, injuries and statistics via WebSocket. REST API for snapshots and historical data.
+
+<Note>
+  **B2B API** — OddsPapi is a business-to-business data service for licensed operators, trading firms, and enterprise platforms. Contact [contact@oddspapi.io](mailto:contact@oddspapi.io) for API access.
+</Note>
+
+## What is OddsPapi?
+
+OddsPapi is a **B2B sports data API** providing **low-latency realtime data** including:
+
+* Fixtures & schedules
+* Live scores
+* Betting odds & markets
+* Lineups, injuries, stats, and more
+
+Built for **trading systems**, **sportsbooks**, **analytics**, and **media platforms**.
+
+Looking for an AI-friendly export? See **AI / Offline Export** or download `/llms-full.txt`.
+
+***
+
+## Get started
+
+<Columns>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Connect in minutes and stream realtime data.
+  </Card>
+
+  <Card title="WebSockets" icon="bolt" href="/websocket/overview">
+    Subscribe to live odds, scores, and events.
+  </Card>
+
+  <Card title="HTTP API" icon="terminal" href="/api-reference/overview">
+    REST endpoints for snapshots and metadata.
+  </Card>
+
+  <Card title="Changelog" icon="clock-rotate-left" href="/changelog/index">
+    Track updates and breaking changes.
+  </Card>
+</Columns>
+
+
+# Quickstart Guide - Connect to Odds API in Minutes
+Source: https://docs.oddspapi.io/quickstart
+
+Get started with OddsPapi in minutes. Connect to the WebSocket gateway, authenticate with your API key, subscribe to channels, and stream realtime sports odds data.
+
+## 1) Connect
+
+Gateway:
+
+* **ws**: `wss://v5.oddspapi.io/ws`
+
+<Tabs>
+  <Tab title="JavaScript (Node)">
+    ```js theme={null}
+    import WebSocket from "ws";
+
+    const ws = new WebSocket("wss://v5.oddspapi.io/ws");
+
+    ws.on("open", () => {
+      ws.send(JSON.stringify({ type: "login", apiKey: process.env.ODDS_API_KEY }));
+    });
+
+    ws.on("message", (data) => {
+      const msg = JSON.parse(data.toString());
+      console.log(msg.type ?? msg.channel, msg);
+    });
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    ```py theme={null}
+    import json
+    import os
+    import websocket
+
+    def on_open(ws):
+        ws.send(json.dumps({
+            "type": "login",
+            "apiKey": os.environ["ODDS_API_KEY"],
+        }))
+
+    def on_message(ws, message):
+        msg = json.loads(message)
+        print(msg.get("type") or msg.get("channel"), msg)
+
+    ws = websocket.WebSocketApp(
+        "wss://v5.oddspapi.io/ws",
+        on_open=on_open,
+        on_message=on_message,
+    )
+    ws.run_forever()
+    ```
+  </Tab>
+</Tabs>
+
+## 2) Minimal login
+
+```json theme={null}
+{
+  "type": "login",
+  "apiKey": "YOUR_API_KEY"
+}
+```
+
+
+# JavaScript SDK - Node.js & Browser Client
+Source: https://docs.oddspapi.io/sdks/javascript
+
+Official OddsPapi JavaScript SDK for Node.js and browser. Connect to WebSocket API, stream realtime odds, and integrate sports betting data into your application.
+
+## Status
+
+🚧 **Coming soon**
+
+In the meantime, you can connect using native WebSockets:
+
+```js theme={null}
+const ws = new WebSocket("wss://v5.oddspapi.io/ws");
+
+ws.onopen = () => {
+  ws.send(JSON.stringify({
+    type: "login",
+    apiKey: "YOUR_API_KEY"
+  }));
+};
+```
+
+
+# Python SDK - Async WebSocket Client
+Source: https://docs.oddspapi.io/sdks/python
+
+Official OddsPapi Python SDK with async WebSocket support. Stream realtime sports betting odds and integrate with your Python trading systems and analytics.
+
+## Status
+
+🚧 **Coming soon**
+
+Example using `websockets`:
+
+```python theme={null}
+import asyncio, json, websockets
+
+async def main():
+    async with websockets.connect("wss://v5.oddspapi.io/ws") as ws:
+        await ws.send(json.dumps({
+            "type": "login",
+            "apiKey": "YOUR_API_KEY"
+        }))
+        async for msg in ws:
+            print(msg)
+
+asyncio.run(main())
+```
+
+
+# WebSocket Authentication & Channel Filters
+Source: https://docs.oddspapi.io/websocket/auth
+
+Authenticate to OddsPapi WebSocket gateway and configure channel subscriptions. Filter by sports, tournaments, fixtures, and bookmakers for targeted data streaming.
+
+## Login Message
+
+Connect and send a `login` message immediately:
+
+```json theme={null}
+{
+  "type": "login",
+  "apiKey": "YOUR_API_KEY"
+}
+```
+
+**Rules:**
+
+* Must be the first message
+* Send within 10 seconds
+* Defines all subscriptions and filters
+
+***
+
+## Login with Channels and Filters
+
+```json theme={null}
+{
+  "type": "login",
+  "apiKey": "YOUR_API_KEY",
+  "receiveType": "binary",
+  "channels": ["fixtures", "scores", "odds"],
+  "sportIds": [10, 11, 12, 13],
+  "tournamentIds": [35430, 39351],
+  "fixtureIds": ["id1103543066138356", "id1103935163991375"],
+  "bookmakers": ["stake"]
+}
+```
+
+***
+
+## Filter Mode
+
+| Field           | Type       | Description                                      |
+| --------------- | ---------- | ------------------------------------------------ |
+| `channels`      | `string[]` | Streams you want to receive.                     |
+| `sportIds`      | `number[]` | Restrict to these sports.                        |
+| `tournamentIds` | `number[]` | Restrict to these tournaments.                   |
+| `fixtureIds`    | `string[]` | Exact fixtures (fixture-scoped channels only).   |
+| `futureIds`     | `string[]` | Specific futures (future-scoped channels).       |
+| `bookmakers`    | `string[]` | Only receive these bookmakers (bookmaker-gated). |
+| `lang`          | `string`   | Translations (`en`, `de`, `fr`, etc.).           |
+| `receiveType`   | `string`   | `"json"` or `"binary"`.                          |
+| `clientName`    | `string`   | Optional debug/metrics tag.                      |
+| `serverEpoch`   | `string`   | For resume.                                      |
+| `lastSeenId`    | `object`   | `{ "<channel>": "<entryId>" }` for resume.       |
+
+> IDs like `fixtureId` and `futureId` are structured but should be treated as opaque in your logic. See [Concepts](/api-reference/concepts).
+
+***
+
+## Access: Live vs Pregame
+
+After login, the server tells you what you're allowed to receive:
+
+```json theme={null}
+{
+  "access": { "live": true, "pregame": false }
+}
+```
+
+These are determined by your `apiKey`, not client filters.
+
+***
+
+## Bookmaker-Gated Channels
+
+These channels require explicit bookmaker access:
+
+* `odds`, `bookmakers`
+* `oddsFutures`, `bookmakersFutures`
+
+You can restrict which bookmakers you receive:
+
+```json theme={null}
+{
+  "type": "login",
+  "apiKey": "YOUR_API_KEY",
+  "channels": ["odds", "bookmakers"],
+  "receiveType": "binary",
+  "bookmakers": ["stake", "pinnacle"]
+}
+```
+
+***
+
+## 🐍 Python Example
+
+```python theme={null}
+import asyncio, json, websockets, msgpack
+
+WS_URL = "wss://v5.oddspapi.io/ws"
+API_KEY = "your-api-key"
+
+LOGIN = {
+    "type": "login",
+    "apiKey": API_KEY,
+    "channels": ["fixtures", "scores", "odds"],
+    "receiveType": "binary",
+    "sportIds": [10, 11],
+    "bookmakers": ["stake"],
+}
+
+async def main():
+    async with websockets.connect(WS_URL) as ws:
+        await ws.send(json.dumps(LOGIN))
+
+        async for raw in ws:
+            if isinstance(raw, str):
+                print("CONTROL:", json.loads(raw))
+            else:
+                msg = msgpack.unpackb(raw, raw=False)
+                print("DATA:", msg.get("channel"), msg.get("entryId"))
+
+asyncio.run(main())
+```
+
+
+# Bookmakers Channel - Sportsbook Status & Metadata
+Source: https://docs.oddspapi.io/websocket/channels/bookmakers
+
+Stream bookmaker status per fixture via WebSocket. Track which sportsbooks offer odds, detect stale/suspended markets, and monitor participant rotation flags.
+
+## What it streams
+
+Metadata about which bookmakers are offering odds for a given fixture, and whether those odds are active, stale, suspended, or rotated.
+
+This stream complements the `odds` channel by giving you per-bookmaker status for each `fixtureId`.
+
+***
+
+## Routing
+
+* Entity key: `payload.fixtureId`
+* Filters: `sportIds`, `tournamentIds`, `fixtureIds`, `bookmakers`
+* Access: determined by your `apiKey`
+* Bookmaker-gated: ✅ Yes
+
+***
+
+## Payload structure
+
+| Field                                   | Type             | Description                                                                                                                |
+| --------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `fixtureId`                             | `string`         | The fixture this update applies to                                                                                         |
+| `bookmakers`                            | `object`         | Map of `<bookmaker>` → metadata object                                                                                     |
+| `bookmakers.<bk>.bookmaker`             | `string`         | Bookmaker slug (e.g. `"stake"`, `"pinnacle"`)                                                                              |
+| `bookmakers.<bk>.bookmakerFixtureId`    | `string \| null` | Optional bookmaker-side ID (may be a slug or compound string)                                                              |
+| `bookmakers.<bk>.fixturePath`           | `string \| null` | Optional bookmaker path or UI route (if supported)                                                                         |
+| `bookmakers.<bk>.hasOdds`               | `boolean`        | True if the bookmaker currently offers any odds                                                                            |
+| `bookmakers.<bk>.staleOdds`             | `boolean`        | **Critical for trading.** True if the connection to this bookmaker was lost and odds freshness can no longer be guaranteed |
+| `bookmakers.<bk>.staleOddsResponseCode` | `number \| null` | HTTP status code returned during staleness check                                                                           |
+| `bookmakers.<bk>.suspended`             | `boolean`        | True if this bookmaker's odds are suspended                                                                                |
+| `bookmakers.<bk>.participantsRotated`   | `boolean`        | True if this bookmaker's home/away assignment differs from the OddsPapi baseline (see below)                               |
+| `bookmakers.<bk>.meta`                  | `object \| null` | Optional metadata (bookmaker-specific)                                                                                     |
+| `bookmakers.<bk>.updatedAt`             | `string`         | Last update timestamp (ISO 8601)                                                                                           |
+
+***
+
+## Example message
+
+```json theme={null}
+{
+  "channel": "bookmakers",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1000070367118324",
+    "bookmakers": {
+      "draftkings": {
+        "bookmaker": "draftkings",
+        "bookmakerFixtureId": "33999242",
+        "fixturePath": "https://sportsbook.draftkings.com/event/33999242",
+        "hasOdds": true,
+        "staleOdds": false,
+        "staleOddsResponseCode": null,
+        "suspended": false,
+        "participantsRotated": false,
+        "meta": null,
+        "updatedAt": "2026-04-21T00:51:48.283641+00:00"
+      }
+    }
+  },
+  "ts": 1776729708000,
+  "entryId": "1776729708000-1"
+}
+```
+
+***
+
+## Critical fields for automated trading
+
+### `staleOdds` — odds freshness guarantee
+
+<Warning>
+  If you are running automated trading or arbitrage strategies on top of OddsPapi, `staleOdds` is one of the most important fields you must check.
+</Warning>
+
+When `staleOdds = true`, the connection between OddsPapi and this bookmaker has been **lost or interrupted**. This means:
+
+* Odds you received earlier **may no longer reflect the bookmaker's current prices**
+* No further updates can be guaranteed until the connection is restored
+* You should **immediately pause** any automated betting or arbitrage logic for this bookmaker
+* Treat all existing odds from this bookmaker as **unvalidated** until `staleOdds` returns to `false`
+
+`staleOddsResponseCode` provides the HTTP status code (if any) that triggered the staleness detection — useful for debugging connectivity issues.
+
+### `participantsRotated` — home/away mapping
+
+When `participantsRotated = true`, the bookmaker treats a **different team as the home team** than OddsPapi does. In other words, `participant1` (home) and `participant2` (away) are **swapped** at this bookmaker compared to the OddsPapi baseline fixture.
+
+This is critical for:
+
+* **Moneyline / 1x2 markets** — the "home" and "away" outcome meanings are reversed
+* **Spread / handicap markets** — the sign of the spread is flipped
+* **Any automated strategy** that maps outcomes by participant position rather than participant ID
+
+If you build on top of OddsPapi, always check this flag and **swap your participant mapping** for this bookmaker when it is `true`.
+
+***
+
+## Notes
+
+* If a bookmaker is not present in `bookmakers`, assume **no current odds available** for that fixture.
+* Use this channel as a **pre-filter** before processing any odds from the `odds` channel.
+* Combine `staleOdds`, `suspended`, and `hasOdds` to determine whether a bookmaker's odds should be trusted at any given moment.
+
+
+# Bookmakers Futures Channel - Outright Market Status
+Source: https://docs.oddspapi.io/websocket/channels/bookmakersFutures
+
+Stream bookmaker availability for futures markets via WebSocket. Monitor which sportsbooks offer outright and season-long betting odds.
+
+## What it streams
+
+Metadata per bookmaker describing whether a bookmaker offers odds for a given future, and whether those odds are active, stale, or suspended.
+
+This is the **future equivalent** of the `bookmakers` channel for fixtures.
+
+***
+
+## Routing
+
+* Entity key: `payload.futureId`
+* Filters: `sportIds`, `tournamentIds`, `futureIds`, `bookmakers`
+* Access: determined by your `apiKey`
+* Bookmaker-gated: ✅ Yes
+
+***
+
+## Payload structure
+
+| Field                               | Type             | Description                                                                                                                |
+| ----------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `futureId`                          | `string`         | The future this update applies to                                                                                          |
+| `bookmakers`                        | `object`         | Map of `<bookmaker>` → metadata object                                                                                     |
+| `bookmakers.<bk>.bookmaker`         | `string`         | Bookmaker slug (e.g. `"stake"`, `"pinnacle"`)                                                                              |
+| `bookmakers.<bk>.bookmakerFutureId` | `string \| null` | Optional bookmaker-side identifier for this future                                                                         |
+| `bookmakers.<bk>.futurePath`        | `string \| null` | Optional deeplink or path to the future at the bookmaker                                                                   |
+| `bookmakers.<bk>.hasOdds`           | `boolean`        | True if the bookmaker currently offers odds                                                                                |
+| `bookmakers.<bk>.staleOdds`         | `boolean`        | **Critical for trading.** True if the connection to this bookmaker was lost and odds freshness can no longer be guaranteed |
+| `bookmakers.<bk>.suspended`         | `boolean`        | True if the bookmaker has suspended this future                                                                            |
+| `bookmakers.<bk>.meta`              | `object \| null` | Optional bookmaker-specific metadata                                                                                       |
+| `bookmakers.<bk>.updatedAt`         | `string`         | Last update timestamp (ISO 8601)                                                                                           |
+
+***
+
+## Example message
+
+```json theme={null}
+{
+  "channel": "bookmakersFutures",
+  "type": "UPDATE",
+  "payload": {
+    "futureId": "id11028543137888",
+    "bookmakers": {
+      "stake": {
+        "bookmaker": "stake",
+        "bookmakerFutureId": "285431-nbl-new-zealand",
+        "futurePath": null,
+        "hasOdds": true,
+        "staleOdds": false,
+        "suspended": false,
+        "meta": null,
+        "updatedAt": "2025-12-28T18:37:13.719926+00:00"
+      }
+    }
+  },
+  "ts": 1766947033889,
+  "entryId": "1766947033889-501"
+}
+```
+
+***
+
+## Critical fields for automated trading
+
+### `staleOdds` — odds freshness guarantee
+
+<Warning>
+  If you are running automated trading strategies on top of OddsPapi, `staleOdds` is one of the most important fields you must check.
+</Warning>
+
+When `staleOdds = true`, the connection between OddsPapi and this bookmaker has been **lost or interrupted**. This means:
+
+* Odds you received earlier **may no longer reflect the bookmaker's current prices**
+* No further updates can be guaranteed until the connection is restored
+* You should **immediately pause** any automated betting logic for this bookmaker
+* Treat all existing odds from this bookmaker as **unvalidated** until `staleOdds` returns to `false`
+
+***
+
+## Notes
+
+* Odds data itself is streamed via **`oddsFutures`**
+* If a bookmaker is missing from `bookmakers`, assume **no current odds**
+* Use this channel as a **pre-filter** before processing any odds from the `oddsFutures` channel
+* Combine `staleOdds`, `suspended`, and `hasOdds` to determine whether a bookmaker's odds should be trusted
+* Semantics are intentionally identical to `bookmakers` (fixture-level), just scoped to `futureId`
+
+
+# Clocks Channel - Live Match Clock Updates
+Source: https://docs.oddspapi.io/websocket/channels/clocks
+
+Stream realtime match clock updates via WebSocket. Period, remaining time, and stopped state for live fixtures.
+
+## What it streams
+
+Realtime clock updates scoped to a specific `fixtureId`.
+Each message contains the current clock state for a live match — period, elapsed/remaining time, and whether the clock is stopped.
+
+***
+
+## Routing
+
+* Entity key: `payload.fixtureId`
+* Filters: `sportIds`, `tournamentIds`, `fixtureIds`
+* Access: live/pregame determined by your `apiKey`
+
+***
+
+## Payload fields
+
+| Field                         | Type              | Description                            |
+| ----------------------------- | ----------------- | -------------------------------------- |
+| `fixtureId`                   | `string`          | The fixture this clock applies to      |
+| `clock`                       | `object`          | Clock state                            |
+| `clock.currentPeriod`         | `string \| null`  | Current period (e.g. `"p1"`, `"p2"`)   |
+| `clock.currentTime`           | `string \| null`  | Current match time                     |
+| `clock.remainingTime`         | `string \| null`  | Remaining time in the match            |
+| `clock.remainingTimeInPeriod` | `string \| null`  | Remaining time in the current period   |
+| `clock.stopped`               | `boolean \| null` | Whether the clock is currently stopped |
+
+***
+
+## Example message (JSON)
+
+```json theme={null}
+{
+  "channel": "clocks",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1500023462078980",
+    "clock": {
+      "currentPeriod": "p2",
+      "currentTime": null,
+      "remainingTime": "26:42",
+      "remainingTimeInPeriod": "2:42",
+      "stopped": false
+    }
+  },
+  "ts": 1775170900000,
+  "entryId": "1775170900000-42"
+}
+```
+
+***
+
+## Notes
+
+* Clock updates are delivered independently from `scores` and `fixtures`
+* The `clock` object is also included in the `fixtures` channel payload (as part of the fixture snapshot)
+* When no clock data is available, all fields will be `null`
+* Use this channel for high-frequency clock state without receiving the full fixture payload
+
+
+# Currencies Channel - Exchange Rates & Crypto Prices
+Source: https://docs.oddspapi.io/websocket/channels/currencies
+
+Stream realtime currency exchange rates via WebSocket. Fiat and cryptocurrency pricing data including BTC, ETH, and major tokens for odds conversion.
+
+## What it streams
+
+Currency/ticker exchange values (vs a reference currency) for fiat and crypto.
+
+This is a **global channel** — it is not scoped to any fixture or future.
+
+***
+
+## Routing
+
+* Channel: `currencies` (global)
+* Filters: ❌ ignored
+* Access: allowed for all keys (unless specifically disabled)
+
+***
+
+## Payload structure
+
+Each message contains a flat list of currency values:
+
+| Field           | Type           | Description                                             |
+| --------------- | -------------- | ------------------------------------------------------- |
+| `currency`      | `string`       | Symbol of the currency/token (e.g. `BTC`, `USD`, `ADA`) |
+| `currencyValue` | `number`       | Current exchange rate (float)                           |
+| `updatedAt`     | `string (ISO)` | Time this value was last refreshed                      |
+
+***
+
+## Example message
+
+```json theme={null}
+{
+  "channel": "currencies",
+  "type": "UPDATE",
+  "payload": {
+    "BTC": {
+      "currency": "BTC",
+      "currencyValue": 0.00001141,
+      "updatedAt": "2025-12-28T18:38:02+00:00"
+    }
+  },
+  "ts": 1766939809876,
+  "entryId": "1766939809876-700"
+}
+```
+
+***
+
+## Notes
+
+* All values are relative to the system's reference currency: USD
+
+
+# Fixtures Channel - Match Metadata & Schedules
+Source: https://docs.oddspapi.io/websocket/channels/fixtures
+
+Stream realtime fixture updates via WebSocket. Match status, start times, participants, tournaments, scores, and provider ID mappings for Betradar, Pinnacle, Flashscore.
+
+## What it streams
+
+Metadata for a given `fixtureId` — including match status, start times, participants, and tournament/sport info.
+Also includes optional `scores` and mapped provider IDs.
+
+This is the **anchor stream** used to map odds/scores to a real-world fixture.
+
+***
+
+## Routing
+
+* Entity key: `payload.fixtureId`
+* Filters: `sportIds`, `tournamentIds`, `fixtureIds`
+* Access: live/pregame determined by your `apiKey`
+
+***
+
+## Payload fields
+
+| Field                                | Type              | Description                                             |
+| ------------------------------------ | ----------------- | ------------------------------------------------------- |
+| `fixtureId`                          | `string`          | Unique ID of the fixture                                |
+| `status`                             | `object`          | Match status info                                       |
+| `status.live`                        | `boolean`         | True if currently live                                  |
+| `status.statusId`                    | `number \| null`  | Optional status code                                    |
+| `status.statusName`                  | `string \| null`  | Status name (e.g. "Live", "Postponed")                  |
+| `sport`                              | `object`          | Sport metadata                                          |
+| `sport.sportId`                      | `number`          | Unique sport ID                                         |
+| `sport.sportName`                    | `string`          | Sport name                                              |
+| `tournament`                         | `object`          | Tournament metadata                                     |
+| `tournament.tournamentId`            | `number`          | Unique tournament ID                                    |
+| `tournament.tournamentName`          | `string`          | Tournament name                                         |
+| `tournament.categoryName`            | `string`          | Geographic/organizational category                      |
+| `season`                             | `object`          | Season metadata                                         |
+| `season.seasonId`                    | `number \| null`  | Season ID (nullable)                                    |
+| `season.seasonName`                  | `string \| null`  | Season name                                             |
+| `season.seasonRound`                 | `number \| null`  | Round/matchday number within the season                 |
+| `venue`                              | `object`          | Venue metadata                                          |
+| `venue.venueId`                      | `number \| null`  | Venue ID                                                |
+| `venue.venueName`                    | `string \| null`  | Venue name (translated)                                 |
+| `venue.venueLocation`                | `string \| null`  | Venue location (translated)                             |
+| `startTime`                          | `number`          | Scheduled start (epoch seconds UTC)                     |
+| `trueStartTime`                      | `string \| null`  | Actual start time (ISO 8601)                            |
+| `trueEndTime`                        | `string \| null`  | Actual end time (ISO 8601)                              |
+| `participants`                       | `object`          | Competitor metadata                                     |
+| `participants.participant1Id`        | `number`          | Team/player 1 ID                                        |
+| `participants.participant1Name`      | `string`          | Team/player 1 name                                      |
+| `participants.participant1ShortName` | `string \| null`  | Short name (e.g. "Hawks")                               |
+| `participants.participant1Abbr`      | `string \| null`  | Optional abbreviation                                   |
+| `participants.participant1RotNr`     | `number \| null`  | Optional rotation number                                |
+| `participants.participant2Id`        | `number`          | Team/player 2 ID                                        |
+| `participants.participant2Name`      | `string`          | Team/player 2 name                                      |
+| `participants.participant2ShortName` | `string \| null`  | Short name (e.g. "Heat")                                |
+| `participants.participant2Abbr`      | `string \| null`  | Optional abbreviation                                   |
+| `participants.participant2RotNr`     | `number \| null`  | Optional rotation number                                |
+| `scores`                             | `object`          | Optional score object (same format as `scores` stream)  |
+| `clock`                              | `object \| null`  | Live match clock data                                   |
+| `clock.currentPeriod`                | `string \| null`  | Current period (e.g. "p2")                              |
+| `clock.currentTime`                  | `string \| null`  | Current match time                                      |
+| `clock.remainingTime`                | `string \| null`  | Remaining time in match                                 |
+| `clock.remainingTimeInPeriod`        | `string \| null`  | Remaining time in current period                        |
+| `clock.stopped`                      | `boolean \| null` | Whether the clock is stopped                            |
+| `expectedPeriods`                    | `number \| null`  | Number of scheduled periods (e.g. halves/sets/quarters) |
+| `periodLength`                       | `number \| null`  | Period duration in minutes                              |
+| `externalProviders`                  | `object`          | Mapped provider IDs                                     |
+| `externalProviders.betradarId`       | `number \| null`  | Betradar fixture ID                                     |
+| `externalProviders.flashscoreId`     | `string \| null`  | Flashscore ID                                           |
+| `externalProviders.pinnacleId`       | `number \| null`  | Pinnacle fixture ID                                     |
+| `externalProviders.sofascoreId`      | `number \| null`  | Sofascore ID                                            |
+| `externalProviders.oddinId`          | `number \| null`  | Oddin ID                                                |
+| `externalProviders.mollybetId`       | `string \| null`  | Mollybet ID                                             |
+| `externalProviders.opticoddsId`      | `string \| null`  | Opticodds ID                                            |
+| `externalProviders.lsportsId`        | `number \| null`  | LSports ID                                              |
+| `externalProviders.txoddsId`         | `number \| null`  | TXOdds ID                                               |
+
+***
+
+## Example message (JSON)
+
+```json theme={null}
+{
+  "channel": "fixtures",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1100013270505056",
+    "status": {
+      "live": true,
+      "statusId": 1,
+      "statusName": "Live"
+    },
+    "sport": {
+      "sportId": 11,
+      "sportName": "Basketball"
+    },
+    "tournament": {
+      "tournamentId": 132,
+      "tournamentName": "NBA",
+      "categoryName": "USA"
+    },
+    "season": {
+      "seasonId": 131631,
+      "seasonName": "NBA 25/26",
+      "seasonRound": null
+    },
+    "venue": {
+      "venueId": 6054,
+      "venueName": "Madison Square Garden",
+      "venueLocation": "New York, NY, USA"
+    },
+    "startTime": 1776729600,
+    "trueStartTime": "2026-04-21T00:09:08+00:00",
+    "trueEndTime": null,
+    "participants": {
+      "participant1Id": 3421,
+      "participant1RotNr": 303,
+      "participant1Name": "New York Knicks",
+      "participant1ShortName": "New York",
+      "participant1Abbr": "NYK",
+      "participant2Id": 3423,
+      "participant2RotNr": 302,
+      "participant2Name": "Atlanta Hawks",
+      "participant2ShortName": "Atlanta",
+      "participant2Abbr": "ATL"
+    },
+    "scores": {
+      "p1": {
+        "period": "p1",
+        "participant1Score": 32,
+        "participant2Score": 23,
+        "updatedAt": "2026-04-21T00:59:42.287458+00:00"
+      },
+      "p2": {
+        "period": "p2",
+        "participant1Score": 29,
+        "participant2Score": 31,
+        "updatedAt": "2026-04-21T01:25:05.532295+00:00"
+      },
+      "result": {
+        "period": "result",
+        "participant1Score": 61,
+        "participant2Score": 54,
+        "updatedAt": "2026-04-21T01:24:37.154297+00:00"
+      }
+    },
+    "clock": {
+      "currentPeriod": null,
+      "currentTime": null,
+      "remainingTime": null,
+      "remainingTimeInPeriod": null,
+      "stopped": null
+    },
+    "expectedPeriods": 4,
+    "periodLength": 12,
+    "externalProviders": {
+      "betgeniusId": 13808265,
+      "betradarId": 70505056,
+      "flashscoreId": "nTPkYS3K",
+      "mollybetId": "2026-04-21,29093,29096",
+      "oddinId": null,
+      "opticoddsId": "20260421A1AB4678",
+      "pinnacleId": 1628730839,
+      "sofascoreId": 15935017,
+      "lsportsId": null,
+      "txoddsId": null
+    },
+    "bookmakers": {}
+  },
+  "ts": 1776729608000,
+  "entryId": "1776729608000-4273"
+}
+```
+
+## Example: fixture update that includes a `scores.result`
+
+Some fixture updates include a `scores` object (for example, a pre-game or result snapshot).
+
+```json theme={null}
+{
+  "channel": "fixtures",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1000070367118324",
+    "status": {
+      "live": true,
+      "statusId": 1,
+      "statusName": "Live"
+    },
+    "sport": {
+      "sportId": 10,
+      "sportName": "Soccer"
+    },
+    "tournament": {
+      "tournamentId": 703,
+      "tournamentName": "Primera Nacional",
+      "categoryName": "Argentina"
+    },
+    "season": {
+      "seasonId": 138218,
+      "seasonName": "Primera Nacional 2026",
+      "seasonRound": 10
+    },
+    "venue": {
+      "venueId": 12720,
+      "venueName": "Estadio Don Leon Kolbovsky",
+      "venueLocation": "Buenos Aires, Argentina"
+    },
+    "startTime": 1776729600,
+    "trueStartTime": "2026-04-21T00:06:06.546877+00:00",
+    "trueEndTime": null,
+    "participants": {
+      "participant1Id": 53799,
+      "participant1RotNr": 210458,
+      "participant1Name": "CA Atlanta",
+      "participant1ShortName": "Atlanta",
+      "participant1Abbr": "ATL",
+      "participant2Id": 3214,
+      "participant2RotNr": 210457,
+      "participant2Name": "Chacarita Juniors",
+      "participant2ShortName": "Chacarita Juniors",
+      "participant2Abbr": "CAC"
+    },
+    "scores": {
+      "p1": {
+        "period": "p1",
+        "participant1Score": 0,
+        "participant2Score": 0,
+        "updatedAt": "2026-04-21T00:55:10.401457+00:00"
+      },
+      "result": {
+        "period": "result",
+        "participant1Score": 1,
+        "participant2Score": 0,
+        "updatedAt": "2026-04-21T01:13:15.757548+00:00"
+      }
+    },
+    "clock": {
+      "currentPeriod": null,
+      "currentTime": null,
+      "remainingTime": null,
+      "remainingTimeInPeriod": null,
+      "stopped": null
+    },
+    "expectedPeriods": 2,
+    "periodLength": 45,
+    "externalProviders": {
+      "betgeniusId": 13767372,
+      "betradarId": 67118324,
+      "flashscoreId": null,
+      "mollybetId": "2026-04-21,10097858,10097878",
+      "oddinId": null,
+      "opticoddsId": "202604183517C8A7",
+      "pinnacleId": 1628328116,
+      "sofascoreId": 15275552,
+      "lsportsId": null,
+      "txoddsId": null
+    },
+    "bookmakers": {}
+  },
+  "ts": 1776729666000,
+  "entryId": "1776729666000-4278"
+}
+```
+
+
+# Futures Channel - Season & Outright Markets
+Source: https://docs.oddspapi.io/websocket/channels/futures
+
+Stream futures and outright betting markets via WebSocket. Season-long markets, tournament winners, championship odds with timing windows and provider mappings.
+
+## What it streams
+
+Metadata about long-term or season-based betting markets (called “futures”), scoped to a `futureId`.
+
+Includes tournament/season mapping, market metadata, timing window, and external provider IDs.
+
+***
+
+## Routing
+
+* Entity key: `payload.futureId`
+* Filters: `sportIds`, `tournamentIds`, `futureIds`
+* Access: live vs pregame determined by your `apiKey`
+
+***
+
+## Payload fields
+
+| Field                            | Type             | Description                                         |
+| -------------------------------- | ---------------- | --------------------------------------------------- |
+| `futureId`                       | `string`         | Unique identifier for the future                    |
+| `status`                         | `object`         | Live/pregame status                                 |
+| `status.live`                    | `boolean`        | Whether the future is currently live                |
+| `status.statusId`                | `number \| null` | Optional status code                                |
+| `status.statusName`              | `string \| null` | Optional status label (e.g. `"Pre-Game"`, `"Live"`) |
+| `sport`                          | `object`         | Sport metadata                                      |
+| `sport.sportId`                  | `number`         | Unique sport ID                                     |
+| `sport.sportName`                | `string`         | Human-readable sport name                           |
+| `tournament`                     | `object`         | Tournament metadata                                 |
+| `tournament.tournamentId`        | `number`         | Unique tournament ID                                |
+| `tournament.tournamentName`      | `string`         | Tournament name                                     |
+| `tournament.categoryName`        | `string`         | Geographic/organizational grouping                  |
+| `season`                         | `object`         | Season metadata                                     |
+| `season.seasonId`                | `number \| null` | Season ID (nullable)                                |
+| `season.seasonName`              | `string \| null` | Season name                                         |
+| `startTime`                      | `number`         | Start of the betting window (epoch seconds UTC)     |
+| `endTime`                        | `number`         | End of the betting window (epoch seconds UTC)       |
+| `market`                         | `object \| null` | Market metadata (nullable)                          |
+| `market.marketId`                | `number \| null` | Optional market ID                                  |
+| `market.marketName`              | `string \| null` | Optional market name (e.g. `"Outright Winner"`)     |
+| `market.marketType`              | `string \| null` | Optional market type code                           |
+| `participants`                   | `array`          | List of participants for this future (may be empty) |
+| `externalProviders`              | `object`         | Mapped external provider IDs                        |
+| `externalProviders.betradarId`   | `number \| null` | Betradar ID                                         |
+| `externalProviders.flashscoreId` | `string \| null` | Flashscore ID                                       |
+| `externalProviders.opticoddsId`  | `string \| null` | OpticOdds ID                                        |
+| `externalProviders.polymarketId` | `string \| null` | Polymarket ID                                       |
+| `externalProviders.kalshiId`     | `string \| null` | Kalshi ID                                           |
+| `externalProviders.sofascoreId`  | `number \| null` | Sofascore ID                                        |
+| `bookmakers`                     | `object`         | Odds availability status (see `bookmakersFutures`)  |
+
+***
+
+## Example: future metadata
+
+```json theme={null}
+{
+  "channel": "futures",
+  "type": "UPDATE",
+  "payload": {
+    "futureId": "pm6980037088158379224",
+    "status": {
+      "live": true,
+      "statusId": 1,
+      "statusName": "Live"
+    },
+    "sport": {
+      "sportId": 69,
+      "sportName": "Politics"
+    },
+    "tournament": {
+      "tournamentId": 800370,
+      "tournamentName": "2025 Predictions",
+      "categoryName": "Politics"
+    },
+    "season": {
+      "seasonId": 8815837922,
+      "seasonName": "Macron out by...?"
+    },
+    "startTime": 1735932904,
+    "endTime": 1782820800,
+    "market": {
+      "marketId": 4,
+      "marketName": null,
+      "marketType": null
+    },
+    "participants": [],
+    "externalProviders": {
+      "betradarId": null,
+      "flashscoreId": null,
+      "opticoddsId": null,
+      "polymarketId": "16263",
+      "kalshiId": null,
+      "sofascoreId": null
+    },
+    "bookmakers": {}
+  },
+  "ts": 1776939800000,
+  "entryId": "1776939800000-999"
+}
+```
+
+## Example: sports future
+
+```json theme={null}
+{
+  "channel": "futures",
+  "type": "UPDATE",
+  "payload": {
+    "futureId": "id100000281190131",
+    "status": {
+      "live": true,
+      "statusId": 1,
+      "statusName": "Live"
+    },
+    "sport": {
+      "sportId": 10,
+      "sportName": "Soccer"
+    },
+    "tournament": {
+      "tournamentId": 28,
+      "tournamentName": "AFC Asian Cup QF",
+      "categoryName": "International"
+    },
+    "season": {
+      "seasonId": 119013,
+      "seasonName": "AFC Asian Cup QF 2026"
+    },
+    "startTime": 1725494400,
+    "endTime": 1780617599,
+    "market": {
+      "marketId": 1,
+      "marketName": null,
+      "marketType": null
+    },
+    "participants": [],
+    "externalProviders": {
+      "betradarId": 119013,
+      "flashscoreId": null,
+      "opticoddsId": null,
+      "polymarketId": null,
+      "kalshiId": null,
+      "sofascoreId": null
+    },
+    "bookmakers": {}
+  },
+  "ts": 1776939800100,
+  "entryId": "1776939800100-1000"
+}
+```
+
+***
+
+## Notes
+
+* Odds are streamed separately via the [`oddsFutures`](/websocket/channels/oddsFutures) channel
+* Use `futureId` to join with:
+  * `oddsFutures` (for prices)
+  * `bookmakersFutures` (for status per bookmaker)
+* Most `market` fields may be `null` for legacy or non-structured markets
+
+
+# Odds Channel - Realtime Betting Odds Stream
+Source: https://docs.oddspapi.io/websocket/channels/odds
+
+High-throughput realtime betting odds via WebSocket. Stream live odds from 100+ bookmakers including Pinnacle, Bet365, Polymarket. Decimal, fractional, American formats.
+
+## What it streams
+
+Realtime odds updates for outcomes within markets, scoped to a specific `fixtureId`.
+
+Odds are grouped by bookmaker and keyed by a unique **oddsId** per outcome.
+Each entry represents a single **oddsId** (one price for one outcome).
+
+***
+
+## Routing
+
+* Entity key: `payload.fixtureId`
+* Filters: `sportIds`, `tournamentIds`, `fixtureIds`, `bookmakers`
+* Access: determined by your `apiKey`
+* Bookmaker-gated: ✅ Yes
+
+***
+
+## Delivery semantics
+
+* This channel is **high throughput**
+* Updates are **latest-state only**
+* The gateway may coalesce or drop intermediate updates under load
+* Do **not** assume tick-by-tick completeness
+
+Treat every message as a **state update**, not a ledger.
+
+***
+
+## Payload structure
+
+oddsId:
+
+```
+<fixtureId>:<bookmaker>:<outcomeId>:<playerId>
+```
+
+***
+
+## outcome object (full schema)
+
+Each odds entry is an **outcome**, with the following fields:
+
+| Field                | Type              | Description                                                   |                                     |
+| -------------------- | ----------------- | ------------------------------------------------------------- | ----------------------------------- |
+| `bookmaker`          | `string`          | Bookmaker slug (e.g. `"stake"`, `"pinnacle"`, `"polymarket"`) |                                     |
+| `outcomeId`          | `integer`         | Outcome identifier                                            |                                     |
+| `playerId`           | `integer`         | Player ID (`0` for non-player markets)                        |                                     |
+| `price`              | `number`          | Decimal odds                                                  |                                     |
+| `active`             | `boolean`         | Whether this outcome is currently available                   |                                     |
+| `marketActive`       | `boolean \| null` | Whether the entire market is active                           |                                     |
+| `mainLine`           | `boolean \| null` | Whether this is the bookmaker’s main line                     |                                     |
+| `marketId`           | `integer`         | Market identifier                                             |                                     |
+| `bookmakerMarketId`  | `string \| null`  | Native bookmaker market ID                                    |                                     |
+| `bookmakerOutcomeId` | `string \| null`  | Native bookmaker outcome ID                                   |                                     |
+| `bookmakerChangedAt` | `number \| null`  | Bookmaker-provided change timestamp (epoch ms)                |                                     |
+| `priceFractional`    | \`string          | \`                                                            | Fractional odds (e.g. `"5/2"`)      |
+| `priceAmerican`      | \`integer         | \`                                                            | American odds (e.g. `-110`, `+250`) |
+| `limit`              | `number \| null`  | Maximum accepted stake (if provided)                          |                                     |
+| `betslip`            | `string \| null`  | Optional bookmaker betslip or deeplink token                  |                                     |
+| `meta`               | `object \| null`  | Bookmaker-specific metadata (orderbooks, ladders, etc.)       |                                     |
+| `changedAt`          | `number`          | Gateway change timestamp (epoch ms, UTC)                      |                                     |
+
+***
+
+## Notes on timestamps
+
+* `changedAt` is **always present** and represents when the gateway accepted the update
+* `bookmakerChangedAt` (when present) reflects the bookmaker’s own timestamp
+* These values may differ — do not assume equality
+
+***
+
+## Advanced metadata (`meta`)
+
+Some bookmakers (e.g. prediction markets / exchanges) provide rich metadata.
+
+Example:
+
+```json theme={null}
+{
+  "meta": {
+    "lay": [
+      { "price": 2.00, "size": 100.0 },
+      { "price": 2.10, "size": 80.0 }
+    ],
+    "back": [
+      { "price": 1.95, "size": 50.0 }
+    ]
+  }
+}
+```
+
+Typical `meta` contents may include:
+
+* Orderbook ladders (`back` / `lay`)
+* Liquidity hints
+* Internal sizing or tick metadata
+
+The schema of `meta` is **bookmaker-specific** and may evolve.
+
+***
+
+## Example: traditional bookmaker odds
+
+```json theme={null}
+{
+  "channel": "odds",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1100013270505136",
+    "odds": {
+      "pinnacle": {
+        "id1100013270505136:pinnacle:111:0": {
+          "bookmaker": "pinnacle",
+          "outcomeId": 111,
+          "playerId": 0,
+          "active": true,
+          "price": 1.155,
+          "marketActive": true,
+          "mainLine": true,
+          "bookmakerMarketId": "line/4/487/1628488896/3565645414/0/moneyline",
+          "bookmakerOutcomeId": "home",
+          "bookmakerChangedAt": 1776717657043,
+          "limit": 19354,
+          "priceAmerican": -645,
+          "priceFractional": "11/71",
+          "marketId": 111,
+          "changedAt": 1776717657402
+        },
+        "id1100013270505136:pinnacle:112:0": {
+          "bookmaker": "pinnacle",
+          "outcomeId": 112,
+          "playerId": 0,
+          "active": true,
+          "price": 5.77,
+          "marketActive": true,
+          "mainLine": true,
+          "bookmakerMarketId": "line/4/487/1628488896/3565645414/0/moneyline",
+          "bookmakerOutcomeId": "away",
+          "bookmakerChangedAt": 1776717657043,
+          "limit": 3000,
+          "priceAmerican": 477,
+          "priceFractional": "477/100",
+          "marketId": 111,
+          "changedAt": 1776717657402
+        }
+      }
+    }
+  },
+  "ts": 1776717657500,
+  "entryId": "1776717657500-84805"
+}
+```
+
+***
+
+## Example: prediction market odds (extended fields)
+
+```json theme={null}
+{
+  "channel": "odds",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1100064864029581",
+    "odds": {
+      "polymarket": {
+        "id1100064864029581:polymarket:112:0": {
+          "bookmaker": "polymarket",
+          "outcomeId": 112,
+          "playerId": 0,
+          "active": true,
+          "price": 6.369,
+          "priceAmerican": 537,
+          "limit": 4.71,
+          "bookmakerMarketId": "1011497",
+          "bookmakerOutcomeId": "4937...",
+          "meta": {
+            "back": [{ "price": 6.369, "size": 30.0 }],
+            "lay": [{ "price": 100.0, "size": 15.0 }]
+          },
+          "marketActive": true,
+          "changedAt": 1766939876376
+        }
+      }
+    }
+  },
+  "ts": 1766939876700,
+  "entryId": "1766939876700-653"
+}
+```
+
+***
+
+## Implementation guidance
+
+* Always key storage by
+  ```
+  {fixtureId}:{bookmaker}:{outcomeId}:{playerId}
+  ```
+* Group outcomes by `marketId` (see **Concepts**) for:
+  * arbitrage detection
+  * overround calculations
+  * probability normalization
+* Treat `active=false` or `marketActive=false` as **hard stops**
+* Preserve unknown fields in `meta` to remain forward-compatible
+
+***
+
+
+# Scores Channel - Live Score Updates
+Source: https://docs.oddspapi.io/websocket/channels/scores
+
+Stream realtime live scores via WebSocket. Period-by-period score updates for all sports including result, halftime, quarters, sets, and periods.
+
+## What it streams
+
+Realtime score updates scoped to a specific `fixtureId`.
+Each `payload.scores` object is keyed by the period (`result`, `p1`, etc.).
+
+***
+
+## Routing
+
+* Entity key: `payload.fixtureId`
+* Filters: `sportIds`, `tournamentIds`, `fixtureIds`
+* Access: live/pregame access is determined by your `apiKey`
+
+***
+
+## Payload structure
+
+| Field            | Type           | Description                            |
+| ---------------- | -------------- | -------------------------------------- |
+| `fixtureId`      | `string`       | The fixture this score applies to      |
+| `scores`         | `object`       | Scores per period                      |
+| `scores[period]` | `object`       | Each period's score and metadata       |
+| `updatedAt`      | `string (ISO)` | Last known update time for this period |
+
+***
+
+## Example: result update
+
+```json theme={null}
+{
+  "channel": "scores",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id1500025662664057",
+    "scores": {
+      "result": {
+        "period": "result",
+        "participant1Score": 2,
+        "participant2Score": 1,
+        "updatedAt": "2025-12-28T16:24:11.426852+00:00"
+      }
+    }
+  },
+  "ts": 1766939805321,
+  "entryId": "1766939805321-3077"
+}
+```
+
+## Example: multiple period updates
+
+```json theme={null}
+{
+  "channel": "scores",
+  "type": "UPDATE",
+  "payload": {
+    "fixtureId": "id2503637767171366",
+    "scores": {
+      "p1": {
+        "period": "p1",
+        "participant1Score": 7,
+        "participant2Score": 6,
+        "updatedAt": "2025-12-28T16:34:02.865934+00:00"
+      },
+      "result": {
+        "period": "result",
+        "participant1Score": 0,
+        "participant2Score": 0,
+        "updatedAt": "2025-12-28T16:32:18.616082+00:00"
+      }
+    }
+  },
+  "ts": 1766939642953,
+  "entryId": "1766939642953-1905"
+}
+```
+
+***
+
+## Notes
+
+* Periods may include `result`, `p1`, `1stHalf`, etc.
+* Use `updatedAt` to detect stale scores
+* This stream **does not** include match status (see `fixtures`)
+
+
+# Interactive WebSocket Console - Test Live Data
+Source: https://docs.oddspapi.io/websocket/console
+
+Test OddsPapi WebSocket API in your browser. Interactive console for connecting to the gateway, subscribing to channels, and viewing realtime sports data.
+
+<iframe />
+
+
+# WebSocket API Overview - Realtime Sports Data Streaming
+Source: https://docs.oddspapi.io/websocket/overview
+
+Connect to OddsPapi WebSocket gateway for low-latency realtime sports betting data. Stream live odds, scores, fixtures, and events with JSON or MessagePack encoding.
+
+## Endpoint
+
+Production gateway:
+
+```
+wss://v5.oddspapi.io/ws
+```
+
+Your account may use a different region or hostname. Use the endpoint shown in your dashboard.
+
+***
+
+## Recommended Integration Flow (Production)
+
+Use REST for snapshots and WebSocket for realtime updates:
+
+1. Fetch an initial snapshot via REST (e.g. `/fixtures`, `/fixtures/odds`)
+2. Connect to the WebSocket and send `login` with filters
+3. Start processing updates after receiving `login_ok`
+4. Persist `serverEpoch` and per-channel `lastSeenId` (from `entryId`)
+5. On reconnect, send `serverEpoch` + `lastSeenId` to resume
+6. If you receive `snapshot_required`, re-fetch the snapshot via REST
+
+***
+
+## Login Mode
+
+WebSocket supports **login-only subscriptions**. To change filters or channels, reconnect with a new `login`.
+
+***
+
+## Message Envelope
+
+All updates share a common envelope:
+
+```json theme={null}
+{
+  "channel": "scores",
+  "type": "UPDATE",
+  "payload": { "...": "..." },
+  "ts": 1765497902846,
+  "entryId": "1765497902846-3221"
+}
+```
+
+* `channel` – stream name (e.g. `odds`, `fixtures`)
+* `type` – message type (currently always `UPDATE`)
+* `payload` – channel-specific data
+* `ts` – UTC timestamp (milliseconds)
+* `entryId` – cursor for replay/resume
+
+> `entryId` is not guaranteed to be contiguous. See [Resume & Replay](/websocket/resume-replay) for full explanation.
+
+***
+
+## Encoding: JSON vs Binary
+
+Control at login using `receiveType`.
+
+* `"json"` (default) — all messages arrive as UTF-8 JSON
+* `"binary"` — data frames use MessagePack; control frames remain JSON
+
+**Tip for clients:**
+
+```js theme={null}
+import msgpack from "@msgpack/msgpack";
+
+const obj = typeof raw === "string"
+  ? JSON.parse(raw)
+  : msgpack.decode(new Uint8Array(raw));
+```
+
+> Control messages like `login_ok`, `snapshot_required`, and `resume_complete` are always JSON, even in binary mode.
+
+***
+
+## Channel Types
+
+* **Fixture-scoped**: `fixtures`, `scores`, `odds`, `bookmakers`. — payloads include `fixtureId`
+* **Future-scoped**: `futures`, `bookmakersFutures`, `oddsFutures` — include `futureId`
+* **Global**: `currencies` — no ID
+
+> See `/websocket/channels/*` for per-channel schemas.
+
+***
+
+## Throughput Guidance
+
+* Prefer `receiveType: "binary"` for high-volume channels like `odds`
+* Use filters (`sportIds`, `bookmakers`) to reduce noise
+* `odds` should be treated as **latest state**, not a tick ledger
+
+***
+
+## WebSocket Limits
+
+| Limit Type             | Description                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
+| Concurrent connections | Enforced per `apiKey` group (max: 5). See error `4003`.             |
+| Backpressure           | If your client can’t keep up, connection is closed (`4002`).        |
+| Replay window          | See `resumeWindowMs` in [Resume & Replay](/websocket/resume-replay) |
+| Message rate           | Not explicitly limited, but filters are recommended for performance |
+
+***
+
+## 💬 Ask an AI Assistant
+
+Want to explore or ask questions about this page using your favorite AI?
+
+Click one of the links below — each one opens this page in the selected tool with a pre-filled prompt:
+
+* [Ask ChatGPT](https://chatgpt.com/?prompt=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+with+this+API.)
+* [Ask Claude](https://claude.ai/?prompt=Please+read+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+* [Ask Perplexity](https://www.perplexity.ai/search?q=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt)
+* [Ask Gemini](https://gemini.google.com/app?query=Read+from+https%3A%2F%2Fdocs.oddspapi.io%2Fllms-full.txt+and+help+me+use+this+API.)
+
+
+# WebSocket Resume & Replay - Connection Recovery
+Source: https://docs.oddspapi.io/websocket/resume-replay
+
+Handle WebSocket disconnections gracefully. Resume data streams without gaps using serverEpoch and entryId cursors. Automatic replay for missed updates.
+
+## What “resume” means
+
+After a successful login, the server returns a `resume` block in `login_ok`:
+
+```json theme={null}
+{
+  "resume": {
+    "serverEpoch": "0804ab61513c4681a3afd8afc1fb2f75",
+    "resumeWindowMs": 60000,
+    "replayChannels": ["fixtures", "scores"],
+    "serverEntryIds": {
+      "fixtures": "1766414833582-2542",
+      "scores": "1766418736962-198"
+    }
+  }
+}
+```
+
+This tells you:
+
+* `serverEpoch` — identifies the current gateway session (changes on restart)
+* `resumeWindowMs` — how long replayable data is buffered
+* `replayChannels` — channels eligible for replay
+* `serverEntryIds` — server’s latest cursor per channel
+
+***
+
+## What clients must persist
+
+To resume safely, persist:
+
+1. `serverEpoch`
+2. The most recent `entryId` you processed **per channel**
+
+```json theme={null}
+{
+  "scores": "1766418736962-198",
+  "fixtures": "1766414833582-2542"
+}
+```
+
+***
+
+## entryId format
+
+Each streamed message includes an `entryId`:
+
+```
+<ts_ms>-<seq>
+```
+
+* `ts_ms` — server timestamp (UTC, milliseconds)
+* `seq` — monotonic per-channel sequence
+
+Important:
+
+* `entryId` is a **cursor**, not a delivery guarantee
+* Gaps are normal (upstream behavior, coalescing, backpressure)
+
+***
+
+## Resume login example
+
+On reconnect, send the same `serverEpoch` and your stored cursors:
+
+```json theme={null}
+{
+  "type": "login",
+  "apiKey": "YOUR_API_KEY",
+  "channels": ["fixtures", "scores", "odds"],
+  "serverEpoch": "0804ab61513c4681a3afd8afc1fb2f75",
+  "lastSeenId": {
+    "scores": "1766418736962-198"
+  }
+}
+```
+
+If replay succeeds, the server sends:
+
+```json theme={null}
+{
+  "type": "resume_complete",
+  "serverEpoch": "0804ab61513c4681a3afd8afc1fb2f75"
+}
+```
+
+***
+
+## snapshot\_required (when replay is not possible)
+
+Sometimes replay cannot be done safely. In that case the server sends:
+
+```json theme={null}
+{
+  "type": "snapshot_required",
+  "reason": "resume_window_exceeded",
+  "channels": ["scores"],
+  "serverEpoch": "0804ab61513c4681a3afd8afc1fb2f75",
+  "resumeWindowMs": 60000,
+  "serverEntryIds": {
+    "scores": "1766418738000-220"
+  }
+}
+```
+
+### Possible reasons
+
+* `server_restarted` — gateway restarted, cursors invalid
+* `resume_window_exceeded` — your cursor is older than the replay buffer
+* `client_backpressure` — your client couldn’t consume replay fast enough
+
+### Important nuance
+
+Replay eligibility depends on **cursor age**, not disconnect duration:
+
+```
+(now_ms - last_seen_entry_ts_ms) > resumeWindowMs
+⇒ snapshot_required is likely
+```
+
+A very short disconnect can still exceed the window if your last processed message is already old.
+
+***
+
+## How clients should handle snapshot\_required
+
+When you receive `snapshot_required`:
+
+1. Fetch a fresh snapshot via REST for the listed channels
+   (e.g. `/fixtures`, `/fixtures/odds`, `/futures`)
+2. Clear `lastSeenId` for those channels
+3. Continue processing live updates
+
+> The gateway continues streaming after `snapshot_required`.
+> This message is your signal that **local state must be rebuilt**.
+
+***
+
+## Python reconnect example (FULL TEMPLATE)
+
+This example:
+
+* Persists `serverEpoch` and per-channel `lastSeenId`
+* Sends cursors **only for replayable channels**
+* Handles `snapshot_required`
+* Automatically reconnects on failure
+
+```python theme={null}
+import asyncio
+import json
+import time
+import websockets
+
+WS_URL = "wss://v5.oddspapi.io/ws"
+API_KEY = "YOUR_API_KEY"
+
+server_epoch = None
+replay_channels = None
+last_seen = {}
+
+async def run_once():
+    global server_epoch, replay_channels, last_seen
+
+    async with websockets.connect(
+        WS_URL,
+        ping_interval=20,
+        ping_timeout=20,
+        max_size=4194304
+    ) as ws:
+        login = {
+            "type": "login",
+            "apiKey": API_KEY,
+            "channels": ["fixtures", "scores", "odds"],
+            "receiveType": "json",
+        }
+
+        # Resume mode
+        if server_epoch:
+            login["serverEpoch"] = server_epoch
+
+        # Only send cursors for replayable channels
+        if replay_channels:
+            cursors = {
+                ch: eid
+                for ch, eid in last_seen.items()
+                if ch in replay_channels
+            }
+        else:
+            cursors = dict(last_seen)
+
+        if cursors:
+            login["lastSeenId"] = cursors
+
+        await ws.send(json.dumps(login))
+
+        async for raw in ws:
+            if isinstance(raw, (bytes, bytearray)):
+                raw = raw.decode("utf-8", errors="replace")
+
+            msg = json.loads(raw)
+            msg_type = msg.get("type")
+
+            if msg_type == "login_ok":
+                resume = msg.get("resume") or {}
+                server_epoch = resume.get("serverEpoch") or server_epoch
+
+                rc = resume.get("replayChannels")
+                if isinstance(rc, list):
+                    replay_channels = set(map(str, rc))
+
+                continue
+
+            if msg_type == "snapshot_required":
+                channels = msg.get("channels") or []
+                for ch in channels:
+                    last_seen.pop(ch, None)
+
+                # Trigger REST snapshot refresh here
+                print("Snapshot required for:", channels)
+                continue
+
+            if msg_type == "resume_complete":
+                print("Resume complete")
+                continue
+
+            # Data message
+            channel = msg.get("channel")
+            entry_id = msg.get("entryId")
+
+            if isinstance(channel, str) and isinstance(entry_id, str):
+                last_seen[channel] = entry_id
+
+async def main():
+    while True:
+        try:
+            await run_once()
+        except Exception as e:
+            print("Disconnected:", e)
+            await asyncio.sleep(1)
+
+asyncio.run(main())
+```
+
+
+# WebSocket Troubleshooting - Common Issues & Solutions
+Source: https://docs.oddspapi.io/websocket/troubleshooting
+
+Debug OddsPapi WebSocket connection issues. Solutions for login errors, empty responses, binary decoding, backpressure disconnects, and resume failures.
+
+## 1) Login Errors
+
+### “first message must be login”
+
+Send a valid `login` as your first frame.
+
+### `login_failed`
+
+* Missing/invalid `apiKey`
+* No channels allowed or requested
+* Bookmakers not allowed
+
+### `too_many_connections` (4003)
+
+* Max connections reached for your key group (max: 5)
+* Shard or reduce concurrent connects
+* Contact support to raise the limit
+
+***
+
+## 2) Connected but Receiving Nothing
+
+* Not subscribed to expected channels? Check `login_ok.channels`
+* Filters too narrow? e.g. empty `sportIds` or invalid `bookmakers`
+* Bookmaker-gated filters:
+  * If the upstream message has no matching bookmaker keys, it's filtered out
+
+***
+
+## 3) Binary Decoding Problems
+
+With `receiveType: "binary"`:
+
+* Data frames: MessagePack
+* Control frames: JSON
+
+You must decode both.
+
+***
+
+## 4) `snapshot_required` During Resume
+
+Means server could not safely replay. Possible reasons:
+
+* `server_restarted`
+* `resume_window_exceeded`
+* `client_backpressure`
+
+> Even short disconnects can exceed buffer if your `lastSeenId` is too old.
+
+Recovery:
+
+* Re-fetch snapshot via REST
+* Reset your `lastSeenId`
+* Continue streaming
+
+***
+
+## 5) Disconnects Under Load (Backpressure)
+
+Symptoms:
+
+* Close code `4002`
+* Skipped `odds` updates
+
+Fixes:
+
+* Use `binary`
+* Push parsing to async queue
+* Filter by `sportIds`, `bookmakers`
+
+***
+
+## 6) Gaps in `entryId`
+
+`entryId` is a cursor — not a delivery ledger. Gaps expected due to:
+
+* Upstream skips
+* Gateway coalescing
+* Reconnect without replay
+
+***
+

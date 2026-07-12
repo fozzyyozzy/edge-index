@@ -1,0 +1,72 @@
+# OddsPapi API
+
+## Docs
+
+- [AI & LLM Integration - Documentation Export](https://docs.oddspapi.io/ai.md): Download OddsPapi documentation for AI tools, LLMs, and offline use. Machine-readable exports in TXT and OpenAPI JSON formats for ChatGPT, Claude, and other AI assistants.
+- [API Authentication - How to Authenticate Requests](https://docs.oddspapi.io/api-reference/authentication.md): Learn how to authenticate OddsPapi API requests using your API key. Simple query parameter authentication for all HTTP endpoints.
+- [Get Bookmakers](https://docs.oddspapi.io/api-reference/common/get-bookmakers.md): List bookmakers.
+- [Get Currencies](https://docs.oddspapi.io/api-reference/common/get-currencies.md): List currencies and conversion values.
+- [Get Markets](https://docs.oddspapi.io/api-reference/common/get-markets.md): List markets.
+- [Get Participants](https://docs.oddspapi.io/api-reference/common/get-participants.md): List participants.
+- [Get Players](https://docs.oddspapi.io/api-reference/common/get-players.md): List players.
+- [Get Seasons](https://docs.oddspapi.io/api-reference/common/get-seasons.md): List seasons.
+- [Get Sports](https://docs.oddspapi.io/api-reference/common/get-sports.md): List sports.
+- [Get Tournaments](https://docs.oddspapi.io/api-reference/common/get-tournaments.md): List tournaments.
+- [Get Venues](https://docs.oddspapi.io/api-reference/common/get-venues.md): List venues by explicit IDs.
+- [Core Concepts - IDs, Data Models & Best Practices](https://docs.oddspapi.io/api-reference/concepts.md): Understand OddsPapi data models: fixture IDs, market IDs, odds identifiers, entity relationships, timestamps, and implementation best practices for arbitrage detection.
+- [API Error Codes - HTTP Status Codes & Error Handling](https://docs.oddspapi.io/api-reference/errors.md): Complete guide to OddsPapi API error responses. HTTP status codes, error formats, rate limit headers, and troubleshooting common error causes.
+- [Fixtures Filtered](https://docs.oddspapi.io/api-reference/fixtures/fixtures-filtered.md): List fixtures.
+- [Fixtures Live](https://docs.oddspapi.io/api-reference/fixtures/fixtures-live.md): List live fixtures.
+- [Fixtures Today](https://docs.oddspapi.io/api-reference/fixtures/fixtures-today.md): List today's fixtures.
+- [Fixture Odds](https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds.md): Get current odds for a fixture.
+- [Fixture Odds CLV](https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds-clv.md): Get opening vs closing line values (OLV/CLV) for a fixture.
+- [Fixture Odds Historical](https://docs.oddspapi.io/api-reference/fixturesodds/fixture-odds-historical.md): Get historical odds timeline for a fixture.
+- [Fixtures Odds Main](https://docs.oddspapi.io/api-reference/fixturesodds/fixtures-odds-main.md): Get current main odds for multiple fixtures.
+- [Futures Filtered](https://docs.oddspapi.io/api-reference/futures/futures-filtered.md): List futures.
+- [Futures Live](https://docs.oddspapi.io/api-reference/futures/futures-live.md): List live futures.
+- [Future Odds](https://docs.oddspapi.io/api-reference/futuresodds/future-odds.md): Get latest odds for a future.
+- [Future Odds CLV](https://docs.oddspapi.io/api-reference/futuresodds/future-odds-clv.md): Get OLV and CLV for a future’s odds.
+- [Future Odds Historical](https://docs.oddspapi.io/api-reference/futuresodds/future-odds-historical.md): Get historical odds changes for a future.
+- [Fixture Mapping](https://docs.oddspapi.io/api-reference/mapping/fixture-mapping.md): List fixture mappings for external bookmakers.
+- [Future Mapping](https://docs.oddspapi.io/api-reference/mapping/future-mapping.md): Map internal future IDs to bookmaker/provider future IDs.
+- [Media Bookmaker](https://docs.oddspapi.io/api-reference/media/media-bookmaker.md): Get bookmaker logo.
+- [Media Category](https://docs.oddspapi.io/api-reference/media/media-category.md): Get category icon.
+- [Media Participant](https://docs.oddspapi.io/api-reference/media/media-participant.md): Get participant image.
+- [Media Tournament](https://docs.oddspapi.io/api-reference/media/media-tournament.md): Get tournament image.
+- [REST API Overview - HTTP Endpoints for Sports Data](https://docs.oddspapi.io/api-reference/overview.md): OddsPapi REST API reference. HTTP endpoints for sports betting data snapshots, metadata retrieval, historical odds, and recovery workflows. Supports 8 languages.
+- [API Rate Limits - Request Quotas & Throttling](https://docs.oddspapi.io/api-reference/rate-limits.md): OddsPapi API rate limits and quotas. Request limits per endpoint, rate limit headers, and best practices for handling 429 responses.
+- [Fixture Settlement](https://docs.oddspapi.io/api-reference/settlement/fixture-settlement.md): Get settlements for a fixture.
+- [Future Settlement](https://docs.oddspapi.io/api-reference/settlement/future-settlement.md): Get settlements for a future.
+- [API Changelog - Updates, Features & Breaking Changes](https://docs.oddspapi.io/changelog/index.md): OddsPapi API changelog. New features, improvements, bug fixes, and breaking changes. Track WebSocket and REST API updates for sports betting data integration.
+- [OddsPapi - B2B Sports Betting Odds API](https://docs.oddspapi.io/index.md): B2B low-latency realtime sports odds API. Stream live betting odds, fixtures, scores, lineups, injuries and statistics via WebSocket. REST API for snapshots and historical data.
+- [Quickstart Guide - Connect to Odds API in Minutes](https://docs.oddspapi.io/quickstart.md): Get started with OddsPapi in minutes. Connect to the WebSocket gateway, authenticate with your API key, subscribe to channels, and stream realtime sports odds data.
+- [JavaScript SDK - Node.js & Browser Client](https://docs.oddspapi.io/sdks/javascript.md): Official OddsPapi JavaScript SDK for Node.js and browser. Connect to WebSocket API, stream realtime odds, and integrate sports betting data into your application.
+- [Python SDK - Async WebSocket Client](https://docs.oddspapi.io/sdks/python.md): Official OddsPapi Python SDK with async WebSocket support. Stream realtime sports betting odds and integrate with your Python trading systems and analytics.
+- [WebSocket Authentication & Channel Filters](https://docs.oddspapi.io/websocket/auth.md): Authenticate to OddsPapi WebSocket gateway and configure channel subscriptions. Filter by sports, tournaments, fixtures, and bookmakers for targeted data streaming.
+- [Bookmakers Channel - Sportsbook Status & Metadata](https://docs.oddspapi.io/websocket/channels/bookmakers.md): Stream bookmaker status per fixture via WebSocket. Track which sportsbooks offer odds, detect stale/suspended markets, and monitor participant rotation flags.
+- [Bookmakers Futures Channel - Outright Market Status](https://docs.oddspapi.io/websocket/channels/bookmakersFutures.md): Stream bookmaker availability for futures markets via WebSocket. Monitor which sportsbooks offer outright and season-long betting odds.
+- [Clocks Channel - Live Match Clock Updates](https://docs.oddspapi.io/websocket/channels/clocks.md): Stream realtime match clock updates via WebSocket. Period, remaining time, and stopped state for live fixtures.
+- [Currencies Channel - Exchange Rates & Crypto Prices](https://docs.oddspapi.io/websocket/channels/currencies.md): Stream realtime currency exchange rates via WebSocket. Fiat and cryptocurrency pricing data including BTC, ETH, and major tokens for odds conversion.
+- [Fixtures Channel - Match Metadata & Schedules](https://docs.oddspapi.io/websocket/channels/fixtures.md): Stream realtime fixture updates via WebSocket. Match status, start times, participants, tournaments, scores, and provider ID mappings for Betradar, Pinnacle, Flashscore.
+- [Futures Channel - Season & Outright Markets](https://docs.oddspapi.io/websocket/channels/futures.md): Stream futures and outright betting markets via WebSocket. Season-long markets, tournament winners, championship odds with timing windows and provider mappings.
+- [Odds Channel - Realtime Betting Odds Stream](https://docs.oddspapi.io/websocket/channels/odds.md): High-throughput realtime betting odds via WebSocket. Stream live odds from 100+ bookmakers including Pinnacle, Bet365, Polymarket. Decimal, fractional, American formats.
+- [Scores Channel - Live Score Updates](https://docs.oddspapi.io/websocket/channels/scores.md): Stream realtime live scores via WebSocket. Period-by-period score updates for all sports including result, halftime, quarters, sets, and periods.
+- [Interactive WebSocket Console - Test Live Data](https://docs.oddspapi.io/websocket/console.md): Test OddsPapi WebSocket API in your browser. Interactive console for connecting to the gateway, subscribing to channels, and viewing realtime sports data.
+- [WebSocket API Overview - Realtime Sports Data Streaming](https://docs.oddspapi.io/websocket/overview.md): Connect to OddsPapi WebSocket gateway for low-latency realtime sports betting data. Stream live odds, scores, fixtures, and events with JSON or MessagePack encoding.
+- [WebSocket Resume & Replay - Connection Recovery](https://docs.oddspapi.io/websocket/resume-replay.md): Handle WebSocket disconnections gracefully. Resume data streams without gaps using serverEpoch and entryId cursors. Automatic replay for missed updates.
+- [WebSocket Troubleshooting - Common Issues & Solutions](https://docs.oddspapi.io/websocket/troubleshooting.md): Debug OddsPapi WebSocket connection issues. Solutions for login errors, empty responses, binary decoding, backpressure disconnects, and resume failures.
+
+## OpenAPI Specs
+
+- [openapi](https://docs.oddspapi.io/api-reference/openapi.json)
+
+## AsyncAPI Specs
+
+- [websocket](https://docs.oddspapi.io/asyncapi/websocket.json)
+
+## Optional
+
+- [Status+](https://oddspapi-v5.instatus.com)
+- [ABP+](https://docs.55-tech.com/abp-api/overview)
+- [MM+](https://docs.55-tech.com/mm-api/overview)
+- [状态](https://oddspapi-v5.instatus.com)

@@ -1,0 +1,118 @@
+{
+  "date": "2026-07-02",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Kansas City Royals",
+      "team": "Tampa Bay Rays",
+      "opp": "Kansas City Royals",
+      "home": "Kansas City Royals",
+      "is_home": false,
+      "score": -3.77,
+      "diff": -4.36,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "win_pct": 0.143,
+        "avg_scored": 2.29,
+        "avg_allowed": 8.57,
+        "run_diff": -6.29,
+        "streak": -2,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 4.05,
+        "whip": 0.97,
+        "k_per9": 9.15,
+        "name": "Ian Seymour",
+        "starts": 3
+      },
+      "park": 0.99,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 124,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Tampa Bay Rays -1.5 (fade Kansas City Royals)",
+      "reason": "1-6 L7 cold streak \u00b7 2.3 RS/g anemic offense \u00b7 -6.3 run diff"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "Seattle Mariners",
+      "team": "Los Angeles Angels",
+      "opp": "Seattle Mariners",
+      "home": "Seattle Mariners",
+      "is_home": false,
+      "score": -1.27,
+      "diff": -1.71,
+      "tier": "\u25c6 T2",
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "win_pct": 0.429,
+        "avg_scored": 3.86,
+        "avg_allowed": 4.57,
+        "run_diff": -0.71,
+        "streak": 2,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 6.13,
+        "whip": 1.31,
+        "k_per9": 8.35,
+        "name": "Walbert Ure\u00f1a",
+        "starts": 3
+      },
+      "park": 0.92,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -126,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Los Angeles Angels -1.5 (fade Seattle Mariners)",
+      "reason": "pitcher park 0.92x"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "San Diego Padres",
+      "team": "Los Angeles Dodgers",
+      "opp": "San Diego Padres",
+      "home": "Los Angeles Dodgers",
+      "is_home": true,
+      "score": -3.83,
+      "diff": -4.17,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 4.14,
+        "avg_allowed": 8.14,
+        "run_diff": -4.0,
+        "streak": -5,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 8.68,
+        "whip": 1.73,
+        "k_per9": 7.45,
+        "name": "Roki Sasaki",
+        "starts": 3
+      },
+      "park": 0.9025,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 105,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Los Angeles Dodgers -1.5 (fade San Diego Padres)",
+      "reason": "2-5 L7 cold streak \u00b7 -4.0 run diff \u00b7 pitcher park 0.90x"
+    }
+  ]
+}

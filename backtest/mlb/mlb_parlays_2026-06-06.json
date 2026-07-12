@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-06",
+  "singles": [
+    {
+      "player": "Zack Gelof",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.3667,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 43,
+      "parlay_only": true,
+      "single_ev": 0.629
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -139,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.5815899581589958,
+      "edge": 0.3434,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 23,
+      "parlay_only": true,
+      "single_ev": 0.59
+    },
+    {
+      "player": "Jacob Misiorowski",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 7.5,
+      "odds": -149,
+      "tier": "AUTO",
+      "model_prob": 0.917,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "l5_avg": 9.8,
+      "home": "Colorado Rockies",
+      "opp": "Colorado Rockies",
+      "opp_k_pct": 0.252,
+      "park_adj": -0.036,
+      "alt_lines": [
+        6.5,
+        7.0
+      ],
+      "prior_games": 12,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.532,
+      "edge": 0.3186,
+      "book_implied": 0.5983935742971888
+    },
+    {
+      "player": "Coby Mayo",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "AUTO",
+      "model_prob": 0.851,
+      "book_implied": 0.5918367346938775,
+      "edge": 0.2592,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 48,
+      "parlay_only": true,
+      "single_ev": 0.438
+    },
+    {
+      "player": "Heriberto Hernandez",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -147,
+      "tier": "T1",
+      "model_prob": 0.685,
+      "book_implied": 0.5951417004048584,
+      "edge": 0.0899,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Miami Marlins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 38,
+      "parlay_only": true,
+      "single_ev": 0.151
+    },
+    {
+      "player": "Jo Adell",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -125,
+      "tier": "T1",
+      "model_prob": 0.675,
+      "book_implied": 0.5555555555555556,
+      "edge": 0.1194,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 64,
+      "parlay_only": true,
+      "single_ev": 0.215
+    },
+    {
+      "player": "Matt Vierling",
+      "team": "Detroit Tigers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -144,
+      "tier": "T1",
+      "model_prob": 0.669,
+      "book_implied": 0.5901639344262295,
+      "edge": 0.0788,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.134
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Vaughn Grissom",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -160,
+      "tier": "AUTO",
+      "model_prob": 0.9,
+      "book_implied": 0.6153846153846154,
+      "edge": 0.2846,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 40,
+      "parlay_only": true,
+      "single_ev": 0.463
+    },
+    {
+      "player": "Caleb Durbin",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -173,
+      "tier": "AUTO",
+      "model_prob": 0.909,
+      "book_implied": 0.6336996336996338,
+      "edge": 0.2753,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 54,
+      "parlay_only": true,
+      "single_ev": 0.434
+    },
+    {
+      "player": "Tyler Freeman",
+      "team": "Colorado Rockies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -235,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.7014925373134329,
+      "edge": 0.2485,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Colorado Rockies",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 41,
+      "parlay_only": true,
+      "single_ev": 0.354
+    }
+  ],
+  "parlays": []
+}

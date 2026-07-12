@@ -1,0 +1,47 @@
+{
+  "date": "2026-05-08",
+  "hits": 3,
+  "misses": 1,
+  "voids": 0,
+  "pnl": 166.79,
+  "units": 1.67,
+  "rate": 0.75,
+  "plays": [
+    {
+      "player": "Connelly Early",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 105,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 8
+    },
+    {
+      "player": "Jacob Lopez",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -135,
+      "tier": "T2",
+      "result": "hit",
+      "actual": 5
+    },
+    {
+      "player": "Kyle Bradish",
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -114,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 10
+    },
+    {
+      "player": "Max Fried",
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -120,
+      "tier": "T2",
+      "result": "miss",
+      "actual": 5
+    }
+  ]
+}

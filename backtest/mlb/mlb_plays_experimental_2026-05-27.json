@@ -1,0 +1,82 @@
+{
+  "date": "2026-05-27",
+  "model": "experimental_tiered",
+  "note": "Tighter .120 threshold + edge ranking. Grade daily vs primary to validate.",
+  "fade_plays": [
+    {
+      "player": "Justin Crawford",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -207,
+      "under_odds": 154,
+      "reason": "4-for-39 L14 (.103)",
+      "type": "FADE",
+      "l14_avg": 0.103,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.5033,
+      "model": "experimental"
+    },
+    {
+      "player": "Victor Caratini",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -190,
+      "under_odds": 142,
+      "reason": "3-for-27 L14 (.111)",
+      "type": "FADE",
+      "l14_avg": 0.111,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4758,
+      "model": "experimental"
+    },
+    {
+      "player": "Ha-Seong Kim",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -181,
+      "under_odds": 136,
+      "reason": "4-for-35 L14 (.114)",
+      "type": "FADE",
+      "l14_avg": 0.114,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4623,
+      "model": "experimental"
+    },
+    {
+      "player": "Tyler O'Neill",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -159,
+      "under_odds": 119,
+      "reason": "3-for-31 L14 (.097)",
+      "type": "FADE",
+      "l14_avg": 0.097,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4464,
+      "model": "experimental"
+    },
+    {
+      "player": "Manny Machado",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -165,
+      "under_odds": 124,
+      "reason": "5-for-45 L14 (.111)",
+      "type": "FADE",
+      "l14_avg": 0.111,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4426,
+      "model": "experimental"
+    }
+  ]
+}

@@ -234,6 +234,19 @@ export default function BankrollManager() {
     if (val > 0) { setStartingBR(val); setBankroll(val); setInitialized(true); }
   }
 
+  // Kelly sizer pre-computation (avoids IIFE inside JSX which breaks esbuild)
+  const kellyCalc = (newBet.prob && newBet.odds) ? (() => {
+    const prob = parseInt(newBet.prob);
+    const odds = parseInt(newBet.odds);
+    const dec = americanToDecimal(odds);
+    const full = kellyFraction(prob/100, dec);
+    const qtr = full * 0.25;
+    const ev = evPerHundred(prob, odds);
+    const meets = meetsTarget(prob, odds);
+    const grade = qualityGrade(prob, odds);
+    return { prob, odds, full, qtr, ev, meets, grade };
+  })() : null;
+
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
     <div className="pg">
@@ -396,27 +409,18 @@ export default function BankrollManager() {
               </div>
               <div>
                 <div className="inp-lbl">Bankroll ($)</div>
-                <input className="inp" type="number" value={Math.round(currentBR)} readOnly style={{opacity:.6}}></div>
+                <input className="inp" type="number" value={Math.round(currentBR)} readOnly style={{opacity:.6}}/>
               </div>
             </div>
-            {newBet.prob && newBet.odds && (() => {
-              const prob = parseInt(newBet.prob);
-              const odds = parseInt(newBet.odds);
-              const dec = americanToDecimal(odds);
-              const full = kellyFraction(prob/100, dec);
-              const qtr = full * 0.25;
-              const ev = evPerHundred(prob, odds);
-              const meets = meetsTarget(prob, odds);
-              const grade = qualityGrade(prob, odds);
-              const oddsStr = odds >= 0 ? "+"+odds : ""+odds;
-              return (
+          </div>
+            {kellyCalc && (
                 <div className="kelly-box">
                   <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:14}}>
                     {[
-                      {l:"Full Kelly",    v:(full*100).toFixed(1)+"%", s:"$"+Math.round(currentBR*full), c:"#ff4757", note:"Too aggressive"},
-                      {l:"Half Kelly",    v:(full*50).toFixed(1)+"%",  s:"$"+Math.round(currentBR*full*0.5), c:"#ffa502", note:"Moderate"},
-                      {l:"Quarter Kelly", v:(qtr*100).toFixed(1)+"%",  s:"$"+Math.round(currentBR*qtr), c:"#00c896", note:"Recommended"},
-                      {l:"EV per $100",   v:(ev>=0?"+":"")+ev,        s:ev>0?"Positive edge":"Negative EV", c:ev>0?"#00c896":"#ff4757", note:""},
+                      {l:"Full Kelly",    v:(kellyCalc.full*100).toFixed(1)+"%", s:"$"+Math.round(currentBR*kellyCalc.full), c:"#ff4757", note:"Too aggressive"},
+                      {l:"Half Kelly",    v:(kellyCalc.full*50).toFixed(1)+"%",  s:"$"+Math.round(currentBR*kellyCalc.full*0.5), c:"#ffa502", note:"Moderate"},
+                      {l:"Quarter Kelly", v:(kellyCalc.qtr*100).toFixed(1)+"%",  s:"$"+Math.round(currentBR*kellyCalc.qtr), c:"#00c896", note:"Recommended"},
+                      {l:"EV per $100",   v:(kellyCalc.ev>=0?"+":"")+kellyCalc.ev, s:kellyCalc.ev>0?"Positive edge":"Negative EV", c:kellyCalc.ev>0?"#00c896":"#ff4757", note:""},
                     ].map(k=>(
                       <div key={k.l}>
                         <div className="inp-lbl">{k.l}</div>
@@ -429,23 +433,21 @@ export default function BankrollManager() {
                   <div style={{borderTop:"1px solid #2a2a3d",paddingTop:12,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
                     <div>
                       <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:14,fontWeight:700}}>Grade: </span>
-                      <span style={{color:grade.color,fontFamily:"'Barlow Condensed',sans-serif",fontSize:14,fontWeight:700}}>{grade.label}</span>
-                      {meets && <span style={{marginLeft:10,fontFamily:"'IBM Plex Mono',monospace",fontSize:10,background:"#00c89618",color:"#00c896",border:"1px solid #00c89633",padding:"2px 6px",borderRadius:2}}>★ HITS 80/100 TARGET</span>}
+                      <span style={{color:kellyCalc.grade.color,fontFamily:"'Barlow Condensed',sans-serif",fontSize:14,fontWeight:700}}>{kellyCalc.grade.label}</span>
+                      {kellyCalc.meets && <span style={{marginLeft:10,fontFamily:"'IBM Plex Mono',monospace",fontSize:10,background:"#00c89618",color:"#00c896",border:"1px solid #00c89633",padding:"2px 6px",borderRadius:2}}>★ HITS 80/100 TARGET</span>}
                     </div>
                     <div style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:13,color:"#8888a8"}}>
-                      Streak factor: {Math.round(streakFactor*100)}% → adjusted bet: <span style={{color:"#e8e8f0",fontWeight:700}}>${Math.round(currentBR*qtr*streakFactor)}</span>
+                      Streak factor: {Math.round(streakFactor*100)}% → adjusted bet: <span style={{color:"#e8e8f0",fontWeight:700}}>${Math.round(currentBR*kellyCalc.qtr*streakFactor)}</span>
                     </div>
                   </div>
-                  {parseInt(newBet.prob) < 75 && (
+                  {kellyCalc.prob < 75 && (
                     <div className="warn-box" style={{marginTop:10}}>
                       ⚠ This play does not meet the 80/100 target (75%+ prob at +100 or better). Consider skipping or reducing to minimum bet size.
                     </div>
                   )}
                 </div>
-              );
-            })()}
+            )}
           </div>
-        </div>
       )}
 
       {/* SGP BUILDER */}

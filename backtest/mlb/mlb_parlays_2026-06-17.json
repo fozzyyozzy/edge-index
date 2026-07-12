@@ -1,0 +1,118 @@
+{
+  "date": "2026-06-17",
+  "singles": [
+    {
+      "player": "Colt Emerson",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -148,
+      "tier": "T1",
+      "model_prob": 0.694,
+      "book_implied": 0.5967741935483871,
+      "edge": 0.0972,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Seattle Mariners",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 24,
+      "parlay_only": true,
+      "single_ev": 0.163
+    },
+    {
+      "player": "Sam Antonacci",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -124,
+      "tier": "T1",
+      "model_prob": 0.659,
+      "book_implied": 0.5535714285714286,
+      "edge": 0.1054,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 52,
+      "parlay_only": true,
+      "single_ev": 0.19
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Zack Gelof",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "AUTO",
+      "model_prob": 0.935,
+      "book_implied": 0.6666666666666666,
+      "edge": 0.2683,
+      "streak": 20,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 53,
+      "parlay_only": true,
+      "single_ev": 0.403
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6666666666666666,
+      "edge": 0.2613,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 32,
+      "parlay_only": true,
+      "single_ev": 0.392
+    },
+    {
+      "player": "Nick Kurtz",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -225,
+      "tier": "AUTO",
+      "model_prob": 0.91,
+      "book_implied": 0.6923076923076923,
+      "edge": 0.2177,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 72,
+      "parlay_only": true,
+      "single_ev": 0.314
+    }
+  ],
+  "parlays": []
+}

@@ -1,0 +1,240 @@
+{
+  "date": "2026-06-24",
+  "singles": [
+    {
+      "player": "Eury Perez",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -120,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "l5_avg": 6.6,
+      "home": "Miami Marlins",
+      "opp": "Miami Marlins",
+      "opp_k_pct": 0.248,
+      "park_adj": 0.01,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 12,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.742,
+      "edge": 0.4045,
+      "book_implied": 0.5454545454545454
+    },
+    {
+      "player": "Nasim Nunez",
+      "team": "Washington Nationals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -138,
+      "tier": "AUTO",
+      "model_prob": 0.922,
+      "book_implied": 0.5798319327731092,
+      "edge": 0.3422,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 69,
+      "parlay_only": true,
+      "single_ev": 0.59
+    },
+    {
+      "player": "Casey Schmitt",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "114",
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.4672897196261683,
+      "edge": 0.3897,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 70,
+      "parlay_only": "False",
+      "single_ev": 0.834
+    },
+    {
+      "player": "Royce Lewis",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -122,
+      "tier": "AUTO",
+      "model_prob": 0.854,
+      "book_implied": 0.5495495495495495,
+      "edge": 0.3045,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.554
+    },
+    {
+      "player": "Taylor Walls",
+      "team": "Tampa Bay Rays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -134,
+      "tier": "T1",
+      "model_prob": 0.734,
+      "book_implied": 0.5726495726495727,
+      "edge": 0.1614,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 55,
+      "parlay_only": true,
+      "single_ev": 0.282
+    },
+    {
+      "player": "Andres Gimenez",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -147,
+      "tier": "T1",
+      "model_prob": 0.731,
+      "book_implied": 0.5951417004048584,
+      "edge": 0.1359,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 74,
+      "parlay_only": true,
+      "single_ev": 0.228
+    },
+    {
+      "player": "Gage Jump",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -144,
+      "tier": "T1",
+      "model_prob": 0.712,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 5.2,
+      "home": "San Francisco Giants",
+      "opp": "San Francisco Giants",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.012,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 5,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.206,
+      "edge": 0.1218,
+      "book_implied": 0.5901639344262295
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Carter Jensen",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "model_prob": 0.944,
+      "book_implied": 0.607843137254902,
+      "edge": 0.3362,
+      "streak": 14,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 72,
+      "parlay_only": true,
+      "single_ev": 0.553
+    },
+    {
+      "player": "Isaac Paredes",
+      "team": "Houston Astros",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -161,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "book_implied": 0.6168582375478928,
+      "edge": 0.2741,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 74,
+      "parlay_only": true,
+      "single_ev": 0.444
+    },
+    {
+      "player": "Donovan Walton",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -172,
+      "tier": "AUTO",
+      "model_prob": 0.897,
+      "book_implied": 0.6323529411764706,
+      "edge": 0.2646,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 21,
+      "parlay_only": true,
+      "single_ev": 0.419
+    }
+  ],
+  "parlays": []
+}

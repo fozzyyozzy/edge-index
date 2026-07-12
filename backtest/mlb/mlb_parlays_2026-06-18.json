@@ -1,0 +1,206 @@
+{
+  "date": "2026-06-18",
+  "singles": [
+    {
+      "player": "Carter Jensen",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.319,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Kansas City Royals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 67,
+      "parlay_only": true,
+      "single_ev": 0.532
+    },
+    {
+      "player": "Austin Hedges",
+      "team": "Cleveland Guardians",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 113,
+      "tier": "AUTO",
+      "model_prob": 0.866,
+      "book_implied": 0.4694835680751174,
+      "edge": 0.3965,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 32,
+      "parlay_only": true,
+      "single_ev": 0.845
+    },
+    {
+      "player": "Bo Bichette",
+      "team": "New York Mets",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 155,
+      "tier": "AUTO",
+      "model_prob": 0.853,
+      "book_implied": 0.3921568627450981,
+      "edge": 0.4608,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 74,
+      "parlay_only": false,
+      "single_ev": 1.175
+    },
+    {
+      "player": "Bo Bichette",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "-118",
+      "tier": "AUTO",
+      "model_prob": 0.853,
+      "book_implied": 0.5412844036697247,
+      "edge": 0.3117,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 74,
+      "parlay_only": "False",
+      "single_ev": 0.576
+    },
+    {
+      "player": "Jake Burger",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -137,
+      "tier": "T1",
+      "model_prob": 0.746,
+      "book_implied": 0.5780590717299579,
+      "edge": 0.1679,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.291
+    },
+    {
+      "player": "Sam Antonacci",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.684,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.1007,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 53,
+      "parlay_only": true,
+      "single_ev": 0.173
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Zack Gelof",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "AUTO",
+      "model_prob": 0.935,
+      "book_implied": 0.6363636363636364,
+      "edge": 0.2986,
+      "streak": 21,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 54,
+      "parlay_only": true,
+      "single_ev": 0.469
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -185,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6491228070175439,
+      "edge": 0.2789,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 33,
+      "parlay_only": true,
+      "single_ev": 0.43
+    },
+    {
+      "player": "Matt Olson",
+      "team": "Atlanta Braves",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -198,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6644295302013422,
+      "edge": 0.2636,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 73,
+      "parlay_only": true,
+      "single_ev": 0.397
+    }
+  ],
+  "parlays": []
+}

@@ -1,0 +1,535 @@
+{
+  "date": "2026-05-13",
+  "singles": [
+    {
+      "player": "Aaron Judge",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 350,
+      "tier": "T1",
+      "model_prob": 0.762,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 172,
+      "parlay_only": true,
+      "single_ev": 2.429
+    },
+    {
+      "player": "Mike Trout",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 350,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 144,
+      "parlay_only": true,
+      "single_ev": 2.177
+    },
+    {
+      "player": "Gunnar Henderson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 180,
+      "tier": "T1",
+      "model_prob": 0.737,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 149,
+      "parlay_only": true,
+      "single_ev": 1.064
+    },
+    {
+      "player": "Sonny Gray",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 100,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "streak": 18,
+      "l5": 1.0,
+      "l10": 1.0,
+      "l5_avg": 6.6,
+      "home": "Boston Red Sox",
+      "opp": "Boston Red Sox",
+      "opp_k_pct": 0.222,
+      "park_adj": -0.01,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 36,
+      "single_ev": 0.9
+    },
+    {
+      "player": "TJ Friedl",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "T1",
+      "model_prob": 0.674,
+      "streak": 1,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 164,
+      "parlay_only": true,
+      "single_ev": 0.192
+    },
+    {
+      "player": "Luis Torrens",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.681,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 100,
+      "parlay_only": true,
+      "single_ev": 0.185
+    },
+    {
+      "player": "Tyrone Taylor",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "T1",
+      "model_prob": 0.691,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 111,
+      "parlay_only": true,
+      "single_ev": 0.152
+    },
+    {
+      "player": "Nick Fortes",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "T1",
+      "model_prob": 0.666,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 95,
+      "parlay_only": true,
+      "single_ev": 0.125
+    }
+  ],
+  "parlays": [
+    {
+      "legs": [
+        {
+          "player": "Bo Bichette",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -295,
+          "tier": "AUTO",
+          "model_prob": 0.851,
+          "streak": 5,
+          "l5": 1.0,
+          "l10": 0.8,
+          "home": "New York Mets",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 157,
+          "parlay_only": true
+        },
+        {
+          "player": "Masataka Yoshida",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -274,
+          "tier": "T1",
+          "model_prob": 0.78,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Boston Red Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 69,
+          "parlay_only": true
+        }
+      ],
+      "odds": "-121",
+      "hit_prob": 0.664,
+      "ev": 0.213,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Mickey Moniak",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -248,
+          "tier": "T1",
+          "model_prob": 0.713,
+          "streak": 3,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Pittsburgh Pirates",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 145,
+          "parlay_only": true
+        },
+        {
+          "player": "Alec Bohm",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -228,
+          "tier": "T1",
+          "model_prob": 0.74,
+          "streak": 3,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Boston Red Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 135,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+102",
+      "hit_prob": 0.528,
+      "ev": 0.065,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Ernie Clement",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -219,
+          "tier": "AUTO",
+          "model_prob": 0.941,
+          "streak": 13,
+          "l5": 1.0,
+          "l10": 1.0,
+          "home": "Toronto Blue Jays",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 178,
+          "parlay_only": true
+        },
+        {
+          "player": "Bryan Reynolds",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -210,
+          "tier": "AUTO",
+          "model_prob": 0.848,
+          "streak": 5,
+          "l5": 1.0,
+          "l10": 0.8,
+          "home": "Pittsburgh Pirates",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 166,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+115",
+      "hit_prob": 0.798,
+      "ev": 0.716,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Seiya Suzuki",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -202,
+          "tier": "T1",
+          "model_prob": 0.768,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Atlanta Braves",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 168,
+          "parlay_only": true
+        },
+        {
+          "player": "Jonathan Aranda",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -191,
+          "tier": "AUTO",
+          "model_prob": 0.891,
+          "streak": 7,
+          "l5": 1.0,
+          "l10": 0.8,
+          "home": "Toronto Blue Jays",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 119,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+128",
+      "hit_prob": 0.684,
+      "ev": 0.559,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Matt Vierling",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -190,
+          "tier": "T1",
+          "model_prob": 0.731,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.8,
+          "home": "New York Mets",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 31,
+          "parlay_only": true
+        },
+        {
+          "player": "Miguel Vargas",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -174,
+          "tier": "AUTO",
+          "model_prob": 0.928,
+          "streak": 9,
+          "l5": 1.0,
+          "l10": 0.9,
+          "home": "Chicago White Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 149,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+140",
+      "hit_prob": 0.678,
+      "ev": 0.63,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Junior Caminero",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -172,
+          "tier": "AUTO",
+          "model_prob": 0.826,
+          "streak": 5,
+          "l5": 1.0,
+          "l10": 0.7,
+          "home": "Toronto Blue Jays",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 165,
+          "parlay_only": true
+        },
+        {
+          "player": "Colson Montgomery",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -167,
+          "tier": "AUTO",
+          "model_prob": 0.95,
+          "streak": 10,
+          "l5": 1.0,
+          "l10": 1.0,
+          "home": "Chicago White Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 71,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+153",
+      "hit_prob": 0.785,
+      "ev": 0.984,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Xander Bogaerts",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -164,
+          "tier": "AUTO",
+          "model_prob": 0.931,
+          "streak": 7,
+          "l5": 1.0,
+          "l10": 0.9,
+          "home": "Milwaukee Brewers",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 152,
+          "parlay_only": true
+        },
+        {
+          "player": "Sonny Gray",
+          "prop": "strikeouts",
+          "line": 4.5,
+          "odds": 100,
+          "tier": "AUTO",
+          "model_prob": 0.95,
+          "streak": 18,
+          "l5": 1.0,
+          "l10": 1.0,
+          "l5_avg": 6.6,
+          "home": "Boston Red Sox",
+          "opp": "Boston Red Sox",
+          "opp_k_pct": 0.222,
+          "park_adj": -0.01,
+          "alt_lines": [
+            3.5,
+            4.0
+          ],
+          "prior_games": 36
+        }
+      ],
+      "odds": "+222",
+      "hit_prob": 0.884,
+      "ev": 1.847,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Gunnar Henderson",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": 180,
+          "tier": "T1",
+          "model_prob": 0.737,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.8,
+          "home": "Baltimore Orioles",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 149,
+          "parlay_only": true
+        },
+        {
+          "player": "Aaron Judge",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": 350,
+          "tier": "T1",
+          "model_prob": 0.762,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Baltimore Orioles",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 172,
+          "parlay_only": true
+        },
+        {
+          "player": "Mike Trout",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": 350,
+          "tier": "T1",
+          "model_prob": 0.706,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.7,
+          "home": "Cleveland Guardians",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 144,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+5570",
+      "hit_prob": 0.396,
+      "ev": 21.481,
+      "n_legs": 3
+    }
+  ]
+}

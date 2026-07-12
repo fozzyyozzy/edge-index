@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-12",
+  "singles": [
+    {
+      "player": "Jhonny Pereda",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -148,
+      "tier": "AUTO",
+      "model_prob": 0.922,
+      "book_implied": 0.5967741935483871,
+      "edge": 0.3252,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 17,
+      "parlay_only": true,
+      "single_ev": 0.545
+    },
+    {
+      "player": "Nasim Nunez",
+      "team": "Washington Nationals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -115,
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.5348837209302326,
+      "edge": 0.3221,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 59,
+      "parlay_only": true,
+      "single_ev": 0.602
+    },
+    {
+      "player": "Otto Lopez",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 129,
+      "tier": "AUTO",
+      "model_prob": 0.823,
+      "book_implied": 0.4366812227074236,
+      "edge": 0.3863,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Pittsburgh Pirates",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 68,
+      "parlay_only": false,
+      "single_ev": 0.885
+    },
+    {
+      "player": "Otto Lopez",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "-116",
+      "tier": "AUTO",
+      "model_prob": 0.823,
+      "book_implied": 0.5370370370370371,
+      "edge": 0.286,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Pittsburgh Pirates",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 68,
+      "parlay_only": "False",
+      "single_ev": 0.532
+    },
+    {
+      "player": "Zach McKinstry",
+      "team": "Detroit Tigers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "AUTO",
+      "model_prob": 0.801,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.2358,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.6,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 44,
+      "parlay_only": true,
+      "single_ev": 0.417
+    },
+    {
+      "player": "Connor Wong",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -131,
+      "tier": "T1",
+      "model_prob": 0.755,
+      "book_implied": 0.5670995670995671,
+      "edge": 0.1879,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 24,
+      "parlay_only": true,
+      "single_ev": 0.331
+    },
+    {
+      "player": "Bryce Miller",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -130,
+      "tier": "T1",
+      "model_prob": 0.733,
+      "streak": 3,
+      "l5": 0.75,
+      "l10": 0.75,
+      "l5_avg": 6.2,
+      "home": "Washington Nationals",
+      "opp": "Washington Nationals",
+      "opp_k_pct": 0.245,
+      "park_adj": 0.002,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 4,
+      "umpire": "Cory Blaser",
+      "ump_adj": 0.019,
+      "ump_tendency": "HIGH_K",
+      "single_ev": 0.297,
+      "edge": 0.1678,
+      "book_implied": 0.5652173913043479
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Chase Meidroth",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6363636363636364,
+      "edge": 0.3136,
+      "streak": 11,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 65,
+      "parlay_only": true,
+      "single_ev": 0.493
+    },
+    {
+      "player": "Miguel Vargas",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6226415094339623,
+      "edge": 0.3054,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 66,
+      "parlay_only": true,
+      "single_ev": 0.49
+    },
+    {
+      "player": "Blake Dunn",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -166,
+      "tier": "AUTO",
+      "model_prob": 0.924,
+      "book_implied": 0.6240601503759399,
+      "edge": 0.2999,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 24,
+      "parlay_only": true,
+      "single_ev": 0.481
+    }
+  ],
+  "parlays": []
+}

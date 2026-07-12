@@ -1,0 +1,66 @@
+[14:51:36] 
+EDGE INDEX MORNING ROUTINE — 2026-06-22
+[14:51:36] ============================================================
+[14:51:36] 
+============================================================
+STEP 1: Grade yesterday (2026-06-21)
+============================================================
+[14:51:36]   >> results checker
+[14:51:37]      No plays file for 2026-06-21
+[14:51:37]      Run pipeline first for that date
+[14:51:37]   >> grade patch
+[14:51:37]      No posted card for 2026-06-21 — skipping
+[14:51:37] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[14:51:37]   >> trade tracker
+[14:51:47]        John Brebbia                 UNKNOWN → COL New to 40-man roster
+[14:51:47]        Matt Krook                   UNKNOWN → OAK New to 40-man roster
+[14:51:47]        Joey Meneses                 UNKNOWN → OAK New to 40-man roster
+[14:51:47]        Brian Navarreto              UNKNOWN → MIA New to 40-man roster
+[14:51:47]        Jose Cabrera                 UNKNOWN → ARI New to 40-man roster
+[14:51:47]        Jayden Murray                UNKNOWN → CHC New to 40-man roster
+[14:51:47]      ✓ Cache updated — 2026-06-22
+[14:51:47]        Run daily to track all moves automatically
+[14:51:47]        Add to morning routine before mlb_odds_puller.py
+[14:51:47]   >> roster verify
+[14:51:47]        ✓ Confirmed correct: 206
+[14:51:47]        ⚠️  Mismatches found: 0
+[14:51:47]        — Inactive/unknown:  0
+[14:51:47]      ======================================================================
+[14:51:47]      ✓ ALL CLEAR — all 206 active players on correct teams
+[14:51:47]        Checked: 2026-06-22
+[14:51:47]      Add to morning routine (after trade tracker):
+[14:51:47]        python mlb_roster_verify.py --fix
+[14:51:47] 
+============================================================
+STEP 3: Pull today's lines (2026-06-22)
+============================================================
+[14:51:47]   >> odds puller
+[14:52:41]          Alec Burleson             H OVER 1.5  (180)
+[14:52:41]          Alejandro Kirk            H OVER 0.5  (-185)
+[14:52:41]          Alejandro Osuna           H OVER 0.5  (-134)
+[14:52:41]          Alex Bregman              H OVER 0.5  (-213)
+[14:52:41]          Alex Freeland             H OVER 0.5  (-140)
+[14:52:41]          Amed Rosario              H OVER 1.5  (185)
+[14:52:41]          Andres Gimenez            H OVER 0.5  (-130)
+[14:52:41]          Andrew Benintendi         H OVER 0.5  (-157)
+[14:52:41]      Saved to mlb_lines_2026-06-22.json
+[14:52:41]   ✓ 1972 props · 30 run lines · 13 games
+[14:52:41] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[14:52:41]   >> current stats
+[14:55:03]          "David Fry": "1-for-17 L14 (.059)",
+[14:55:03]          "Drake Baldwin": "2-for-22 L14 (.091)",
+[14:55:03]          "Drew Romo": "1-for-17 L14 (.059)",
+[14:55:03]          "Jacob Gonzalez": "2-for-28 L14 (.071)",
+[14:55:03]          "Joey Loperfido": "3-for-21 L14 (.143)",
+[14:55:03]          "Kahlil Watson": "0-for-12 L14 (.000)",
+[14:55:03]          "Lourdes Gurriel Jr.": "2-for-17 L14 (.118)",
+[14:55:03]          "Rhys Hoskins": "4-for-40 L14 (.100)",
+[14:55:03]          "Spencer Steer": "4-for-40 L14 (.100)",
+[14:55:03]          "Vaughn Grissom": "1-for-13 L14 (.077)",
+[14:55:03]   >> savant cache

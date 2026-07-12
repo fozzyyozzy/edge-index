@@ -1,0 +1,118 @@
+{
+  "date": "2026-06-15",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Cincinnati Reds",
+      "team": "New York Mets",
+      "opp": "Cincinnati Reds",
+      "home": "Cincinnati Reds",
+      "is_home": false,
+      "score": -1.44,
+      "diff": -2.32,
+      "tier": "\u25c6 T2",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 3.0,
+        "avg_allowed": 4.29,
+        "run_diff": -1.29,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 3.38,
+        "whip": 1.25,
+        "k_per9": 4.5,
+        "name": "Tobias Myers",
+        "starts": 2
+      },
+      "park": 1.09,
+      "ump": "Mark Wegner",
+      "ump_tendency": "HIGH_K",
+      "ump_adj": 0.058499999999999996,
+      "odds": -182,
+      "line": -1.5,
+      "qualifies": false,
+      "bet": "New York Mets -1.5 (fade Cincinnati Reds)",
+      "reason": "2-5 L7 cold streak \u00b7 3.0 RS/g anemic offense"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "Chicago Cubs",
+      "team": "Colorado Rockies",
+      "opp": "Chicago Cubs",
+      "home": "Chicago Cubs",
+      "is_home": false,
+      "score": -1.61,
+      "diff": -2.03,
+      "tier": "\u2605 T1",
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "win_pct": 0.429,
+        "avg_scored": 3.86,
+        "avg_allowed": 3.14,
+        "run_diff": 0.71,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 10.25,
+        "whip": 2.1,
+        "k_per9": 10.34,
+        "name": "Michael Lorenzen",
+        "starts": 3
+      },
+      "park": 1.04,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -115,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Colorado Rockies -1.5 (fade Chicago Cubs)",
+      "reason": "Composite signal"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "Pittsburgh Pirates",
+      "team": "Athletics",
+      "opp": "Pittsburgh Pirates",
+      "home": "Athletics",
+      "is_home": true,
+      "score": -2.0,
+      "diff": -4.01,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 4.0,
+        "avg_allowed": 6.43,
+        "run_diff": -2.43,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 3.15,
+        "whip": 1.2,
+        "k_per9": 8.65,
+        "name": "J.T. Ginn",
+        "starts": 3
+      },
+      "park": 0.9025,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 153,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Athletics -1.5 (fade Pittsburgh Pirates)",
+      "reason": "2-5 L7 cold streak \u00b7 -2.4 run diff \u00b7 pitcher park 0.90x"
+    }
+  ]
+}

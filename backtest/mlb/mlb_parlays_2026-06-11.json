@@ -1,0 +1,118 @@
+{
+  "date": "2026-06-11",
+  "singles": [
+    {
+      "player": "Jhonny Pereda",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -141,
+      "tier": "AUTO",
+      "model_prob": 0.897,
+      "book_implied": 0.5850622406639003,
+      "edge": 0.3119,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 16,
+      "parlay_only": true,
+      "single_ev": 0.533
+    },
+    {
+      "player": "Josh Bell",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.734,
+      "book_implied": 0.574468085106383,
+      "edge": 0.1595,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 67,
+      "parlay_only": true,
+      "single_ev": 0.278
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Chase Meidroth",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -251,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.715099715099715,
+      "edge": 0.2349,
+      "streak": 11,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 65,
+      "parlay_only": true,
+      "single_ev": 0.328
+    },
+    {
+      "player": "Miguel Vargas",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -245,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.7101449275362319,
+      "edge": 0.2179,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 66,
+      "parlay_only": true,
+      "single_ev": 0.307
+    },
+    {
+      "player": "Ryan Ward",
+      "team": "Los Angeles Dodgers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "AUTO",
+      "model_prob": 0.842,
+      "book_implied": 0.6363636363636364,
+      "edge": 0.2056,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.778,
+      "home": "Pittsburgh Pirates",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 9,
+      "parlay_only": true,
+      "single_ev": 0.323
+    }
+  ],
+  "parlays": []
+}

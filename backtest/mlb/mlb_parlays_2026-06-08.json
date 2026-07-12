@@ -1,0 +1,240 @@
+{
+  "date": "2026-06-08",
+  "singles": [
+    {
+      "player": "Zack Gelof",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.935,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.3517,
+      "streak": 12,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 45,
+      "parlay_only": true,
+      "single_ev": 0.603
+    },
+    {
+      "player": "Charles McAdoo",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -134,
+      "tier": "T1",
+      "model_prob": 0.861,
+      "book_implied": 0.5726495726495727,
+      "edge": 0.2884,
+      "streak": 3,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 3,
+      "parlay_only": true,
+      "single_ev": 0.504
+    },
+    {
+      "player": "Jhonny Pereda",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.257,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 15,
+      "parlay_only": true,
+      "single_ev": 0.428
+    },
+    {
+      "player": "Cristopher Sanchez",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": 115,
+      "tier": "T1",
+      "model_prob": 0.723,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 8.6,
+      "home": "Toronto Blue Jays",
+      "opp": "Toronto Blue Jays",
+      "opp_k_pct": 0.232,
+      "park_adj": 0.006,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 13,
+      "umpire": "Cory Blaser",
+      "ump_adj": 0.019,
+      "ump_tendency": "HIGH_K",
+      "single_ev": 0.554,
+      "edge": 0.2579,
+      "book_implied": 0.46511627906976744
+    },
+    {
+      "player": "Nathan Lukes",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.716,
+      "book_implied": 0.574468085106383,
+      "edge": 0.1415,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 31,
+      "parlay_only": true,
+      "single_ev": 0.246
+    },
+    {
+      "player": "Colton Cowser",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "T1",
+      "model_prob": 0.712,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.112,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 53,
+      "parlay_only": true,
+      "single_ev": 0.187
+    },
+    {
+      "player": "Brandon Valenzuela",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -110,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "book_implied": 0.5238095238095238,
+      "edge": 0.1822,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 40,
+      "parlay_only": true,
+      "single_ev": 0.348
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Connelly Early",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -153,
+      "tier": "AUTO",
+      "model_prob": 0.908,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "l5_avg": 6.4,
+      "home": "Tampa Bay Rays",
+      "opp": "Tampa Bay Rays",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.004,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 12,
+      "umpire": "Alan Porter",
+      "ump_adj": 0.009,
+      "ump_tendency": "NEUTRAL",
+      "single_ev": 0.501,
+      "edge": 0.3033,
+      "book_implied": 0.6047430830039526
+    },
+    {
+      "player": "Brandon Marsh",
+      "team": "Philadelphia Phillies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -153,
+      "tier": "AUTO",
+      "model_prob": 0.851,
+      "book_implied": 0.6047430830039526,
+      "edge": 0.2463,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 60,
+      "parlay_only": true,
+      "single_ev": 0.407
+    },
+    {
+      "player": "Cole Young",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -266,
+      "tier": "AUTO",
+      "model_prob": 0.947,
+      "book_implied": 0.7267759562841529,
+      "edge": 0.2202,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Baltimore Orioles",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 66,
+      "parlay_only": true,
+      "single_ev": 0.303
+    }
+  ],
+  "parlays": []
+}

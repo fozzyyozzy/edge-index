@@ -1,0 +1,198 @@
+[14:21:36] 
+EDGE INDEX MORNING ROUTINE — 2026-06-20
+[14:21:36] ============================================================
+[14:21:36] 
+============================================================
+STEP 1: Grade yesterday (2026-06-19)
+============================================================
+[14:21:36]   >> results checker
+[14:21:36]      No plays file for 2026-06-19
+[14:21:36]      Run pipeline first for that date
+[14:21:36]   >> grade patch
+[14:21:36]      No posted card for 2026-06-19 — skipping
+[14:21:36] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[14:21:36]   >> trade tracker
+[14:21:46]        Max Rajcic                   UNKNOWN → STL New to 40-man roster
+[14:21:46]        Bryse Wilson                 UNKNOWN → PHI New to 40-man roster
+[14:21:46]        Weston Wilson                UNKNOWN → SEA New to 40-man roster
+[14:21:46]        Will Banfield                UNKNOWN → CIN New to 40-man roster
+[14:21:46]        Jarred Kelenic               UNKNOWN → TEX New to 40-man roster
+[14:21:46]        Hunter Stratton              UNKNOWN → PIT New to 40-man roster
+[14:21:46]      ✓ Cache updated — 2026-06-20
+[14:21:46]        Run daily to track all moves automatically
+[14:21:46]        Add to morning routine before mlb_odds_puller.py
+[14:21:46]   >> roster verify
+[14:21:46]        ✓ Confirmed correct: 206
+[14:21:46]        ⚠️  Mismatches found: 0
+[14:21:46]        — Inactive/unknown:  0
+[14:21:46]      ======================================================================
+[14:21:46]      ✓ ALL CLEAR — all 206 active players on correct teams
+[14:21:46]        Checked: 2026-06-20
+[14:21:46]      Add to morning routine (after trade tracker):
+[14:21:46]        python mlb_roster_verify.py --fix
+[14:21:46] 
+============================================================
+STEP 3: Pull today's lines (2026-06-20)
+============================================================
+[14:21:46]   >> odds puller
+[14:22:43]          Alec Bohm                 H OVER 0.5  (-240)
+[14:22:43]          Alex Bregman              H OVER 0.5  (-248)
+[14:22:43]          Alex Call                 H OVER 0.5  (-165)
+[14:22:43]          Alex Freeland             H OVER 0.5  (-111)
+[14:22:43]          Alex Jackson              H OVER 0.5  (-125)
+[14:22:43]          Ali Sanchez               H OVER 0.5  (-105)
+[14:22:43]          Amed Rosario              H OVER 0.5  (-154)
+[14:22:43]          Andres Gimenez            H OVER 0.5  (-188)
+[14:22:43]      Saved to mlb_lines_2026-06-20.json
+[14:22:43]   ✓ 1903 props · 30 run lines · 14 games
+[14:22:43] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[14:22:43]   >> current stats
+[14:25:06]          "Leo Jimenez": "2-for-17 L14 (.118)",
+[14:25:06]          "Luis Torrens": "3-for-21 L14 (.143)",
+[14:25:06]          "Matt Vierling": "2-for-25 L14 (.080)",
+[14:25:06]          "Rhys Hoskins": "4-for-35 L14 (.114)",
+[14:25:06]          "Riley Greene": "6-for-41 L14 (.146)",
+[14:25:06]          "Rob Refsnyder": "2-for-14 L14 (.143)",
+[14:25:06]          "Spencer Steer": "2-for-38 L14 (.053)",
+[14:25:06]          "Spencer Torkelson": "5-for-39 L14 (.128)",
+[14:25:06]          "Tommy Troy": "4-for-28 L14 (.143)",
+[14:25:06]          "Willy Adames": "4-for-40 L14 (.100)",
+[14:25:06]   >> savant cache
+[14:30:42]        Willson Contreras: pulling expected stats... xBA:0.262 L7:0.321 Regression:+0(NEUTRAL)
+[14:30:42]        Willy Adames: pulling expected stats... xBA:0.224 L7:0.148 Regression:+0(NEUTRAL)
+[14:30:42]        Wilyer Abreu: pulling expected stats... xBA:0.258 L7:0.286 Regression:+0(NEUTRAL)
+[14:30:42]        Wyatt Langford: pulling expected stats... xBA:0.242 L7:0.414 vsTeam:0.167(6AB) Regression:+0(NEUTRAL)
+[14:30:42]        Xander Bogaerts: pulling expected stats... xBA:0.245 L7:0.143 Regression:+0(NEUTRAL)
+[14:30:42]        Xavier Edwards: pulling expected stats... xBA:0.27 L7:0.136 vsTeam:0.455(11AB) Regression:+0(NEUTRAL)
+[14:30:42]        Yainer Diaz: pulling expected stats... xBA:0.249 L7:0.28 vsTeam:0.25(12AB) Regression:+0(NEUTRAL)
+[14:30:42]        Yordan Alvarez: pulling expected stats... xBA:0.346 L7:0.387 Regression:+0(NEUTRAL)
+[14:30:42]      ✓ Saved 480 players to savant cache
+[14:30:42]   >> pitcher hands
+[14:30:50]        New York Yankees               Will Warren               RHP
+[14:30:50]        Philadelphia Phillies          Cristopher Sánchez        LHP
+[14:30:50]        Pittsburgh Pirates             Paul Skenes               RHP
+[14:30:50]        San Diego Padres               Walker Buehler            RHP
+[14:30:50]        San Francisco Giants           Trevor McDonald           RHP
+[14:30:50]        Seattle Mariners               Emerson Hancock           RHP
+[14:30:50]        Tampa Bay Rays                 Ian Seymour               LHP
+[14:30:50]        Texas Rangers                  MacKenzie Gore            LHP
+[14:30:50]        Toronto Blue Jays              Patrick Corbin            LHP
+[14:30:50]        Washington Nationals           Cade Cavalli              RHP
+[14:30:50] 
+============================================================
+STEP 5: Run models
+============================================================
+[14:30:50]   >> run today (props)
+[14:32:49]        Esmerlyn Valdez            -225     +165     .091  
+[14:32:49]        J.P. Crawford              -171     +128     .091  
+[14:32:49]        Willy Adames               -157     +118     .100  
+[14:32:49]        Chandler Simpson           -267     +196     .111  
+[14:32:49]        Carlos Cortes              -183     +137     .118  
+[14:32:49]        Adley Rutschman            -150     +110     .138  
+[14:32:49]        Drake Baldwin              -224     +166     .143  
+[14:32:49]        Tommy Troy                 -166     +125     .143  
+[14:32:49]      Saved to mlb_plays_2026-06-20.json
+[14:32:49]   >> pitcher K unders
+[14:33:05]          📋 Avg Ks (5.4) below line (5.5)
+[14:33:05]          📉 K trending DOWN: -2.7 Ks vs prior starts
+[14:33:05]          ✓ Avg K% lineup: 21.5%
+[14:33:05]          ✓ Slight pitcher park: 1.03x
+[14:33:05]        Recent starts:
+[14:33:05]          ✗ 2026-06-14  2 Ks / 5.0 IP  (0.40 K/IP)  vs Atlanta Braves
+[14:33:05]          ✗ 2026-06-09  5 Ks / 6.0 IP  (0.83 K/IP)  vs St. Louis Cardinals
+[14:33:05]          ✓ 2026-06-03  6 Ks / 6.0 IP  (1.00 K/IP)  vs Seattle Mariners
+[14:33:05]      ✓ Saved to mlb_k_unders_2026-06-20.json
+[14:33:05]   >> umpire assignments
+[14:33:08]        Los Angeles Angels @ Athletics      TBD                    N/A     ?  UNKNOWN 
+[14:33:08]        Baltimore Orioles @ Los Angeles Dodgers TBD                    N/A     ?  UNKNOWN 
+[14:33:08]        Boston Red Sox @ Seattle Mariners   TBD                    N/A     ?  UNKNOWN 
+[14:33:08]        Minnesota Twins @ Arizona Diamondbacks TBD                    N/A     ?  UNKNOWN 
+[14:33:08]        Adj = K/9 vs league avg (8.4 baseline)
+[14:33:08]        HIGH_K (>+0.4): More Ks expected — favor OVER bets
+[14:33:08]        LOW_K  (<-0.4): Fewer Ks expected — favor UNDER or lower lines
+[14:33:08]      To build history: python mlb_umpire.py --update --days 60
+[14:33:08]   >> team run lines
+[14:33:33]            vs Taj Bradley          ERA:7.83  WHIP:1.93  K/9:8.4
+[14:33:33]          Minnesota Twins              5-2 L7  RS:7.1  RA:5.3  L1    Score:+1.59
+[14:33:33]            vs Zac Gallen           ERA:6.15  WHIP:1.80  K/9:4.3
+[14:33:33]      ======================================================================
+[14:33:33]      QUALIFYING PLAYS — 2026-06-20
+[14:33:33]      ======================================================================
+[14:33:33]        No qualifying plays today — thresholds not met
+[14:33:33]        Saved to mlb_team_rl_2026-06-20.json
+[14:33:33]   >> power score
+[14:34:09]          Seattle Mariners               Power:+0.13 (AVERAGE)
+[14:34:09]            vs Connelly Early       FIP:4.18  Resistance:-1.05 [BELOW AVG — hitter-f]
+[14:34:09]        Minnesota Twins @ Arizona Diamondbacks
+[14:34:09]          Minnesota Twins                Power:-0.49 (BELOW AVG)
+[14:34:09]            vs Zac Gallen           FIP:5.57  Resistance:-1.61 [WEAK — very hitter-f]
+[14:34:09]          Arizona Diamondbacks           Power:-0.32 (BELOW AVG)
+[14:34:09]            vs Taj Bradley          FIP:5.84  Resistance:-1.42 [BELOW AVG — hitter-f]
+[14:34:09]        Saved to mlb_power_2026-06-20.json
+[14:34:09]   >> parlay builder
+[14:34:10]        Jakob Marsee               H OVER 0.5 (-164)  Win:72%
+[14:34:10]        Bryson Stott               H OVER 0.5 (-184)  Win:72%
+[14:34:10]        Juan Soto                  H OVER 0.5 (-169)  Win:72%
+[14:34:10]        Henry Bolte                H OVER 0.5 (-182)  Win:71%
+[14:34:10]      =================================================================
+[14:34:10]      Singles:    7 plays  (ranked by win probability)
+[14:34:10]      High Edge:  3 plays  (ranked by edge over book)
+[14:34:10]      Saved to mlb_parlays_2026-06-20.json
+[14:34:10] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[14:34:10]   ✓ 4 pitcher plays written
+[14:34:10]   ✓ 5 batter plays written
+[14:34:10]   ✓ 2 fade plays written
+[14:34:10]   RL: wrote 0 hot · 0 cold qualifying plays
+[14:34:10]   ✓ FREE_PICK: Jake McCarthy H OVER 0.5 (95.0%)
+[14:34:10]   ✓ MLBHub.jsx updated
+[14:34:10] 
+============================================================
+STEP 6.4: Auto-post today's card
+============================================================
+[14:34:10]   >> ['C:\\Python314\\python.exe', 'C:\\Users\\tyose\\edge-index\\backtest\\mlb\\mlb_posted_plays.py', '--date', '2026-06-20', '--auto']
+[14:34:10]        PLAY  Mauricio Dubon               AUTO   -228     ✓ signals loaded
+[14:34:10]        PLAY  Zack Gelof                   AUTO   -249     ✓ signals loaded
+[14:34:10]        FADE  Esmerlyn Valdez              H-UNDER  U:+165             ⚠ no signal data
+[14:34:10]        FADE  J.P. Crawford                H-UNDER  U:+128             ✓ signals loaded
+[14:34:10]      ✓ Card saved: posted_cards/posted_card_2026-06-20.json
+[14:34:10]        14 plays · 2 fades
+[14:34:10]        Run tomorrow morning to grade:
+[14:34:10]        python mlb_posted_plays.py --grade 2026-06-20
+[14:34:10]   ✓ auto-post step complete
+[14:34:10] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[14:34:10]   >> generate record data
+[14:34:10]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[14:34:10]        36 days  |  410 singles  |  110 fades
+[14:34:10]   ✓ RecordTracker.jsx regenerated from posted cards
+[14:34:10] 
+============================================================
+STEP 9: Summary
+============================================================
+[14:34:10] 
+  Pitchers: 4 qualifying  |  Batters: 32 qualifying
+[14:34:10]   T1    Cade Cavalli               K OVER 4.5 (-108) 73%
+[14:34:10]   T1    Max Meyer                  K OVER 5.5 (-140) 74%
+[14:34:10]   T1    Paul Skenes                K OVER 6.5 (-140) 75%
+[14:34:10]   T1    Taj Bradley                K OVER 4.5 (-138) 70%
+[14:34:10]   T1    Blake Perkins              H OVER 0.5 (-132) 79%
+[14:34:10]   T1    Brandon Valenzuela         H OVER 0.5 (-175) 74%
+[14:34:10]   T1    Bryson Stott               H OVER 0.5 (-184) 72%
+[14:34:10]   AUTO  Cam Smith                  H OVER 0.5 (-149) 87%
+[14:34:10] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-06-20.log
+[14:34:10] 
+  ✓ Card posted for 2026-06-20
+[14:34:10] 
+✓ Done — 14:34:10

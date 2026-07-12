@@ -1,0 +1,37 @@
+{
+  "date": "2026-05-21",
+  "model": "experimental_tiered",
+  "note": "Tighter .120 threshold + edge ranking. Grade daily vs primary to validate.",
+  "fade_plays": [
+    {
+      "player": "Lenyn Sosa",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -196,
+      "under_odds": 146,
+      "reason": "2-for-21 L14 (.095)",
+      "type": "FADE",
+      "l14_avg": 0.095,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.4985,
+      "model": "experimental"
+    },
+    {
+      "player": "Javier Sanoja",
+      "prop": "hits",
+      "line": 0.5,
+      "over_odds": -154,
+      "under_odds": 116,
+      "reason": "3-for-25 L14 (.120)",
+      "type": "FADE",
+      "l14_avg": 0.12,
+      "hitless_streak": 0,
+      "xba_lucky": false,
+      "xba_diff": 0.0,
+      "fade_edge": 0.417,
+      "model": "experimental"
+    }
+  ]
+}

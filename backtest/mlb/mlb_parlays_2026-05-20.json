@@ -1,0 +1,231 @@
+{
+  "date": "2026-05-20",
+  "singles": [
+    {
+      "player": "Jake Bauers",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -126,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.5575221238938054,
+      "edge": 0.3925,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 40,
+      "parlay_only": true,
+      "single_ev": 0.704
+    },
+    {
+      "player": "Shohei Ohtani",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.911,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.714,
+      "l5_avg": 8.4,
+      "home": "San Diego Padres",
+      "opp": "San Diego Padres",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.012,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 7,
+      "single_ev": 0.586,
+      "edge": 0.3365,
+      "book_implied": 0.574468085106383
+    },
+    {
+      "player": "Cedric Mullins",
+      "team": "Tampa Bay Rays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -139,
+      "tier": "AUTO",
+      "model_prob": 0.879,
+      "book_implied": 0.5815899581589958,
+      "edge": 0.2974,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 40,
+      "parlay_only": true,
+      "single_ev": 0.511
+    },
+    {
+      "player": "Nolan Gorman",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -146,
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.5934959349593496,
+      "edge": 0.2635,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "St. Louis Cardinals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 45,
+      "parlay_only": true,
+      "single_ev": 0.444
+    },
+    {
+      "player": "Kyle Isbel",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -126,
+      "tier": "AUTO",
+      "model_prob": 0.829,
+      "book_implied": 0.5575221238938054,
+      "edge": 0.2715,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Kansas City Royals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 39,
+      "parlay_only": true,
+      "single_ev": 0.487
+    },
+    {
+      "player": "Jesus Sanchez",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -133,
+      "tier": "T1",
+      "model_prob": 0.709,
+      "book_implied": 0.5708154506437768,
+      "edge": 0.1382,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.242
+    },
+    {
+      "player": "Kyle Manzardo",
+      "team": "Cleveland Guardians",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "T1",
+      "model_prob": 0.709,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.109,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 43,
+      "parlay_only": true,
+      "single_ev": 0.182
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Corbin Carroll",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -203,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.66996699669967,
+      "edge": 0.261,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 45,
+      "parlay_only": true,
+      "single_ev": 0.39
+    },
+    {
+      "player": "Spencer Steer",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -227,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6941896024464832,
+      "edge": 0.2558,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.369
+    },
+    {
+      "player": "Ivan Herrera",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -221,
+      "tier": "AUTO",
+      "model_prob": 0.922,
+      "book_implied": 0.6884735202492213,
+      "edge": 0.2335,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "St. Louis Cardinals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 47,
+      "parlay_only": true,
+      "single_ev": 0.339
+    }
+  ],
+  "parlays": []
+}

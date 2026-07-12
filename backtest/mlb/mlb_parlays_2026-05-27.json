@@ -1,0 +1,234 @@
+{
+  "date": "2026-05-27",
+  "singles": [
+    {
+      "player": "Willy Adames",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "AUTO",
+      "model_prob": 0.867,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.3018,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 55,
+      "parlay_only": true,
+      "single_ev": 0.534
+    },
+    {
+      "player": "Taylor Trammell",
+      "team": "Houston Astros",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -110,
+      "tier": "AUTO",
+      "model_prob": 0.866,
+      "book_implied": 0.5238095238095238,
+      "edge": 0.3422,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 12,
+      "parlay_only": true,
+      "single_ev": 0.653
+    },
+    {
+      "player": "Julio Rodriguez",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "T1",
+      "model_prob": 0.725,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.1598,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 57,
+      "parlay_only": true,
+      "single_ev": 0.283
+    },
+    {
+      "player": "Tyler Soderstrom",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "T1",
+      "model_prob": 0.7,
+      "book_implied": 0.5454545454545454,
+      "edge": 0.1545,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 53,
+      "parlay_only": true,
+      "single_ev": 0.283
+    },
+    {
+      "player": "Cristopher Sanchez",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.687,
+      "streak": 1,
+      "l5": 0.8,
+      "l10": 0.7,
+      "l5_avg": 9.0,
+      "home": "San Diego Padres",
+      "opp": "San Diego Padres",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.012,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 12,
+      "umpire": "Louie Krupa",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.178,
+      "edge": 0.1037,
+      "book_implied": 0.5833333333333333
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -105,
+      "tier": "T1",
+      "model_prob": 0.675,
+      "book_implied": 0.5121951219512195,
+      "edge": 0.1628,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 57,
+      "parlay_only": true,
+      "single_ev": 0.318
+    },
+    {
+      "player": "Tyler Freeman",
+      "team": "Colorado Rockies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "T1",
+      "model_prob": 0.675,
+      "book_implied": 0.5918367346938775,
+      "edge": 0.0832,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 35,
+      "parlay_only": true,
+      "single_ev": 0.141
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Ketel Marte",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -175,
+      "tier": "AUTO",
+      "model_prob": 0.932,
+      "book_implied": 0.6363636363636364,
+      "edge": 0.2956,
+      "streak": 11,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 52,
+      "parlay_only": true,
+      "single_ev": 0.465
+    },
+    {
+      "player": "Nathaniel Lowe",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -178,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "book_implied": 0.6402877697841727,
+      "edge": 0.2507,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 38,
+      "parlay_only": true,
+      "single_ev": 0.392
+    },
+    {
+      "player": "Willson Contreras",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -246,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.7109826589595376,
+      "edge": 0.239,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 52,
+      "parlay_only": true,
+      "single_ev": 0.336
+    }
+  ],
+  "parlays": []
+}

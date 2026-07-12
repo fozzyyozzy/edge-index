@@ -1,0 +1,14 @@
+
+Grading 2026-05-08...
+============================================================
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_grade_patch.py", line 517, in <module>
+    grade_all(force=args.force)
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_grade_patch.py", line 427, in grade_all
+    grade_card(game_date, force=force)
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_grade_patch.py", line 177, in grade_card
+    print(f"\n\u26be SINGLES:")
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u26be' in position 2: character maps to <undefined>

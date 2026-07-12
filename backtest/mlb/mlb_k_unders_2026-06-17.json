@@ -1,0 +1,539 @@
+[
+  {
+    "pitcher": "JR Ritchie",
+    "home": "Atlanta Braves",
+    "away": "San Francisco Giants",
+    "k_line": 3.5,
+    "over_odds": -132,
+    "under_odds": null,
+    "over_score": 5,
+    "under_score": 0,
+    "net": 5,
+    "side": "OVER",
+    "score": 5,
+    "signals": [
+      "\u26a0\ufe0f No game log data available",
+      "\u2713 Above avg K% lineup: 22.8%",
+      "\u2713 Slight pitcher park: 1.02x",
+      "\u2713 LOW LINE (3.5) \u2014 easy bar, OVER value"
+    ],
+    "rec": "LEAN OVER",
+    "logs": []
+  },
+  {
+    "pitcher": "Carson Whisenhunt",
+    "home": "Atlanta Braves",
+    "away": "San Francisco Giants",
+    "k_line": 3.5,
+    "over_odds": -152,
+    "under_odds": null,
+    "over_score": 5,
+    "under_score": 0,
+    "net": 5,
+    "side": "OVER",
+    "score": 5,
+    "signals": [
+      "\u26a0\ufe0f No game log data available",
+      "\u2713 Above avg K% lineup: 22.8%",
+      "\u2713 Slight pitcher park: 1.02x",
+      "\u2713 LOW LINE (3.5) \u2014 easy bar, OVER value"
+    ],
+    "rec": "LEAN OVER",
+    "logs": []
+  },
+  {
+    "pitcher": "Anthony Kay",
+    "home": "New York Yankees",
+    "away": "Chicago White Sox",
+    "k_line": 4.5,
+    "over_odds": -108,
+    "under_odds": null,
+    "over_score": 6,
+    "under_score": 2,
+    "net": 4,
+    "side": "OVER",
+    "score": 6,
+    "signals": [
+      "L5 avg: 4.8 Ks | 5.1 IP | 0.95 K/IP",
+      "L5 vs line 4.5: 3 OVER / 2 UNDER",
+      "\u26a0\ufe0f Low K/IP: 0.95 \u2014 contact pitcher",
+      "\ud83d\udccb Moderate OVER: 3/5 over 4.5",
+      "\u2713 Avg Ks (4.8) above line (4.5)",
+      "\u26a1 HIGH K% LINEUP: 24.8% (Chicago White Sox) \u2014 strikeout-prone",
+      "\ud83d\udccb Neutral park: 1.00x",
+      "\u2713 Moderate line (4.5)"
+    ],
+    "rec": "LEAN OVER",
+    "logs": [
+      {
+        "date": "2026-05-19",
+        "ip": 5.33,
+        "ks": 5,
+        "k_per_ip": 0.94,
+        "opp": "Seattle Mariners"
+      },
+      {
+        "date": "2026-05-25",
+        "ip": 6.0,
+        "ks": 5,
+        "k_per_ip": 0.83,
+        "opp": "Minnesota Twins"
+      },
+      {
+        "date": "2026-05-30",
+        "ip": 5.0,
+        "ks": 3,
+        "k_per_ip": 0.6,
+        "opp": "Detroit Tigers"
+      },
+      {
+        "date": "2026-06-05",
+        "ip": 4.0,
+        "ks": 4,
+        "k_per_ip": 1.0,
+        "opp": "Philadelphia Phillies"
+      },
+      {
+        "date": "2026-06-12",
+        "ip": 5.0,
+        "ks": 7,
+        "k_per_ip": 1.4,
+        "opp": "Los Angeles Dodgers"
+      }
+    ]
+  },
+  {
+    "pitcher": "George Kirby",
+    "home": "Seattle Mariners",
+    "away": "Baltimore Orioles",
+    "k_line": 5.5,
+    "over_odds": -155,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 0,
+    "net": 4,
+    "side": "OVER",
+    "score": 4,
+    "signals": [
+      "L5 avg: 5.6 Ks | 5.4 IP | 1.05 K/IP",
+      "L5 vs line 5.5: 2 OVER / 3 UNDER",
+      "\ud83d\udccb Average K/IP: 1.05",
+      "\u2713 Avg Ks (5.6) above line (5.5)",
+      "\u2713 Avg K% lineup: 21.8%",
+      "\u2713 Pitcher-friendly park: Seattle Mariners (1.05x)"
+    ],
+    "rec": "LEAN OVER",
+    "logs": [
+      {
+        "date": "2026-05-17",
+        "ip": 5.67,
+        "ks": 6,
+        "k_per_ip": 1.06,
+        "opp": "San Diego Padres"
+      },
+      {
+        "date": "2026-05-23",
+        "ip": 6.0,
+        "ks": 3,
+        "k_per_ip": 0.5,
+        "opp": "Kansas City Royals"
+      },
+      {
+        "date": "2026-05-29",
+        "ip": 5.33,
+        "ks": 4,
+        "k_per_ip": 0.75,
+        "opp": "Arizona Diamondbacks"
+      },
+      {
+        "date": "2026-06-03",
+        "ip": 4.0,
+        "ks": 5,
+        "k_per_ip": 1.25,
+        "opp": "New York Mets"
+      },
+      {
+        "date": "2026-06-10",
+        "ip": 6.0,
+        "ks": 10,
+        "k_per_ip": 1.67,
+        "opp": "Baltimore Orioles"
+      }
+    ]
+  },
+  {
+    "pitcher": "Gavin Williams",
+    "home": "Milwaukee Brewers",
+    "away": "Cleveland Guardians",
+    "k_line": 6.5,
+    "over_odds": -114,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 1,
+    "net": 3,
+    "side": "OVER",
+    "score": 4,
+    "signals": [
+      "L5 avg: 6.6 Ks | 6.3 IP | 1.05 K/IP",
+      "L5 vs line 6.5: 2 OVER / 3 UNDER",
+      "\ud83d\udccb Average K/IP: 1.05",
+      "\u2713 Avg Ks (6.6) above line (6.5)",
+      "\ud83d\udcc9 K trending DOWN: -4.0 Ks vs prior starts",
+      "\u2713 Above avg K% lineup: 22.5%",
+      "\u2713 Slight pitcher park: 1.02x"
+    ],
+    "rec": "LEAN OVER",
+    "logs": [
+      {
+        "date": "2026-05-17",
+        "ip": 6.0,
+        "ks": 7,
+        "k_per_ip": 1.17,
+        "opp": "Cincinnati Reds"
+      },
+      {
+        "date": "2026-05-22",
+        "ip": 8.0,
+        "ks": 11,
+        "k_per_ip": 1.38,
+        "opp": "Philadelphia Phillies"
+      },
+      {
+        "date": "2026-05-27",
+        "ip": 7.0,
+        "ks": 4,
+        "k_per_ip": 0.57,
+        "opp": "Washington Nationals"
+      },
+      {
+        "date": "2026-06-03",
+        "ip": 5.33,
+        "ks": 6,
+        "k_per_ip": 1.12,
+        "opp": "New York Yankees"
+      },
+      {
+        "date": "2026-06-08",
+        "ip": 5.0,
+        "ks": 5,
+        "k_per_ip": 1.0,
+        "opp": "New York Yankees"
+      }
+    ]
+  },
+  {
+    "pitcher": "Braxton Ashcraft",
+    "home": "Athletics",
+    "away": "Pittsburgh Pirates",
+    "k_line": 5.5,
+    "over_odds": -102,
+    "under_odds": null,
+    "over_score": 3,
+    "under_score": 0,
+    "net": 3,
+    "side": "OVER",
+    "score": 3,
+    "signals": [
+      "L5 avg: 6.8 Ks | 5.9 IP | 1.14 K/IP",
+      "L5 vs line 5.5: 2 OVER / 3 UNDER",
+      "\ud83d\udccb Average K/IP: 1.14",
+      "\u2713 Avg Ks (6.8) above line (5.5)",
+      "\u2713 Above avg K% lineup: 23.8%",
+      "\ud83d\udccb Neutral park: 1.00x"
+    ],
+    "rec": "LEAN OVER",
+    "logs": [
+      {
+        "date": "2026-05-21",
+        "ip": 7.0,
+        "ks": 9,
+        "k_per_ip": 1.29,
+        "opp": "St. Louis Cardinals"
+      },
+      {
+        "date": "2026-05-26",
+        "ip": 6.33,
+        "ks": 5,
+        "k_per_ip": 0.79,
+        "opp": "Chicago Cubs"
+      },
+      {
+        "date": "2026-05-31",
+        "ip": 6.0,
+        "ks": 11,
+        "k_per_ip": 1.83,
+        "opp": "Minnesota Twins"
+      },
+      {
+        "date": "2026-06-06",
+        "ip": 5.0,
+        "ks": 5,
+        "k_per_ip": 1.0,
+        "opp": "Atlanta Braves"
+      },
+      {
+        "date": "2026-06-12",
+        "ip": 5.0,
+        "ks": 4,
+        "k_per_ip": 0.8,
+        "opp": "Miami Marlins"
+      }
+    ]
+  },
+  {
+    "pitcher": "Jake Bennett",
+    "home": "Boston Red Sox",
+    "away": "Toronto Blue Jays",
+    "k_line": 2.5,
+    "over_odds": -165,
+    "under_odds": null,
+    "over_score": 2,
+    "under_score": 0,
+    "net": 2,
+    "side": "OVER",
+    "score": 2,
+    "signals": [
+      "\u26a0\ufe0f No game log data available",
+      "\ud83d\udccb Neutral lineup K%: 21.0%",
+      "\ud83d\udccb Neutral park: 0.97x",
+      "\u2713 LOW LINE (2.5) \u2014 easy bar, OVER value"
+    ],
+    "rec": "SLIGHT OVER EDGE",
+    "logs": []
+  },
+  {
+    "pitcher": "Brandon Sproat",
+    "home": "Milwaukee Brewers",
+    "away": "Cleveland Guardians",
+    "k_line": 4.5,
+    "over_odds": -135,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 4,
+    "net": 0,
+    "side": "NONE",
+    "score": 0,
+    "signals": [
+      "L5 avg: 4.2 Ks | 4.8 IP | 0.93 K/IP",
+      "L5 vs line 4.5: 2 OVER / 3 UNDER",
+      "\u26a0\ufe0f Low K/IP: 0.93 \u2014 contact pitcher",
+      "\ud83d\udccb Avg Ks (4.2) below line (4.5)",
+      "\ud83d\udcc9 K trending DOWN: -3.0 Ks vs prior starts",
+      "\u2713 Above avg K% lineup: 22.5%",
+      "\u2713 Slight pitcher park: 1.02x",
+      "\u2713 Moderate line (4.5)"
+    ],
+    "rec": "NEUTRAL \u2014 skip",
+    "logs": [
+      {
+        "date": "2026-05-18",
+        "ip": 4.67,
+        "ks": 5,
+        "k_per_ip": 1.07,
+        "opp": "Chicago Cubs"
+      },
+      {
+        "date": "2026-05-24",
+        "ip": 4.0,
+        "ks": 7,
+        "k_per_ip": 1.75,
+        "opp": "Los Angeles Dodgers"
+      },
+      {
+        "date": "2026-05-30",
+        "ip": 4.33,
+        "ks": 4,
+        "k_per_ip": 0.92,
+        "opp": "Houston Astros"
+      },
+      {
+        "date": "2026-06-05",
+        "ip": 5.0,
+        "ks": 2,
+        "k_per_ip": 0.4,
+        "opp": "Colorado Rockies"
+      },
+      {
+        "date": "2026-06-10",
+        "ip": 6.0,
+        "ks": 3,
+        "k_per_ip": 0.5,
+        "opp": "Athletics"
+      }
+    ]
+  },
+  {
+    "pitcher": "Javier Assad",
+    "home": "Chicago Cubs",
+    "away": "Colorado Rockies",
+    "k_line": 3.5,
+    "over_odds": -159,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 4,
+    "net": 0,
+    "side": "NONE",
+    "score": 0,
+    "signals": [
+      "L5 avg: 3.5 Ks | 5.4 IP | 0.65 K/IP",
+      "L5 vs line 3.5: 1 OVER / 3 UNDER",
+      "\u26a0\ufe0f Low K/IP: 0.65 \u2014 contact pitcher",
+      "\u26a0\ufe0f LOW K% LINEUP: 19.5% (Colorado Rockies) \u2014 makes contact",
+      "\u2713 Pitcher-friendly park: Chicago Cubs (1.04x)",
+      "\u2713 LOW LINE (3.5) \u2014 easy bar, OVER value"
+    ],
+    "rec": "NEUTRAL \u2014 skip",
+    "logs": [
+      {
+        "date": "2026-04-07",
+        "ip": 5.67,
+        "ks": 3,
+        "k_per_ip": 0.53,
+        "opp": "Tampa Bay Rays"
+      },
+      {
+        "date": "2026-04-13",
+        "ip": 4.33,
+        "ks": 3,
+        "k_per_ip": 0.69,
+        "opp": "Philadelphia Phillies"
+      },
+      {
+        "date": "2026-04-19",
+        "ip": 5.67,
+        "ks": 3,
+        "k_per_ip": 0.53,
+        "opp": "New York Mets"
+      },
+      {
+        "date": "2026-06-12",
+        "ip": 6.0,
+        "ks": 5,
+        "k_per_ip": 0.83,
+        "opp": "San Francisco Giants"
+      }
+    ]
+  },
+  {
+    "pitcher": "Aaron Civale",
+    "home": "Athletics",
+    "away": "Pittsburgh Pirates",
+    "k_line": 3.5,
+    "over_odds": 100,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 7,
+    "net": -3,
+    "side": "UNDER",
+    "score": 7,
+    "signals": [
+      "L5 avg: 3.0 Ks | 5.0 IP | 0.60 K/IP",
+      "L5 vs line 3.5: 1 OVER / 4 UNDER",
+      "\u26a0\ufe0f Low K/IP: 0.60 \u2014 contact pitcher",
+      "\ud83d\udcc9 UNDER streak: 4/5 under 3.5",
+      "\ud83d\udccb Avg Ks (3.0) below line (3.5)",
+      "\ud83d\udcc9 K trending DOWN: -2.5 Ks vs prior starts",
+      "\u2713 Above avg K% lineup: 23.8%",
+      "\ud83d\udccb Neutral park: 1.00x",
+      "\u2713 LOW LINE (3.5) \u2014 easy bar, OVER value"
+    ],
+    "rec": "LEAN UNDER",
+    "logs": [
+      {
+        "date": "2026-05-03",
+        "ip": 6.0,
+        "ks": 3,
+        "k_per_ip": 0.5,
+        "opp": "Cleveland Guardians"
+      },
+      {
+        "date": "2026-05-09",
+        "ip": 5.0,
+        "ks": 6,
+        "k_per_ip": 1.2,
+        "opp": "Baltimore Orioles"
+      },
+      {
+        "date": "2026-05-15",
+        "ip": 5.0,
+        "ks": 2,
+        "k_per_ip": 0.4,
+        "opp": "San Francisco Giants"
+      },
+      {
+        "date": "2026-05-20",
+        "ip": 5.0,
+        "ks": 2,
+        "k_per_ip": 0.4,
+        "opp": "Los Angeles Angels"
+      },
+      {
+        "date": "2026-05-25",
+        "ip": 4.0,
+        "ks": 2,
+        "k_per_ip": 0.5,
+        "opp": "Seattle Mariners"
+      }
+    ]
+  },
+  {
+    "pitcher": "Kyle Bradish",
+    "home": "Seattle Mariners",
+    "away": "Baltimore Orioles",
+    "k_line": 5.5,
+    "over_odds": 100,
+    "under_odds": null,
+    "over_score": 3,
+    "under_score": 6,
+    "net": -3,
+    "side": "UNDER",
+    "score": 6,
+    "signals": [
+      "L5 avg: 4.2 Ks | 5.3 IP | 0.84 K/IP",
+      "L5 vs line 5.5: 1 OVER / 4 UNDER",
+      "\u26a0\ufe0f Low K/IP: 0.84 \u2014 contact pitcher",
+      "\ud83d\udcc9 UNDER streak: 4/5 under 5.5",
+      "\ud83d\udccb Avg Ks (4.2) below line (5.5)",
+      "\u2713 Avg K% lineup: 21.8%",
+      "\u2713 Pitcher-friendly park: Seattle Mariners (1.05x)"
+    ],
+    "rec": "LEAN UNDER",
+    "logs": [
+      {
+        "date": "2026-05-19",
+        "ip": 5.33,
+        "ks": 6,
+        "k_per_ip": 1.12,
+        "opp": "Tampa Bay Rays"
+      },
+      {
+        "date": "2026-05-25",
+        "ip": 6.0,
+        "ks": 3,
+        "k_per_ip": 0.5,
+        "opp": "Tampa Bay Rays"
+      },
+      {
+        "date": "2026-05-31",
+        "ip": 7.0,
+        "ks": 4,
+        "k_per_ip": 0.57,
+        "opp": "Toronto Blue Jays"
+      },
+      {
+        "date": "2026-06-06",
+        "ip": 4.0,
+        "ks": 3,
+        "k_per_ip": 0.75,
+        "opp": "Toronto Blue Jays"
+      },
+      {
+        "date": "2026-06-11",
+        "ip": 4.0,
+        "ks": 5,
+        "k_per_ip": 1.25,
+        "opp": "Seattle Mariners"
+      }
+    ]
+  }
+]

@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-07",
+  "singles": [
+    {
+      "player": "Caleb Durbin",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "AUTO",
+      "model_prob": 0.909,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.3438,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 54,
+      "parlay_only": true,
+      "single_ev": 0.608
+    },
+    {
+      "player": "Jhonny Pereda",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.854,
+      "book_implied": 0.574468085106383,
+      "edge": 0.2795,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 14,
+      "parlay_only": true,
+      "single_ev": 0.487
+    },
+    {
+      "player": "Kazuma Okamoto",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.851,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.2677,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 62,
+      "parlay_only": true,
+      "single_ev": 0.459
+    },
+    {
+      "player": "Kyle Higashioka",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "AUTO",
+      "model_prob": 0.841,
+      "book_implied": 0.5454545454545454,
+      "edge": 0.2955,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 32,
+      "parlay_only": true,
+      "single_ev": 0.542
+    },
+    {
+      "player": "Adolis Garcia",
+      "team": "Philadelphia Phillies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.803,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.2197,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.5,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 63,
+      "parlay_only": true,
+      "single_ev": 0.377
+    },
+    {
+      "player": "Cade Cavalli",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -112,
+      "tier": "T1",
+      "model_prob": 0.721,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "l5_avg": 6.8,
+      "home": "Arizona Diamondbacks",
+      "opp": "Arizona Diamondbacks",
+      "opp_k_pct": 0.235,
+      "park_adj": -0.004,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 13,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.365,
+      "edge": 0.1927,
+      "book_implied": 0.5283018867924528
+    },
+    {
+      "player": "Drew Millas",
+      "team": "Washington Nationals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -134,
+      "tier": "T1",
+      "model_prob": 0.721,
+      "book_implied": 0.5726495726495727,
+      "edge": 0.1484,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 33,
+      "parlay_only": true,
+      "single_ev": 0.259
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Zack Gelof",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.607843137254902,
+      "edge": 0.3422,
+      "streak": 11,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 44,
+      "parlay_only": true,
+      "single_ev": 0.563
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -160,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.6153846153846154,
+      "edge": 0.3096,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 24,
+      "parlay_only": true,
+      "single_ev": 0.503
+    },
+    {
+      "player": "Pete Alonso",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -190,
+      "tier": "AUTO",
+      "model_prob": 0.941,
+      "book_implied": 0.6551724137931035,
+      "edge": 0.2858,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 65,
+      "parlay_only": true,
+      "single_ev": 0.436
+    }
+  ],
+  "parlays": []
+}

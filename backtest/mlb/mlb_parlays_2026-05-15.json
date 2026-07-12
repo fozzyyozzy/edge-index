@@ -1,0 +1,123 @@
+{
+  "date": "2026-05-15",
+  "singles": [
+    {
+      "player": "Aaron Judge",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "120",
+      "tier": "T1",
+      "model_prob": 0.706,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 172,
+      "parlay_only": "False",
+      "single_ev": 0.553
+    },
+    {
+      "player": "Christian Walker",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.822,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.6,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 155,
+      "parlay_only": true,
+      "single_ev": 0.37
+    },
+    {
+      "player": "Alejandro Osuna",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -118,
+      "tier": "T1",
+      "model_prob": 0.737,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.362
+    },
+    {
+      "player": "Connelly Early",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -114,
+      "tier": "T1",
+      "model_prob": 0.698,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 7.0,
+      "home": "Atlanta Braves",
+      "opp": "Atlanta Braves",
+      "opp_k_pct": 0.235,
+      "park_adj": -0.002,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 5,
+      "single_ev": 0.31
+    },
+    {
+      "player": "Mike Trout",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -125,
+      "tier": "T1",
+      "model_prob": 0.712,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 144,
+      "parlay_only": true,
+      "single_ev": 0.282
+    },
+    {
+      "player": "Luis Torrens",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -122,
+      "tier": "T1",
+      "model_prob": 0.681,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 100,
+      "parlay_only": true,
+      "single_ev": 0.239
+    }
+  ],
+  "parlays": []
+}

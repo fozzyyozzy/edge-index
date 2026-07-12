@@ -1,0 +1,155 @@
+{
+  "date": "2026-05-17",
+  "singles": [
+    {
+      "player": "Alejandro Osuna",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "T1",
+      "model_prob": 0.737,
+      "book_implied": 0.5454545454545454,
+      "edge": 0.1915,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Houston Astros",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.351
+    },
+    {
+      "player": "Aaron Judge",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "105",
+      "tier": "T1",
+      "model_prob": 0.706,
+      "book_implied": 0.48780487804878053,
+      "edge": 0.2182,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 172,
+      "parlay_only": "False",
+      "single_ev": 0.447
+    },
+    {
+      "player": "Luis Torrens",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.681,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.0977,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 100,
+      "parlay_only": true,
+      "single_ev": 0.167
+    },
+    {
+      "player": "Caleb Durbin",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "T1",
+      "model_prob": 0.653,
+      "book_implied": 0.5918367346938775,
+      "edge": 0.0612,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 154,
+      "parlay_only": true,
+      "single_ev": 0.103
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Colson Montgomery",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -179,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6415770609318996,
+      "edge": 0.3084,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.481
+    },
+    {
+      "player": "Jonathan Aranda",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "model_prob": 0.894,
+      "book_implied": 0.6226415094339623,
+      "edge": 0.2714,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 119,
+      "parlay_only": true,
+      "single_ev": 0.436
+    },
+    {
+      "player": "Miguel Vargas",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -194,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6598639455782314,
+      "edge": 0.2681,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 149,
+      "parlay_only": true,
+      "single_ev": 0.406
+    }
+  ],
+  "parlays": []
+}

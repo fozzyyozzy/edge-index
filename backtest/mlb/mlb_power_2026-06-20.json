@@ -1,0 +1,940 @@
+[
+  {
+    "home": "Detroit Tigers",
+    "away": "Chicago White Sox",
+    "home_power": {
+      "team": "Detroit Tigers",
+      "team_id": 116,
+      "power_score": -0.59,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.38,
+        "rs_pg": 4.01,
+        "ops": 0.704,
+        "avg": 0.232,
+        "pitching": 0.08,
+        "team_era": 3.87,
+        "team_whip": 1.28,
+        "record": -0.3,
+        "win_pct": 0.413,
+        "run_diff_pg": -0.12,
+        "streak": "W1",
+        "park": 0.98
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Chicago White Sox",
+      "team_id": 145,
+      "power_score": -0.05,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": 0.06,
+        "rs_pg": 4.65,
+        "ops": 0.733,
+        "avg": 0.238,
+        "pitching": -0.18,
+        "team_era": 4.4,
+        "team_whip": 1.33,
+        "record": 0.08,
+        "win_pct": 0.527,
+        "run_diff_pg": 0.0,
+        "streak": "L1",
+        "park": 0.96
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 5.61,
+      "era": 2.64,
+      "whip": 0.98,
+      "ip": 30.7,
+      "starts": 5,
+      "era_fip_delta": -2.97
+    },
+    "away_pitcher_fip": null,
+    "home_pitch_resistance": -0.01,
+    "away_pitch_resistance": 0.0,
+    "away_eff_score": -0.04,
+    "home_eff_score": -0.59
+  },
+  {
+    "home": "New York Yankees",
+    "away": "Cincinnati Reds",
+    "home_power": {
+      "team": "New York Yankees",
+      "team_id": 147,
+      "power_score": 1.81,
+      "tier": "STRONG",
+      "components": {
+        "offense": 0.47,
+        "rs_pg": 5.16,
+        "ops": 0.774,
+        "avg": 0.246,
+        "pitching": 0.47,
+        "team_era": 3.31,
+        "team_whip": 1.17,
+        "record": 0.86,
+        "win_pct": 0.622,
+        "run_diff_pg": 1.66,
+        "streak": "W1",
+        "park": 1.0
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Cincinnati Reds",
+      "team_id": 113,
+      "power_score": -1.12,
+      "tier": "WEAK",
+      "components": {
+        "offense": -0.33,
+        "rs_pg": 4.17,
+        "ops": 0.703,
+        "avg": 0.227,
+        "pitching": -0.48,
+        "team_era": 4.66,
+        "team_whip": 1.47,
+        "record": -0.31,
+        "win_pct": 0.473,
+        "run_diff_pg": -0.77,
+        "streak": "L2",
+        "park": 1.09
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 3.7,
+      "era": 3.47,
+      "whip": 1.54,
+      "ip": 23.3,
+      "starts": 5,
+      "era_fip_delta": -0.23
+    },
+    "away_pitcher_fip": {
+      "fip": 5.22,
+      "era": 3.81,
+      "whip": 1.23,
+      "ip": 26.0,
+      "starts": 5,
+      "era_fip_delta": -1.41
+    },
+    "home_pitch_resistance": 0.03,
+    "away_pitch_resistance": -0.34,
+    "away_eff_score": -1.15,
+    "home_eff_score": 2.15
+  },
+  {
+    "home": "Chicago Cubs",
+    "away": "Toronto Blue Jays",
+    "home_power": {
+      "team": "Chicago Cubs",
+      "team_id": 112,
+      "power_score": 0.25,
+      "tier": "AVERAGE",
+      "components": {
+        "offense": 0.11,
+        "rs_pg": 4.68,
+        "ops": 0.737,
+        "avg": 0.244,
+        "pitching": -0.02,
+        "team_era": 4.22,
+        "team_whip": 1.24,
+        "record": 0.17,
+        "win_pct": 0.526,
+        "run_diff_pg": 0.3,
+        "streak": "W2",
+        "park": 1.04
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Toronto Blue Jays",
+      "team_id": 141,
+      "power_score": -0.46,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.32,
+        "rs_pg": 4.0,
+        "ops": 0.701,
+        "avg": 0.248,
+        "pitching": 0.0,
+        "team_era": 4.1,
+        "team_whip": 1.3,
+        "record": -0.15,
+        "win_pct": 0.487,
+        "run_diff_pg": -0.36,
+        "streak": "L1",
+        "park": 1.04
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 6.36,
+      "era": 5.4,
+      "whip": 1.37,
+      "ip": 23.3,
+      "starts": 5,
+      "era_fip_delta": -0.96
+    },
+    "away_pitcher_fip": {
+      "fip": 5.39,
+      "era": 6.35,
+      "whip": 1.65,
+      "ip": 17.0,
+      "starts": 5,
+      "era_fip_delta": 0.96
+    },
+    "home_pitch_resistance": -1.25,
+    "away_pitch_resistance": -1.34,
+    "away_eff_score": 0.79,
+    "home_eff_score": 1.59
+  },
+  {
+    "home": "Texas Rangers",
+    "away": "San Diego Padres",
+    "home_power": {
+      "team": "Texas Rangers",
+      "team_id": 140,
+      "power_score": -0.34,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.34,
+        "rs_pg": 4.01,
+        "ops": 0.704,
+        "avg": 0.241,
+        "pitching": 0.1,
+        "team_era": 3.96,
+        "team_whip": 1.25,
+        "record": -0.1,
+        "win_pct": 0.48,
+        "run_diff_pg": -0.13,
+        "streak": "W1",
+        "park": 1.05
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "San Diego Padres",
+      "team_id": 135,
+      "power_score": -0.62,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.66,
+        "rs_pg": 3.88,
+        "ops": 0.656,
+        "avg": 0.219,
+        "pitching": 0.04,
+        "team_era": 3.92,
+        "team_whip": 1.3,
+        "record": -0.0,
+        "win_pct": 0.514,
+        "run_diff_pg": -0.15,
+        "streak": "L1",
+        "park": 1.05
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 3.1,
+      "era": 3.41,
+      "whip": 1.28,
+      "ip": 29.0,
+      "starts": 5,
+      "era_fip_delta": 0.31
+    },
+    "away_pitcher_fip": {
+      "fip": 3.02,
+      "era": 2.77,
+      "whip": 1.31,
+      "ip": 26.0,
+      "starts": 5,
+      "era_fip_delta": -0.25
+    },
+    "home_pitch_resistance": 0.54,
+    "away_pitch_resistance": 0.67,
+    "away_eff_score": -1.16,
+    "home_eff_score": -1.01
+  },
+  {
+    "home": "Tampa Bay Rays",
+    "away": "Washington Nationals",
+    "home_power": {
+      "team": "Tampa Bay Rays",
+      "team_id": 139,
+      "power_score": 0.37,
+      "tier": "AVERAGE",
+      "components": {
+        "offense": -0.02,
+        "rs_pg": 4.44,
+        "ops": 0.714,
+        "avg": 0.256,
+        "pitching": 0.1,
+        "team_era": 3.92,
+        "team_whip": 1.24,
+        "record": 0.28,
+        "win_pct": 0.583,
+        "run_diff_pg": 0.11,
+        "streak": "W1",
+        "park": 0.96
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Washington Nationals",
+      "team_id": 120,
+      "power_score": 0.18,
+      "tier": "AVERAGE",
+      "components": {
+        "offense": 0.49,
+        "rs_pg": 5.38,
+        "ops": 0.742,
+        "avg": 0.247,
+        "pitching": -0.4,
+        "team_era": 4.66,
+        "team_whip": 1.39,
+        "record": 0.09,
+        "win_pct": 0.513,
+        "run_diff_pg": 0.16,
+        "streak": "L2",
+        "park": 0.99
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": null,
+    "away_pitcher_fip": {
+      "fip": 3.49,
+      "era": 3.86,
+      "whip": 1.14,
+      "ip": 28.0,
+      "starts": 5,
+      "era_fip_delta": 0.36
+    },
+    "home_pitch_resistance": 0.0,
+    "away_pitch_resistance": 0.43,
+    "away_eff_score": 0.18,
+    "home_eff_score": -0.06
+  },
+  {
+    "home": "Miami Marlins",
+    "away": "San Francisco Giants",
+    "home_power": {
+      "team": "Miami Marlins",
+      "team_id": 146,
+      "power_score": -0.12,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.14,
+        "rs_pg": 4.32,
+        "ops": 0.711,
+        "avg": 0.246,
+        "pitching": 0.03,
+        "team_era": 4.13,
+        "team_whip": 1.26,
+        "record": -0.02,
+        "win_pct": 0.5,
+        "run_diff_pg": -0.05,
+        "streak": "W2",
+        "park": 0.93
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "San Francisco Giants",
+      "team_id": 137,
+      "power_score": -0.87,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.1,
+        "rs_pg": 4.17,
+        "ops": 0.729,
+        "avg": 0.258,
+        "pitching": -0.31,
+        "team_era": 4.49,
+        "team_whip": 1.4,
+        "record": -0.46,
+        "win_pct": 0.413,
+        "run_diff_pg": -0.67,
+        "streak": "L1",
+        "park": 0.91
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 3.64,
+      "era": 2.59,
+      "whip": 1.12,
+      "ip": 31.3,
+      "starts": 5,
+      "era_fip_delta": -1.06
+    },
+    "away_pitcher_fip": {
+      "fip": 4.2,
+      "era": 6.46,
+      "whip": 1.52,
+      "ip": 23.7,
+      "starts": 5,
+      "era_fip_delta": 2.27
+    },
+    "home_pitch_resistance": 0.65,
+    "away_pitch_resistance": -0.75,
+    "away_eff_score": -1.52,
+    "home_eff_score": 0.63
+  },
+  {
+    "home": "Atlanta Braves",
+    "away": "Milwaukee Brewers",
+    "home_power": {
+      "team": "Atlanta Braves",
+      "team_id": 144,
+      "power_score": 1.54,
+      "tier": "STRONG",
+      "components": {
+        "offense": 0.33,
+        "rs_pg": 4.99,
+        "ops": 0.741,
+        "avg": 0.254,
+        "pitching": 0.4,
+        "team_era": 3.38,
+        "team_whip": 1.2,
+        "record": 0.81,
+        "win_pct": 0.635,
+        "run_diff_pg": 1.36,
+        "streak": "W1",
+        "park": 1.05
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Milwaukee Brewers",
+      "team_id": 158,
+      "power_score": 1.72,
+      "tier": "STRONG",
+      "components": {
+        "offense": 0.46,
+        "rs_pg": 5.27,
+        "ops": 0.736,
+        "avg": 0.255,
+        "pitching": 0.44,
+        "team_era": 3.43,
+        "team_whip": 1.2,
+        "record": 0.82,
+        "win_pct": 0.616,
+        "run_diff_pg": 1.58,
+        "streak": "L2",
+        "park": 1.02
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 1.77,
+      "era": 2.45,
+      "whip": 1.33,
+      "ip": 29.3,
+      "starts": 5,
+      "era_fip_delta": 0.68
+    },
+    "away_pitcher_fip": {
+      "fip": 3.32,
+      "era": 3.0,
+      "whip": 0.96,
+      "ip": 27.0,
+      "starts": 5,
+      "era_fip_delta": -0.32
+    },
+    "home_pitch_resistance": 1.21,
+    "away_pitch_resistance": 0.85,
+    "away_eff_score": 0.51,
+    "home_eff_score": 0.69
+  },
+  {
+    "home": "Houston Astros",
+    "away": "Cleveland Guardians",
+    "home_power": {
+      "team": "Houston Astros",
+      "team_id": 117,
+      "power_score": -0.61,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": 0.06,
+        "rs_pg": 4.58,
+        "ops": 0.735,
+        "avg": 0.244,
+        "pitching": -0.44,
+        "team_era": 4.85,
+        "team_whip": 1.41,
+        "record": -0.23,
+        "win_pct": 0.468,
+        "run_diff_pg": -0.45,
+        "streak": "W3",
+        "park": 1.01
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Cleveland Guardians",
+      "team_id": 114,
+      "power_score": -0.3,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.48,
+        "rs_pg": 3.96,
+        "ops": 0.684,
+        "avg": 0.229,
+        "pitching": 0.16,
+        "team_era": 3.85,
+        "team_whip": 1.27,
+        "record": 0.03,
+        "win_pct": 0.526,
+        "run_diff_pg": -0.17,
+        "streak": "L1",
+        "park": 0.97
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 4.1,
+      "era": 4.0,
+      "whip": 1.26,
+      "ip": 27.0,
+      "starts": 5,
+      "era_fip_delta": -0.1
+    },
+    "away_pitcher_fip": {
+      "fip": 5.73,
+      "era": 6.65,
+      "whip": 1.8,
+      "ip": 21.7,
+      "starts": 5,
+      "era_fip_delta": 0.92
+    },
+    "home_pitch_resistance": 0.04,
+    "away_pitch_resistance": -1.68,
+    "away_eff_score": -0.34,
+    "home_eff_score": 1.07
+  },
+  {
+    "home": "Philadelphia Phillies",
+    "away": "New York Mets",
+    "home_power": {
+      "team": "Philadelphia Phillies",
+      "team_id": 143,
+      "power_score": -0.37,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.41,
+        "rs_pg": 4.11,
+        "ops": 0.685,
+        "avg": 0.229,
+        "pitching": 0.02,
+        "team_era": 4.1,
+        "team_whip": 1.31,
+        "record": 0.02,
+        "win_pct": 0.533,
+        "run_diff_pg": -0.27,
+        "streak": "L2",
+        "park": 1.06
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "New York Mets",
+      "team_id": 121,
+      "power_score": -0.52,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.44,
+        "rs_pg": 4.08,
+        "ops": 0.671,
+        "avg": 0.233,
+        "pitching": 0.12,
+        "team_era": 3.92,
+        "team_whip": 1.27,
+        "record": -0.2,
+        "win_pct": 0.453,
+        "run_diff_pg": -0.2,
+        "streak": "W2",
+        "park": 0.97
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 2.58,
+      "era": 1.82,
+      "whip": 0.89,
+      "ip": 34.7,
+      "starts": 5,
+      "era_fip_delta": -0.76
+    },
+    "away_pitcher_fip": {
+      "fip": 4.08,
+      "era": 5.02,
+      "whip": 1.4,
+      "ip": 28.7,
+      "starts": 5,
+      "era_fip_delta": 0.95
+    },
+    "home_pitch_resistance": 1.45,
+    "away_pitch_resistance": -0.3,
+    "away_eff_score": -1.97,
+    "home_eff_score": -0.07
+  },
+  {
+    "home": "Colorado Rockies",
+    "away": "Pittsburgh Pirates",
+    "home_power": {
+      "team": "Colorado Rockies",
+      "team_id": 115,
+      "power_score": -1.55,
+      "tier": "WEAK",
+      "components": {
+        "offense": 0.09,
+        "rs_pg": 4.58,
+        "ops": 0.733,
+        "avg": 0.252,
+        "pitching": -0.93,
+        "team_era": 5.55,
+        "team_whip": 1.53,
+        "record": -0.71,
+        "win_pct": 0.382,
+        "run_diff_pg": -1.17,
+        "streak": "W1",
+        "park": 1.28
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Pittsburgh Pirates",
+      "team_id": 134,
+      "power_score": 0.36,
+      "tier": "AVERAGE",
+      "components": {
+        "offense": 0.36,
+        "rs_pg": 5.03,
+        "ops": 0.744,
+        "avg": 0.254,
+        "pitching": -0.05,
+        "team_era": 4.22,
+        "team_whip": 1.31,
+        "record": 0.05,
+        "win_pct": 0.5,
+        "run_diff_pg": 0.17,
+        "streak": "L1",
+        "park": 0.97
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 4.88,
+      "era": 5.47,
+      "whip": 1.48,
+      "ip": 26.3,
+      "starts": 5,
+      "era_fip_delta": 0.58
+    },
+    "away_pitcher_fip": {
+      "fip": 2.77,
+      "era": 3.33,
+      "whip": 1.37,
+      "ip": 27.0,
+      "starts": 5,
+      "era_fip_delta": 0.57
+    },
+    "home_pitch_resistance": -0.79,
+    "away_pitch_resistance": 0.6,
+    "away_eff_score": 1.15,
+    "home_eff_score": -2.15
+  },
+  {
+    "home": "Athletics",
+    "away": "Los Angeles Angels",
+    "home_power": {
+      "team": "Athletics",
+      "team_id": 133,
+      "power_score": -0.49,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": 0.21,
+        "rs_pg": 4.7,
+        "ops": 0.755,
+        "avg": 0.252,
+        "pitching": -0.52,
+        "team_era": 4.92,
+        "team_whip": 1.44,
+        "record": -0.18,
+        "win_pct": 0.5,
+        "run_diff_pg": -0.59,
+        "streak": "W2",
+        "park": 0.95
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Los Angeles Angels",
+      "team_id": 108,
+      "power_score": -1.0,
+      "tier": "WEAK",
+      "components": {
+        "offense": -0.08,
+        "rs_pg": 4.48,
+        "ops": 0.715,
+        "avg": 0.238,
+        "pitching": -0.41,
+        "team_era": 4.69,
+        "team_whip": 1.44,
+        "record": -0.51,
+        "win_pct": 0.39,
+        "run_diff_pg": -0.58,
+        "streak": "L3",
+        "park": 1.04
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 4.22,
+      "era": 2.77,
+      "whip": 1.35,
+      "ip": 26.0,
+      "starts": 5,
+      "era_fip_delta": -1.45
+    },
+    "away_pitcher_fip": {
+      "fip": 4.48,
+      "era": 2.48,
+      "whip": 1.34,
+      "ip": 29.0,
+      "starts": 5,
+      "era_fip_delta": -2.0
+    },
+    "home_pitch_resistance": 0.15,
+    "away_pitch_resistance": 0.11,
+    "away_eff_score": -1.15,
+    "home_eff_score": -0.6
+  },
+  {
+    "home": "Los Angeles Dodgers",
+    "away": "Baltimore Orioles",
+    "home_power": {
+      "team": "Los Angeles Dodgers",
+      "team_id": 119,
+      "power_score": 2.24,
+      "tier": "ELITE",
+      "components": {
+        "offense": 0.66,
+        "rs_pg": 5.29,
+        "ops": 0.787,
+        "avg": 0.262,
+        "pitching": 0.57,
+        "team_era": 3.35,
+        "team_whip": 1.08,
+        "record": 1.01,
+        "win_pct": 0.645,
+        "run_diff_pg": 1.91,
+        "streak": "W4",
+        "park": 0.95
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Baltimore Orioles",
+      "team_id": 110,
+      "power_score": -0.63,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.0,
+        "rs_pg": 4.6,
+        "ops": 0.719,
+        "avg": 0.24,
+        "pitching": -0.35,
+        "team_era": 4.55,
+        "team_whip": 1.4,
+        "record": -0.28,
+        "win_pct": 0.455,
+        "run_diff_pg": -0.48,
+        "streak": "L2",
+        "park": 1.02
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 2.62,
+      "era": 1.01,
+      "whip": 0.62,
+      "ip": 35.7,
+      "starts": 5,
+      "era_fip_delta": -1.61
+    },
+    "away_pitcher_fip": {
+      "fip": 4.64,
+      "era": 4.5,
+      "whip": 1.18,
+      "ip": 28.0,
+      "starts": 5,
+      "era_fip_delta": -0.14
+    },
+    "home_pitch_resistance": 1.87,
+    "away_pitch_resistance": -0.2,
+    "away_eff_score": -2.5,
+    "home_eff_score": 2.44
+  },
+  {
+    "home": "Seattle Mariners",
+    "away": "Boston Red Sox",
+    "home_power": {
+      "team": "Seattle Mariners",
+      "team_id": 136,
+      "power_score": 0.13,
+      "tier": "AVERAGE",
+      "components": {
+        "offense": -0.28,
+        "rs_pg": 4.18,
+        "ops": 0.705,
+        "avg": 0.234,
+        "pitching": 0.32,
+        "team_era": 3.64,
+        "team_whip": 1.18,
+        "record": 0.09,
+        "win_pct": 0.506,
+        "run_diff_pg": 0.25,
+        "streak": "L1",
+        "park": 0.92
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Boston Red Sox",
+      "team_id": 111,
+      "power_score": -0.58,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.38,
+        "rs_pg": 3.95,
+        "ops": 0.695,
+        "avg": 0.245,
+        "pitching": 0.1,
+        "team_era": 3.9,
+        "team_whip": 1.27,
+        "record": -0.3,
+        "win_pct": 0.411,
+        "run_diff_pg": -0.12,
+        "streak": "W1",
+        "park": 1.1
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 4.18,
+      "era": 3.81,
+      "whip": 1.04,
+      "ip": 26.0,
+      "starts": 5,
+      "era_fip_delta": -0.37
+    },
+    "away_pitcher_fip": {
+      "fip": 5.71,
+      "era": 4.82,
+      "whip": 1.54,
+      "ip": 28.0,
+      "starts": 5,
+      "era_fip_delta": -0.89
+    },
+    "home_pitch_resistance": 0.27,
+    "away_pitch_resistance": -1.05,
+    "away_eff_score": -0.85,
+    "home_eff_score": 1.18
+  },
+  {
+    "home": "Arizona Diamondbacks",
+    "away": "Minnesota Twins",
+    "home_power": {
+      "team": "Arizona Diamondbacks",
+      "team_id": 109,
+      "power_score": -0.32,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.24,
+        "rs_pg": 4.28,
+        "ops": 0.694,
+        "avg": 0.239,
+        "pitching": -0.07,
+        "team_era": 4.16,
+        "team_whip": 1.27,
+        "record": 0.0,
+        "win_pct": 0.52,
+        "run_diff_pg": -0.2,
+        "streak": "W2",
+        "park": 1.04
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "away_power": {
+      "team": "Minnesota Twins",
+      "team_id": 142,
+      "power_score": -0.49,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": 0.13,
+        "rs_pg": 4.78,
+        "ops": 0.728,
+        "avg": 0.243,
+        "pitching": -0.41,
+        "team_era": 4.78,
+        "team_whip": 1.39,
+        "record": -0.21,
+        "win_pct": 0.468,
+        "run_diff_pg": -0.36,
+        "streak": "L1",
+        "park": 0.94
+      },
+      "season": 2026,
+      "updated": "2026-06-20"
+    },
+    "home_pitcher_fip": {
+      "fip": 5.84,
+      "era": 6.41,
+      "whip": 1.73,
+      "ip": 26.7,
+      "starts": 5,
+      "era_fip_delta": 0.58
+    },
+    "away_pitcher_fip": {
+      "fip": 5.57,
+      "era": 6.57,
+      "whip": 1.62,
+      "ip": 24.7,
+      "starts": 5,
+      "era_fip_delta": 0.99
+    },
+    "home_pitch_resistance": -1.61,
+    "away_pitch_resistance": -1.42,
+    "away_eff_score": 1.12,
+    "home_eff_score": 1.1
+  }
+]

@@ -1,0 +1,400 @@
+{
+  "date": "2026-05-14",
+  "singles": [
+    {
+      "player": "Dane Myers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 195,
+      "tier": "T1",
+      "model_prob": 0.674,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 116,
+      "parlay_only": true,
+      "single_ev": 0.988
+    },
+    {
+      "player": "Daylen Lile",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 170,
+      "tier": "T1",
+      "model_prob": 0.674,
+      "streak": 0,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 100,
+      "parlay_only": true,
+      "single_ev": 0.82
+    },
+    {
+      "player": "Mickey Moniak",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 155,
+      "tier": "T1",
+      "model_prob": 0.713,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Pittsburgh Pirates",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 145,
+      "parlay_only": true,
+      "single_ev": 0.818
+    },
+    {
+      "player": "Bo Bichette",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -110,
+      "tier": "AUTO",
+      "model_prob": 0.851,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "New York Mets",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 157,
+      "parlay_only": true,
+      "single_ev": 0.625
+    },
+    {
+      "player": "Colson Montgomery",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.583
+    },
+    {
+      "player": "Xander Bogaerts",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -148,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 152,
+      "parlay_only": true,
+      "single_ev": 0.56
+    },
+    {
+      "player": "Luke Keaschall",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.669,
+      "streak": 0,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 55,
+      "parlay_only": true,
+      "single_ev": 0.165
+    },
+    {
+      "player": "Michael Busch",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -144,
+      "tier": "T1",
+      "model_prob": 0.678,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 170,
+      "parlay_only": true,
+      "single_ev": 0.149
+    }
+  ],
+  "parlays": [
+    {
+      "legs": [
+        {
+          "player": "Josh Naylor",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -295,
+          "tier": "T1",
+          "model_prob": 0.727,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.7,
+          "home": "Houston Astros",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 173,
+          "parlay_only": true
+        },
+        {
+          "player": "Nico Hoerner",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -275,
+          "tier": "AUTO",
+          "model_prob": 0.928,
+          "streak": 9,
+          "l5": 1.0,
+          "l10": 0.9,
+          "home": "Atlanta Braves",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 167,
+          "parlay_only": true
+        }
+      ],
+      "odds": "-121",
+      "hit_prob": 0.675,
+      "ev": 0.232,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Christian Walker",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -212,
+          "tier": "AUTO",
+          "model_prob": 0.822,
+          "streak": 6,
+          "l5": 1.0,
+          "l10": 0.6,
+          "home": "Houston Astros",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 155,
+          "parlay_only": true
+        },
+        {
+          "player": "Alec Bohm",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -199,
+          "tier": "T1",
+          "model_prob": 0.74,
+          "streak": 3,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Boston Red Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 135,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+121",
+      "hit_prob": 0.608,
+      "ev": 0.345,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Seiya Suzuki",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -169,
+          "tier": "T1",
+          "model_prob": 0.768,
+          "streak": 4,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Atlanta Braves",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 168,
+          "parlay_only": true
+        },
+        {
+          "player": "Miguel Vargas",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -160,
+          "tier": "AUTO",
+          "model_prob": 0.928,
+          "streak": 9,
+          "l5": 1.0,
+          "l10": 0.9,
+          "home": "Chicago White Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 149,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+159",
+      "hit_prob": 0.713,
+      "ev": 0.843,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Chris Sale",
+          "prop": "strikeouts",
+          "line": 6.5,
+          "odds": -152,
+          "tier": "T1",
+          "model_prob": 0.723,
+          "streak": 1,
+          "l5": 0.8,
+          "l10": 0.9,
+          "l5_avg": 8.4,
+          "home": "Atlanta Braves",
+          "opp": "Atlanta Braves",
+          "opp_k_pct": 0.235,
+          "park_adj": -0.002,
+          "alt_lines": [
+            5.5,
+            6.0
+          ],
+          "prior_games": 25
+        },
+        {
+          "player": "Colson Montgomery",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -150,
+          "tier": "AUTO",
+          "model_prob": 0.95,
+          "streak": 10,
+          "l5": 1.0,
+          "l10": 1.0,
+          "home": "Chicago White Sox",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 71,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+176",
+      "hit_prob": 0.687,
+      "ev": 0.898,
+      "n_legs": 2
+    },
+    {
+      "legs": [
+        {
+          "player": "Xander Bogaerts",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -148,
+          "tier": "AUTO",
+          "model_prob": 0.931,
+          "streak": 7,
+          "l5": 1.0,
+          "l10": 0.9,
+          "home": "Milwaukee Brewers",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 152,
+          "parlay_only": true
+        },
+        {
+          "player": "Bo Bichette",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": -110,
+          "tier": "AUTO",
+          "model_prob": 0.851,
+          "streak": 5,
+          "l5": 1.0,
+          "l10": 0.8,
+          "home": "New York Mets",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 157,
+          "parlay_only": true
+        },
+        {
+          "player": "Mickey Moniak",
+          "prop": "hits",
+          "line": 0.5,
+          "odds": 155,
+          "tier": "T1",
+          "model_prob": 0.713,
+          "streak": 3,
+          "l5": 0.8,
+          "l10": 0.9,
+          "home": "Pittsburgh Pirates",
+          "alt_lines": [
+            0.5,
+            0.5
+          ],
+          "prior_games": 145,
+          "parlay_only": true
+        }
+      ],
+      "odds": "+716",
+      "hit_prob": 0.565,
+      "ev": 3.608,
+      "n_legs": 3
+    }
+  ]
+}

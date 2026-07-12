@@ -1,0 +1,210 @@
+[14:36:08] 
+EDGE INDEX MORNING ROUTINE — 2026-06-15
+[14:36:08] ============================================================
+[14:36:08] 
+============================================================
+STEP 1: Grade yesterday (2026-06-14)
+============================================================
+[14:36:08]   >> results checker
+[14:36:14]      FADE FADE PLAYS (UNDER):
+[14:36:14]        [MISS] FADE Chandler Simpson             UNDER 0.5 +193   actual:   1 -$100.00
+[14:36:14]        [MISS] FADE Dansby Swanson               UNDER 0.5 +126   actual:   1 -$100.00
+[14:36:14]        [MISS] FADE Richie Palacios              UNDER 0.5 +114   actual:   1 -$100.00
+[14:36:14]      =================================================================
+[14:36:14]      RESULTS: 6-9 (40.0%)  |  1 voids  |  P&L: $-606.89  (-6.07u)
+[14:36:14]      =================================================================
+[14:36:14]      [HIT] Results saved to mlb_results_2026-06-14.json
+[14:36:14]   >> grade patch
+[14:36:14]        ✗ LuJames Groover              220     → 0  -$100.00
+[14:36:14]        ✓ Michael Busch                -212    → 1  +$47.17
+[14:36:14]      📉 FADES:
+[14:36:14]        ✗ Chandler Simpson             OVER hit → 1  -$100.00
+[14:36:14]      ============================================================
+[14:36:14]      SINGLES:  3-4 (2 void)    $-152.89
+[14:36:14]      FADES:    0-1 (0 void)    $-100.00
+[14:36:14]      TOTAL:    $-252.89  (-2.53u)
+[14:36:14] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[14:36:14]   >> trade tracker
+[14:36:23]      Total: 1344 players on 40-man rosters
+[14:36:24]      🔄 ROSTER MOVES DETECTED: 3
+[14:36:24]        Kyler Fedko                  UNKNOWN → MIN New to 40-man roster
+[14:36:24]        Connor Seabold               UNKNOWN → KC New to 40-man roster
+[14:36:24]        Yosver Zulueta               UNKNOWN → CHC New to 40-man roster
+[14:36:24]      ✓ Cache updated — 2026-06-15
+[14:36:24]        Run daily to track all moves automatically
+[14:36:24]        Add to morning routine before mlb_odds_puller.py
+[14:36:24]   >> roster verify
+[14:36:24]        ✓ Confirmed correct: 206
+[14:36:24]        ⚠️  Mismatches found: 0
+[14:36:24]        — Inactive/unknown:  0
+[14:36:24]      ======================================================================
+[14:36:24]      ✓ ALL CLEAR — all 206 active players on correct teams
+[14:36:24]        Checked: 2026-06-15
+[14:36:24]      Add to morning routine (after trade tracker):
+[14:36:24]        python mlb_roster_verify.py --fix
+[14:36:24] 
+============================================================
+STEP 3: Pull today's lines (2026-06-15)
+============================================================
+[14:36:24]   >> odds puller
+[14:37:05]          Alec Bohm                 H OVER 0.5  (-225)
+[14:37:05]          Alec Burleson             H OVER 0.5  (-277)
+[14:37:05]          Alejandro Osuna           H OVER 0.5  (-125)
+[14:37:05]          Alex Bregman              H OVER 0.5  (-250)
+[14:37:05]          Alex Freeland             H OVER 0.5  (-109)
+[14:37:05]          Alex Jackson              H OVER 0.5  (117)
+[14:37:05]          Andy Pages                H OVER 1.5  (195)
+[14:37:05]          Austin Martin             H OVER 0.5  (-198)
+[14:37:05]      Saved to mlb_lines_2026-06-15.json
+[14:37:05]   ✓ 1585 props · 24 run lines · 10 games
+[14:37:05] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[14:37:05]   >> current stats
+[14:39:20]          "Jase Bowen": "3-for-25 L14 (.120)",
+[14:39:20]          "Jeff McNeil": "2-for-27 L14 (.074)",
+[14:39:20]          "Joey Loperfido": "0-for-11 L14 (.000)",
+[14:39:20]          "Jorge Barrosa": "2-for-14 L14 (.143)",
+[14:39:20]          "Mike Trout": "7-for-47 L14 (.149)",
+[14:39:20]          "Nolan Arenado": "7-for-47 L14 (.149)",
+[14:39:20]          "Owen Caissie": "2-for-26 L14 (.077)",
+[14:39:20]          "Pavin Smith": "2-for-23 L14 (.087)",
+[14:39:20]          "Spencer Steer": "5-for-36 L14 (.139)",
+[14:39:20]          "Xander Bogaerts": "4-for-30 L14 (.133)",
+[14:39:20]   >> savant cache
+[14:43:25]        Tyler Soderstrom: pulling expected stats... xBA:0.247 L7:0.333 Regression:+0(NEUTRAL)
+[14:43:25]        Tyler Stephenson: pulling expected stats... xBA:0.222 L7:0.333 vsTeam:0.235(17AB) Regression:+0(NEUTRAL)
+[14:43:25]        Wade Meckler: pulling expected stats... xBA:0.257 L7:0.182 Regression:+0(NEUTRAL)
+[14:43:25]        Willi Castro: pulling expected stats... xBA:0.227 L7:0.4 Regression:+0(NEUTRAL)
+[14:43:25]        Wyatt Langford: pulling expected stats... xBA:0.232 L7:0.267 Regression:+0(NEUTRAL)
+[14:43:25]        Xander Bogaerts: pulling expected stats... xBA:0.252 L7:0.2 Regression:+0(NEUTRAL)
+[14:43:25]        Xavier Edwards: pulling expected stats... xBA:0.277 L7:0.227 Regression:+0(NEUTRAL)
+[14:43:25]        Yordan Alvarez: pulling expected stats... xBA:0.347 L7:0.407 Regression:+0(NEUTRAL)
+[14:43:25]      ✓ Saved 469 players to savant cache
+[14:43:25]   >> pitcher hands
+[14:43:31]        Los Angeles Angels             Walbert Ureña             RHP
+[14:43:31]        Los Angeles Dodgers            Eric Lauer                LHP
+[14:43:31]        Miami Marlins                  Ryan Gusto                RHP
+[14:43:31]        New York Mets                  Tobias Myers              RHP
+[14:43:31]        Philadelphia Phillies          Zack Wheeler              RHP
+[14:43:31]        Pittsburgh Pirates             Jared Jones               RHP
+[14:43:31]        St. Louis Cardinals            Dustin May                RHP
+[14:43:31]        Tampa Bay Rays                 Nick Martinez             RHP
+[14:43:31]        Texas Rangers                  MacKenzie Gore            LHP
+[14:43:31]        Washington Nationals           Andrew Alvarez            LHP
+[14:43:31] 
+============================================================
+STEP 5: Run models
+============================================================
+[14:43:31]   >> run today (props)
+[14:45:17]        Joey Loperfido             -175     +130     .000  
+[14:45:17]        Jeff McNeil                -165     +125     .074  
+[14:45:17]        Chandler Simpson           -220     +160     .107  
+[14:45:17]        Xander Bogaerts            -219     +163     .133  
+[14:45:17]        Austin Martin              -198     +147     .135  
+[14:45:17]        Spencer Steer              -208     +155     .139  
+[14:45:17]        Mike Trout                 -225     +165     .149  
+[14:45:17]        Nolan Arenado              -185     +135     .149  
+[14:45:17]      Saved to mlb_plays_2026-06-15.json
+[14:45:17]   >> pitcher K unders
+[14:45:28]          ⚠️ Avg Ks (2.8) well below line (4.5)
+[14:45:28]          ✓ Above avg K% lineup: 23.2%
+[14:45:28]          ✓ Pitcher-friendly park: Arizona Diamondbacks (1.04x)
+[14:45:28]          ✓ Moderate line (4.5)
+[14:45:28]        Recent starts:
+[14:45:28]          ✗ 2026-06-10  2 Ks / 4.0 IP  (0.50 K/IP)  vs Miami Marlins
+[14:45:28]          ✗ 2026-06-04  3 Ks / 7.0 IP  (0.43 K/IP)  vs Los Angeles Dodgers
+[14:45:28]          ✗ 2026-05-30  3 Ks / 5.33 IP  (0.56 K/IP)  vs Seattle Mariners
+[14:45:28]      ✓ Saved to mlb_k_unders_2026-06-15.json
+[14:45:28]   >> umpire assignments
+[14:45:31]        Detroit Tigers @ Houston Astros     TBD                    N/A     ?  UNKNOWN 
+[14:45:31]        Los Angeles Angels @ Arizona Diamondbacks TBD                    N/A     ?  UNKNOWN 
+[14:45:31]        Pittsburgh Pirates @ Athletics      TBD                    N/A     ?  UNKNOWN 
+[14:45:31]        Tampa Bay Rays @ Los Angeles Dodgers TBD                    N/A     ?  UNKNOWN 
+[14:45:31]        Adj = K/9 vs league avg (8.4 baseline)
+[14:45:31]        HIGH_K (>+0.4): More Ks expected — favor OVER bets
+[14:45:31]        LOW_K  (<-0.4): Fewer Ks expected — favor UNDER or lower lines
+[14:45:31]      To build history: python mlb_umpire.py --update --days 60
+[14:45:31]   >> team run lines
+[14:45:49]            vs Nick Martinez        ERA:6.64  WHIP:1.50  K/9:3.8
+[14:45:49]          Tampa Bay Rays               4-3 L7  RS:3.7  RA:4.0  W1    Score:-0.10
+[14:45:49]            vs Eric Lauer           ERA:2.84  WHIP:0.88  K/9:5.3
+[14:45:49]      ======================================================================
+[14:45:49]      QUALIFYING PLAYS — 2026-06-15
+[14:45:49]      ======================================================================
+[14:45:49]        No qualifying plays today — thresholds not met
+[14:45:49]        Saved to mlb_team_rl_2026-06-15.json
+[14:45:49]   >> power score
+[14:46:14]            vs Jared Jones          FIP:4.1  Resistance:-0.27 [AVERAGE]
+[14:46:14]        Tampa Bay Rays @ Los Angeles Dodgers
+[14:46:14]          Tampa Bay Rays                 Power:+0.48 (AVERAGE)
+[14:46:14]            vs Eric Lauer           FIP:3.83  Resistance:-0.21 [AVERAGE]
+[14:46:14]          Los Angeles Dodgers            Power:+2.21 (ELITE)
+[14:46:14]            vs Nick Martinez        FIP:5.66  Resistance:+0.16 [AVERAGE]
+[14:46:14]          🎯 PLUS VALUE: Los Angeles Dodgers -1.5 (+110) — strong team (+2.21) getting plus odds!
+[14:46:14]        Saved to mlb_power_2026-06-15.json
+[14:46:14]   >> parlay builder
+[14:46:14]        Christian Walker           H OVER 0.5 (-210)  Win:75%
+[14:46:14]        Kyle Schwarber             H OVER 0.5 (-200)  Win:73%
+[14:46:14]        Kody Clemens               H OVER 0.5 (-198)  Win:73%
+[14:46:14]        Dustin May                 K OVER 4.5 (-185)  Win:70%
+[14:46:14]      =================================================================
+[14:46:14]      Singles:    7 plays  (ranked by win probability)
+[14:46:14]      High Edge:  3 plays  (ranked by edge over book)
+[14:46:14]      Saved to mlb_parlays_2026-06-15.json
+[14:46:14] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[14:46:14]   ✓ 2 pitcher plays written
+[14:46:14]   ✓ 5 batter plays written
+[14:46:14]   ✓ 2 fade plays written
+[14:46:14]   RL: wrote 0 hot · 0 cold qualifying plays
+[14:46:14]   ✓ FREE_PICK: Seiya Suzuki H OVER 0.5 (95.0%)
+[14:46:14]   ✓ MLBHub.jsx updated
+[14:46:14] 
+============================================================
+STEP 6.4: Auto-post today's card
+============================================================
+[14:46:14]   >> ['C:\\Users\\tyose\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', 'C:\\Users\\tyose\\edge-index\\backtest\\mlb\\mlb_posted_plays.py', '--date', '2026-06-15', '--auto']
+[14:46:14]        PLAY  TJ Rumfield                  AUTO   -175     ✓ signals loaded
+[14:46:14]        PLAY  Zack Gelof                   AUTO   -177     ✓ signals loaded
+[14:46:14]        FADE  Joey Loperfido               H-UNDER  U:+130             ⚠ no signal data
+[14:46:14]        FADE  Jeff McNeil                  H-UNDER  U:+125             ⚠ no signal data
+[14:46:14]      ✓ Card saved: posted_cards/posted_card_2026-06-15.json
+[14:46:14]        17 plays · 2 fades
+[14:46:14]        Run tomorrow morning to grade:
+[14:46:14]        python mlb_posted_plays.py --grade 2026-06-15
+[14:46:14]   ✓ auto-post step complete
+[14:46:14] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[14:46:14]   >> generate record data
+[14:46:15]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[14:46:15]        32 days  |  353 singles  |  106 fades
+[14:46:15]   ✓ RecordTracker.jsx regenerated from posted cards
+[14:46:15] 
+============================================================
+STEP 9: Summary
+============================================================
+[14:46:15] 
+  Pitchers: 2 qualifying  |  Batters: 31 qualifying
+[14:46:15]   T1    Dustin May                 K OVER 4.5 (-185) 70%
+[14:46:15]   T1    Walbert Urena              K OVER 4.5 (+118) 70%
+[14:46:15]   AUTO  Alec Burleson              H OVER 0.5 (-277) 95%
+[14:46:15]   T1    Austin Slater              H OVER 0.5 (-140) 69%
+[14:46:15]   T1    Blaze Jordan               H OVER 0.5 (-159) 87%
+[14:46:15]   T1    Bo Bichette                H OVER 0.5 (-235) 76%
+[14:46:15]   AUTO  Bryan Reynolds             H OVER 0.5 (-253) 84%
+[14:46:15]   AUTO  Carter Jensen              H OVER 0.5 (-142) 90%
+[14:46:15] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-06-15.log
+[14:46:15] 
+  ✓ Card posted for 2026-06-15
+[14:46:15] 
+✓ Done — 14:46:15
