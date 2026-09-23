@@ -20,7 +20,7 @@ WHAT IT PRODUCES
             made honest — hit rate measured over real game logs rather than
             asserted, and always paired with the rate the odds demand.
   PROPS     browse rows, from projections plus live odds when a key is set.
-  PLAYERS   per-position usage from real logs.
+  PLAYERS   per-position usage from real logs -> public/data/nfl_usage.json.
   CARD      the weekly card, from the screener.
 
 Usage
@@ -344,7 +344,7 @@ def main():
           f"(window {WINDOW}, priced band {BAND_PROB[0]:.0%}-{BAND_PROB[1]:.0%})\n")
 
     streaks = build_streaks(args.season, args.limit)
-    players = build_players(args.season)
+    players = build_players(args.season, per_pos=48)   # wide: Legs looks players up by name
     props = build_props(args.season, streaks)
     print(f"  {len(streaks)} floor lines · {len(players)} players · {len(props)} prop rows")
 
@@ -366,12 +366,17 @@ def main():
              stamp + "\n" + js_const("STREAK_ROWS", streaks)),
             ("PropHub.jsx", "PROPS",
              stamp + "\n" + js_const("PROP_ROWS", props)),
-            ("PlayerStatsHub.jsx", "PLAYERS",
-             stamp + "\n" + js_const("PLAYER_ROWS", players)),
         ]
         print()
         for fn, marker, body in jobs:
             print("  " + inject(os.path.join(src, fn), marker, body))
+        # Usage is a lookup for the Legs tab's expanded ladder (PlayerStatsHub is gone), fetched at runtime.
+        usage_path = os.path.join(src, "..", "public", "data", "nfl_usage.json")
+        with open(usage_path, "w", encoding="utf-8") as f:
+            json.dump({"meta": {"season": args.season, "generated": str(date.today()),
+                                "note": "per-game usage from real logs; generate_nfl_data.py"},
+                       "players": players}, f, indent=1, allow_nan=False)
+        print(f"  ok — {os.path.normpath(usage_path)} [{len(players)} players]")
     print()
 
 

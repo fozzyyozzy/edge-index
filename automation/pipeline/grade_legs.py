@@ -86,7 +86,7 @@ def main():
                 if soft: letter = step(letter, -soft); why.append(("opp D tough" if oppd == "TOUGH" else "") + (" own volume low" if vol == "TOUGH" else ""))
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
                               l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why))
-        out.append(dict(player=r.Player, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
+        out.append(dict(player=r.Player, pos=(g.position.iloc[-1] if len(g) else None), team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, spread=spread, games=int(len(v)),
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
     # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows

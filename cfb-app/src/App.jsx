@@ -3,6 +3,7 @@ import KBoard from "./KBoard";
 import PropHub from "./PropHub";
 import StreakCenter from "./StreakCenter";
 import MatchupsHub from "./MatchupsHub";
+import LegsHub from "./LegsHub";
 import MLBHub from "./MLBHub";
 import NFLHub from "./NFLHub";
 import RecordTracker from "./RecordTracker";
@@ -18,6 +19,7 @@ const NAV_SECTIONS = [
     color: "#00e5ff",
     tabs: [
       { id: "nflcard",  label: "Card",         component: NFLHub },
+      { id: "legs",     label: "Legs",         component: LegsHub },
       { id: "streaks",  label: "Floor Lines",  component: StreakCenter },
       { id: "props",    label: "Props",        component: PropHub },
       { id: "matchups", label: "Matchups",     component: MatchupsHub },

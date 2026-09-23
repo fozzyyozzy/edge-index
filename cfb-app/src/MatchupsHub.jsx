@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { teamColor } from "./nflTeams";
+import { teamColor, normName } from "./nflTeams";
 // NFL Matchups — defense x slot heat map + this week's edge leans.
 // Reads /data/nfl_matchups.json (automation/pipeline/matchups.py). Replaces the old Usage tab.
 
@@ -239,7 +239,7 @@ function EdgeLeans({ data, graded }) {
       <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:6,overflow:"hidden"}}>
         {rows.map((l, i) => (
           <LeanRow key={`${l.player}-${l.slot}`} l={l} last={i === rows.length - 1}
-            graded={graded.has(norm(l.player))} />
+            graded={graded.has(normName(l.player))} />
         ))}
       </div>
     </div>
@@ -292,7 +292,7 @@ export default function MatchupsHub() {
     Promise.all(LEGS_SLATES.map(s =>
       fetch(`/data/nfl_legs_${s}.json${bust}`).then(r => r.ok ? r.json() : null).catch(() => null)))
       .then(all => setGraded(new Set(all.flatMap(d =>
-        (d?.players || []).filter(p => p.rungs?.length).map(p => norm(p.player))))));
+        (d?.players || []).filter(p => p.rungs?.length).map(p => normName(p.player))))));
   }, []);
 
   return (

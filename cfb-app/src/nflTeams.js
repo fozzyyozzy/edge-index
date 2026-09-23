@@ -16,3 +16,10 @@ export const TEAM_COLORS = {
 };
 
 export const teamColor = code => TEAM_COLORS[code] || "#333";
+
+// Mirrors automation/pipeline/common.py norm_name so book names and nflverse names meet ("Deebo Samuel Sr." = "Deebo Samuel").
+const NAME_ALIAS = { "cameron ward": "cam ward", "d.j. moore": "dj moore" };
+export const normName = s => {
+  const n = String(s || "").trim().replace(/\s+(jr\.?|sr\.?|ii|iii|iv)$/i, "").toLowerCase();
+  return NAME_ALIAS[n] || n;
+};
