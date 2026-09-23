@@ -89,12 +89,26 @@ def main():
         out.append(dict(player=r.Player, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, spread=spread, games=int(len(v)),
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
+    # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows
+    KEEP = {"A+", "A", "A-", "B", "C"}
+    trimmed = []
+    for p in out:
+        good = [r for r in p["rungs"] if r["grade"] in KEEP]
+        if good:
+            p["rungs"] = good
+        elif p["rungs"] and all(r["grade"] == "F" for r in p["rungs"]):
+            p["rungs"] = sorted(p["rungs"], key=lambda r: abs(r["rung"] - p["main_line"]))[:3]
+            p["rungs"].sort(key=lambda r: r["rung"]); p["held"] = True
+        else:
+            continue
+        trimmed.append(p)
+    out = trimmed
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
                 grade_key="Grade = how often this rung hits (60% last-10 + 40% last-15 clear rate, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
                 rules=["3-4 legs per ticket", "no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
-    json.dump(dict(meta=meta, players=out), open(path, "w"), indent=1)
+    json.dump(dict(meta=meta, players=out), open(path, "w"), separators=(",", ":"))
     n = sum(len(p["rungs"]) for p in out); a_plus = sum(1 for p in out for r in p["rungs"] if r["grade"] == "A+")
     print(f"wrote {path}: {len(out)} player/markets, {n} rungs graded, {a_plus} A+")
 

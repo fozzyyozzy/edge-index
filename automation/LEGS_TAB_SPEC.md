@@ -5,6 +5,8 @@ segmented control at the top switches files). Each player carries `prices: "real
 estimated prices only; real DK prices are the default now that the fetch step exists. Match the existing dark UI, mono labels, and the row style of Floor Lines.
 
 ## Data shape (from pipeline/grade_legs.py)
+The file only contains rungs graded C or better. Players on a hard hold (team change, blowout, <10 games) keep their 3 rungs
+nearest the DK line, all graded F, with `held: true` — render those greyed with the reason.
     { meta: { season, week, slate, generated, grade_key, rules[] },
       players: [ { player, team, opp, game, market, main_line, main_odds, opp_d, own_vol, spread, games, last3[],
                    rungs: [ { rung, est_odds, implied_pct, l10, l15, clear_pct, grade, reasons[] } ] } ] }
