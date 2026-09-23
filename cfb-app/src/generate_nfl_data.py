@@ -19,6 +19,8 @@ WHAT IT PRODUCES
             what the price would require. This is the StreakCenter thesis
             made honest — hit rate measured over real game logs rather than
             asserted, and always paired with the rate the odds demand.
+            (Preview and PROPS input only; the site's Floor Lines tab now
+            reads automation/pipeline/floors.py output.)
   PROPS     browse rows, from projections plus live odds when a key is set.
   PLAYERS   per-position usage from real logs (preview only; the site's usage
             now comes from automation/pipeline/usage.py).
@@ -363,8 +365,7 @@ def main():
         src = args.inject
         stamp = f"// generated {date.today()} from {args.season} logs"
         jobs = [
-            ("StreakCenter.jsx", "STREAKS",
-             stamp + "\n" + js_const("STREAK_ROWS", streaks)),
+            # STREAKS no longer injected: Floor Lines reads nfl_floors_<slate>.json from automation/pipeline/floors.py
             ("PropHub.jsx", "PROPS",
              stamp + "\n" + js_const("PROP_ROWS", props)),
         ]

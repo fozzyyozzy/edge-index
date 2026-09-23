@@ -6,6 +6,7 @@ import LegsHub from "./LegsHub";
 import MLBHub from "./MLBHub";
 import NFLHub from "./NFLHub";
 import RecordTracker from "./RecordTracker";
+import NFLRecord from "./NFLRecord";
 import FAQ from "./FAQ";
 
 
@@ -21,7 +22,7 @@ const NAV_SECTIONS = [
       { id: "legs",     label: "Legs",         component: LegsHub },
       { id: "streaks",  label: "Floor Lines",  component: StreakCenter },
       { id: "matchups", label: "Matchups",     component: MatchupsHub },
-      { id: "record",   label: "Record",       component: RecordTracker },
+      { id: "record",   label: "Record",       component: NFLRecord },
       { id: "faq",      label: "FAQ",          component: FAQ },
     ],
   },
@@ -32,6 +33,7 @@ const NAV_SECTIONS = [
     tabs: [
       { id: "kboard",   label: "K Board",        component: KBoard },
       { id: "mlb",      label: "Full Card",      component: MLBHub },
+      { id: "mlbrecord",label: "MLB Record",     component: RecordTracker },
     ],
   },
 ];

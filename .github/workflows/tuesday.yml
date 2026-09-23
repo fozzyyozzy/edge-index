@@ -31,6 +31,10 @@ jobs:
         run: echo "WEEK=${{ github.event.inputs.week || vars.CURRENT_WEEK }}" >> "$GITHUB_ENV"
       - name: grade last week's card
         run: python automation/pipeline/grade.py --season "$SEASON" --week "$WEEK"
+      - name: publish season record to site (NFL Record tab)
+        run: |
+          mkdir -p cfb-app/public/data
+          cp "automation/receipts/record_${SEASON}.json" cfb-app/public/data/nfl_record.json
       - name: draft receipts issue
         run: python automation/newsletter/draft.py --kind receipts --season "$SEASON" --week "$WEEK"
       - name: open GitHub issue with the draft (copy into Substack)
@@ -44,6 +48,6 @@ jobs:
         run: |
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com
-          git add automation/receipts automation/newsletter/drafts
+          git add automation/receipts automation/newsletter/drafts cfb-app/public/data
           git commit -m "week $WEEK receipts" || true
           git push

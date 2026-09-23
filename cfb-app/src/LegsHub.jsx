@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { teamColor, normName } from "./nflTeams";
+import { SLATES, defaultSlate } from "./nflSlates";
+import SlateSwitch from "./SlateSwitch";
 // NFL Legs — every graded rung for the slate + a slip builder. Reads /data/nfl_legs_<slate>.json
 // (automation/pipeline/grade_legs.py) and /data/nfl_usage.json (automation/pipeline/usage.py). Absorbs the old Usage tab.
 // Deep link: #legs?player=<name> opens that player's rows (used by the Matchups tab's Edge Leans).
@@ -12,7 +14,6 @@ const T = {
 };
 
 const POS_COLOR = { QB:"#a855f7", RB:"#00c896", WR:"#00e5ff", TE:"#f5c518" };
-const SLATES = [["tnf","THU"],["sun","SUN"],["mnf","MON"]];
 const LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"];
 const gi = g => LETTERS.indexOf(g);
 const MARKETS = [["ALL","all"],["rec_yds","rec yds"],["receptions","rec"],["rush_yds","rush yds"],
@@ -416,7 +417,7 @@ export default function LegsHub() {
         const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[i]?.players ? all[i] : null]));
         filesRef.current = fs; setFiles(fs);
         const want = readHashPlayer();
-        if (!want || !applyDeepLink(want, fs)) setSlate(fs.sun ? "sun" : SLATES.map(([s]) => s).find(s => fs[s]) || null);
+        if (!want || !applyDeepLink(want, fs)) setSlate(defaultSlate(fs));
       });
     fetch(`/data/nfl_usage.json${bust}`).then(r => r.ok ? r.json() : null).then(setUsageRows).catch(() => setUsageRows(null));
     const onHash = () => { const p = readHashPlayer(); if (p && Object.keys(filesRef.current).length) applyDeepLink(p, filesRef.current); };
@@ -520,18 +521,7 @@ export default function LegsHub() {
         <div style={{fontSize:22,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>
           LEGS{data ? ` · WEEK ${data.meta.week}` : ""}
         </div>
-        <div style={{display:"inline-flex",border:"1px solid #ffffff14",borderRadius:4,overflow:"hidden"}}>
-          {SLATES.map(([s, label]) => {
-            const has = !!files[s];
-            return (
-              <button key={s} disabled={!has} onClick={() => { setSlate(s); setOpen(new Set()); }}
-                title={has ? "" : "not posted"}
-                style={{padding:"5px 12px",fontSize:10,fontFamily:T.mono,letterSpacing:1,border:"none",
-                  cursor: has ? "pointer" : "default",background: slate === s ? T.nfl + "1c" : "transparent",
-                  color: slate === s ? T.nfl : has ? "#777" : "#333",fontWeight: slate === s ? 700 : 500}}>{label}</button>
-            );
-          })}
-        </div>
+        <SlateSwitch files={files} slate={slate} onChange={s => { setSlate(s); setOpen(new Set()); }} />
         {posted && <div style={{fontSize:10,color:T.muted}}>posted {posted}</div>}
       </div>
       <div title={data?.meta?.grade_key} style={{fontSize:10,color:"#777",marginBottom:18,maxWidth:"72ch",lineHeight:1.6}}>

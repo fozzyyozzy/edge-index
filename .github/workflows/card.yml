@@ -48,10 +48,10 @@ jobs:
           fi
       - name: floor scan
         run: python automation/pipeline/floors.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --lines "automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv"
+      - name: grade every rung (Legs tab) — before the card, which takes each leg's grade from it
+        run: python automation/pipeline/grade_legs.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --lines "automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv"
       - name: build card
         run: python automation/pipeline/build_card_json.py --season "$SEASON" --week "$WEEK" --slate "$SLATE"
-      - name: grade every rung (Legs tab)
-        run: python automation/pipeline/grade_legs.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --lines "automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv"
       - name: matchups board (defense vs position)
         run: python automation/pipeline/matchups.py --season "$SEASON" --week "$WEEK"
       - name: usage for every graded player (Legs tab ladder row)
@@ -63,6 +63,7 @@ jobs:
           cp "automation/cards/usage_${SEASON}_w${WEEK}.json" cfb-app/public/data/nfl_usage.json
           cp "automation/cards/card_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_card_${SLATE}.json"
           cp "automation/cards/legs_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_legs_${SLATE}.json"
+          cp "automation/floors/floors_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_floors_${SLATE}.json"
       - name: draft card issue
         run: python automation/newsletter/draft.py --kind card --season "$SEASON" --week "$WEEK" --slate "$SLATE"
       - name: open GitHub issue with the draft (copy into Substack)

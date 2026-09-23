@@ -1,5 +1,7 @@
-import { useState } from "react";
-// v2026-08-20 — Floor lines. Every figure computed from game logs.
+import { useEffect, useState } from "react";
+import { SLATES, defaultSlate } from "./nflSlates";
+import SlateSwitch from "./SlateSwitch";
+// Floor lines. Reads /data/nfl_floors_<slate>.json, written by automation/pipeline/floors.py each card run.
 
 const T = {
   bg:"#060911", surface:"#0d1117", border:"#ffffff0a",
@@ -8,1293 +10,7 @@ const T = {
 };
 
 const POS_COLOR = { QB:"#a855f7", RB:"#00c896", WR:"#00e5ff", TE:"#f5c518" };
-const oddsStr = o => (o > 0 ? "+" : "") + o;
-
-// >>> AUTO-GENERATED STREAKS BEGIN — written by generate_nfl_data.py
-// generated 2026-08-20 from 2025 full-season game logs
-const STREAK_ROWS = [
-  {
-    "player": "Christian Watson",
-    "team": "GB",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 1.5,
-    "side": "over",
-    "hit": 10,
-    "of": 10,
-    "rate": 1.0,
-    "streak": 10,
-    "avg": 3.5,
-    "sd": 1.96,
-    "model": 0.7952,
-    "max_odds": -388,
-    "baseline": true,
-    "log_vs_model": 0.205,
-    "new_team": null
-  },
-  {
-    "player": "Brock Bowers",
-    "team": "LV",
-    "pos": "TE",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 25.0,
-    "side": "over",
-    "hit": 12,
-    "of": 12,
-    "rate": 1.0,
-    "streak": 12,
-    "avg": 56.7,
-    "sd": 33.78,
-    "model": 0.7719,
-    "max_odds": -338,
-    "baseline": true,
-    "log_vs_model": 0.228,
-    "new_team": null
-  },
-  {
-    "player": "Kyren Williams",
-    "team": "LA",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 40.0,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 73.6,
-    "sd": 35.93,
-    "model": 0.7642,
-    "max_odds": -324,
-    "baseline": true,
-    "log_vs_model": 0.236,
-    "new_team": null
-  },
-  {
-    "player": "J.K. Dobbins",
-    "team": "DEN",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 10.5,
-    "side": "over",
-    "hit": 10,
-    "of": 10,
-    "rate": 1.0,
-    "streak": 10,
-    "avg": 15.3,
-    "sd": 5.35,
-    "model": 0.7499,
-    "max_odds": -300,
-    "baseline": true,
-    "log_vs_model": 0.25,
-    "new_team": null
-  },
-  {
-    "player": "Trevor Lawrence",
-    "team": "JAX",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 150.0,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 235.7,
-    "sd": 87.21,
-    "model": 0.7744,
-    "max_odds": -343,
-    "baseline": true,
-    "log_vs_model": 0.226,
-    "new_team": null
-  },
-  {
-    "player": "Caleb Williams",
-    "team": "CHI",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 25.0,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 33.4,
-    "sd": 8.69,
-    "model": 0.751,
-    "max_odds": -302,
-    "baseline": true,
-    "log_vs_model": 0.249,
-    "new_team": null
-  },
-  {
-    "player": "Caleb Williams",
-    "team": "CHI",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 15.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 11,
-    "avg": 19.4,
-    "sd": 5.05,
-    "model": 0.7356,
-    "max_odds": -278,
-    "baseline": true,
-    "log_vs_model": 0.206,
-    "new_team": null
-  },
-  {
-    "player": "Dillon Gabriel",
-    "team": "CLE",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 0.5,
-    "side": "under",
-    "hit": 9,
-    "of": 10,
-    "rate": 0.9,
-    "streak": 0,
-    "avg": 0.2,
-    "sd": 0.48,
-    "model": 0.7733,
-    "max_odds": -341,
-    "baseline": true,
-    "log_vs_model": 0.127,
-    "new_team": null
-  },
-  {
-    "player": "Nico Collins",
-    "team": "HOU",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 2.5,
-    "side": "over",
-    "hit": 15,
-    "of": 15,
-    "rate": 1.0,
-    "streak": 15,
-    "avg": 4.7,
-    "sd": 2.28,
-    "model": 0.782,
-    "max_odds": -359,
-    "baseline": true,
-    "log_vs_model": 0.218,
-    "new_team": null
-  },
-  {
-    "player": "Trey McBride",
-    "team": "ARI",
-    "pos": "TE",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 40.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 2,
-    "avg": 72.9,
-    "sd": 38.82,
-    "model": 0.7329,
-    "max_odds": -274,
-    "baseline": true,
-    "log_vs_model": 0.208,
-    "new_team": null
-  },
-  {
-    "player": "Jaylen Warren",
-    "team": "PIT",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 30.0,
-    "side": "over",
-    "hit": 15,
-    "of": 16,
-    "rate": 0.938,
-    "streak": 4,
-    "avg": 59.9,
-    "sd": 32.34,
-    "model": 0.7624,
-    "max_odds": -321,
-    "baseline": true,
-    "log_vs_model": 0.175,
-    "new_team": null
-  },
-  {
-    "player": "Kyren Williams",
-    "team": "LA",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 10.5,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 15.2,
-    "sd": 5.34,
-    "model": 0.747,
-    "max_odds": -295,
-    "baseline": true,
-    "log_vs_model": 0.253,
-    "new_team": null
-  },
-  {
-    "player": "Caleb Williams",
-    "team": "CHI",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 150.0,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 231.9,
-    "sd": 85.8,
-    "model": 0.7653,
-    "max_odds": -326,
-    "baseline": true,
-    "log_vs_model": 0.235,
-    "new_team": null
-  },
-  {
-    "player": "Patrick Mahomes",
-    "team": "KC",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 27.0,
-    "side": "over",
-    "hit": 14,
-    "of": 14,
-    "rate": 1.0,
-    "streak": 14,
-    "avg": 35.9,
-    "sd": 9.32,
-    "model": 0.7474,
-    "max_odds": -296,
-    "baseline": true,
-    "log_vs_model": 0.253,
-    "new_team": null
-  },
-  {
-    "player": "Matthew Stafford",
-    "team": "LA",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 17.5,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 7,
-    "avg": 22.8,
-    "sd": 5.93,
-    "model": 0.7635,
-    "max_odds": -323,
-    "baseline": true,
-    "log_vs_model": 0.119,
-    "new_team": null
-  },
-  {
-    "player": "Justin Herbert",
-    "team": "LAC",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 1.5,
-    "side": "under",
-    "hit": 14,
-    "of": 16,
-    "rate": 0.875,
-    "streak": 0,
-    "avg": 0.8,
-    "sd": 0.96,
-    "model": 0.7517,
-    "max_odds": -303,
-    "baseline": true,
-    "log_vs_model": 0.123,
-    "new_team": null
-  },
-  {
-    "player": "Keon Coleman",
-    "team": "BUF",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 1.0,
-    "side": "over",
-    "hit": 12,
-    "of": 12,
-    "rate": 1.0,
-    "streak": 12,
-    "avg": 3.2,
-    "sd": 1.87,
-    "model": 0.7562,
-    "max_odds": -310,
-    "baseline": true,
-    "log_vs_model": 0.244,
-    "new_team": null
-  },
-  {
-    "player": "Jaxon Smith-Njigba",
-    "team": "SEA",
-    "pos": "WR",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 65.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 5,
-    "avg": 105.5,
-    "sd": 47.6,
-    "model": 0.7323,
-    "max_odds": -274,
-    "baseline": true,
-    "log_vs_model": 0.209,
-    "new_team": null
-  },
-  {
-    "player": "Zach Charbonnet",
-    "team": "SEA",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 20.0,
-    "side": "over",
-    "hit": 15,
-    "of": 16,
-    "rate": 0.938,
-    "streak": 14,
-    "avg": 45.6,
-    "sd": 28.16,
-    "model": 0.7622,
-    "max_odds": -321,
-    "baseline": true,
-    "log_vs_model": 0.175,
-    "new_team": null
-  },
-  {
-    "player": "Kenneth Walker III",
-    "team": "SEA",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 8.5,
-    "side": "over",
-    "hit": 17,
-    "of": 17,
-    "rate": 1.0,
-    "streak": 17,
-    "avg": 13.0,
-    "sd": 5.02,
-    "model": 0.7444,
-    "max_odds": -291,
-    "baseline": true,
-    "log_vs_model": 0.256,
-    "new_team": "KC"
-  },
-  {
-    "player": "Matthew Stafford",
-    "team": "LA",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 175.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 7,
-    "avg": 276.9,
-    "sd": 102.45,
-    "model": 0.7781,
-    "max_odds": -351,
-    "baseline": true,
-    "log_vs_model": 0.163,
-    "new_team": null
-  },
-  {
-    "player": "Jared Goff",
-    "team": "DET",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 25.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 12,
-    "avg": 34.0,
-    "sd": 8.84,
-    "model": 0.7495,
-    "max_odds": -299,
-    "baseline": true,
-    "log_vs_model": 0.192,
-    "new_team": null
-  },
-  {
-    "player": "Trevor Lawrence",
-    "team": "JAX",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 15.5,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 7,
-    "avg": 20.1,
-    "sd": 5.22,
-    "model": 0.757,
-    "max_odds": -312,
-    "baseline": true,
-    "log_vs_model": 0.125,
-    "new_team": null
-  },
-  {
-    "player": "Sam Darnold",
-    "team": "SEA",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 1.5,
-    "side": "under",
-    "hit": 14,
-    "of": 17,
-    "rate": 0.824,
-    "streak": 0,
-    "avg": 0.8,
-    "sd": 0.96,
-    "model": 0.7481,
-    "max_odds": -297,
-    "baseline": true,
-    "log_vs_model": 0.075,
-    "new_team": null
-  },
-  {
-    "player": "Stefon Diggs",
-    "team": "NE",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 2.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 5,
-    "avg": 5.0,
-    "sd": 2.34,
-    "model": 0.8069,
-    "max_odds": -418,
-    "baseline": true,
-    "log_vs_model": 0.134,
-    "new_team": "WAS"
-  },
-  {
-    "player": "Harold Fannin Jr.",
-    "team": "CLE",
-    "pos": "TE",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 20.0,
-    "side": "over",
-    "hit": 15,
-    "of": 16,
-    "rate": 0.938,
-    "streak": 11,
-    "avg": 45.7,
-    "sd": 30.0,
-    "model": 0.7419,
-    "max_odds": -287,
-    "baseline": true,
-    "log_vs_model": 0.196,
-    "new_team": null
-  },
-  {
-    "player": "Bucky Irving",
-    "team": "TB",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 30.0,
-    "side": "over",
-    "hit": 9,
-    "of": 10,
-    "rate": 0.9,
-    "streak": 1,
-    "avg": 58.8,
-    "sd": 32.04,
-    "model": 0.7531,
-    "max_odds": -305,
-    "baseline": true,
-    "log_vs_model": 0.147,
-    "new_team": null
-  },
-  {
-    "player": "Tony Pollard",
-    "team": "TEN",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 9.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 10,
-    "avg": 14.2,
-    "sd": 5.2,
-    "model": 0.7512,
-    "max_odds": -302,
-    "baseline": true,
-    "log_vs_model": 0.19,
-    "new_team": null
-  },
-  {
-    "player": "Jared Goff",
-    "team": "DET",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 175.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 13,
-    "avg": 268.5,
-    "sd": 99.33,
-    "model": 0.761,
-    "max_odds": -318,
-    "baseline": true,
-    "log_vs_model": 0.18,
-    "new_team": null
-  },
-  {
-    "player": "Dak Prescott",
-    "team": "DAL",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 26.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 0,
-    "avg": 35.3,
-    "sd": 9.18,
-    "model": 0.7493,
-    "max_odds": -299,
-    "baseline": true,
-    "log_vs_model": 0.192,
-    "new_team": null
-  },
-  {
-    "player": "Dak Prescott",
-    "team": "DAL",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 18.5,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 0,
-    "avg": 23.8,
-    "sd": 6.18,
-    "model": 0.7501,
-    "max_odds": -300,
-    "baseline": true,
-    "log_vs_model": 0.132,
-    "new_team": null
-  },
-  {
-    "player": "Jalen Hurts",
-    "team": "PHI",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 0.5,
-    "side": "under",
-    "hit": 13,
-    "of": 16,
-    "rate": 0.812,
-    "streak": 0,
-    "avg": 0.4,
-    "sd": 0.65,
-    "model": 0.6595,
-    "max_odds": -194,
-    "baseline": true,
-    "log_vs_model": 0.153,
-    "new_team": null
-  },
-  {
-    "player": "Trey McBride",
-    "team": "ARI",
-    "pos": "TE",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 4.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 2,
-    "avg": 7.4,
-    "sd": 2.84,
-    "model": 0.7924,
-    "max_odds": -382,
-    "baseline": true,
-    "log_vs_model": 0.149,
-    "new_team": null
-  },
-  {
-    "player": "Dallas Goedert",
-    "team": "PHI",
-    "pos": "TE",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 15.0,
-    "side": "over",
-    "hit": 14,
-    "of": 15,
-    "rate": 0.933,
-    "streak": 0,
-    "avg": 39.4,
-    "sd": 27.64,
-    "model": 0.7573,
-    "max_odds": -312,
-    "baseline": true,
-    "log_vs_model": 0.176,
-    "new_team": null
-  },
-  {
-    "player": "J.K. Dobbins",
-    "team": "DEN",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 45.0,
-    "side": "over",
-    "hit": 9,
-    "of": 10,
-    "rate": 0.9,
-    "streak": 4,
-    "avg": 77.2,
-    "sd": 36.8,
-    "model": 0.7416,
-    "max_odds": -287,
-    "baseline": true,
-    "log_vs_model": 0.158,
-    "new_team": null
-  },
-  {
-    "player": "Travis Etienne",
-    "team": "JAX",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 10.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 10,
-    "avg": 15.3,
-    "sd": 5.34,
-    "model": 0.7497,
-    "max_odds": -300,
-    "baseline": true,
-    "log_vs_model": 0.191,
-    "new_team": null
-  },
-  {
-    "player": "Dak Prescott",
-    "team": "DAL",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 175.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 0,
-    "avg": 267.8,
-    "sd": 99.07,
-    "model": 0.7595,
-    "max_odds": -316,
-    "baseline": true,
-    "log_vs_model": 0.182,
-    "new_team": null
-  },
-  {
-    "player": "Matthew Stafford",
-    "team": "LA",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 26.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 11,
-    "avg": 35.1,
-    "sd": 9.13,
-    "model": 0.7456,
-    "max_odds": -293,
-    "baseline": true,
-    "log_vs_model": 0.196,
-    "new_team": null
-  },
-  {
-    "player": "Bryce Young",
-    "team": "CAR",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 14.5,
-    "side": "over",
-    "hit": 14,
-    "of": 16,
-    "rate": 0.875,
-    "streak": 1,
-    "avg": 19.0,
-    "sd": 4.94,
-    "model": 0.7658,
-    "max_odds": -327,
-    "baseline": true,
-    "log_vs_model": 0.109,
-    "new_team": null
-  },
-  {
-    "player": "Aaron Rodgers",
-    "team": "PIT",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 1.0,
-    "side": "under",
-    "hit": 12,
-    "of": 16,
-    "rate": 0.75,
-    "streak": 0,
-    "avg": 0.4,
-    "sd": 0.71,
-    "model": 0.8712,
-    "max_odds": -676,
-    "baseline": true,
-    "log_vs_model": -0.121,
-    "new_team": null
-  },
-  {
-    "player": "Tre Tucker",
-    "team": "LV",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 1.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 3,
-    "avg": 3.4,
-    "sd": 1.92,
-    "model": 0.7787,
-    "max_odds": -352,
-    "baseline": true,
-    "log_vs_model": 0.162,
-    "new_team": null
-  },
-  {
-    "player": "Davante Adams",
-    "team": "LA",
-    "pos": "WR",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 25.0,
-    "side": "over",
-    "hit": 13,
-    "of": 14,
-    "rate": 0.929,
-    "streak": 4,
-    "avg": 56.4,
-    "sd": 33.68,
-    "model": 0.7694,
-    "max_odds": -334,
-    "baseline": true,
-    "log_vs_model": 0.159,
-    "new_team": null
-  },
-  {
-    "player": "Jacory Croskey-Merritt",
-    "team": "WAS",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 20.0,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 5,
-    "avg": 47.4,
-    "sd": 28.7,
-    "model": 0.7793,
-    "max_odds": -353,
-    "baseline": true,
-    "log_vs_model": 0.103,
-    "new_team": null
-  },
-  {
-    "player": "Jaylen Warren",
-    "team": "PIT",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 8.5,
-    "side": "over",
-    "hit": 15,
-    "of": 16,
-    "rate": 0.938,
-    "streak": 4,
-    "avg": 13.2,
-    "sd": 5.05,
-    "model": 0.7534,
-    "max_odds": -306,
-    "baseline": true,
-    "log_vs_model": 0.184,
-    "new_team": null
-  },
-  {
-    "player": "Drake Maye",
-    "team": "NE",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 175.0,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 3,
-    "avg": 258.5,
-    "sd": 95.63,
-    "model": 0.739,
-    "max_odds": -283,
-    "baseline": true,
-    "log_vs_model": 0.202,
-    "new_team": null
-  },
-  {
-    "player": "Daniel Jones",
-    "team": "IND",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 22.5,
-    "side": "over",
-    "hit": 12,
-    "of": 13,
-    "rate": 0.923,
-    "streak": 0,
-    "avg": 29.5,
-    "sd": 7.68,
-    "model": 0.7528,
-    "max_odds": -305,
-    "baseline": true,
-    "log_vs_model": 0.17,
-    "new_team": null
-  },
-  {
-    "player": "Daniel Jones",
-    "team": "IND",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 15.5,
-    "side": "over",
-    "hit": 11,
-    "of": 13,
-    "rate": 0.846,
-    "streak": 0,
-    "avg": 20.1,
-    "sd": 5.22,
-    "model": 0.7578,
-    "max_odds": -313,
-    "baseline": true,
-    "log_vs_model": 0.088,
-    "new_team": null
-  },
-  {
-    "player": "Geno Smith",
-    "team": "LV",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 2.0,
-    "side": "under",
-    "hit": 11,
-    "of": 15,
-    "rate": 0.733,
-    "streak": 0,
-    "avg": 1.1,
-    "sd": 1.13,
-    "model": 0.8291,
-    "max_odds": -485,
-    "baseline": true,
-    "log_vs_model": -0.096,
-    "new_team": null
-  },
-  {
-    "player": "Tyler Warren",
-    "team": "IND",
-    "pos": "TE",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 2.5,
-    "side": "over",
-    "hit": 16,
-    "of": 17,
-    "rate": 0.941,
-    "streak": 4,
-    "avg": 4.5,
-    "sd": 2.21,
-    "model": 0.755,
-    "max_odds": -308,
-    "baseline": true,
-    "log_vs_model": 0.186,
-    "new_team": null
-  },
-  {
-    "player": "CeeDee Lamb",
-    "team": "DAL",
-    "pos": "WR",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 45.0,
-    "side": "over",
-    "hit": 12,
-    "of": 13,
-    "rate": 0.923,
-    "streak": 0,
-    "avg": 82.8,
-    "sd": 41.66,
-    "model": 0.7547,
-    "max_odds": -308,
-    "baseline": true,
-    "log_vs_model": 0.168,
-    "new_team": null
-  },
-  {
-    "player": "Jordan Mason",
-    "team": "MIN",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 20.0,
-    "side": "over",
-    "hit": 14,
-    "of": 16,
-    "rate": 0.875,
-    "streak": 1,
-    "avg": 47.4,
-    "sd": 28.7,
-    "model": 0.7795,
-    "max_odds": -354,
-    "baseline": true,
-    "log_vs_model": 0.096,
-    "new_team": null
-  },
-  {
-    "player": "Rhamondre Stevenson",
-    "team": "NE",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 5.0,
-    "side": "over",
-    "hit": 13,
-    "of": 14,
-    "rate": 0.929,
-    "streak": 11,
-    "avg": 9.3,
-    "sd": 4.4,
-    "model": 0.7479,
-    "max_odds": -297,
-    "baseline": true,
-    "log_vs_model": 0.181,
-    "new_team": null
-  },
-  {
-    "player": "Patrick Mahomes",
-    "team": "KC",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 175.0,
-    "side": "over",
-    "hit": 13,
-    "of": 14,
-    "rate": 0.929,
-    "streak": 1,
-    "avg": 256.2,
-    "sd": 94.8,
-    "model": 0.7337,
-    "max_odds": -276,
-    "baseline": true,
-    "log_vs_model": 0.195,
-    "new_team": null
-  },
-  {
-    "player": "Trevor Lawrence",
-    "team": "JAX",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 24.5,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 7,
-    "avg": 32.9,
-    "sd": 8.56,
-    "model": 0.7566,
-    "max_odds": -311,
-    "baseline": true,
-    "log_vs_model": 0.126,
-    "new_team": null
-  },
-  {
-    "player": "Sam Darnold",
-    "team": "SEA",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 14.5,
-    "side": "over",
-    "hit": 14,
-    "of": 17,
-    "rate": 0.824,
-    "streak": 5,
-    "avg": 19.0,
-    "sd": 4.94,
-    "model": 0.7658,
-    "max_odds": -327,
-    "baseline": true,
-    "log_vs_model": 0.058,
-    "new_team": null
-  },
-  {
-    "player": "Tua Tagovailoa",
-    "team": "MIA",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 1.5,
-    "side": "under",
-    "hit": 10,
-    "of": 14,
-    "rate": 0.714,
-    "streak": 0,
-    "avg": 1.1,
-    "sd": 1.1,
-    "model": 0.6705,
-    "max_odds": -203,
-    "baseline": true,
-    "log_vs_model": 0.044,
-    "new_team": null
-  },
-  {
-    "player": "Josh Downs",
-    "team": "IND",
-    "pos": "WR",
-    "prop": "receptions",
-    "label": "Receptions",
-    "line": 1.0,
-    "side": "over",
-    "hit": 15,
-    "of": 16,
-    "rate": 0.938,
-    "streak": 7,
-    "avg": 3.6,
-    "sd": 2.0,
-    "model": 0.8083,
-    "max_odds": -422,
-    "baseline": true,
-    "log_vs_model": 0.129,
-    "new_team": null
-  },
-  {
-    "player": "Dalton Kincaid",
-    "team": "BUF",
-    "pos": "TE",
-    "prop": "rec_yards",
-    "label": "Rec Yards",
-    "line": 20.0,
-    "side": "over",
-    "hit": 11,
-    "of": 12,
-    "rate": 0.917,
-    "streak": 1,
-    "avg": 47.6,
-    "sd": 30.68,
-    "model": 0.7597,
-    "max_odds": -316,
-    "baseline": true,
-    "log_vs_model": 0.157,
-    "new_team": null
-  },
-  {
-    "player": "Javonte Williams",
-    "team": "DAL",
-    "pos": "RB",
-    "prop": "rush_yards",
-    "label": "Rush Yards",
-    "line": 40.0,
-    "side": "over",
-    "hit": 14,
-    "of": 16,
-    "rate": 0.875,
-    "streak": 1,
-    "avg": 75.1,
-    "sd": 36.28,
-    "model": 0.7747,
-    "max_odds": -344,
-    "baseline": true,
-    "log_vs_model": 0.1,
-    "new_team": null
-  },
-  {
-    "player": "Bucky Irving",
-    "team": "TB",
-    "pos": "RB",
-    "prop": "rush_att",
-    "label": "Rush Att",
-    "line": 12.5,
-    "side": "over",
-    "hit": 9,
-    "of": 10,
-    "rate": 0.9,
-    "streak": 1,
-    "avg": 17.3,
-    "sd": 5.61,
-    "model": 0.7421,
-    "max_odds": -288,
-    "baseline": true,
-    "log_vs_model": 0.158,
-    "new_team": null
-  },
-  {
-    "player": "C.J. Stroud",
-    "team": "HOU",
-    "pos": "QB",
-    "prop": "pass_yards",
-    "label": "Pass Yards",
-    "line": 150.0,
-    "side": "over",
-    "hit": 13,
-    "of": 14,
-    "rate": 0.929,
-    "streak": 6,
-    "avg": 217.2,
-    "sd": 80.37,
-    "model": 0.7271,
-    "max_odds": -266,
-    "baseline": true,
-    "log_vs_model": 0.201,
-    "new_team": null
-  },
-  {
-    "player": "Sam Darnold",
-    "team": "SEA",
-    "pos": "QB",
-    "prop": "pass_att",
-    "label": "Pass Att",
-    "line": 21.5,
-    "side": "over",
-    "hit": 15,
-    "of": 17,
-    "rate": 0.882,
-    "streak": 8,
-    "avg": 28.1,
-    "sd": 7.3,
-    "model": 0.7532,
-    "max_odds": -305,
-    "baseline": true,
-    "log_vs_model": 0.129,
-    "new_team": null
-  },
-  {
-    "player": "Bo Nix",
-    "team": "DEN",
-    "pos": "QB",
-    "prop": "pass_comp",
-    "label": "Completions",
-    "line": 17.5,
-    "side": "over",
-    "hit": 14,
-    "of": 17,
-    "rate": 0.824,
-    "streak": 0,
-    "avg": 22.8,
-    "sd": 5.93,
-    "model": 0.7635,
-    "max_odds": -323,
-    "baseline": true,
-    "log_vs_model": 0.06,
-    "new_team": null
-  },
-  {
-    "player": "Jaxson Dart",
-    "team": "NYG",
-    "pos": "QB",
-    "prop": "pass_int",
-    "label": "Interceptions",
-    "line": 0.5,
-    "side": "under",
-    "hit": 10,
-    "of": 14,
-    "rate": 0.714,
-    "streak": 0,
-    "avg": 0.4,
-    "sd": 0.64,
-    "model": 0.6696,
-    "max_odds": -203,
-    "baseline": true,
-    "log_vs_model": 0.045,
-    "new_team": null
-  }
-];
-// <<< AUTO-GENERATED STREAKS END
+const oddsStr = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
 
 const POSITIONS = ["ALL", "WR", "TE", "RB", "QB"];
 
@@ -1303,43 +19,42 @@ const POSITIONS = ["ALL", "WR", "TE", "RB", "QB"];
 const PROP_FILTERS = [
   { id:"ALL",        label:"ALL PROPS" },
   { id:"receptions", label:"REC" },
-  { id:"rec_yards",  label:"REC YDS" },
+  { id:"rec_yds",    label:"REC YDS" },
   { id:"rush_att",   label:"RUSH ATT" },
-  { id:"rush_yards", label:"RUSH YDS" },
-  { id:"pass_comp",  label:"COMP" },
+  { id:"rush_yds",   label:"RUSH YDS" },
+  { id:"pass_cmps",  label:"COMP" },
   { id:"pass_att",   label:"PASS ATT" },
-  { id:"pass_yards", label:"PASS YDS" },
-  { id:"pass_int",   label:"INT" },
+  { id:"pass_yds",   label:"PASS YDS" },
 ];
+const LABEL = { receptions:"Receptions", rec_yds:"Rec Yards", rush_att:"Rush Att", rush_yds:"Rush Yards",
+  pass_cmps:"Completions", pass_att:"Pass Att", pass_yds:"Pass Yards" };
 
 function Row({ r }) {
   const [open, setOpen] = useState(false);
   const pc = POS_COLOR[r.pos] || T.muted;
-  // Measured rate vs what the model says. Both are shown because a large
-  // gap in either direction is a reason to look closer, not to bet.
-  const gap = (r.rate - r.model) * 100;
+  const newTeam = r.team_change && r.prev_team && r.prev_team !== r.team;
+  // How far the clear rate sits above what the price asks. Positive = the log clears it more often than the price implies.
+  const gap = r.clear_pct - r.implied_pct;
+  const hit = Number(r.l10.split("/")[0]);
 
   return (
     <div onClick={() => setOpen(!open)} style={{background:T.surface,
       border:`1px solid ${open ? pc + "40" : T.border}`, borderRadius:6,
       marginBottom:6, cursor:"pointer"}}>
-      <div style={{padding:"11px 14px", display:"flex", alignItems:"center", gap:12}}>
+      <div style={{padding:"11px 14px", display:"flex", alignItems:"center", gap:12, flexWrap:"wrap"}}>
         <span style={{fontSize:9, fontWeight:700, color:pc, background:pc+"18",
           border:`1px solid ${pc}40`, borderRadius:3, padding:"2px 6px",
           fontFamily:T.mono, minWidth:30, textAlign:"center"}}>{r.pos}</span>
 
-        <div style={{flex:1, minWidth:0}}>
+        <div style={{flex:"1 1 180px", minWidth:0}}>
           <div style={{display:"flex", alignItems:"baseline", gap:8, flexWrap:"wrap"}}>
             <span style={{fontSize:13, fontWeight:700, color:T.text,
               fontFamily:T.head}}>{r.player}</span>
             <span style={{fontSize:10, color:T.muted, fontFamily:T.mono}}>
-              {r.team}{r.new_team ? " → " + r.new_team : ""} · {r.label}{" "}
-              <span style={{color: r.side === "under" ? "#f5c518" : T.accent,
-                fontWeight:700}}>
-                {r.side === "under" ? "u" : "o"}{r.line}
-              </span>
+              {newTeam ? `${r.prev_team} → ${r.team}` : r.team} · {LABEL[r.market] || r.market}{" "}
+              <span style={{color:T.accent, fontWeight:700}}>{r.rung}+</span>
             </span>
-            {r.new_team && (
+            {newTeam && (
               <span style={{fontSize:8, color:"#f5c518", background:"#f5c51818",
                 border:"1px solid #f5c51840", borderRadius:3, padding:"1px 5px",
                 fontFamily:T.mono, letterSpacing:1}}>NEW TEAM</span>
@@ -1350,18 +65,18 @@ function Row({ r }) {
         <div style={{display:"flex", gap:16, alignItems:"center", flexShrink:0}}>
           <div style={{textAlign:"center"}}>
             <div style={{fontSize:12, fontWeight:700, color:T.text,
-              fontFamily:T.mono}}>{r.hit}/{r.of}</div>
+              fontFamily:T.mono}}>{hit}/10</div>
             <div style={{fontSize:8, color:"#444"}}>CLEARED</div>
           </div>
           <div style={{textAlign:"center"}}>
             <div style={{fontSize:16, fontWeight:800, color:pc,
-              fontFamily:T.mono}}>{(r.model*100).toFixed(0)}%</div>
-            <div style={{fontSize:8, color:"#444"}}>MODEL</div>
+              fontFamily:T.mono}}>{r.clear_pct.toFixed(0)}%</div>
+            <div style={{fontSize:8, color:"#444"}}>CLEAR RATE</div>
           </div>
           <div style={{textAlign:"center", minWidth:52}}>
             <div style={{fontSize:12, fontWeight:700, color:T.accent,
-              fontFamily:T.mono}}>{oddsStr(r.max_odds)}</div>
-            <div style={{fontSize:8, color:"#444"}}>MAX PRICE</div>
+              fontFamily:T.mono}}>{oddsStr(r.odds)}{!r.real && <sup style={{fontSize:7,color:"#f5c518",marginLeft:2}}>est</sup>}</div>
+            <div style={{fontSize:8, color:"#444"}}>DK PRICE</div>
           </div>
           <span style={{fontSize:13, color:open ? pc : "#333"}}>{open ? "−" : "+"}</span>
         </div>
@@ -1369,13 +84,15 @@ function Row({ r }) {
 
       {open && (
         <div style={{borderTop:`1px solid ${T.border}`, padding:"12px 14px",
-          display:"grid", gridTemplateColumns:"1fr 1fr", gap:14}}>
+          display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(220px, 1fr))", gap:14}}>
           <div>
             <div style={{fontSize:9, color:"#444", letterSpacing:2,
               fontFamily:T.mono, marginBottom:7}}>GAME LOG</div>
-            {[["Season average", r.avg],
-               ["Cleared", `${r.hit} of ${r.of} (${(r.rate*100).toFixed(0)}%)`],
+            {[["Last-10 average", r.avg10],
+               ["Cleared", `${r.l10} · ${r.l15} (${r.clear_pct.toFixed(0)}% blended)`],
+               ["Last 3", r.last3.join(" · ")],
                ["Current streak", r.streak + (r.streak === 1 ? " game" : " games")],
+               ["Games in sample", r.games],
               ].map(([k,v]) => (
               <div key={k} style={{display:"flex", justifyContent:"space-between",
                 fontSize:10, fontFamily:T.mono, marginBottom:4}}>
@@ -1387,14 +104,16 @@ function Row({ r }) {
           <div>
             <div style={{fontSize:9, color:"#444", letterSpacing:2,
               fontFamily:T.mono, marginBottom:7}}>PRICE</div>
-            {[["Model probability", (r.model*100).toFixed(1) + "%"],
-               ["Longest price worth taking", oddsStr(r.max_odds)],
-               ["Log minus model", (gap >= 0 ? "+" : "") + gap.toFixed(0) + " pts"],
+            {[["DK price" + (r.real ? "" : " (est)"), `${oddsStr(r.odds)} · ${r.implied_pct.toFixed(1)}% implied`],
+               ["Longest price worth taking", oddsStr(r.fair_odds)],
+               ["Clear rate minus price", (gap >= 0 ? "+" : "") + gap.toFixed(0) + " pts"],
+               ["DK main line", `${r.main_line} at ${oddsStr(r.main_odds)}`],
+               ["Matchup · volume", `opp D ${r.opp_d} · own ${r.own_vol === "TOUGH" ? "LOW" : r.own_vol === "SOFT" ? "HIGH" : r.own_vol}`],
               ].map(([k,v]) => (
-              <div key={k} style={{display:"flex", justifyContent:"space-between",
+              <div key={k} style={{display:"flex", justifyContent:"space-between", gap:10,
                 fontSize:10, fontFamily:T.mono, marginBottom:4}}>
                 <span style={{color:"#666"}}>{k}</span>
-                <span style={{color:T.text, fontWeight:700}}>{v}</span>
+                <span style={{color:T.text, fontWeight:700, textAlign:"right"}}>{v}</span>
               </div>
             ))}
           </div>
@@ -1407,33 +126,52 @@ function Row({ r }) {
 export default function StreakCenter() {
   const [pos, setPos] = useState("ALL");
   const [prop, setProp] = useState("ALL");
-  const rows = STREAK_ROWS
+  const [files, setFiles] = useState(null);
+  const [slate, setSlate] = useState(null);
+
+  useEffect(() => {
+    const bust = `?t=${Date.now()}`;
+    Promise.all(SLATES.map(([s]) => fetch(`/data/nfl_floors_${s}.json${bust}`)
+      .then(r => r.ok ? r.json() : null).catch(() => null)))
+      .then(all => {
+        const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[i]?.rows ? all[i] : null]));
+        setFiles(fs); setSlate(defaultSlate(fs));
+      });
+  }, []);
+
+  const data = files && slate ? files[slate] : null;
+  const rows = (data?.rows || [])
     .filter(r => pos === "ALL" || r.pos === pos)
-    .filter(r => prop === "ALL" || r.prop === prop);
+    .filter(r => prop === "ALL" || r.market === prop);
+  const pulled = data?.meta?.prices_pulled ? new Date(data.meta.prices_pulled).toLocaleString(undefined,
+    { weekday:"short", hour:"numeric", minute:"2-digit" }) : null;
+  const slateLabel = SLATES.find(([s]) => s === slate)?.[1];
 
   return (
-    <div style={{padding:"28px 24px 80px", maxWidth:1000, margin:"0 auto",
+    <div style={{padding:"28px 16px 80px", maxWidth:1000, margin:"0 auto",
       fontFamily:T.mono}}>
 
       <div style={{display:"flex", alignItems:"baseline", gap:14,
         flexWrap:"wrap", marginBottom:6}}>
         <div style={{fontSize:22, fontWeight:800, color:T.text,
           fontFamily:T.head, letterSpacing:1}}>FLOOR LINES</div>
-        <span style={{fontSize:9, fontWeight:700, color:"#f5c518",
-          background:"#f5c51818", border:"1px solid #f5c51840", borderRadius:3,
-          padding:"3px 8px", letterSpacing:2}}>2025 BASELINE</span>
+        <SlateSwitch files={files} slate={slate} onChange={setSlate} />
+        {data && (
+          <span style={{fontSize:9, fontWeight:700, color:"#f5c518",
+            background:"#f5c51818", border:"1px solid #f5c51840", borderRadius:3,
+            padding:"3px 8px", letterSpacing:2}}>
+            WK {data.meta.week} {slateLabel}{pulled ? ` · PRICES ${pulled.toUpperCase()}` : ""}
+          </span>
+        )}
       </div>
 
       <div style={{fontSize:10, color:"#666", lineHeight:1.7, maxWidth:"72ch",
         marginBottom:18}}>
-        The number a player actually clears, how often he cleared it, and the
-        longest price still worth paying for it. Full-season rates, because
-        those carry into the next year (r²=0.51) where an end-of-season streak
-        does not (r²=0.21) and adds nothing once the rate is known. Replaced by
-        2026 data as games are played.
+        For every player with a DK line this slate: the highest alt rung he cleared in at least 8 of his last 10
+        and 11 of his last 15, how often, and what DK charges for it. Clear rate blends L10 (60%) and L15 (40%).
       </div>
 
-      <div style={{display:"flex", gap:4, marginBottom:14}}>
+      <div style={{display:"flex", gap:4, marginBottom:14, flexWrap:"wrap"}}>
         {POSITIONS.map(p => (
           <button key={p} onClick={() => setPos(p)} style={{
             padding:"5px 12px", background: pos===p ? (POS_COLOR[p]||"#333")+"18" : "transparent",
@@ -1455,20 +193,24 @@ export default function StreakCenter() {
         ))}
       </div>
 
-      {rows.length === 0 && (
+      {!files && <div style={{fontSize:10, color:"#444"}}>loading…</div>}
+      {files && !data && (
+        <div style={{fontSize:11, color:"#777", background:T.surface, border:`1px solid ${T.border}`,
+          borderRadius:6, padding:16}}>No floor scan posted for this slate yet.</div>
+      )}
+      {data && rows.length === 0 && (
         <div style={{padding:"28px 0", fontSize:11, color:"#444",
           textAlign:"center"}}>
-          No lines in band for that combination.
+          No floors for that combination.
         </div>
       )}
-      {rows.map((r,i) => <Row key={i} r={r} />)}
+      {rows.map(r => <Row key={`${r.player}|${r.market}`} r={r} />)}
 
       <div style={{marginTop:26, paddingTop:16, borderTop:`1px solid ${T.border}`,
         fontSize:10, color:"#555", lineHeight:1.8, maxWidth:"74ch"}}>
-        MAX PRICE is the break-even odds at the model's probability, before vig.
-        Paying longer than that is a losing bet however good the log looks. A
-        streak of zero next to 12 of 15 cleared is not a contradiction — being
-        reliable and being hot are different things.
+        LONGEST PRICE WORTH TAKING is the break-even odds at the clear rate, before vig. Paying longer
+        than that is a losing bet however good the log looks. A floor is not a pick: the card adds the
+        matchup and volume gates, and the Legs tab grades every rung.
       </div>
     </div>
   );
