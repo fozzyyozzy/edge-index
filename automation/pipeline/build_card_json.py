@@ -33,7 +33,11 @@ def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 SINGLE_GAME = {"tnf", "mnf", "snf"}
 
 def load_floors(season, week, slate):
-    f = pd.read_csv(P("floors", f"floors_{season}_w{week}_{slate}.csv"))
+    name = f"floors_{season}_w{week}_{slate}.csv"
+    for cand in (P("floors", name), name, os.path.join("automation", name)):
+        if os.path.exists(cand): f = pd.read_csv(cand); break
+    else:
+        raise SystemExit(f"floor scan output not found: run floors.py first ({name})")
     f["l10"] = f.L10.str.split("/").str[0].astype(int) / 10
     f["l15"] = f.L15.str.split("/").str[0].astype(int) / 15
     return f

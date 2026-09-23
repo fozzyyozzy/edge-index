@@ -40,6 +40,7 @@ The card job fails loudly if the lines file for that slate is missing. That is i
   opponents and spreads from the nflverse schedule. No hand-coded matchups.
 - `pipeline/build_card_json.py` — applies the house rules R1–R7 (documented at the top of the file) and writes the card JSON.
 - `pipeline/grade_legs.py` — grades EVERY DK rung A+..F for the site's Legs tab (`public/data/nfl_legs_<slate>.json`). Spec for the React tab: `LEGS_TAB_SPEC.md`.
+- `pipeline/matchups.py` — defense-vs-position board (QB/RB/WR1/WR2/TE/RUN/PASS), blended + home/away, plus this week's Edge Leans. Feeds the Matchups tab (`MATCHUPS_TAB_SPEC.md`). Site nav and data pattern: `NFL_REDESIGN_SPEC.md`.
 - `pipeline/grade.py` — Tuesday grading against nflverse actuals; writes `receipts/*.json` and appends `receipts/season_ledger.csv`.
 - `pipeline/altline_engine.py` — the ladder model (DK hold curve, ladder estimation, breakeven, parlay math).
 - `newsletter/draft.py` + `newsletter/prompts/` — Claude writes the issue from JSON only; saved to `newsletter/drafts/` and posted as a GitHub issue. Never publishes anywhere.

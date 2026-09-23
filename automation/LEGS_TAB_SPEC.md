@@ -1,7 +1,8 @@
 # Legs tab + slip builder — spec for Claude Code (React, cfb-app/src)
 
 New nav item **Legs** between Floor Lines and Props. Reads `public/data/nfl_legs_<slate>.json` (slate = tnf | sun | mnf; a
-segmented control at the top switches files). Match the existing dark UI, mono labels, and the row style of Floor Lines.
+segmented control at the top switches files). Each player carries `prices: "real" | "estimated"` — show a small "est" tag on
+estimated prices only; real DK prices are the default now that the fetch step exists. Match the existing dark UI, mono labels, and the row style of Floor Lines.
 
 ## Data shape (from pipeline/grade_legs.py)
     { meta: { season, week, slate, generated, grade_key, rules[] },

@@ -52,9 +52,12 @@ jobs:
         run: python automation/pipeline/build_card_json.py --season "$SEASON" --week "$WEEK" --slate "$SLATE"
       - name: grade every rung (Legs tab)
         run: python automation/pipeline/grade_legs.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --lines "automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv"
+      - name: matchups board (defense vs position)
+        run: python automation/pipeline/matchups.py --season "$SEASON" --week "$WEEK"
       - name: publish to site
         run: |
           mkdir -p cfb-app/public/data
+          cp "automation/cards/matchups_${SEASON}_w${WEEK}.json" cfb-app/public/data/nfl_matchups.json
           cp "automation/cards/card_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_card_${SLATE}.json"
           cp "automation/cards/legs_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_legs_${SLATE}.json"
       - name: draft card issue
