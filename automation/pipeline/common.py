@@ -42,9 +42,13 @@ def load_real_ladders(path):
 
 
 def prices_pulled(season, week, slate):
-    """When this slate's prices were pulled (UTC ISO, minutes): the ladders CSV if it exists, else the main-line CSV.
-    Both are written by fetch_lines.py in the same job, so file mtime is the pull time."""
+    """When this slate's prices were pulled (UTC ISO, minutes). fetch_lines.py records it in lines/pulled_<season>_w<week>.txt;
+    without that file, fall back to the ladders/main-line CSV mtime (only right in the job that fetched them —
+    a git checkout or pull resets mtimes)."""
     from datetime import datetime, timezone
+    rec = P("lines", f"pulled_{season}_w{week}.txt")
+    if os.path.exists(rec):
+        return open(rec).read().strip()
     for f in (P("lines", f"ladders_{season}_w{week}.csv"), P("lines", f"dk_{season}_w{week}_{slate}.csv")):
         if os.path.exists(f):
             return datetime.fromtimestamp(os.path.getmtime(f), timezone.utc).isoformat(timespec="minutes")

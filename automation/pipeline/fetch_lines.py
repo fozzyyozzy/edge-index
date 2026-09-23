@@ -65,6 +65,8 @@ def main():
 
     lad = pd.DataFrame(rows).drop_duplicates(["Player", "Market", "Rung"])
     os.makedirs(a.out, exist_ok=True)
+    # the pull time, recorded explicitly: file mtimes change on git checkout/pull, so they can't be trusted later
+    open(f"{a.out}/pulled_{a.season}_w{a.week}.txt", "w").write(now.isoformat(timespec="minutes"))
     lad.to_csv(f"{a.out}/ladders_{a.season}_w{a.week}.csv", index=False)
 
     # main line per player/market = the rung priced closest to even money (what DK shows as the O/U line)

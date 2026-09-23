@@ -3,14 +3,15 @@ build_card_json.py — Wed/Fri/Mon job. Turns the floor scan + edge scan into a 
 that obey the house rules, and writes it as JSON for the site and the newsletter draft.
 
 Rules encoded here (do not relax without changing the newsletter copy too):
-  R1  3–4 legs per ticket, 2–3 tickets per slate
+  R1  3–4 legs per ticket, 2–3 tickets per slate (single-game slates: 2 legs allowed, always "Reduced payout")
   R2  no PLAYER appears on more than one ticket (any market), except a FLOOR STAR (L10 >= 9/10 and L15 >= 13/15),
       max 2 tickets, and a ticket may carry at most one repeated star. Same player = same injury + same game script.
   R3  floor rung = highest rung clearing L10 >= 80% and L15 >= 73%; never stepped up for price
   R4  every leg model% >= implied% - 2pts (winnable first; never a leg we know is overpriced)
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
   R6  team-change and injury holds are hard holds
-  R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles
+  R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles; a 2-leg ticket
+      is allowed there (thin menu) and is always labelled "Reduced payout"
   R8  Bloom target: each ticket aims for >= +200 (3.0x). Reach it by ADDING a 4th floor leg, never by stepping a rung up.
       If 4 legs still fall short, publish as "reduced payout" — floors held, still recommended.
 
@@ -89,7 +90,7 @@ def main():
         if why:
             held.append(dict(Player=r.Player, Market=r.Market, Rung=r.Rung, EstOdds=int(r.EstOdds), L10=r.L10, L15=r.L15,
                              OppD=r.OppD, OwnVol=r.OwnVol, TeamChange=bool(getattr(r, "TeamChange", False) == True),
-                             Reasons=why))
+                             Last3=parse_last3(r.Last3), Reasons=why))
             continue
         rung = float(r.Rung.rstrip("+")); last3 = parse_last3(r.Last3)
         real = dict(REAL.get((norm_name(r.Player), r.Market), [])).get(rung)
@@ -124,7 +125,7 @@ def main():
             if can_take(c):
                 if used.get(c["player"], 0) == 1: reused += 1
                 legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
-        if len(legs) < 3: break
+        if len(legs) < (2 if a.slate in SINGLE_GAME else 3): break          # R1/R7
         payout = 1.0
         for l in legs: payout *= dec(l["odds_est"])
         # pass 2 (R8): under target -> add the 4th leg that gets closest to / past 3.0x, floors only
@@ -142,10 +143,11 @@ def main():
         for l in legs: used[l["player"]] = used.get(l["player"], 0) + 1
         p = 1.0
         for l in legs: p *= l["model_pct"] / 100
+        reduced = payout < TARGET_DEC or len(legs) == 2                     # a 2-leg ticket is always reduced
         tickets.append(dict(name=f"{a.slate.upper()}-{i+1}", legs=legs, model_hit=round(p, 3), est_payout=round(payout, 2),
                             est_american=int(round((payout - 1) * 100)) if payout >= 2 else int(round(-100 / (payout - 1))),
-                            reduced=payout < TARGET_DEC, correlated=a.slate in SINGLE_GAME,
-                            label="Reduced payout: floors held, not stretched — still recommended" if payout < TARGET_DEC else "Bloom: +200 target met"))
+                            reduced=reduced, correlated=a.slate in SINGLE_GAME,
+                            label="Reduced payout: floors held, not stretched — still recommended" if reduced else "Bloom: +200 target met"))
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""

@@ -272,8 +272,11 @@ function Slip({ slip, setSlip, notice, tickets, setTickets, meta, slate, onSave 
   slip.forEach(l => { (byGame[l.game] = byGame[l.game] || []).push(l); });
   Object.entries(byGame).forEach(([g, ls]) => { if (ls.length > 1)
     warns.push({ t:`Same game (${g}): these legs rise and fall together.`, c:T.amber }); });
-  if (slip.length && (slip.length < 3 || slip.length > 4))
-    warns.push({ t:`3–4 legs per ticket — this one has ${slip.length}.`, c:T.amber });
+  const minLegs = slate === "tnf" || slate === "mnf" ? 2 : 3;          // single-game slates allow a 2-leg ticket
+  if (slip.length && (slip.length < minLegs || slip.length > 4))
+    warns.push({ t:`${minLegs}–4 legs per ticket — this one has ${slip.length}.`, c:T.amber });
+  if (slip.length === 2 && minLegs === 2)
+    warns.push({ t:"2-leg ticket: reduced payout.", c:"#888" });
   slip.forEach(l => {
     if (l.odds < -400) warns.push({ t:`Price worse than −400: ${l.player} ${rungStr(l.rung)}.`, c:T.amber });
     if (l.danger) warns.push({ t:`${l.player} ${MARKET_LABEL[l.market]}: ${l.reasons.map(clean).filter(Boolean).join("; ") || "hard hold"}.`, c:T.red });

@@ -105,7 +105,7 @@ def main():
     out = trimmed
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
                 grade_key="Grade = how often this rung hits (60% last-10 + 40% last-15 clear rate, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
-                rules=["3-4 legs per ticket", "no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
+                rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(dict(meta=meta, players=out), open(path, "w"), separators=(",", ":"))
