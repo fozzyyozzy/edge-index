@@ -8,7 +8,7 @@ import argparse, io, os, sys, urllib.request
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import norm_name, fetch_season, COL, load_real_ladders
+from common import norm_name, fetch_season, COL, load_real_ladders, P
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
@@ -29,7 +29,7 @@ def main():
     ap.add_argument("--slate", required=True); ap.add_argument("--lines", required=True); ap.add_argument("--ladders", default=None, help="ladders CSV from fetch_lines.py; real prices override estimates"); ap.add_argument("--out")
     ap.add_argument("--w26", type=float, default=None, help="weight on current-season splits; default = games_played/8 capped at .6")
     a = ap.parse_args()
-    out = a.out or f"floors_{a.season}_w{a.week}_{a.slate}.csv"
+    out = a.out or P("floors", f"floors_{a.season}_w{a.week}_{a.slate}.csv")
 
     w = pd.concat([fetch_season(y) for y in (a.season - 2, a.season - 1, a.season)])
     cur = w[w.season == a.season]; gp = cur.week.nunique() if len(cur) else 0

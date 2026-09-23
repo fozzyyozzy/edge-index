@@ -12,6 +12,8 @@ Env: ANTHROPIC_API_KEY (GitHub secret). Beehiiv keys only if --to beehiiv.
 Set DRY_RUN=1 to print the issue instead of saving it.
 """
 import argparse, json, os, sys, urllib.request
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+def P(*p): return os.path.join(ROOT, *p)
 
 MODEL = "claude-sonnet-4-6"
 
@@ -37,13 +39,13 @@ def main():
     ap.add_argument("--to", choices=["file", "beehiiv"], default="file")
     a = ap.parse_args()
 
-    system = open("newsletter/prompts/system.md").read()
-    tmpl = open(f"newsletter/prompts/{a.kind}.md").read()
+    system = open(P("newsletter", "prompts", "system.md")).read()
+    tmpl = open(P("newsletter", "prompts", f"{a.kind}.md")).read()
     if a.kind == "card":
-        data = json.load(open(f"cards/card_{a.season}_w{a.week}_{a.slate}.json"))
+        data = json.load(open(P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")))
         subject = f"Week {a.week} {a.slate.upper()} card"
     elif a.kind == "receipts":
-        data = json.load(open(f"receipts/receipts_{a.season}_w{a.week}.json"))
+        data = json.load(open(P("receipts", f"receipts_{a.season}_w{a.week}.json")))
         subject = f"Week {a.week} receipts"
     else:
         data = {}; subject = "Edge Index: what this is, and the rules"
@@ -53,11 +55,11 @@ def main():
     if os.environ.get("DRY_RUN"):
         print(md); return
     if a.to == "file":
-        os.makedirs("newsletter/drafts", exist_ok=True)
+        os.makedirs(P("newsletter", "drafts"), exist_ok=True)
         slug = subject.lower().replace(" ", "_")
-        path = f"newsletter/drafts/{slug}.md"
+        path = P("newsletter", "drafts", f"{slug}.md")
         open(path, "w", encoding="utf-8").write(f"# {subject}\n\n{md}\n")
-        open("newsletter/drafts/LATEST_SUBJECT.txt", "w").write(subject)
+        open(P("newsletter", "drafts", "LATEST_SUBJECT.txt"), "w").write(subject)
         print("draft saved:", path); return
     try:
         import markdown; html = markdown.markdown(md, extensions=["tables"])

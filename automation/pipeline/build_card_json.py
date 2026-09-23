@@ -4,8 +4,8 @@ that obey the house rules, and writes it as JSON for the site and the newsletter
 
 Rules encoded here (do not relax without changing the newsletter copy too):
   R1  3–4 legs per ticket, 2–3 tickets per slate
-  R2  no leg appears on more than one ticket, except a FLOOR STAR (L10 >= 9/10 and L15 >= 13/15), max 2 tickets,
-      and a ticket may carry at most one repeated star
+  R2  no PLAYER appears on more than one ticket (any market), except a FLOOR STAR (L10 >= 9/10 and L15 >= 13/15),
+      max 2 tickets, and a ticket may carry at most one repeated star. Same player = same injury + same game script.
   R3  floor rung = highest rung clearing L10 >= 80% and L15 >= 73%; never stepped up for price
   R4  every leg model% >= implied% - 2pts (winnable first; never a leg we know is overpriced)
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
@@ -24,7 +24,7 @@ import argparse, json, os, sys
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay
-from common import norm_name
+from common import norm_name, P
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15
 MAX_LEG_JUICE = -450
@@ -33,7 +33,7 @@ def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 SINGLE_GAME = {"tnf", "mnf", "snf"}
 
 def load_floors(season, week, slate):
-    f = pd.read_csv(f"floors_{season}_w{week}_{slate}.csv")
+    f = pd.read_csv(P("floors", f"floors_{season}_w{week}_{slate}.csv"))
     f["l10"] = f.L10.str.split("/").str[0].astype(int) / 10
     f["l15"] = f.L15.str.split("/").str[0].astype(int) / 15
     return f
@@ -68,7 +68,7 @@ def main():
     for i in range(n_tickets):
         legs, games, reused = [], set(), 0
         def can_take(c):
-            k = (c["player"], c["market"])
+            k = c["player"]                                   # player-level uniqueness across tickets
             if used.get(k, 0) >= (2 if c["star"] else 1): return False
             if used.get(k, 0) == 1 and reused >= 1: return False
             g = frozenset([c["team"], c["opp"]])
@@ -79,7 +79,7 @@ def main():
         for c in cands:
             if len(legs) == 3: break
             if can_take(c):
-                if used.get((c["player"], c["market"]), 0) == 1: reused += 1
+                if used.get(c["player"], 0) == 1: reused += 1
                 legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
         if len(legs) < 3: break
         payout = 1.0
@@ -88,15 +88,15 @@ def main():
         if payout < TARGET_DEC:
             best = None
             for c in cands:
-                if can_take(c):
+                if can_take(c) and c["odds_est"] <= -130 and min(c["l10"], c["l15"]) >= 0.73:   # 4th leg is a floor, not a flyer
                     p2 = payout * dec(c["odds_est"])
                     if best is None or abs(p2 - TARGET_DEC) < abs(best[1] - TARGET_DEC) or (p2 >= TARGET_DEC and best[1] < TARGET_DEC):
                         best = (c, p2)
             if best:
                 c, payout = best
-                if used.get((c["player"], c["market"]), 0) == 1: reused += 1
+                if used.get(c["player"], 0) == 1: reused += 1
                 legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
-        for l in legs: used[(l["player"], l["market"])] = used.get((l["player"], l["market"]), 0) + 1
+        for l in legs: used[l["player"]] = used.get(l["player"], 0) + 1
         p = 1.0
         for l in legs: p *= l["model_pct"] / 100
         tickets.append(dict(name=f"{a.slate.upper()}-{i+1}", legs=legs, model_hit=round(p, 3), est_payout=round(payout, 2),
@@ -104,13 +104,12 @@ def main():
                             reduced=payout < TARGET_DEC, correlated=a.slate in SINGLE_GAME,
                             label="Reduced payout: floors held, not stretched — still recommended" if payout < TARGET_DEC else "Bloom: +200 target met"))
 
-    notes_path = f"notes/notes_{a.season}_w{a.week}.md"
+    notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R7 (see build_card_json.py)",
                 tickets=tickets, floors_singles=cands[:12], held=fl[(fl.OppD == "TOUGH") | (fl.OwnVol == "TOUGH") | (fl.get("TeamChange", False) == True)]
                 [["Player", "Market", "Rung", "EstOdds", "L10", "L15", "OppD", "OwnVol", "TeamChange"]].to_dict("records")[:15], notes=notes)
-    os.makedirs("cards", exist_ok=True)
-    out = f"cards/card_{a.season}_w{a.week}_{a.slate}.json"
+    out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(card, open(out, "w"), indent=1, default=str)
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")
     for t in tickets:

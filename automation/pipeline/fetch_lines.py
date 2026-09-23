@@ -10,6 +10,8 @@ Env: ODDS_API_KEY.   Cost: 1 request per market per event -> 7 x games per pull 
 import argparse, json, os, shutil, sys, urllib.request, urllib.parse
 from datetime import datetime, timedelta, timezone
 import pandas as pd
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import P
 
 BASE = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl"
 MARKETS = {                      # Odds API market key -> pipeline market
@@ -32,8 +34,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--days", type=int, default=7); ap.add_argument("--book", default="draftkings")
-    ap.add_argument("--out", default="lines"); a = ap.parse_args()
+    ap.add_argument("--out", default=None); a = ap.parse_args()
     key = os.environ.get("ODDS_API_KEY") or sys.exit("set ODDS_API_KEY")
+    a.out = a.out or P("lines")
 
     events, rem, _ = get(f"{BASE}/events?apiKey={key}")
     now = datetime.now(timezone.utc); horizon = now + timedelta(days=a.days)

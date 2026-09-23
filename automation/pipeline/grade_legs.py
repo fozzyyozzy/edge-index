@@ -15,7 +15,7 @@ import argparse, io, json, os, sys, urllib.request
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder, implied_prob
-from common import norm_name, fetch_season, COL, load_real_ladders
+from common import norm_name, fetch_season, COL, load_real_ladders, P
 from floors import INV, SLATE_DAYS, schedule, team_split
 
 LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"]
@@ -93,8 +93,7 @@ def main():
                 grade_key="Grade = how often this rung hits (60% last-10 + 40% last-15 clear rate, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
                 rules=["3-4 legs per ticket", "no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
-    os.makedirs("cards", exist_ok=True)
-    path = f"cards/legs_{a.season}_w{a.week}_{a.slate}.json"
+    path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(dict(meta=meta, players=out), open(path, "w"), indent=1)
     n = sum(len(p["rungs"]) for p in out); a_plus = sum(1 for p in out for r in p["rungs"] if r["grade"] == "A+")
     print(f"wrote {path}: {len(out)} player/markets, {n} rungs graded, {a_plus} A+")

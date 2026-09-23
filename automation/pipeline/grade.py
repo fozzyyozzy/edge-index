@@ -6,7 +6,7 @@ Usage : python pipeline/grade.py --season 2026 --week 2
 """
 import argparse, glob, json, os
 import pandas as pd
-from common import norm_name, COL, fetch_week, pay
+from common import norm_name, COL, fetch_week, pay, P
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
@@ -15,7 +15,7 @@ def main():
     act = {(k, m): v for m, c in COL.items() for k, v in zip(w.key, w[c])}
 
     legs, tickets = [], []
-    for path in sorted(glob.glob(f"cards/card_{a.season}_w{a.week}_*.json")):
+    for path in sorted(glob.glob(P("cards", f"card_{a.season}_w{a.week}_*.json"))):
         card = json.load(open(path))
         for t in card["tickets"]:
             t_hits = []
@@ -48,11 +48,10 @@ def main():
         "tickets": tickets,
         "ticket_record": {r: sum(1 for t in tickets if t["result"] == r) for r in ("WIN", "LOSS", "VOID")},
     }
-    os.makedirs("receipts", exist_ok=True)
-    out = f"receipts/receipts_{a.season}_w{a.week}.json"
+    out = P("receipts", f"receipts_{a.season}_w{a.week}.json")
     json.dump(summary, open(out, "w"), indent=1)
-    df.assign(season=a.season, week=a.week).to_csv("receipts/season_ledger.csv", mode="a", index=False,
-                                                    header=not os.path.exists("receipts/season_ledger.csv"))
+    ledger = P("receipts", "season_ledger.csv")
+    df.assign(season=a.season, week=a.week).to_csv(ledger, mode="a", index=False, header=not os.path.exists(ledger))
     print(f"wrote {out}"); print(json.dumps({k: summary[k] for k in ("legs_graded", "legs_hit", "hit_rate", "avg_model_pct", "flat_pnl_1u", "ticket_record")}, indent=1))
 
 if __name__ == "__main__":
