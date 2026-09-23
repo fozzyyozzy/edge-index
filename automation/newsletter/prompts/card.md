@@ -6,6 +6,7 @@ Structure:
 ## Held back — 4–6 from `held`, each with the reason (opponent D tough / own volume low / blowout risk).
 ## Notes — the author's notes verbatim if present (these are scheme/injury reads and are not model output; say so).
 Then the closing line.
+End the issue with the price timestamp in italics and parentheses on its own line, e.g. (Prices as pulled Friday 9:04 AM ET). No other disclaimer.
 
 DATA:
 {{DATA}}

@@ -24,6 +24,14 @@ def claude(system, user):
                                messages=[{"role": "user", "content": user}])
     return "".join(b.text for b in r.content if b.type == "text")
 
+def et_stamp(iso):
+    """card JSON prices_pulled (UTC ISO) -> 'Friday 9:04 AM ET' for the issue's closing timestamp; None stays None."""
+    if not iso: return None
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    t = datetime.fromisoformat(iso).astimezone(ZoneInfo("America/New_York"))
+    return f"{t:%A} {t.hour % 12 or 12}:{t:%M} {t:%p} ET"
+
 def beehiiv_draft(subject, html):
     pub = os.environ["BEEHIIV_PUBLICATION_ID"]; key = os.environ["BEEHIIV_API_KEY"]
     body = json.dumps({"subject_line": subject, "preview_text": subject, "status": "draft",
@@ -43,6 +51,7 @@ def main():
     tmpl = open(P("newsletter", "prompts", f"{a.kind}.md")).read()
     if a.kind == "card":
         data = json.load(open(P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")))
+        data["prices_pulled"] = et_stamp(data.get("prices_pulled"))   # prompt ends the issue with it (card.md)
         subject = f"Week {a.week} {a.slate.upper()} card"
     elif a.kind == "receipts":
         data = json.load(open(P("receipts", f"receipts_{a.season}_w{a.week}.json")))

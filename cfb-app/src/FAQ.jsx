@@ -74,7 +74,7 @@ const FAQS = [
       },
       {
         q: "Do you cover NFL?",
-        a: "NFL is in development. The model was backtested on 37,777 NFL prop plays with the AUTO tier hitting 97.2% on 6,799 plays. Full NFL launch is planned for September 2026 preseason. MLB is the current live product.",
+        a: "NFL is in development. Full NFL launch is planned for September 2026 preseason. MLB is the current live product.",
       },
       {
         q: "How is this different from other pick services?",
