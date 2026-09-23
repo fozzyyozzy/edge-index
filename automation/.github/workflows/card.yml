@@ -1,0 +1,59 @@
+name: card-build-and-draft
+on:
+  schedule:
+    - {cron: "0 13 * * 3"}   # Wed 09:00 ET -> tnf
+    - {cron: "0 13 * * 5"}   # Fri 09:00 ET -> sun
+    - {cron: "0 13 * * 1"}   # Mon 09:00 ET -> mnf
+  workflow_dispatch:
+    inputs:
+      slate: {description: "tnf | sun | mnf", required: true}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      SEASON: 2026
+      WEEK: ${{ vars.CURRENT_WEEK }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -r automation/requirements.txt
+      - name: resolve slate from weekday
+        run: |
+          S="${{ github.event.inputs.slate }}"
+          if [ -z "$S" ]; then case $(date -u +%u) in 3) S=tnf;; 5) S=sun;; 1) S=mnf;; esac; fi
+          echo "SLATE=$S" >> $GITHUB_ENV
+      - name: fetch DK ladders (The Odds API) — falls back to pastes if no key
+        env: {ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}}
+        run: |
+          if [ -n "$ODDS_API_KEY" ]; then
+            DAYS=$([ "$SLATE" = tnf ] && echo 2 || ([ "$SLATE" = mnf ] && echo 2 || echo 5))
+            python automation/pipeline/fetch_lines.py --season $SEASON --week $WEEK --days $DAYS --out automation/lines
+          else
+            test -d automation/lines/raw/w${WEEK} || { echo "::error::no ODDS_API_KEY and no pastes in automation/lines/raw/w${WEEK}/"; exit 1; }
+            python automation/pipeline/parse_lines.py --season $SEASON --week $WEEK
+          fi
+      - name: floor scan
+        run: python automation/pipeline/floors.py --season $SEASON --week $WEEK --slate $SLATE --lines automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv
+      - name: build card
+        run: python automation/pipeline/build_card_json.py --season $SEASON --week $WEEK --slate $SLATE
+      - name: grade every rung (Legs tab)
+        run: python automation/pipeline/grade_legs.py --season $SEASON --week $WEEK --slate $SLATE --lines automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv
+      - name: publish to site
+        run: |
+          cp automation/cards/card_${SEASON}_w${WEEK}_${SLATE}.json cfb-app/public/data/nfl_card_${SLATE}.json
+          cp automation/cards/legs_${SEASON}_w${WEEK}_${SLATE}.json cfb-app/public/data/nfl_legs_${SLATE}.json
+      - name: draft card issue (markdown draft -> GitHub issue)
+        run: python automation/newsletter/draft.py --kind card --season $SEASON --week $WEEK --slate $SLATE
+      - name: open GitHub issue with the draft (copy into Substack)
+        env: {GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}}
+        run: |
+          SUBJ=$(cat automation/newsletter/drafts/LATEST_SUBJECT.txt)
+          FILE="automation/newsletter/drafts/$(echo "$SUBJ" | tr 'A-Z ' 'a-z_').md"
+          gh issue create --title "DRAFT: $SUBJ" --body-file "$FILE" --label newsletter
+      - name: commit
+        run: |
+          git config user.name edge-index-bot && git config user.email bot@edge-index.com
+          git add automation/cards automation/newsletter/drafts cfb-app/public/data && git commit -m "week $WEEK $SLATE card" || true
+          git push
