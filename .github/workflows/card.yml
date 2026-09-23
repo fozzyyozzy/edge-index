@@ -68,6 +68,12 @@ jobs:
           cp "automation/cards/card_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_card_${SLATE}.json"
           cp "automation/cards/legs_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_legs_${SLATE}.json"
           cp "automation/floors/floors_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_floors_${SLATE}.json"
+          # tickets published by hand outside the pipeline (Card tab shows them flagged); clear last week's if none
+          if [ -f "automation/cards/handbuilt_${SEASON}_w${WEEK}_${SLATE}.json" ]; then
+            cp "automation/cards/handbuilt_${SEASON}_w${WEEK}_${SLATE}.json" "cfb-app/public/data/nfl_handbuilt_${SLATE}.json"
+          else
+            rm -f "cfb-app/public/data/nfl_handbuilt_${SLATE}.json"
+          fi
       - name: draft card issue
         run: python automation/newsletter/draft.py --kind card --season "$SEASON" --week "$WEEK" --slate "$SLATE"
       - name: open GitHub issue with the draft (copy into Substack)

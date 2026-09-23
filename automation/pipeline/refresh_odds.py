@@ -6,6 +6,8 @@ refresh_odds.py — after fetch_lines.py re-pulls a slate: move current prices o
 Card (cards/card_<season>_w<week>_<slate>.json): every leg on tickets and floors_singles gets current_odds / current_at
 and a price_history point — only when the leg's game had not kicked off at that pull (so the last history point before
 kickoff is the closing price grade.py uses). Nothing else on the card changes: tickets are locked at publish.
+Hand-built tickets (cards/handbuilt_<season>_w<week>_<slate>.json) get the same current-price updates; their published
+prices stay as published.
 Legs / floors JSON (rebuilt from the same pull by grade_legs.py and floors.py just before this): any player/market DK
 posted after the card was built gets posted_after_card: true. Those can never reach a ticket — build_card_json.py is not
 re-run by a refresh.
@@ -90,11 +92,17 @@ def main():
     if a.which_slate:
         print(which_slate() or ""); return
     from floors import kickoffs
+    prices, kick = ladder_prices(a.season, a.week), kickoffs(a.season, a.week)
+    hand_path = P("cards", f"handbuilt_{a.season}_w{a.week}_{a.slate}.json")
+    if os.path.exists(hand_path):
+        hand = json.load(open(hand_path))
+        print(f"{a.slate} hand-built: {refresh_card(hand, prices, kick)} leg prices moved")
+        json.dump(hand, open(hand_path, "w"), indent=1, allow_nan=False)
     card_path = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     if not os.path.exists(card_path):
         print(f"no {a.slate} card yet for week {a.week}: legs/floors refreshed, nothing to lock or flag"); return
     card = json.load(open(card_path))
-    moved = refresh_card(card, ladder_prices(a.season, a.week), kickoffs(a.season, a.week))
+    moved = refresh_card(card, prices, kick)
     json.dump(card, open(card_path, "w"), indent=1, allow_nan=False)
     at_publish = set(card.get("markets_at_publish") or [])
     flagged = (flag_new_markets(P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json"), "players", at_publish),

@@ -47,7 +47,7 @@ def main():
                 actual = act.get((norm_name(l["player"]), l["market"]))
                 hit = None if actual is None or pd.isna(actual) else bool(actual >= l["rung"])
                 odds = l.get("published_odds") or l.get("odds_real") or l["odds_est"]     # the price the card published
-                close = closing_odds(l, kick)
+                close = None if hand else closing_odds(l, kick)   # hand-built legs stay out of every grade stat, CLV included
                 legs.append({**l, "slate": card["slate"], "ticket": t["name"], "hand_built": hand,
                              "actual": None if actual is None or pd.isna(actual) else float(actual), "hit": hit,
                              "published": odds, "closing": close, "clv_pts": clv_pts(odds, close),

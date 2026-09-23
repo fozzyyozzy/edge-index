@@ -88,39 +88,44 @@ function Leg({ l, last }) {
       </div>
       <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",fontFamily:T.mono}}>
         <Price leg={l} />
-        <span style={{fontSize:10,color:"#999"}}>{frac(l.l10, 10)} <span style={{color:"#555"}}>{frac(l.l15, 15)}</span></span>
-        <span style={{fontSize:10,minWidth:66}}>
+        {l.l10 != null && <span style={{fontSize:10,color:"#999"}}>{frac(l.l10, 10)} <span style={{color:"#555"}}>{frac(l.l15, 15)}</span></span>}
+        {l3.length > 0 && <span style={{fontSize:10,minWidth:66}}>
           {l3.map((v, i) => <span key={i} style={{color: v >= l.rung ? "#7fe0b0" : "#c96b74",marginRight:5}}>{Math.round(v)}</span>)}
-        </span>
-        <span style={{display:"flex",gap:7}}><Tag label="D" v={l.opp_d} /><Tag label="VOL" v={l.own_vol} /></span>
+        </span>}
+        {l.opp_d != null && <span style={{display:"flex",gap:7}}><Tag label="D" v={l.opp_d} /><Tag label="VOL" v={l.own_vol} /></span>}
       </div>
     </div>
   );
 }
 
-function Ticket({ t }) {
-  const color = t.reduced ? T.amber : T.accent;
+// hand = a ticket published by hand before the automated card (nfl_handbuilt_<slate>.json): amber flag instead of the
+// Bloom/Reduced label, no model hit (it has no pipeline numbers), payout as published.
+function Ticket({ t, hand }) {
+  const color = hand || t.reduced ? T.amber : T.accent;
+  const payoutX = t.est_payout ?? (t.est_american != null ? (t.est_american > 0 ? 1 + t.est_american / 100 : 1 + 100 / -t.est_american) : null);
   return (
     <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,marginBottom:14,overflow:"hidden"}}>
       <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",padding:"12px 14px",
         borderBottom:`1px solid ${T.border}`}}>
         <div style={{fontSize:18,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>{t.name}</div>
         <span style={{fontSize:9.5,fontFamily:T.mono,color,background:color + "14",border:`1px solid ${color}40`,
-          borderRadius:3,padding:"3px 8px",lineHeight:1.4}}>{t.label}</span>
+          borderRadius:3,padding:"3px 8px",lineHeight:1.4,letterSpacing: hand ? 1 : 0}}>{hand ? (t.flag || "hand-built").toUpperCase() : t.label}</span>
         {t.correlated && <span style={{fontSize:9,fontFamily:T.mono,color:"#888",border:"1px solid #ffffff18",
           borderRadius:3,padding:"3px 7px"}}>single game · legs correlated</span>}
         <span style={{flex:1}} />
         <div style={{display:"flex",gap:18,fontFamily:T.mono}}>
           <div style={{textAlign:"right"}}>
             <div style={{fontSize:20,fontWeight:800,color:T.nfl,letterSpacing:-0.5,lineHeight:1}}>{oddsStr(t.est_american)}</div>
-            <div style={{fontSize:8,color:"#444",letterSpacing:1.5,marginTop:3}}>PAYOUT · {t.est_payout.toFixed(2)}x</div>
+            <div style={{fontSize:8,color:"#444",letterSpacing:1.5,marginTop:3}}>PAYOUT{payoutX != null ? ` · ${payoutX.toFixed(2)}x` : ""}</div>
           </div>
-          <div style={{textAlign:"right"}}>
+          {!hand && <div style={{textAlign:"right"}}>
             <div style={{fontSize:20,fontWeight:800,color:T.text,letterSpacing:-0.5,lineHeight:1}}>{(t.model_hit * 100).toFixed(1)}%</div>
             <div style={{fontSize:8,color:"#444",letterSpacing:1.5,marginTop:3}}>MODEL HIT</div>
-          </div>
+          </div>}
         </div>
       </div>
+      {hand && <div style={{fontSize:10,color:"#999",padding:"8px 14px",borderBottom:`1px solid ${T.border}`,lineHeight:1.6}}>
+        Published in the newsletter before the automated card; graded Tuesday, excluded from grade stats.</div>}
       {t.legs.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === t.legs.length - 1} />)}
     </div>
   );
@@ -132,20 +137,25 @@ function Label({ children }) {
 
 export default function NFLHub() {
   const [files, setFiles] = useState(null);     // slate -> card | null
+  const [hands, setHands] = useState({});       // slate -> hand-built tickets file | null
   const [slate, setSlate] = useState(null);
 
   useEffect(() => {
     const bust = `?t=${Date.now()}`;
-    Promise.all(SLATES.map(([s]) => fetch(`/data/nfl_card_${s}.json${bust}`)
-      .then(r => r.ok ? r.json() : null).catch(() => null)))
+    const get = name => fetch(`/data/${name}.json${bust}`).then(r => r.ok ? r.json() : null).catch(() => null);
+    Promise.all(SLATES.flatMap(([s]) => [get(`nfl_card_${s}`), get(`nfl_handbuilt_${s}`)]))
       .then(all => {
-        const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[i]?.tickets ? all[i] : null]));
-        setFiles(fs);
-        setSlate(defaultSlate(fs));
+        const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[2 * i]?.tickets ? all[2 * i] : null]));
+        const hb = Object.fromEntries(SLATES.map(([s], i) => [s, all[2 * i + 1]?.tickets?.length ? all[2 * i + 1] : null]));
+        setFiles(fs); setHands(hb);
+        setSlate(defaultSlate(Object.fromEntries(SLATES.map(([s]) => [s, fs[s] || hb[s]]))));
       });
   }, []);
 
   const card = files && slate ? files[slate] : null;
+  // a hand-built file only shows with the same week's card (or alone, before the card posts)
+  const hand = slate && hands[slate] && (!card || hands[slate].week === card.week) ? hands[slate] : null;
+  const available = files ? Object.fromEntries(SLATES.map(([s]) => [s, files[s] || hands[s]])) : null;
   const pulled = card?.prices_pulled ? new Date(card.prices_pulled).toLocaleString(undefined,
     { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit" }) : null;
 
@@ -153,9 +163,9 @@ export default function NFLHub() {
     <div style={{padding:"28px 16px 80px",maxWidth:1000,margin:"0 auto",fontFamily:T.mono}}>
       <div style={{display:"flex",alignItems:"baseline",gap:14,flexWrap:"wrap",marginBottom:4}}>
         <div style={{fontSize:22,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>
-          CARD{card ? ` · WEEK ${card.week}` : ""}
+          CARD{card || hand ? ` · WEEK ${(card || hand).week}` : ""}
         </div>
-        <SlateSwitch files={files} slate={slate} onChange={setSlate} />
+        <SlateSwitch files={available} slate={slate} onChange={setSlate} />
         <span style={{fontSize:9,fontWeight:700,color:T.amber,background:T.amber + "18",border:`1px solid ${T.amber}40`,
           borderRadius:3,padding:"3px 8px",letterSpacing:2}}>GRADED IN PUBLIC</span>
       </div>
@@ -164,14 +174,19 @@ export default function NFLHub() {
       </div>
 
       {!files && <div style={{fontSize:10,color:"#444"}}>loading…</div>}
+      {hand && <>
+        <Label>PUBLISHED IN THE NEWSLETTER · {hand.tickets.length}</Label>
+        {hand.tickets.map(t => <Ticket key={t.name} t={t} hand />)}
+      </>}
+
       {files && !card && (
         <div style={{fontSize:11,color:"#777",background:T.surface,border:`1px solid ${T.border}`,borderRadius:6,padding:16}}>
-          No card posted for this slate yet.
+          {hand ? "No automated card posted for this slate yet." : "No card posted for this slate yet."}
         </div>
       )}
 
       {card && <>
-        <Label>TICKETS · {card.tickets.length}</Label>
+        <Label>{hand ? "AUTOMATED TICKETS" : "TICKETS"} · {card.tickets.length}</Label>
         {card.tickets.some(t => t.legs.some(l => l.current_odds != null && l.current_odds !== l.published_odds)) && (
           <div style={{fontSize:9.5,color:"#555",margin:"-4px 0 10px"}}>
             Prices: published → current. <span style={{color:T.accent}}>Green</span> = shortened since we posted (the market

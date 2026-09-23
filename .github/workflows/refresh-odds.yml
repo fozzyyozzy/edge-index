@@ -93,6 +93,12 @@ jobs:
           if [ -f "automation/cards/card_${SEASON}_w${WEEK}_${S}.json" ]; then
             cp "automation/cards/card_${SEASON}_w${WEEK}_${S}.json" "cfb-app/public/data/nfl_card_${S}.json"
           fi
+          # tickets published by hand outside the pipeline (Card tab shows them flagged); clear last week's if none
+          if [ -f "automation/cards/handbuilt_${SEASON}_w${WEEK}_${S}.json" ]; then
+            cp "automation/cards/handbuilt_${SEASON}_w${WEEK}_${S}.json" "cfb-app/public/data/nfl_handbuilt_${S}.json"
+          else
+            rm -f "cfb-app/public/data/nfl_handbuilt_${S}.json"
+          fi
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com
           git add automation/lines automation/cards automation/floors cfb-app/public/data
