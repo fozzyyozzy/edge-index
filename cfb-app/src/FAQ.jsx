@@ -7,6 +7,16 @@ const T = {
   mono:"'IBM Plex Mono',monospace", head:"'Barlow Condensed',sans-serif",
 };
 
+// Answers may be JSX so they can link. stopPropagation keeps the click from also collapsing the answer.
+function Link({ href, children }) {
+  const external = href.startsWith("http");
+  return (
+    <a href={href} onClick={e => e.stopPropagation()} {...(external ? { target:"_blank", rel:"noopener noreferrer" } : {})}
+      style={{color:"#00e5ff",textDecoration:"none",borderBottom:"1px dotted #00e5ff80"}}>{children}</a>
+  );
+}
+const RecordLink = () => <Link href="#record">Record tab</Link>;
+
 const FAQS = [
   {
     category: "METHODOLOGY",
@@ -26,7 +36,7 @@ const FAQS = [
       },
       {
         q: "How does the fade model work?",
-        a: "Players below .150 batting average over the last 14 days (minimum 10 AB) are excluded from OVER plays and added to the fade list. When books still price their hit OVER at -180 to -250, the UNDER becomes plus money (+100 to +175). The model hit 15-4 (78.9%) on fades in the first week of live operation — it's our biggest edge.",
+        a: <>Players below .150 batting average over the last 14 days (minimum 10 AB) are excluded from OVER plays and added to the fade list. When books still price their hit OVER at -180 to -250, the UNDER becomes plus money (+100 to +175). Every fade and its result is on the <RecordLink />.</>,
       },
       {
         q: "Why 2-3 leg parlays instead of singles on juiced plays?",
@@ -44,11 +54,11 @@ const FAQS = [
     items: [
       {
         q: "What is your verified track record?",
-        a: "Live MLB operations launched May 8, 2026. Through May 13: Singles 39-23 (62.9%) +$211, Fades 15-4 (78.9%) +$1,477, Parlays 5-12 +$344, Combined +$1,680 (+16.8 units) at $100/play flat betting. Profitable every single day across 6 days. Full day-by-day record is in the Record tab.",
+        a: <>Every graded play since live MLB operations began on May 8, 2026 is on the <RecordLink />, day by day, wins and losses.</>,
       },
       {
         q: "Why do fades outperform singles?",
-        a: "Sportsbooks adjust OVER pricing slowly on cold bats because their algorithms weight season-long reputation heavily. A player hitting .094 L14 priced at -200 OVER implies 67% probability — when true probability is closer to 35-45%. That mispricing creates plus money UNDER value. At +120 average odds you only need 45.5% to break even. The model hits 78.9%.",
+        a: <>Sportsbooks adjust OVER pricing slowly on cold bats because their algorithms weight season-long reputation heavily. A player hitting .094 L14 priced at -200 OVER implies 67% probability — when true probability is closer to 35-45%. That mispricing creates plus money UNDER value. At +120 average odds you only need 45.5% to break even. Whether fades clear that bar is tracked on the <RecordLink />.</>,
       },
       {
         q: "What is your biggest known weakness?",
@@ -74,15 +84,15 @@ const FAQS = [
       },
       {
         q: "Do you cover NFL?",
-        a: "NFL is in development. Full NFL launch is planned for September 2026 preseason. MLB is the current live product.",
+        a: <>Yes — NFL is the lead product. The card posts Wednesday (Thursday game), Friday (Sunday slate) and Monday (Monday game), and receipts grading every card leg post Tuesday, at <Link href="https://fozzyyozzy.substack.com">fozzyyozzy.substack.com</Link>.</>,
       },
       {
         q: "How is this different from other pick services?",
-        a: "Three things: (1) Full transparency — every play shows its signal stack, model probability, market implied probability, and edge calculation. No black box. (2) We track UNDERS alongside OVERs — the cold streak fade model is our biggest edge and most services ignore it entirely. (3) Discipline over volume — 2-3 leg SGPs on floor lines, not 8-leg parlays. Backtesting proves 2-3 leg correlated SGPs dramatically outperform 4+ leg parlays.",
+        a: "Three things: (1) Full transparency — every play shows its signal stack, model probability, market implied probability, and edge calculation. No black box. (2) We track UNDERS alongside OVERs — the cold streak fade model is our biggest edge and most services ignore it entirely. (3) Discipline over volume — 2-3 leg SGPs on floor lines, not 8-leg parlays.",
       },
       {
         q: "Do you guarantee results?",
-        a: "No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. The model identifies statistical edges — it does not predict individual outcomes with certainty. A 90% model probability means the play hits approximately 90% of the time over a large sample. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.",
+        a: <>No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. The model identifies statistical edges — it does not predict individual outcomes with certainty. For the NFL model only, a stated probability is checked against what happened: 90% should hit about 90% of the time over a large sample — see “Does 80% mean 80%?” on the <RecordLink />. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.</>,
       },
     ],
   },

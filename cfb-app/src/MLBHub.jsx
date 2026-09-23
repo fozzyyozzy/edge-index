@@ -129,7 +129,6 @@ const RL_METHODOLOGY = [
   "HOT team -1.5: power score >= +0.5 AND odds <= -150 or plus money",
   "Cold team fade: bet opponent -1.5 when cold team is 0-7/1-6 L7",
   "Gate: -1.5 only at -150 or better (break-even 60%) or plus money",
-  "Backtest 2026: hot -1.5 hit 61.2% — profitable at -150 or better",
   "Today: ATL -1.5 +145 (ELITE) · TB -1.5 +140 (STRONG) · PIT -1.5 +150 (fade CHI 0-7)",
 ];
 
@@ -580,11 +579,7 @@ export default function MLBHub() {
               background:"#00e5ff10",border:"1px solid #00e5ff30",borderRadius:8}}>
               <div style={{fontSize:11,color:"#00e5ff",fontFamily:T.mono,
                 letterSpacing:1,marginBottom:4}}>
-                🏟️ TEAM RUN LINE PLAYS — BACKTEST VALIDATED
-              </div>
-              <div style={{fontSize:11,color:"#888",fontFamily:T.mono,lineHeight:1.6}}>
-                Cold +1.5 hit 42.6% over 223 bets (2026 season). Profitable at +140 or better.
-                Hot -1.5 hit 61.2% — only post at -150 or better odds.
+                🏟️ TEAM RUN LINE PLAYS
               </div>
             </div>
 

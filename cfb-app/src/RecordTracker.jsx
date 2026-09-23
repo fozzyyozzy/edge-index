@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CalibrationPanel from "./CalibrationPanel";
 
 // ── DATA ─────────────────────────────────────────────────────
 // RESULTS (singles) and FADE_RESULTS below are AUTO-GENERATED from the
@@ -2638,6 +2639,11 @@ export default function RecordTracker() {
         * { box-sizing:border-box; }
       `}</style>
 
+      {/* NFL calibration (moved from the old Card tab) — above the MLB tracker, since Record sits under NFL */}
+      <div style={{maxWidth:1280,margin:"0 auto",padding:"20px 16px 4px"}}>
+        <CalibrationPanel />
+      </div>
+
       {/* Header */}
       <div style={{background:"#0a0f1a",
         borderBottom:"1px solid "+T.border,padding:"20px 24px 0"}}>
@@ -3234,7 +3240,6 @@ export default function RecordTracker() {
               <div style={{fontSize:11,color:"#888",fontFamily:T.mono,lineHeight:1.6}}>
                 {rlStats_all.hits}-{rlStats_all.total-rlStats_all.hits} ({rlStats_all.total>0?(rlStats_all.rate*100).toFixed(0):0}% hit rate)
                 {" · "}{rlStats_all.pnl>=0?"+":""}${rlStats_all.pnl.toFixed(0)} P&L
-                {" · "}Backtest 2026: hot -1.5 hit 61.2% on 178 bets
               </div>
             </div>
             {RL_RESULTS.filter(d=>d.rl&&d.rl.length>0).map((day,di)=>(
