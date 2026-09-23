@@ -14,7 +14,7 @@ import FAQ from "./FAQ";
 const NAV_SECTIONS = [
   {
     sport: "NFL",
-    note: "2026 · PAPER",
+    note: "2026 · GRADED",
     color: "#00e5ff",
     tabs: [
       { id: "nflcard",  label: "Card",         component: NFLHub },
@@ -71,7 +71,7 @@ export default function App() {
             <div style={{ fontSize:13, fontWeight:700, color:"#f0f0f0",
               letterSpacing:1 }}>EDGE INDEX</div>
             <div className="topnav-sub" style={{ fontSize:9, color:"#00e5ff", letterSpacing:2,
-              marginTop:-2 }}>NFL PROP MODEL · CALIBRATED · PAPER 2026</div>
+              marginTop:-2 }}>NFL PROP MODEL · CALIBRATED · GRADED IN PUBLIC</div>
           </div>
         </div>
 
@@ -112,12 +112,12 @@ export default function App() {
           ))}
         </div>
 
-        {/* Paper indicator — replaces LIVE, since nothing is bet in 2026 */}
+        {/* Live indicator */}
         <div style={{ display:"flex", alignItems:"center", gap:6 }}>
           <div style={{ width:6, height:6, borderRadius:"50%", background:"#f5c518",
             animation:"pulse 2s infinite" }} />
           <span style={{ fontSize:10, color:"#f5c518", letterSpacing:2,
-            fontWeight:700 }}>PAPER</span>
+            fontWeight:700 }}>LIVE</span>
         </div>
       </div>
 
@@ -128,7 +128,7 @@ export default function App() {
       <style>{`
         .topnav-tabs { scrollbar-width:none; }
         .topnav-tabs::-webkit-scrollbar { display:none; }
-        /* phones: logo + PAPER on the first row, the tab strip on its own row, scrolling sideways inside itself */
+        /* phones: logo + LIVE on the first row, the tab strip on its own row, scrolling sideways inside itself */
         @media (max-width: 760px) {
           .topnav { padding:0 12px !important; }
           .topnav-sub { display:none; }

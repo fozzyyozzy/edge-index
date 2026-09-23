@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { teamColor } from "./nflTeams";
 // NFL Card — the plays. Reads /data/nfl_card_<slate>.json (automation/pipeline/build_card_json.py).
-// Paper trial, 2026 season: nothing is bet.
 
 const T = {
   bg:"#060911", surface:"#0d1117", border:"#ffffff0a",
@@ -159,7 +158,7 @@ export default function NFLHub() {
           })}
         </div>
         <span style={{fontSize:9,fontWeight:700,color:T.amber,background:T.amber + "18",border:`1px solid ${T.amber}40`,
-          borderRadius:3,padding:"3px 8px",letterSpacing:2}}>PAPER · NOTHING IS BET</span>
+          borderRadius:3,padding:"3px 8px",letterSpacing:2}}>GRADED IN PUBLIC</span>
       </div>
       <div style={{fontSize:10,color:"#777",marginBottom:20,maxWidth:"72ch",lineHeight:1.6}}>
         Card tickets are graded Tuesday. Personal slips are not the card.
