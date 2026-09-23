@@ -51,13 +51,24 @@ def log(msg):
     except Exception:
         pass  # logging must never crash the routine
 
-def run(cmd, cwd=None, label="", required=False):
+def run(cmd, cwd=None, label="", required=False, timeout=600):
+    """timeout: hard cap per step (seconds). A hung step (e.g. current-stats
+    on a full 15-game slate) must never block the card/build/deploy behind it.
+    Cache steps fall back to yesterday's cache; that's fine."""
     log(f"  >> {label or cmd[:70]}")
     env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
     try:
         r = subprocess.run(cmd, shell=True, cwd=cwd or MLB_DIR,
                            capture_output=True, text=True,
-                           encoding="utf-8", errors="replace", env=env)
+                           encoding="utf-8", errors="replace", env=env,
+                           timeout=timeout)
+    except subprocess.TimeoutExpired:
+        log(f"     ⏱ TIMED OUT after {timeout}s — killed, continuing "
+            f"(stale cache is OK; investigate if this repeats)")
+        if required:
+            log(f"  ✗ REQUIRED step timed out — aborting")
+            sys.exit(1)
+        return False
     except Exception as e:
         log(f"     ERR launching step: {e}")
         if required:

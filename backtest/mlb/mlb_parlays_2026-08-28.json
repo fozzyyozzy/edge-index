@@ -1,0 +1,234 @@
+{
+  "date": "2026-08-28",
+  "singles": [
+    {
+      "player": "Christian Scott",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "l5_avg": 6.6,
+      "home": "New York Mets",
+      "opp": "New York Mets",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.006,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 19,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.654,
+      "edge": 0.3755,
+      "book_implied": 0.574468085106383
+    },
+    {
+      "player": "Nathan Church",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "AUTO",
+      "model_prob": 0.897,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.3318,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "St. Louis Cardinals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 105,
+      "parlay_only": true,
+      "single_ev": 0.587
+    },
+    {
+      "player": "Ezequiel Duran",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -139,
+      "tier": "T1",
+      "model_prob": 0.721,
+      "book_implied": 0.5815899581589958,
+      "edge": 0.1394,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 123,
+      "parlay_only": true,
+      "single_ev": 0.24
+    },
+    {
+      "player": "Hunter Feduccia",
+      "team": "Los Angeles Dodgers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -124,
+      "tier": "T1",
+      "model_prob": 0.709,
+      "book_implied": 0.5535714285714286,
+      "edge": 0.1554,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 73,
+      "parlay_only": true,
+      "single_ev": 0.281
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "T1",
+      "model_prob": 0.687,
+      "book_implied": 0.5918367346938775,
+      "edge": 0.0952,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "St. Louis Cardinals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 92,
+      "parlay_only": true,
+      "single_ev": 0.161
+    },
+    {
+      "player": "Javier Baez",
+      "team": "Los Angeles Dodgers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -119,
+      "tier": "T1",
+      "model_prob": 0.684,
+      "book_implied": 0.5433789954337899,
+      "edge": 0.1406,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Detroit Tigers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 43,
+      "parlay_only": true,
+      "single_ev": 0.259
+    },
+    {
+      "player": "Freddy Fermin",
+      "team": "San Diego Padres",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -123,
+      "tier": "T1",
+      "model_prob": 0.669,
+      "book_implied": 0.5515695067264574,
+      "edge": 0.1174,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 68,
+      "parlay_only": true,
+      "single_ev": 0.213
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Connor Norby",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -151,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.601593625498008,
+      "edge": 0.3484,
+      "streak": 12,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 79,
+      "parlay_only": true,
+      "single_ev": 0.579
+    },
+    {
+      "player": "Andrew Vaughn",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -202,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6688741721854304,
+      "edge": 0.2811,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 88,
+      "parlay_only": true,
+      "single_ev": 0.42
+    },
+    {
+      "player": "Zach Neto",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -187,
+      "tier": "AUTO",
+      "model_prob": 0.922,
+      "book_implied": 0.6515679442508712,
+      "edge": 0.2704,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 130,
+      "parlay_only": true,
+      "single_ev": 0.415
+    }
+  ],
+  "parlays": []
+}

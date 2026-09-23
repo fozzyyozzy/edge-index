@@ -1,0 +1,170 @@
+[17:19:46] 
+EDGE INDEX MORNING ROUTINE — 2026-07-16
+[17:19:46] ============================================================
+[17:19:46] 
+============================================================
+STEP 1: Grade yesterday (2026-07-15)
+============================================================
+[17:19:46]   >> results checker
+[17:19:46]      No plays file for 2026-07-15
+[17:19:46]      Run pipeline first for that date
+[17:19:46]   >> grade patch
+[17:19:47]      No posted card for 2026-07-15 — skipping
+[17:19:47] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[17:19:47]   >> trade tracker
+[17:19:55]      Total: 1342 players on 40-man rosters
+[17:19:55]      🔄 ROSTER MOVES DETECTED: 3
+[17:19:55]        Colton Gordon                HOU → MIL 
+[17:19:55]        Lance McCullers Jr.          HOU → MIL 
+[17:19:55]        Yunior Tur                   UNKNOWN → OAK New to 40-man roster
+[17:19:55]      ✓ Cache updated — 2026-07-16
+[17:19:55]        Run daily to track all moves automatically
+[17:19:55]        Add to morning routine before mlb_odds_puller.py
+[17:19:55]   >> roster verify
+[17:19:56]        ✓ Confirmed correct: 206
+[17:19:56]        ⚠️  Mismatches found: 0
+[17:19:56]        — Inactive/unknown:  0
+[17:19:56]      ======================================================================
+[17:19:56]      ✓ ALL CLEAR — all 206 active players on correct teams
+[17:19:56]        Checked: 2026-07-16
+[17:19:56]      Add to morning routine (after trade tracker):
+[17:19:56]        python mlb_roster_verify.py --fix
+[17:19:56] 
+============================================================
+STEP 3: Pull today's lines (2026-07-16)
+============================================================
+[17:19:56]   >> odds puller
+[17:20:03]          Bo Bichette               H OVER 1.5  (198)
+[17:20:03]          Brandon Marsh             H OVER 0.5  (-275)
+[17:20:03]          Brett Baty                H OVER 0.5  (-155)
+[17:20:03]          Bryce Harper              H OVER 0.5  (-252)
+[17:20:03]          Bryson Stott              H OVER 0.5  (-210)
+[17:20:03]          Carson Benge              H OVER 0.5  (-200)
+[17:20:03]          Francisco Alvarez         H OVER 0.5  (-150)
+[17:20:03]          Francisco Lindor          H OVER 0.5  (-225)
+[17:20:03]      Saved to mlb_lines_2026-07-16.json
+[17:20:03]   ✓ 154 props · 2 run lines · 1 games
+[17:20:03] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[17:20:03]   >> current stats
+[17:20:14]        ✓ Kyle Schwarber: .270 L14
+[17:20:14]        ✓ Trea Turner: .200 L14
+[17:20:14]      Slumping players (2):
+[17:20:14]        EXCLUDE: Brandon Marsh — 5-for-35 L14 (.143)
+[17:20:14]        EXCLUDE: Bryce Harper — 5-for-36 L14 (.139)
+[17:20:14]      Add these to EXCLUDE_PLAYERS in mlb_run_today.py:
+[17:20:14]          "Brandon Marsh": "5-for-35 L14 (.143)",
+[17:20:14]          "Bryce Harper": "5-for-36 L14 (.139)",
+[17:20:14]   >> savant cache
+[17:20:45]        Francisco Lindor: pulling expected stats... xBA:0.259 L7:0.167 Regression:+0(NEUTRAL)
+[17:20:45]        Gabriel Rincones Jr.: pulling expected stats... xBA:0.157 L7:0.217 Regression:+0(NEUTRAL)
+[17:20:45]        Jared Young: pulling expected stats... xBA:0.241 L7:0.409 Regression:+0(NEUTRAL)
+[17:20:45]        Jorge Polanco: pulling expected stats... xBA:0.213 L7:0.167 Regression:+0(NEUTRAL)
+[17:20:45]        Juan Soto: pulling expected stats... xBA:0.307 L7:0.182 Regression:+0(NEUTRAL)
+[17:20:45]        Justin Crawford: pulling expected stats... xBA:0.256 L7:0.35 Regression:+0(NEUTRAL)
+[17:20:45]        Kyle Schwarber: pulling expected stats... xBA:0.246 L7:0.259 vsTeam:0.375(24AB) Regression:+0(NEUTRAL)
+[17:20:45]        Trea Turner: pulling expected stats... xBA:0.241 L7:0.192 vsTeam:0.205(39AB) Regression:+0(NEUTRAL)
+[17:20:45]      ✓ Saved 515 players to savant cache
+[17:20:45]   >> pitcher hands
+[17:20:46]      Pulling starter hands for 2026-07-16...
+[17:20:46]        Philadelphia Phillies          → Aaron Nola                (RHP)
+[17:20:46]        New York Mets                  → Christian Scott           (RHP)
+[17:20:46]      ✓ Saved 2 teams to cache
+[17:20:46]      STARTER HANDS:
+[17:20:46]        New York Mets                  Christian Scott           RHP
+[17:20:46]        Philadelphia Phillies          Aaron Nola                RHP
+[17:20:46] 
+============================================================
+STEP 5: Run models
+============================================================
+[17:20:46]   >> run today (props)
+[17:20:54]      📉 FADE PLAYS — Cold Streak Batters (original system)
+[17:20:54]        Gate: OVER <= -150, UNDER plus money, L14 <= .150
+[17:20:54]        Sort: active hitless streak first, coldest L14 second
+[17:20:54]      =================================================================
+[17:20:54]        PLAYER                     OVER     UNDER    L14    FLAG
+[17:20:54]        ────────────────────────────────────────────────────────────
+[17:20:54]        Bryce Harper               -252     +186     .139  
+[17:20:54]        Brandon Marsh              -275     +195     .143  
+[17:20:54]      Saved to mlb_plays_2026-07-16.json
+[17:20:54]   >> pitcher K unders
+[17:20:58]          📋 Moderate OVER: 3/5 over 5.5
+[17:20:58]          📋 Avg Ks (5.4) below line (5.5)
+[17:20:58]          ✓ Avg K% lineup: 21.5%
+[17:20:58]          ✓ Slight pitcher park: 1.03x
+[17:20:58]        Recent starts:
+[17:20:58]          ✗ 2026-07-08  5 Ks / 5.0 IP  (1.00 K/IP)  vs Kansas City Royals
+[17:20:58]          ✓ 2026-07-03  7 Ks / 4.0 IP  (1.75 K/IP)  vs Atlanta Braves
+[17:20:58]          ✓ 2026-06-27  6 Ks / 4.33 IP  (1.38 K/IP)  vs Philadelphia Phillies
+[17:20:58]      ✓ Saved to mlb_k_unders_2026-07-16.json
+[17:20:58]   >> umpire assignments
+[17:20:58]      ======================================================================
+[17:20:58]        MATCHUP                             UMPIRE                 K ADJ   TENDENCY
+[17:20:58]        -----------------------------------------------------------------
+[17:20:58]        New York Mets @ Philadelphia Phillies Dan Iassogna           +1.1    ⬆️  HIGH_K (9g)
+[17:20:58]        Adj = K/9 vs league avg (8.4 baseline)
+[17:20:58]        HIGH_K (>+0.4): More Ks expected — favor OVER bets
+[17:20:58]        LOW_K  (<-0.4): Fewer Ks expected — favor UNDER or lower lines
+[17:20:58]      To build history: python mlb_umpire.py --update --days 60
+[17:20:58]   >> team run lines
+[17:21:01]            vs Christian Scott      ERA:3.63  WHIP:1.15  K/9:12.4
+[17:21:01]          New York Mets                3-4 L7  RS:5.1  RA:5.7  L3    Score:-0.77
+[17:21:01]            vs Aaron Nola           ERA:7.33  WHIP:1.44  K/9:11.3
+[17:21:01]      ======================================================================
+[17:21:01]      QUALIFYING PLAYS — 2026-07-16
+[17:21:01]      ======================================================================
+[17:21:01]        No qualifying plays today — thresholds not met
+[17:21:01]        Saved to mlb_team_rl_2026-07-16.json
+[17:21:01]   >> power score
+[17:21:04]      MATCHUP POWER ANALYSIS — 2026-07-16
+[17:21:04]      ===========================================================================
+[17:21:04]        New York Mets @ Philadelphia Phillies
+[17:21:04]          New York Mets                  Power:-0.92 (BELOW AVG)
+[17:21:04]            vs Aaron Nola           FIP:5.38  Resistance:-0.73 [BELOW AVG — hitter-f]
+[17:21:04]          Philadelphia Phillies          Power:-0.06 (BELOW AVG)
+[17:21:04]            vs Christian Scott      FIP:5.11  Resistance:-0.28 [AVERAGE]
+[17:21:04]        Saved to mlb_power_2026-07-16.json
+[17:21:04]   >> parlay builder
+[17:21:04]      🔒 PARLAY-ONLY (too juiced for singles)
+[17:21:04]      ─────────────────────────────────────────────────────────────────
+[17:21:04]        Justin Crawford            H OVER 0.5 (-185)  Win:72%
+[17:21:04]      =================================================================
+[17:21:04]      Singles:    0 plays  (ranked by win probability)
+[17:21:04]      High Edge:  0 plays  (ranked by edge over book)
+[17:21:04]      Saved to mlb_parlays_2026-07-16.json
+[17:21:04] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[17:21:04]   RL: 0 hot · 0 cold qualifying plays
+[17:21:04]   ✓ MLBHub.jsx updated
+[17:21:04]   ✓ public/data/daily_card.json written
+[17:21:04] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[17:21:04]   >> generate record data
+[17:21:05]      wrote C:\Users\tyose\edge-index\cfb-app\src\..\public\data\record.json (45 days)
+[17:21:05]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[17:21:05]        45 days  |  557 singles  |  131 fades
+[17:21:05]   ✓ RecordTracker.jsx regenerated from posted cards
+[17:21:05] 
+============================================================
+STEP 9: Summary
+============================================================
+[17:21:05] 
+  Pitchers: 0 qualifying  |  Batters: 2 qualifying
+[17:21:05]   T1    Jared Young                H OVER 0.5 (-155) 67%
+[17:21:05]   T1    Justin Crawford            H OVER 0.5 (-185) 72%
+[17:21:05] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-07-16.log
+[17:21:05] 
+  ⚠ Card NOT auto-posted — review plays then run:
+[17:21:05]   python mlb_posted_plays.py --date 2026-07-16 --plays '...' --fades '...'
+[17:21:05] 
+✓ Done — 17:21:05

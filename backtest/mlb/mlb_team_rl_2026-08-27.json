@@ -1,0 +1,118 @@
+{
+  "date": "2026-08-27",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Washington Nationals",
+      "team": "Colorado Rockies",
+      "opp": "Washington Nationals",
+      "home": "Washington Nationals",
+      "is_home": false,
+      "score": -4.79,
+      "diff": -1.83,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "win_pct": 0.143,
+        "avg_scored": 3.0,
+        "avg_allowed": 4.86,
+        "run_diff": -1.86,
+        "streak": -2,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 12.3,
+        "whip": 1.82,
+        "k_per9": 4.95,
+        "name": "Gabriel Hughes",
+        "starts": 3
+      },
+      "park": 0.99,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -175,
+      "line": -1.5,
+      "qualifies": false,
+      "bet": "Colorado Rockies -1.5 (fade Washington Nationals)",
+      "reason": "1-6 L7 cold streak \u00b7 3.0 RS/g anemic offense \u00b7 -1.9 run diff"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "St. Louis Cardinals",
+      "team": "Baltimore Orioles",
+      "opp": "St. Louis Cardinals",
+      "home": "St. Louis Cardinals",
+      "is_home": false,
+      "score": -1.94,
+      "diff": -2.68,
+      "tier": "\u2605 T1",
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "win_pct": 0.143,
+        "avg_scored": 5.0,
+        "avg_allowed": 8.57,
+        "run_diff": -3.57,
+        "streak": -5,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 3.79,
+        "whip": 1.28,
+        "k_per9": 8.57,
+        "name": "Trevor Rogers",
+        "starts": 3
+      },
+      "park": 1.05,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 132,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Baltimore Orioles -1.5 (fade St. Louis Cardinals)",
+      "reason": "1-6 L7 cold streak \u00b7 -3.6 run diff"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "San Francisco Giants",
+      "team": "Arizona Diamondbacks",
+      "opp": "San Francisco Giants",
+      "home": "San Francisco Giants",
+      "is_home": false,
+      "score": -2.62,
+      "diff": -2.98,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 4.14,
+        "avg_allowed": 4.29,
+        "run_diff": -0.14,
+        "streak": -1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 7.87,
+        "whip": 1.96,
+        "k_per9": 6.48,
+        "name": "Jose Cabrera",
+        "starts": 3
+      },
+      "park": 0.91,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 148,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Arizona Diamondbacks -1.5 (fade San Francisco Giants)",
+      "reason": "2-5 L7 cold streak \u00b7 pitcher park 0.91x"
+    }
+  ]
+}

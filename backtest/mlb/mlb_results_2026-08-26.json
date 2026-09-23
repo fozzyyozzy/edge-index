@@ -1,0 +1,5038 @@
+{
+  "date": "2026-08-26",
+  "hits": 26,
+  "misses": 6,
+  "voids": 7,
+  "pnl": 585.45,
+  "units": 5.85,
+  "rate": 0.812,
+  "plays": [
+    {
+      "player": "Bubba Chandler",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 110,
+      "tier": "T2",
+      "result": "miss",
+      "actual": 3
+    },
+    {
+      "player": "Connor Prielipp",
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -106,
+      "tier": "T2",
+      "result": "miss",
+      "actual": 5
+    },
+    {
+      "player": "Grayson Rodriguez",
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 120,
+      "tier": "T2",
+      "result": "miss",
+      "actual": 4
+    },
+    {
+      "player": "Jesus Luzardo",
+      "prop": "strikeouts",
+      "line": 7.5,
+      "odds": 114,
+      "tier": "T1",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Alec Burleson",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -259,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Andrew Vaughn",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -199,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Blaze Jordan",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -201,
+      "tier": "T1",
+      "result": "miss",
+      "actual": 0
+    },
+    {
+      "player": "Bryce Harper",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -209,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 2
+    },
+    {
+      "player": "Bryce Harper",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "134",
+      "tier": "T2",
+      "result": "hit",
+      "actual": 6
+    },
+    {
+      "player": "Carson Benge",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -209,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Cody Freeman",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -132,
+      "tier": "AUTO",
+      "result": "miss",
+      "actual": 0
+    },
+    {
+      "player": "Connor Norby",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -157,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 2
+    },
+    {
+      "player": "Elly De La Cruz",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -202,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 3
+    },
+    {
+      "player": "Freddy Fermin",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Hector Rodriguez",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Heriberto Hernandez",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "AUTO",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Hunter Feduccia",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -107,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "J.T. Realmuto",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Jakob Marsee",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -124,
+      "tier": "T2",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Javier Baez",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Jazz Chisholm Jr.",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -139,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 3
+    },
+    {
+      "player": "Jonny Deluca",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -163,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Josh Naylor",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -149,
+      "tier": "T1",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Junior Caminero",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -197,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 2
+    },
+    {
+      "player": "Kaelen Culpepper",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Kyle Isbel",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "result": "miss",
+      "actual": 0
+    },
+    {
+      "player": "Lawrence Butler",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -185,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Liam Hicks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -190,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Luis Lara",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -155,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 2
+    },
+    {
+      "player": "Luis Robert Jr.",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -162,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Mauricio Dubon",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -207,
+      "tier": "AUTO",
+      "result": "void",
+      "actual": null
+    },
+    {
+      "player": "Miguel Vargas",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -190,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 2
+    },
+    {
+      "player": "Nathan Church",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -172,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Pete Alonso",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "-101",
+      "tier": "T2",
+      "result": "hit",
+      "actual": 4
+    },
+    {
+      "player": "Petey Halpin",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -146,
+      "tier": "T1",
+      "result": "void",
+      "actual": 0
+    },
+    {
+      "player": "Steven Kwan",
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "125",
+      "tier": "T2",
+      "result": "hit",
+      "actual": 3
+    },
+    {
+      "player": "Tyrone Taylor",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -179,
+      "tier": "T1",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Xavier Edwards",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -233,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    },
+    {
+      "player": "Zach Neto",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "AUTO",
+      "result": "hit",
+      "actual": 1
+    }
+  ],
+  "box_scores": {
+    "corey julks": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "framber valdez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brett callahan": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "zach mckinstry": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "hao-yu lee": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "drew anderson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "javier b\u00e1ez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "eduardo valencia": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jacob waguespack": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tanner rainey": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler holton": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kevin mcgonigle": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle finnegan": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "kenley jansen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "spencer torkelson": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "drew sommers": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "keider montero": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ben malgeri": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gleyber torres": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "tyler kinley": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "max clark": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "dillon dingler": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "colt keith": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jackson jobe": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "andrew sears": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "troy melton": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "7.0"
+    },
+    "taylor walls": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler wells": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "steven matz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "shane mcclanahan": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "richie palacios": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jorge mateo": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "ryan vilade": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "casey legumina": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "chandler simpson": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "nick martinez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cam booser": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jonny deluca": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ian seymour": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "garrett cleavinger": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kenny piper": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "kevin kelly": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "2.0"
+    },
+    "liam hicks": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "freddy peralta": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "6.0"
+    },
+    "jonathan aranda": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "nick fortes": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "yandy d\u00edaz": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "bryan baker": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "manuel rodr\u00edguez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "junior caminero": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "drew rasmussen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cedric mullins": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "eduardo rodriguez": {
+      "hits": null,
+      "ab": null,
+      "ks": 9,
+      "ip": "7.0"
+    },
+    "jordan lawlar": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "juan morillo": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "tim tawa": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brandon pfaadt": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gerardo carrillo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nolan arenado": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "lars nootbaar": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryan waldschmidt": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "drey jameson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "merrill kelly": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kevin ginkel": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jonathan lo\u00e1isiga": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ildemaro vargas": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "geraldo perdomo": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "justin martinez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jose fernandez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "gabriel moreno": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dennis santana": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "corbin carroll": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "taylor clarke": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "juan burgos": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "max kepler": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "james mccann": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "brandyn garcia": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "jorge barrosa": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "daniel palencia": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyrone taylor": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "michael conforto": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ian happ": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "caleb thielbar": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "shota imanaga": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex bregman": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "pedro ram\u00edrez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "michael busch": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "carson kelly": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "pete crow-armstrong": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kevin gausman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jacob webb": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "miguel amaya": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gabriel arias": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "seiya suzuki": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "aaron civale": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryan zeferjahn": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "david peterson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryan rolison": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "trent thornton": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "clay holmes": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "matthew boyd": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "6.0"
+    },
+    "kevin alc\u00e1ntara": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "colin rea": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nico hoerner": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jonah cox": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "shay whitcomb": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "dylan smith": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "drew cavanaugh": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "andrew knizner": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "nate furman": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "logan webb": {
+      "hits": null,
+      "ab": null,
+      "ks": 6,
+      "ip": "6.0"
+    },
+    "ryan walker": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.2"
+    },
+    "buddy kennedy": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "trent harris": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jason foley": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "braxton roxby": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "carson seymour": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "spencer bivens": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "drew gilbert": {
+      "hits": 1,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "jung hoo lee": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sam hentges": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "rafael devers": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "reiver sanmartin": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.2"
+    },
+    "grant mccray": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "christian koss": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "blade tidwell": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "anthony molina": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "landen roupp": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "turner hill": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "osleivis basabe": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "elly de la cruz": {
+      "hits": 3,
+      "ab": 6,
+      "ks": null,
+      "ip": null
+    },
+    "sal stewart": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "dane myers": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "pierce johnson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luis mey": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "emilio pag\u00e1n": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "tejay antone": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tony santillan": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "brady singer": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "matt mclain": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ke'bryan hayes": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "will banfield": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tj friedl": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "rhett lowder": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jose trevino": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "eugenio su\u00e1rez": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "tyler stephenson": {
+      "hits": 1,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "nick lodolo": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "4.0"
+    },
+    "sam moll": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jj bleday": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brock burke": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "julian garcia": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "andrew abbott": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "h\u00e9ctor rodr\u00edguez": {
+      "hits": 3,
+      "ab": 6,
+      "ks": null,
+      "ip": null
+    },
+    "chase burns": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ivan johnson": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "adam frazier": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jose siri": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "oswald peraza": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "zach neto": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "christian moore": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "travis d'arnaud": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "ryan johnson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ben joyce": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "grayson rodriguez": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "5.2"
+    },
+    "mike trout": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "mois\u00e9s ballesteros": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 fermin": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "denzer guzman": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "vaughn grissom": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "trevor martin": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "josh lowe": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "tyler heineman": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "tayler saucedo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "yusei kikuchi": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luke murphy": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "bryce teodosio": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "walbert ure\u00f1a": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "george klassen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "reid detmers": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sammy peralta": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "1.1"
+    },
+    "ryan watson": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "angel genao": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "chase delauter": {
+      "hits": 1,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "austin hedges": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "nathaniel lowe": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "craig yoho": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "travis bazzana": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "patrick bailey": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "brayan rocchio": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "petey halpin": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "matt festa": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jo adell": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "colin holderman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "logan allen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "david fry": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cade smith": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 ram\u00edrez": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "steven kwan": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "angel mart\u00ednez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "parker messick": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "joey cantillo": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "6.0"
+    },
+    "erik sabrowski": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "gavin williams": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "hunter gaddis": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "tanner bibee": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tim herrin": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "foster griffin": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luis rengifo": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "luis campusano": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "yuki matsui": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "0.2"
+    },
+    "freddy fermin": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "michael king": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mason miller": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "casey mize": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "david morgan": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "wandy peralta": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "walker buehler": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jackson merrill": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "griffin canning": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.1"
+    },
+    "dustin harris": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bradgley rodriguez": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "gavin sheets": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "adrian morejon": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "manny machado": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "austin hays": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "fernando tatis jr.": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ty france": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "xander bogaerts": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jase bowen": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "kyle hart": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "jake cronenworth": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "robbie ray": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "randy v\u00e1squez": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "5.0"
+    },
+    "jacob gonzalez": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "paul skenes": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nick yorke": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "spencer horwitz": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "lake bachar": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "brandon lowe": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "bryan reynolds": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "oneil cruz": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jared jones": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gregory soto": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luke weaver": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mason montgomery": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "esmerlyn valdez": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jared triolo": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "jake mangum": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "yohan ram\u00edrez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bubba chandler": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "5.2"
+    },
+    "billy cook": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "carmen mlodzinski": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "henry davis": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "noah murdock": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "camilo doval": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kirby yates": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "nick gonzales": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "rafael flores jr.": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "braxton ashcraft": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "josh naylor": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "victor robles": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cole young": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 a. ferrer": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "michael rucker": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "weston wilson": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "randy arozarena": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "patrick wisdom": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "j.p. crawford": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "taylor ward": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "dominic canzone": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cal raleigh": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jhonny pereda": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brock rodden": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "logan gilbert": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bryan woo": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "4.0"
+    },
+    "seranthony dom\u00ednguez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "george kirby": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "andr\u00e9s mu\u00f1oz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gabe speier": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "julio rodr\u00edguez": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kade anderson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bryce miller": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "eduard bazardo": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "emerson hancock": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "carlos vargas": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "2.0"
+    },
+    "brandon marsh": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jes\u00fas luzardo": {
+      "hits": null,
+      "ab": null,
+      "ks": 9,
+      "ip": "7.0"
+    },
+    "jos\u00e9 alvarado": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "justin crawford": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "bryan de la cruz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cristopher s\u00e1nchez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bryce harper": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "j.t. realmuto": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "zack wheeler": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jhoan duran": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "edmundo sosa": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "orion kerkering": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alec bohm": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jonathan bowlan": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "chase shugart": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tim mayza": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "bryson stott": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle schwarber": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "garrett stubbs": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex mcfarlane": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "aaron nola": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brooks raley": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "trea turner": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "luis arraez": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "derek hill": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "andrew painter": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jack ralston": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "josh ekness": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler zuber": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "patrick monteverde": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "griffin conine": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "heriberto hern\u00e1ndez": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "sandy alcantara": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "victor vodnik": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "tyler phillips": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "esteury ruiz": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "jakob marsee": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "calvin faucher": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "javier sanoja": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ryan gusto": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "5.2"
+    },
+    "xavier edwards": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle stowers": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "michael petersen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "owen caissie": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "agust\u00edn ram\u00edrez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "leo jim\u00e9nez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "janson junk": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "dax fulton": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "brian navarreto": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "joe mack": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "eury p\u00e9rez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "otto lopez": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jake bennett": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "willson contreras": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyron guerrero": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "patrick sandoval": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jahmai jones": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "alec gamboa": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "greg weissert": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "anthony seigler": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "connor wong": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "adley rutschman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brayan bello": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "wilyer abreu": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "andruw monasterio": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "sonny gray": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "5.0"
+    },
+    "mickey gasper": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "caleb durbin": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ranger suarez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nick sogard": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jarren duran": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "eli white": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "wyatt olds": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "payton tolle": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ceddanne rafaela": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jovani mor\u00e1n": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "erik miller": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "aroldis chapman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brady house": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luis perales": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "2.0"
+    },
+    "abimelec ortiz": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "will dion": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "2.2"
+    },
+    "cj abrams": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "nasim nu\u00f1ez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "andr\u00e9s chaparro": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jorbit vivas": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.1"
+    },
+    "dylan crews": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "max kranick": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "clayton beeter": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "brad lord": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "daylen lile": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 tena": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "matt waldron": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "2.0"
+    },
+    "cade cavalli": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "harry ford": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jacob young": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "erik tolman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jake irvin": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "orlando ribalta": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.2"
+    },
+    "andrew pinckney": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "keibert ruiz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tom cosgrove": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jackson kent": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "andrew alvarez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryan feltner": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mickey moniak": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "jimmy herget": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jake mccarthy": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "troy johnston": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "mark manfredi": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "willi castro": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brennan bernardino": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cole carrigg": {
+      "hits": 2,
+      "ab": 6,
+      "ks": null,
+      "ip": null
+    },
+    "juan mejia": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryan ritter": {
+      "hits": 1,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "hunter goodman": {
+      "hits": 2,
+      "ab": 6,
+      "ks": null,
+      "ip": null
+    },
+    "gabriel hughes": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tomoyuki sugano": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "zach agnos": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "jordan beck": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tanner gordon": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "7.0"
+    },
+    "brett sullivan": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ezequiel tovar": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "tj rumfield": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "connor norby": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "zac veen": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "jordan romano": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nick frasso": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jaden hill": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mason adams": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "paul blackburn": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "elmer rodr\u00edguez": {
+      "hits": null,
+      "ab": null,
+      "ks": 6,
+      "ip": "6.0"
+    },
+    "ali s\u00e1nchez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "heliot ramos": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 caballero": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "justin topa": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "carlos rod\u00f3n": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "spencer jones": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ryan yarbrough": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "amed rosario": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tim hill": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "paul goldschmidt": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "austin wells": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "ben rice": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brent headrick": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "will warren": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cody bellinger": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "jazz chisholm jr.": {
+      "hits": 3,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "michael fulmer": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "yerry de los santos": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "trent grisham": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "david bednar": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gerrit cole": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "george lombard jr.": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "luis garc\u00eda jr.": {
+      "hits": 3,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "cam schlittler": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "isaac paredes": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "bryan abreu": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nick allen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kai-wei teng": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "cam smith": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "hayden wesneski": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "hunter brown": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "josh hader": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "daulton varsho": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "enyel de los santos": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "1.2"
+    },
+    "steven okert": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "aj blubaugh": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ethan pecko": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bennett sousa": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.1"
+    },
+    "jose altuve": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "taylor trammell": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "tatsuya imai": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jeremy pe\u00f1a": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "peter lambert": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "5.2"
+    },
+    "cristian javier": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "lamonte wade jr.": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "christian walker": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "christian v\u00e1zquez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "yainer diaz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "yordan alvarez": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "nelson vel\u00e1zquez": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "spencer miles": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "2.0"
+    },
+    "chad dallas": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "2.2"
+    },
+    "jos\u00e9 soriano": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "louis varland": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "brendon little": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "simeon woods richardson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ernie clement": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "charles mcadoo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "andr\u00e9s gim\u00e9nez": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "brandon valenzuela": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dylan cease": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brett bateman": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "paul sewald": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.2"
+    },
+    "nathan lukes": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "george springer": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "max scherzer": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mason fluharty": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "braydon fisher": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler rogers": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "vladimir guerrero jr.": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "daz cameron": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jes\u00fas s\u00e1nchez": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "myles straw": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "spencer arrighetti": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alejandro kirk": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kazuma okamoto": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "carter jensen": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jose cuas": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler tolbert": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "mason black": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "2.0"
+    },
+    "isaac collins": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "salvador perez": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "nick loftin": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "connor thomas": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "john rave": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "matthew lugo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "michael massey": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luke maile": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "craig kimbrel": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "vinnie pasquantino": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle isbel": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "daniel lynch iv": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "michael wacha": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nate pearson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "seth lugo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "noah cameron": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex lange": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "randy dobnak": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "6.0"
+    },
+    "jac caglianone": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "bobby witt jr.": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "steven cruz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "john schreiber": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luis torrens": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "robert stock": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "4.0"
+    },
+    "bo bichette": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "christopher morel": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "francisco alvarez": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "sean manaea": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "austin warren": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brett baty": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jefry yan": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "carson benge": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "nate lavender": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cristian pache": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "eric wagaman": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dedniel n\u00fa\u00f1ez": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "kodai senga": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "daniel duarte": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "marcus semien": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "chayce mcdermott": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "jonathan pintaro": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "francisco lindor": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "christian scott": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nolan mclean": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "zac thornton": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jared young": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "luis robert jr.": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "a.j. ewing": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "chad patrick": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cooper pratt": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "logan henderson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "joey ortiz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jackson chourio": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "christian yelich": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jake bauers": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sal frelick": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "grant anderson": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.1"
+    },
+    "andrew vaughn": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "shane drohan": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kyle harrison": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "garrett mitchell": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "aaron ashby": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "david hamilton": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "william contreras": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "brice turang": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "robert gasser": {
+      "hits": null,
+      "ab": null,
+      "ks": 6,
+      "ip": "5.1"
+    },
+    "gary s\u00e1nchez": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "jacob misiorowski": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dl hall": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "antonio senzatela": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bryse wilson": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "2.0"
+    },
+    "dustin may": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.1"
+    },
+    "luis lara": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "trevor megill": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dylan dodd": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "dylan lee": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.0"
+    },
+    "aj smith-shawver": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "5.0"
+    },
+    "michael harris ii": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "victor mederos": {
+      "hits": 0,
+      "ab": 0,
+      "ks": 2,
+      "ip": "1.0"
+    },
+    "mauricio dub\u00f3n": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "didier fuentes": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "2.0"
+    },
+    "tyler mahle": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brewer hicklen": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "drake baldwin": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "chris sale": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "matt olson": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "dominic smith": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sean murphy": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ronald acu\u00f1a jr.": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "ray kerr": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ozzie albies": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "raisel iglesias": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "austin riley": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "grant holmes": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mike yastrzemski": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "ha-seong kim": {
+      "hits": 1,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "lane thomas": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "brent suter": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bryce elder": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "mart\u00edn p\u00e9rez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ben rortvedt": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tarik skubal": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler glasnow": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex vesia": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kyle tucker": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "enrique hern\u00e1ndez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "max muncy": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "freddie freeman": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "edgardo henriquez": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "eric lauer": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "2.0"
+    },
+    "tanner scott": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "hunter feduccia": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "tommy edman": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle hurt": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "shohei ohtani": {
+      "hits": 2,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "teoscar hern\u00e1ndez": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "evan phillips": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "mookie betts": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "alex call": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "blake snell": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brock stewart": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "miguel rojas": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jack dreyer": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "roki sasaki": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "3.1"
+    },
+    "alek thomas": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "yoshinobu yamamoto": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tristan peters": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "anthony kay": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luisangel acu\u00f1a": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "randal grichuk": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "munetaka murakami": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "chase meidroth": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "grant taylor": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "rikuu nishida": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "colson montgomery": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tyler schweitzer": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "trevor richards": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "drew romo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "braden montgomery": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "jake rogers": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "hagen smith": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jonathan cannon": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "3.0"
+    },
+    "luis castillo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sean burke": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "3.0"
+    },
+    "jos\u00e9 urquidy": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brenton doyle": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "bryan hudson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "erick fedde": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sean newcomb": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "3.0"
+    },
+    "jordan hicks": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "sam antonacci": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "miguel vargas": {
+      "hits": 2,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "evan carter": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "wyatt langford": {
+      "hits": 2,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "kumar rocker": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jake burger": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "peyton gray": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "tyler alexander": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "chase silseth": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "joc pederson": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jacob latz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "corey seager": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "cal quantrill": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "nicky lopez": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "justin foscue": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "robby ahlstrom": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "ezequiel duran": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "mackenzie gore": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "3.2"
+    },
+    "jacob degrom": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "brandon nimmo": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "danny jansen": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jakob junis": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "cody freeman": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "elias d\u00edaz": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "logan o'hoppe": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "cody bradford": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jordan montgomery": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cole winn": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "michael mcgreevy": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "5.0"
+    },
+    "nolan gorman": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jordan walker": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "bryan torres": {
+      "hits": 3,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "nathan church": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kyle leahy": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jos\u00e9 ferm\u00edn": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "ryan fernandez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "gordon graceffo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jj wetherholt": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "caleb ferguson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "justin bruihl": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "blaze jordan": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "alec burleson": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "riley o'brien": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "george soriano": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "quinn mathews": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ram\u00f3n ur\u00edas": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "pedro pag\u00e9s": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "matthew liberatore": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "ryne stanek": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "joshua b\u00e1ez": {
+      "hits": 0,
+      "ab": 1,
+      "ks": null,
+      "ip": null
+    },
+    "luis gastelum": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "1.0"
+    },
+    "peter strzelecki": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "iv\u00e1n herrera": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jimmy crooks": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "samuel basallo": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "trevor rogers": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "rico garcia": {
+      "hits": null,
+      "ab": null,
+      "ks": 2,
+      "ip": "1.1"
+    },
+    "brandon young": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex hoppe": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "0.2"
+    },
+    "gunnar henderson": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "leody taveras": {
+      "hits": 1,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "shane baz": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "christian franklin": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kyle bradish": {
+      "hits": null,
+      "ab": null,
+      "ks": 4,
+      "ip": "4.1"
+    },
+    "dylan beavers": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "chris bassitt": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "josh walker": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.2"
+    },
+    "luis v\u00e1zquez": {
+      "hits": 0,
+      "ab": 0,
+      "ks": null,
+      "ip": null
+    },
+    "anthony nunez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "yohel pozo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "pete alonso": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jackson holliday": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "carlos narv\u00e1ez": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "andrew kittredge": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "grant wolfram": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "1.0"
+    },
+    "christian encarnacion-strand": {
+      "hits": 4,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    },
+    "yennier cano": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "colton cowser": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "coby mayo": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "cam sanders": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "lawrence butler": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "jonah heim": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "tommy white": {
+      "hits": 3,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "donovan walton": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "j.t. ginn": {
+      "hits": null,
+      "ab": null,
+      "ks": 3,
+      "ip": "6.0"
+    },
+    "zack gelof": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "chris roycroft": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "michael stefanic": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "drew rom": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jeff mcneil": {
+      "hits": 1,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "brian serven": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "carlos cortes": {
+      "hits": 0,
+      "ab": 2,
+      "ks": null,
+      "ip": null
+    },
+    "scott blewett": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jacob lopez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alika williams": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "brady basso": {
+      "hits": null,
+      "ab": null,
+      "ks": 0,
+      "ip": "2.0"
+    },
+    "gage jump": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "elvis alvarado": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "darell hernaiz": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "kade morris": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "hogan harris": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "luis medina": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "henry bolte": {
+      "hits": 0,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jack perkins": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "jeffrey springs": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "dean kremer": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "tommy nance": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "taj bradley": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "victor caratini": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kody clemens": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "brooks lee": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "josh bell": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "jeff hoffman": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "0.1"
+    },
+    "a.j. minter": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alan roden": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "kaelen culpepper": {
+      "hits": 1,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "connor prielipp": {
+      "hits": null,
+      "ab": null,
+      "ks": 5,
+      "ip": "5.1"
+    },
+    "ryan jeffers": {
+      "hits": 1,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "ryan kreidler": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "taylor rogers": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "bailey ober": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "kody funderburk": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.1"
+    },
+    "travis adams": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "royce lewis": {
+      "hits": 0,
+      "ab": 3,
+      "ks": null,
+      "ip": null
+    },
+    "trevor larnach": {
+      "hits": 2,
+      "ab": 4,
+      "ks": null,
+      "ip": null
+    },
+    "byron buxton": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "yoendrys g\u00f3mez": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "zebby matthews": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "alex jackson": {
+      "hits": null,
+      "ab": null,
+      "ks": null,
+      "ip": null
+    },
+    "andrew morris": {
+      "hits": null,
+      "ab": null,
+      "ks": 1,
+      "ip": "1.0"
+    },
+    "luke keaschall": {
+      "hits": 0,
+      "ab": 5,
+      "ks": null,
+      "ip": null
+    }
+  }
+}

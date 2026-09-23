@@ -1,0 +1,70 @@
+[
+  {
+    "home": "Philadelphia Phillies",
+    "away": "New York Mets",
+    "home_power": {
+      "team": "Philadelphia Phillies",
+      "team_id": 143,
+      "power_score": -0.06,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.19,
+        "rs_pg": 4.37,
+        "ops": 0.701,
+        "avg": 0.236,
+        "pitching": -0.01,
+        "team_era": 4.23,
+        "team_whip": 1.31,
+        "record": 0.14,
+        "win_pct": 0.557,
+        "run_diff_pg": -0.1,
+        "streak": "W2",
+        "park": 1.06
+      },
+      "season": 2026,
+      "updated": "2026-07-16"
+    },
+    "away_power": {
+      "team": "New York Mets",
+      "team_id": 121,
+      "power_score": -0.92,
+      "tier": "BELOW AVG",
+      "components": {
+        "offense": -0.39,
+        "rs_pg": 4.1,
+        "ops": 0.684,
+        "avg": 0.234,
+        "pitching": -0.06,
+        "team_era": 4.27,
+        "team_whip": 1.31,
+        "record": -0.47,
+        "win_pct": 0.412,
+        "run_diff_pg": -0.67,
+        "streak": "L3",
+        "park": 0.97
+      },
+      "season": 2026,
+      "updated": "2026-07-16"
+    },
+    "home_pitcher_fip": {
+      "fip": 5.11,
+      "era": 5.47,
+      "whip": 1.33,
+      "ip": 26.3,
+      "starts": 5,
+      "era_fip_delta": 0.36
+    },
+    "away_pitcher_fip": {
+      "fip": 5.38,
+      "era": 3.42,
+      "whip": 1.18,
+      "ip": 23.7,
+      "starts": 5,
+      "era_fip_delta": -1.96
+    },
+    "home_pitch_resistance": -0.73,
+    "away_pitch_resistance": -0.28,
+    "away_eff_score": -0.19,
+    "home_eff_score": 0.22
+  }
+]

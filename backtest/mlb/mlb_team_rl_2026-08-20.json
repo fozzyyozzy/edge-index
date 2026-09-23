@@ -1,0 +1,118 @@
+{
+  "date": "2026-08-20",
+  "hot_plays": [],
+  "cold_plays": [],
+  "all_signals": [
+    {
+      "type": "cold_fade",
+      "cold_team": "Athletics",
+      "team": "Kansas City Royals",
+      "opp": "Athletics",
+      "home": "Kansas City Royals",
+      "is_home": true,
+      "score": -1.31,
+      "diff": -2.13,
+      "tier": "\u25c6 T2",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 5.0,
+        "avg_allowed": 5.71,
+        "run_diff": -0.71,
+        "streak": -3,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 3.0,
+        "whip": 1.49,
+        "k_per9": 6.18,
+        "name": "Randy Dobnak",
+        "starts": 3
+      },
+      "park": 0.9405,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 140,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Kansas City Royals -1.5 (fade Athletics)",
+      "reason": "2-5 L7 cold streak \u00b7 pitcher park 0.94x \u00b7 elite SP ERA 3.00"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "Atlanta Braves",
+      "team": "Chicago White Sox",
+      "opp": "Atlanta Braves",
+      "home": "Chicago White Sox",
+      "is_home": true,
+      "score": -2.26,
+      "diff": -2.96,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 3.0,
+        "avg_allowed": 4.57,
+        "run_diff": -1.57,
+        "streak": -3,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 2.69,
+        "whip": 1.25,
+        "k_per9": 5.67,
+        "name": "Anthony Kay",
+        "starts": 3
+      },
+      "park": 0.9119999999999999,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": -178,
+      "line": -1.5,
+      "qualifies": false,
+      "bet": "Chicago White Sox -1.5 (fade Atlanta Braves)",
+      "reason": "2-5 L7 cold streak \u00b7 3.0 RS/g anemic offense \u00b7 -1.6 run diff \u00b7 pitcher park 0.91x \u00b7 elite SP ERA 2.69"
+    },
+    {
+      "type": "cold_fade",
+      "cold_team": "Washington Nationals",
+      "team": "Texas Rangers",
+      "opp": "Washington Nationals",
+      "home": "Texas Rangers",
+      "is_home": true,
+      "score": -2.79,
+      "diff": -1.21,
+      "tier": "\u26a1 AUTO",
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "win_pct": 0.286,
+        "avg_scored": 3.86,
+        "avg_allowed": 4.29,
+        "run_diff": -0.43,
+        "streak": 1,
+        "games": 7
+      },
+      "opp_pitcher": {
+        "era": 8.1,
+        "whip": 2.63,
+        "k_per9": 12.6,
+        "name": "Jacob deGrom",
+        "starts": 3
+      },
+      "park": 0.9974999999999999,
+      "ump": null,
+      "ump_tendency": "UNKNOWN",
+      "ump_adj": 0.0,
+      "odds": 128,
+      "line": -1.5,
+      "qualifies": true,
+      "bet": "Texas Rangers -1.5 (fade Washington Nationals)",
+      "reason": "2-5 L7 cold streak"
+    }
+  ]
+}

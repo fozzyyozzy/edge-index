@@ -1,0 +1,240 @@
+{
+  "date": "2026-09-02",
+  "singles": [
+    {
+      "player": "Dylan Cease",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": -105,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "streak": 19,
+      "l5": 1.0,
+      "l10": 1.0,
+      "l5_avg": 8.6,
+      "home": "Cleveland Guardians",
+      "opp": "Cleveland Guardians",
+      "opp_k_pct": 0.225,
+      "park_adj": 0.006,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 25,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.855,
+      "edge": 0.4378,
+      "book_implied": 0.5121951219512195
+    },
+    {
+      "player": "Spencer Jones",
+      "team": "New York Yankees",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -105,
+      "tier": "AUTO",
+      "model_prob": 0.857,
+      "book_implied": 0.5121951219512195,
+      "edge": 0.3448,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 64,
+      "parlay_only": true,
+      "single_ev": 0.673
+    },
+    {
+      "player": "Griffin Jax",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -125,
+      "tier": "T1",
+      "model_prob": 0.779,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.9,
+      "l5_avg": 6.4,
+      "home": "Tampa Bay Rays",
+      "opp": "Tampa Bay Rays",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.004,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 18,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.402,
+      "edge": 0.2234,
+      "book_implied": 0.5555555555555556
+    },
+    {
+      "player": "Cody Freeman",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -138,
+      "tier": "T1",
+      "model_prob": 0.746,
+      "book_implied": 0.5798319327731092,
+      "edge": 0.1662,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 23,
+      "parlay_only": true,
+      "single_ev": 0.287
+    },
+    {
+      "player": "Zach Neto",
+      "team": "Los Angeles Angels",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "T1",
+      "model_prob": 0.722,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.122,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 134,
+      "parlay_only": true,
+      "single_ev": 0.203
+    },
+    {
+      "player": "Kaelen Culpepper",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -149,
+      "tier": "T1",
+      "model_prob": 0.719,
+      "book_implied": 0.5983935742971888,
+      "edge": 0.1206,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 21,
+      "parlay_only": true,
+      "single_ev": 0.202
+    },
+    {
+      "player": "Sean Murphy",
+      "team": "Atlanta Braves",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "T1",
+      "model_prob": 0.712,
+      "book_implied": 0.5454545454545454,
+      "edge": 0.1665,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Washington Nationals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 17,
+      "parlay_only": true,
+      "single_ev": 0.305
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Lawrence Butler",
+      "team": "Athletics",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -193,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6587030716723549,
+      "edge": 0.2913,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Texas Rangers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 126,
+      "parlay_only": true,
+      "single_ev": 0.442
+    },
+    {
+      "player": "Tyler Stephenson",
+      "team": "Cincinnati Reds",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -173,
+      "tier": "AUTO",
+      "model_prob": 0.884,
+      "book_implied": 0.6336996336996338,
+      "edge": 0.2503,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Cincinnati Reds",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 107,
+      "parlay_only": true,
+      "single_ev": 0.395
+    },
+    {
+      "player": "Mookie Betts",
+      "team": "St. Louis Cardinals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -210,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.6774193548387096,
+      "edge": 0.2476,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 101,
+      "parlay_only": true,
+      "single_ev": 0.365
+    }
+  ],
+  "parlays": []
+}

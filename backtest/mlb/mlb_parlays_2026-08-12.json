@@ -1,0 +1,234 @@
+{
+  "date": "2026-08-12",
+  "singles": [
+    {
+      "player": "Andres Gimenez",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -143,
+      "tier": "AUTO",
+      "model_prob": 0.851,
+      "book_implied": 0.5884773662551441,
+      "edge": 0.2625,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 110,
+      "parlay_only": true,
+      "single_ev": 0.446
+    },
+    {
+      "player": "Austin Wells",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -110,
+      "tier": "AUTO",
+      "model_prob": 0.844,
+      "book_implied": 0.5238095238095238,
+      "edge": 0.3202,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 84,
+      "parlay_only": true,
+      "single_ev": 0.611
+    },
+    {
+      "player": "Zack Wheeler",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -148,
+      "tier": "T1",
+      "model_prob": 0.702,
+      "streak": 1,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 6.8,
+      "home": "St. Louis Cardinals",
+      "opp": "St. Louis Cardinals",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.002,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 19,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.176,
+      "edge": 0.1052,
+      "book_implied": 0.5967741935483871
+    },
+    {
+      "player": "Chandler Simpson",
+      "team": "Tampa Bay Rays",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 170,
+      "tier": "T1",
+      "model_prob": 0.7,
+      "book_implied": 0.37037037037037035,
+      "edge": 0.3296,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 109,
+      "parlay_only": false,
+      "single_ev": 0.89
+    },
+    {
+      "player": "Chandler Simpson",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "119",
+      "tier": "T1",
+      "model_prob": 0.7,
+      "book_implied": 0.4566210045662101,
+      "edge": 0.2434,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 109,
+      "parlay_only": "False",
+      "single_ev": 0.533
+    },
+    {
+      "player": "Colton Cowser",
+      "team": "Baltimore Orioles",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -114,
+      "tier": "T1",
+      "model_prob": 0.684,
+      "book_implied": 0.5327102803738317,
+      "edge": 0.1513,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 100,
+      "parlay_only": true,
+      "single_ev": 0.284
+    },
+    {
+      "player": "Jared Young",
+      "team": "New York Mets",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -137,
+      "tier": "T1",
+      "model_prob": 0.678,
+      "book_implied": 0.5780590717299579,
+      "edge": 0.0999,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 69,
+      "parlay_only": true,
+      "single_ev": 0.173
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Freddy Fermin",
+      "team": "San Diego Padres",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -157,
+      "tier": "AUTO",
+      "model_prob": 0.907,
+      "book_implied": 0.6108949416342413,
+      "edge": 0.2961,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "San Diego Padres",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 60,
+      "parlay_only": true,
+      "single_ev": 0.485
+    },
+    {
+      "player": "Jac Caglianone",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -207,
+      "tier": "AUTO",
+      "model_prob": 0.95,
+      "book_implied": 0.6742671009771988,
+      "edge": 0.2757,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 112,
+      "parlay_only": true,
+      "single_ev": 0.409
+    },
+    {
+      "player": "Tyler Soderstrom",
+      "team": "Tampa Bay Rays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -183,
+      "tier": "AUTO",
+      "model_prob": 0.91,
+      "book_implied": 0.646643109540636,
+      "edge": 0.2634,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Athletics",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 107,
+      "parlay_only": true,
+      "single_ev": 0.407
+    }
+  ],
+  "parlays": []
+}

@@ -1,0 +1,196 @@
+{
+  "date": "2026-07-30",
+  "singles": [
+    {
+      "player": "Munetaka Murakami",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "AUTO",
+      "model_prob": 0.863,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.2797,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Chicago White Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 72,
+      "parlay_only": true,
+      "single_ev": 0.479
+    },
+    {
+      "player": "Willy Adames",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.817,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.217,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "San Diego Padres",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 103,
+      "parlay_only": true,
+      "single_ev": 0.362
+    },
+    {
+      "player": "Bryan Woo",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -149,
+      "tier": "T1",
+      "model_prob": 0.725,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "l5_avg": 5.2,
+      "home": "Los Angeles Dodgers",
+      "opp": "Los Angeles Dodgers",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.0,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 20,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.212,
+      "edge": 0.1266,
+      "book_implied": 0.5983935742971888
+    },
+    {
+      "player": "Nolan McLean",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": 108,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.6,
+      "l5_avg": 7.2,
+      "home": "New York Mets",
+      "opp": "New York Mets",
+      "opp_k_pct": 0.235,
+      "park_adj": 0.006,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 21,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.468,
+      "edge": 0.2252,
+      "book_implied": 0.4807692307692307
+    },
+    {
+      "player": "Dalton Rushing",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -138,
+      "tier": "T1",
+      "model_prob": 0.665,
+      "book_implied": 0.5798319327731092,
+      "edge": 0.0852,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.5,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 70,
+      "parlay_only": true,
+      "single_ev": 0.147
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Nick Loftin",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -188,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.6527777777777778,
+      "edge": 0.2662,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 71,
+      "parlay_only": true,
+      "single_ev": 0.408
+    },
+    {
+      "player": "Freddie Freeman",
+      "team": "Seattle Mariners",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -236,
+      "tier": "AUTO",
+      "model_prob": 0.925,
+      "book_implied": 0.7023809523809524,
+      "edge": 0.2226,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Los Angeles Dodgers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 105,
+      "parlay_only": true,
+      "single_ev": 0.317
+    },
+    {
+      "player": "Ty France",
+      "team": "San Francisco Giants",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -220,
+      "tier": "AUTO",
+      "model_prob": 0.867,
+      "book_implied": 0.6875,
+      "edge": 0.1795,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "San Diego Padres",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 77,
+      "parlay_only": true,
+      "single_ev": 0.261
+    }
+  ],
+  "parlays": []
+}

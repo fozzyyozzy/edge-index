@@ -1,0 +1,146 @@
+{
+  "date": "2026-08-29",
+  "singles": [
+    {
+      "player": "Carter Jensen",
+      "team": "Kansas City Royals",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.731,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.1477,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 125,
+      "parlay_only": true,
+      "single_ev": 0.253
+    },
+    {
+      "player": "Cade Cavalli",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 6.5,
+      "odds": 110,
+      "tier": "T1",
+      "model_prob": 0.707,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "l5_avg": 7.8,
+      "home": "Washington Nationals",
+      "opp": "Washington Nationals",
+      "opp_k_pct": 0.245,
+      "park_adj": 0.002,
+      "alt_lines": [
+        5.5,
+        6.0
+      ],
+      "prior_games": 28,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.485,
+      "edge": 0.2308,
+      "book_implied": 0.47619047619047616
+    },
+    {
+      "player": "Sean Murphy",
+      "team": "Atlanta Braves",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -120,
+      "tier": "T1",
+      "model_prob": 0.653,
+      "book_implied": 0.5454545454545454,
+      "edge": 0.1075,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.6,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 15,
+      "parlay_only": true,
+      "single_ev": 0.197
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Jonny Deluca",
+      "team": "San Diego Padres",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -165,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.6226415094339623,
+      "edge": 0.2964,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Tampa Bay Rays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 81,
+      "parlay_only": true,
+      "single_ev": 0.476
+    },
+    {
+      "player": "Bryce Eldridge",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -159,
+      "tier": "AUTO",
+      "model_prob": 0.867,
+      "book_implied": 0.613899613899614,
+      "edge": 0.2531,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "San Francisco Giants",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 89,
+      "parlay_only": true,
+      "single_ev": 0.412
+    },
+    {
+      "player": "Miguel Vargas",
+      "team": "Chicago White Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -200,
+      "tier": "AUTO",
+      "model_prob": 0.919,
+      "book_implied": 0.6666666666666666,
+      "edge": 0.2523,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Minnesota Twins",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 132,
+      "parlay_only": true,
+      "single_ev": 0.379
+    }
+  ],
+  "parlays": []
+}

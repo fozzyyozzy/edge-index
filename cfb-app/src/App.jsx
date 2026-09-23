@@ -1,35 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import KBoard from "./KBoard";
 import PropHub from "./PropHub";
 import StreakCenter from "./StreakCenter";
-import BankrollManager from "./BankrollManager";
-import PlayerStatsHub from "./PlayerStatsHub";
+import MatchupsHub from "./MatchupsHub";
 import MLBHub from "./MLBHub";
+import NFLHub from "./NFLHub";
 import RecordTracker from "./RecordTracker";
 import FAQ from "./FAQ";
-import PlaybookHub from "./PlaybookHub";
 
-// Sport section dividers + tabs
+
+// NFL leads — it's the product. MLB was the offseason trial and is
+// labelled as one rather than presented as a parallel offering.
 const NAV_SECTIONS = [
   {
-    sport: "MLB",
-    color: "#f5c518",
+    sport: "NFL",
+    note: "2026 · PAPER",
+    color: "#00e5ff",
     tabs: [
-      { id: "kboard",   label: "K Board",          component: KBoard },
-      { id: "mlb",      label: "Full Card",        component: MLBHub },
-      { id: "record",   label: "Record",           component: RecordTracker },
-      { id: "faq",      label: "FAQ",              component: FAQ },
+      { id: "nflcard",  label: "Card",         component: NFLHub },
+      { id: "streaks",  label: "Floor Lines",  component: StreakCenter },
+      { id: "props",    label: "Props",        component: PropHub },
+      { id: "matchups", label: "Matchups",     component: MatchupsHub },
     ],
   },
   {
-    sport: "NFL",
-    color: "#00e5ff",
+    sport: "MLB",
+    note: "OFFSEASON TEST",
+    color: "#f5c518",
     tabs: [
-      { id: "streaks",  label: "Streak Center",   component: StreakCenter },
-      { id: "players",  label: "Player Stats",     component: PlayerStatsHub },
-      { id: "props",    label: "Prop Hub",          component: PropHub },
-      { id: "playbook", label: "Playbook",          component: PlaybookHub },
-      { id: "bankroll", label: "Bankroll",          component: BankrollManager },
+      { id: "kboard",   label: "K Board",        component: KBoard },
+      { id: "mlb",      label: "Full Card",      component: MLBHub },
+      { id: "record",   label: "Record",         component: RecordTracker },
+      { id: "faq",      label: "FAQ",            component: FAQ },
     ],
   },
 ];
@@ -37,7 +39,17 @@ const NAV_SECTIONS = [
 const ALL_TABS = NAV_SECTIONS.flatMap(s => s.tabs);
 
 export default function App() {
-  const [active, setActive] = useState("kboard");
+  // "#matchups" or "#legs?player=X" opens that tab; unknown ids are ignored.
+  const tabFromHash = () => {
+    const id = window.location.hash.slice(1).split("?")[0];
+    return ALL_TABS.some(t => t.id === id) ? id : null;
+  };
+  const [active, setActive] = useState(() => tabFromHash() || "nflcard");
+  useEffect(() => {
+    const onHash = () => { const id = tabFromHash(); if (id) setActive(id); };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
   const ActiveComponent = ALL_TABS.find(n => n.id === active)?.component;
 
   return (
@@ -58,8 +70,8 @@ export default function App() {
           <div>
             <div style={{ fontSize:13, fontWeight:700, color:"#f0f0f0",
               letterSpacing:1 }}>EDGE INDEX</div>
-            <div style={{ fontSize:9, color:"#00ff88", letterSpacing:2,
-              marginTop:-2 }}>MLB STRIKEOUT EDGE · NFL PROPS</div>
+            <div style={{ fontSize:9, color:"#00e5ff", letterSpacing:2,
+              marginTop:-2 }}>NFL PROP MODEL · CALIBRATED · PAPER 2026</div>
           </div>
         </div>
 
@@ -69,16 +81,17 @@ export default function App() {
             <div key={section.sport} style={{ display:"flex", alignItems:"stretch" }}>
               {/* Sport label — non-clickable divider */}
               <div style={{
-                padding:"16px 12px",
-                fontSize:10, fontWeight:800,
-                color: section.color + "60",
+                padding:"12px 12px",
                 letterSpacing:3,
                 fontFamily:"'IBM Plex Mono',monospace",
-                display:"flex", alignItems:"center",
+                display:"flex", flexDirection:"column", justifyContent:"center",
                 borderLeft: si > 0 ? "1px solid #ffffff08" : "none",
                 userSelect:"none",
               }}>
-                {section.sport}
+                <div style={{ fontSize:10, fontWeight:800,
+                  color: section.color + "60" }}>{section.sport}</div>
+                <div style={{ fontSize:7, color:"#3a3a3a", letterSpacing:1.5,
+                  marginTop:2, whiteSpace:"nowrap" }}>{section.note}</div>
               </div>
               {/* Tabs for this sport */}
               {section.tabs.map(n => (
@@ -99,12 +112,12 @@ export default function App() {
           ))}
         </div>
 
-        {/* Live indicator */}
+        {/* Paper indicator — replaces LIVE, since nothing is bet in 2026 */}
         <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-          <div style={{ width:6, height:6, borderRadius:"50%", background:"#00ff88",
+          <div style={{ width:6, height:6, borderRadius:"50%", background:"#f5c518",
             animation:"pulse 2s infinite" }} />
-          <span style={{ fontSize:10, color:"#00ff88", letterSpacing:2,
-            fontWeight:700 }}>LIVE</span>
+          <span style={{ fontSize:10, color:"#f5c518", letterSpacing:2,
+            fontWeight:700 }}>PAPER</span>
         </div>
       </div>
 

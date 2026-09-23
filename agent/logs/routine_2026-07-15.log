@@ -1,0 +1,467 @@
+[07:50:02] 
+EDGE INDEX MORNING ROUTINE — 2026-07-15
+[07:50:02] ============================================================
+[07:50:02] 
+============================================================
+STEP 1: Grade yesterday (2026-07-14)
+============================================================
+[07:50:02]   >> results checker
+[07:50:03]      No plays file for 2026-07-14
+[07:50:03]      Run pipeline first for that date
+[07:50:03]   >> grade patch
+[07:50:03]      No posted card for 2026-07-14 — skipping
+[07:50:03] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[07:50:03]   >> trade tracker
+[07:52:32]        MIL: 44 players
+[07:52:32]      Total: 935 players on 40-man rosters
+[07:52:32]      🔄 ROSTER MOVES DETECTED: 1
+[07:52:32]        CJ Van Eyk                   UNKNOWN → TOR New to 40-man roster
+[07:52:32]      ✓ Cache updated — 2026-07-15
+[07:52:32]        Run daily to track all moves automatically
+[07:52:32]        Add to morning routine before mlb_odds_puller.py
+[07:52:32]   >> roster verify
+[07:52:33]        ✓ Confirmed correct: 206
+[07:52:33]        ⚠️  Mismatches found: 0
+[07:52:33]        — Inactive/unknown:  0
+[07:52:33]      ======================================================================
+[07:52:33]      ✓ ALL CLEAR — all 206 active players on correct teams
+[07:52:33]        Checked: 2026-07-15
+[07:52:33]      Add to morning routine (after trade tracker):
+[07:52:33]        python mlb_roster_verify.py --fix
+[07:52:33] 
+============================================================
+STEP 3: Pull today's lines (2026-07-15)
+============================================================
+[07:52:33]   >> odds puller
+[07:52:33]      Pulling today's MLB games...
+[07:52:33]      No games found today.
+[07:52:33] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[07:52:33]   >> current stats
+[07:52:35]      No lines file for 2026-07-15
+[07:52:35]      Add these to EXCLUDE_PLAYERS in mlb_run_today.py:
+[07:52:35]   >> savant cache
+[07:52:49]      No lines file for 2026-07-15
+[07:52:49]   >> pitcher hands
+[07:52:50]      Pulling starter hands for 2026-07-15...
+[07:52:50]        No games found for 2026-07-15
+[07:52:50]      ✓ Saved 0 teams to cache
+[07:52:50]      STARTER HANDS:
+[07:52:50] 
+============================================================
+STEP 5: Run models
+============================================================
+[07:52:50]   >> run today (props)
+[07:52:50]      No lines file found: C:\Users\tyose\edge-index\backtest\mlb\mlb_lines_2026-07-15.json
+[07:52:50]      Run: python mlb_odds_puller.py --date 2026-07-15
+[07:52:50]   >> pitcher K unders
+[07:52:53]      No lines file — run mlb_odds_puller.py first
+[07:52:53]      No results — check caches exist
+[07:52:53]   >> umpire assignments
+[07:52:53]      HP UMPIRES — 2026-07-15
+[07:52:53]      ======================================================================
+[07:52:53]      ERR: Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_umpire.py", line 437, in <module>
+    show_todays_umps(args.date, verbose=args.verbose)
+  File "C:\Users\tyose\edg
+[07:52:53]   >> team run lines
+[07:52:54]      TEAM RUN LINE SIGNALS — 2026-07-15
+[07:52:54]      ======================================================================
+[07:52:54]        No games today
+[07:52:54]   >> power score
+[07:52:55]      MATCHUP POWER ANALYSIS — 2026-07-15
+[07:52:55]      ===========================================================================
+[07:52:55]        Saved to mlb_power_2026-07-15.json
+[07:52:55]   >> parlay builder
+[07:52:55]      No plays file for 2026-07-15
+[07:52:55]      Run: python mlb_run_today.py --date 2026-07-15
+[07:52:55] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[07:52:55]   ✗ mlb_plays file not found — skipping hub update
+[07:52:55] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[07:52:55]   >> generate record data
+[07:52:56]      wrote C:\Users\tyose\edge-index\cfb-app\src\..\public\data\record.json (45 days)
+[07:52:56]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[07:52:56]        45 days  |  557 singles  |  131 fades
+[07:52:56]   ✓ RecordTracker.jsx regenerated from posted cards
+[07:52:56] 
+============================================================
+STEP 9: Summary
+============================================================
+[07:52:56] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-07-15.log
+[07:52:56] 
+  ⚠ Card NOT auto-posted — review plays then run:
+[07:52:56]   python mlb_posted_plays.py --date 2026-07-15 --plays '...' --fades '...'
+[07:52:56] 
+✓ Done — 07:52:56
+[09:04:09] 
+EDGE INDEX MORNING ROUTINE — 2026-07-15
+[09:04:09] ============================================================
+[09:04:09] 
+============================================================
+STEP 1: Grade yesterday (2026-07-14)
+============================================================
+[09:04:09]   >> results checker
+[09:04:10]      No plays file for 2026-07-14
+[09:04:10]      Run pipeline first for that date
+[09:04:10]   >> grade patch
+[09:04:10]      No posted card for 2026-07-14 — skipping
+[09:04:10] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[09:04:10]   >> trade tracker
+[09:04:18]        Jacob Young                  UNKNOWN → WSH New to 40-man roster
+[09:04:18]        Kirby Yates                  UNKNOWN → LAA New to 40-man roster
+[09:04:18]        Cole Carrigg                 UNKNOWN → COL New to 40-man roster
+[09:04:18]        Mitch Farris                 UNKNOWN → LAA New to 40-man roster
+[09:04:18]        Lawrence Butler              UNKNOWN → OAK New to 40-man roster
+[09:04:18]        Tyler Uberstine              UNKNOWN → BOS New to 40-man roster
+[09:04:18]      ✓ Cache updated — 2026-07-15
+[09:04:18]        Run daily to track all moves automatically
+[09:04:18]        Add to morning routine before mlb_odds_puller.py
+[09:04:18]   >> roster verify
+[09:04:19]        ✓ Confirmed correct: 206
+[09:04:19]        ⚠️  Mismatches found: 0
+[09:04:19]        — Inactive/unknown:  0
+[09:04:19]      ======================================================================
+[09:04:19]      ✓ ALL CLEAR — all 206 active players on correct teams
+[09:04:19]        Checked: 2026-07-15
+[09:04:19]      Add to morning routine (after trade tracker):
+[09:04:19]        python mlb_roster_verify.py --fix
+[09:04:19] 
+============================================================
+STEP 3: Pull today's lines (2026-07-15)
+============================================================
+[09:04:19]   >> odds puller
+[09:04:19]      Pulling today's MLB games...
+[09:04:19]      No games found today.
+[09:04:19] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[09:04:19]   >> current stats
+[09:04:19]      No lines file for 2026-07-15
+[09:04:19]      Add these to EXCLUDE_PLAYERS in mlb_run_today.py:
+[09:04:20]   >> savant cache
+[09:04:20]      No lines file for 2026-07-15
+[09:04:20]   >> pitcher hands
+[09:04:21]      Pulling starter hands for 2026-07-15...
+[09:04:21]        No games found for 2026-07-15
+[09:04:21]      ✓ Saved 0 teams to cache
+[09:04:21]      STARTER HANDS:
+[09:04:21] 
+============================================================
+STEP 5: Run models
+============================================================
+[09:04:21]   >> run today (props)
+[09:04:22]      No lines file found: C:\Users\tyose\edge-index\backtest\mlb\mlb_lines_2026-07-15.json
+[09:04:22]      Run: python mlb_odds_puller.py --date 2026-07-15
+[09:04:22]   >> pitcher K unders
+[09:04:23]      No lines file — run mlb_odds_puller.py first
+[09:04:23]      No results — check caches exist
+[09:04:23]   >> umpire assignments
+[09:04:23]      HP UMPIRES — 2026-07-15
+[09:04:23]      ======================================================================
+[09:04:23]      ERR: Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_umpire.py", line 437, in <module>
+    show_todays_umps(args.date, verbose=args.verbose)
+  File "C:\Users\tyose\edg
+[09:04:23]   >> team run lines
+[09:04:24]      TEAM RUN LINE SIGNALS — 2026-07-15
+[09:04:24]      ======================================================================
+[09:04:24]        No games today
+[09:04:24]   >> power score
+[09:04:24]      MATCHUP POWER ANALYSIS — 2026-07-15
+[09:04:24]      ===========================================================================
+[09:04:24]        Saved to mlb_power_2026-07-15.json
+[09:04:24]   >> parlay builder
+[09:04:25]      No plays file for 2026-07-15
+[09:04:25]      Run: python mlb_run_today.py --date 2026-07-15
+[09:04:25] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[09:04:25]   ✗ mlb_plays file not found — skipping hub update
+[09:04:25] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[09:04:25]   >> generate record data
+[09:04:25]      wrote C:\Users\tyose\edge-index\cfb-app\src\..\public\data\record.json (45 days)
+[09:04:25]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[09:04:25]        45 days  |  557 singles  |  131 fades
+[09:04:25]   ✓ RecordTracker.jsx regenerated from posted cards
+[09:04:25] 
+============================================================
+STEP 9: Summary
+============================================================
+[09:04:25] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-07-15.log
+[09:04:25] 
+  ⚠ Card NOT auto-posted — review plays then run:
+[09:04:25]   python mlb_posted_plays.py --date 2026-07-15 --plays '...' --fades '...'
+[09:04:25] 
+✓ Done — 09:04:25
+[09:15:01] 
+EDGE INDEX MORNING ROUTINE — 2026-07-15
+[09:15:01] ============================================================
+[09:15:01] 
+============================================================
+STEP 1: Grade yesterday (2026-07-14)
+============================================================
+[09:15:01]   >> results checker
+[09:15:01]      No plays file for 2026-07-14
+[09:15:01]      Run pipeline first for that date
+[09:15:01]   >> grade patch
+[09:15:02]      No posted card for 2026-07-14 — skipping
+[09:15:02] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[09:15:02]   >> trade tracker
+[09:15:09]        NYY: 41 players
+[09:15:09]        MIL: 44 players
+[09:15:09]      Total: 1344 players on 40-man rosters
+[09:15:09]      ✓ No roster changes detected
+[09:15:09]      ✓ Cache updated — 2026-07-15
+[09:15:09]        Run daily to track all moves automatically
+[09:15:09]        Add to morning routine before mlb_odds_puller.py
+[09:15:09]   >> roster verify
+[09:15:09]        ✓ Confirmed correct: 206
+[09:15:09]        ⚠️  Mismatches found: 0
+[09:15:09]        — Inactive/unknown:  0
+[09:15:09]      ======================================================================
+[09:15:09]      ✓ ALL CLEAR — all 206 active players on correct teams
+[09:15:09]        Checked: 2026-07-15
+[09:15:09]      Add to morning routine (after trade tracker):
+[09:15:09]        python mlb_roster_verify.py --fix
+[09:15:09] 
+============================================================
+STEP 3: Pull today's lines (2026-07-15)
+============================================================
+[09:15:09]   >> odds puller
+[09:15:10]      Pulling today's MLB games...
+[09:15:10]      No games found today.
+[09:15:10] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[09:15:10]   >> current stats
+[09:15:10]      No lines file for 2026-07-15
+[09:15:10]      Add these to EXCLUDE_PLAYERS in mlb_run_today.py:
+[09:15:10]   >> savant cache
+[09:15:11]      No lines file for 2026-07-15
+[09:15:11]   >> pitcher hands
+[09:15:11]      Pulling starter hands for 2026-07-15...
+[09:15:11]        No games found for 2026-07-15
+[09:15:11]      ✓ Saved 0 teams to cache
+[09:15:11]      STARTER HANDS:
+[09:15:11] 
+============================================================
+STEP 5: Run models
+============================================================
+[09:15:11]   >> run today (props)
+[09:15:12]      No lines file found: C:\Users\tyose\edge-index\backtest\mlb\mlb_lines_2026-07-15.json
+[09:15:12]      Run: python mlb_odds_puller.py --date 2026-07-15
+[09:15:12]   >> pitcher K unders
+[09:15:13]      No lines file — run mlb_odds_puller.py first
+[09:15:13]      No results — check caches exist
+[09:15:13]   >> umpire assignments
+[09:15:14]      HP UMPIRES — 2026-07-15
+[09:15:14]      ======================================================================
+[09:15:14]      ERR: Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_umpire.py", line 437, in <module>
+    show_todays_umps(args.date, verbose=args.verbose)
+  File "C:\Users\tyose\edg
+[09:15:14]   >> team run lines
+[09:15:14]      TEAM RUN LINE SIGNALS — 2026-07-15
+[09:15:14]      ======================================================================
+[09:15:14]        No games today
+[09:15:14]   >> power score
+[09:15:15]      MATCHUP POWER ANALYSIS — 2026-07-15
+[09:15:15]      ===========================================================================
+[09:15:15]        Saved to mlb_power_2026-07-15.json
+[09:15:15]   >> parlay builder
+[09:15:15]      No plays file for 2026-07-15
+[09:15:15]      Run: python mlb_run_today.py --date 2026-07-15
+[09:15:15] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[09:15:15]   ✗ mlb_plays file not found — skipping hub update
+[09:15:15] 
+============================================================
+STEP 6.4: Auto-post today's card
+============================================================
+[09:15:15]   >> ['C:\\Users\\tyose\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', 'C:\\Users\\tyose\\edge-index\\backtest\\mlb\\mlb_posted_plays.py', '--date', '2026-07-15', '--auto']
+[09:15:15]      ✗ No plays file for 2026-07-15 — run pipeline first
+[09:15:15]        Auto-pick found no qualifying plays/fades for 2026-07-15
+[09:15:15]          Rules: AUTO -150 to -249, T1 +money to -119, all VALUE_TB; fades l14<.100 + under>=-110
+[09:15:15]   ✓ auto-post step complete
+[09:15:15] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[09:15:15]   >> generate record data
+[09:15:15]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[09:15:15]        45 days  |  557 singles  |  131 fades
+[09:15:15]   ✓ RecordTracker.jsx regenerated from posted cards
+[09:15:15] 
+============================================================
+STEP 7: Build React app
+============================================================
+[09:15:15]   >> npm run build
+[09:15:17]      > vite build
+[09:15:17]      [36mvite v4.5.3 [32mbuilding for production...[36m[39m
+[09:15:17]      transforming...
+[09:15:17]      [32m✓[39m 42 modules transformed.
+[09:15:17]      rendering chunks...
+[09:15:17]      computing gzip size...
+[09:15:17]      [2mdist/[22m[32mindex.html                [39m[1m[2m  0.40 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[09:15:17]      [2mdist/[22m[36massets/index-96b23a69.js  [39m[1m[2m490.26 kB[22m[1m[22m[2m │ gzip: 120.16 kB[22m
+[09:15:17]      [32m✓ built in 946ms[39m
+[09:15:17]   ✓ Build complete → dist/
+[09:15:17] 
+============================================================
+STEP 8: Deploy to Cloudflare Pages
+============================================================
+[09:15:17]   >> wrangler deploy
+[09:15:26]      ⛅️ wrangler 4.98.0 (update available 4.111.0)
+[09:15:26]      ──────────────────────────────────────────────
+[09:15:26]      Uploading... (5/6)
+[09:15:26]      Uploading... (6/6)
+[09:15:26]      ✨ Success! Uploaded 1 files (5 already uploaded) (1.40 sec)
+[09:15:26]      🌎 Deploying...
+[09:15:26]      ✨ Deployment complete! Take a peek over at https://2bc6f445.edge-index.pages.dev
+[09:15:26]   ✓ Live at https://www.edge-index.com
+[09:15:26] 
+============================================================
+STEP 9: Summary
+============================================================
+[09:15:26] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-07-15.log
+[09:15:26] 
+  ⚠ No card posted for 2026-07-15 — auto-post may have skipped (no qualifying plays)
+[09:15:26]     Manual post: python mlb_posted_plays.py --date 2026-07-15 --plays '...' --fades '...'
+[09:15:26] 
+✓ Done — 09:15:26
+[14:49:47] 
+EDGE INDEX MORNING ROUTINE — 2026-07-15
+[14:49:47] ============================================================
+[14:49:47] 
+============================================================
+STEP 1: Grade yesterday (2026-07-14)
+============================================================
+[14:49:47]   >> results checker
+[14:49:47]      No plays file for 2026-07-14
+[14:49:47]      Run pipeline first for that date
+[14:49:47]   >> grade patch
+[14:49:48]      No posted card for 2026-07-14 — skipping
+[14:49:48] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[14:49:48]   >> trade tracker
+[14:49:56]        NYY: 41 players
+[14:49:56]        MIL: 44 players
+[14:49:56]      Total: 1344 players on 40-man rosters
+[14:49:56]      ✓ No roster changes detected
+[14:49:56]      ✓ Cache updated — 2026-07-15
+[14:49:56]        Run daily to track all moves automatically
+[14:49:56]        Add to morning routine before mlb_odds_puller.py
+[14:49:56]   >> roster verify
+[14:49:57]        ✓ Confirmed correct: 206
+[14:49:57]        ⚠️  Mismatches found: 0
+[14:49:57]        — Inactive/unknown:  0
+[14:49:57]      ======================================================================
+[14:49:57]      ✓ ALL CLEAR — all 206 active players on correct teams
+[14:49:57]        Checked: 2026-07-15
+[14:49:57]      Add to morning routine (after trade tracker):
+[14:49:57]        python mlb_roster_verify.py --fix
+[14:49:57] 
+============================================================
+STEP 3: Pull today's lines (2026-07-15)
+============================================================
+[14:49:57]   >> odds puller
+[14:49:57]      Pulling today's MLB games...
+[14:49:57]        Found 0 games today (18738 credits remaining)
+[14:49:57]      No games found today.
+[14:49:57] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[14:49:57]   >> current stats
+[14:49:57]      No lines file for 2026-07-15
+[14:49:57]      Add these to EXCLUDE_PLAYERS in mlb_run_today.py:
+[14:49:57]   >> savant cache
+[14:50:00]      No lines file for 2026-07-15
+[14:50:00]   >> pitcher hands
+[14:50:01]      Pulling starter hands for 2026-07-15...
+[14:50:01]        No games found for 2026-07-15
+[14:50:01]      ✓ Saved 0 teams to cache
+[14:50:01]      STARTER HANDS:
+[14:50:01] 
+============================================================
+STEP 5: Run models
+============================================================
+[14:50:01]   >> run today (props)
+[14:50:02]      No lines file found: C:\Users\tyose\edge-index\backtest\mlb\mlb_lines_2026-07-15.json
+[14:50:02]      Run: python mlb_odds_puller.py --date 2026-07-15
+[14:50:02]   >> pitcher K unders
+[14:50:04]      No lines file — run mlb_odds_puller.py first
+[14:50:04]      No results — check caches exist
+[14:50:04]   >> umpire assignments
+[14:50:04]      HP UMPIRES — 2026-07-15
+[14:50:04]      ======================================================================
+[14:50:04]      ERR: Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\backtest\mlb\mlb_umpire.py", line 437, in <module>
+    show_todays_umps(args.date, verbose=args.verbose)
+  File "C:\Users\tyose\edg
+[14:50:04]   >> team run lines
+[14:50:05]      TEAM RUN LINE SIGNALS — 2026-07-15
+[14:50:05]      ======================================================================
+[14:50:05]        No games today
+[14:50:05]   >> power score
+[14:50:05]      MATCHUP POWER ANALYSIS — 2026-07-15
+[14:50:05]      ===========================================================================
+[14:50:05]        Saved to mlb_power_2026-07-15.json
+[14:50:05]   >> parlay builder
+[14:50:06]      No plays file for 2026-07-15
+[14:50:06]      Run: python mlb_run_today.py --date 2026-07-15
+[14:50:06] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[14:50:06]   ✗ mlb_plays file not found — skipping hub update
+[14:50:06] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[14:50:06]   >> generate record data
+[14:50:06]      wrote C:\Users\tyose\edge-index\cfb-app\src\..\public\data\record.json (45 days)
+[14:50:06]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[14:50:06]        45 days  |  557 singles  |  131 fades
+[14:50:06]   ✓ RecordTracker.jsx regenerated from posted cards
+[14:50:06] 
+============================================================
+STEP 9: Summary
+============================================================
+[14:50:06] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-07-15.log
+[14:50:06] 
+  ⚠ Card NOT auto-posted — review plays then run:
+[14:50:06]   python mlb_posted_plays.py --date 2026-07-15 --plays '...' --fades '...'
+[14:50:06] 
+✓ Done — 14:50:06

@@ -1,0 +1,234 @@
+{
+  "date": "2026-08-06",
+  "singles": [
+    {
+      "player": "Jake Bauers",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -150,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.6000000000000001,
+      "edge": 0.331,
+      "streak": 9,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 102,
+      "parlay_only": true,
+      "single_ev": 0.552
+    },
+    {
+      "player": "Seiya Suzuki",
+      "team": "Chicago Cubs",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "AUTO",
+      "model_prob": 0.885,
+      "book_implied": 0.574468085106383,
+      "edge": 0.3105,
+      "streak": 5,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 98,
+      "parlay_only": true,
+      "single_ev": 0.541
+    },
+    {
+      "player": "Carson Kelly",
+      "team": "Chicago Cubs",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -119,
+      "tier": "AUTO",
+      "model_prob": 0.835,
+      "book_implied": 0.5433789954337899,
+      "edge": 0.2916,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 81,
+      "parlay_only": true,
+      "single_ev": 0.537
+    },
+    {
+      "player": "Nolan McLean",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 5.5,
+      "odds": -130,
+      "tier": "T1",
+      "model_prob": 0.751,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.8,
+      "l5_avg": 7.0,
+      "home": "Cleveland Guardians",
+      "opp": "Cleveland Guardians",
+      "opp_k_pct": 0.225,
+      "park_adj": 0.006,
+      "alt_lines": [
+        4.5,
+        5.0
+      ],
+      "prior_games": 22,
+      "umpire": "John Bacon",
+      "ump_adj": 0.0,
+      "ump_tendency": "NEUTRAL",
+      "single_ev": 0.329,
+      "edge": 0.1858,
+      "book_implied": 0.5652173913043479
+    },
+    {
+      "player": "Alex Bregman",
+      "team": "Chicago Cubs",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -142,
+      "tier": "T1",
+      "model_prob": 0.725,
+      "book_implied": 0.5867768595041323,
+      "edge": 0.1382,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 112,
+      "parlay_only": true,
+      "single_ev": 0.236
+    },
+    {
+      "player": "Endy Rodriguez",
+      "team": "Pittsburgh Pirates",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.1227,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 43,
+      "parlay_only": true,
+      "single_ev": 0.21
+    },
+    {
+      "player": "Ryan Waldschmidt",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.706,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.1227,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 48,
+      "parlay_only": true,
+      "single_ev": 0.21
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Andruw Monasterio",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -164,
+      "tier": "AUTO",
+      "model_prob": 0.94,
+      "book_implied": 0.6212121212121212,
+      "edge": 0.3188,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 70,
+      "parlay_only": true,
+      "single_ev": 0.513
+    },
+    {
+      "player": "Royce Lewis",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -210,
+      "tier": "AUTO",
+      "model_prob": 0.944,
+      "book_implied": 0.6774193548387096,
+      "edge": 0.2666,
+      "streak": 10,
+      "l5": 1.0,
+      "l10": 1.0,
+      "home": "Kansas City Royals",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 80,
+      "parlay_only": true,
+      "single_ev": 0.394
+    },
+    {
+      "player": "Geraldo Perdomo",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -225,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "book_implied": 0.6923076923076923,
+      "edge": 0.1987,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 111,
+      "parlay_only": true,
+      "single_ev": 0.287
+    }
+  ],
+  "parlays": []
+}

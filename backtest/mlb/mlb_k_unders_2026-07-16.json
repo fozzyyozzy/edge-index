@@ -1,0 +1,122 @@
+[
+  {
+    "pitcher": "Aaron Nola",
+    "home": "Philadelphia Phillies",
+    "away": "New York Mets",
+    "k_line": 5.5,
+    "over_odds": 114,
+    "under_odds": null,
+    "over_score": 4,
+    "under_score": 0,
+    "net": 4,
+    "side": "OVER",
+    "score": 4,
+    "signals": [
+      "L5 avg: 6.2 Ks | 5.3 IP | 1.19 K/IP",
+      "L5 vs line 5.5: 3 OVER / 2 UNDER",
+      "\ud83d\udccb Average K/IP: 1.19",
+      "\ud83d\udccb Moderate OVER: 3/5 over 5.5",
+      "\u2713 Avg Ks (6.2) above line (5.5)",
+      "\u2713 Avg K% lineup: 21.5%",
+      "\u2713 Slight pitcher park: 1.03x"
+    ],
+    "rec": "LEAN OVER",
+    "logs": [
+      {
+        "date": "2026-06-18",
+        "ip": 5.0,
+        "ks": 6,
+        "k_per_ip": 1.2,
+        "opp": "New York Mets"
+      },
+      {
+        "date": "2026-06-24",
+        "ip": 5.0,
+        "ks": 5,
+        "k_per_ip": 1.0,
+        "opp": "Washington Nationals"
+      },
+      {
+        "date": "2026-06-29",
+        "ip": 4.33,
+        "ks": 5,
+        "k_per_ip": 1.15,
+        "opp": "Pittsburgh Pirates"
+      },
+      {
+        "date": "2026-07-05",
+        "ip": 7.0,
+        "ks": 7,
+        "k_per_ip": 1.0,
+        "opp": "Kansas City Royals"
+      },
+      {
+        "date": "2026-07-10",
+        "ip": 5.0,
+        "ks": 8,
+        "k_per_ip": 1.6,
+        "opp": "Detroit Tigers"
+      }
+    ]
+  },
+  {
+    "pitcher": "Christian Scott",
+    "home": "Philadelphia Phillies",
+    "away": "New York Mets",
+    "k_line": 5.5,
+    "over_odds": -102,
+    "under_odds": null,
+    "over_score": 3,
+    "under_score": 1,
+    "net": 2,
+    "side": "OVER",
+    "score": 3,
+    "signals": [
+      "L5 avg: 5.4 Ks | 4.7 IP | 1.19 K/IP",
+      "L5 vs line 5.5: 3 OVER / 2 UNDER",
+      "\ud83d\udccb Average K/IP: 1.19",
+      "\ud83d\udccb Moderate OVER: 3/5 over 5.5",
+      "\ud83d\udccb Avg Ks (5.4) below line (5.5)",
+      "\u2713 Avg K% lineup: 21.5%",
+      "\u2713 Slight pitcher park: 1.03x"
+    ],
+    "rec": "SLIGHT OVER EDGE",
+    "logs": [
+      {
+        "date": "2026-06-05",
+        "ip": 5.67,
+        "ks": 3,
+        "k_per_ip": 0.53,
+        "opp": "San Diego Padres"
+      },
+      {
+        "date": "2026-06-11",
+        "ip": 4.67,
+        "ks": 6,
+        "k_per_ip": 1.29,
+        "opp": "St. Louis Cardinals"
+      },
+      {
+        "date": "2026-06-27",
+        "ip": 4.33,
+        "ks": 6,
+        "k_per_ip": 1.38,
+        "opp": "Philadelphia Phillies"
+      },
+      {
+        "date": "2026-07-03",
+        "ip": 4.0,
+        "ks": 7,
+        "k_per_ip": 1.75,
+        "opp": "Atlanta Braves"
+      },
+      {
+        "date": "2026-07-08",
+        "ip": 5.0,
+        "ks": 5,
+        "k_per_ip": 1.0,
+        "opp": "Kansas City Royals"
+      }
+    ]
+  }
+]

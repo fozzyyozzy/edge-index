@@ -1,52 +1,60 @@
 import { useState } from "react";
-// v2026-07-12
+// v2026-09-23
 
-const TODAY = "2026-07-12";
+const TODAY = "2026-09-23";
 
 // >>> AUTO-GENERATED FREE PICK BEGIN — do not edit between markers
 const FREE_PICK = {
-  date:       "2026-07-12",
-  player:     "Jeremy Pena",
+  date:       "2026-09-23",
+  player:     "Mauricio Dubon",
   prop:       "H OVER 0.5",
-  odds:       -253,
-  matchup:    "Houston Astros @ Texas Rangers",
-  reason:     "Highest model_prob AUTO — 93.1% model",
-  hit_prob:   0.931,
+  odds:       -200,
+  matchup:    "Atlanta Braves vs TBD",
+  reason:     "Highest model_prob AUTO — 95.0% model",
+  hit_prob:   0.95,
 };
 // <<< AUTO-GENERATED FREE PICK END
 
 const PITCHER_PLAYS = [
-  {pitcher:"MacKenzie Gore",team:"None",opp:"Texas Rangers",home:"Texas Rangers",
-   prop:"strikeouts",line:4.5,odds:-121,tier:"AUTO",model_prob:0.916,
-   streak:7,l5_avg:7.0,k_per_ip:0,opp_k_pct:0.235,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 7.0 Ks"]},
-  {pitcher:"Taj Bradley",team:"None",opp:"Minnesota Twins",home:"Minnesota Twins",
-   prop:"strikeouts",line:6.5,odds:-140,tier:"T1",model_prob:0.703,
-   streak:3,l5_avg:7.8,k_per_ip:0,opp_k_pct:0.232,
-   alt_lines:[5.5,6.0],hand:"R",notes:["L5 avg 7.8 Ks"]},
-  {pitcher:"Tarik Skubal",team:"None",opp:"Detroit Tigers",home:"Detroit Tigers",
-   prop:"strikeouts",line:7.5,odds:-122,tier:"T1",model_prob:0.673,
-   streak:4,l5_avg:7.8,k_per_ip:0,opp_k_pct:0.222,
-   alt_lines:[6.5,7.0],hand:"R",notes:["L5 avg 7.8 Ks"]},
+  {pitcher:"George Kirby",team:"None",opp:"Seattle Mariners",home:"Seattle Mariners",
+   prop:"strikeouts",line:4.5,odds:-130,tier:"T1",model_prob:0.66,
+   streak:3,l5_avg:5.2,k_per_ip:0,opp_k_pct:0.228,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.2 Ks"]},
+  {pitcher:"Kevin Gausman",team:"None",opp:"Chicago Cubs",home:"Chicago Cubs",
+   prop:"strikeouts",line:5.5,odds:-151,tier:"AUTO",model_prob:0.895,
+   streak:5,l5_avg:6.8,k_per_ip:0,opp_k_pct:0.235,
+   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 6.8 Ks"]},
+  {pitcher:"Logan Henderson",team:"None",opp:"Philadelphia Phillies",home:"Philadelphia Phillies",
+   prop:"strikeouts",line:5.5,odds:-113,tier:"T1",model_prob:0.758,
+   streak:4,l5_avg:6.4,k_per_ip:0,opp_k_pct:0.225,
+   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 6.4 Ks"]},
+  {pitcher:"Sonny Gray",team:"None",opp:"Boston Red Sox",home:"Boston Red Sox",
+   prop:"strikeouts",line:4.5,odds:-120,tier:"AUTO",model_prob:0.904,
+   streak:6,l5_avg:5.8,k_per_ip:0,opp_k_pct:0.222,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.8 Ks"]},
 ];
 
 const BATTER_PLAYS = [
-  {batter:"Austin Hedges",team:"Cleveland Guardians",opp:"?",home:"Miami Marlins",
-   prop:"hits",line:0.5,odds:-117,tier:"AUTO",model_prob:0.885,
-   hit_streak:7,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["7-game hit streak"]},
-  {batter:"Brett Baty",team:"New York Mets",opp:"?",home:"New York Mets",
-   prop:"hits",line:0.5,odds:-138,tier:"T1",model_prob:0.666,
-   hit_streak:0,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["0-game hit streak"]},
-  {batter:"Gabriel Moreno",team:"None",opp:"?",home:"Los Angeles Dodgers",
-   prop:"hits",line:0.5,odds:140,tier:"T1",model_prob:0.65,
+  {batter:"Nolan Arenado",team:"Arizona Diamondbacks",opp:"?",home:"Colorado Rockies",
+   prop:"hits",line:0.5,odds:175,tier:"T1",model_prob:0.654,
+   hit_streak:1,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["1-game hit streak"]},
+  {batter:"Nolan Arenado",team:"None",opp:"?",home:"Colorado Rockies",
+   prop:"hits",line:0.5,odds:100,tier:"T1",model_prob:0.654,
+   hit_streak:1,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["1-game hit streak"]},
+  {batter:"Andrew Knizner",team:"Minnesota Twins",opp:"?",home:"San Francisco Giants",
+   prop:"hits",line:0.5,odds:-130,tier:"T1",model_prob:0.657,
    hit_streak:2,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
-  {batter:"Garrett Mitchell",team:"Milwaukee Brewers",opp:"?",home:"Pittsburgh Pirates",
-   prop:"hits",line:0.5,odds:-149,tier:"T1",model_prob:0.728,
-   hit_streak:4,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
+  {batter:"Brenton Doyle",team:"Chicago White Sox",opp:"?",home:"Kansas City Royals",
+   prop:"hits",line:0.5,odds:-125,tier:"AUTO",model_prob:0.894,
+   hit_streak:7,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["7-game hit streak"]},
+  {batter:"Dustin Harris",team:"San Diego Padres",opp:"?",home:"Los Angeles Dodgers",
+   prop:"hits",line:0.5,odds:-140,tier:"T1",model_prob:0.675,
+   hit_streak:0,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["0-game hit streak"]},
 ];
 
 const SKIP_TODAY = [
@@ -57,14 +65,22 @@ const SKIP_TODAY = [
 ];
 
 const FADE_PLAYS = [
-  {batter:"Paul Goldschmidt",team:"?",opp:"?",
-   l14_avg:".083",l14:"FROZEN",
+  {batter:"Isiah Kiner-Falefa",team:"?",opp:"?",
+   l14_avg:".043",l14:"ICE COLD",
+   odds_over:-168,odds_under:126,
+   reason:"1-for-23 L14 (.043)"}, 
+  {batter:"Maikel Garcia",team:"?",opp:"?",
+   l14_avg:".056",l14:"ICE COLD",
    odds_over:-235,odds_under:175,
-   reason:"3-for-36 L14 (.083)"}, 
-  {batter:"Corbin Carroll",team:"?",opp:"?",
-   l14_avg:".087",l14:"FROZEN",
-   odds_over:-185,odds_under:135,
-   reason:"4-for-46 L14 (.087)"}, 
+   reason:"1-for-18 L14 (.056)"}, 
+  {batter:"Austin Martin",team:"?",opp:"?",
+   l14_avg:".062",l14:"ICE COLD",
+   odds_over:-220,odds_under:165,
+   reason:"1-for-16 L14 (.062)"}, 
+  {batter:"Ryan Jeffers",team:"?",opp:"?",
+   l14_avg:".071",l14:"ICE COLD",
+   odds_over:-220,odds_under:160,
+   reason:"2-for-28 L14 (.071)"}, 
 ];
 
 const PARLAY_POTENTIALS = [

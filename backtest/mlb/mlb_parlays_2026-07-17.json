@@ -1,0 +1,240 @@
+{
+  "date": "2026-07-17",
+  "singles": [
+    {
+      "player": "Brady Singer",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": 120,
+      "tier": "AUTO",
+      "model_prob": 0.893,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "l5_avg": 5.8,
+      "home": "Colorado Rockies",
+      "opp": "Colorado Rockies",
+      "opp_k_pct": 0.252,
+      "park_adj": -0.036,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 18,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.965,
+      "edge": 0.4385,
+      "book_implied": 0.45454545454545453
+    },
+    {
+      "player": "Austin Hedges",
+      "team": "Cleveland Guardians",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -111,
+      "tier": "AUTO",
+      "model_prob": 0.891,
+      "book_implied": 0.5260663507109005,
+      "edge": 0.3649,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Cleveland Guardians",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 43,
+      "parlay_only": true,
+      "single_ev": 0.694
+    },
+    {
+      "player": "Ceddanne Rafaela",
+      "team": "Boston Red Sox",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": 145,
+      "tier": "T1",
+      "model_prob": 0.78,
+      "book_implied": 0.4081632653061224,
+      "edge": 0.3718,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.9,
+      "home": "Boston Red Sox",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 89,
+      "parlay_only": true,
+      "single_ev": 0.911
+    },
+    {
+      "player": "Gage Jump",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.716,
+      "streak": 1,
+      "l5": 0.8,
+      "l10": 0.778,
+      "l5_avg": 5.8,
+      "home": "Athletics",
+      "opp": "Athletics",
+      "opp_k_pct": 0.258,
+      "park_adj": 0.01,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 9,
+      "umpire": "TBD",
+      "ump_adj": 0.0,
+      "ump_tendency": "UNKNOWN",
+      "single_ev": 0.246,
+      "edge": 0.1415,
+      "book_implied": 0.574468085106383
+    },
+    {
+      "player": "Denzer Guzman",
+      "team": "Detroit Tigers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -135,
+      "tier": "T1",
+      "model_prob": 0.697,
+      "book_implied": 0.574468085106383,
+      "edge": 0.1225,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.8,
+      "home": "Los Angeles Angels",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 27,
+      "parlay_only": true,
+      "single_ev": 0.213
+    },
+    {
+      "player": "Heriberto Hernandez",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -149,
+      "tier": "T1",
+      "model_prob": 0.681,
+      "book_implied": 0.5983935742971888,
+      "edge": 0.0826,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 67,
+      "parlay_only": true,
+      "single_ev": 0.138
+    },
+    {
+      "player": "Jonatan Clase",
+      "team": "Toronto Blue Jays",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -140,
+      "tier": "T1",
+      "model_prob": 0.658,
+      "book_implied": 0.5833333333333333,
+      "edge": 0.0747,
+      "streak": 3,
+      "l5": 0.8,
+      "l10": 0.667,
+      "home": "Toronto Blue Jays",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 6,
+      "parlay_only": true,
+      "single_ev": 0.128
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Xavier Edwards",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -186,
+      "tier": "AUTO",
+      "model_prob": 0.906,
+      "book_implied": 0.6503496503496503,
+      "edge": 0.2557,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 96,
+      "parlay_only": true,
+      "single_ev": 0.393
+    },
+    {
+      "player": "Wyatt Langford",
+      "team": "Texas Rangers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -210,
+      "tier": "AUTO",
+      "model_prob": 0.928,
+      "book_implied": 0.6774193548387096,
+      "edge": 0.2506,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Atlanta Braves",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 44,
+      "parlay_only": true,
+      "single_ev": 0.37
+    },
+    {
+      "player": "Ben Rice",
+      "team": "New York Yankees",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -232,
+      "tier": "AUTO",
+      "model_prob": 0.934,
+      "book_implied": 0.6987951807228916,
+      "edge": 0.2352,
+      "streak": 8,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "New York Yankees",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 91,
+      "parlay_only": true,
+      "single_ev": 0.337
+    }
+  ],
+  "parlays": []
+}

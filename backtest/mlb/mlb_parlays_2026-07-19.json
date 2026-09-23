@@ -1,0 +1,240 @@
+{
+  "date": "2026-07-19",
+  "singles": [
+    {
+      "player": "Garrett Mitchell",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -130,
+      "tier": "AUTO",
+      "model_prob": 0.931,
+      "book_implied": 0.5652173913043479,
+      "edge": 0.3658,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.9,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 87,
+      "parlay_only": true,
+      "single_ev": 0.647
+    },
+    {
+      "player": "J.T. Realmuto",
+      "team": "Philadelphia Phillies",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -145,
+      "tier": "T1",
+      "model_prob": 0.733,
+      "book_implied": 0.5918367346938775,
+      "edge": 0.1412,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Philadelphia Phillies",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 69,
+      "parlay_only": true,
+      "single_ev": 0.239
+    },
+    {
+      "player": "Griffin Conine",
+      "team": "Miami Marlins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -118,
+      "tier": "T1",
+      "model_prob": 0.721,
+      "book_implied": 0.5412844036697247,
+      "edge": 0.1797,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 31,
+      "parlay_only": true,
+      "single_ev": 0.332
+    },
+    {
+      "player": "Gabriel Moreno",
+      "team": "Arizona Diamondbacks",
+      "prop": "hits",
+      "line": 1.5,
+      "odds": 177,
+      "tier": "T1",
+      "model_prob": 0.681,
+      "book_implied": 0.36101083032490977,
+      "edge": 0.32,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 71,
+      "parlay_only": false,
+      "single_ev": 0.886
+    },
+    {
+      "player": "Gabriel Moreno",
+      "team": null,
+      "prop": "total_bases",
+      "line": 1.5,
+      "odds": "115",
+      "tier": "T1",
+      "model_prob": 0.681,
+      "book_implied": 0.46511627906976744,
+      "edge": 0.2159,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "home": "Arizona Diamondbacks",
+      "alt_lines": [
+        0.5,
+        1.0
+      ],
+      "prior_games": 71,
+      "parlay_only": "False",
+      "single_ev": 0.464
+    },
+    {
+      "player": "Brandon Young",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -105,
+      "tier": "T1",
+      "model_prob": 0.669,
+      "streak": 4,
+      "l5": 0.8,
+      "l10": 0.6,
+      "l5_avg": 5.0,
+      "home": "Houston Astros",
+      "opp": "Houston Astros",
+      "opp_k_pct": 0.218,
+      "park_adj": -0.008,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 15,
+      "umpire": "Chris Segal",
+      "ump_adj": -0.015,
+      "ump_tendency": "NEUTRAL",
+      "single_ev": 0.306,
+      "edge": 0.1568,
+      "book_implied": 0.5121951219512195
+    },
+    {
+      "player": "Noah Cameron",
+      "team": null,
+      "prop": "strikeouts",
+      "line": 4.5,
+      "odds": -120,
+      "tier": "T1",
+      "model_prob": 0.664,
+      "streak": 2,
+      "l5": 0.8,
+      "l10": 0.7,
+      "l5_avg": 5.4,
+      "home": "Kansas City Royals",
+      "opp": "Kansas City Royals",
+      "opp_k_pct": 0.228,
+      "park_adj": 0.004,
+      "alt_lines": [
+        3.5,
+        4.0
+      ],
+      "prior_games": 18,
+      "umpire": "Charlie Ramos",
+      "ump_adj": -0.011,
+      "ump_tendency": "NEUTRAL",
+      "single_ev": 0.217,
+      "edge": 0.1185,
+      "book_implied": 0.5454545454545454
+    }
+  ],
+  "high_edge": [
+    {
+      "player": "Seiya Suzuki",
+      "team": "Chicago Cubs",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -179,
+      "tier": "AUTO",
+      "model_prob": 0.875,
+      "book_implied": 0.6415770609318996,
+      "edge": 0.2334,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 82,
+      "parlay_only": true,
+      "single_ev": 0.364
+    },
+    {
+      "player": "Christian Yelich",
+      "team": "Milwaukee Brewers",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -170,
+      "tier": "AUTO",
+      "model_prob": 0.841,
+      "book_implied": 0.6296296296296295,
+      "edge": 0.2114,
+      "streak": 6,
+      "l5": 1.0,
+      "l10": 0.7,
+      "home": "Milwaukee Brewers",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 64,
+      "parlay_only": true,
+      "single_ev": 0.336
+    },
+    {
+      "player": "Ryan Jeffers",
+      "team": "Minnesota Twins",
+      "prop": "hits",
+      "line": 0.5,
+      "odds": -230,
+      "tier": "AUTO",
+      "model_prob": 0.9,
+      "book_implied": 0.696969696969697,
+      "edge": 0.203,
+      "streak": 7,
+      "l5": 1.0,
+      "l10": 0.8,
+      "home": "Chicago Cubs",
+      "alt_lines": [
+        0.5,
+        0.5
+      ],
+      "prior_games": 41,
+      "parlay_only": true,
+      "single_ev": 0.291
+    }
+  ],
+  "parlays": []
+}

@@ -1,0 +1,200 @@
+[10:00:01] 
+EDGE INDEX MORNING ROUTINE — 2026-08-29
+[10:00:01] ============================================================
+[10:00:01] 
+============================================================
+STEP 1: Grade yesterday (2026-08-28)
+============================================================
+[10:00:01]   >> results checker
+[10:00:07]        [HIT] FADE Dillon Dingler               UNDER 0.5 +117   actual:   0 +$117.00
+[10:00:07]        [MISS] FADE Kyle Tucker                  UNDER 0.5 +123   actual:   1 -$100.00
+[10:00:07]        [MISS] FADE Trea Turner                  UNDER 0.5 +183   actual:   2 -$100.00
+[10:00:07]        [VOID] FADE Samuel Basallo               UNDER 0.5 +125   actual:[VOID] VOID
+[10:00:07]      =================================================================
+[10:00:07]      RESULTS: 22-24 (47.8%)  |  5 voids  |  P&L: $-1435.90  (-14.36u)
+[10:00:07]      =================================================================
+[10:00:07]      [HIT] Results saved to mlb_results_2026-08-28.json
+[10:00:07]   >> grade patch
+[10:00:07]        ✓ Xavier Edwards               -225    → 1  +$44.44
+[10:00:07]        ✗ Zach Neto                    -187    → 0  -$100.00
+[10:00:07]      📉 FADES:
+[10:00:07]        ✓ Cam Smith                    UNDER +122  → 0  +$122.00
+[10:00:07]      ============================================================
+[10:00:07]      SINGLES:  11-7 (3 void)    $-108.78
+[10:00:07]      FADES:    1-0 (0 void)    +$122.00
+[10:00:07]      TOTAL:    +$13.22  (+0.13u)
+[10:00:07] 
+============================================================
+STEP 2: Roster + trade maintenance
+============================================================
+[10:00:07]   >> trade tracker
+[10:00:15]      Total: 1366 players on 40-man rosters
+[10:00:15]      🔄 ROSTER MOVES DETECTED: 2
+[10:00:15]        Chris Devenski               UNKNOWN → NYM New to 40-man roster
+[10:00:15]        Walker Jenkins               UNKNOWN → MIN New to 40-man roster
+[10:00:15]      ✓ Cache updated — 2026-08-29
+[10:00:15]        Run daily to track all moves automatically
+[10:00:15]        Add to morning routine before mlb_odds_puller.py
+[10:00:15]   >> roster verify
+[10:00:16]        ✓ Confirmed correct: 206
+[10:00:16]        ⚠️  Mismatches found: 0
+[10:00:16]        — Inactive/unknown:  0
+[10:00:16]      ======================================================================
+[10:00:16]      ✓ ALL CLEAR — all 206 active players on correct teams
+[10:00:16]        Checked: 2026-08-29
+[10:00:16]      Add to morning routine (after trade tracker):
+[10:00:16]        python mlb_roster_verify.py --fix
+[10:00:16] 
+============================================================
+STEP 3: Pull today's lines (2026-08-29)
+============================================================
+[10:00:16]   >> odds puller
+[10:01:27]          Adley Rutschman           H OVER 0.5  (-160)
+[10:01:27]          Alec Bohm                 H OVER 0.5  (-235)
+[10:01:27]          Alec Burleson             H OVER 0.5  (-275)
+[10:01:27]          Alejandro Kirk            H OVER 0.5  (-250)
+[10:01:27]          Alek Thomas               H OVER 0.5  (-160)
+[10:01:27]          Alex Bregman              H OVER 0.5  (-225)
+[10:01:27]          Ali Sanchez               H OVER 0.5  (-110)
+[10:01:27]          Amed Rosario              H OVER 0.5  (-200)
+[10:01:27]      Saved to mlb_lines_2026-08-29.json
+[10:01:27]   ✓ 2240 props · 40 run lines · 17 games
+[10:01:27] 
+============================================================
+STEP 4: Update stat caches
+============================================================
+[10:01:27]   >> current stats
+[10:04:05]          "Munetaka Murakami": "7-for-50 L14 (.140)",
+[10:04:05]          "Nasim Nunez": "4-for-37 L14 (.108)",
+[10:04:05]          "Richie Palacios": "4-for-33 L14 (.121)",
+[10:04:05]          "Samuel Basallo": "4-for-27 L14 (.148)",
+[10:04:05]          "Shay Whitcomb": "2-for-18 L14 (.111)",
+[10:04:05]          "Spencer Torkelson": "3-for-34 L14 (.088)",
+[10:04:05]          "Taylor Trammell": "2-for-27 L14 (.074)",
+[10:04:05]          "Taylor Ward": "1-for-24 L14 (.042)",
+[10:04:05]          "Travis d'Arnaud": "0-for-11 L14 (.000)",
+[10:04:05]          "Trent Grisham": "6-for-43 L14 (.140)",
+[10:04:05]   >> savant cache
+[10:10:30]        Willi Castro: pulling expected stats... xBA:0.236 L7:0.231 Regression:+0(NEUTRAL)
+[10:10:30]        William Contreras: pulling expected stats... xBA:0.261 L7:0.433 vsTeam:0.286(7AB) Regression:+0(NEUTRAL)
+[10:10:30]        Willson Contreras: pulling expected stats... xBA:0.256 L7:0.214 Regression:+0(NEUTRAL)
+[10:10:30]        Wilyer Abreu: pulling expected stats... xBA:0.257 L7:0.214 Regression:+0(NEUTRAL)
+[10:10:30]        Wyatt Langford: pulling expected stats... xBA:0.243 L7:0.346 Regression:+0(NEUTRAL)
+[10:10:30]        Xander Bogaerts: pulling expected stats... xBA:0.246 L7:0.167 Regression:+0(NEUTRAL)
+[10:10:30]        Xavier Edwards: pulling expected stats... xBA:0.263 L7:0.25 Regression:+0(NEUTRAL)
+[10:10:30]        Yordan Alvarez: pulling expected stats... xBA:0.327 L7:0.304 Regression:+0(NEUTRAL)
+[10:10:30]      ✓ Saved 574 players to savant cache
+[10:10:30]   >> pitcher hands
+[10:10:39]        New York Yankees               Max Fried                 LHP
+[10:10:39]        Philadelphia Phillies          Cristopher Sánchez        LHP
+[10:10:39]        Pittsburgh Pirates             Lake Bachar               RHP
+[10:10:39]        San Diego Padres               Walker Buehler            RHP
+[10:10:39]        Seattle Mariners               Kade Anderson             LHP
+[10:10:39]        St. Louis Cardinals            Kyle Leahy                RHP
+[10:10:39]        Tampa Bay Rays                 Nick Martinez             RHP
+[10:10:39]        Texas Rangers                  Cal Quantrill             RHP
+[10:10:39]        Toronto Blue Jays              José Soriano              RHP
+[10:10:39]        Washington Nationals           Cade Cavalli              RHP
+[10:10:39] 
+============================================================
+STEP 5: Run models
+============================================================
+[10:10:39]   >> run today (props)
+[10:12:47]        Brandon Nimmo              -185     +135     .128  
+[10:12:47]        Brice Turang               -220     +160     .139  
+[10:12:47]        CJ Abrams                  -250     +185     .139  
+[10:12:47]        Munetaka Murakami          -200     +145     .140  
+[10:12:47]        Trent Grisham              -150     +110     .140  
+[10:12:47]        Cole Young                 -210     +155     .143  
+[10:12:47]        Adley Rutschman            -160     +120     .147  
+[10:12:47]        Heliot Ramos               -200     +150     .148  
+[10:12:47]      Saved to mlb_plays_2026-08-29.json
+[10:12:47]   >> pitcher K unders
+[10:13:02]          📋 Avg Ks (2.0) below line (2.5)
+[10:13:02]          ⚠️ LOW K% LINEUP: 20.0% (Kansas City Royals) — makes contact
+[10:13:02]          ✓ Slight pitcher park: 1.01x
+[10:13:02]          ✓ LOW LINE (2.5) — easy bar, OVER value
+[10:13:02]        Recent starts:
+[10:13:02]          ✗ 2026-08-23  2 Ks / 4.33 IP  (0.46 K/IP)  vs Detroit Tigers
+[10:13:02]          ✗ 2026-08-18  1 Ks / 4.0 IP  (0.25 K/IP)  vs Athletics
+[10:13:02]          ✓ 2026-08-12  3 Ks / 2.33 IP  (1.29 K/IP)  vs Los Angeles Dodgers
+[10:13:02]      ✓ Saved to mlb_k_unders_2026-08-29.json
+[10:13:02]   >> umpire assignments
+[10:13:08]        Colorado Rockies @ Atlanta Braves   TBD                    N/A     ?  UNKNOWN 
+[10:13:08]        Texas Rangers @ Milwaukee Brewers   TBD                    N/A     ?  UNKNOWN 
+[10:13:08]        Baltimore Orioles @ Athletics       TBD                    N/A     ?  UNKNOWN 
+[10:13:08]        Philadelphia Phillies @ Los Angeles Angels TBD                    N/A     ?  UNKNOWN 
+[10:13:08]        Adj = K/9 vs league avg (8.4 baseline)
+[10:13:08]        HIGH_K (>+0.4): More Ks expected — favor OVER bets
+[10:13:08]        LOW_K  (<-0.4): Fewer Ks expected — favor UNDER or lower lines
+[10:13:08]      To build history: python mlb_umpire.py --update --days 60
+[10:13:08]   >> team run lines
+[10:13:42]      ======================================================================
+[10:13:42]      QUALIFYING PLAYS — 2026-08-29
+[10:13:42]      ======================================================================
+[10:13:42]      HOT HOT TEAM -1.5 (need <= -150):
+[10:13:42]        ⚡ AUTO   Philadelphia Phillies        -1.5  -132  Score:+2.39
+[10:13:42]                 5-2 L7 · RS:5.6 · RA:4.1
+[10:13:42]                 5-2 L7 hot streak · 5.6 RS/g
+[10:13:42]        Saved to mlb_team_rl_2026-08-29.json
+[10:13:42]   >> power score
+[10:14:24]          Athletics                      Power:-1.62 (WEAK)
+[10:14:24]            vs Shane Baz            FIP:5.77  Resistance:+0.53 [ABOVE AVG — moderate]
+[10:14:24]        Philadelphia Phillies @ Los Angeles Angels
+[10:14:24]          Philadelphia Phillies          Power:+0.25 (AVERAGE)
+[10:14:24]            vs Ryan Johnson         FIP:2.59  Resistance:-0.65 [BELOW AVG — hitter-f]
+[10:14:24]          Los Angeles Angels             Power:-1.03 (WEAK)
+[10:14:24]            vs Cristopher Sánchez   FIP:6.26  Resistance:+0.97 [ABOVE AVG — moderate]
+[10:14:24]        Saved to mlb_power_2026-08-29.json
+[10:14:24]   >> parlay builder
+[10:14:25]        Tristan Peters             H OVER 0.5 (-175)  Win:83%
+[10:14:25]        Colton Cowser              H OVER 0.5 (-155)  Win:80%
+[10:14:25]        Christian Yelich           H OVER 0.5 (-190)  Win:72%
+[10:14:25]        Dylan Crews                H OVER 0.5 (-190)  Win:71%
+[10:14:25]      =================================================================
+[10:14:25]      Singles:    3 plays  (ranked by win probability)
+[10:14:25]      High Edge:  3 plays  (ranked by edge over book)
+[10:14:25]      Saved to mlb_parlays_2026-08-29.json
+[10:14:25] 
+============================================================
+STEP 6: Update MLBHub.jsx
+============================================================
+[10:14:25]   ✓ 1 pitcher plays written
+[10:14:25]   ✓ 2 batter plays written
+[10:14:25]   ✓ 1 fade plays written
+[10:14:25]   RL: 1 hot · 0 cold qualifying plays
+[10:14:25]   ✓ MLBHub.jsx updated
+[10:14:25]   ✓ public/data/daily_card.json written
+[10:14:25] 
+============================================================
+STEP 6.5: Regenerate RecordTracker.jsx
+============================================================
+[10:14:25]   >> generate record data
+[10:14:25]      wrote C:\Users\tyose\edge-index\cfb-app\src\..\public\data\record.json (61 days)
+[10:14:25]      Injected into C:\Users\tyose\edge-index\cfb-app\src\RecordTracker.jsx
+[10:14:25]        61 days  |  797 singles  |  180 fades
+[10:14:25]   ✓ RecordTracker.jsx regenerated from posted cards
+[10:14:25] 
+============================================================
+STEP 9: Summary
+============================================================
+[10:14:25] 
+  Pitchers: 1 qualifying  |  Batters: 23 qualifying
+[10:14:25]   T1    Cade Cavalli               K OVER 6.5 (+110) 71%
+[10:14:25]   AUTO  Ben Rice                   H OVER 0.5 (-185) 84%
+[10:14:25]   AUTO  Brooks Lee                 H OVER 0.5 (-250) 85%
+[10:14:25]   AUTO  Bryce Eldridge             H OVER 0.5 (-159) 87%
+[10:14:25]   AUTO  Bryce Harper               H OVER 0.5 (-250) 86%
+[10:14:25]   T1    Carter Jensen              H OVER 0.5 (-140) 73%
+[10:14:25]   T1    Christian Yelich           H OVER 0.5 (-190) 72%
+[10:14:25]   T1    Colton Cowser              H OVER 0.5 (-155) 80%
+[10:14:25] 
+  Run Lines:
+[10:14:25]   HOT Philadelphia Phillies        -1.5  -132  Score:+2.39
+[10:14:25] 
+  Log: C:\Users\tyose\edge-index\agent\logs\routine_2026-08-29.log
+[10:14:25] 
+  ⚠ Card NOT auto-posted — review plays then run:
+[10:14:25]   python mlb_posted_plays.py --date 2026-08-29 --plays '...' --fades '...'
+[10:14:25] 
+✓ Done — 10:14:25

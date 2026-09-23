@@ -1,0 +1,4 @@
+Date,Book,Game,Player,Market,Side,Line,Price_Taken,Model_Edge_Pct,Tier,Hours_Before_Kickoff,Timestamp_Placed,Status,Result,Units_Returned,Close_Price_Same_Side,Close_Price_Opp_Side,Actual_CLV_Pct,Notes
+2027-09-09,DraftKings,NYJ_KC,Levi Brennan,rec_yds,under,72.5,-105,+2.1,Tier1,72,2027-09-06T19:00:00Z,open,,,"waiting for close","waiting for close",,"Early test; 72h window (hypothesis: minimal fading)"
+2027-09-09,FanDuel,NYJ_KC,Kyle Osei,pass_att,over,37.5,-115,+1.8,Tier2,96,2027-09-06T19:26:00Z,open,,,"waiting for close","waiting for close",,"Avoid rec_yds; rec_yds + receptions only"
+2027-09-09,BetMGM,NYJ_KC,Brock Prichard,longest_rec,under,25.5,-100,+0.9,Tier3,60,2027-09-07T07:40:00Z,skip,,,,,,"Below +1.5% threshold; skip"

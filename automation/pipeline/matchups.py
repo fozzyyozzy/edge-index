@@ -94,7 +94,8 @@ def main():
                 if tag:
                     leans.append(dict(player=player, team=tm, opp=opp, home=is_home, slot=s, opp_rank=rk,
                                       opp_yds_pg=[x for x in out if x["team"] == opp][0]["slots"][s]["yds_pg"], tag=tag,
-                                      game=f"{g.away_team}@{g.home_team}", day=g.weekday, roof=g.roof))
+                                      game=f"{g.away_team}@{g.home_team}", day=g.weekday,
+                                      roof=g.roof if isinstance(g.roof, str) else None))  # NaN -> null: bare NaN breaks JSON.parse on the site
     leans.sort(key=lambda x: (x["tag"] != "SOFT", -x["opp_rank"] if x["tag"] == "SOFT" else x["opp_rank"]))
     meta = dict(season=a.season, week=a.week, blend=f"{1-wgt:.0%} {a.season-1} / {wgt:.0%} {a.season} ({gp} wks)",
                 rank_key="1 = fewest yards allowed to that slot (tough for the offense); 32 = most (soft). WR1/WR2 = most/second-most targeted opposing WR that game.",

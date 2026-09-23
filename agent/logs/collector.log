@@ -150,3 +150,1885 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.
 [2026-07-12T12:34:16+00:00] baseball_mlb: 2395 rows stored, 0 started events skipped, API quota left: 19167
 [2026-07-12T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 19167
 [2026-07-12T13:00:24+00:00] baseball_mlb: 2480 rows stored, 0 started events skipped, API quota left: 19107
+[2026-07-12T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18750
+[2026-07-12T19:00:25+00:00] baseball_mlb: 516 rows stored, 12 started events skipped, API quota left: 18738
+[2026-07-13T17:16:41+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-13T17:17:09+00:00] baseball_mlb: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-13T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-13T19:00:27+00:00] baseball_mlb: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-15T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-15T13:00:24+00:00] baseball_mlb: 0 rows stored, 0 started events skipped, API quota left: ?
+[2026-07-16T18:46:15+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18738
+[2026-07-16T18:46:45+00:00] baseball_mlb: 416 rows stored, 0 started events skipped, API quota left: 18720
+[2026-07-16T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18720
+[2026-07-16T19:00:25+00:00] baseball_mlb: 444 rows stored, 0 started events skipped, API quota left: 18699
+[2026-07-17T11:49:48+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18687
+[2026-07-17T11:50:37+00:00] baseball_mlb: 2234 rows stored, 0 started events skipped, API quota left: 18631
+[2026-07-17T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18631
+[2026-07-17T13:00:26+00:00] baseball_mlb: 2145 rows stored, 0 started events skipped, API quota left: 18575
+[2026-07-17T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18254
+[2026-07-17T19:00:27+00:00] baseball_mlb: 2237 rows stored, 1 started events skipped, API quota left: 18202
+[2026-07-19T12:32:14+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18037
+[2026-07-19T12:32:51+00:00] baseball_mlb: 2580 rows stored, 0 started events skipped, API quota left: 17977
+[2026-07-19T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17977
+[2026-07-19T13:00:27+00:00] baseball_mlb: 2581 rows stored, 0 started events skipped, API quota left: 17917
+[2026-07-19T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17561
+[2026-07-19T19:00:26+00:00] baseball_mlb: 916 rows stored, 9 started events skipped, API quota left: 17539
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-07-21T10:20:29+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17361
+[2026-07-21T10:21:12+00:00] baseball_mlb: 1235 rows stored, 0 started events skipped, API quota left: 17301
+[2026-07-21T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17301
+[2026-07-21T13:00:25+00:00] baseball_mlb: 2518 rows stored, 0 started events skipped, API quota left: 17241
+[2026-07-21T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16915
+[2026-07-21T19:00:28+00:00] baseball_mlb: 2333 rows stored, 0 started events skipped, API quota left: 16859
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-07-23T13:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16859
+[2026-07-23T13:00:25+00:00] baseball_mlb: 847 rows stored, 0 started events skipped, API quota left: 16839
+[2026-07-23T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16839
+[2026-07-23T19:00:26+00:00] baseball_mlb: 438 rows stored, 2 started events skipped, API quota left: 16827
+[2026-07-24T17:44:50+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16827
+[2026-07-24T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16819
+[2026-07-24T19:00:27+00:00] baseball_mlb: 2503 rows stored, 0 started events skipped, API quota left: 16759
+[2026-07-25T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16759
+[2026-07-25T13:00:27+00:00] baseball_mlb: 2431 rows stored, 0 started events skipped, API quota left: 16701
+[2026-07-25T21:33:51+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16359
+[2026-07-25T21:34:26+00:00] baseball_mlb: 1634 rows stored, 4 started events skipped, API quota left: 16321
+[2026-07-26T01:39:53+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16321
+[2026-07-26T01:40:25+00:00] baseball_mlb: 212 rows stored, 8 started events skipped, API quota left: 16307
+[2026-07-26T20:22:09+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16307
+[2026-07-26T20:22:45+00:00] baseball_mlb: 172 rows stored, 11 started events skipped, API quota left: 16303
+[2026-07-28T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 16303
+[2026-07-28T13:00:25+00:00] baseball_mlb: 2557 rows stored, 0 started events skipped, API quota left: 16243
+[2026-07-28T19:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 15901
+[2026-07-28T19:00:33+00:00] baseball_mlb: 2243 rows stored, 1 started events skipped, API quota left: 15845
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-07-29T19:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 15845
+[2026-07-29T19:01:25+00:00] baseball_mlb: 1657 rows stored, 3 started events skipped, API quota left: 15803
+[2026-07-30T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 15803
+[2026-07-30T13:01:25+00:00] baseball_mlb: 1648 rows stored, 0 started events skipped, API quota left: 15763
+[2026-07-30T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 15535
+[2026-07-30T19:01:29+00:00] baseball_mlb: 984 rows stored, 4 started events skipped, API quota left: 15511
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-08-04T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 20000
+[2026-08-04T13:01:27+00:00] baseball_mlb: 2495 rows stored, 0 started events skipped, API quota left: 19940
+[2026-08-04T19:00:12+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 19597
+[2026-08-04T19:01:40+00:00] baseball_mlb: 2483 rows stored, 0 started events skipped, API quota left: 19537
+[2026-08-06T10:34:43+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 19537
+[2026-08-06T10:37:42+00:00] baseball_mlb: 1827 rows stored, 0 started events skipped, API quota left: 19493
+[2026-08-06T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 19493
+[2026-08-06T13:01:26+00:00] baseball_mlb: 1888 rows stored, 0 started events skipped, API quota left: 19449
+^CTraceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+^C[2026-08-10T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18836
+[2026-08-10T13:01:26+00:00] baseball_mlb: 1710 rows stored, 0 started events skipped, API quota left: 18796
+[2026-08-10T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18682
+[2026-08-10T19:01:29+00:00] baseball_mlb: 1723 rows stored, 0 started events skipped, API quota left: 18642
+[2026-08-11T10:52:55+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18642
+[2026-08-11T10:54:51+00:00] baseball_mlb: 1943 rows stored, 0 started events skipped, API quota left: 18582
+[2026-08-11T13:00:01+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18582
+[2026-08-11T13:01:25+00:00] baseball_mlb: 2538 rows stored, 0 started events skipped, API quota left: 18522
+[2026-08-11T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18181
+[2026-08-11T19:01:34+00:00] baseball_mlb: 2541 rows stored, 0 started events skipped, API quota left: 18121
+[2026-08-12T11:15:54+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18121
+[2026-08-12T11:17:54+00:00] baseball_mlb: 2138 rows stored, 0 started events skipped, API quota left: 18063
+[2026-08-12T13:00:03+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 18063
+[2026-08-12T13:01:32+00:00] baseball_mlb: 2471 rows stored, 0 started events skipped, API quota left: 18005
+^C[2026-08-13T19:00:02+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17661
+[2026-08-13T19:01:25+00:00] baseball_mlb: 850 rows stored, 4 started events skipped, API quota left: 17641
+^C^C[2026-08-16T01:26:17+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17483
+[2026-08-16T01:27:57+00:00] baseball_mlb: 637 rows stored, 8 started events skipped, API quota left: 17451
+[2026-08-16T14:27:19+00:00] americanfootball_nfl: 0 rows stored, 0 started events skipped, API quota left: 17451
+[2026-08-16T14:28:50+00:00] baseball_mlb: 2503 rows stored, 0 started events skipped, API quota left: 17391
+[2026-08-20T13:00:01+00:00] americanfootball_nfl: 233 rows stored, 0 started events skipped, API quota left: 17156
+[2026-08-20T13:01:25+00:00] baseball_mlb: 1519 rows stored, 0 started events skipped, API quota left: 17120
+[2026-08-20T19:00:02+00:00] americanfootball_nfl: 232 rows stored, 0 started events skipped, API quota left: 16900
+[2026-08-20T19:01:19+00:00] baseball_mlb: 504 rows stored, 6 started events skipped, API quota left: 16888
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11004] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11004] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+[2026-08-22T14:59:06+00:00] americanfootball_nfl: 400 rows stored, 0 started events skipped, API quota left: 16872
+[2026-08-22T15:00:51+00:00] baseball_mlb: 2490 rows stored, 0 started events skipped, API quota left: 16812
+[2026-08-25T18:22:09+00:00] americanfootball_nfl: 906 rows stored, 0 started events skipped, API quota left: 16796
+[2026-08-25T18:23:49+00:00] baseball_mlb: 2434 rows stored, 0 started events skipped, API quota left: 16736
+[2026-08-25T19:00:01+00:00] americanfootball_nfl: 906 rows stored, 0 started events skipped, API quota left: 16720
+[2026-08-25T19:01:32+00:00] baseball_mlb: 2383 rows stored, 0 started events skipped, API quota left: 16660
+[2026-08-26T13:00:01+00:00] americanfootball_nfl: 1005 rows stored, 0 started events skipped, API quota left: 16636
+[2026-08-26T13:01:25+00:00] baseball_mlb: 2480 rows stored, 0 started events skipped, API quota left: 16576
+[2026-08-26T23:37:17+00:00] americanfootball_nfl: 1010 rows stored, 0 started events skipped, API quota left: 16377
+[2026-08-26T23:38:56+00:00] baseball_mlb: 508 rows stored, 6 started events skipped, API quota left: 16365
+[2026-08-27T11:09:32+00:00] americanfootball_nfl: 1010 rows stored, 0 started events skipped, API quota left: 16341
+[2026-08-27T11:11:06+00:00] baseball_mlb: 1123 rows stored, 0 started events skipped, API quota left: 16313
+[2026-08-27T13:00:01+00:00] americanfootball_nfl: 1010 rows stored, 0 started events skipped, API quota left: 16289
+[2026-08-27T13:02:38+00:00] baseball_mlb: 1123 rows stored, 0 started events skipped, API quota left: 16261
+[2026-08-27T19:00:02+00:00] americanfootball_nfl: 1009 rows stored, 0 started events skipped, API quota left: 16080
+[2026-08-27T19:01:34+00:00] baseball_mlb: 794 rows stored, 2 started events skipped, API quota left: 16060
+[2026-08-28T10:17:41+00:00] americanfootball_nfl: 1054 rows stored, 0 started events skipped, API quota left: 16036
+[2026-08-28T10:19:17+00:00] baseball_mlb: 1817 rows stored, 0 started events skipped, API quota left: 15976
+[2026-08-28T13:00:01+00:00] americanfootball_nfl: 1054 rows stored, 0 started events skipped, API quota left: 15952
+[2026-08-28T13:01:36+00:00] baseball_mlb: 2495 rows stored, 0 started events skipped, API quota left: 15892
+[2026-08-28T19:00:02+00:00] americanfootball_nfl: 1021 rows stored, 0 started events skipped, API quota left: 15520
+[2026-08-28T19:01:31+00:00] baseball_mlb: 2334 rows stored, 1 started events skipped, API quota left: 15464
+[2026-08-29T01:54:13+00:00] americanfootball_nfl: 1022 rows stored, 0 started events skipped, API quota left: 15440
+[2026-08-29T01:56:00+00:00] baseball_mlb: 226 rows stored, 10 started events skipped, API quota left: 15426
+[2026-08-29T13:42:28+00:00] americanfootball_nfl: 1250 rows stored, 0 started events skipped, API quota left: 15388
+[2026-08-29T13:44:06+00:00] baseball_mlb: 2329 rows stored, 0 started events skipped, API quota left: 15324
+  skip 8c94552d022acec4a0458d70c19d3da9: HTTP 502
+[2026-09-02T13:00:02+00:00] americanfootball_nfl: 5927 rows stored, 0 started events skipped, API quota left: 19880
+[2026-09-02T13:01:43+00:00] baseball_mlb: 2389 rows stored, 0 started events skipped, API quota left: 19820
+  skip 95c01d1bb797d6df14824b106c5a9130: HTTP 502
+[2026-09-02T19:00:02+00:00] americanfootball_nfl: 6256 rows stored, 0 started events skipped, API quota left: 19353
+[2026-09-02T19:01:39+00:00] baseball_mlb: 1968 rows stored, 3 started events skipped, API quota left: 19305
+[2026-09-03T18:42:32+00:00] americanfootball_nfl: 6740 rows stored, 0 started events skipped, API quota left: 19177
+[2026-09-03T18:44:16+00:00] baseball_mlb: 1022 rows stored, 3 started events skipped, API quota left: 19153
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 59, in collect
+    r.raise_for_status()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450
+[2026-09-03T19:00:14+00:00] baseball_mlb: 1022 rows stored, 3 started events skipped, API quota left: 19129
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 68, in collect
+    ro = _get(f"{BASE}/sports/{sport}/events/{ev['id']}/odds",
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+[2026-09-05T02:40:39+00:00] baseball_mlb: 167 rows stored, 8 started events skipped, API quota left: 18985
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-09-07T16:13:43+00:00] americanfootball_nfl: 9813 rows stored, 0 started events skipped, API quota left: 18825
+[2026-09-07T16:15:24+00:00] baseball_mlb: 891 rows stored, 0 started events skipped, API quota left: 18781
+  skip 8c94552d022acec4a0458d70c19d3da9: HTTP 502
+[2026-09-08T13:00:01+00:00] americanfootball_nfl: 10203 rows stored, 0 started events skipped, API quota left: 18631
+[2026-09-08T13:01:37+00:00] baseball_mlb: 2060 rows stored, 0 started events skipped, API quota left: 18573
+[2026-09-09T11:03:45+00:00] americanfootball_nfl: 11237 rows stored, 0 started events skipped, API quota left: 18069
+[2026-09-09T11:05:20+00:00] baseball_mlb: 2346 rows stored, 0 started events skipped, API quota left: 18011
+[2026-09-09T13:00:01+00:00] americanfootball_nfl: 11996 rows stored, 0 started events skipped, API quota left: 17851
+[2026-09-09T13:01:40+00:00] baseball_mlb: 2455 rows stored, 0 started events skipped, API quota left: 17793
+  skip 95c01d1bb797d6df14824b106c5a9130: HTTP 502
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 68, in collect
+    ro = _get(f"{BASE}/sports/{sport}/events/{ev['id']}/odds",
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 59, in collect
+    r.raise_for_status()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450
+[2026-09-10T19:00:16+00:00] baseball_mlb: 469 rows stored, 1 started events skipped, API quota left: 17291
+[2026-09-11T13:00:10+00:00] americanfootball_nfl: 10999 rows stored, 0 started events skipped, API quota left: 17151
+[2026-09-11T13:01:25+00:00] baseball_mlb: 2324 rows stored, 0 started events skipped, API quota left: 17093
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11004] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+[2026-09-14T18:37:53+00:00] americanfootball_nfl: 796 rows stored, 0 started events skipped, API quota left: 17083
+[2026-09-14T18:38:13+00:00] baseball_mlb: 1665 rows stored, 0 started events skipped, API quota left: 17043
+[2026-09-14T19:00:02+00:00] americanfootball_nfl: 801 rows stored, 0 started events skipped, API quota left: 17033
+[2026-09-14T19:00:16+00:00] baseball_mlb: 1657 rows stored, 0 started events skipped, API quota left: 16993
+  skip 56e8897681915f7ec92baeee952bb1ae: HTTP 502
+[2026-09-17T13:00:01+00:00] americanfootball_nfl: 7665 rows stored, 0 started events skipped, API quota left: 16848
+[2026-09-17T13:00:31+00:00] baseball_mlb: 1450 rows stored, 0 started events skipped, API quota left: 16812
+[2026-09-17T19:00:02+00:00] americanfootball_nfl: 9364 rows stored, 0 started events skipped, API quota left: 16452
+[2026-09-17T19:00:18+00:00] baseball_mlb: 962 rows stored, 3 started events skipped, API quota left: 16428
+[2026-09-18T10:57:35+00:00] americanfootball_nfl: 10132 rows stored, 0 started events skipped, API quota left: 16282
+[2026-09-18T10:57:56+00:00] baseball_mlb: 2356 rows stored, 0 started events skipped, API quota left: 16222
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 59, in collect
+    r.raise_for_status()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450
+[2026-09-18T13:00:13+00:00] baseball_mlb: 2355 rows stored, 0 started events skipped, API quota left: 16162
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 59, in collect
+    r.raise_for_status()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450
+[2026-09-18T19:00:15+00:00] baseball_mlb: 2424 rows stored, 0 started events skipped, API quota left: 15749
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11004] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/americanfootball_nfl/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11004] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 137, in <module>
+    collect(args.sport, key, args.books)
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 58, in collect
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\edge-index\engine\collector.py", line 49, in _get
+    return (session or requests).get(url, params=params, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.the-odds-api.com', port=443): Max retries exceeded with url: /v4/sports/baseball_mlb/events?apiKey=f0284481d1e61e9b5f09038aaabe0450 (Caused by NameResolutionError("HTTPSConnection(host='api.the-odds-api.com', port=443): Failed to resolve 'api.the-odds-api.com' ([Errno 11004] getaddrinfo failed)"))
+[2026-09-20T02:53:08+00:00] americanfootball_nfl: 12337 rows stored, 0 started events skipped, API quota left: 15599
+[2026-09-20T02:53:44+00:00] baseball_mlb: 255 rows stored, 6 started events skipped, API quota left: 15581
+[2026-09-21T17:47:10+00:00] americanfootball_nfl: 1615 rows stored, 0 started events skipped, API quota left: 15213
+[2026-09-21T17:47:36+00:00] baseball_mlb: 471 rows stored, 0 started events skipped, API quota left: 15201
+[2026-09-21T19:00:01+00:00] americanfootball_nfl: 1669 rows stored, 0 started events skipped, API quota left: 15181
+[2026-09-21T19:00:08+00:00] baseball_mlb: 493 rows stored, 0 started events skipped, API quota left: 15169
+[2026-09-23T13:00:01+00:00] americanfootball_nfl: 4005 rows stored, 0 started events skipped, API quota left: 15024
+[2026-09-23T13:00:18+00:00] baseball_mlb: 2329 rows stored, 0 started events skipped, API quota left: 14964
