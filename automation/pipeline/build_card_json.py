@@ -21,11 +21,10 @@ Output : cards/card_<season>_w<week>_<slate>.json
 Usage  : python pipeline/build_card_json.py --season 2026 --week 3 --slate sun
 """
 import argparse, json, os, re, sys
-from datetime import datetime, timezone
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
-from altline_engine import evaluate, pick_win_rung, parlay
-from common import norm_name, P, load_real_ladders
+from altline_engine import evaluate, pick_win_rung, parlay, estimate_ladder
+from common import norm_name, P, load_real_ladders, prices_pulled
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15
 MAX_LEG_JUICE = -450
@@ -74,10 +73,14 @@ def main():
     fl = load_floors(a.season, a.week, a.slate)
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
-    lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
-    src = ladders_path if REAL else lines_path
-    prices_pulled = (datetime.fromtimestamp(os.path.getmtime(src), timezone.utc).isoformat(timespec="minutes")
-                     if os.path.exists(src) else None)
+    pulled = prices_pulled(a.season, a.week, a.slate)
+    # grade letter + clear % per rung from grade_legs.py (runs first in card.yml) — the Record tab grades by letter
+    legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
+    GRADED = {}
+    if os.path.exists(legs_path):
+        for p in json.load(open(legs_path))["players"]:
+            for r in p["rungs"]:
+                GRADED[(norm_name(p["player"]), p["market"], float(r["rung"]))] = (r["grade"], r.get("clear_pct"))
 
     # candidate legs: floors that are winnable AND not over-priced, sorted by strength
     cands, held = [], []
@@ -90,10 +93,15 @@ def main():
             continue
         rung = float(r.Rung.rstrip("+")); last3 = parse_last3(r.Last3)
         real = dict(REAL.get((norm_name(r.Player), r.Market), [])).get(rung)
+        # what the estimator would have priced this rung from the main line alone — the Record tab's est-vs-real table
+        model_est = dict(estimate_ladder(r.Market, float(r.Main), int(r.MainOdds))[0]).get(rung)
         cands.append(dict(player=r.Player, team=r.Team, opp=r.Opp, market=r.Market, rung=rung,
-                          odds_est=int(r.EstOdds), odds_real=int(real) if real is not None else None, l10=r.l10, l15=r.l15,
+                          odds_est=int(r.EstOdds), odds_real=int(real) if real is not None else None,
+                          odds_model_est=int(model_est) if model_est is not None else None, l10=r.l10, l15=r.l15,
                           last3=last3, opp_d=r.OppD, own_vol=r.OwnVol, star=FLOOR_STAR(r.l10, r.l15),
                           model_pct=round(100 * min(r.l10, r.l15, 0.9), 1),   # conservative: min of L10/L15, capped 90
+                          grade=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[0],
+                          clear_pct=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[1],
                           note=f"L10 {r.L10}, L15 {r.L15}; last 3 {last3}; opp D {r.OppD}"))
     cands.sort(key=lambda c: (-(c["l10"] + c["l15"]), c["odds_est"]))
 
@@ -141,7 +149,7 @@ def main():
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
-    card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=prices_pulled,
+    card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=pulled,
                 tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15], notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings

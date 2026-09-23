@@ -39,3 +39,13 @@ def load_real_ladders(path):
     for r in df.itertuples():
         out.setdefault((norm_name(r.Player), r.Market), []).append((float(r.Rung), int(r.Odds)))
     return {k: sorted(v) for k, v in out.items()}
+
+
+def prices_pulled(season, week, slate):
+    """When this slate's prices were pulled (UTC ISO, minutes): the ladders CSV if it exists, else the main-line CSV.
+    Both are written by fetch_lines.py in the same job, so file mtime is the pull time."""
+    from datetime import datetime, timezone
+    for f in (P("lines", f"ladders_{season}_w{week}.csv"), P("lines", f"dk_{season}_w{week}_{slate}.csv")):
+        if os.path.exists(f):
+            return datetime.fromtimestamp(os.path.getmtime(f), timezone.utc).isoformat(timespec="minutes")
+    return None

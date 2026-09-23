@@ -3,12 +3,15 @@ floors.py — floor scan for one slate. Opponents, game day, and spreads come fr
   python pipeline/floors.py --season 2026 --week 3 --slate sun --lines lines/dk_2026_w3_sun.csv
 Writes floors_<season>_w<week>_<slate>.csv with: L10/L15 clear rate at the floor rung, est odds,
 opponent-defense tag, own-volume tag, spread (for the blowout flag), and last 3.
+Also writes floors_<season>_w<week>_<slate>.json for the site's Floor Lines tab (card.yml copies it to
+cfb-app/public/data/nfl_floors_<slate>.json).
 """
-import argparse, io, os, sys, urllib.request
+import argparse, io, json, os, sys, urllib.request
+from datetime import datetime, timezone
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import norm_name, fetch_season, COL, load_real_ladders, P
+from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
@@ -75,18 +78,48 @@ def main():
             if l10 >= 0.8 and l15 >= 0.73: best = (t, o, l10, l15)
         if not best: continue
         t, o, l10, l15 = best
+        streak = 0
+        for x in v[::-1]:                                         # consecutive clears, most recent game backwards
+            if x < t: break
+            streak += 1
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
         rows.append(dict(Player=r.Player, Team=tm, Opp=opp, Market=r.Market, Main=r.Line, MainOdds=r.Odds, Rung=f"{t:g}+",
                          EstOdds=o, L10=f"{int(round(l10*10))}/10", L15=f"{int(round(l15*15))}/15",
                          OppD=tag(D[cat + "_yds"], opp), OwnVol=tag(O[cat + "_att"], tm), Spread=SPREAD.get(tm),
                          TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
-                         Last3=[int(x) for x in v[-3:]]))   # plain ints: np.int64 wrote "np.int64(126)" into the CSV
+                         Last3=[int(x) for x in v[-3:]],    # plain ints: np.int64 wrote "np.int64(126)" into the CSV
+                         Pos=g.position.iloc[-1], Games=int(len(v)), Avg10=round(float(v[-10:].mean()), 1), Streak=streak,
+                         Real=(key, r.Market) in REAL))
     df = pd.DataFrame(rows)
     if len(df):
         df["score"] = df.L10.str.split("/").str[0].astype(int) + (df.OppD == "SOFT") - 2 * (df.OppD == "TOUGH") - (df.OwnVol == "TOUGH")
         df = df.sort_values(["score", "EstOdds"], ascending=[False, False]).drop(columns="score")
     df.to_csv(out, index=False)
+    write_site_json(df, a, out.rsplit(".", 1)[0] + ".json")
     print(f"wrote {out}: {len(df)} floor legs  (current-season weight {w26:.2f}, {gp} wk played)")
+
+def american(p):
+    """probability -> fair American odds (no vig)"""
+    return int(round(-100 * p / (1 - p))) if p >= 0.5 else int(round(100 * (1 - p) / p))
+
+def write_site_json(df, a, path):
+    rows = []
+    for r in df.itertuples():
+        l10 = int(r.L10.split("/")[0]) / 10; l15 = int(r.L15.split("/")[0]) / 15
+        clear = 0.6 * l10 + 0.4 * l15                              # same blend grade_legs.py grades on
+        o = int(r.EstOdds)
+        rows.append(dict(player=r.Player, team=r.Team, opp=r.Opp, pos=r.Pos, market=r.Market, rung=float(r.Rung.rstrip("+")),
+                         odds=o, real=bool(r.Real), main_line=float(r.Main), main_odds=int(r.MainOdds),
+                         l10=r.L10, l15=r.L15, clear_pct=round(100 * clear, 1),
+                         implied_pct=round(100 * (-o / (-o + 100) if o < 0 else 100 / (o + 100)), 1),
+                         fair_odds=american(min(clear, 0.99)) if clear > 0 else None,
+                         avg10=float(r.Avg10), streak=int(r.Streak), games=int(r.Games), last3=list(r.Last3),
+                         opp_d=r.OppD, own_vol=r.OwnVol, spread=None if pd.isna(r.Spread) else float(r.Spread),
+                         team_change=bool(r.TeamChange), prev_team=r.PrevTeam if isinstance(r.PrevTeam, str) and r.PrevTeam else None))
+    meta = dict(season=a.season, week=a.week, slate=a.slate, generated=datetime.now(timezone.utc).isoformat(timespec="minutes"),
+                prices_pulled=prices_pulled(a.season, a.week, a.slate))
+    json.dump(dict(meta=meta, rows=rows), open(path, "w"), indent=1, allow_nan=False)
+    print(f"wrote {path}")
 
 if __name__ == "__main__":
     main()

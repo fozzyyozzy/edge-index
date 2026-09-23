@@ -8,6 +8,8 @@ import argparse, glob, json, os
 import pandas as pd
 from common import norm_name, COL, fetch_week, pay, P
 
+GRADES = ["A+", "A", "A-", "B"]
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
     a = ap.parse_args()
@@ -44,7 +46,16 @@ def main():
         "by_bucket": g.groupby("bucket", observed=True).agg(n=("hit", "size"), hit=("hit", "mean")).round(2).reset_index().to_dict("records"),
         "near_misses": g[(g.hit == False) & (g.miss_by <= 3)][["player", "market", "rung", "actual", "miss_by"]].to_dict("records"),
         "misses": g[g.hit == False][["player", "market", "rung", "actual", "note", "opp_d", "own_vol", "ticket"]].to_dict("records"),
-        "est_vs_real": g[g.odds_real.notna()][["player", "market", "rung", "odds_est", "odds_real"]].to_dict("records"),
+        # estimator's price (from the main line alone) vs the real DK rung price; older cards lack odds_model_est
+        "est_vs_real": (g[g.odds_real.notna() & g.odds_model_est.notna()]
+                        [["player", "market", "rung", "odds_model_est", "odds_real", "hit"]]
+                        .rename(columns={"odds_model_est": "est", "odds_real": "real"}).to_dict("records")
+                        if "odds_model_est" in g else []),
+        # leg hit rate by the Legs-tab letter vs what the letter expected (mean clear %); older cards have no grade
+        "by_grade": [dict(grade=gr, n=int((g.grade == gr).sum()), hits=int(g[g.grade == gr].hit.sum()),
+                          expected=round(float(g[g.grade == gr].clear_pct.mean()), 1)
+                          if (g.grade == gr).any() and g[g.grade == gr].clear_pct.notna().any() else None)
+                     for gr in GRADES] if "grade" in g else [],
         "tickets": tickets,
         "ticket_record": {r: sum(1 for t in tickets if t["result"] == r) for r in ("WIN", "LOSS", "VOID")},
     }
@@ -52,7 +63,29 @@ def main():
     json.dump(summary, open(out, "w"), indent=1)
     ledger = P("receipts", "season_ledger.csv")
     df.assign(season=a.season, week=a.week).to_csv(ledger, mode="a", index=False, header=not os.path.exists(ledger))
+    write_season_record(a.season)
     print(f"wrote {out}"); print(json.dumps({k: summary[k] for k in ("legs_graded", "legs_hit", "hit_rate", "avg_model_pct", "flat_pnl_1u", "ticket_record")}, indent=1))
+
+def write_season_record(season):
+    """All of this season's receipts -> receipts/record_<season>.json, the site's NFL Record tab
+    (tuesday.yml copies it to cfb-app/public/data/nfl_record.json). Rebuilt from the per-week files each run,
+    so re-grading a week replaces it rather than double-counting (the append-only ledger would)."""
+    weeks = []
+    for path in sorted(glob.glob(P("receipts", f"receipts_{season}_w*.json")), key=lambda f: int(f.rsplit("_w", 1)[1][:-5])):
+        weeks.append(json.load(open(path)))
+    by_grade = []
+    for gr in GRADES:
+        rows = [b for wk in weeks for b in wk.get("by_grade", []) if b["grade"] == gr and b["n"]]
+        n = sum(b["n"] for b in rows); exp_rows = [b for b in rows if b["expected"] is not None]
+        exp_n = sum(b["n"] for b in exp_rows)
+        by_grade.append(dict(grade=gr, n=n, hits=sum(b["hits"] for b in rows),
+                             expected=round(sum(b["expected"] * b["n"] for b in exp_rows) / exp_n, 1) if exp_n else None))
+    record = dict(meta=dict(season=season, generated=pd.Timestamp.now(tz="UTC").isoformat(timespec="minutes"), weeks=len(weeks)),
+                  weeks=[dict(week=wk["week"], ticket_record=wk["ticket_record"], legs_graded=wk["legs_graded"],
+                              legs_hit=wk["legs_hit"], tickets=wk["tickets"]) for wk in weeks],
+                  by_grade=by_grade,
+                  est_vs_real=[dict(week=wk["week"], **r) for wk in weeks for r in wk.get("est_vs_real", [])])
+    json.dump(record, open(P("receipts", f"record_{season}.json"), "w"), indent=1, allow_nan=False)
 
 if __name__ == "__main__":
     main()

@@ -15,7 +15,8 @@ function Link({ href, children }) {
       style={{color:"#00e5ff",textDecoration:"none",borderBottom:"1px dotted #00e5ff80"}}>{children}</a>
   );
 }
-const RecordLink = () => <Link href="#record">Record tab</Link>;
+const RecordLink = () => <Link href="#record">Record tab</Link>;          // NFL record + calibration
+const MLBRecordLink = () => <Link href="#mlbrecord">MLB Record tab</Link>;
 
 const FAQS = [
   {
@@ -36,7 +37,7 @@ const FAQS = [
       },
       {
         q: "How does the fade model work?",
-        a: <>Players below .150 batting average over the last 14 days (minimum 10 AB) are excluded from OVER plays and added to the fade list. When books still price their hit OVER at -180 to -250, the UNDER becomes plus money (+100 to +175). Every fade and its result is on the <RecordLink />.</>,
+        a: <>Players below .150 batting average over the last 14 days (minimum 10 AB) are excluded from OVER plays and added to the fade list. When books still price their hit OVER at -180 to -250, the UNDER becomes plus money (+100 to +175). Every fade and its result is on the <MLBRecordLink />.</>,
       },
       {
         q: "Why 2-3 leg parlays instead of singles on juiced plays?",
@@ -54,11 +55,11 @@ const FAQS = [
     items: [
       {
         q: "What is your verified track record?",
-        a: <>Every graded play since live MLB operations began on May 8, 2026 is on the <RecordLink />, day by day, wins and losses.</>,
+        a: <>Every graded play since live MLB operations began on May 8, 2026 is on the <MLBRecordLink />, day by day, wins and losses.</>,
       },
       {
         q: "Why do fades outperform singles?",
-        a: <>Sportsbooks adjust OVER pricing slowly on cold bats because their algorithms weight season-long reputation heavily. A player hitting .094 L14 priced at -200 OVER implies 67% probability — when true probability is closer to 35-45%. That mispricing creates plus money UNDER value. At +120 average odds you only need 45.5% to break even. Whether fades clear that bar is tracked on the <RecordLink />.</>,
+        a: <>Sportsbooks adjust OVER pricing slowly on cold bats because their algorithms weight season-long reputation heavily. A player hitting .094 L14 priced at -200 OVER implies 67% probability — when true probability is closer to 35-45%. That mispricing creates plus money UNDER value. At +120 average odds you only need 45.5% to break even. Whether fades clear that bar is tracked on the <MLBRecordLink />.</>,
       },
       {
         q: "What is your biggest known weakness?",

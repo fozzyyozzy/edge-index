@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CalibrationPanel from "./CalibrationPanel";
 
 // ── DATA ─────────────────────────────────────────────────────
 // RESULTS (singles) and FADE_RESULTS below are AUTO-GENERATED from the
@@ -2638,11 +2637,6 @@ export default function RecordTracker() {
         @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
         * { box-sizing:border-box; }
       `}</style>
-
-      {/* NFL calibration (moved from the old Card tab) — above the MLB tracker, since Record sits under NFL */}
-      <div style={{maxWidth:1280,margin:"0 auto",padding:"20px 16px 4px"}}>
-        <CalibrationPanel />
-      </div>
 
       {/* Header */}
       <div style={{background:"#0a0f1a",

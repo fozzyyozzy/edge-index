@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { teamColor } from "./nflTeams";
+import { SLATES, defaultSlate } from "./nflSlates";
+import SlateSwitch from "./SlateSwitch";
 // NFL Card — the plays. Reads /data/nfl_card_<slate>.json (automation/pipeline/build_card_json.py).
 
 const T = {
@@ -9,7 +11,6 @@ const T = {
   mono:"'IBM Plex Mono',monospace", head:"'Barlow Condensed',sans-serif",
 };
 
-const SLATES = [["tnf","THU"],["sun","SUN"],["mnf","MON"]];
 const SINGLE_GAME = new Set(["tnf", "mnf"]);
 const MARKET_LABEL = { rec_yds:"rec yds", receptions:"rec", rush_yds:"rush yds", rush_att:"rush att",
   pass_yds:"pass yds", pass_cmps:"cmp", pass_att:"att" };
@@ -20,12 +21,6 @@ const frac = (v, n) => `${Math.round(v * n)}/${n}`;
 // last3 is a list; older cards stored "[np.int64(126), ...]" strings.
 const last3Of = v => Array.isArray(v) ? v :
   (String(v || "").replace(/np\.\w+\(/g, "").match(/-?\d+(\.\d+)?/g) || []).map(Number);
-
-// Wed–Thu -> Thursday card, Fri–Sun -> Sunday, Mon–Tue -> Monday.
-function slateForToday() {
-  const d = new Date().getDay();
-  return d >= 3 && d <= 4 ? "tnf" : d === 1 || d === 2 ? "mnf" : "sun";
-}
 
 // Older cards have no Reasons on held rows; rebuild them from the flags.
 function heldReasons(h) {
@@ -131,8 +126,7 @@ export default function NFLHub() {
       .then(all => {
         const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[i]?.tickets ? all[i] : null]));
         setFiles(fs);
-        const want = slateForToday();
-        setSlate(fs[want] ? want : ["sun", "tnf", "mnf"].find(s => fs[s]) || want);
+        setSlate(defaultSlate(fs));
       });
   }, []);
 
@@ -146,17 +140,7 @@ export default function NFLHub() {
         <div style={{fontSize:22,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>
           CARD{card ? ` · WEEK ${card.week}` : ""}
         </div>
-        <div style={{display:"inline-flex",border:"1px solid #ffffff14",borderRadius:4,overflow:"hidden"}}>
-          {SLATES.map(([s, label]) => {
-            const has = !!files?.[s];
-            return (
-              <button key={s} disabled={!has} onClick={() => setSlate(s)} title={has ? "" : "not posted"}
-                style={{padding:"5px 12px",fontSize:10,fontFamily:T.mono,letterSpacing:1,border:"none",
-                  cursor: has ? "pointer" : "default",background: slate === s && has ? T.nfl + "1c" : "transparent",
-                  color: slate === s && has ? T.nfl : has ? "#777" : "#333",fontWeight: slate === s ? 700 : 500}}>{label}</button>
-            );
-          })}
-        </div>
+        <SlateSwitch files={files} slate={slate} onChange={setSlate} />
         <span style={{fontSize:9,fontWeight:700,color:T.amber,background:T.amber + "18",border:`1px solid ${T.amber}40`,
           borderRadius:3,padding:"3px 8px",letterSpacing:2}}>GRADED IN PUBLIC</span>
       </div>
