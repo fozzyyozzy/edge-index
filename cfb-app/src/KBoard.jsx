@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
 /* ============================================================
-   K BOARD — the flagship. Pitcher strikeout props only:
-   the one market the audited record shows a real edge in
-   (+6.6% ROI over 120 plays, May–Jul 2026).
+   K BOARD — pitcher strikeout props, graded in public. The tiles
+   show the live record (record.json); the heading makes no claim.
    Data: fetched at runtime from /data/daily_card.json and
    /data/record.json (written by the morning routine).
    ============================================================ */
@@ -95,7 +94,7 @@ export default function KBoard() {
           <span style={{ color: C.gold }}>K</span> BOARD
         </div>
         <div style={{ fontSize: 11, color: C.muted, letterSpacing: 1.5, marginTop: 4 }}>
-          PITCHER STRIKEOUT PROPS · THE ONE MARKET OUR AUDITED RECORD BEATS
+          PITCHER STRIKEOUT PROPS · GRADED IN PUBLIC
         </div>
       </div>
 
