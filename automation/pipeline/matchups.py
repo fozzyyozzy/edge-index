@@ -75,6 +75,10 @@ def main():
     rank = {r["team"]: {s: r["slots"][s]["rank"] for s in SLOTS} for r in out}
     cur_players = w[w.season == a.season].groupby(["player_display_name", "team", "position"]).agg(
         targets=("targets", "mean"), carries=("carries", "mean"), games=("week", "nunique")).reset_index()
+    # one QB per team: the starter = most pass attempts in that team's latest game (backups who mopped up drop out)
+    qbs = w[(w.season == a.season) & (w.position == "QB")]
+    starter = {tm: g[g.week == g.week.max()].sort_values("attempts", ascending=False).player_display_name.iloc[0]
+               for tm, g in qbs.groupby("team")}
     leans = []
     for g in sch.itertuples():
         for tm, opp, is_home in ((g.away_team, g.home_team, False), (g.home_team, g.away_team, True)):
@@ -82,7 +86,7 @@ def main():
             wrs = roster[roster.position == "WR"].sort_values("targets", ascending=False)
             slots_for = []
             for r in roster.itertuples():
-                if r.position == "QB" and r.targets == r.targets: slots_for += [(r.player_display_name, "QB"), (r.player_display_name, "PASS")]
+                if r.position == "QB" and starter.get(tm) == r.player_display_name: slots_for += [(r.player_display_name, "QB"), (r.player_display_name, "PASS")]
                 elif r.position == "RB" and r.carries >= 8: slots_for += [(r.player_display_name, "RB"), (r.player_display_name, "RUN")]
                 elif r.position == "TE" and r.targets >= 3: slots_for.append((r.player_display_name, "TE"))
             if len(wrs) > 0: slots_for.append((wrs.player_display_name.iloc[0], "WR1"))

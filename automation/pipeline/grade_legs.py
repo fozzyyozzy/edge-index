@@ -83,7 +83,7 @@ def main():
                 if o < -600: letter = step(letter, -2); why.append("juice past -600: not playable in a parlay")
                 elif o < -400: letter = step(letter, -1); why.append("price worse than -400")
                 soft = (oppd == "TOUGH") + (vol == "TOUGH")
-                if soft: letter = step(letter, -soft); why.append(("opp D tough" if oppd == "TOUGH" else "") + (" own volume low" if vol == "TOUGH" else ""))
+                if soft: letter = step(letter, -soft); why.append("; ".join(x for x in ("opp D tough" if oppd == "TOUGH" else "", "own volume low" if vol == "TOUGH" else "") if x))
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
                               l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why))
         out.append(dict(player=r.Player, pos=(g.position.iloc[-1] if len(g) else None), team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",

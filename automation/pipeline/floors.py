@@ -80,7 +80,7 @@ def main():
                          EstOdds=o, L10=f"{int(round(l10*10))}/10", L15=f"{int(round(l15*15))}/15",
                          OppD=tag(D[cat + "_yds"], opp), OwnVol=tag(O[cat + "_att"], tm), Spread=SPREAD.get(tm),
                          TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
-                         Last3=list(v[-3:].astype(int))))
+                         Last3=[int(x) for x in v[-3:]]))   # plain ints: np.int64 wrote "np.int64(126)" into the CSV
     df = pd.DataFrame(rows)
     if len(df):
         df["score"] = df.L10.str.split("/").str[0].astype(int) + (df.OppD == "SOFT") - 2 * (df.OppD == "TOUGH") - (df.OwnVol == "TOUGH")

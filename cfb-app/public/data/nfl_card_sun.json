@@ -2,7 +2,8 @@
  "season": 2026,
  "week": 3,
  "slate": "sun",
- "rules": "R1-R7 (see build_card_json.py)",
+ "rules": "R1-R8 (see build_card_json.py)",
+ "prices_pulled": "2026-09-23T17:42+00:00",
  "tickets": [
   {
    "name": "SUN-1",
@@ -14,15 +15,19 @@
      "market": "rush_yds",
      "rung": 60.0,
      "odds_est": -345,
-     "odds_real": null,
+     "odds_real": -345,
      "l10": 1.0,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(126), np.int64(144), np.int64(68)]",
+     "last3": [
+      126,
+      144,
+      68
+     ],
      "opp_d": "SOFT",
      "own_vol": "SOFT",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 10/10, L15 14/15; last 3 [np.int64(126), np.int64(144), np.int64(68)]; opp D SOFT"
+     "note": "L10 10/10, L15 14/15; last 3 [126, 144, 68]; opp D SOFT"
     },
     {
      "player": "Sam LaPorta",
@@ -31,15 +36,19 @@
      "market": "rec_yds",
      "rung": 25.0,
      "odds_est": -441,
-     "odds_real": null,
+     "odds_real": -441,
      "l10": 0.9,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(53), np.int64(48), np.int64(52)]",
+     "last3": [
+      53,
+      48,
+      52
+     ],
      "opp_d": "neutral",
      "own_vol": "SOFT",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 9/10, L15 14/15; last 3 [np.int64(53), np.int64(48), np.int64(52)]; opp D neutral"
+     "note": "L10 9/10, L15 14/15; last 3 [53, 48, 52]; opp D neutral"
     },
     {
      "player": "Omarion Hampton",
@@ -48,15 +57,19 @@
      "market": "rush_att",
      "rung": 12.0,
      "odds_est": -398,
-     "odds_real": null,
+     "odds_real": -398,
      "l10": 0.9,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(14), np.int64(12), np.int64(23)]",
+     "last3": [
+      14,
+      12,
+      23
+     ],
      "opp_d": "SOFT",
      "own_vol": "neutral",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 9/10, L15 14/15; last 3 [np.int64(14), np.int64(12), np.int64(23)]; opp D SOFT"
+     "note": "L10 9/10, L15 14/15; last 3 [14, 12, 23]; opp D SOFT"
     },
     {
      "player": "Chris Godwin",
@@ -65,15 +78,19 @@
      "market": "receptions",
      "rung": 3.0,
      "odds_est": -194,
-     "odds_real": null,
+     "odds_real": -194,
      "l10": 0.8,
      "l15": 0.8666666666666667,
-     "last3": "[np.int64(1), np.int64(4), np.int64(3)]",
+     "last3": [
+      1,
+      4,
+      3
+     ],
      "opp_d": "neutral",
      "own_vol": "neutral",
      "star": false,
      "model_pct": 80.0,
-     "note": "L10 8/10, L15 13/15; last 3 [np.int64(1), np.int64(4), np.int64(3)]; opp D neutral"
+     "note": "L10 8/10, L15 13/15; last 3 [1, 4, 3]; opp D neutral"
     }
    ],
    "model_hit": 0.583,
@@ -93,15 +110,19 @@
      "market": "rush_yds",
      "rung": 60.0,
      "odds_est": -345,
-     "odds_real": null,
+     "odds_real": -345,
      "l10": 1.0,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(126), np.int64(144), np.int64(68)]",
+     "last3": [
+      126,
+      144,
+      68
+     ],
      "opp_d": "SOFT",
      "own_vol": "SOFT",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 10/10, L15 14/15; last 3 [np.int64(126), np.int64(144), np.int64(68)]; opp D SOFT"
+     "note": "L10 10/10, L15 14/15; last 3 [126, 144, 68]; opp D SOFT"
     },
     {
      "player": "Kyren Williams",
@@ -110,15 +131,19 @@
      "market": "rush_att",
      "rung": 12.0,
      "odds_est": -220,
-     "odds_real": null,
+     "odds_real": -220,
      "l10": 0.9,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(12), np.int64(11), np.int64(12)]",
+     "last3": [
+      12,
+      11,
+      12
+     ],
      "opp_d": "neutral",
      "own_vol": "neutral",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 9/10, L15 14/15; last 3 [np.int64(12), np.int64(11), np.int64(12)]; opp D neutral"
+     "note": "L10 9/10, L15 14/15; last 3 [12, 11, 12]; opp D neutral"
     },
     {
      "player": "Cade Otton",
@@ -127,15 +152,19 @@
      "market": "rec_yds",
      "rung": 15.0,
      "odds_est": -301,
-     "odds_real": null,
+     "odds_real": -301,
      "l10": 0.9,
      "l15": 0.8666666666666667,
-     "last3": "[np.int64(94), np.int64(26), np.int64(38)]",
+     "last3": [
+      94,
+      26,
+      38
+     ],
      "opp_d": "neutral",
      "own_vol": "neutral",
      "star": true,
      "model_pct": 86.7,
-     "note": "L10 9/10, L15 13/15; last 3 [np.int64(94), np.int64(26), np.int64(38)]; opp D neutral"
+     "note": "L10 9/10, L15 13/15; last 3 [94, 26, 38]; opp D neutral"
     },
     {
      "player": "Amon-Ra St. Brown",
@@ -144,15 +173,19 @@
      "market": "rec_yds",
      "rung": 50.0,
      "odds_est": -426,
-     "odds_real": null,
+     "odds_real": -426,
      "l10": 0.8,
      "l15": 0.8,
-     "last3": "[np.int64(139), np.int64(67), np.int64(142)]",
+     "last3": [
+      139,
+      67,
+      142
+     ],
      "opp_d": "neutral",
      "own_vol": "SOFT",
      "star": false,
      "model_pct": 80.0,
-     "note": "L10 8/10, L15 12/15; last 3 [np.int64(139), np.int64(67), np.int64(142)]; opp D neutral"
+     "note": "L10 8/10, L15 12/15; last 3 [139, 67, 142]; opp D neutral"
     }
    ],
    "model_hit": 0.562,
@@ -172,15 +205,19 @@
      "market": "rec_yds",
      "rung": 25.0,
      "odds_est": -441,
-     "odds_real": null,
+     "odds_real": -441,
      "l10": 0.9,
      "l15": 0.9333333333333333,
-     "last3": "[np.int64(53), np.int64(48), np.int64(52)]",
+     "last3": [
+      53,
+      48,
+      52
+     ],
      "opp_d": "neutral",
      "own_vol": "SOFT",
      "star": true,
      "model_pct": 90.0,
-     "note": "L10 9/10, L15 14/15; last 3 [np.int64(53), np.int64(48), np.int64(52)]; opp D neutral"
+     "note": "L10 9/10, L15 14/15; last 3 [53, 48, 52]; opp D neutral"
     },
     {
      "player": "Chase Brown",
@@ -189,15 +226,19 @@
      "market": "receptions",
      "rung": 3.0,
      "odds_est": -226,
-     "odds_real": null,
+     "odds_real": -226,
      "l10": 0.9,
      "l15": 0.8,
-     "last3": "[np.int64(4), np.int64(5), np.int64(3)]",
+     "last3": [
+      4,
+      5,
+      3
+     ],
      "opp_d": "neutral",
      "own_vol": "SOFT",
      "star": false,
      "model_pct": 80.0,
-     "note": "L10 9/10, L15 12/15; last 3 [np.int64(4), np.int64(5), np.int64(3)]; opp D neutral"
+     "note": "L10 9/10, L15 12/15; last 3 [4, 5, 3]; opp D neutral"
     },
     {
      "player": "Baker Mayfield",
@@ -206,15 +247,19 @@
      "market": "rush_yds",
      "rung": 15.0,
      "odds_est": -171,
-     "odds_real": null,
+     "odds_real": -171,
      "l10": 0.9,
      "l15": 0.8,
-     "last3": "[np.int64(31), np.int64(30), np.int64(29)]",
+     "last3": [
+      31,
+      30,
+      29
+     ],
      "opp_d": "neutral",
      "own_vol": "neutral",
      "star": false,
      "model_pct": 80.0,
-     "note": "L10 9/10, L15 12/15; last 3 [np.int64(31), np.int64(30), np.int64(29)]; opp D neutral"
+     "note": "L10 9/10, L15 12/15; last 3 [31, 30, 29]; opp D neutral"
     },
     {
      "player": "Dak Prescott",
@@ -223,15 +268,19 @@
      "market": "pass_yds",
      "rung": 240.0,
      "odds_est": -224,
-     "odds_real": null,
+     "odds_real": -224,
      "l10": 0.8,
      "l15": 0.7333333333333333,
-     "last3": "[np.int64(70), np.int64(175), np.int64(279)]",
+     "last3": [
+      70,
+      175,
+      279
+     ],
      "opp_d": "SOFT",
      "own_vol": "SOFT",
      "star": false,
      "model_pct": 73.3,
-     "note": "L10 8/10, L15 11/15; last 3 [np.int64(70), np.int64(175), np.int64(279)]; opp D SOFT"
+     "note": "L10 8/10, L15 11/15; last 3 [70, 175, 279]; opp D SOFT"
     }
    ],
    "model_hit": 0.422,
@@ -250,15 +299,19 @@
    "market": "rush_yds",
    "rung": 60.0,
    "odds_est": -345,
-   "odds_real": null,
+   "odds_real": -345,
    "l10": 1.0,
    "l15": 0.9333333333333333,
-   "last3": "[np.int64(126), np.int64(144), np.int64(68)]",
+   "last3": [
+    126,
+    144,
+    68
+   ],
    "opp_d": "SOFT",
    "own_vol": "SOFT",
    "star": true,
    "model_pct": 90.0,
-   "note": "L10 10/10, L15 14/15; last 3 [np.int64(126), np.int64(144), np.int64(68)]; opp D SOFT"
+   "note": "L10 10/10, L15 14/15; last 3 [126, 144, 68]; opp D SOFT"
   },
   {
    "player": "Sam LaPorta",
@@ -267,15 +320,19 @@
    "market": "rec_yds",
    "rung": 25.0,
    "odds_est": -441,
-   "odds_real": null,
+   "odds_real": -441,
    "l10": 0.9,
    "l15": 0.9333333333333333,
-   "last3": "[np.int64(53), np.int64(48), np.int64(52)]",
+   "last3": [
+    53,
+    48,
+    52
+   ],
    "opp_d": "neutral",
    "own_vol": "SOFT",
    "star": true,
    "model_pct": 90.0,
-   "note": "L10 9/10, L15 14/15; last 3 [np.int64(53), np.int64(48), np.int64(52)]; opp D neutral"
+   "note": "L10 9/10, L15 14/15; last 3 [53, 48, 52]; opp D neutral"
   },
   {
    "player": "Omarion Hampton",
@@ -284,15 +341,19 @@
    "market": "rush_att",
    "rung": 12.0,
    "odds_est": -398,
-   "odds_real": null,
+   "odds_real": -398,
    "l10": 0.9,
    "l15": 0.9333333333333333,
-   "last3": "[np.int64(14), np.int64(12), np.int64(23)]",
+   "last3": [
+    14,
+    12,
+    23
+   ],
    "opp_d": "SOFT",
    "own_vol": "neutral",
    "star": true,
    "model_pct": 90.0,
-   "note": "L10 9/10, L15 14/15; last 3 [np.int64(14), np.int64(12), np.int64(23)]; opp D SOFT"
+   "note": "L10 9/10, L15 14/15; last 3 [14, 12, 23]; opp D SOFT"
   },
   {
    "player": "Kyren Williams",
@@ -301,15 +362,19 @@
    "market": "rush_att",
    "rung": 12.0,
    "odds_est": -220,
-   "odds_real": null,
+   "odds_real": -220,
    "l10": 0.9,
    "l15": 0.9333333333333333,
-   "last3": "[np.int64(12), np.int64(11), np.int64(12)]",
+   "last3": [
+    12,
+    11,
+    12
+   ],
    "opp_d": "neutral",
    "own_vol": "neutral",
    "star": true,
    "model_pct": 90.0,
-   "note": "L10 9/10, L15 14/15; last 3 [np.int64(12), np.int64(11), np.int64(12)]; opp D neutral"
+   "note": "L10 9/10, L15 14/15; last 3 [12, 11, 12]; opp D neutral"
   },
   {
    "player": "Cade Otton",
@@ -318,15 +383,19 @@
    "market": "rec_yds",
    "rung": 15.0,
    "odds_est": -301,
-   "odds_real": null,
+   "odds_real": -301,
    "l10": 0.9,
    "l15": 0.8666666666666667,
-   "last3": "[np.int64(94), np.int64(26), np.int64(38)]",
+   "last3": [
+    94,
+    26,
+    38
+   ],
    "opp_d": "neutral",
    "own_vol": "neutral",
    "star": true,
    "model_pct": 86.7,
-   "note": "L10 9/10, L15 13/15; last 3 [np.int64(94), np.int64(26), np.int64(38)]; opp D neutral"
+   "note": "L10 9/10, L15 13/15; last 3 [94, 26, 38]; opp D neutral"
   },
   {
    "player": "Breece Hall",
@@ -335,15 +404,19 @@
    "market": "rush_att",
    "rung": 14.0,
    "odds_est": -195,
-   "odds_real": null,
+   "odds_real": -195,
    "l10": 0.9,
    "l15": 0.8666666666666667,
-   "last3": "[np.int64(14), np.int64(22), np.int64(16)]",
+   "last3": [
+    14,
+    22,
+    16
+   ],
    "opp_d": "neutral",
    "own_vol": "neutral",
    "star": true,
    "model_pct": 86.7,
-   "note": "L10 9/10, L15 13/15; last 3 [np.int64(14), np.int64(22), np.int64(16)]; opp D neutral"
+   "note": "L10 9/10, L15 13/15; last 3 [14, 22, 16]; opp D neutral"
   },
   {
    "player": "Chase Brown",
@@ -352,15 +425,19 @@
    "market": "receptions",
    "rung": 3.0,
    "odds_est": -226,
-   "odds_real": null,
+   "odds_real": -226,
    "l10": 0.9,
    "l15": 0.8,
-   "last3": "[np.int64(4), np.int64(5), np.int64(3)]",
+   "last3": [
+    4,
+    5,
+    3
+   ],
    "opp_d": "neutral",
    "own_vol": "SOFT",
    "star": false,
    "model_pct": 80.0,
-   "note": "L10 9/10, L15 12/15; last 3 [np.int64(4), np.int64(5), np.int64(3)]; opp D neutral"
+   "note": "L10 9/10, L15 12/15; last 3 [4, 5, 3]; opp D neutral"
   },
   {
    "player": "Baker Mayfield",
@@ -369,15 +446,19 @@
    "market": "rush_yds",
    "rung": 15.0,
    "odds_est": -171,
-   "odds_real": null,
+   "odds_real": -171,
    "l10": 0.9,
    "l15": 0.8,
-   "last3": "[np.int64(31), np.int64(30), np.int64(29)]",
+   "last3": [
+    31,
+    30,
+    29
+   ],
    "opp_d": "neutral",
    "own_vol": "neutral",
    "star": false,
    "model_pct": 80.0,
-   "note": "L10 9/10, L15 12/15; last 3 [np.int64(31), np.int64(30), np.int64(29)]; opp D neutral"
+   "note": "L10 9/10, L15 12/15; last 3 [31, 30, 29]; opp D neutral"
   },
   {
    "player": "Chris Godwin",
@@ -386,15 +467,19 @@
    "market": "receptions",
    "rung": 3.0,
    "odds_est": -194,
-   "odds_real": null,
+   "odds_real": -194,
    "l10": 0.8,
    "l15": 0.8666666666666667,
-   "last3": "[np.int64(1), np.int64(4), np.int64(3)]",
+   "last3": [
+    1,
+    4,
+    3
+   ],
    "opp_d": "neutral",
    "own_vol": "neutral",
    "star": false,
    "model_pct": 80.0,
-   "note": "L10 8/10, L15 13/15; last 3 [np.int64(1), np.int64(4), np.int64(3)]; opp D neutral"
+   "note": "L10 8/10, L15 13/15; last 3 [1, 4, 3]; opp D neutral"
   },
   {
    "player": "Tee Higgins",
@@ -403,15 +488,19 @@
    "market": "rec_yds",
    "rung": 40.0,
    "odds_est": -230,
-   "odds_real": null,
+   "odds_real": -230,
    "l10": 0.9,
    "l15": 0.7333333333333333,
-   "last3": "[np.int64(67), np.int64(59), np.int64(95)]",
+   "last3": [
+    67,
+    59,
+    95
+   ],
    "opp_d": "neutral",
    "own_vol": "SOFT",
    "star": false,
    "model_pct": 73.3,
-   "note": "L10 9/10, L15 11/15; last 3 [np.int64(67), np.int64(59), np.int64(95)]; opp D neutral"
+   "note": "L10 9/10, L15 11/15; last 3 [67, 59, 95]; opp D neutral"
   },
   {
    "player": "Amon-Ra St. Brown",
@@ -420,15 +509,19 @@
    "market": "rec_yds",
    "rung": 50.0,
    "odds_est": -426,
-   "odds_real": null,
+   "odds_real": -426,
    "l10": 0.8,
    "l15": 0.8,
-   "last3": "[np.int64(139), np.int64(67), np.int64(142)]",
+   "last3": [
+    139,
+    67,
+    142
+   ],
    "opp_d": "neutral",
    "own_vol": "SOFT",
    "star": false,
    "model_pct": 80.0,
-   "note": "L10 8/10, L15 12/15; last 3 [np.int64(139), np.int64(67), np.int64(142)]; opp D neutral"
+   "note": "L10 8/10, L15 12/15; last 3 [139, 67, 142]; opp D neutral"
   },
   {
    "player": "Omarion Hampton",
@@ -437,29 +530,22 @@
    "market": "rush_yds",
    "rung": 40.0,
    "odds_est": -393,
-   "odds_real": null,
+   "odds_real": -393,
    "l10": 0.8,
    "l15": 0.8,
-   "last3": "[np.int64(29), np.int64(43), np.int64(94)]",
+   "last3": [
+    29,
+    43,
+    94
+   ],
    "opp_d": "SOFT",
    "own_vol": "neutral",
    "star": false,
    "model_pct": 80.0,
-   "note": "L10 8/10, L15 12/15; last 3 [np.int64(29), np.int64(43), np.int64(94)]; opp D SOFT"
+   "note": "L10 8/10, L15 12/15; last 3 [29, 43, 94]; opp D SOFT"
   }
  ],
  "held": [
-  {
-   "Player": "Mack Hollins",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -521,
-   "L10": "10/10",
-   "L15": "13/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
-   "TeamChange": false
-  },
   {
    "Player": "Geno Smith",
    "Market": "pass_yds",
@@ -469,7 +555,11 @@
    "L15": "11/15",
    "OppD": "SOFT",
    "OwnVol": "neutral",
-   "TeamChange": true
+   "TeamChange": true,
+   "Reasons": [
+    "team change (LV->NYJ)",
+    "price worse than -450"
+   ]
   },
   {
    "Player": "Kyler Murray",
@@ -480,7 +570,11 @@
    "L15": "11/15",
    "OppD": "SOFT",
    "OwnVol": "TOUGH",
-   "TeamChange": true
+   "TeamChange": true,
+   "Reasons": [
+    "team change (ARI->MIN)",
+    "own volume low"
+   ]
   },
   {
    "Player": "Kyler Murray",
@@ -491,51 +585,11 @@
    "L15": "12/15",
    "OppD": "SOFT",
    "OwnVol": "TOUGH",
-   "TeamChange": true
-  },
-  {
-   "Player": "Chase Brown",
-   "Market": "rush_yds",
-   "Rung": "50+",
-   "EstOdds": -235,
-   "L10": "9/10",
-   "L15": "11/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
-   "TeamChange": false
-  },
-  {
-   "Player": "Zay Flowers",
-   "Market": "rec_yds",
-   "Rung": "50+",
-   "EstOdds": -275,
-   "L10": "8/10",
-   "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "TOUGH",
-   "TeamChange": false
-  },
-  {
-   "Player": "Brenton Strange",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -314,
-   "L10": "10/10",
-   "L15": "15/15",
-   "OppD": "TOUGH",
-   "OwnVol": "neutral",
-   "TeamChange": false
-  },
-  {
-   "Player": "Mack Hollins",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -447,
-   "L10": "9/10",
-   "L15": "12/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
-   "TeamChange": false
+   "TeamChange": true,
+   "Reasons": [
+    "team change (ARI->MIN)",
+    "own volume low"
+   ]
   },
   {
    "Player": "Kyler Murray",
@@ -546,7 +600,128 @@
    "L15": "12/15",
    "OppD": "SOFT",
    "OwnVol": "TOUGH",
-   "TeamChange": true
+   "TeamChange": true,
+   "Reasons": [
+    "team change (ARI->MIN)",
+    "own volume low",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Josh Allen",
+   "Market": "pass_att",
+   "Rung": "26+",
+   "EstOdds": -405,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Reasons": [
+    "blowout risk (fav by 7)",
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Chris Rodriguez Jr.",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -247,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": true,
+   "Reasons": [
+    "team change (WAS->JAX)",
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Kyler Murray",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -252,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": true,
+   "Reasons": [
+    "team change (ARI->MIN)",
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Mack Hollins",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -521,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Reasons": [
+    "own volume low",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Chase Brown",
+   "Market": "rush_yds",
+   "Rung": "50+",
+   "EstOdds": -235,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Zay Flowers",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -275,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Brenton Strange",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -314,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Reasons": [
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Mack Hollins",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -447,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Reasons": [
+    "own volume low"
+   ]
   },
   {
    "Player": "TreVeyon Henderson",
@@ -557,7 +732,10 @@
    "L15": "13/15",
    "OppD": "neutral",
    "OwnVol": "TOUGH",
-   "TeamChange": false
+   "TeamChange": false,
+   "Reasons": [
+    "own volume low"
+   ]
   },
   {
    "Player": "Jakobi Meyers",
@@ -568,7 +746,10 @@
    "L15": "11/15",
    "OppD": "TOUGH",
    "OwnVol": "neutral",
-   "TeamChange": false
+   "TeamChange": false,
+   "Reasons": [
+    "opp D tough"
+   ]
   },
   {
    "Player": "Rhamondre Stevenson",
@@ -579,40 +760,10 @@
    "L15": "11/15",
    "OppD": "TOUGH",
    "OwnVol": "SOFT",
-   "TeamChange": false
-  },
-  {
-   "Player": "Drake Maye",
-   "Market": "pass_yds",
-   "Rung": "190+",
-   "EstOdds": -221,
-   "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
-   "TeamChange": false
-  },
-  {
-   "Player": "Brian Thomas Jr",
-   "Market": "rec_yds",
-   "Rung": "25+",
-   "EstOdds": -253,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "TOUGH",
-   "OwnVol": "neutral",
-   "TeamChange": false
-  },
-  {
-   "Player": "TreVeyon Henderson",
-   "Market": "rush_yds",
-   "Rung": "30+",
-   "EstOdds": -277,
-   "L10": "9/10",
-   "L15": "11/15",
-   "OppD": "TOUGH",
-   "OwnVol": "SOFT",
-   "TeamChange": false
+   "TeamChange": false,
+   "Reasons": [
+    "opp D tough"
+   ]
   }
  ],
  "notes": ""

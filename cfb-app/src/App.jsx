@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import KBoard from "./KBoard";
-import PropHub from "./PropHub";
 import StreakCenter from "./StreakCenter";
 import MatchupsHub from "./MatchupsHub";
 import LegsHub from "./LegsHub";
@@ -21,8 +20,9 @@ const NAV_SECTIONS = [
       { id: "nflcard",  label: "Card",         component: NFLHub },
       { id: "legs",     label: "Legs",         component: LegsHub },
       { id: "streaks",  label: "Floor Lines",  component: StreakCenter },
-      { id: "props",    label: "Props",        component: PropHub },
       { id: "matchups", label: "Matchups",     component: MatchupsHub },
+      { id: "record",   label: "Record",       component: RecordTracker },
+      { id: "faq",      label: "FAQ",          component: FAQ },
     ],
   },
   {
@@ -32,8 +32,6 @@ const NAV_SECTIONS = [
     tabs: [
       { id: "kboard",   label: "K Board",        component: KBoard },
       { id: "mlb",      label: "Full Card",      component: MLBHub },
-      { id: "record",   label: "Record",         component: RecordTracker },
-      { id: "faq",      label: "FAQ",            component: FAQ },
     ],
   },
 ];
@@ -59,8 +57,8 @@ export default function App() {
       fontFamily:"'SF Mono','Fira Code',monospace" }}>
 
       {/* Top nav */}
-      <div style={{ background:"#0a0f1a", borderBottom:"1px solid #ffffff0a",
-        padding:"0 24px", display:"flex", alignItems:"center",
+      <div className="topnav" style={{ background:"#0a0f1a", borderBottom:"1px solid #ffffff0a",
+        padding:"0 24px", display:"flex", alignItems:"center", flexWrap:"wrap", columnGap:16,
         justifyContent:"space-between", position:"sticky", top:0, zIndex:100 }}>
 
         {/* Logo */}
@@ -72,13 +70,13 @@ export default function App() {
           <div>
             <div style={{ fontSize:13, fontWeight:700, color:"#f0f0f0",
               letterSpacing:1 }}>EDGE INDEX</div>
-            <div style={{ fontSize:9, color:"#00e5ff", letterSpacing:2,
+            <div className="topnav-sub" style={{ fontSize:9, color:"#00e5ff", letterSpacing:2,
               marginTop:-2 }}>NFL PROP MODEL · CALIBRATED · PAPER 2026</div>
           </div>
         </div>
 
         {/* Tabs with sport dividers */}
-        <div style={{ display:"flex", alignItems:"stretch" }}>
+        <div className="topnav-tabs" style={{ display:"flex", alignItems:"stretch", minWidth:0, overflowX:"auto" }}>
           {NAV_SECTIONS.map((section, si) => (
             <div key={section.sport} style={{ display:"flex", alignItems:"stretch" }}>
               {/* Sport label — non-clickable divider */}
@@ -128,6 +126,15 @@ export default function App() {
       </div>
 
       <style>{`
+        .topnav-tabs { scrollbar-width:none; }
+        .topnav-tabs::-webkit-scrollbar { display:none; }
+        /* phones: logo + PAPER on the first row, the tab strip on its own row, scrolling sideways inside itself */
+        @media (max-width: 760px) {
+          .topnav { padding:0 12px !important; }
+          .topnav-sub { display:none; }
+          .topnav-tabs { order:3; flex:1 0 100%; margin:0 -12px; padding:0 4px; border-top:1px solid #ffffff08; }
+          .topnav-tabs button { padding:12px 11px !important; }
+        }
         @keyframes pulse {
           0%,100% { opacity:1; transform:scale(1); }
           50% { opacity:0.4; transform:scale(1.3); }

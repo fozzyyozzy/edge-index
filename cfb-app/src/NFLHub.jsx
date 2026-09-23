@@ -1,333 +1,216 @@
-import { useState } from "react";
-// v2026-08-20 — NFL weekly card. Paper trial, 2026 season.
+import { useEffect, useState } from "react";
+import { teamColor } from "./nflTeams";
+// NFL Card — the plays. Reads /data/nfl_card_<slate>.json (automation/pipeline/build_card_json.py).
+// Paper trial, 2026 season: nothing is bet.
 
 const T = {
   bg:"#060911", surface:"#0d1117", border:"#ffffff0a",
   accent:"#00ff88", nfl:"#00e5ff", text:"#f0f0f0", muted:"#555",
+  red:"#ff4757", amber:"#f5c518",
   mono:"'IBM Plex Mono',monospace", head:"'Barlow Condensed',sans-serif",
 };
 
-// BASEMENT = projection sits well above the line, priced heavy.
-// PLAY     = ordinary edge.
-// REVIEW   = disagreement large enough that we distrust ourselves, not the book.
-const VERDICT_CFG = {
-  BASEMENT:{color:"#00ff88",bg:"#00ff8818",border:"#00ff8840",icon:"▼"},
-  PLAY:    {color:"#00e5ff",bg:"#00e5ff18",border:"#00e5ff40",icon:"◆"},
-  REVIEW:  {color:"#f5c518",bg:"#f5c51818",border:"#f5c51840",icon:"?"},
-};
+const SLATES = [["tnf","THU"],["sun","SUN"],["mnf","MON"]];
+const SINGLE_GAME = new Set(["tnf", "mnf"]);
+const MARKET_LABEL = { rec_yds:"rec yds", receptions:"rec", rush_yds:"rush yds", rush_att:"rush att",
+  pass_yds:"pass yds", pass_cmps:"cmp", pass_att:"att" };
 
-// >>> AUTO-GENERATED WEEK BEGIN — do not edit between markers
-const WEEK = {
-  season: 2026,
-  week: 1,
-  posted: "2026-09-08",
-  clv_avg: null,          // points, filled after closing capture
-  legs_logged: 0,
-  slope: 1.055,           // held-out 2025 backtest
-  stake: 0,
-};
+const oddsStr = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
+const rungStr = r => typeof r === "string" ? r : Number.isInteger(r) ? `${r}+` : `o${r}`;
+const frac = (v, n) => `${Math.round(v * n)}/${n}`;
+// last3 is a list; older cards stored "[np.int64(126), ...]" strings.
+const last3Of = v => Array.isArray(v) ? v :
+  (String(v || "").replace(/np\.\w+\(/g, "").match(/-?\d+(\.\d+)?/g) || []).map(Number);
 
-const CALIBRATION = [
-  { stated: 0.746, actual: 0.758 },
-  { stated: 0.851, actual: 0.857 },
-  { stated: 0.937, actual: 0.931 },
-];
+// Wed–Thu -> Thursday card, Fri–Sun -> Sunday, Mon–Tue -> Monday.
+function slateForToday() {
+  const d = new Date().getDay();
+  return d >= 3 && d <= 4 ? "tnf" : d === 1 || d === 2 ? "mnf" : "sun";
+}
 
-const PICKS = [
-  { player:"Garrett Wilson", team:"NYJ", prop:"receptions", line:2.5, side:"over",
-    odds:-410, proj:6.23, sd:2.61, model:0.894, implied:0.804, edge:9.0,
-    daylight:1.43, verdict:"BASEMENT", need:4.97,
-    why:"All 11 first-drive snaps in the preseason opener.",
-    flags:[] },
-  { player:"Jerry Jeudy", team:"CLE", prop:"receptions", line:3.5, side:"over",
-    odds:-160, proj:4.88, sd:2.32, model:0.663, implied:0.615, edge:4.8,
-    daylight:0.59, verdict:"PLAY", need:4.49,
-    why:"Nominal WR1, grasp tenuous with Concepcion and Boston pushing.",
-    flags:["role prior carries 67% of the projection weight"] },
-  { player:"Garrett Wilson", team:"NYJ", prop:"receptions", line:4.5, side:"over",
-    odds:-180, proj:6.23, sd:2.61, model:0.686, implied:0.643, edge:4.3,
-    daylight:0.66, verdict:"PLAY", need:5.87,
-    why:"Same projection, longer line. Less room than the 2.5.",
-    flags:[] },
-  { player:"Kyle Pitts", team:"ATL", prop:"receptions", line:3.5, side:"over",
-    odds:-175, proj:4.97, sd:2.34, model:0.675, implied:0.636, edge:3.8,
-    daylight:0.63, verdict:"PLAY", need:4.71,
-    why:"Targeted on four of Tagovailoa's five attempts in the preseason debut.",
-    flags:[] },
-  { player:"Breece Hall", team:"NYJ", prop:"rush_attempts", line:10.5, side:"over",
-    odds:-260, proj:18.20, sd:6.02, model:0.858, implied:0.722, edge:13.6,
-    daylight:1.28, verdict:"REVIEW", need:13.9,
-    why:"10 of 11 opening-drive snaps; being featured more prominently.",
-    flags:["13.6pt disagreement with a liquid market — held back on purpose"] },
-];
+// Older cards have no Reasons on held rows; rebuild them from the flags.
+function heldReasons(h) {
+  if (h.Reasons?.length) return h.Reasons;
+  const r = [];
+  if (h.TeamChange) r.push("team change");
+  if (h.OppD === "TOUGH") r.push("opp D tough");
+  if (h.OwnVol === "TOUGH") r.push("own volume low");
+  return r;
+}
 
-const SCREENED = [
-  { player:"Breece Hall",    detail:"rush att o13.5 −140 · price outside −150 to −500" },
-  { player:"Tony Pollard",   detail:"rush att o12.5 −145 · price outside band; Spears took 12 starter snaps to his 9" },
-  { player:"DJ Moore",       detail:"receptions o4.5 −165 · model 23.8pts BELOW the book" },
-  { player:"Matthew Golden", detail:"receptions o3.5 −155 · model 12.3pts below the book" },
-  { player:"Jeremiyah Love", detail:"ruled out — high ankle sprain, 3-5wk recovery" },
-];
-// <<< AUTO-GENERATED WEEK END
-
-const pct  = n => (n*100).toFixed(1) + "%";
-const odds = n => (n > 0 ? "+" : "") + n;
-const prop = p => p.replace(/_/g, " ");
-
-function VerdictBadge({ verdict }) {
-  const c = VERDICT_CFG[verdict] || VERDICT_CFG.PLAY;
+function Tag({ label, v }) {
+  // opp_d: SOFT = easy matchup. own_vol: SOFT = high volume, TOUGH = low volume.
+  const good = v === "SOFT", bad = v === "TOUGH";
+  const text = label === "VOL" ? (good ? "HIGH" : bad ? "LOW" : "—") : (good ? "SOFT" : bad ? "TOUGH" : "—");
   return (
-    <span style={{fontSize:9,fontWeight:700,fontFamily:T.mono,color:c.color,
-      background:c.bg,border:`1px solid ${c.border}`,borderRadius:3,
-      padding:"3px 7px",letterSpacing:1,whiteSpace:"nowrap"}}>
-      {c.icon} {verdict}
+    <span style={{fontSize:9,fontFamily:T.mono,color: good ? T.accent : bad ? T.red : "#444",whiteSpace:"nowrap"}}>
+      <span style={{color:"#444"}}>{label} </span>{text}
     </span>
   );
 }
 
-/* Signature element: what the model claimed against what happened.
-   The filled bar is the claim; the notch is the outcome. */
-function CalibrationStrip() {
+function Price({ leg }) {
+  const real = leg.odds_real != null;
   return (
-    <div style={{borderTop:`1px solid ${T.border}`,marginTop:22,paddingTop:18}}>
-      <div style={{fontSize:13,fontWeight:700,color:T.text,fontFamily:T.head,
-        letterSpacing:1,marginBottom:3}}>DOES 80% MEAN 80%?</div>
-      <div style={{fontSize:10,color:"#666",fontFamily:T.mono,lineHeight:1.6,
-        maxWidth:"62ch",marginBottom:14}}>
-        Every projection states a probability. These compare what the model said
-        against what happened, across 33,237 player-week lines it never saw while
-        fitting.
+    <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono}}>
+      {oddsStr(real ? leg.odds_real : leg.odds_est)}
+      {!real && <sup style={{fontSize:7,color:T.amber,marginLeft:2,fontWeight:500}}>est</sup>}
+    </span>
+  );
+}
+
+function Leg({ l, last }) {
+  const l3 = last3Of(l.last3);
+  return (
+    <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",padding:"9px 12px 9px 10px",
+      borderLeft:`3px solid ${teamColor(l.team)}`,borderBottom: last ? "none" : `1px solid ${T.border}`}}>
+      <div style={{flex:"1 1 200px",minWidth:0}}>
+        <div style={{display:"flex",alignItems:"baseline",gap:8,flexWrap:"wrap"}}>
+          <a href={`#legs?player=${encodeURIComponent(l.player)}`} title="open this player's ladder in Legs"
+            style={{fontSize:14,fontWeight:700,color:T.text,fontFamily:T.head,textDecoration:"none"}}>{l.player}</a>
+          {l.star && <span title="floor star: L10 ≥ 9/10 and L15 ≥ 13/15 — may anchor two tickets"
+            style={{fontSize:10,color:T.amber}}>★</span>}
+          <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>{l.team} v {l.opp}</span>
+        </div>
+        <div style={{fontSize:11,fontFamily:T.mono,marginTop:2}}>
+          <span style={{color:T.accent,fontWeight:700}}>{rungStr(l.rung)}</span>{" "}
+          <span style={{color:"#999"}}>{MARKET_LABEL[l.market] || l.market}</span>
+        </div>
       </div>
-
-      {CALIBRATION.map((c,i) => {
-        const gap = (c.actual - c.stated) * 100;
-        return (
-          <div key={i} style={{display:"grid",
-            gridTemplateColumns:"62px 1fr 66px",alignItems:"center",
-            gap:10,marginBottom:7}}>
-            <div style={{fontSize:10,color:"#666",fontFamily:T.mono,
-              textAlign:"right"}}>said {(c.stated*100).toFixed(0)}%</div>
-            <div style={{position:"relative",height:20,background:"#ffffff05",
-              border:`1px solid ${T.border}`,borderRadius:3,overflow:"hidden"}}>
-              <div style={{position:"absolute",inset:0,width:`${c.stated*100}%`,
-                background:"#00e5ff1a"}} />
-              <div style={{position:"absolute",top:5,bottom:5,left:0,
-                width:`${c.actual*100}%`,borderRight:`2px solid ${T.text}`}} />
-            </div>
-            <div style={{fontSize:10,fontFamily:T.mono,
-              color: gap >= 0 ? T.accent : "#ff4757"}}>
-              {gap >= 0 ? "+" : ""}{gap.toFixed(1)} pts
-            </div>
-          </div>
-        );
-      })}
-
-      <div style={{fontSize:9.5,color:"#444",fontFamily:T.mono,marginTop:12,
-        lineHeight:1.7,maxWidth:"66ch"}}>
-        Uncorrected, the same model ran ~5.5 points hot above 70% — it said 94% on
-        things that happened 89% of the time. Closing that gap is why this page exists.
+      <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",fontFamily:T.mono}}>
+        <Price leg={l} />
+        <span style={{fontSize:10,color:"#999"}}>{frac(l.l10, 10)} <span style={{color:"#555"}}>{frac(l.l15, 15)}</span></span>
+        <span style={{fontSize:10,minWidth:66}}>
+          {l3.map((v, i) => <span key={i} style={{color: v >= l.rung ? "#7fe0b0" : "#c96b74",marginRight:5}}>{Math.round(v)}</span>)}
+        </span>
+        <span style={{display:"flex",gap:7}}><Tag label="D" v={l.opp_d} /><Tag label="VOL" v={l.own_vol} /></span>
       </div>
     </div>
   );
 }
 
-function Metric({ label, value, sub, color }) {
+function Ticket({ t }) {
+  const color = t.reduced ? T.amber : T.accent;
   return (
-    <div style={{minWidth:120}}>
-      <div style={{fontSize:8,color:"#444",letterSpacing:2,fontFamily:T.mono,
-        marginBottom:5}}>{label}</div>
-      <div style={{fontSize:26,fontWeight:800,fontFamily:T.mono,
-        color:color||T.text,letterSpacing:-1,lineHeight:1}}>{value}</div>
-      <div style={{fontSize:9,color:"#555",fontFamily:T.mono,marginTop:5}}>{sub}</div>
+    <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,marginBottom:14,overflow:"hidden"}}>
+      <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",padding:"12px 14px",
+        borderBottom:`1px solid ${T.border}`}}>
+        <div style={{fontSize:18,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>{t.name}</div>
+        <span style={{fontSize:9.5,fontFamily:T.mono,color,background:color + "14",border:`1px solid ${color}40`,
+          borderRadius:3,padding:"3px 8px",lineHeight:1.4}}>{t.label}</span>
+        {t.correlated && <span style={{fontSize:9,fontFamily:T.mono,color:"#888",border:"1px solid #ffffff18",
+          borderRadius:3,padding:"3px 7px"}}>single game · legs correlated</span>}
+        <span style={{flex:1}} />
+        <div style={{display:"flex",gap:18,fontFamily:T.mono}}>
+          <div style={{textAlign:"right"}}>
+            <div style={{fontSize:20,fontWeight:800,color:T.nfl,letterSpacing:-0.5,lineHeight:1}}>{oddsStr(t.est_american)}</div>
+            <div style={{fontSize:8,color:"#444",letterSpacing:1.5,marginTop:3}}>PAYOUT · {t.est_payout.toFixed(2)}x</div>
+          </div>
+          <div style={{textAlign:"right"}}>
+            <div style={{fontSize:20,fontWeight:800,color:T.text,letterSpacing:-0.5,lineHeight:1}}>{(t.model_hit * 100).toFixed(1)}%</div>
+            <div style={{fontSize:8,color:"#444",letterSpacing:1.5,marginTop:3}}>MODEL HIT</div>
+          </div>
+        </div>
+      </div>
+      {t.legs.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === t.legs.length - 1} />)}
     </div>
   );
 }
 
-function PickCard({ p }) {
-  const [open, setOpen] = useState(false);
-  const cfg = VERDICT_CFG[p.verdict] || VERDICT_CFG.PLAY;
-  const side = p.side === "over" ? "o" : "u";
-
-  return (
-    <div onClick={() => setOpen(!open)} style={{background:T.surface,
-      border:`1px solid ${open ? cfg.border : T.border}`,borderRadius:6,
-      marginBottom:8,cursor:"pointer",transition:"border-color .15s"}}>
-
-      <div style={{padding:"12px 16px",display:"flex",alignItems:"center",gap:12}}>
-        <div style={{flexShrink:0}}><VerdictBadge verdict={p.verdict} /></div>
-
-        <div style={{flex:1,minWidth:0}}>
-          <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
-            <span style={{fontSize:14,fontWeight:700,color:T.text,
-              fontFamily:T.head}}>{p.player}</span>
-            <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>
-              {prop(p.prop)} {side}{p.line} · {p.team}
-            </span>
-          </div>
-          <div style={{fontSize:11,color:"#777",fontFamily:T.mono,marginTop:2}}>
-            {p.why}
-          </div>
-        </div>
-
-        <div style={{display:"flex",gap:14,alignItems:"center",flexShrink:0}}>
-          <div style={{textAlign:"center"}}>
-            <div style={{fontSize:13,fontWeight:700,color:T.text,
-              fontFamily:T.mono}}>{p.proj.toFixed(2)}</div>
-            <div style={{fontSize:8,color:"#444"}}>PROJ</div>
-          </div>
-          <div style={{textAlign:"center"}}>
-            <div style={{fontSize:18,fontWeight:800,color:cfg.color,
-              fontFamily:T.mono}}>{pct(p.model)}</div>
-            <div style={{fontSize:8,color:"#444"}}>MODEL</div>
-          </div>
-          <div style={{textAlign:"center"}}>
-            <div style={{fontSize:13,fontWeight:700,color:T.text,
-              fontFamily:T.mono}}>{odds(p.odds)}</div>
-            <div style={{fontSize:8,color:"#444"}}>ODDS</div>
-          </div>
-          <span style={{fontSize:14,color:open?cfg.color:"#333"}}>
-            {open ? "−" : "+"}
-          </span>
-        </div>
-      </div>
-
-      {open && (
-        <div style={{borderTop:`1px solid ${T.border}`,padding:"14px 16px"}}>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
-            <div>
-              <div style={{fontSize:9,color:"#444",letterSpacing:2,
-                fontFamily:T.mono,marginBottom:8}}>THE NUMBER</div>
-              {[
-                ["Projection", `${p.proj.toFixed(2)} ± ${p.sd.toFixed(2)}`],
-                ["Break-even needs", p.need.toFixed(2)],
-                ["Room over the line", `${p.daylight.toFixed(2)} sd`],
-              ].map(([k,v]) => (
-                <div key={k} style={{display:"flex",justifyContent:"space-between",
-                  fontSize:10,fontFamily:T.mono,marginBottom:5}}>
-                  <span style={{color:"#666"}}>{k}</span>
-                  <span style={{color:T.text,fontWeight:700}}>{v}</span>
-                </div>
-              ))}
-            </div>
-            <div>
-              <div style={{fontSize:9,color:"#444",letterSpacing:2,
-                fontFamily:T.mono,marginBottom:8}}>PRICE</div>
-              {[
-                ["Model", pct(p.model)],
-                ["Book implied", pct(p.implied)],
-                ["Edge", `${p.edge > 0 ? "+" : ""}${p.edge.toFixed(1)} pts`],
-              ].map(([k,v],i) => (
-                <div key={k} style={{display:"flex",justifyContent:"space-between",
-                  fontSize:10,fontFamily:T.mono,marginBottom:5}}>
-                  <span style={{color:"#666"}}>{k}</span>
-                  <span style={{color:i===2?cfg.color:T.text,fontWeight:700}}>{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {p.flags.length > 0 && (
-            <div style={{marginTop:12,paddingTop:12,
-              borderTop:`1px solid ${T.border}`}}>
-              {p.flags.map((f,i) => (
-                <div key={i} style={{fontSize:10,color:"#f5c518",
-                  fontFamily:T.mono,lineHeight:1.6}}>! {f}</div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
+function Label({ children }) {
+  return <div style={{fontSize:9,color:"#444",letterSpacing:3,margin:"26px 0 10px"}}>{children}</div>;
 }
 
 export default function NFLHub() {
-  const card = PICKS.filter(p => p.verdict !== "REVIEW");
-  const held = PICKS.filter(p => p.verdict === "REVIEW");
+  const [files, setFiles] = useState(null);     // slate -> card | null
+  const [slate, setSlate] = useState(null);
+
+  useEffect(() => {
+    const bust = `?t=${Date.now()}`;
+    Promise.all(SLATES.map(([s]) => fetch(`/data/nfl_card_${s}.json${bust}`)
+      .then(r => r.ok ? r.json() : null).catch(() => null)))
+      .then(all => {
+        const fs = Object.fromEntries(SLATES.map(([s], i) => [s, all[i]?.tickets ? all[i] : null]));
+        setFiles(fs);
+        const want = slateForToday();
+        setSlate(fs[want] ? want : ["sun", "tnf", "mnf"].find(s => fs[s]) || want);
+      });
+  }, []);
+
+  const card = files && slate ? files[slate] : null;
+  const pulled = card?.prices_pulled ? new Date(card.prices_pulled).toLocaleString(undefined,
+    { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit" }) : null;
 
   return (
-    <div style={{padding:"28px 24px 80px",maxWidth:1000,margin:"0 auto",
-      fontFamily:T.mono}}>
-
-      {/* header */}
-      <div style={{display:"flex",alignItems:"baseline",gap:14,flexWrap:"wrap",
-        marginBottom:20}}>
-        <div style={{fontSize:22,fontWeight:800,color:T.text,fontFamily:T.head,
-          letterSpacing:1}}>WEEK {WEEK.week}</div>
-        <div style={{fontSize:10,color:T.muted}}>posted {WEEK.posted}</div>
-        <span style={{fontSize:9,fontWeight:700,color:"#f5c518",
-          background:"#f5c51818",border:"1px solid #f5c51840",borderRadius:3,
-          padding:"3px 8px",letterSpacing:2}}>PAPER · NOTHING IS BET</span>
-      </div>
-
-      {/* hero: the question the season is built to answer */}
-      <div style={{background:T.surface,border:`1px solid ${T.border}`,
-        borderRadius:8,padding:22,marginBottom:26}}>
-        <div style={{display:"flex",gap:34,flexWrap:"wrap"}}>
-          <Metric label="CLOSING LINE VALUE"
-            value={WEEK.clv_avg === null ? "—" : `${WEEK.clv_avg > 0 ? "+" : ""}${WEEK.clv_avg.toFixed(2)}`}
-            sub="points per leg · logs at kickoff"
-            color={WEEK.clv_avg > 0 ? T.accent : T.text} />
-          <Metric label="LEGS LOGGED" value={WEEK.legs_logged}
-            sub="season target near 300" />
-          <Metric label="CALIBRATION SLOPE" value={WEEK.slope.toFixed(3)}
-            sub="held-out 2025 · 1.0 is perfect" color={T.nfl} />
-          <Metric label="STAKE" value={`$${WEEK.stake}`}
-            sub="paper trial, all season" />
+    <div style={{padding:"28px 16px 80px",maxWidth:1000,margin:"0 auto",fontFamily:T.mono}}>
+      <div style={{display:"flex",alignItems:"baseline",gap:14,flexWrap:"wrap",marginBottom:4}}>
+        <div style={{fontSize:22,fontWeight:800,color:T.text,fontFamily:T.head,letterSpacing:1}}>
+          CARD{card ? ` · WEEK ${card.week}` : ""}
         </div>
-        <CalibrationStrip />
+        <div style={{display:"inline-flex",border:"1px solid #ffffff14",borderRadius:4,overflow:"hidden"}}>
+          {SLATES.map(([s, label]) => {
+            const has = !!files?.[s];
+            return (
+              <button key={s} disabled={!has} onClick={() => setSlate(s)} title={has ? "" : "not posted"}
+                style={{padding:"5px 12px",fontSize:10,fontFamily:T.mono,letterSpacing:1,border:"none",
+                  cursor: has ? "pointer" : "default",background: slate === s && has ? T.nfl + "1c" : "transparent",
+                  color: slate === s && has ? T.nfl : has ? "#777" : "#333",fontWeight: slate === s ? 700 : 500}}>{label}</button>
+            );
+          })}
+        </div>
+        <span style={{fontSize:9,fontWeight:700,color:T.amber,background:T.amber + "18",border:`1px solid ${T.amber}40`,
+          borderRadius:3,padding:"3px 8px",letterSpacing:2}}>PAPER · NOTHING IS BET</span>
+      </div>
+      <div style={{fontSize:10,color:"#777",marginBottom:20,maxWidth:"72ch",lineHeight:1.6}}>
+        Card tickets are graded Tuesday. Personal slips are not the card.
       </div>
 
-      {/* the card */}
-      <div style={{fontSize:9,color:"#444",letterSpacing:3,marginBottom:10}}>
-        CARD · {card.length} PLAYS
-      </div>
-      {card.map((p,i) => <PickCard key={i} p={p} />)}
-
-      {/* held back — showing what we didn't take is the point */}
-      {held.length > 0 && (
-        <>
-          <div style={{fontSize:9,color:"#444",letterSpacing:3,
-            margin:"26px 0 10px"}}>HELD BACK</div>
-          {held.map((p,i) => <PickCard key={i} p={p} />)}
-        </>
+      {!files && <div style={{fontSize:10,color:"#444"}}>loading…</div>}
+      {files && !card && (
+        <div style={{fontSize:11,color:"#777",background:T.surface,border:`1px solid ${T.border}`,borderRadius:6,padding:16}}>
+          No card posted for this slate yet.
+        </div>
       )}
 
-      {/* screened */}
-      <div style={{fontSize:9,color:"#444",letterSpacing:3,
-        margin:"26px 0 10px"}}>SCREENED OUT · {SCREENED.length}</div>
-      <div style={{background:T.surface,border:`1px solid ${T.border}`,
-        borderRadius:6,padding:"4px 16px"}}>
-        {SCREENED.map((s,i) => (
-          <div key={i} style={{padding:"9px 0",fontSize:10,fontFamily:T.mono,
-            borderBottom: i < SCREENED.length-1 ? `1px solid ${T.border}` : "none",
-            display:"flex",gap:10,flexWrap:"wrap"}}>
-            <span style={{color:"#777",fontWeight:700,minWidth:130}}>{s.player}</span>
-            <span style={{color:"#555",flex:1}}>{s.detail}</span>
+      {card && <>
+        <Label>TICKETS · {card.tickets.length}</Label>
+        {card.tickets.length === 0 && <div style={{fontSize:10,color:"#555"}}>
+          No ticket cleared the rules this slate — see what was held back below.</div>}
+        {card.tickets.map(t => <Ticket key={t.name} t={t} />)}
+
+        {SINGLE_GAME.has(slate) && card.floors_singles?.length > 0 && <>
+          <Label>FLOORS AS SINGLES · {card.floors_singles.length}</Label>
+          <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,overflow:"hidden"}}>
+            {card.floors_singles.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === card.floors_singles.length - 1} />)}
           </div>
-        ))}
-      </div>
+        </>}
 
-      {/* what this is not */}
-      <div style={{marginTop:32,paddingTop:18,borderTop:`1px solid ${T.border}`,
-        fontSize:10,color:"#555",lineHeight:1.8,maxWidth:"74ch"}}>
-        <div style={{fontSize:9,color:"#444",letterSpacing:3,marginBottom:8}}>
-          WHAT THIS PAGE IS NOT
-        </div>
-        Nothing here is bet. A 17-week season cannot produce enough graded plays to
-        prove an edge before it ends — closing line value can, per leg, months
-        earlier. The model's aggregate probabilities are honest and validated out of
-        sample. Its individual projections are noisy, and for the players covered
-        best by reporting they lean heavily on positional priors. A well-formatted
-        card is not evidence.
-        <div style={{marginTop:12,color:"#444"}}>
-          Projections from trailing usage, team pace and game script, shrunk to
-          fitted depth-chart priors, converted through a fitted variance curve and
-          calibrated on held-out seasons. Defensive matchup adjustments were built,
-          tested, and cut — they did not improve accuracy. Data via nflverse.
-        </div>
-      </div>
+        {card.notes?.trim() && <>
+          <Label>AUTHOR NOTES</Label>
+          <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,padding:"12px 14px",
+            fontSize:11,color:"#aaa",lineHeight:1.7,whiteSpace:"pre-wrap"}}>{card.notes.trim()}</div>
+        </>}
 
+        {card.held?.length > 0 && <>
+          <Label>HELD BACK · {card.held.length}</Label>
+          <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,padding:"2px 14px"}}>
+            {card.held.map((h, i) => (
+              <div key={`${h.Player}|${h.Market}`} style={{display:"flex",gap:10,flexWrap:"wrap",alignItems:"baseline",
+                padding:"8px 0",fontSize:10,borderBottom: i < card.held.length - 1 ? `1px solid ${T.border}` : "none"}}>
+                <span style={{color:"#999",fontWeight:700,minWidth:150}}>{h.Player}</span>
+                <span style={{color:"#666",minWidth:130}}>
+                  {h.Rung} {MARKET_LABEL[h.Market] || h.Market} · {oddsStr(h.EstOdds)}</span>
+                <span style={{color:"#555",minWidth:70}}>{h.L10} {h.L15}</span>
+                <span style={{color:"#c96b74",flex:"1 1 200px"}}>{heldReasons(h).join("; ")}</span>
+              </div>
+            ))}
+          </div>
+        </>}
+
+        <div style={{marginTop:28,fontSize:10,color:"#555",fontStyle:"italic"}}>
+          ({pulled ? `Prices as pulled ${pulled}` : "Prices as pulled — time not recorded"})
+        </div>
+      </>}
     </div>
   );
 }

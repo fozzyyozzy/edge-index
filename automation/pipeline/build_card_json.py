@@ -20,11 +20,12 @@ Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
 Output : cards/card_<season>_w<week>_<slate>.json
 Usage  : python pipeline/build_card_json.py --season 2026 --week 3 --slate sun
 """
-import argparse, json, os, sys
+import argparse, json, os, re, sys
+from datetime import datetime, timezone
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay
-from common import norm_name, P
+from common import norm_name, P, load_real_ladders
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15
 MAX_LEG_JUICE = -450
@@ -42,6 +43,26 @@ def load_floors(season, week, slate):
     f["l15"] = f.L15.str.split("/").str[0].astype(int) / 15
     return f
 
+def parse_last3(v):
+    """floors CSV Last3 -> [126, 144, 68]; also reads old rows written as "[np.int64(126), ...]"."""
+    return [int(float(x)) for x in re.findall(r"-?\d+(?:\.\d+)?", re.sub(r"np\.\w+\(", "", str(v)))]
+
+def hold_reasons(r):
+    """Why a floor row is not a card candidate (empty = candidate). Order: hard holds first."""
+    why = []
+    if getattr(r, "TeamChange", False) == True:
+        why.append(f"team change ({r.PrevTeam}->{r.Team})" if isinstance(getattr(r, "PrevTeam", None), str) and r.PrevTeam else "team change")
+    if r.Market in ("pass_att", "pass_cmps") and blowout_flag(r.Spread): why.append(f"blowout risk (fav by {-r.Spread:g})")
+    if r.OppD == "TOUGH": why.append("opp D tough")
+    if r.OwnVol == "TOUGH": why.append("own volume low")
+    if r.EstOdds < MAX_LEG_JUICE: why.append(f"price worse than {MAX_LEG_JUICE}")
+    return why
+
+def hold_rank(h):
+    """hard holds (team change, blowout) first, then matchup/volume, then price-only; floor-scan order within each"""
+    first = h["Reasons"][0]
+    return 0 if first.startswith(("team change", "blowout")) else 2 if first.startswith("price") else 1
+
 def blowout_flag(spread):
     return spread is not None and not pd.isna(spread) and spread <= -7
 
@@ -51,19 +72,29 @@ def main():
     ap.add_argument("--slate", required=True, help="tnf | sun | mnf"); ap.add_argument("--tickets", type=int, default=3)
     a = ap.parse_args()
     fl = load_floors(a.season, a.week, a.slate)
+    ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
+    REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
+    lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
+    src = ladders_path if REAL else lines_path
+    prices_pulled = (datetime.fromtimestamp(os.path.getmtime(src), timezone.utc).isoformat(timespec="minutes")
+                     if os.path.exists(src) else None)
 
     # candidate legs: floors that are winnable AND not over-priced, sorted by strength
-    cands = []
+    cands, held = [], []
     for r in fl.itertuples():
-        if r.OppD == "TOUGH" or r.OwnVol == "TOUGH": continue
-        if getattr(r, "TeamChange", False): continue                  # R6 hard hold: new team this season
-        if r.Market in ("pass_att", "pass_cmps") and blowout_flag(r.Spread): continue
-        if r.EstOdds < MAX_LEG_JUICE: continue
-        cands.append(dict(player=r.Player, team=r.Team, opp=r.Opp, market=r.Market, rung=float(r.Rung.rstrip("+")),
-                          odds_est=int(r.EstOdds), odds_real=None, l10=r.l10, l15=r.l15, last3=r.Last3,
-                          opp_d=r.OppD, own_vol=r.OwnVol, star=FLOOR_STAR(r.l10, r.l15),
+        why = hold_reasons(r)                                         # tough matchup/volume, R5 blowout, R6 team change, juice
+        if why:
+            held.append(dict(Player=r.Player, Market=r.Market, Rung=r.Rung, EstOdds=int(r.EstOdds), L10=r.L10, L15=r.L15,
+                             OppD=r.OppD, OwnVol=r.OwnVol, TeamChange=bool(getattr(r, "TeamChange", False) == True),
+                             Reasons=why))
+            continue
+        rung = float(r.Rung.rstrip("+")); last3 = parse_last3(r.Last3)
+        real = dict(REAL.get((norm_name(r.Player), r.Market), [])).get(rung)
+        cands.append(dict(player=r.Player, team=r.Team, opp=r.Opp, market=r.Market, rung=rung,
+                          odds_est=int(r.EstOdds), odds_real=int(real) if real is not None else None, l10=r.l10, l15=r.l15,
+                          last3=last3, opp_d=r.OppD, own_vol=r.OwnVol, star=FLOOR_STAR(r.l10, r.l15),
                           model_pct=round(100 * min(r.l10, r.l15, 0.9), 1),   # conservative: min of L10/L15, capped 90
-                          note=f"L10 {r.L10}, L15 {r.L15}; last 3 {r.Last3}; opp D {r.OppD}"))
+                          note=f"L10 {r.L10}, L15 {r.L15}; last 3 {last3}; opp D {r.OppD}"))
     cands.sort(key=lambda c: (-(c["l10"] + c["l15"]), c["odds_est"]))
 
     tickets, used = [], {}
@@ -110,11 +141,10 @@ def main():
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
-    card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R7 (see build_card_json.py)",
-                tickets=tickets, floors_singles=cands[:12], held=fl[(fl.OppD == "TOUGH") | (fl.OwnVol == "TOUGH") | (fl.get("TeamChange", False) == True)]
-                [["Player", "Market", "Rung", "EstOdds", "L10", "L15", "OppD", "OwnVol", "TeamChange"]].to_dict("records")[:15], notes=notes)
+    card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=prices_pulled,
+                tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15], notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
-    json.dump(card, open(out, "w"), indent=1, default=str)
+    json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")
     for t in tickets:
         flag = "  [REDUCED]" if t["reduced"] else ""

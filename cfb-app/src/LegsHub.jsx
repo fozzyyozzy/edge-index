@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { teamColor, normName } from "./nflTeams";
 // NFL Legs — every graded rung for the slate + a slip builder. Reads /data/nfl_legs_<slate>.json
-// (automation/pipeline/grade_legs.py) and /data/nfl_usage.json (generate_nfl_data.py). Absorbs the old Usage tab.
+// (automation/pipeline/grade_legs.py) and /data/nfl_usage.json (automation/pipeline/usage.py). Absorbs the old Usage tab.
 // Deep link: #legs?player=<name> opens that player's rows (used by the Matchups tab's Edge Leans).
 
 const T = {
@@ -26,6 +26,9 @@ const USAGE_FIELDS = {
   RB: [["car","carries"],["rushyd","rush yds"],["tgt","targets"],["rec","rec"]],
   WR: [["tgt","targets"],["rec","rec"],["recyd","rec yds"]],
   TE: [["tgt","targets"],["rec","rec"],["recyd","rec yds"]],
+};
+const USAGE_SHARES = {
+  RB: [["car_share","carry share"],["tgt_share","tgt share"]], WR: [["tgt_share","tgt share"]], TE: [["tgt_share","tgt share"]],
 };
 const TICKETS_KEY = "ei_legs_tickets_v1";
 
@@ -218,17 +221,27 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
               {p.own_vol === "SOFT" ? "HIGH" : p.own_vol === "TOUGH" ? "LOW" : p.own_vol}</span></span>
           </div>
 
-          {/* usage — moved here from the old Usage tab */}
-          <div style={{marginTop:10,fontSize:10,fontFamily:T.mono,color:"#777",display:"flex",gap:14,flexWrap:"wrap",alignItems:"baseline"}}>
-            <span style={{fontSize:8.5,letterSpacing:2,color:"#444"}}>USAGE / GM</span>
-            {u ? <>
-              {(USAGE_FIELDS[u.pos] || []).map(([k, label]) => (
-                <span key={k}><span style={{color:T.text,fontWeight:700}}>{u[k] ?? "—"}</span> {label}</span>
-              ))}
-              <span style={{color:"#555"}}>
-                {usage.season} · {u.games} g{u.team !== p.team ? ` · with ${u.team}` : ""}
-              </span>
-            </> : <span style={{color:"#444"}}>no usage row for this player</span>}
+          {/* usage (automation/pipeline/usage.py) — this season, then last season */}
+          <div style={{marginTop:10,fontSize:10,fontFamily:T.mono,color:"#777"}}>
+            <div style={{fontSize:8.5,letterSpacing:2,color:"#444",marginBottom:4}}>USAGE / GM</div>
+            {!u && <span style={{color:"#444"}}>no usage row for this player</span>}
+            {u && [["cur", usage.windows?.cur], ["prev", usage.windows?.prev]].map(([w, label]) => {
+              const x = u[w];
+              if (!x) return null;
+              return (
+                <div key={w} style={{display:"flex",gap:14,flexWrap:"wrap",alignItems:"baseline",marginBottom:3,
+                  color: w === "prev" ? "#5c5c5c" : "#777"}}>
+                  <span style={{minWidth:92,color:"#555"}}>
+                    {label} · {x.games} g{x.team !== p.team ? ` · ${x.team}` : ""}</span>
+                  {(USAGE_FIELDS[u.pos] || []).map(([k, name]) => (
+                    <span key={k}><span style={{color: w === "cur" ? T.text : "#aaa",fontWeight:700}}>{x[k] ?? "—"}</span> {name}</span>
+                  ))}
+                  {(USAGE_SHARES[u.pos] || []).map(([k, name]) => x[k] != null && (
+                    <span key={k}><span style={{color: w === "cur" ? T.nfl : "#6a9fa6",fontWeight:700}}>{x[k]}%</span> {name}</span>
+                  ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -426,7 +439,7 @@ export default function LegsHub() {
   const data = slate ? files[slate] : null;
   const usage = useMemo(() => {
     const m = new Map((usageRows?.players || []).map(u => [normName(u.player), u]));
-    m.season = usageRows?.meta?.season;
+    m.windows = usageRows?.meta?.windows;
     return m;
   }, [usageRows]);
 
