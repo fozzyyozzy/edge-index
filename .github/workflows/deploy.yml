@@ -1,0 +1,46 @@
+name: deploy-site
+
+# Builds cfb-app and deploys it to Cloudflare Pages (project edge-index, production branch main).
+# Replaces the local build + wrangler deploy that agent\daily_publish.bat used to do.
+on:
+  push:
+    branches: [main]
+    paths: ["cfb-app/**"]            # site code or data changed (daily_publish.bat pushes the MLB files)
+  workflow_run:                      # bot commits made with GITHUB_TOKEN don't fire `push`, so follow the data jobs
+    workflows: ["card-build-and-draft", "tuesday-refresh-grade-receipts"]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:                         # one deploy at a time; a newer one waits rather than racing
+  group: deploy-site
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    # after a data job, deploy only if it succeeded (a failed job commits nothing new)
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main                  # workflow_run would otherwise check out the triggering run's commit, before its data push
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: cfb-app/package-lock.json
+      - name: install
+        working-directory: cfb-app
+        run: npm ci
+      - name: build
+        working-directory: cfb-app
+        run: npm run build
+      - name: deploy to Cloudflare Pages
+        working-directory: cfb-app
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler pages deploy dist --project-name=edge-index --branch=main

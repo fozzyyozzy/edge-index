@@ -1,27 +1,29 @@
 @echo off
 REM Edge Index — Windows Task Scheduler Setup
-REM Run this once as Administrator to schedule the morning routine
+REM Run this once to schedule the daily publish (pull -> MLB morning routine -> commit + push;
+REM GitHub Actions deploy-site builds and deploys). Re-running replaces the task.
 
-echo Setting up Edge Index Morning Routine...
+echo Setting up EdgeIndexPublish...
 
-REM Create the scheduled task — runs daily at 8:00 AM
-schtasks /create /tn "EdgeIndex_MorningRoutine" ^
-  /tr "python C:\Users\tyose\edge-index\agent\morning_routine.py --build" ^
-  /sc daily ^
-  /st 08:00 ^
-  /ru "%USERNAME%" ^
-  /f
+REM Daily at 10:00 AM. Runs as soon as possible after a missed start, and on battery (a missed or
+REM refused run means the MLB pages don't update that day). schtasks can't set those two options,
+REM so the task is registered through PowerShell.
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$a = New-ScheduledTaskAction -Execute '%~dp0daily_publish.bat' -WorkingDirectory '%~dp0..';" ^
+  "$t = New-ScheduledTaskTrigger -Daily -At 10:00am;" ^
+  "$s = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries;" ^
+  "Register-ScheduledTask -TaskName 'EdgeIndexPublish' -Action $a -Trigger $t -Settings $s -Force | Out-Null"
+if errorlevel 1 (
+    echo FAILED to create the task.
+    pause
+    exit /b 1
+)
 
 echo.
-echo Task created: EdgeIndex_MorningRoutine
-echo Runs: Daily at 8:00 AM
+echo Task created: EdgeIndexPublish
+echo Runs: Daily at 10:00 AM (and on the next chance if 10:00 was missed)
 echo.
 echo To run manually:
-echo   python C:\Users\tyose\edge-index\agent\morning_routine.py --build
-echo.
-echo To add auto-deploy to Netlify:
-echo   1. npm install -g netlify-cli
-echo   2. netlify login
-echo   3. Change --build to --deploy in the task
+echo   %~dp0daily_publish.bat
 echo.
 pause
