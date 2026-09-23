@@ -1,0 +1,22 @@
+{
+ "season": 2026,
+ "week": 3,
+ "slate": "tnf",
+ "hand_built": true,
+ "why": "Published in the Week 3 TNF newsletter but not produced by the pipeline: the card run's lines had no Bijan rush-yds ladder and priced Watson 40+ at -630. Counted in the ticket W-L as published; excluded from grade-by-letter.",
+ "tickets": [
+  {
+   "name": "TNF-1",
+   "flag": "hand-built, pre-automation",
+   "est_american": 100,
+   "legs": [
+    {"player": "Bijan Robinson", "team": "ATL", "opp": "GB", "market": "rush_yds", "rung": 70.0,
+     "odds_est": -161, "odds_real": -161, "grade": null, "clear_pct": null, "model_pct": null,
+     "opp_d": null, "own_vol": null, "note": "hand-built, pre-automation"},
+    {"player": "Christian Watson", "team": "GB", "opp": "ATL", "market": "rec_yds", "rung": 40.0,
+     "odds_est": -355, "odds_real": -355, "grade": null, "clear_pct": null, "model_pct": null,
+     "opp_d": null, "own_vol": null, "note": "hand-built, pre-automation"}
+   ]
+  }
+ ]
+}

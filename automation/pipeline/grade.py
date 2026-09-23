@@ -1,6 +1,9 @@
 """
 grade.py — Tuesday job. Grades every leg on last week's card(s) against nflverse actuals.
 Reads : cards/card_<season>_w<week>_<slate>.json   (from build_card_json.py)
+        cards/handbuilt_<season>_w<week>_<slate>.json   (card tickets published by hand, outside the pipeline — each
+                                                         carries a "flag"; they count in the ticket W-L but have no
+                                                         pipeline grade, so they never enter by_grade)
 Writes: receipts/receipts_<season>_w<week>.json  +  receipts/season_ledger.csv (append)
 Usage : python pipeline/grade.py --season 2026 --week 2
 """
@@ -17,25 +20,30 @@ def main():
     act = {(k, m): v for m, c in COL.items() for k, v in zip(w.key, w[c])}
 
     legs, tickets = [], []
-    for path in sorted(glob.glob(P("cards", f"card_{a.season}_w{a.week}_*.json"))):
+    paths = sorted(glob.glob(P("cards", f"card_{a.season}_w{a.week}_*.json"))) +             sorted(glob.glob(P("cards", f"handbuilt_{a.season}_w{a.week}_*.json")))
+    for path in paths:
         card = json.load(open(path))
+        hand = bool(card.get("hand_built"))
         for t in card["tickets"]:
             t_hits = []
             for l in t["legs"]:
                 actual = act.get((norm_name(l["player"]), l["market"]))
                 hit = None if actual is None or pd.isna(actual) else bool(actual >= l["rung"])
                 odds = l.get("odds_real") or l["odds_est"]
-                legs.append({**l, "slate": card["slate"], "ticket": t["name"],
+                legs.append({**l, "slate": card["slate"], "ticket": t["name"], "hand_built": hand,
                              "actual": None if actual is None or pd.isna(actual) else float(actual), "hit": hit,
                              "pnl_1u": None if hit is None else (pay(odds) if hit else -1.0),
                              "miss_by": None if hit is None or hit else round(l["rung"] - float(actual), 1)})
                 t_hits.append(hit)
             tickets.append({"slate": card["slate"], "name": t["name"], "legs": len(t["legs"]),
+                            "flag": t.get("flag") if hand else None, "est_american": t.get("est_american"),
+                            "leg_text": [f"{l['player']} {l['rung']:g}+ {l['market']} ({(l.get('odds_real') or l['odds_est']):+d})" for l in t["legs"]],
                             "result": "VOID" if any(h is None for h in t_hits) else ("WIN" if all(t_hits) else "LOSS"),
                             "misses": [l["player"] for l, h in zip(t["legs"], t_hits) if h is False]})
 
     df = pd.DataFrame(legs); g = df[df.hit.notna()].copy()
     g["bucket"] = pd.cut(g.model_pct, [0, 75, 85, 101], labels=["<75", "75-85", "85+"])
+    pg = g[g.hand_built != True] if "hand_built" in g else g        # pipeline legs only: hand-built legs have no grade
     summary = {
         "season": a.season, "week": a.week,
         "legs_graded": int(len(g)), "legs_hit": int(g.hit.sum()),
@@ -52,10 +60,10 @@ def main():
                         .rename(columns={"odds_model_est": "est", "odds_real": "real"}).to_dict("records")
                         if "odds_model_est" in g else []),
         # leg hit rate by the Legs-tab letter vs what the letter expected (mean clear %); older cards have no grade
-        "by_grade": [dict(grade=gr, n=int((g.grade == gr).sum()), hits=int(g[g.grade == gr].hit.sum()),
-                          expected=round(float(g[g.grade == gr].clear_pct.mean()), 1)
-                          if (g.grade == gr).any() and g[g.grade == gr].clear_pct.notna().any() else None)
-                     for gr in GRADES] if "grade" in g else [],
+        "by_grade": [dict(grade=gr, n=int((pg.grade == gr).sum()), hits=int(pg[pg.grade == gr].hit.sum()),
+                          expected=round(float(pg[pg.grade == gr].clear_pct.mean()), 1)
+                          if (pg.grade == gr).any() and pg[pg.grade == gr].clear_pct.notna().any() else None)
+                     for gr in GRADES] if "grade" in pg else [],
         "tickets": tickets,
         "ticket_record": {r: sum(1 for t in tickets if t["result"] == r) for r in ("WIN", "LOSS", "VOID")},
     }

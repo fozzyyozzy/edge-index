@@ -14,6 +14,14 @@ const oddsStr = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
 const implied = o => o < 0 ? -o / (-o + 100) : 100 / (o + 100);
 const pct = (a, b) => b ? `${(100 * a / b).toFixed(1)}%` : "—";
 
+// Tickets published by hand, outside the pipeline (receipts carry their "flag"). Counted in W-L, never in grade stats.
+function FlagBadge({ children }) {
+  return (
+    <span style={{fontSize:8.5,letterSpacing:1,color:T.amber,border:`1px solid ${T.amber}50`,background:T.amber + "12",
+      borderRadius:3,padding:"2px 6px",whiteSpace:"nowrap"}}>{children}</span>
+  );
+}
+
 function Label({ children }) {
   return <div style={{fontSize:9,color:"#444",letterSpacing:3,margin:"28px 0 10px"}}>{children}</div>;
 }
@@ -59,6 +67,7 @@ export default function NFLRecord() {
   const tot = weeks.reduce((a, w) => ({ W: a.W + w.ticket_record.WIN, L: a.L + w.ticket_record.LOSS,
     V: a.V + w.ticket_record.VOID, hit: a.hit + w.legs_hit, n: a.n + w.legs_graded }), { W:0, L:0, V:0, hit:0, n:0 });
   const grades = (rec?.by_grade || []).filter(g => g.n > 0);
+  const flagged = weeks.flatMap(w => (w.tickets || []).filter(t => t.flag).map(t => ({ ...t, week: w.week })));
   const evr = rec?.est_vs_real || [];
 
   return (
@@ -79,9 +88,27 @@ export default function NFLRecord() {
       ) : rec && <>
         <Label>TICKETS BY WEEK</Label>
         <Table cols={[["WEEK","left"],["W","right"],["L","right"],["VOID","right"],["LEGS HIT","right"],["LEG HIT %","right"]]}
-          rows={weeks.map(w => [w.week, w.ticket_record.WIN, w.ticket_record.LOSS, w.ticket_record.VOID,
+          rows={weeks.map(w => [<>{w.week}{(w.tickets || []).some(t => t.flag) &&
+            <span title="includes a flagged ticket — see below" style={{color:T.amber,marginLeft:4}}>†</span>}</>, w.ticket_record.WIN, w.ticket_record.LOSS, w.ticket_record.VOID,
             `${w.legs_hit}/${w.legs_graded}`, pct(w.legs_hit, w.legs_graded)])}
           foot={["SEASON", tot.W, tot.L, tot.V, `${tot.hit}/${tot.n}`, pct(tot.hit, tot.n)]} />
+        {flagged.length > 0 && (
+          <div style={{marginTop:10,background:T.surface,border:`1px solid ${T.amber}30`,borderRadius:8,padding:"4px 14px"}}>
+            {flagged.map((t, i) => (
+              <div key={`${t.week}-${t.name}`} style={{display:"flex",gap:10,flexWrap:"wrap",alignItems:"baseline",padding:"9px 0",
+                fontSize:10.5,borderTop: i ? `1px solid ${T.border}` : "none"}}>
+                <span style={{color:T.amber}}>†</span>
+                <span style={{color:T.text,fontWeight:700}}>Wk {t.week} {t.name}</span>
+                <FlagBadge>{t.flag.toUpperCase()}</FlagBadge>
+                <span style={{color:"#999",flex:"1 1 260px"}}>{(t.leg_text || []).join(" · ")}{t.est_american != null ? ` · pays ${oddsStr(t.est_american)}` : ""}</span>
+                <span style={{color: t.result === "WIN" ? T.accent : t.result === "LOSS" ? T.red : "#888",fontWeight:700}}>{t.result}</span>
+              </div>
+            ))}
+            <div style={{fontSize:9.5,color:"#555",padding:"2px 0 10px",lineHeight:1.6}}>
+              Published as a card ticket but built by hand, not by the pipeline. Counted in the W-L above; left out of grade-by-letter, since it has no pipeline grade.
+            </div>
+          </div>
+        )}
 
         <Label>LEG HIT RATE BY GRADE</Label>
         {grades.length === 0
