@@ -29,7 +29,7 @@ jobs:
           ref: main                  # workflow_run would otherwise check out the triggering run's commit, before its data push
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22                 # wrangler 4.x requires Node >= 22
           cache: npm
           cache-dependency-path: cfb-app/package-lock.json
       - name: install
