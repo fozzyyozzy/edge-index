@@ -7,7 +7,7 @@ on:
     branches: [main]
     paths: ["cfb-app/**"]            # site code or data changed (daily_publish.bat pushes the MLB files)
   workflow_run:                      # bot commits made with GITHUB_TOKEN don't fire `push`, so follow the data jobs
-    workflows: ["card-build-and-draft", "tuesday-refresh-grade-receipts"]
+    workflows: ["card-build-and-draft", "tuesday-refresh-grade-receipts", "refresh-odds"]
     types: [completed]
   workflow_dispatch:
 

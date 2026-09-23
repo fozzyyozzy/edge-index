@@ -43,12 +43,27 @@ function Tag({ label, v }) {
   );
 }
 
+const implied = o => o < 0 ? -o / (-o + 100) : 100 / (o + 100);
+const when = iso => iso ? new Date(iso).toLocaleString(undefined, { weekday:"short", hour:"numeric", minute:"2-digit" }) : "—";
+
+// Published price (locked) -> current price from the latest refresh. Green = the price shortened after we
+// published (the market moved toward us); red = it drifted out.
 function Price({ leg }) {
-  const real = leg.odds_real != null;
+  const real = leg.published_odds != null || leg.odds_real != null;
+  const pub = leg.published_odds ?? (leg.odds_real != null ? leg.odds_real : leg.odds_est);
+  const cur = leg.current_odds;
+  const moved = cur != null && cur !== pub;
+  const toward = moved && implied(cur) > implied(pub);
   return (
-    <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono}}>
-      {oddsStr(real ? leg.odds_real : leg.odds_est)}
+    <span title={moved ? `published ${oddsStr(pub)} (${when(leg.published_at)}) → now ${oddsStr(cur)} (${when(leg.current_at)})`
+                       : leg.current_at ? `unchanged since publish · checked ${when(leg.current_at)}` : ""}
+      style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono,whiteSpace:"nowrap"}}>
+      {oddsStr(pub)}
       {!real && <sup style={{fontSize:7,color:T.amber,marginLeft:2,fontWeight:500}}>est</sup>}
+      {moved && <>
+        <span style={{color:"#555",fontWeight:400,margin:"0 4px"}}>→</span>
+        <span style={{color: toward ? T.accent : T.red}}>{oddsStr(cur)}</span>
+      </>}
     </span>
   );
 }
@@ -157,6 +172,12 @@ export default function NFLHub() {
 
       {card && <>
         <Label>TICKETS · {card.tickets.length}</Label>
+        {card.tickets.some(t => t.legs.some(l => l.current_odds != null && l.current_odds !== l.published_odds)) && (
+          <div style={{fontSize:9.5,color:"#555",margin:"-4px 0 10px"}}>
+            Prices: published → current. <span style={{color:T.accent}}>Green</span> = shortened since we posted (the market
+            moved toward the card); <span style={{color:T.red}}>red</span> = drifted out. Tickets never change after posting.
+          </div>
+        )}
         {card.tickets.length === 0 && <div style={{fontSize:10,color:"#555"}}>
           No ticket cleared the rules this slate — see what was held back below.</div>}
         {card.tickets.map(t => <Ticket key={t.name} t={t} />)}
@@ -192,6 +213,10 @@ export default function NFLHub() {
 
         <div style={{marginTop:28,fontSize:10,color:"#555",fontStyle:"italic"}}>
           ({pulled ? `Prices as pulled ${pulled}` : "Prices as pulled — time not recorded"})
+          {card.current_at && card.current_at !== card.prices_pulled && (
+            <div style={{marginTop:4}}>(Current prices as of {new Date(card.current_at).toLocaleString(undefined,
+              { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit" })})</div>
+          )}
         </div>
       </>}
     </div>

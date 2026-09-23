@@ -54,6 +54,9 @@ function Row({ r }) {
               {newTeam ? `${r.prev_team} → ${r.team}` : r.team} · {LABEL[r.market] || r.market}{" "}
               <span style={{color:T.accent, fontWeight:700}}>{r.rung}+</span>
             </span>
+            {r.posted_after_card && <span title="DK posted this market after the card was built; it can't be on a card ticket"
+            style={{fontSize:8,color:"#9aa",border:"1px solid #ffffff22",borderRadius:3,padding:"1px 5px",
+                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
             {newTeam && (
               <span style={{fontSize:8, color:"#f5c518", background:"#f5c51818",
                 border:"1px solid #f5c51840", borderRadius:3, padding:"1px 5px",

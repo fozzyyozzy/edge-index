@@ -14,6 +14,10 @@ permissions:
   issues: write
   actions: write
 
+concurrency:                   # shared with card.yml and refresh-odds.yml: they all commit to main
+  group: data-main
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest

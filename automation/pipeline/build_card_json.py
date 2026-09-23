@@ -75,6 +75,9 @@ def main():
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
     pulled = prices_pulled(a.season, a.week, a.slate)
+    lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
+    # every player/market DK had posted when this card was built; refresh_odds.py flags anything newer "posted_after_card"
+    at_publish = sorted({f"{norm_name(r.Player)}|{r.Market}" for r in pd.read_csv(lines_path).itertuples()})         if os.path.exists(lines_path) else []
     # grade letter + clear % per rung from grade_legs.py (runs first in card.yml) — the Record tab grades by letter
     legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
     GRADED = {}
@@ -104,6 +107,11 @@ def main():
                           grade=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[0],
                           clear_pct=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[1],
                           note=f"L10 {r.L10}, L15 {r.L15}; last 3 {last3}; opp D {r.OppD}"))
+        # locked at publish, never changed: the price the card was built on and when. refresh_odds.py appends to
+        # price_history (only before the game's kickoff) and moves current_odds; grade.py reads closing from the history.
+        c = cands[-1]; pub = c["odds_real"] if c["odds_real"] is not None else c["odds_est"]
+        c.update(published_odds=pub, published_at=pulled, current_odds=pub, current_at=pulled,
+                 price_history=[dict(at=pulled, odds=pub)])
     cands.sort(key=lambda c: (-(c["l10"] + c["l15"]), c["odds_est"]))
 
     tickets, used = [], {}
@@ -152,6 +160,7 @@ def main():
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=pulled,
+                published_at=pulled, markets_at_publish=at_publish,
                 tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15], notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings

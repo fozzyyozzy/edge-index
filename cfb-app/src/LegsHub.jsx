@@ -148,6 +148,9 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
             <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>
               {p.team} · <span style={{color:"#999"}}>{MARKET_LABEL[p.market] || p.market}</span> · {p.game}
             </span>
+            {p.posted_after_card && <span title="DK posted this market after the card was built; it can't be on a card ticket"
+              style={{fontSize:8,color:"#9aa",border:"1px solid #ffffff22",borderRadius:3,padding:"1px 5px",
+                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
           </div>
           {sub && <div style={{fontSize:9.5,fontFamily:T.mono,marginTop:2,
             color: held ? "#d0707a" : "#666"}}>{held ? "HOLD · " : ""}{sub}</div>}

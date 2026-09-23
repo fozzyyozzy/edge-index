@@ -22,6 +22,17 @@ def schedule(season, week):
     g = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=60).read()), low_memory=False)
     return g[(g.season == season) & (g.week == week)]
 
+def kickoffs(season, week):
+    """{team: kickoff as UTC ISO} for the week, from the nflverse schedule (gameday + gametime are Eastern)."""
+    from zoneinfo import ZoneInfo
+    out = {}
+    for g in schedule(season, week).itertuples():
+        if not isinstance(g.gametime, str): continue
+        t = datetime.fromisoformat(f"{g.gameday}T{g.gametime}").replace(tzinfo=ZoneInfo("America/New_York"))
+        iso = t.astimezone(timezone.utc).isoformat(timespec="minutes")
+        out[g.home_team] = out[g.away_team] = iso
+    return out
+
 def team_split(df, by):
     return (df.groupby([by, "season", "week"]).agg(pass_yds=("passing_yards", "sum"), rush_yds=("rushing_yards", "sum"),
                                                      pass_att=("attempts", "sum"), rush_att=("carries", "sum")).reset_index())
