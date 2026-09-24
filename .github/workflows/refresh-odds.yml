@@ -3,31 +3,33 @@ name: refresh-odds
 # Re-pulls DK prices for the upcoming slate's unstarted games, moves current prices onto the published card
 # (tickets stay locked), rebuilds legs + floors, commits; deploy-site then deploys (workflow_run).
 # Scheduled ET: Wed 3pm · Thu 9am 3pm 7pm · Fri 3pm · Sat 12pm · Sun 9am 12pm · Mon 9am 3pm 7pm.
-# Cron is UTC, so each slot has an EDT and an EST line; the guard step keeps only the one that is on the hour in New York.
+# Cron is UTC, so each slot has an EDT and an EST line, at :07 (GitHub delays top-of-hour runs most). GitHub can still
+# start a run hours late, so the guard serves the most recent ET slot within 6 hours that isn't in
+# automation/lines/refresh_slots.txt yet, and records it — the twin cron (or a late duplicate) then finds it served.
 on:
   schedule:
-    - cron: "0 19 * * 3"      # Wed 3pm EDT
-    - cron: "0 20 * * 3"      # Wed 3pm EST
-    - cron: "0 13 * * 4"      # Thu 9am EDT
-    - cron: "0 14 * * 4"      # Thu 9am EST
-    - cron: "0 19 * * 4"      # Thu 3pm EDT
-    - cron: "0 20 * * 4"      # Thu 3pm EST
-    - cron: "0 23 * * 4"      # Thu 7pm EDT
-    - cron: "0 0 * * 5"       # Thu 7pm EST
-    - cron: "0 19 * * 5"      # Fri 3pm EDT
-    - cron: "0 20 * * 5"      # Fri 3pm EST
-    - cron: "0 16 * * 6"      # Sat 12pm EDT
-    - cron: "0 17 * * 6"      # Sat 12pm EST
-    - cron: "0 13 * * 0"      # Sun 9am EDT
-    - cron: "0 14 * * 0"      # Sun 9am EST
-    - cron: "0 16 * * 0"      # Sun 12pm EDT
-    - cron: "0 17 * * 0"      # Sun 12pm EST
-    - cron: "0 13 * * 1"      # Mon 9am EDT
-    - cron: "0 14 * * 1"      # Mon 9am EST
-    - cron: "0 19 * * 1"      # Mon 3pm EDT
-    - cron: "0 20 * * 1"      # Mon 3pm EST
-    - cron: "0 23 * * 1"      # Mon 7pm EDT
-    - cron: "0 0 * * 2"       # Mon 7pm EST
+    - cron: "7 19 * * 3"      # Wed 3pm EDT
+    - cron: "7 20 * * 3"      # Wed 3pm EST
+    - cron: "7 13 * * 4"      # Thu 9am EDT
+    - cron: "7 14 * * 4"      # Thu 9am EST
+    - cron: "7 19 * * 4"      # Thu 3pm EDT
+    - cron: "7 20 * * 4"      # Thu 3pm EST
+    - cron: "7 23 * * 4"      # Thu 7pm EDT
+    - cron: "7 0 * * 5"       # Thu 7pm EST
+    - cron: "7 19 * * 5"      # Fri 3pm EDT
+    - cron: "7 20 * * 5"      # Fri 3pm EST
+    - cron: "7 16 * * 6"      # Sat 12pm EDT
+    - cron: "7 17 * * 6"      # Sat 12pm EST
+    - cron: "7 13 * * 0"      # Sun 9am EDT
+    - cron: "7 14 * * 0"      # Sun 9am EST
+    - cron: "7 16 * * 0"      # Sun 12pm EDT
+    - cron: "7 17 * * 0"      # Sun 12pm EST
+    - cron: "7 13 * * 1"      # Mon 9am EDT
+    - cron: "7 14 * * 1"      # Mon 9am EST
+    - cron: "7 19 * * 1"      # Mon 3pm EDT
+    - cron: "7 20 * * 1"      # Mon 3pm EST
+    - cron: "7 23 * * 1"      # Mon 7pm EDT
+    - cron: "7 0 * * 2"       # Mon 7pm EST
   workflow_dispatch:
     inputs:
       slate:
@@ -51,21 +53,24 @@ jobs:
       ODDS_WEEKLY_BUDGET: 3000
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main              # latest main, not the trigger's commit: a queued twin must see the slot recorded before it
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: pip install -r automation/requirements.txt
-      - name: which slate (skip unless this is a scheduled ET refresh time)
+      - name: which slate (scheduled runs serve the latest unserved ET slot; manual runs always go)
         id: slot
         run: |
-          S="${{ github.event.inputs.slate }}"
-          if [ -z "$S" ] && [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            S=$(python -c "import sys; sys.path.insert(0,'automation/pipeline'); import refresh_odds as r; from datetime import datetime, timezone; print(r.upcoming_slate(datetime.now(timezone.utc).astimezone(r.ET)))")
-          elif [ -z "$S" ]; then
-            S=$(python automation/pipeline/refresh_odds.py --which-slate)
+          S="${{ github.event.inputs.slate }}"; SLOT=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            [ -z "$S" ] && S=$(python -c "import sys; sys.path.insert(0,'automation/pipeline'); import refresh_odds as r; from datetime import datetime, timezone; print(r.upcoming_slate(datetime.now(timezone.utc).astimezone(r.ET)))")
+          else
+            read -r S SLOT <<< "$(python automation/pipeline/refresh_odds.py --which-slate)"
           fi
           echo "slate=$S" >> "$GITHUB_OUTPUT"
-          if [ -z "$S" ]; then echo "not a refresh slot in ET (DST twin of another cron); skipping"; fi
+          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
+          if [ -z "$S" ]; then echo "no unserved ET slot in the last 6h (twin cron, or already served); skipping"; else echo "slate $S, slot ${SLOT:-manual}"; fi
       - name: pull DK prices (unstarted games on the slate only)
         id: pull
         if: steps.slot.outputs.slate != ''
@@ -83,10 +88,13 @@ jobs:
           python automation/pipeline/floors.py --season "$SEASON" --week "$WEEK" --slate "$S" --lines "$L"
           python automation/pipeline/grade_legs.py --season "$SEASON" --week "$WEEK" --slate "$S" --lines "$L"
           python automation/pipeline/refresh_odds.py --season "$SEASON" --week "$WEEK" --slate "$S"
-      - name: publish to site + commit
-        if: steps.slot.outputs.slate != '' && steps.pull.outputs.skip != '1'
+      - name: publish to site + commit (records the slot even when the budget skipped the pull)
+        if: steps.slot.outputs.slate != ''
         run: |
           S="${{ steps.slot.outputs.slate }}"
+          SLOT="${{ steps.slot.outputs.slot }}"
+          [ -n "$SLOT" ] && python automation/pipeline/refresh_odds.py --mark-served "$SLOT"
+          if [ "${{ steps.pull.outputs.skip }}" != "1" ]; then
           mkdir -p cfb-app/public/data
           cp "automation/cards/legs_${SEASON}_w${WEEK}_${S}.json" "cfb-app/public/data/nfl_legs_${S}.json"
           cp "automation/floors/floors_${SEASON}_w${WEEK}_${S}.json" "cfb-app/public/data/nfl_floors_${S}.json"
@@ -99,8 +107,9 @@ jobs:
           else
             rm -f "cfb-app/public/data/nfl_handbuilt_${S}.json"
           fi
+          fi
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com
           git add automation/lines automation/cards automation/floors cfb-app/public/data
-          git commit -m "week $WEEK $S odds refresh" || exit 0
+          git commit -m "week $WEEK $S odds refresh${SLOT:+ ($SLOT)}" || exit 0
           git push || { git pull --rebase && git push; }

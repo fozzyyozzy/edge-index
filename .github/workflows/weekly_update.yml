@@ -1,11 +1,8 @@
 name: Edge Index Weekly Update
 
 on:
-  schedule:
-    - cron: "0 11 * * 4"
-    - cron: "0 12 * * 5"
-    - cron: "0 13 * * 1"
-
+  # schedule removed 2026-09-24: this legacy 2025 pick-sheet job kept committing to main (outside the data-main queue).
+  # Run it by hand from Actions if it's ever needed.
   workflow_dispatch:
     inputs:
       week:

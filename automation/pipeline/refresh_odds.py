@@ -1,7 +1,8 @@
 """
 refresh_odds.py — after fetch_lines.py re-pulls a slate: move current prices onto the published card, flag new markets.
   python pipeline/refresh_odds.py --season 2026 --week 3 --slate sun
-  python pipeline/refresh_odds.py --which-slate        prints the slate due for a scheduled refresh now (ET), else nothing
+  python pipeline/refresh_odds.py --which-slate        prints "<slate> <slot>" if a scheduled slot is due and unserved, else nothing
+  python pipeline/refresh_odds.py --mark-served SLOT   records that slot in lines/refresh_slots.txt
 
 Card (cards/card_<season>_w<week>_<slate>.json): every leg on tickets and floors_singles gets current_odds / current_at
 and a price_history point — only when the leg's game had not kicked off at that pull (so the last history point before
@@ -13,7 +14,7 @@ posted after the card was built gets posted_after_card: true. Those can never re
 re-run by a refresh.
 """
 import argparse, json, os, sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -31,10 +32,32 @@ def upcoming_slate(now_et):
     t = WEEKDAY[now_et.strftime("%a")] * DAY + now_et.hour * 60 + now_et.minute
     return next((s for s in ("tnf", "sun", "mnf") if t < KICKOFF[s]), "tnf")
 
+# GitHub starts scheduled runs late — hours late at busy times (Thu 9am ran at 1:38pm ET). A run therefore serves the most
+# recent scheduled slot if it is less than WINDOW_H old and not yet served; lines/refresh_slots.txt records served slots,
+# which also stops the EDT/EST twin cron from pulling a second time.
+WINDOW_H = 6
+
+def due_slot(now=None):
+    """Most recent scheduled ET slot at or before now and within WINDOW_H, as a datetime; None if there isn't one."""
+    et = (now or datetime.now(timezone.utc)).astimezone(ET); best = None
+    for back in (0, 1):
+        d = (et - timedelta(days=back)).date()
+        for h in SCHEDULE.get(datetime(d.year, d.month, d.day).strftime("%a"), []):
+            t = datetime(d.year, d.month, d.day, h, tzinfo=ET)
+            if t <= et and et - t <= timedelta(hours=WINDOW_H) and (best is None or t > best): best = t
+    return best
+
+def served_slots():
+    path = P("lines", "refresh_slots.txt")
+    return set(open(path).read().split()) if os.path.exists(path) else set()
+
 def which_slate(now=None):
-    """The slate to refresh if now (ET) is a scheduled refresh hour, else None. Cron can run late; within the hour counts."""
-    et = (now or datetime.now(timezone.utc)).astimezone(ET)
-    return upcoming_slate(et) if et.hour in SCHEDULE.get(et.strftime("%a"), []) else None
+    """(slate, slot id) if a scheduled slot is due and unserved, else None. The slate is the upcoming one as of now."""
+    now = now or datetime.now(timezone.utc)
+    t = due_slot(now)
+    if t is None: return None
+    sid = t.isoformat(timespec="minutes")
+    return None if sid in served_slots() else (upcoming_slate(now.astimezone(ET)), sid)
 
 def iso(s):
     return datetime.fromisoformat(str(s).replace("Z", "+00:00")) if s else None
@@ -86,11 +109,13 @@ def flag_new_markets(path, key_rows, at_publish):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--which-slate", action="store_true")
+    ap.add_argument("--which-slate", action="store_true"); ap.add_argument("--mark-served")
     ap.add_argument("--season", type=int); ap.add_argument("--week", type=int); ap.add_argument("--slate")
     a = ap.parse_args()
     if a.which_slate:
-        print(which_slate() or ""); return
+        w = which_slate(); print(" ".join(w) if w else ""); return
+    if a.mark_served:
+        open(P("lines", "refresh_slots.txt"), "a").write(a.mark_served + "\n"); return
     from floors import kickoffs
     prices, kick = ladder_prices(a.season, a.week), kickoffs(a.season, a.week)
     hand_path = P("cards", f"handbuilt_{a.season}_w{a.week}_{a.slate}.json")
