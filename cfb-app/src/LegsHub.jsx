@@ -386,11 +386,11 @@ export default function LegsHub() {
   const [files, setFiles] = useState({});          // slate -> data | null (missing)
   const [slate, setSlate] = useState(null);
   const [usageRows, setUsageRows] = useState(null);
-  const [minGrade, setMinGrade] = useState("A-");
+  const [minGrade, setMinGrade] = useState("C");          // A+ through C
   const [market, setMarket] = useState("ALL");
   const [team, setTeam] = useState("ALL");
   const [game, setGame] = useState("ALL");
-  const [hideHolds, setHideHolds] = useState(false);
+  const [hideHolds, setHideHolds] = useState(true);       // F holds off by default, one click away
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(() => new Set());
   const [slip, setSlip] = useState([]);
@@ -409,7 +409,7 @@ export default function LegsHub() {
     if (!hit) { setFocus({ missing: name }); return false; }
     const rows = fs[hit].players.filter(p => normName(p.player) === n);
     setSlate(hit); setMinGrade("C"); setMarket("ALL"); setTeam("ALL"); setGame("ALL");
-    setHideHolds(false); setQ(rows[0].player);
+    setHideHolds(false); setQ(rows[0].player);           // deep link shows the player even if held
     setOpen(new Set(rows.map(rowKey)));
     setFocus({ key: rowKey(rows[0]) });
     return true;
