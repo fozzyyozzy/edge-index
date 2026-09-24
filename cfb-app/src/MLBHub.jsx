@@ -1,7 +1,7 @@
 import { useState } from "react";
-// v2026-09-23
+// v2026-09-24
 
-const TODAY = "2026-09-23";
+const TODAY = "2026-09-24";
 
 // >>> AUTO-GENERATED FREE PICK BEGIN — do not edit between markers
 const FREE_PICK = {
@@ -16,45 +16,45 @@ const FREE_PICK = {
 // <<< AUTO-GENERATED FREE PICK END
 
 const PITCHER_PLAYS = [
-  {pitcher:"George Kirby",team:"None",opp:"Seattle Mariners",home:"Seattle Mariners",
-   prop:"strikeouts",line:4.5,odds:-130,tier:"T1",model_prob:0.66,
-   streak:3,l5_avg:5.2,k_per_ip:0,opp_k_pct:0.228,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.2 Ks"]},
-  {pitcher:"Kevin Gausman",team:"None",opp:"Chicago Cubs",home:"Chicago Cubs",
-   prop:"strikeouts",line:5.5,odds:-151,tier:"AUTO",model_prob:0.895,
-   streak:5,l5_avg:6.8,k_per_ip:0,opp_k_pct:0.235,
-   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 6.8 Ks"]},
-  {pitcher:"Logan Henderson",team:"None",opp:"Philadelphia Phillies",home:"Philadelphia Phillies",
-   prop:"strikeouts",line:5.5,odds:-113,tier:"T1",model_prob:0.758,
-   streak:4,l5_avg:6.4,k_per_ip:0,opp_k_pct:0.225,
-   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 6.4 Ks"]},
-  {pitcher:"Sonny Gray",team:"None",opp:"Boston Red Sox",home:"Boston Red Sox",
-   prop:"strikeouts",line:4.5,odds:-120,tier:"AUTO",model_prob:0.904,
-   streak:6,l5_avg:5.8,k_per_ip:0,opp_k_pct:0.222,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.8 Ks"]},
+  {pitcher:"Andrew Painter",team:"None",opp:"Philadelphia Phillies",home:"Philadelphia Phillies",
+   prop:"strikeouts",line:4.5,odds:-162,tier:"T1",model_prob:0.658,
+   streak:1,l5_avg:5.6,k_per_ip:0,opp_k_pct:0.225,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.6 Ks"]},
+  {pitcher:"Eduardo Rodriguez",team:"None",opp:"Colorado Rockies",home:"Colorado Rockies",
+   prop:"strikeouts",line:4.5,odds:-130,tier:"T1",model_prob:0.661,
+   streak:3,l5_avg:6.0,k_per_ip:0,opp_k_pct:0.252,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 6.0 Ks"]},
+  {pitcher:"Peter Lambert",team:"None",opp:"Athletics",home:"Athletics",
+   prop:"strikeouts",line:4.5,odds:120,tier:"T1",model_prob:0.697,
+   streak:1,l5_avg:5.4,k_per_ip:0,opp_k_pct:0.258,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.4 Ks"]},
+  {pitcher:"Tyler Glasnow",team:"None",opp:"Los Angeles Dodgers",home:"Los Angeles Dodgers",
+   prop:"strikeouts",line:6.5,odds:-144,tier:"T1",model_prob:0.75,
+   streak:3,l5_avg:7.6,k_per_ip:0,opp_k_pct:0.235,
+   alt_lines:[5.5,6.0],hand:"R",notes:["L5 avg 7.6 Ks"]},
 ];
 
 const BATTER_PLAYS = [
-  {batter:"Nolan Arenado",team:"Arizona Diamondbacks",opp:"?",home:"Colorado Rockies",
-   prop:"hits",line:0.5,odds:175,tier:"T1",model_prob:0.654,
-   hit_streak:1,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["1-game hit streak"]},
-  {batter:"Nolan Arenado",team:"None",opp:"?",home:"Colorado Rockies",
-   prop:"hits",line:0.5,odds:100,tier:"T1",model_prob:0.654,
-   hit_streak:1,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["1-game hit streak"]},
-  {batter:"Andrew Knizner",team:"Minnesota Twins",opp:"?",home:"San Francisco Giants",
-   prop:"hits",line:0.5,odds:-130,tier:"T1",model_prob:0.657,
+  {batter:"Agustín Ramírez",team:"Miami Marlins",opp:"?",home:"Chicago Cubs",
+   prop:"hits",line:0.5,odds:-120,tier:"T1",model_prob:0.675,
    hit_streak:2,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
-  {batter:"Brenton Doyle",team:"Chicago White Sox",opp:"?",home:"Kansas City Royals",
-   prop:"hits",line:0.5,odds:-125,tier:"AUTO",model_prob:0.894,
-   hit_streak:7,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["7-game hit streak"]},
-  {batter:"Dustin Harris",team:"San Diego Padres",opp:"?",home:"Los Angeles Dodgers",
-   prop:"hits",line:0.5,odds:-140,tier:"T1",model_prob:0.675,
-   hit_streak:0,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["0-game hit streak"]},
+  {batter:"Brayan Rocchio",team:"Cleveland Guardians",opp:"?",home:"Boston Red Sox",
+   prop:"hits",line:0.5,odds:-139,tier:"T1",model_prob:0.755,
+   hit_streak:4,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
+  {batter:"Brett Baty",team:"New York Mets",opp:"?",home:"Texas Rangers",
+   prop:"hits",line:0.5,odds:-136,tier:"AUTO",model_prob:0.866,
+   hit_streak:5,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["5-game hit streak"]},
+  {batter:"George Lombard Jr.",team:"Tampa Bay Rays",opp:"?",home:"New York Yankees",
+   prop:"hits",line:0.5,odds:-120,tier:"T1",model_prob:0.749,
+   hit_streak:4,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
+  {batter:"Heliot Ramos",team:"Tampa Bay Rays",opp:"?",home:"New York Yankees",
+   prop:"hits",line:0.5,odds:-149,tier:"T1",model_prob:0.659,
+   hit_streak:2,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
 ];
 
 const SKIP_TODAY = [
@@ -65,22 +65,18 @@ const SKIP_TODAY = [
 ];
 
 const FADE_PLAYS = [
-  {batter:"Isiah Kiner-Falefa",team:"?",opp:"?",
-   l14_avg:".043",l14:"ICE COLD",
-   odds_over:-168,odds_under:126,
-   reason:"1-for-23 L14 (.043)"}, 
-  {batter:"Maikel Garcia",team:"?",opp:"?",
-   l14_avg:".056",l14:"ICE COLD",
-   odds_over:-235,odds_under:175,
-   reason:"1-for-18 L14 (.056)"}, 
-  {batter:"Austin Martin",team:"?",opp:"?",
-   l14_avg:".062",l14:"ICE COLD",
-   odds_over:-220,odds_under:165,
-   reason:"1-for-16 L14 (.062)"}, 
-  {batter:"Ryan Jeffers",team:"?",opp:"?",
-   l14_avg:".071",l14:"ICE COLD",
-   odds_over:-220,odds_under:160,
-   reason:"2-for-28 L14 (.071)"}, 
+  {batter:"Hector Rodriguez",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"2-for-30 L14 (.067)"}, 
+  {batter:"Tristan Peters",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"2-for-27 L14 (.074)"}, 
+  {batter:"Kyle Schwarber",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"4-for-41 L14 (.098)"}, 
 ];
 
 const PARLAY_POTENTIALS = [
