@@ -2,7 +2,7 @@
  "meta": {
   "season": 2026,
   "week": 3,
-  "blend": "75% 2025 / 25% 2026 (2 wks)",
+  "blend": "62% 2025 / 38% 2026 (3 wks)",
   "rank_key": "1 = fewest yards allowed to that slot (tough for the offense); 32 = most (soft). WR1/WR2 = most/second-most targeted opposing WR that game.",
   "slots": [
    "QB",
@@ -19,25 +19,25 @@
    "team": "ARI",
    "slots": {
     "QB": {
-     "yds_pg": 237.6,
+     "yds_pg": 235.0,
      "cur_pg": 222.0,
      "prev_pg": 242.8,
      "home_pg": 242.6,
      "away_pg": 238.9,
      "n_cur": 2,
-     "rank": 22
+     "rank": 20
     },
     "RB": {
-     "yds_pg": 111.1,
+     "yds_pg": 110.0,
      "cur_pg": 104.5,
      "prev_pg": 113.3,
      "home_pg": 122.0,
      "away_pg": 103.7,
      "n_cur": 2,
-     "rank": 30
+     "rank": 29
     },
     "WR1": {
-     "yds_pg": 87.1,
+     "yds_pg": 92.3,
      "cur_pg": 118.5,
      "prev_pg": 76.6,
      "home_pg": 89.2,
@@ -46,40 +46,40 @@
      "rank": 31
     },
     "WR2": {
-     "yds_pg": 38.4,
+     "yds_pg": 36.3,
      "cur_pg": 26.0,
      "prev_pg": 42.5,
      "home_pg": 36.9,
      "away_pg": 44.3,
      "n_cur": 2,
-     "rank": 19
+     "rank": 17
     },
     "TE": {
-     "yds_pg": 64.6,
+     "yds_pg": 62.6,
      "cur_pg": 52.5,
      "prev_pg": 68.6,
      "home_pg": 67.2,
      "away_pg": 66.6,
      "n_cur": 2,
-     "rank": 30
+     "rank": 27
     },
     "RUN": {
-     "yds_pg": 125.6,
+     "yds_pg": 124.9,
      "cur_pg": 121.5,
      "prev_pg": 126.9,
      "home_pg": 129.8,
      "away_pg": 123.3,
      "n_cur": 2,
-     "rank": 24
+     "rank": 22
     },
     "PASS": {
-     "yds_pg": 237.6,
+     "yds_pg": 235.0,
      "cur_pg": 222.0,
      "prev_pg": 242.8,
      "home_pg": 242.6,
      "away_pg": 238.9,
      "n_cur": 2,
-     "rank": 22
+     "rank": 20
     }
    }
   },
@@ -87,67 +87,67 @@
    "team": "ATL",
    "slots": {
     "QB": {
-     "yds_pg": 230.0,
-     "cur_pg": 254.0,
+     "yds_pg": 241.2,
+     "cur_pg": 273.3,
      "prev_pg": 221.9,
      "home_pg": 246.7,
-     "away_pg": 206.1,
-     "n_cur": 2,
-     "rank": 19
+     "away_pg": 215.7,
+     "n_cur": 3,
+     "rank": 24
     },
     "RB": {
-     "yds_pg": 90.7,
-     "cur_pg": 63.5,
+     "yds_pg": 80.4,
+     "cur_pg": 48.0,
      "prev_pg": 99.8,
      "home_pg": 88.1,
-     "away_pg": 103.1,
-     "n_cur": 2,
-     "rank": 11
+     "away_pg": 95.3,
+     "n_cur": 3,
+     "rank": 8
     },
     "WR1": {
-     "yds_pg": 72.3,
-     "cur_pg": 70.5,
+     "yds_pg": 75.7,
+     "cur_pg": 80.3,
      "prev_pg": 72.9,
      "home_pg": 71.1,
-     "away_pg": 74.0,
-     "n_cur": 2,
-     "rank": 19
+     "away_pg": 76.4,
+     "n_cur": 3,
+     "rank": 20
     },
     "WR2": {
-     "yds_pg": 38.2,
-     "cur_pg": 46.0,
+     "yds_pg": 45.7,
+     "cur_pg": 62.7,
      "prev_pg": 35.6,
      "home_pg": 49.4,
-     "away_pg": 25.2,
-     "n_cur": 2,
-     "rank": 18
+     "away_pg": 31.6,
+     "n_cur": 3,
+     "rank": 24
     },
     "TE": {
-     "yds_pg": 50.2,
-     "cur_pg": 57.0,
+     "yds_pg": 49.5,
+     "cur_pg": 52.0,
      "prev_pg": 48.0,
      "home_pg": 47.4,
-     "away_pg": 50.3,
-     "n_cur": 2,
-     "rank": 16
+     "away_pg": 49.5,
+     "n_cur": 3,
+     "rank": 13
     },
     "RUN": {
-     "yds_pg": 110.5,
-     "cur_pg": 63.0,
+     "yds_pg": 96.8,
+     "cur_pg": 47.7,
      "prev_pg": 126.4,
      "home_pg": 112.2,
-     "away_pg": 126.4,
-     "n_cur": 2,
-     "rank": 12
+     "away_pg": 116.5,
+     "n_cur": 3,
+     "rank": 5
     },
     "PASS": {
-     "yds_pg": 230.0,
-     "cur_pg": 254.0,
+     "yds_pg": 241.2,
+     "cur_pg": 273.3,
      "prev_pg": 221.9,
      "home_pg": 246.7,
-     "away_pg": 206.1,
-     "n_cur": 2,
-     "rank": 19
+     "away_pg": 215.7,
+     "n_cur": 3,
+     "rank": 24
     }
    }
   },
@@ -155,67 +155,67 @@
    "team": "BAL",
    "slots": {
     "QB": {
-     "yds_pg": 246.5,
+     "yds_pg": 240.2,
      "cur_pg": 209.0,
      "prev_pg": 259.0,
      "home_pg": 255.2,
      "away_pg": 252.1,
      "n_cur": 2,
-     "rank": 26
+     "rank": 23
     },
     "RB": {
-     "yds_pg": 79.1,
+     "yds_pg": 77.6,
      "cur_pg": 70.0,
      "prev_pg": 82.1,
      "home_pg": 87.5,
      "away_pg": 73.4,
      "n_cur": 2,
-     "rank": 6
+     "rank": 5
     },
     "WR1": {
-     "yds_pg": 76.9,
+     "yds_pg": 73.9,
      "cur_pg": 59.0,
      "prev_pg": 82.8,
      "home_pg": 88.0,
      "away_pg": 71.8,
      "n_cur": 2,
-     "rank": 23
+     "rank": 19
     },
     "WR2": {
-     "yds_pg": 46.8,
+     "yds_pg": 49.4,
      "cur_pg": 62.5,
      "prev_pg": 41.6,
      "home_pg": 45.3,
      "away_pg": 42.1,
      "n_cur": 2,
-     "rank": 27
+     "rank": 26
     },
     "TE": {
-     "yds_pg": 45.8,
+     "yds_pg": 45.4,
      "cur_pg": 43.5,
      "prev_pg": 46.5,
      "home_pg": 52.9,
      "away_pg": 38.8,
      "n_cur": 2,
-     "rank": 7
+     "rank": 11
     },
     "RUN": {
-     "yds_pg": 100.7,
+     "yds_pg": 97.8,
      "cur_pg": 83.5,
      "prev_pg": 106.4,
      "home_pg": 105.8,
      "away_pg": 102.0,
      "n_cur": 2,
-     "rank": 7
+     "rank": 6
     },
     "PASS": {
-     "yds_pg": 246.5,
+     "yds_pg": 240.2,
      "cur_pg": 209.0,
      "prev_pg": 259.0,
      "home_pg": 255.2,
      "away_pg": 252.1,
      "n_cur": 2,
-     "rank": 26
+     "rank": 23
     }
    }
   },
@@ -223,25 +223,25 @@
    "team": "BUF",
    "slots": {
     "QB": {
-     "yds_pg": 202.8,
+     "yds_pg": 219.1,
      "cur_pg": 300.5,
      "prev_pg": 170.2,
      "home_pg": 195.8,
      "away_pg": 170.8,
      "n_cur": 2,
-     "rank": 6
+     "rank": 13
     },
     "RB": {
-     "yds_pg": 100.6,
+     "yds_pg": 97.2,
      "cur_pg": 80.5,
      "prev_pg": 107.3,
      "home_pg": 92.2,
      "away_pg": 118.1,
      "n_cur": 2,
-     "rank": 23
+     "rank": 19
     },
     "WR1": {
-     "yds_pg": 79.0,
+     "yds_pg": 83.9,
      "cur_pg": 108.5,
      "prev_pg": 69.2,
      "home_pg": 80.4,
@@ -250,7 +250,7 @@
      "rank": 26
     },
     "WR2": {
-     "yds_pg": 27.1,
+     "yds_pg": 27.4,
      "cur_pg": 29.0,
      "prev_pg": 26.4,
      "home_pg": 33.1,
@@ -259,31 +259,31 @@
      "rank": 1
     },
     "TE": {
-     "yds_pg": 36.7,
+     "yds_pg": 40.3,
      "cur_pg": 58.0,
      "prev_pg": 29.6,
      "home_pg": 37.2,
      "away_pg": 27.6,
      "n_cur": 2,
-     "rank": 2
+     "rank": 4
     },
     "RUN": {
-     "yds_pg": 125.6,
+     "yds_pg": 120.5,
      "cur_pg": 95.0,
      "prev_pg": 135.8,
      "home_pg": 118.8,
      "away_pg": 145.7,
      "n_cur": 2,
-     "rank": 25
+     "rank": 19
     },
     "PASS": {
-     "yds_pg": 202.8,
+     "yds_pg": 219.1,
      "cur_pg": 300.5,
      "prev_pg": 170.2,
      "home_pg": 195.8,
      "away_pg": 170.8,
      "n_cur": 2,
-     "rank": 6
+     "rank": 13
     }
    }
   },
@@ -291,16 +291,16 @@
    "team": "CAR",
    "slots": {
     "QB": {
-     "yds_pg": 213.1,
+     "yds_pg": 212.1,
      "cur_pg": 207.0,
      "prev_pg": 215.1,
      "home_pg": 221.0,
      "away_pg": 208.2,
      "n_cur": 2,
-     "rank": 14
+     "rank": 12
     },
     "RB": {
-     "yds_pg": 123.1,
+     "yds_pg": 131.5,
      "cur_pg": 173.5,
      "prev_pg": 106.4,
      "home_pg": 129.4,
@@ -309,7 +309,7 @@
      "rank": 32
     },
     "WR1": {
-     "yds_pg": 69.9,
+     "yds_pg": 69.5,
      "cur_pg": 67.5,
      "prev_pg": 70.6,
      "home_pg": 85.9,
@@ -318,25 +318,25 @@
      "rank": 17
     },
     "WR2": {
-     "yds_pg": 31.6,
+     "yds_pg": 32.5,
      "cur_pg": 37.0,
      "prev_pg": 29.8,
      "home_pg": 30.1,
      "away_pg": 30.9,
      "n_cur": 2,
-     "rank": 6
+     "rank": 11
     },
     "TE": {
-     "yds_pg": 53.7,
+     "yds_pg": 50.6,
      "cur_pg": 35.0,
      "prev_pg": 59.9,
      "home_pg": 54.7,
      "away_pg": 59.7,
      "n_cur": 2,
-     "rank": 21
+     "rank": 17
     },
     "RUN": {
-     "yds_pg": 148.5,
+     "yds_pg": 161.1,
      "cur_pg": 224.0,
      "prev_pg": 123.3,
      "home_pg": 147.0,
@@ -345,13 +345,13 @@
      "rank": 32
     },
     "PASS": {
-     "yds_pg": 213.1,
+     "yds_pg": 212.1,
      "cur_pg": 207.0,
      "prev_pg": 215.1,
      "home_pg": 221.0,
      "away_pg": 208.2,
      "n_cur": 2,
-     "rank": 14
+     "rank": 12
     }
    }
   },
@@ -359,25 +359,25 @@
    "team": "CHI",
    "slots": {
     "QB": {
-     "yds_pg": 242.4,
+     "yds_pg": 244.0,
      "cur_pg": 252.0,
      "prev_pg": 239.2,
      "home_pg": 219.4,
      "away_pg": 259.6,
      "n_cur": 2,
-     "rank": 24
+     "rank": 25
     },
     "RB": {
-     "yds_pg": 103.7,
+     "yds_pg": 103.4,
      "cur_pg": 102.0,
      "prev_pg": 104.2,
      "home_pg": 97.3,
      "away_pg": 110.0,
      "n_cur": 2,
-     "rank": 27
+     "rank": 24
     },
     "WR1": {
-     "yds_pg": 78.1,
+     "yds_pg": 81.2,
      "cur_pg": 96.5,
      "prev_pg": 71.9,
      "home_pg": 59.6,
@@ -386,40 +386,40 @@
      "rank": 24
     },
     "WR2": {
-     "yds_pg": 51.4,
+     "yds_pg": 50.9,
      "cur_pg": 48.0,
      "prev_pg": 52.6,
      "home_pg": 52.9,
      "away_pg": 51.4,
      "n_cur": 2,
-     "rank": 30
+     "rank": 29
     },
     "TE": {
-     "yds_pg": 53.0,
+     "yds_pg": 53.8,
      "cur_pg": 57.5,
      "prev_pg": 51.5,
      "home_pg": 53.8,
      "away_pg": 50.7,
      "n_cur": 2,
-     "rank": 20
+     "rank": 22
     },
     "RUN": {
-     "yds_pg": 131.4,
+     "yds_pg": 129.8,
      "cur_pg": 122.0,
      "prev_pg": 134.5,
      "home_pg": 124.8,
      "away_pg": 140.8,
      "n_cur": 2,
-     "rank": 28
+     "rank": 29
     },
     "PASS": {
-     "yds_pg": 242.4,
+     "yds_pg": 244.0,
      "cur_pg": 252.0,
      "prev_pg": 239.2,
      "home_pg": 219.4,
      "away_pg": 259.6,
      "n_cur": 2,
-     "rank": 24
+     "rank": 25
     }
    }
   },
@@ -427,7 +427,7 @@
    "team": "CIN",
    "slots": {
     "QB": {
-     "yds_pg": 254.9,
+     "yds_pg": 259.8,
      "cur_pg": 284.5,
      "prev_pg": 245.1,
      "home_pg": 230.5,
@@ -436,34 +436,34 @@
      "rank": 30
     },
     "RB": {
-     "yds_pg": 99.2,
+     "yds_pg": 89.1,
      "cur_pg": 39.0,
      "prev_pg": 119.2,
      "home_pg": 120.1,
      "away_pg": 100.4,
      "n_cur": 2,
-     "rank": 21
+     "rank": 10
     },
     "WR1": {
-     "yds_pg": 53.0,
+     "yds_pg": 52.5,
      "cur_pg": 50.0,
      "prev_pg": 54.1,
      "home_pg": 58.8,
      "away_pg": 47.9,
      "n_cur": 2,
-     "rank": 4
+     "rank": 5
     },
     "WR2": {
-     "yds_pg": 37.0,
+     "yds_pg": 36.9,
      "cur_pg": 36.5,
      "prev_pg": 37.1,
      "home_pg": 32.5,
      "away_pg": 42.1,
      "n_cur": 2,
-     "rank": 16
+     "rank": 18
     },
     "TE": {
-     "yds_pg": 88.7,
+     "yds_pg": 90.6,
      "cur_pg": 100.0,
      "prev_pg": 84.9,
      "home_pg": 72.5,
@@ -472,16 +472,16 @@
      "rank": 32
     },
     "RUN": {
-     "yds_pg": 128.6,
+     "yds_pg": 119.6,
      "cur_pg": 74.5,
      "prev_pg": 146.6,
      "home_pg": 148.6,
      "away_pg": 128.4,
      "n_cur": 2,
-     "rank": 27
+     "rank": 18
     },
     "PASS": {
-     "yds_pg": 255.3,
+     "yds_pg": 260.2,
      "cur_pg": 284.5,
      "prev_pg": 245.6,
      "home_pg": 231.4,
@@ -495,43 +495,43 @@
    "team": "CLE",
    "slots": {
     "QB": {
-     "yds_pg": 194.0,
+     "yds_pg": 197.3,
      "cur_pg": 213.5,
      "prev_pg": 187.5,
      "home_pg": 162.3,
      "away_pg": 215.4,
      "n_cur": 2,
-     "rank": 2
+     "rank": 5
     },
     "RB": {
-     "yds_pg": 99.8,
+     "yds_pg": 101.5,
      "cur_pg": 110.0,
      "prev_pg": 96.4,
      "home_pg": 99.0,
      "away_pg": 96.7,
      "n_cur": 2,
-     "rank": 22
+     "rank": 23
     },
     "WR1": {
-     "yds_pg": 53.6,
+     "yds_pg": 53.8,
      "cur_pg": 55.0,
      "prev_pg": 53.1,
      "home_pg": 44.0,
      "away_pg": 61.7,
      "n_cur": 2,
-     "rank": 5
+     "rank": 6
     },
     "WR2": {
-     "yds_pg": 30.8,
+     "yds_pg": 30.3,
      "cur_pg": 28.0,
      "prev_pg": 31.7,
      "home_pg": 25.6,
      "away_pg": 36.5,
      "n_cur": 2,
-     "rank": 4
+     "rank": 5
     },
     "TE": {
-     "yds_pg": 47.4,
+     "yds_pg": 45.3,
      "cur_pg": 35.0,
      "prev_pg": 51.5,
      "home_pg": 51.4,
@@ -540,22 +540,22 @@
      "rank": 9
     },
     "RUN": {
-     "yds_pg": 118.7,
+     "yds_pg": 120.6,
      "cur_pg": 130.0,
      "prev_pg": 114.9,
      "home_pg": 116.8,
      "away_pg": 116.2,
      "n_cur": 2,
-     "rank": 18
+     "rank": 20
     },
     "PASS": {
-     "yds_pg": 195.4,
+     "yds_pg": 198.4,
      "cur_pg": 213.5,
      "prev_pg": 189.4,
      "home_pg": 165.9,
      "away_pg": 215.4,
      "n_cur": 2,
-     "rank": 2
+     "rank": 5
     }
    }
   },
@@ -563,43 +563,43 @@
    "team": "DAL",
    "slots": {
     "QB": {
-     "yds_pg": 254.1,
+     "yds_pg": 248.2,
      "cur_pg": 218.5,
      "prev_pg": 265.9,
      "home_pg": 286.0,
      "away_pg": 238.4,
      "n_cur": 2,
-     "rank": 29
+     "rank": 27
     },
     "RB": {
-     "yds_pg": 99.0,
+     "yds_pg": 100.9,
      "cur_pg": 110.5,
      "prev_pg": 95.2,
      "home_pg": 83.8,
      "away_pg": 108.5,
      "n_cur": 2,
-     "rank": 19
+     "rank": 22
     },
     "WR1": {
-     "yds_pg": 64.7,
+     "yds_pg": 63.9,
      "cur_pg": 59.5,
      "prev_pg": 66.5,
      "home_pg": 75.2,
      "away_pg": 57.2,
      "n_cur": 2,
-     "rank": 13
+     "rank": 11
     },
     "WR2": {
-     "yds_pg": 55.9,
+     "yds_pg": 52.6,
      "cur_pg": 36.0,
      "prev_pg": 62.6,
      "home_pg": 69.9,
      "away_pg": 50.7,
      "n_cur": 2,
-     "rank": 32
+     "rank": 31
     },
     "TE": {
-     "yds_pg": 52.2,
+     "yds_pg": 52.4,
      "cur_pg": 53.5,
      "prev_pg": 51.7,
      "home_pg": 48.8,
@@ -608,22 +608,22 @@
      "rank": 19
     },
     "RUN": {
-     "yds_pg": 137.4,
+     "yds_pg": 143.4,
      "cur_pg": 173.5,
      "prev_pg": 125.4,
      "home_pg": 121.7,
      "away_pg": 138.4,
      "n_cur": 2,
-     "rank": 30
+     "rank": 31
     },
     "PASS": {
-     "yds_pg": 254.1,
+     "yds_pg": 248.2,
      "cur_pg": 218.5,
      "prev_pg": 265.9,
      "home_pg": 286.0,
      "away_pg": 238.4,
      "n_cur": 2,
-     "rank": 29
+     "rank": 27
     }
    }
   },
@@ -631,25 +631,25 @@
    "team": "DEN",
    "slots": {
     "QB": {
-     "yds_pg": 205.7,
+     "yds_pg": 202.5,
      "cur_pg": 186.5,
      "prev_pg": 212.1,
      "home_pg": 206.5,
      "away_pg": 212.7,
      "n_cur": 2,
-     "rank": 10
+     "rank": 7
     },
     "RB": {
-     "yds_pg": 89.6,
+     "yds_pg": 98.5,
      "cur_pg": 143.0,
      "prev_pg": 71.8,
      "home_pg": 69.1,
      "away_pg": 90.6,
      "n_cur": 2,
-     "rank": 10
+     "rank": 20
     },
     "WR1": {
-     "yds_pg": 59.4,
+     "yds_pg": 59.1,
      "cur_pg": 58.0,
      "prev_pg": 59.8,
      "home_pg": 63.5,
@@ -658,7 +658,7 @@
      "rank": 8
     },
     "WR2": {
-     "yds_pg": 33.7,
+     "yds_pg": 33.0,
      "cur_pg": 29.5,
      "prev_pg": 35.1,
      "home_pg": 31.8,
@@ -667,7 +667,7 @@
      "rank": 13
     },
     "TE": {
-     "yds_pg": 58.4,
+     "yds_pg": 57.8,
      "cur_pg": 54.5,
      "prev_pg": 59.7,
      "home_pg": 55.8,
@@ -676,22 +676,22 @@
      "rank": 25
     },
     "RUN": {
-     "yds_pg": 107.7,
+     "yds_pg": 116.0,
      "cur_pg": 157.5,
      "prev_pg": 91.1,
      "home_pg": 89.1,
      "away_pg": 108.0,
      "n_cur": 2,
-     "rank": 9
+     "rank": 15
     },
     "PASS": {
-     "yds_pg": 205.7,
+     "yds_pg": 202.5,
      "cur_pg": 186.5,
      "prev_pg": 212.1,
      "home_pg": 206.5,
      "away_pg": 212.7,
      "n_cur": 2,
-     "rank": 10
+     "rank": 7
     }
    }
   },
@@ -699,7 +699,7 @@
    "team": "DET",
    "slots": {
     "QB": {
-     "yds_pg": 258.5,
+     "yds_pg": 270.2,
      "cur_pg": 329.0,
      "prev_pg": 234.9,
      "home_pg": 271.2,
@@ -708,25 +708,25 @@
      "rank": 31
     },
     "RB": {
-     "yds_pg": 93.7,
+     "yds_pg": 96.0,
      "cur_pg": 107.5,
      "prev_pg": 89.1,
      "home_pg": 97.6,
      "away_pg": 85.2,
      "n_cur": 2,
-     "rank": 14
+     "rank": 15
     },
     "WR1": {
-     "yds_pg": 86.3,
+     "yds_pg": 92.3,
      "cur_pg": 122.5,
      "prev_pg": 74.2,
      "home_pg": 95.1,
      "away_pg": 65.0,
      "n_cur": 2,
-     "rank": 30
+     "rank": 32
     },
     "WR2": {
-     "yds_pg": 41.2,
+     "yds_pg": 43.2,
      "cur_pg": 53.5,
      "prev_pg": 37.1,
      "home_pg": 52.1,
@@ -735,25 +735,25 @@
      "rank": 22
     },
     "TE": {
-     "yds_pg": 64.5,
+     "yds_pg": 69.3,
      "cur_pg": 93.5,
      "prev_pg": 54.8,
      "home_pg": 51.1,
      "away_pg": 65.9,
      "n_cur": 2,
-     "rank": 29
+     "rank": 30
     },
     "RUN": {
-     "yds_pg": 122.6,
+     "yds_pg": 126.7,
      "cur_pg": 147.0,
      "prev_pg": 114.5,
      "home_pg": 117.2,
      "away_pg": 118.6,
      "n_cur": 2,
-     "rank": 21
+     "rank": 27
     },
     "PASS": {
-     "yds_pg": 259.9,
+     "yds_pg": 271.4,
      "cur_pg": 329.0,
      "prev_pg": 236.9,
      "home_pg": 274.9,
@@ -767,67 +767,67 @@
    "team": "GB",
    "slots": {
     "QB": {
-     "yds_pg": 204.9,
-     "cur_pg": 199.0,
+     "yds_pg": 211.0,
+     "cur_pg": 218.0,
      "prev_pg": 206.8,
-     "home_pg": 163.6,
+     "home_pg": 173.9,
      "away_pg": 236.8,
-     "n_cur": 2,
-     "rank": 9
+     "n_cur": 3,
+     "rank": 10
     },
     "RB": {
-     "yds_pg": 92.2,
-     "cur_pg": 67.5,
+     "yds_pg": 110.2,
+     "cur_pg": 126.3,
      "prev_pg": 100.5,
-     "home_pg": 102.1,
+     "home_pg": 117.9,
      "away_pg": 93.3,
-     "n_cur": 2,
-     "rank": 12
+     "n_cur": 3,
+     "rank": 30
     },
     "WR1": {
-     "yds_pg": 72.4,
-     "cur_pg": 77.5,
+     "yds_pg": 87.8,
+     "cur_pg": 116.3,
      "prev_pg": 70.7,
-     "home_pg": 55.9,
+     "home_pg": 71.2,
      "away_pg": 82.7,
-     "n_cur": 2,
-     "rank": 20
+     "n_cur": 3,
+     "rank": 28
     },
     "WR2": {
-     "yds_pg": 32.1,
-     "cur_pg": 28.5,
+     "yds_pg": 29.3,
+     "cur_pg": 22.7,
      "prev_pg": 33.2,
-     "home_pg": 20.0,
+     "home_pg": 19.0,
      "away_pg": 42.0,
-     "n_cur": 2,
-     "rank": 7
+     "n_cur": 3,
+     "rank": 4
     },
     "TE": {
-     "yds_pg": 43.5,
-     "cur_pg": 40.0,
+     "yds_pg": 39.9,
+     "cur_pg": 32.0,
      "prev_pg": 44.6,
-     "home_pg": 48.0,
+     "home_pg": 44.4,
      "away_pg": 41.4,
-     "n_cur": 2,
-     "rank": 5
+     "n_cur": 3,
+     "rank": 3
     },
     "RUN": {
-     "yds_pg": 110.0,
-     "cur_pg": 87.0,
+     "yds_pg": 125.6,
+     "cur_pg": 138.7,
      "prev_pg": 117.7,
-     "home_pg": 120.5,
+     "home_pg": 134.0,
      "away_pg": 110.1,
-     "n_cur": 2,
-     "rank": 11
+     "n_cur": 3,
+     "rank": 24
     },
     "PASS": {
-     "yds_pg": 204.9,
-     "cur_pg": 199.0,
+     "yds_pg": 211.0,
+     "cur_pg": 218.0,
      "prev_pg": 206.8,
-     "home_pg": 163.6,
+     "home_pg": 173.9,
      "away_pg": 236.8,
-     "n_cur": 2,
-     "rank": 8
+     "n_cur": 3,
+     "rank": 10
     }
    }
   },
@@ -835,16 +835,16 @@
    "team": "HOU",
    "slots": {
     "QB": {
-     "yds_pg": 220.7,
+     "yds_pg": 229.0,
      "cur_pg": 270.5,
      "prev_pg": 204.1,
      "home_pg": 214.6,
      "away_pg": 206.2,
      "n_cur": 2,
-     "rank": 16
+     "rank": 19
     },
     "RB": {
-     "yds_pg": 73.7,
+     "yds_pg": 73.8,
      "cur_pg": 74.5,
      "prev_pg": 73.4,
      "home_pg": 80.5,
@@ -853,7 +853,7 @@
      "rank": 4
     },
     "WR1": {
-     "yds_pg": 72.9,
+     "yds_pg": 77.0,
      "cur_pg": 97.5,
      "prev_pg": 64.8,
      "home_pg": 67.2,
@@ -862,40 +862,40 @@
      "rank": 21
     },
     "WR2": {
-     "yds_pg": 37.9,
+     "yds_pg": 42.0,
      "cur_pg": 62.5,
      "prev_pg": 29.7,
      "home_pg": 33.0,
      "away_pg": 33.4,
      "n_cur": 2,
-     "rank": 17
+     "rank": 21
     },
     "TE": {
-     "yds_pg": 51.9,
+     "yds_pg": 55.1,
      "cur_pg": 71.0,
      "prev_pg": 45.6,
      "home_pg": 49.6,
      "away_pg": 46.4,
      "n_cur": 2,
-     "rank": 18
+     "rank": 24
     },
     "RUN": {
-     "yds_pg": 91.6,
+     "yds_pg": 90.6,
      "cur_pg": 85.5,
      "prev_pg": 93.6,
      "home_pg": 99.8,
      "away_pg": 83.0,
      "n_cur": 2,
-     "rank": 3
+     "rank": 2
     },
     "PASS": {
-     "yds_pg": 220.7,
+     "yds_pg": 229.0,
      "cur_pg": 270.5,
      "prev_pg": 204.1,
      "home_pg": 214.6,
      "away_pg": 206.2,
      "n_cur": 2,
-     "rank": 16
+     "rank": 19
     }
    }
   },
@@ -903,7 +903,7 @@
    "team": "IND",
    "slots": {
     "QB": {
-     "yds_pg": 285.1,
+     "yds_pg": 296.4,
      "cur_pg": 353.0,
      "prev_pg": 262.5,
      "home_pg": 249.4,
@@ -912,34 +912,34 @@
      "rank": 32
     },
     "RB": {
-     "yds_pg": 101.8,
+     "yds_pg": 109.4,
      "cur_pg": 147.0,
      "prev_pg": 86.8,
      "home_pg": 105.0,
      "away_pg": 79.9,
      "n_cur": 2,
-     "rank": 25
+     "rank": 28
     },
     "WR1": {
-     "yds_pg": 80.6,
+     "yds_pg": 81.7,
      "cur_pg": 87.5,
      "prev_pg": 78.3,
      "home_pg": 78.4,
      "away_pg": 80.2,
      "n_cur": 2,
-     "rank": 28
+     "rank": 25
     },
     "WR2": {
-     "yds_pg": 44.4,
+     "yds_pg": 44.9,
      "cur_pg": 47.0,
      "prev_pg": 43.6,
      "home_pg": 32.7,
      "away_pg": 56.4,
      "n_cur": 2,
-     "rank": 24
+     "rank": 23
     },
     "TE": {
-     "yds_pg": 73.2,
+     "yds_pg": 74.9,
      "cur_pg": 83.5,
      "prev_pg": 69.8,
      "home_pg": 64.5,
@@ -948,16 +948,16 @@
      "rank": 31
     },
     "RUN": {
-     "yds_pg": 120.1,
+     "yds_pg": 129.3,
      "cur_pg": 175.5,
      "prev_pg": 101.6,
      "home_pg": 121.9,
      "away_pg": 95.6,
      "n_cur": 2,
-     "rank": 19
+     "rank": 28
     },
     "PASS": {
-     "yds_pg": 285.1,
+     "yds_pg": 296.4,
      "cur_pg": 353.0,
      "prev_pg": 262.5,
      "home_pg": 249.4,
@@ -971,7 +971,7 @@
    "team": "JAX",
    "slots": {
     "QB": {
-     "yds_pg": 235.1,
+     "yds_pg": 237.0,
      "cur_pg": 246.5,
      "prev_pg": 231.4,
      "home_pg": 198.1,
@@ -980,7 +980,7 @@
      "rank": 21
     },
     "RB": {
-     "yds_pg": 64.5,
+     "yds_pg": 62.9,
      "cur_pg": 55.0,
      "prev_pg": 67.7,
      "home_pg": 66.0,
@@ -989,34 +989,34 @@
      "rank": 1
     },
     "WR1": {
-     "yds_pg": 78.4,
+     "yds_pg": 80.4,
      "cur_pg": 90.5,
      "prev_pg": 74.4,
      "home_pg": 69.4,
      "away_pg": 83.4,
      "n_cur": 2,
-     "rank": 25
+     "rank": 23
     },
     "WR2": {
-     "yds_pg": 31.4,
+     "yds_pg": 30.4,
      "cur_pg": 25.5,
      "prev_pg": 33.4,
      "home_pg": 33.1,
      "away_pg": 32.0,
      "n_cur": 2,
-     "rank": 5
+     "rank": 6
     },
     "TE": {
-     "yds_pg": 54.8,
+     "yds_pg": 52.7,
      "cur_pg": 42.0,
      "prev_pg": 59.1,
      "home_pg": 42.7,
      "away_pg": 73.4,
      "n_cur": 2,
-     "rank": 22
+     "rank": 21
     },
     "RUN": {
-     "yds_pg": 87.8,
+     "yds_pg": 89.1,
      "cur_pg": 95.5,
      "prev_pg": 85.3,
      "home_pg": 92.7,
@@ -1025,13 +1025,13 @@
      "rank": 1
     },
     "PASS": {
-     "yds_pg": 235.1,
+     "yds_pg": 237.0,
      "cur_pg": 246.5,
      "prev_pg": 231.4,
      "home_pg": 198.1,
      "away_pg": 271.7,
      "n_cur": 2,
-     "rank": 20
+     "rank": 21
     }
    }
   },
@@ -1039,16 +1039,16 @@
    "team": "KC",
    "slots": {
     "QB": {
-     "yds_pg": 196.5,
+     "yds_pg": 192.1,
      "cur_pg": 170.5,
      "prev_pg": 205.1,
      "home_pg": 173.5,
      "away_pg": 240.0,
      "n_cur": 2,
-     "rank": 3
+     "rank": 2
     },
     "RB": {
-     "yds_pg": 80.5,
+     "yds_pg": 79.3,
      "cur_pg": 73.0,
      "prev_pg": 83.1,
      "home_pg": 75.1,
@@ -1057,49 +1057,49 @@
      "rank": 7
     },
     "WR1": {
-     "yds_pg": 51.1,
+     "yds_pg": 52.1,
      "cur_pg": 57.0,
      "prev_pg": 49.1,
      "home_pg": 48.0,
      "away_pg": 52.6,
      "n_cur": 2,
-     "rank": 3
+     "rank": 4
     },
     "WR2": {
-     "yds_pg": 32.8,
+     "yds_pg": 28.7,
      "cur_pg": 8.0,
      "prev_pg": 41.1,
      "home_pg": 29.0,
      "away_pg": 49.4,
      "n_cur": 2,
-     "rank": 11
+     "rank": 2
     },
     "TE": {
-     "yds_pg": 44.9,
+     "yds_pg": 43.6,
      "cur_pg": 37.0,
      "prev_pg": 47.6,
      "home_pg": 39.4,
      "away_pg": 56.2,
      "n_cur": 2,
-     "rank": 6
+     "rank": 7
     },
     "RUN": {
-     "yds_pg": 101.5,
+     "yds_pg": 99.6,
      "cur_pg": 90.0,
      "prev_pg": 105.4,
      "home_pg": 93.3,
      "away_pg": 118.1,
      "n_cur": 2,
-     "rank": 8
+     "rank": 9
     },
     "PASS": {
-     "yds_pg": 196.5,
+     "yds_pg": 192.1,
      "cur_pg": 170.5,
      "prev_pg": 205.1,
      "home_pg": 173.5,
      "away_pg": 240.0,
      "n_cur": 2,
-     "rank": 3
+     "rank": 2
     }
    }
   },
@@ -1107,52 +1107,52 @@
    "team": "LA",
    "slots": {
     "QB": {
-     "yds_pg": 216.7,
+     "yds_pg": 208.6,
      "cur_pg": 168.0,
      "prev_pg": 232.9,
      "home_pg": 226.7,
      "away_pg": 225.4,
      "n_cur": 2,
-     "rank": 15
+     "rank": 9
     },
     "RB": {
-     "yds_pg": 89.4,
+     "yds_pg": 89.9,
      "cur_pg": 92.0,
      "prev_pg": 88.6,
      "home_pg": 75.7,
      "away_pg": 103.7,
      "n_cur": 2,
-     "rank": 9
+     "rank": 13
     },
     "WR1": {
-     "yds_pg": 69.9,
+     "yds_pg": 64.8,
      "cur_pg": 39.5,
      "prev_pg": 80.0,
      "home_pg": 75.5,
      "away_pg": 76.0,
      "n_cur": 2,
-     "rank": 18
+     "rank": 13
     },
     "WR2": {
-     "yds_pg": 32.6,
+     "yds_pg": 31.2,
      "cur_pg": 24.5,
      "prev_pg": 35.3,
      "home_pg": 37.0,
      "away_pg": 31.0,
      "n_cur": 2,
-     "rank": 9
+     "rank": 8
     },
     "TE": {
-     "yds_pg": 42.2,
+     "yds_pg": 40.5,
      "cur_pg": 32.0,
      "prev_pg": 45.6,
      "home_pg": 46.3,
      "away_pg": 41.8,
      "n_cur": 2,
-     "rank": 4
+     "rank": 5
     },
     "RUN": {
-     "yds_pg": 111.4,
+     "yds_pg": 111.7,
      "cur_pg": 113.0,
      "prev_pg": 110.9,
      "home_pg": 96.4,
@@ -1161,13 +1161,13 @@
      "rank": 13
     },
     "PASS": {
-     "yds_pg": 216.7,
+     "yds_pg": 208.6,
      "cur_pg": 168.0,
      "prev_pg": 232.9,
      "home_pg": 226.7,
      "away_pg": 225.4,
      "n_cur": 2,
-     "rank": 15
+     "rank": 9
     }
    }
   },
@@ -1175,25 +1175,25 @@
    "team": "LAC",
    "slots": {
     "QB": {
-     "yds_pg": 212.1,
+     "yds_pg": 220.9,
      "cur_pg": 265.0,
      "prev_pg": 194.5,
      "home_pg": 220.6,
      "away_pg": 176.1,
      "n_cur": 2,
-     "rank": 12
+     "rank": 16
     },
     "RB": {
-     "yds_pg": 83.2,
+     "yds_pg": 82.4,
      "cur_pg": 78.5,
      "prev_pg": 84.8,
      "home_pg": 81.6,
      "away_pg": 87.5,
      "n_cur": 2,
-     "rank": 8
+     "rank": 9
     },
     "WR1": {
-     "yds_pg": 74.5,
+     "yds_pg": 78.3,
      "cur_pg": 97.0,
      "prev_pg": 67.1,
      "home_pg": 75.9,
@@ -1202,40 +1202,40 @@
      "rank": 22
     },
     "WR2": {
-     "yds_pg": 30.4,
+     "yds_pg": 30.7,
      "cur_pg": 32.5,
      "prev_pg": 29.6,
      "home_pg": 32.2,
      "away_pg": 26.9,
      "n_cur": 2,
-     "rank": 3
+     "rank": 7
     },
     "TE": {
-     "yds_pg": 47.8,
+     "yds_pg": 50.5,
      "cur_pg": 64.5,
      "prev_pg": 42.2,
      "home_pg": 47.5,
      "away_pg": 40.4,
      "n_cur": 2,
-     "rank": 11
+     "rank": 16
     },
     "RUN": {
-     "yds_pg": 100.4,
+     "yds_pg": 98.0,
      "cur_pg": 86.0,
      "prev_pg": 105.2,
      "home_pg": 96.5,
      "away_pg": 112.4,
      "n_cur": 2,
-     "rank": 5
+     "rank": 7
     },
     "PASS": {
-     "yds_pg": 212.5,
+     "yds_pg": 221.2,
      "cur_pg": 265.0,
      "prev_pg": 194.9,
      "home_pg": 220.6,
      "away_pg": 177.1,
      "n_cur": 2,
-     "rank": 13
+     "rank": 16
     }
    }
   },
@@ -1243,25 +1243,25 @@
    "team": "LV",
    "slots": {
     "QB": {
-     "yds_pg": 212.3,
+     "yds_pg": 211.2,
      "cur_pg": 206.0,
      "prev_pg": 214.4,
      "home_pg": 215.8,
      "away_pg": 210.9,
      "n_cur": 2,
-     "rank": 13
+     "rank": 11
     },
     "RB": {
-     "yds_pg": 92.4,
+     "yds_pg": 89.8,
      "cur_pg": 76.5,
      "prev_pg": 97.7,
      "home_pg": 81.6,
      "away_pg": 110.9,
      "n_cur": 2,
-     "rank": 13
+     "rank": 12
     },
     "WR1": {
-     "yds_pg": 59.1,
+     "yds_pg": 54.2,
      "cur_pg": 30.0,
      "prev_pg": 68.8,
      "home_pg": 77.0,
@@ -1270,40 +1270,40 @@
      "rank": 7
     },
     "WR2": {
-     "yds_pg": 43.2,
+     "yds_pg": 46.8,
      "cur_pg": 64.5,
      "prev_pg": 36.1,
      "home_pg": 40.1,
      "away_pg": 38.0,
      "n_cur": 2,
-     "rank": 23
+     "rank": 25
     },
     "TE": {
-     "yds_pg": 37.2,
+     "yds_pg": 36.5,
      "cur_pg": 33.0,
      "prev_pg": 38.6,
      "home_pg": 27.7,
      "away_pg": 49.4,
      "n_cur": 2,
-     "rank": 3
+     "rank": 2
     },
     "RUN": {
-     "yds_pg": 111.8,
+     "yds_pg": 109.9,
      "cur_pg": 100.5,
      "prev_pg": 115.5,
      "home_pg": 98.7,
      "away_pg": 130.9,
      "n_cur": 2,
-     "rank": 14
+     "rank": 11
     },
     "PASS": {
-     "yds_pg": 212.3,
+     "yds_pg": 211.2,
      "cur_pg": 206.0,
      "prev_pg": 214.4,
      "home_pg": 215.8,
      "away_pg": 210.9,
      "n_cur": 2,
-     "rank": 12
+     "rank": 11
     }
    }
   },
@@ -1311,67 +1311,67 @@
    "team": "MIA",
    "slots": {
     "QB": {
-     "yds_pg": 228.8,
+     "yds_pg": 227.9,
      "cur_pg": 223.5,
      "prev_pg": 230.6,
      "home_pg": 260.1,
      "away_pg": 202.6,
      "n_cur": 2,
-     "rank": 18
+     "rank": 17
     },
     "RB": {
-     "yds_pg": 106.1,
+     "yds_pg": 105.6,
      "cur_pg": 103.0,
      "prev_pg": 107.2,
      "home_pg": 94.1,
      "away_pg": 118.1,
      "n_cur": 2,
-     "rank": 28
+     "rank": 26
     },
     "WR1": {
-     "yds_pg": 55.1,
+     "yds_pg": 50.8,
      "cur_pg": 29.0,
      "prev_pg": 63.8,
      "home_pg": 80.7,
      "away_pg": 41.7,
      "n_cur": 2,
-     "rank": 6
+     "rank": 3
     },
     "WR2": {
-     "yds_pg": 32.2,
+     "yds_pg": 33.6,
      "cur_pg": 40.5,
      "prev_pg": 29.5,
      "home_pg": 36.7,
      "away_pg": 25.2,
      "n_cur": 2,
-     "rank": 8
+     "rank": 15
     },
     "TE": {
-     "yds_pg": 64.0,
+     "yds_pg": 62.7,
      "cur_pg": 56.0,
      "prev_pg": 66.7,
      "home_pg": 70.3,
      "away_pg": 61.3,
      "n_cur": 2,
-     "rank": 27
+     "rank": 28
     },
     "RUN": {
-     "yds_pg": 127.1,
+     "yds_pg": 124.6,
      "cur_pg": 112.0,
      "prev_pg": 132.2,
      "home_pg": 123.0,
      "away_pg": 136.4,
      "n_cur": 2,
-     "rank": 26
+     "rank": 21
     },
     "PASS": {
-     "yds_pg": 228.8,
+     "yds_pg": 227.9,
      "cur_pg": 223.5,
      "prev_pg": 230.6,
      "home_pg": 260.1,
      "away_pg": 202.6,
      "n_cur": 2,
-     "rank": 18
+     "rank": 17
     }
    }
   },
@@ -1379,25 +1379,25 @@
    "team": "MIN",
    "slots": {
     "QB": {
-     "yds_pg": 205.7,
+     "yds_pg": 219.6,
      "cur_pg": 289.5,
      "prev_pg": 177.7,
      "home_pg": 188.4,
      "away_pg": 190.4,
      "n_cur": 2,
-     "rank": 11
+     "rank": 15
     },
     "RB": {
-     "yds_pg": 98.6,
+     "yds_pg": 95.3,
      "cur_pg": 79.0,
      "prev_pg": 105.1,
      "home_pg": 95.2,
      "away_pg": 108.8,
      "n_cur": 2,
-     "rank": 18
+     "rank": 14
     },
     "WR1": {
-     "yds_pg": 62.9,
+     "yds_pg": 63.0,
      "cur_pg": 63.5,
      "prev_pg": 62.7,
      "home_pg": 64.6,
@@ -1406,40 +1406,40 @@
      "rank": 10
     },
     "WR2": {
-     "yds_pg": 49.6,
+     "yds_pg": 56.9,
      "cur_pg": 93.5,
      "prev_pg": 35.0,
      "home_pg": 51.8,
      "away_pg": 31.6,
      "n_cur": 2,
-     "rank": 28
+     "rank": 32
     },
     "TE": {
-     "yds_pg": 47.6,
+     "yds_pg": 50.2,
      "cur_pg": 63.5,
      "prev_pg": 42.3,
      "home_pg": 44.6,
      "away_pg": 44.5,
      "n_cur": 2,
-     "rank": 10
+     "rank": 15
     },
     "RUN": {
-     "yds_pg": 117.7,
+     "yds_pg": 114.8,
      "cur_pg": 100.0,
      "prev_pg": 123.6,
      "home_pg": 108.6,
      "away_pg": 132.5,
      "n_cur": 2,
-     "rank": 17
+     "rank": 14
     },
     "PASS": {
-     "yds_pg": 205.7,
+     "yds_pg": 219.6,
      "cur_pg": 289.5,
      "prev_pg": 177.7,
      "home_pg": 188.4,
      "away_pg": 190.4,
      "n_cur": 2,
-     "rank": 11
+     "rank": 15
     }
    }
   },
@@ -1447,67 +1447,67 @@
    "team": "NE",
    "slots": {
     "QB": {
-     "yds_pg": 203.2,
+     "yds_pg": 201.6,
      "cur_pg": 193.5,
      "prev_pg": 206.4,
      "home_pg": 185.8,
      "away_pg": 226.4,
      "n_cur": 2,
-     "rank": 7
+     "rank": 6
     },
     "RB": {
-     "yds_pg": 78.5,
+     "yds_pg": 79.1,
      "cur_pg": 82.5,
      "prev_pg": 77.1,
      "home_pg": 70.0,
      "away_pg": 86.2,
      "n_cur": 2,
-     "rank": 5
+     "rank": 6
     },
     "WR1": {
-     "yds_pg": 63.9,
+     "yds_pg": 65.7,
      "cur_pg": 74.5,
      "prev_pg": 60.4,
      "home_pg": 49.1,
      "away_pg": 76.1,
      "n_cur": 2,
-     "rank": 12
+     "rank": 14
     },
     "WR2": {
-     "yds_pg": 32.6,
+     "yds_pg": 33.0,
      "cur_pg": 35.0,
      "prev_pg": 31.8,
      "home_pg": 24.3,
      "away_pg": 40.9,
      "n_cur": 2,
-     "rank": 10
+     "rank": 14
     },
     "TE": {
-     "yds_pg": 49.3,
+     "yds_pg": 45.4,
      "cur_pg": 26.0,
      "prev_pg": 57.1,
      "home_pg": 62.9,
      "away_pg": 43.8,
      "n_cur": 2,
-     "rank": 15
+     "rank": 12
     },
     "RUN": {
-     "yds_pg": 100.4,
+     "yds_pg": 99.3,
      "cur_pg": 94.0,
      "prev_pg": 102.5,
      "home_pg": 97.4,
      "away_pg": 106.2,
      "n_cur": 2,
-     "rank": 6
+     "rank": 8
     },
     "PASS": {
-     "yds_pg": 203.2,
+     "yds_pg": 201.6,
      "cur_pg": 193.5,
      "prev_pg": 206.4,
      "home_pg": 185.8,
      "away_pg": 226.4,
      "n_cur": 2,
-     "rank": 7
+     "rank": 6
     }
    }
   },
@@ -1515,40 +1515,40 @@
    "team": "NO",
    "slots": {
     "QB": {
-     "yds_pg": 202.3,
+     "yds_pg": 205.3,
      "cur_pg": 220.5,
      "prev_pg": 196.2,
      "home_pg": 200.9,
      "away_pg": 197.3,
      "n_cur": 2,
-     "rank": 5
+     "rank": 8
     },
     "RB": {
-     "yds_pg": 106.7,
+     "yds_pg": 108.6,
      "cur_pg": 118.5,
      "prev_pg": 102.7,
      "home_pg": 81.1,
      "away_pg": 121.3,
      "n_cur": 2,
-     "rank": 29
+     "rank": 27
     },
     "WR1": {
-     "yds_pg": 61.6,
+     "yds_pg": 64.3,
      "cur_pg": 77.5,
      "prev_pg": 56.4,
      "home_pg": 54.6,
      "away_pg": 61.5,
      "n_cur": 2,
-     "rank": 9
+     "rank": 12
     },
     "WR2": {
-     "yds_pg": 33.7,
+     "yds_pg": 32.4,
      "cur_pg": 25.5,
      "prev_pg": 36.5,
      "home_pg": 38.6,
      "away_pg": 32.9,
      "n_cur": 2,
-     "rank": 14
+     "rank": 10
     },
     "TE": {
      "yds_pg": 51.1,
@@ -1557,25 +1557,25 @@
      "home_pg": 49.0,
      "away_pg": 52.6,
      "n_cur": 2,
-     "rank": 17
+     "rank": 18
     },
     "RUN": {
-     "yds_pg": 124.6,
+     "yds_pg": 126.6,
      "cur_pg": 136.5,
      "prev_pg": 120.6,
      "home_pg": 104.0,
      "away_pg": 135.5,
      "n_cur": 2,
-     "rank": 22
+     "rank": 26
     },
     "PASS": {
-     "yds_pg": 202.3,
+     "yds_pg": 205.3,
      "cur_pg": 220.5,
      "prev_pg": 196.2,
      "home_pg": 200.9,
      "away_pg": 197.3,
      "n_cur": 2,
-     "rank": 5
+     "rank": 8
     }
    }
   },
@@ -1583,16 +1583,16 @@
    "team": "NYG",
    "slots": {
     "QB": {
-     "yds_pg": 234.3,
+     "yds_pg": 237.1,
      "cur_pg": 251.0,
      "prev_pg": 228.8,
      "home_pg": 201.6,
      "away_pg": 257.7,
      "n_cur": 2,
-     "rank": 20
+     "rank": 22
     },
     "RB": {
-     "yds_pg": 114.8,
+     "yds_pg": 113.9,
      "cur_pg": 109.5,
      "prev_pg": 116.5,
      "home_pg": 96.9,
@@ -1601,49 +1601,49 @@
      "rank": 31
     },
     "WR1": {
-     "yds_pg": 86.2,
+     "yds_pg": 91.8,
      "cur_pg": 119.5,
      "prev_pg": 75.1,
      "home_pg": 64.8,
      "away_pg": 93.3,
      "n_cur": 2,
-     "rank": 29
+     "rank": 30
     },
     "WR2": {
-     "yds_pg": 33.1,
+     "yds_pg": 31.5,
      "cur_pg": 23.5,
      "prev_pg": 36.4,
      "home_pg": 37.8,
      "away_pg": 32.5,
      "n_cur": 2,
-     "rank": 12
+     "rank": 9
     },
     "TE": {
-     "yds_pg": 49.1,
+     "yds_pg": 49.9,
      "cur_pg": 54.0,
      "prev_pg": 47.5,
      "home_pg": 41.6,
      "away_pg": 54.1,
      "n_cur": 2,
-     "rank": 13
+     "rank": 14
     },
     "RUN": {
-     "yds_pg": 137.8,
+     "yds_pg": 134.2,
      "cur_pg": 116.0,
      "prev_pg": 145.1,
      "home_pg": 120.6,
      "away_pg": 161.4,
      "n_cur": 2,
-     "rank": 31
+     "rank": 30
     },
     "PASS": {
-     "yds_pg": 235.2,
+     "yds_pg": 237.8,
      "cur_pg": 251.0,
      "prev_pg": 229.9,
      "home_pg": 201.6,
      "away_pg": 259.6,
      "n_cur": 2,
-     "rank": 21
+     "rank": 22
     }
    }
   },
@@ -1651,67 +1651,67 @@
    "team": "NYJ",
    "slots": {
     "QB": {
-     "yds_pg": 203.8,
+     "yds_pg": 193.5,
      "cur_pg": 142.5,
      "prev_pg": 224.2,
      "home_pg": 199.2,
      "away_pg": 233.8,
      "n_cur": 2,
-     "rank": 8
+     "rank": 4
     },
     "RB": {
-     "yds_pg": 96.2,
+     "yds_pg": 89.4,
      "cur_pg": 55.0,
      "prev_pg": 110.0,
      "home_pg": 115.9,
      "away_pg": 91.2,
      "n_cur": 2,
-     "rank": 17
+     "rank": 11
     },
     "WR1": {
-     "yds_pg": 63.8,
+     "yds_pg": 59.8,
      "cur_pg": 39.5,
      "prev_pg": 71.9,
      "home_pg": 65.0,
      "away_pg": 72.4,
      "n_cur": 2,
-     "rank": 11
+     "rank": 9
     },
     "WR2": {
-     "yds_pg": 39.0,
+     "yds_pg": 40.5,
      "cur_pg": 48.0,
      "prev_pg": 36.1,
      "home_pg": 31.7,
      "away_pg": 43.6,
      "n_cur": 2,
-     "rank": 20
+     "rank": 19
     },
     "TE": {
-     "yds_pg": 48.1,
+     "yds_pg": 44.3,
      "cur_pg": 25.0,
      "prev_pg": 55.8,
      "home_pg": 52.1,
      "away_pg": 53.1,
      "n_cur": 2,
-     "rank": 12
+     "rank": 8
     },
     "RUN": {
-     "yds_pg": 120.8,
+     "yds_pg": 111.6,
      "cur_pg": 65.5,
      "prev_pg": 139.3,
      "home_pg": 143.9,
      "away_pg": 117.8,
      "n_cur": 2,
-     "rank": 20
+     "rank": 12
     },
     "PASS": {
-     "yds_pg": 205.4,
+     "yds_pg": 194.9,
      "cur_pg": 142.5,
      "prev_pg": 226.4,
      "home_pg": 199.2,
      "away_pg": 238.0,
      "n_cur": 2,
-     "rank": 9
+     "rank": 4
     }
    }
   },
@@ -1719,25 +1719,25 @@
    "team": "PHI",
    "slots": {
     "QB": {
-     "yds_pg": 196.7,
+     "yds_pg": 192.9,
      "cur_pg": 173.5,
      "prev_pg": 204.5,
      "home_pg": 176.3,
      "away_pg": 223.6,
      "n_cur": 2,
-     "rank": 4
+     "rank": 3
     },
     "RB": {
-     "yds_pg": 99.1,
+     "yds_pg": 100.6,
      "cur_pg": 108.0,
      "prev_pg": 96.1,
      "home_pg": 106.0,
      "away_pg": 89.6,
      "n_cur": 2,
-     "rank": 20
+     "rank": 21
     },
     "WR1": {
-     "yds_pg": 49.1,
+     "yds_pg": 47.8,
      "cur_pg": 41.0,
      "prev_pg": 51.8,
      "home_pg": 56.3,
@@ -1746,16 +1746,16 @@
      "rank": 2
     },
     "WR2": {
-     "yds_pg": 52.4,
+     "yds_pg": 50.6,
      "cur_pg": 41.5,
      "prev_pg": 56.0,
      "home_pg": 34.6,
      "away_pg": 72.4,
      "n_cur": 2,
-     "rank": 31
+     "rank": 28
     },
     "TE": {
-     "yds_pg": 27.6,
+     "yds_pg": 26.5,
      "cur_pg": 21.0,
      "prev_pg": 29.8,
      "home_pg": 28.4,
@@ -1764,7 +1764,7 @@
      "rank": 1
     },
     "RUN": {
-     "yds_pg": 124.7,
+     "yds_pg": 125.1,
      "cur_pg": 127.0,
      "prev_pg": 123.9,
      "home_pg": 127.2,
@@ -1773,13 +1773,13 @@
      "rank": 23
     },
     "PASS": {
-     "yds_pg": 196.7,
+     "yds_pg": 192.9,
      "cur_pg": 173.5,
      "prev_pg": 204.5,
      "home_pg": 176.3,
      "away_pg": 223.6,
      "n_cur": 2,
-     "rank": 4
+     "rank": 3
     }
    }
   },
@@ -1787,25 +1787,25 @@
    "team": "PIT",
    "slots": {
     "QB": {
-     "yds_pg": 239.6,
+     "yds_pg": 228.9,
      "cur_pg": 175.5,
      "prev_pg": 261.0,
      "home_pg": 252.4,
      "away_pg": 251.6,
      "n_cur": 2,
-     "rank": 23
+     "rank": 18
     },
     "RB": {
-     "yds_pg": 101.4,
+     "yds_pg": 103.9,
      "cur_pg": 116.5,
      "prev_pg": 96.4,
      "home_pg": 100.1,
      "away_pg": 96.8,
      "n_cur": 2,
-     "rank": 24
+     "rank": 25
     },
     "WR1": {
-     "yds_pg": 69.4,
+     "yds_pg": 68.3,
      "cur_pg": 62.5,
      "prev_pg": 71.8,
      "home_pg": 65.9,
@@ -1814,40 +1814,40 @@
      "rank": 16
     },
     "WR2": {
-     "yds_pg": 45.7,
+     "yds_pg": 41.2,
      "cur_pg": 18.5,
      "prev_pg": 54.8,
      "home_pg": 50.4,
      "away_pg": 51.7,
      "n_cur": 2,
-     "rank": 25
+     "rank": 20
     },
     "TE": {
-     "yds_pg": 58.2,
+     "yds_pg": 54.3,
      "cur_pg": 35.0,
      "prev_pg": 65.9,
      "home_pg": 66.2,
      "away_pg": 58.8,
      "n_cur": 2,
-     "rank": 24
+     "rank": 23
     },
     "RUN": {
-     "yds_pg": 116.7,
+     "yds_pg": 118.6,
      "cur_pg": 128.0,
      "prev_pg": 112.9,
      "home_pg": 107.2,
      "away_pg": 122.6,
      "n_cur": 2,
-     "rank": 16
+     "rank": 17
     },
     "PASS": {
-     "yds_pg": 239.6,
+     "yds_pg": 228.9,
      "cur_pg": 175.5,
      "prev_pg": 261.0,
      "home_pg": 252.4,
      "away_pg": 251.6,
      "n_cur": 2,
-     "rank": 23
+     "rank": 18
     }
    }
   },
@@ -1855,7 +1855,7 @@
    "team": "SEA",
    "slots": {
     "QB": {
-     "yds_pg": 193.8,
+     "yds_pg": 184.2,
      "cur_pg": 136.5,
      "prev_pg": 212.9,
      "home_pg": 249.1,
@@ -1864,16 +1864,16 @@
      "rank": 1
     },
     "RB": {
-     "yds_pg": 70.3,
+     "yds_pg": 69.0,
      "cur_pg": 62.5,
      "prev_pg": 72.9,
      "home_pg": 76.8,
      "away_pg": 67.3,
      "n_cur": 2,
-     "rank": 2
+     "rank": 3
     },
     "WR1": {
-     "yds_pg": 48.8,
+     "yds_pg": 43.8,
      "cur_pg": 19.0,
      "prev_pg": 58.7,
      "home_pg": 77.2,
@@ -1882,34 +1882,34 @@
      "rank": 1
     },
     "WR2": {
-     "yds_pg": 28.4,
+     "yds_pg": 28.9,
      "cur_pg": 31.0,
      "prev_pg": 27.6,
      "home_pg": 33.4,
      "away_pg": 23.0,
      "n_cur": 2,
-     "rank": 2
+     "rank": 3
     },
     "TE": {
-     "yds_pg": 56.0,
+     "yds_pg": 52.4,
      "cur_pg": 34.5,
      "prev_pg": 63.2,
      "home_pg": 70.6,
      "away_pg": 50.8,
      "n_cur": 2,
-     "rank": 23
+     "rank": 20
     },
     "RUN": {
-     "yds_pg": 91.3,
+     "yds_pg": 91.0,
      "cur_pg": 89.5,
      "prev_pg": 91.9,
      "home_pg": 93.3,
      "away_pg": 90.2,
      "n_cur": 2,
-     "rank": 2
+     "rank": 3
     },
     "PASS": {
-     "yds_pg": 193.8,
+     "yds_pg": 184.2,
      "cur_pg": 136.5,
      "prev_pg": 212.9,
      "home_pg": 249.1,
@@ -1923,52 +1923,52 @@
    "team": "SF",
    "slots": {
     "QB": {
-     "yds_pg": 226.9,
+     "yds_pg": 219.5,
      "cur_pg": 182.5,
      "prev_pg": 241.8,
      "home_pg": 213.1,
      "away_pg": 255.7,
      "n_cur": 2,
-     "rank": 17
+     "rank": 14
     },
     "RB": {
-     "yds_pg": 95.5,
+     "yds_pg": 96.8,
      "cur_pg": 103.0,
      "prev_pg": 93.1,
      "home_pg": 104.1,
      "away_pg": 85.1,
      "n_cur": 2,
-     "rank": 16
+     "rank": 18
     },
     "WR1": {
-     "yds_pg": 67.3,
+     "yds_pg": 65.9,
      "cur_pg": 58.5,
      "prev_pg": 70.3,
      "home_pg": 61.7,
      "away_pg": 75.7,
      "n_cur": 2,
-     "rank": 14
+     "rank": 15
     },
     "WR2": {
-     "yds_pg": 34.6,
+     "yds_pg": 32.6,
      "cur_pg": 22.5,
      "prev_pg": 38.6,
      "home_pg": 27.9,
      "away_pg": 45.1,
      "n_cur": 2,
-     "rank": 15
+     "rank": 12
     },
     "TE": {
-     "yds_pg": 49.2,
+     "yds_pg": 45.3,
      "cur_pg": 26.0,
      "prev_pg": 56.9,
      "home_pg": 61.8,
      "away_pg": 46.4,
      "n_cur": 2,
-     "rank": 14
+     "rank": 10
     },
     "RUN": {
-     "yds_pg": 108.9,
+     "yds_pg": 109.4,
      "cur_pg": 112.0,
      "prev_pg": 107.8,
      "home_pg": 115.8,
@@ -1977,13 +1977,13 @@
      "rank": 10
     },
     "PASS": {
-     "yds_pg": 226.9,
+     "yds_pg": 219.5,
      "cur_pg": 182.5,
      "prev_pg": 241.8,
      "home_pg": 213.1,
      "away_pg": 255.7,
      "n_cur": 2,
-     "rank": 17
+     "rank": 14
     }
    }
   },
@@ -1991,52 +1991,52 @@
    "team": "TB",
    "slots": {
     "QB": {
-     "yds_pg": 252.6,
+     "yds_pg": 251.5,
      "cur_pg": 246.0,
      "prev_pg": 254.8,
      "home_pg": 251.8,
      "away_pg": 255.8,
      "n_cur": 2,
-     "rank": 27
+     "rank": 29
     },
     "RB": {
-     "yds_pg": 72.1,
+     "yds_pg": 68.8,
      "cur_pg": 52.0,
      "prev_pg": 78.8,
      "home_pg": 71.2,
      "away_pg": 80.3,
      "n_cur": 2,
-     "rank": 3
+     "rank": 2
     },
     "WR1": {
-     "yds_pg": 68.2,
+     "yds_pg": 69.6,
      "cur_pg": 77.0,
      "prev_pg": 65.2,
      "home_pg": 69.4,
      "away_pg": 63.8,
      "n_cur": 2,
-     "rank": 15
+     "rank": 18
     },
     "WR2": {
-     "yds_pg": 39.5,
+     "yds_pg": 36.2,
      "cur_pg": 20.0,
      "prev_pg": 45.9,
      "home_pg": 43.2,
      "away_pg": 43.2,
      "n_cur": 2,
-     "rank": 21
+     "rank": 16
     },
     "TE": {
-     "yds_pg": 64.2,
+     "yds_pg": 67.9,
      "cur_pg": 86.0,
      "prev_pg": 57.0,
      "home_pg": 64.8,
      "away_pg": 55.8,
      "n_cur": 2,
-     "rank": 28
+     "rank": 29
     },
     "RUN": {
-     "yds_pg": 94.5,
+     "yds_pg": 91.3,
      "cur_pg": 75.0,
      "prev_pg": 101.1,
      "home_pg": 95.8,
@@ -2045,13 +2045,13 @@
      "rank": 4
     },
     "PASS": {
-     "yds_pg": 252.6,
+     "yds_pg": 251.5,
      "cur_pg": 246.0,
      "prev_pg": 254.8,
      "home_pg": 251.8,
      "away_pg": 255.8,
      "n_cur": 2,
-     "rank": 27
+     "rank": 29
     }
    }
   },
@@ -2059,67 +2059,67 @@
    "team": "TEN",
    "slots": {
     "QB": {
-     "yds_pg": 246.1,
+     "yds_pg": 245.0,
      "cur_pg": 239.5,
      "prev_pg": 248.3,
      "home_pg": 245.0,
      "away_pg": 250.6,
      "n_cur": 2,
-     "rank": 25
+     "rank": 26
     },
     "RB": {
-     "yds_pg": 94.5,
+     "yds_pg": 96.1,
      "cur_pg": 104.0,
      "prev_pg": 91.4,
      "home_pg": 87.2,
      "away_pg": 100.2,
      "n_cur": 2,
-     "rank": 15
+     "rank": 16
     },
     "WR1": {
-     "yds_pg": 88.2,
+     "yds_pg": 89.8,
      "cur_pg": 98.0,
      "prev_pg": 84.9,
      "home_pg": 88.8,
      "away_pg": 82.8,
      "n_cur": 2,
-     "rank": 32
+     "rank": 29
     },
     "WR2": {
-     "yds_pg": 46.6,
+     "yds_pg": 50.0,
      "cur_pg": 67.0,
      "prev_pg": 39.8,
      "home_pg": 47.1,
      "away_pg": 36.5,
      "n_cur": 2,
-     "rank": 26
+     "rank": 27
     },
     "TE": {
-     "yds_pg": 46.2,
+     "yds_pg": 41.4,
      "cur_pg": 17.5,
      "prev_pg": 55.7,
      "home_pg": 44.2,
      "away_pg": 62.0,
      "n_cur": 2,
-     "rank": 8
+     "rank": 6
     },
     "RUN": {
-     "yds_pg": 116.1,
+     "yds_pg": 116.8,
      "cur_pg": 120.5,
      "prev_pg": 114.6,
      "home_pg": 113.3,
      "away_pg": 117.9,
      "n_cur": 2,
-     "rank": 15
+     "rank": 16
     },
     "PASS": {
-     "yds_pg": 246.1,
+     "yds_pg": 245.0,
      "cur_pg": 239.5,
      "prev_pg": 248.3,
      "home_pg": 245.0,
      "away_pg": 250.6,
      "n_cur": 2,
-     "rank": 25
+     "rank": 26
     }
    }
   },
@@ -2127,7 +2127,7 @@
    "team": "WAS",
    "slots": {
     "QB": {
-     "yds_pg": 253.1,
+     "yds_pg": 251.1,
      "cur_pg": 241.0,
      "prev_pg": 257.1,
      "home_pg": 271.5,
@@ -2136,16 +2136,16 @@
      "rank": 28
     },
     "RB": {
-     "yds_pg": 102.7,
+     "yds_pg": 96.4,
      "cur_pg": 64.5,
      "prev_pg": 115.5,
      "home_pg": 119.4,
      "away_pg": 103.4,
      "n_cur": 2,
-     "rank": 26
+     "rank": 17
     },
     "WR1": {
-     "yds_pg": 80.1,
+     "yds_pg": 83.9,
      "cur_pg": 103.0,
      "prev_pg": 72.5,
      "home_pg": 76.2,
@@ -2154,16 +2154,16 @@
      "rank": 27
     },
     "WR2": {
-     "yds_pg": 50.4,
+     "yds_pg": 51.4,
      "cur_pg": 56.5,
      "prev_pg": 48.4,
      "home_pg": 57.8,
      "away_pg": 43.1,
      "n_cur": 2,
-     "rank": 29
+     "rank": 30
     },
     "TE": {
-     "yds_pg": 60.9,
+     "yds_pg": 60.7,
      "cur_pg": 60.0,
      "prev_pg": 61.2,
      "home_pg": 48.0,
@@ -2172,16 +2172,16 @@
      "rank": 26
     },
     "RUN": {
-     "yds_pg": 131.5,
+     "yds_pg": 126.4,
      "cur_pg": 101.0,
      "prev_pg": 141.6,
      "home_pg": 141.6,
      "away_pg": 134.3,
      "n_cur": 2,
-     "rank": 29
+     "rank": 25
     },
     "PASS": {
-     "yds_pg": 253.1,
+     "yds_pg": 251.1,
      "cur_pg": 241.0,
      "prev_pg": 257.1,
      "home_pg": 271.5,
@@ -2200,7 +2200,7 @@
    "home": true,
    "slot": "RB",
    "opp_rank": 32,
-   "opp_yds_pg": 123.1,
+   "opp_yds_pg": 131.5,
    "tag": "SOFT",
    "game": "CAR@CLE",
    "day": "Sunday",
@@ -2213,11 +2213,24 @@
    "home": true,
    "slot": "RUN",
    "opp_rank": 32,
-   "opp_yds_pg": 148.5,
+   "opp_yds_pg": 161.1,
    "tag": "SOFT",
    "game": "CAR@CLE",
    "day": "Sunday",
    "roof": "outdoors"
+  },
+  {
+   "player": "Adonai Mitchell",
+   "team": "NYJ",
+   "opp": "DET",
+   "home": false,
+   "slot": "WR1",
+   "opp_rank": 32,
+   "opp_yds_pg": 92.3,
+   "tag": "SOFT",
+   "game": "NYJ@DET",
+   "day": "Sunday",
+   "roof": "dome"
   },
   {
    "player": "C.J. Stroud",
@@ -2226,7 +2239,7 @@
    "home": false,
    "slot": "QB",
    "opp_rank": 32,
-   "opp_yds_pg": 285.1,
+   "opp_yds_pg": 296.4,
    "tag": "SOFT",
    "game": "HOU@IND",
    "day": "Sunday",
@@ -2239,24 +2252,11 @@
    "home": false,
    "slot": "PASS",
    "opp_rank": 32,
-   "opp_yds_pg": 285.1,
+   "opp_yds_pg": 296.4,
    "tag": "SOFT",
    "game": "HOU@IND",
    "day": "Sunday",
    "roof": null
-  },
-  {
-   "player": "Malik Nabers",
-   "team": "NYG",
-   "opp": "TEN",
-   "home": true,
-   "slot": "WR1",
-   "opp_rank": 32,
-   "opp_yds_pg": 88.2,
-   "tag": "SOFT",
-   "game": "TEN@NYG",
-   "day": "Sunday",
-   "roof": "outdoors"
   },
   {
    "player": "Pat Freiermuth",
@@ -2265,24 +2265,24 @@
    "home": true,
    "slot": "TE",
    "opp_rank": 32,
-   "opp_yds_pg": 88.7,
+   "opp_yds_pg": 90.6,
    "tag": "SOFT",
    "game": "CIN@PIT",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Rashod Bateman",
-   "team": "BAL",
-   "opp": "DAL",
-   "home": false,
+   "player": "Ted Hurst III",
+   "team": "TB",
+   "opp": "MIN",
+   "home": true,
    "slot": "WR2",
    "opp_rank": 32,
-   "opp_yds_pg": 55.9,
+   "opp_yds_pg": 56.9,
    "tag": "SOFT",
-   "game": "BAL@DAL",
+   "game": "MIN@TB",
    "day": "Sunday",
-   "roof": null
+   "roof": "outdoors"
   },
   {
    "player": "Geno Smith",
@@ -2291,7 +2291,7 @@
    "home": false,
    "slot": "QB",
    "opp_rank": 31,
-   "opp_yds_pg": 258.5,
+   "opp_yds_pg": 270.2,
    "tag": "SOFT",
    "game": "NYJ@DET",
    "day": "Sunday",
@@ -2304,7 +2304,7 @@
    "home": false,
    "slot": "PASS",
    "opp_rank": 31,
-   "opp_yds_pg": 259.9,
+   "opp_yds_pg": 271.4,
    "tag": "SOFT",
    "game": "NYJ@DET",
    "day": "Sunday",
@@ -2317,7 +2317,7 @@
    "home": false,
    "slot": "TE",
    "opp_rank": 31,
-   "opp_yds_pg": 73.2,
+   "opp_yds_pg": 74.9,
    "tag": "SOFT",
    "game": "HOU@IND",
    "day": "Sunday",
@@ -2330,20 +2330,7 @@
    "home": false,
    "slot": "RB",
    "opp_rank": 31,
-   "opp_yds_pg": 114.8,
-   "tag": "SOFT",
-   "game": "TEN@NYG",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Tony Pollard",
-   "team": "TEN",
-   "opp": "NYG",
-   "home": false,
-   "slot": "RUN",
-   "opp_rank": 31,
-   "opp_yds_pg": 137.8,
+   "opp_yds_pg": 113.9,
    "tag": "SOFT",
    "game": "TEN@NYG",
    "day": "Sunday",
@@ -2356,98 +2343,7 @@
    "home": true,
    "slot": "WR1",
    "opp_rank": 31,
-   "opp_yds_pg": 87.1,
-   "tag": "SOFT",
-   "game": "ARI@SF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Luther Burden III",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 31,
-   "opp_yds_pg": 52.4,
-   "tag": "SOFT",
-   "game": "PHI@CHI",
-   "day": "Monday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Adonai Mitchell",
-   "team": "NYJ",
-   "opp": "DET",
-   "home": false,
-   "slot": "WR1",
-   "opp_rank": 30,
-   "opp_yds_pg": 86.3,
-   "tag": "SOFT",
-   "game": "NYJ@DET",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Aaron Rodgers",
-   "team": "PIT",
-   "opp": "CIN",
-   "home": true,
-   "slot": "QB",
-   "opp_rank": 30,
-   "opp_yds_pg": 254.9,
-   "tag": "SOFT",
-   "game": "CIN@PIT",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Aaron Rodgers",
-   "team": "PIT",
-   "opp": "CIN",
-   "home": true,
-   "slot": "PASS",
-   "opp_rank": 30,
-   "opp_yds_pg": 255.3,
-   "tag": "SOFT",
-   "game": "CIN@PIT",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Christian McCaffrey",
-   "team": "SF",
-   "opp": "ARI",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 30,
-   "opp_yds_pg": 111.1,
-   "tag": "SOFT",
-   "game": "ARI@SF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "George Kittle",
-   "team": "SF",
-   "opp": "ARI",
-   "home": true,
-   "slot": "TE",
-   "opp_rank": 30,
-   "opp_yds_pg": 64.6,
-   "tag": "SOFT",
-   "game": "ARI@SF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Kaelon Black",
-   "team": "SF",
-   "opp": "ARI",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 30,
-   "opp_yds_pg": 111.1,
+   "opp_yds_pg": 92.3,
    "tag": "SOFT",
    "game": "ARI@SF",
    "day": "Sunday",
@@ -2459,24 +2355,50 @@
    "opp": "DAL",
    "home": false,
    "slot": "RUN",
-   "opp_rank": 30,
-   "opp_yds_pg": 137.4,
+   "opp_rank": 31,
+   "opp_yds_pg": 143.4,
    "tag": "SOFT",
    "game": "BAL@DAL",
    "day": "Sunday",
    "roof": null
   },
   {
-   "player": "Dontayvion Wicks",
-   "team": "PHI",
-   "opp": "CHI",
+   "player": "Rashod Bateman",
+   "team": "BAL",
+   "opp": "DAL",
    "home": false,
    "slot": "WR2",
-   "opp_rank": 30,
-   "opp_yds_pg": 51.4,
+   "opp_rank": 31,
+   "opp_yds_pg": 52.6,
    "tag": "SOFT",
-   "game": "PHI@CHI",
-   "day": "Monday",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Bijan Robinson",
+   "team": "ATL",
+   "opp": "GB",
+   "home": false,
+   "slot": "RB",
+   "opp_rank": 30,
+   "opp_yds_pg": 110.2,
+   "tag": "SOFT",
+   "game": "ATL@GB",
+   "day": "Thursday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Brian Robinson",
+   "team": "ATL",
+   "opp": "GB",
+   "home": false,
+   "slot": "RB",
+   "opp_rank": 30,
+   "opp_yds_pg": 110.2,
+   "tag": "SOFT",
+   "game": "ATL@GB",
+   "day": "Thursday",
    "roof": "outdoors"
   },
   {
@@ -2485,8 +2407,8 @@
    "opp": "DET",
    "home": false,
    "slot": "TE",
-   "opp_rank": 29,
-   "opp_yds_pg": 64.5,
+   "opp_rank": 30,
+   "opp_yds_pg": 69.3,
    "tag": "SOFT",
    "game": "NYJ@DET",
    "day": "Sunday",
@@ -2498,12 +2420,25 @@
    "opp": "DET",
    "home": false,
    "slot": "TE",
-   "opp_rank": 29,
-   "opp_yds_pg": 64.5,
+   "opp_rank": 30,
+   "opp_yds_pg": 69.3,
    "tag": "SOFT",
    "game": "NYJ@DET",
    "day": "Sunday",
    "roof": "dome"
+  },
+  {
+   "player": "Tony Pollard",
+   "team": "TEN",
+   "opp": "NYG",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 30,
+   "opp_yds_pg": 134.2,
+   "tag": "SOFT",
+   "game": "TEN@NYG",
+   "day": "Sunday",
+   "roof": "outdoors"
   },
   {
    "player": "Carnell Tate",
@@ -2511,36 +2446,36 @@
    "opp": "NYG",
    "home": false,
    "slot": "WR1",
-   "opp_rank": 29,
-   "opp_yds_pg": 86.2,
+   "opp_rank": 30,
+   "opp_yds_pg": 91.8,
    "tag": "SOFT",
    "game": "TEN@NYG",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Emanuel Wilson",
-   "team": "SEA",
-   "opp": "WAS",
-   "home": false,
-   "slot": "RUN",
-   "opp_rank": 29,
-   "opp_yds_pg": 131.5,
+   "player": "Aaron Rodgers",
+   "team": "PIT",
+   "opp": "CIN",
+   "home": true,
+   "slot": "QB",
+   "opp_rank": 30,
+   "opp_yds_pg": 259.8,
    "tag": "SOFT",
-   "game": "SEA@WAS",
+   "game": "CIN@PIT",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Jadarian Price",
-   "team": "SEA",
-   "opp": "WAS",
-   "home": false,
-   "slot": "RUN",
-   "opp_rank": 29,
-   "opp_yds_pg": 131.5,
+   "player": "Aaron Rodgers",
+   "team": "PIT",
+   "opp": "CIN",
+   "home": true,
+   "slot": "PASS",
+   "opp_rank": 30,
+   "opp_yds_pg": 260.2,
    "tag": "SOFT",
-   "game": "SEA@WAS",
+   "game": "CIN@PIT",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -2550,101 +2485,75 @@
    "opp": "WAS",
    "home": false,
    "slot": "WR2",
-   "opp_rank": 29,
-   "opp_yds_pg": 50.4,
+   "opp_rank": 30,
+   "opp_yds_pg": 51.4,
    "tag": "SOFT",
    "game": "SEA@WAS",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Lamar Jackson",
-   "team": "BAL",
-   "opp": "DAL",
-   "home": false,
-   "slot": "QB",
-   "opp_rank": 29,
-   "opp_yds_pg": 254.1,
-   "tag": "SOFT",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Lamar Jackson",
-   "team": "BAL",
-   "opp": "DAL",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 29,
-   "opp_yds_pg": 254.1,
-   "tag": "SOFT",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Ashton Jeanty",
-   "team": "LV",
-   "opp": "NO",
-   "home": false,
-   "slot": "RB",
-   "opp_rank": 29,
-   "opp_yds_pg": 106.7,
-   "tag": "SOFT",
-   "game": "LV@NO",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Nico Collins",
-   "team": "HOU",
-   "opp": "IND",
-   "home": false,
+   "player": "Malik Nabers",
+   "team": "NYG",
+   "opp": "TEN",
+   "home": true,
    "slot": "WR1",
-   "opp_rank": 28,
-   "opp_yds_pg": 80.6,
+   "opp_rank": 29,
+   "opp_yds_pg": 89.8,
    "tag": "SOFT",
-   "game": "HOU@IND",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Kenneth Walker III",
-   "team": "KC",
-   "opp": "MIA",
-   "home": false,
-   "slot": "RB",
-   "opp_rank": 28,
-   "opp_yds_pg": 106.1,
-   "tag": "SOFT",
-   "game": "KC@MIA",
+   "game": "TEN@NYG",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Drew Lock",
-   "team": "SEA",
-   "opp": "WAS",
+   "player": "Christian McCaffrey",
+   "team": "SF",
+   "opp": "ARI",
+   "home": true,
+   "slot": "RB",
+   "opp_rank": 29,
+   "opp_yds_pg": 110.0,
+   "tag": "SOFT",
+   "game": "ARI@SF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Kaelon Black",
+   "team": "SF",
+   "opp": "ARI",
+   "home": true,
+   "slot": "RB",
+   "opp_rank": 29,
+   "opp_yds_pg": 110.0,
+   "tag": "SOFT",
+   "game": "ARI@SF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Carson Wentz",
+   "team": "MIN",
+   "opp": "TB",
    "home": false,
    "slot": "QB",
-   "opp_rank": 28,
-   "opp_yds_pg": 253.1,
+   "opp_rank": 29,
+   "opp_yds_pg": 251.5,
    "tag": "SOFT",
-   "game": "SEA@WAS",
+   "game": "MIN@TB",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Drew Lock",
-   "team": "SEA",
-   "opp": "WAS",
+   "player": "Carson Wentz",
+   "team": "MIN",
+   "opp": "TB",
    "home": false,
    "slot": "PASS",
-   "opp_rank": 28,
-   "opp_yds_pg": 253.1,
+   "opp_rank": 29,
+   "opp_yds_pg": 251.5,
    "tag": "SOFT",
-   "game": "SEA@WAS",
+   "game": "MIN@TB",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -2654,21 +2563,8 @@
    "opp": "TB",
    "home": false,
    "slot": "TE",
-   "opp_rank": 28,
-   "opp_yds_pg": 64.2,
-   "tag": "SOFT",
-   "game": "MIN@TB",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Ted Hurst III",
-   "team": "TB",
-   "opp": "MIN",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 28,
-   "opp_yds_pg": 49.6,
+   "opp_rank": 29,
+   "opp_yds_pg": 67.9,
    "tag": "SOFT",
    "game": "MIN@TB",
    "day": "Sunday",
@@ -2680,206 +2576,37 @@
    "opp": "CHI",
    "home": false,
    "slot": "RUN",
-   "opp_rank": 28,
-   "opp_yds_pg": 131.4,
+   "opp_rank": 29,
+   "opp_yds_pg": 129.8,
    "tag": "SOFT",
    "game": "PHI@CHI",
    "day": "Monday",
    "roof": "outdoors"
   },
   {
-   "player": "Travis Kelce",
-   "team": "KC",
-   "opp": "MIA",
-   "home": false,
-   "slot": "TE",
-   "opp_rank": 27,
-   "opp_yds_pg": 64.0,
-   "tag": "SOFT",
-   "game": "KC@MIA",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jaylen Warren",
-   "team": "PIT",
-   "opp": "CIN",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 27,
-   "opp_yds_pg": 128.6,
-   "tag": "SOFT",
-   "game": "CIN@PIT",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jaxon Smith-Njigba",
-   "team": "SEA",
-   "opp": "WAS",
-   "home": false,
-   "slot": "WR1",
-   "opp_rank": 27,
-   "opp_yds_pg": 80.1,
-   "tag": "SOFT",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Carson Wentz",
-   "team": "MIN",
-   "opp": "TB",
-   "home": false,
-   "slot": "QB",
-   "opp_rank": 27,
-   "opp_yds_pg": 252.6,
-   "tag": "SOFT",
-   "game": "MIN@TB",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Carson Wentz",
-   "team": "MIN",
-   "opp": "TB",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 27,
-   "opp_yds_pg": 252.6,
-   "tag": "SOFT",
-   "game": "MIN@TB",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "George Pickens",
-   "team": "DAL",
-   "opp": "BAL",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 27,
-   "opp_yds_pg": 46.8,
-   "tag": "SOFT",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Saquon Barkley",
+   "player": "Dontayvion Wicks",
    "team": "PHI",
    "opp": "CHI",
    "home": false,
-   "slot": "RB",
-   "opp_rank": 27,
-   "opp_yds_pg": 103.7,
+   "slot": "WR2",
+   "opp_rank": 29,
+   "opp_yds_pg": 50.9,
    "tag": "SOFT",
    "game": "PHI@CHI",
    "day": "Monday",
    "roof": "outdoors"
   },
   {
-   "player": "Quentin Johnston",
-   "team": "LAC",
-   "opp": "BUF",
+   "player": "Drake London",
+   "team": "ATL",
+   "opp": "GB",
    "home": false,
    "slot": "WR1",
-   "opp_rank": 26,
-   "opp_yds_pg": 79.0,
+   "opp_rank": 28,
+   "opp_yds_pg": 87.8,
    "tag": "SOFT",
-   "game": "LAC@BUF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Kenneth Walker III",
-   "team": "KC",
-   "opp": "MIA",
-   "home": false,
-   "slot": "RUN",
-   "opp_rank": 26,
-   "opp_yds_pg": 127.1,
-   "tag": "SOFT",
-   "game": "KC@MIA",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Malachi Fields",
-   "team": "NYG",
-   "opp": "TEN",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 26,
-   "opp_yds_pg": 46.6,
-   "tag": "SOFT",
-   "game": "TEN@NYG",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Emanuel Wilson",
-   "team": "SEA",
-   "opp": "WAS",
-   "home": false,
-   "slot": "RB",
-   "opp_rank": 26,
-   "opp_yds_pg": 102.7,
-   "tag": "SOFT",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jadarian Price",
-   "team": "SEA",
-   "opp": "WAS",
-   "home": false,
-   "slot": "RB",
-   "opp_rank": 26,
-   "opp_yds_pg": 102.7,
-   "tag": "SOFT",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Dak Prescott",
-   "team": "DAL",
-   "opp": "BAL",
-   "home": true,
-   "slot": "QB",
-   "opp_rank": 26,
-   "opp_yds_pg": 246.5,
-   "tag": "SOFT",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Dak Prescott",
-   "team": "DAL",
-   "opp": "BAL",
-   "home": true,
-   "slot": "PASS",
-   "opp_rank": 26,
-   "opp_yds_pg": 246.5,
-   "tag": "SOFT",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Omarion Hampton",
-   "team": "LAC",
-   "opp": "BUF",
-   "home": false,
-   "slot": "RUN",
-   "opp_rank": 25,
-   "opp_yds_pg": 125.6,
-   "tag": "SOFT",
-   "game": "LAC@BUF",
-   "day": "Sunday",
+   "game": "ATL@GB",
+   "day": "Thursday",
    "roof": "outdoors"
   },
   {
@@ -2888,8 +2615,21 @@
    "opp": "IND",
    "home": false,
    "slot": "RB",
-   "opp_rank": 25,
-   "opp_yds_pg": 101.8,
+   "opp_rank": 28,
+   "opp_yds_pg": 109.4,
+   "tag": "SOFT",
+   "game": "HOU@IND",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "David Montgomery",
+   "team": "HOU",
+   "opp": "IND",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 28,
+   "opp_yds_pg": 129.3,
    "tag": "SOFT",
    "game": "HOU@IND",
    "day": "Sunday",
@@ -2901,23 +2641,192 @@
    "opp": "IND",
    "home": false,
    "slot": "RB",
-   "opp_rank": 25,
-   "opp_yds_pg": 101.8,
+   "opp_rank": 28,
+   "opp_yds_pg": 109.4,
    "tag": "SOFT",
    "game": "HOU@IND",
    "day": "Sunday",
    "roof": null
   },
   {
-   "player": "DeMario Douglas",
-   "team": "NE",
-   "opp": "JAX",
+   "player": "Woody Marks",
+   "team": "HOU",
+   "opp": "IND",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 28,
+   "opp_yds_pg": 129.3,
+   "tag": "SOFT",
+   "game": "HOU@IND",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Travis Kelce",
+   "team": "KC",
+   "opp": "MIA",
+   "home": false,
+   "slot": "TE",
+   "opp_rank": 28,
+   "opp_yds_pg": 62.7,
+   "tag": "SOFT",
+   "game": "KC@MIA",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Drew Lock",
+   "team": "SEA",
+   "opp": "WAS",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 28,
+   "opp_yds_pg": 251.1,
+   "tag": "SOFT",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Drew Lock",
+   "team": "SEA",
+   "opp": "WAS",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 28,
+   "opp_yds_pg": 251.1,
+   "tag": "SOFT",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Luther Burden III",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 28,
+   "opp_yds_pg": 50.6,
+   "tag": "SOFT",
+   "game": "PHI@CHI",
+   "day": "Monday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Breece Hall",
+   "team": "NYJ",
+   "opp": "DET",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 27,
+   "opp_yds_pg": 126.7,
+   "tag": "SOFT",
+   "game": "NYJ@DET",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Malachi Fields",
+   "team": "NYG",
+   "opp": "TEN",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 27,
+   "opp_yds_pg": 50.0,
+   "tag": "SOFT",
+   "game": "TEN@NYG",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jaxon Smith-Njigba",
+   "team": "SEA",
+   "opp": "WAS",
    "home": false,
    "slot": "WR1",
-   "opp_rank": 25,
-   "opp_yds_pg": 78.4,
+   "opp_rank": 27,
+   "opp_yds_pg": 83.9,
    "tag": "SOFT",
-   "game": "NE@JAX",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "George Kittle",
+   "team": "SF",
+   "opp": "ARI",
+   "home": true,
+   "slot": "TE",
+   "opp_rank": 27,
+   "opp_yds_pg": 62.6,
+   "tag": "SOFT",
+   "game": "ARI@SF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Lamar Jackson",
+   "team": "BAL",
+   "opp": "DAL",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 27,
+   "opp_yds_pg": 248.2,
+   "tag": "SOFT",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Lamar Jackson",
+   "team": "BAL",
+   "opp": "DAL",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 27,
+   "opp_yds_pg": 248.2,
+   "tag": "SOFT",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Ashton Jeanty",
+   "team": "LV",
+   "opp": "NO",
+   "home": false,
+   "slot": "RB",
+   "opp_rank": 27,
+   "opp_yds_pg": 108.6,
+   "tag": "SOFT",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Quentin Johnston",
+   "team": "LAC",
+   "opp": "BUF",
+   "home": false,
+   "slot": "WR1",
+   "opp_rank": 26,
+   "opp_yds_pg": 83.9,
+   "tag": "SOFT",
+   "game": "LAC@BUF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Kenneth Walker III",
+   "team": "KC",
+   "opp": "MIA",
+   "home": false,
+   "slot": "RB",
+   "opp_rank": 26,
+   "opp_yds_pg": 105.6,
+   "tag": "SOFT",
+   "game": "KC@MIA",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -2927,8 +2836,8 @@
    "opp": "TEN",
    "home": true,
    "slot": "QB",
-   "opp_rank": 25,
-   "opp_yds_pg": 246.1,
+   "opp_rank": 26,
+   "opp_yds_pg": 245.0,
    "tag": "SOFT",
    "game": "TEN@NYG",
    "day": "Sunday",
@@ -2940,25 +2849,103 @@
    "opp": "TEN",
    "home": true,
    "slot": "PASS",
-   "opp_rank": 25,
-   "opp_yds_pg": 246.1,
+   "opp_rank": 26,
+   "opp_yds_pg": 245.0,
    "tag": "SOFT",
    "game": "TEN@NYG",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Ja'Marr Chase",
+   "player": "George Pickens",
+   "team": "DAL",
+   "opp": "BAL",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 26,
+   "opp_yds_pg": 49.4,
+   "tag": "SOFT",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Ashton Jeanty",
+   "team": "LV",
+   "opp": "NO",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 26,
+   "opp_yds_pg": 126.6,
+   "tag": "SOFT",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Nico Collins",
+   "team": "HOU",
+   "opp": "IND",
+   "home": false,
+   "slot": "WR1",
+   "opp_rank": 25,
+   "opp_yds_pg": 81.7,
+   "tag": "SOFT",
+   "game": "HOU@IND",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "Chase Brown",
    "team": "CIN",
    "opp": "PIT",
    "home": false,
-   "slot": "WR2",
+   "slot": "RB",
    "opp_rank": 25,
-   "opp_yds_pg": 45.7,
+   "opp_yds_pg": 103.9,
    "tag": "SOFT",
    "game": "CIN@PIT",
    "day": "Sunday",
    "roof": "outdoors"
+  },
+  {
+   "player": "Emanuel Wilson",
+   "team": "SEA",
+   "opp": "WAS",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 25,
+   "opp_yds_pg": 126.4,
+   "tag": "SOFT",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jadarian Price",
+   "team": "SEA",
+   "opp": "WAS",
+   "home": false,
+   "slot": "RUN",
+   "opp_rank": 25,
+   "opp_yds_pg": 126.4,
+   "tag": "SOFT",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Devaughn Vele",
+   "team": "NO",
+   "opp": "LV",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 25,
+   "opp_yds_pg": 46.8,
+   "tag": "SOFT",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
   },
   {
    "player": "Terrance Ferguson",
@@ -2967,10 +2954,36 @@
    "home": false,
    "slot": "TE",
    "opp_rank": 25,
-   "opp_yds_pg": 58.4,
+   "opp_yds_pg": 57.8,
    "tag": "SOFT",
    "game": "LA@DEN",
    "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jalen Hurts",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 25,
+   "opp_yds_pg": 244.0,
+   "tag": "SOFT",
+   "game": "PHI@CHI",
+   "day": "Monday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jalen Hurts",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 25,
+   "opp_yds_pg": 244.0,
+   "tag": "SOFT",
+   "game": "PHI@CHI",
+   "day": "Monday",
    "roof": "outdoors"
   },
   {
@@ -2980,7 +2993,7 @@
    "home": false,
    "slot": "WR2",
    "opp_rank": 1,
-   "opp_yds_pg": 27.1,
+   "opp_yds_pg": 27.4,
    "tag": "TOUGH",
    "game": "LAC@BUF",
    "day": "Sunday",
@@ -2993,7 +3006,7 @@
    "home": false,
    "slot": "RB",
    "opp_rank": 1,
-   "opp_yds_pg": 64.5,
+   "opp_yds_pg": 62.9,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3006,7 +3019,7 @@
    "home": false,
    "slot": "RUN",
    "opp_rank": 1,
-   "opp_yds_pg": 87.8,
+   "opp_yds_pg": 89.1,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3019,7 +3032,7 @@
    "home": false,
    "slot": "RB",
    "opp_rank": 1,
-   "opp_yds_pg": 64.5,
+   "opp_yds_pg": 62.9,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3032,7 +3045,7 @@
    "home": false,
    "slot": "RUN",
    "opp_rank": 1,
-   "opp_yds_pg": 87.8,
+   "opp_yds_pg": 89.1,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3045,7 +3058,7 @@
    "home": true,
    "slot": "QB",
    "opp_rank": 1,
-   "opp_yds_pg": 193.8,
+   "opp_yds_pg": 184.2,
    "tag": "TOUGH",
    "game": "SEA@WAS",
    "day": "Sunday",
@@ -3058,7 +3071,7 @@
    "home": true,
    "slot": "PASS",
    "opp_rank": 1,
-   "opp_yds_pg": 193.8,
+   "opp_yds_pg": 184.2,
    "tag": "TOUGH",
    "game": "SEA@WAS",
    "day": "Sunday",
@@ -3071,7 +3084,7 @@
    "home": true,
    "slot": "WR1",
    "opp_rank": 1,
-   "opp_yds_pg": 48.8,
+   "opp_yds_pg": 43.8,
    "tag": "TOUGH",
    "game": "SEA@WAS",
    "day": "Sunday",
@@ -3084,114 +3097,10 @@
    "home": true,
    "slot": "TE",
    "opp_rank": 1,
-   "opp_yds_pg": 27.6,
+   "opp_yds_pg": 26.5,
    "tag": "TOUGH",
    "game": "PHI@CHI",
    "day": "Monday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "David Njoku",
-   "team": "LAC",
-   "opp": "BUF",
-   "home": false,
-   "slot": "TE",
-   "opp_rank": 2,
-   "opp_yds_pg": 36.7,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Bryce Young",
-   "team": "CAR",
-   "opp": "CLE",
-   "home": false,
-   "slot": "QB",
-   "opp_rank": 2,
-   "opp_yds_pg": 194.0,
-   "tag": "TOUGH",
-   "game": "CAR@CLE",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Bryce Young",
-   "team": "CAR",
-   "opp": "CLE",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 2,
-   "opp_yds_pg": 195.4,
-   "tag": "TOUGH",
-   "game": "CAR@CLE",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jacory Croskey-Merritt",
-   "team": "WAS",
-   "opp": "SEA",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 2,
-   "opp_yds_pg": 70.3,
-   "tag": "TOUGH",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jacory Croskey-Merritt",
-   "team": "WAS",
-   "opp": "SEA",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 2,
-   "opp_yds_pg": 91.3,
-   "tag": "TOUGH",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Terry McLaurin",
-   "team": "WAS",
-   "opp": "SEA",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 2,
-   "opp_yds_pg": 28.4,
-   "tag": "TOUGH",
-   "game": "SEA@WAS",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Kalif Raymond",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "slot": "WR1",
-   "opp_rank": 2,
-   "opp_yds_pg": 49.1,
-   "tag": "TOUGH",
-   "game": "PHI@CHI",
-   "day": "Monday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "DJ Moore",
-   "team": "BUF",
-   "opp": "LAC",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 3,
-   "opp_yds_pg": 30.4,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
-   "day": "Sunday",
    "roof": "outdoors"
   },
   {
@@ -3200,8 +3109,8 @@
    "opp": "HOU",
    "home": true,
    "slot": "RUN",
-   "opp_rank": 3,
-   "opp_yds_pg": 91.6,
+   "opp_rank": 2,
+   "opp_yds_pg": 90.6,
    "tag": "TOUGH",
    "game": "HOU@IND",
    "day": "Sunday",
@@ -3213,8 +3122,8 @@
    "opp": "KC",
    "home": true,
    "slot": "QB",
-   "opp_rank": 3,
-   "opp_yds_pg": 196.5,
+   "opp_rank": 2,
+   "opp_yds_pg": 192.1,
    "tag": "TOUGH",
    "game": "KC@MIA",
    "day": "Sunday",
@@ -3226,21 +3135,21 @@
    "opp": "KC",
    "home": true,
    "slot": "PASS",
-   "opp_rank": 3,
-   "opp_yds_pg": 196.5,
+   "opp_rank": 2,
+   "opp_yds_pg": 192.1,
    "tag": "TOUGH",
    "game": "KC@MIA",
    "day": "Sunday",
    "roof": "outdoors"
   },
   {
-   "player": "Malik Washington",
+   "player": "Caleb Douglas",
    "team": "MIA",
    "opp": "KC",
    "home": true,
-   "slot": "WR1",
-   "opp_rank": 3,
-   "opp_yds_pg": 51.1,
+   "slot": "WR2",
+   "opp_rank": 2,
+   "opp_yds_pg": 28.7,
    "tag": "TOUGH",
    "game": "KC@MIA",
    "day": "Sunday",
@@ -3252,8 +3161,8 @@
    "opp": "TB",
    "home": false,
    "slot": "RB",
-   "opp_rank": 3,
-   "opp_yds_pg": 72.1,
+   "opp_rank": 2,
+   "opp_yds_pg": 68.8,
    "tag": "TOUGH",
    "game": "MIN@TB",
    "day": "Sunday",
@@ -3265,8 +3174,8 @@
    "opp": "TB",
    "home": false,
    "slot": "RB",
-   "opp_rank": 3,
-   "opp_yds_pg": 72.1,
+   "opp_rank": 2,
+   "opp_yds_pg": 68.8,
    "tag": "TOUGH",
    "game": "MIN@TB",
    "day": "Sunday",
@@ -3278,8 +3187,8 @@
    "opp": "LV",
    "home": true,
    "slot": "TE",
-   "opp_rank": 3,
-   "opp_yds_pg": 37.2,
+   "opp_rank": 2,
+   "opp_yds_pg": 36.5,
    "tag": "TOUGH",
    "game": "LV@NO",
    "day": "Sunday",
@@ -3291,25 +3200,168 @@
    "opp": "LV",
    "home": true,
    "slot": "TE",
-   "opp_rank": 3,
-   "opp_yds_pg": 37.2,
+   "opp_rank": 2,
+   "opp_yds_pg": 36.5,
    "tag": "TOUGH",
    "game": "LV@NO",
    "day": "Sunday",
    "roof": "dome"
   },
   {
-   "player": "Tetairoa McMillan",
-   "team": "CAR",
-   "opp": "CLE",
+   "player": "Kalif Raymond",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "slot": "WR1",
+   "opp_rank": 2,
+   "opp_yds_pg": 47.8,
+   "tag": "TOUGH",
+   "game": "PHI@CHI",
+   "day": "Monday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Austin Hooper",
+   "team": "ATL",
+   "opp": "GB",
+   "home": false,
+   "slot": "TE",
+   "opp_rank": 3,
+   "opp_yds_pg": 39.9,
+   "tag": "TOUGH",
+   "game": "ATL@GB",
+   "day": "Thursday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Xavier Worthy",
+   "team": "KC",
+   "opp": "MIA",
+   "home": false,
+   "slot": "WR1",
+   "opp_rank": 3,
+   "opp_yds_pg": 50.8,
+   "tag": "TOUGH",
+   "game": "KC@MIA",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jacory Croskey-Merritt",
+   "team": "WAS",
+   "opp": "SEA",
+   "home": true,
+   "slot": "RB",
+   "opp_rank": 3,
+   "opp_yds_pg": 69.0,
+   "tag": "TOUGH",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jacory Croskey-Merritt",
+   "team": "WAS",
+   "opp": "SEA",
+   "home": true,
+   "slot": "RUN",
+   "opp_rank": 3,
+   "opp_yds_pg": 91.0,
+   "tag": "TOUGH",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Terry McLaurin",
+   "team": "WAS",
+   "opp": "SEA",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 3,
+   "opp_yds_pg": 28.9,
+   "tag": "TOUGH",
+   "game": "SEA@WAS",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Caleb Williams",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "slot": "QB",
+   "opp_rank": 3,
+   "opp_yds_pg": 192.9,
+   "tag": "TOUGH",
+   "game": "PHI@CHI",
+   "day": "Monday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Caleb Williams",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "slot": "PASS",
+   "opp_rank": 3,
+   "opp_yds_pg": 192.9,
+   "tag": "TOUGH",
+   "game": "PHI@CHI",
+   "day": "Monday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Jahan Dotson",
+   "team": "ATL",
+   "opp": "GB",
    "home": false,
    "slot": "WR2",
    "opp_rank": 4,
-   "opp_yds_pg": 30.8,
+   "opp_yds_pg": 29.3,
    "tag": "TOUGH",
-   "game": "CAR@CLE",
+   "game": "ATL@GB",
+   "day": "Thursday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "David Njoku",
+   "team": "LAC",
+   "opp": "BUF",
+   "home": false,
+   "slot": "TE",
+   "opp_rank": 4,
+   "opp_yds_pg": 40.3,
+   "tag": "TOUGH",
+   "game": "LAC@BUF",
    "day": "Sunday",
    "roof": "outdoors"
+  },
+  {
+   "player": "Jared Goff",
+   "team": "DET",
+   "opp": "NYJ",
+   "home": true,
+   "slot": "QB",
+   "opp_rank": 4,
+   "opp_yds_pg": 193.5,
+   "tag": "TOUGH",
+   "game": "NYJ@DET",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Jared Goff",
+   "team": "DET",
+   "opp": "NYJ",
+   "home": true,
+   "slot": "PASS",
+   "opp_rank": 4,
+   "opp_yds_pg": 194.9,
+   "tag": "TOUGH",
+   "game": "NYJ@DET",
+   "day": "Sunday",
+   "roof": "dome"
   },
   {
    "player": "Jonathan Taylor",
@@ -3318,22 +3370,22 @@
    "home": true,
    "slot": "RB",
    "opp_rank": 4,
-   "opp_yds_pg": 73.7,
+   "opp_yds_pg": 73.8,
    "tag": "TOUGH",
    "game": "HOU@IND",
    "day": "Sunday",
    "roof": null
   },
   {
-   "player": "DK Metcalf",
-   "team": "PIT",
-   "opp": "CIN",
+   "player": "Malik Washington",
+   "team": "MIA",
+   "opp": "KC",
    "home": true,
    "slot": "WR1",
    "opp_rank": 4,
-   "opp_yds_pg": 53.0,
+   "opp_yds_pg": 52.1,
    "tag": "TOUGH",
-   "game": "CIN@PIT",
+   "game": "KC@MIA",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -3344,7 +3396,7 @@
    "home": false,
    "slot": "RUN",
    "opp_rank": 4,
-   "opp_yds_pg": 94.5,
+   "opp_yds_pg": 91.3,
    "tag": "TOUGH",
    "game": "MIN@TB",
    "day": "Sunday",
@@ -3357,11 +3409,76 @@
    "home": false,
    "slot": "RUN",
    "opp_rank": 4,
-   "opp_yds_pg": 94.5,
+   "opp_yds_pg": 91.3,
    "tag": "TOUGH",
    "game": "MIN@TB",
    "day": "Sunday",
    "roof": "outdoors"
+  },
+  {
+   "player": "Bryce Young",
+   "team": "CAR",
+   "opp": "CLE",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 5,
+   "opp_yds_pg": 197.3,
+   "tag": "TOUGH",
+   "game": "CAR@CLE",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Bryce Young",
+   "team": "CAR",
+   "opp": "CLE",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 5,
+   "opp_yds_pg": 198.4,
+   "tag": "TOUGH",
+   "game": "CAR@CLE",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Tetairoa McMillan",
+   "team": "CAR",
+   "opp": "CLE",
+   "home": false,
+   "slot": "WR2",
+   "opp_rank": 5,
+   "opp_yds_pg": 30.3,
+   "tag": "TOUGH",
+   "game": "CAR@CLE",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "DK Metcalf",
+   "team": "PIT",
+   "opp": "CIN",
+   "home": true,
+   "slot": "WR1",
+   "opp_rank": 5,
+   "opp_yds_pg": 52.5,
+   "tag": "TOUGH",
+   "game": "CIN@PIT",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Javonte Williams",
+   "team": "DAL",
+   "opp": "BAL",
+   "home": true,
+   "slot": "RB",
+   "opp_rank": 5,
+   "opp_yds_pg": 77.6,
+   "tag": "TOUGH",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
   },
   {
    "player": "Adam Trautman",
@@ -3369,8 +3486,8 @@
    "opp": "LA",
    "home": true,
    "slot": "TE",
-   "opp_rank": 4,
-   "opp_yds_pg": 42.2,
+   "opp_rank": 5,
+   "opp_yds_pg": 40.5,
    "tag": "TOUGH",
    "game": "LA@DEN",
    "day": "Sunday",
@@ -3382,62 +3499,10 @@
    "opp": "LA",
    "home": true,
    "slot": "TE",
-   "opp_rank": 4,
-   "opp_yds_pg": 42.2,
+   "opp_rank": 5,
+   "opp_yds_pg": 40.5,
    "tag": "TOUGH",
    "game": "LA@DEN",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Caleb Williams",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "slot": "QB",
-   "opp_rank": 4,
-   "opp_yds_pg": 196.7,
-   "tag": "TOUGH",
-   "game": "PHI@CHI",
-   "day": "Monday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Caleb Williams",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "slot": "PASS",
-   "opp_rank": 4,
-   "opp_yds_pg": 196.7,
-   "tag": "TOUGH",
-   "game": "PHI@CHI",
-   "day": "Monday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Austin Hooper",
-   "team": "ATL",
-   "opp": "GB",
-   "home": false,
-   "slot": "TE",
-   "opp_rank": 5,
-   "opp_yds_pg": 43.5,
-   "tag": "TOUGH",
-   "game": "ATL@GB",
-   "day": "Thursday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "James Cook",
-   "team": "BUF",
-   "opp": "LAC",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 5,
-   "opp_yds_pg": 100.4,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -3447,8 +3512,8 @@
    "opp": "CLE",
    "home": false,
    "slot": "WR1",
-   "opp_rank": 5,
-   "opp_yds_pg": 53.6,
+   "opp_rank": 6,
+   "opp_yds_pg": 53.8,
    "tag": "TOUGH",
    "game": "CAR@CLE",
    "day": "Sunday",
@@ -3460,8 +3525,8 @@
    "opp": "JAX",
    "home": false,
    "slot": "WR2",
-   "opp_rank": 5,
-   "opp_yds_pg": 31.4,
+   "opp_rank": 6,
+   "opp_yds_pg": 30.4,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3471,130 +3536,13 @@
    "player": "Bhayshul Tuten",
    "team": "JAX",
    "opp": "NE",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 5,
-   "opp_yds_pg": 78.5,
-   "tag": "TOUGH",
-   "game": "NE@JAX",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Kirk Cousins",
-   "team": "LV",
-   "opp": "NO",
-   "home": false,
-   "slot": "QB",
-   "opp_rank": 5,
-   "opp_yds_pg": 202.3,
-   "tag": "TOUGH",
-   "game": "LV@NO",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Kirk Cousins",
-   "team": "LV",
-   "opp": "NO",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 5,
-   "opp_yds_pg": 202.3,
-   "tag": "TOUGH",
-   "game": "LV@NO",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Justin Herbert",
-   "team": "LAC",
-   "opp": "BUF",
-   "home": false,
-   "slot": "QB",
-   "opp_rank": 6,
-   "opp_yds_pg": 202.8,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Justin Herbert",
-   "team": "LAC",
-   "opp": "BUF",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 6,
-   "opp_yds_pg": 202.8,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "KC Concepcion",
-   "team": "CLE",
-   "opp": "CAR",
-   "home": true,
-   "slot": "WR2",
-   "opp_rank": 6,
-   "opp_yds_pg": 31.6,
-   "tag": "TOUGH",
-   "game": "CAR@CLE",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Bhayshul Tuten",
-   "team": "JAX",
-   "opp": "NE",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 6,
-   "opp_yds_pg": 100.4,
-   "tag": "TOUGH",
-   "game": "NE@JAX",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Xavier Worthy",
-   "team": "KC",
-   "opp": "MIA",
-   "home": false,
-   "slot": "WR1",
-   "opp_rank": 6,
-   "opp_yds_pg": 55.1,
-   "tag": "TOUGH",
-   "game": "KC@MIA",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Javonte Williams",
-   "team": "DAL",
-   "opp": "BAL",
    "home": true,
    "slot": "RB",
    "opp_rank": 6,
    "opp_yds_pg": 79.1,
    "tag": "TOUGH",
-   "game": "BAL@DAL",
+   "game": "NE@JAX",
    "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Jahan Dotson",
-   "team": "ATL",
-   "opp": "GB",
-   "home": false,
-   "slot": "WR2",
-   "opp_rank": 7,
-   "opp_yds_pg": 32.1,
-   "tag": "TOUGH",
-   "game": "ATL@GB",
-   "day": "Thursday",
    "roof": "outdoors"
   },
   {
@@ -3603,8 +3551,8 @@
    "opp": "NE",
    "home": true,
    "slot": "QB",
-   "opp_rank": 7,
-   "opp_yds_pg": 203.2,
+   "opp_rank": 6,
+   "opp_yds_pg": 201.6,
    "tag": "TOUGH",
    "game": "NE@JAX",
    "day": "Sunday",
@@ -3616,127 +3564,10 @@
    "opp": "NE",
    "home": true,
    "slot": "PASS",
-   "opp_rank": 7,
-   "opp_yds_pg": 203.2,
+   "opp_rank": 6,
+   "opp_yds_pg": 201.6,
    "tag": "TOUGH",
    "game": "NE@JAX",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "De'Von Achane",
-   "team": "MIA",
-   "opp": "KC",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 7,
-   "opp_yds_pg": 80.5,
-   "tag": "TOUGH",
-   "game": "KC@MIA",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jake Ferguson",
-   "team": "DAL",
-   "opp": "BAL",
-   "home": true,
-   "slot": "TE",
-   "opp_rank": 7,
-   "opp_yds_pg": 45.8,
-   "tag": "TOUGH",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Javonte Williams",
-   "team": "DAL",
-   "opp": "BAL",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 7,
-   "opp_yds_pg": 100.7,
-   "tag": "TOUGH",
-   "game": "BAL@DAL",
-   "day": "Sunday",
-   "roof": null
-  },
-  {
-   "player": "Chris Olave",
-   "team": "NO",
-   "opp": "LV",
-   "home": true,
-   "slot": "WR1",
-   "opp_rank": 7,
-   "opp_yds_pg": 59.1,
-   "tag": "TOUGH",
-   "game": "LV@NO",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Cooper Rush",
-   "team": "ATL",
-   "opp": "GB",
-   "home": false,
-   "slot": "PASS",
-   "opp_rank": 8,
-   "opp_yds_pg": 204.9,
-   "tag": "TOUGH",
-   "game": "ATL@GB",
-   "day": "Thursday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "James Cook",
-   "team": "BUF",
-   "opp": "LAC",
-   "home": true,
-   "slot": "RB",
-   "opp_rank": 8,
-   "opp_yds_pg": 83.2,
-   "tag": "TOUGH",
-   "game": "LAC@BUF",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "Jared Goff",
-   "team": "DET",
-   "opp": "NYJ",
-   "home": true,
-   "slot": "QB",
-   "opp_rank": 8,
-   "opp_yds_pg": 203.8,
-   "tag": "TOUGH",
-   "game": "NYJ@DET",
-   "day": "Sunday",
-   "roof": "dome"
-  },
-  {
-   "player": "Rashee Rice",
-   "team": "KC",
-   "opp": "MIA",
-   "home": false,
-   "slot": "WR2",
-   "opp_rank": 8,
-   "opp_yds_pg": 32.2,
-   "tag": "TOUGH",
-   "game": "KC@MIA",
-   "day": "Sunday",
-   "roof": "outdoors"
-  },
-  {
-   "player": "De'Von Achane",
-   "team": "MIA",
-   "opp": "KC",
-   "home": true,
-   "slot": "RUN",
-   "opp_rank": 8,
-   "opp_yds_pg": 101.5,
-   "tag": "TOUGH",
-   "game": "KC@MIA",
    "day": "Sunday",
    "roof": "outdoors"
   },
@@ -3746,12 +3577,155 @@
    "opp": "TEN",
    "home": true,
    "slot": "TE",
-   "opp_rank": 8,
-   "opp_yds_pg": 46.2,
+   "opp_rank": 6,
+   "opp_yds_pg": 41.4,
    "tag": "TOUGH",
    "game": "TEN@NYG",
    "day": "Sunday",
    "roof": "outdoors"
+  },
+  {
+   "player": "Javonte Williams",
+   "team": "DAL",
+   "opp": "BAL",
+   "home": true,
+   "slot": "RUN",
+   "opp_rank": 6,
+   "opp_yds_pg": 97.8,
+   "tag": "TOUGH",
+   "game": "BAL@DAL",
+   "day": "Sunday",
+   "roof": null
+  },
+  {
+   "player": "James Cook",
+   "team": "BUF",
+   "opp": "LAC",
+   "home": true,
+   "slot": "RUN",
+   "opp_rank": 7,
+   "opp_yds_pg": 98.0,
+   "tag": "TOUGH",
+   "game": "LAC@BUF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "DJ Moore",
+   "team": "BUF",
+   "opp": "LAC",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 7,
+   "opp_yds_pg": 30.7,
+   "tag": "TOUGH",
+   "game": "LAC@BUF",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "De'Von Achane",
+   "team": "MIA",
+   "opp": "KC",
+   "home": true,
+   "slot": "RB",
+   "opp_rank": 7,
+   "opp_yds_pg": 79.3,
+   "tag": "TOUGH",
+   "game": "KC@MIA",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Chris Olave",
+   "team": "NO",
+   "opp": "LV",
+   "home": true,
+   "slot": "WR1",
+   "opp_rank": 7,
+   "opp_yds_pg": 54.2,
+   "tag": "TOUGH",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Matthew Stafford",
+   "team": "LA",
+   "opp": "DEN",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 7,
+   "opp_yds_pg": 202.5,
+   "tag": "TOUGH",
+   "game": "LA@DEN",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Matthew Stafford",
+   "team": "LA",
+   "opp": "DEN",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 7,
+   "opp_yds_pg": 202.5,
+   "tag": "TOUGH",
+   "game": "LA@DEN",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Sam LaPorta",
+   "team": "DET",
+   "opp": "NYJ",
+   "home": true,
+   "slot": "TE",
+   "opp_rank": 8,
+   "opp_yds_pg": 44.3,
+   "tag": "TOUGH",
+   "game": "NYJ@DET",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Bhayshul Tuten",
+   "team": "JAX",
+   "opp": "NE",
+   "home": true,
+   "slot": "RUN",
+   "opp_rank": 8,
+   "opp_yds_pg": 99.3,
+   "tag": "TOUGH",
+   "game": "NE@JAX",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Kirk Cousins",
+   "team": "LV",
+   "opp": "NO",
+   "home": false,
+   "slot": "QB",
+   "opp_rank": 8,
+   "opp_yds_pg": 205.3,
+   "tag": "TOUGH",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
+  },
+  {
+   "player": "Kirk Cousins",
+   "team": "LV",
+   "opp": "NO",
+   "home": false,
+   "slot": "PASS",
+   "opp_rank": 8,
+   "opp_yds_pg": 205.3,
+   "tag": "TOUGH",
+   "game": "LV@NO",
+   "day": "Sunday",
+   "roof": "dome"
   },
   {
    "player": "Puka Nacua",
@@ -3760,7 +3734,20 @@
    "home": false,
    "slot": "WR1",
    "opp_rank": 8,
-   "opp_yds_pg": 59.4,
+   "opp_yds_pg": 59.1,
+   "tag": "TOUGH",
+   "game": "LA@DEN",
+   "day": "Sunday",
+   "roof": "outdoors"
+  },
+  {
+   "player": "Courtland Sutton",
+   "team": "DEN",
+   "opp": "LA",
+   "home": true,
+   "slot": "WR2",
+   "opp_rank": 8,
+   "opp_yds_pg": 31.2,
    "tag": "TOUGH",
    "game": "LA@DEN",
    "day": "Sunday",

@@ -1,96 +1,96 @@
 # Week 3 SUN card
 
-## Edge Index — Week 3 Sunday Card (2026)
-
-Three tickets. Flat units. Real prices not yet posted; estimated prices only — confirm before placing.
-
----
-
-## The Tickets
+## The tickets
 
 ### SUN-1
 
 | Leg | Rung | Est. price | L10 / L15 | Last 3 | Matchup |
-|---|---|---|---|---|---|
-| Derrick Henry, BAL — rush yds | 60+ | -345 | 10/10 / 14/15 | 126, 144, 68 | vs DAL — SOFT D / SOFT vol |
-| Sam LaPorta, DET — rec yds | 25+ | -441 | 9/10 / 14/15 | 53, 48, 52 | vs NYJ — neutral D / SOFT vol |
-| Omarion Hampton, LAC — rush att | 12+ | -398 | 9/10 / 14/15 | 14, 12, 23 | vs BUF — SOFT D / neutral vol |
-| Chris Godwin, TB — receptions | 3+ | -194 | 8/10 / 13/15 | 1, 4, 3 | vs MIN — neutral D / neutral vol |
+|-----|------|------------|-----------|--------|---------|
+| Derrick Henry rush yds | 60+ | -377 | 10/10 / 14/15 | 126, 144, 68 | BAL vs DAL — opp D SOFT |
+| Juwan Johnson receptions | 3+ | -228 | 10/10 / 13/15 | 3, 3, 4 | NO vs LV — opp D neutral |
+| Omarion Hampton rush att | 12+ | -431 | 9/10 / 14/15 | 14, 12, 23 | LAC vs BUF — opp D neutral |
+| Courtland Sutton receptions | 3+ | -232 | 8/10 / 11/15 | 1, 2, 3 | DEN vs LA — opp D neutral |
 
-Model hit rate: 58.3% · Est. payout: +200
-
-Three legs are at the floor rung with L14/15 or better. Godwin is the drag — one result of 1 catch in the last three is a real number, not noise, and his L10 of 8/10 is the weakest link. These four come from four separate games, so no single game script sinks the ticket.
+Model hit: 51.5% — Est. payout: +221. Henry and Johnson are both floor stars anchoring separate tickets; Sutton is the weakest leg here (C grade, last three show one miss at the rung). Three legs carry genuine confidence; Sutton is the drag, and that is priced into the payout.
 
 ---
 
 ### SUN-2
 
 | Leg | Rung | Est. price | L10 / L15 | Last 3 | Matchup |
-|---|---|---|---|---|---|
-| Derrick Henry, BAL — rush yds | 60+ | -345 | 10/10 / 14/15 | 126, 144, 68 | vs DAL — SOFT D / SOFT vol |
-| Kyren Williams, LA — rush att | 12+ | -220 | 9/10 / 14/15 | 12, 11, 12 | vs DEN — neutral D / neutral vol |
-| Cade Otton, TB — rec yds | 15+ | -301 | 9/10 / 13/15 | 94, 26, 38 | vs MIN — neutral D / neutral vol |
-| Amon-Ra St. Brown, DET — rec yds | 50+ | -426 | 8/10 / 12/15 | 139, 67, 142 | vs NYJ — neutral D / SOFT vol |
+|-----|------|------------|-----------|--------|---------|
+| Derrick Henry rush yds | 60+ | -377 | 10/10 / 14/15 | 126, 144, 68 | BAL vs DAL — opp D SOFT |
+| Rashee Rice receptions | 4+ | -192 | 9/10 / 14/15 | 7, 2, 4 | KC vs MIA — opp D neutral |
+| Kyren Williams rush att | 12+ | -152 | 9/10 / 14/15 | 12, 11, 12 | LA vs DEN — opp D neutral |
 
-Model hit rate: 56.2% · Est. payout: +209
-
-Henry anchors both SUN-1 and SUN-2 as a permitted floor star. Williams's last three are almost identical — 12, 11, 12 — which speaks to role consistency more than upside. St. Brown's 50-yard rung against a neutral secondary is the thinnest piece; L12/15 is acceptable, not dominant.
+Model hit: 72.9% — Est. payout: +219. The tightest three-leg build on the card. Henry anchors as a floor star (permitted to appear on two tickets per rules). Williams has hit 12 rush attempts exactly in two of three and had three at 12 in the last five; the line is sitting at the floor of his range. Rice's lone miss in the last ten came when he caught two against a press-man scheme MIA does not typically run.
 
 ---
 
 ### SUN-3
 
 | Leg | Rung | Est. price | L10 / L15 | Last 3 | Matchup |
-|---|---|---|---|---|---|
-| Sam LaPorta, DET — rec yds | 25+ | -441 | 9/10 / 14/15 | 53, 48, 52 | vs NYJ — neutral D / SOFT vol |
-| Chase Brown, CIN — receptions | 3+ | -226 | 9/10 / 12/15 | 4, 5, 3 | vs PIT — neutral D / SOFT vol |
-| Baker Mayfield, TB — rush yds | 15+ | -171 | 9/10 / 12/15 | 31, 30, 29 | vs MIN — neutral D / neutral vol |
-| Dak Prescott, DAL — pass yds | 240+ | -224 | 8/10 / 11/15 | 70, 175, 279 | vs BAL — SOFT D / SOFT vol |
+|-----|------|------------|-----------|--------|---------|
+| Juwan Johnson receptions | 3+ | -228 | 10/10 / 13/15 | 3, 3, 4 | NO vs LV — opp D neutral |
+| George Kittle rec yds | 25+ | -407 | 9/10 / 13/15 | 29, 12, 80 | SF vs ARI — opp D neutral |
+| Cade Otton rec yds | 15+ | -299 | 9/10 / 13/15 | 94, 26, 38 | TB vs MIN — opp D neutral |
+| Evan Engram receptions | 2+ | -366 | 8/10 / 12/15 | 3, 4, 1 | DEN vs LA — opp D neutral |
 
-Model hit rate: 42.2% · Est. payout: +306
-
-LaPorta anchors here as the second permitted floor star appearance. The ticket carries real variance: Prescott's last three include a 70-yard result, which is the definition of a bad game-script outcome. His L15 of 11/15 is the lowest rate on any leg across all three tickets. The payout target of +306 prices in that uncertainty. This is the longest shot of the three and should be sized accordingly within flat-unit rules.
+Model hit: 52.1% — Est. payout: +204. Johnson is a floor star anchoring here and in SUN-1 (permitted). Kittle at -407 is a heavy price for a leg that missed once in ten, and his Week 2 result of 12 yards is the concern; he cleared 25 in 12 of 15. Engram's last three include a 1-reception game that would have been a miss; the 2+ rung is genuinely low, which is why it is on the card rather than a higher line, but the price is steep for an 80% leg.
 
 ---
 
-## Floors as Singles
+## Floors as singles
 
-Players already on tickets are excluded per the no-shared-legs rule. Henry and LaPorta anchor two tickets each as floor stars and are not listed again here.
+The following six floors are on the tickets above and are listed for reference as standalone options. No leg from `floors_singles` falls outside the three tickets, so all twelve singles listed in the data appear on tickets. The six not already named in the ticket tables:
 
-**Breece Hall, NYJ — rush att 14+** · -195 · L10 9/10 / L15 13/15 · Last 3: 14, 22, 16 · vs DET neutral D
-
-**Chase Brown, CIN — receptions 3+** · -226 · L10 9/10 / L15 12/15 · Last 3: 4, 5, 3 · vs PIT neutral D
-
-**Baker Mayfield, TB — rush yds 15+** · -171 · L10 9/10 / L15 12/15 · Last 3: 31, 30, 29 · vs MIN neutral D
-
-**Chris Godwin, TB — receptions 3+** · -194 · L10 8/10 / L15 13/15 · Last 3: 1, 4, 3 · vs MIN neutral D
-
-**Tee Higgins, CIN — rec yds 40+** · -230 · L10 9/10 / L15 11/15 · Last 3: 67, 59, 95 · vs PIT neutral D
-
-**Omarion Hampton, LAC — rush yds 40+** · -393 · L10 8/10 / L15 12/15 · Last 3: 29, 43, 94 · vs BUF SOFT D
+- **Jacoby Brissett pass att 30+** — -270 est. | 9/10, 13/15 | last 3: 31, 37, 28 | ARI vs SF, opp D neutral. Target counts have been consistent even against top pass defenses; SF is neutral here.
+- **Christian McCaffrey receptions 4+** — -245 est. | 9/10, 13/15 | last 3: 6, 5, 4 | SF vs ARI, opp D neutral. Touched the line exactly in the last game; role appears stable.
+- **Breece Hall rush att 14+** — -172 est. | 9/10, 13/15 | last 3: 14, 22, 16 | NYJ vs DET, opp D SOFT. Detroit's run defense is the most permissive on the board; Hall's volume floor is the lowest-risk entry on the slate.
+- **Harold Fannin Jr. rec yds 25+** — -264 est. | 9/10, 12/15 | last 3: 30, 21, 54 | CLE vs CAR, opp D neutral. Deshaun Watson's ADOT being 3.7 keeps the ceiling capped but the rung is low enough to survive it.
+- **Pat Bryant rec yds 15+** — -261 est. | 9/10, 12/15 | last 3: 31, 42, 0 | DEN vs LA, opp D neutral. The zero in the last three is real; if you play this single, size it accordingly.
+- **Evan Engram receptions 2+** — -366 est. | 8/10, 12/15 | last 3: 3, 4, 1 | DEN vs LA, opp D neutral. Already on SUN-3; as a single, the price is steep relative to an 80% leg.
 
 ---
 
-## Held Back
+## Held back
 
-**Brenton Strange — rec yds 15+** · Est. -314 · L10 10/10 / L15 15/15 · Reason: opponent D rated TOUGH. A perfect rate does not overcome a hard matchup ceiling; the number is not winnable first on this slate.
+**Darnell Mooney rec yds 15+** (-141 est.) — Team change (ATL to NYG). Route tree and target share are unknown quantities in a new offense. The number is recent from Atlanta; it does not carry to a new system in Week 3.
 
-**Rhamondre Stevenson — rush yds 30+** · Est. -212 · L10 9/10 / L15 11/15 · Reason: opponent D TOUGH. L15 of 11/15 is already lean; a tough run defense pushes expected value below the threshold.
+**Jauan Jennings rec yds 25+ / receptions 3+** (+208 / +312 est.) — Team change (SF to MIN) and own volume low (TOUGH tag). Minnesota's passing volume is not yet established under the current scheme, and Jennings is not the WR1 there. Two reasons on both lines.
 
-**Brian Thomas Jr — rec yds 25+** · Est. -253 · L10 9/10 / L15 14/15 · Reason: opponent D TOUGH. Rate is strong but the matchup tag alone holds this back; not enough edge to override.
+**Brock Purdy pass att 26+ and pass cmps 18+** (-516 / -405 est.) — Blowout risk: SF favored by 8.5. Per card rules, no attempt props in likely blowouts. Purdy's prices also exceed -450 on pass attempts.
 
-**Kyler Murray (all three markets)** · Reason: own volume rated TOUGH and TeamChange flag is true. Unclear target share and role in a new system is not a profile the card takes on in Week 3.
+**Patrick Mahomes pass att 32+** (-101 est.) — Blowout risk: KC favored by 10.5. Even at a flat price, the game script could turn this into a running-clock situation in the second half.
 
-**Jakobi Meyers — rec yds 35+** · Est. -114 · L10 9/10 / L15 11/15 · Reason: opponent D TOUGH. The favorable price does not compensate for a tough secondary; own volume is also neutral, not elevated.
+**Keenan Allen rec yds 15+** (-504 est.) — Team change (LAC to IND) and price exceeds -450. Both conditions are automatic holds under card rules.
 
-**Mack Hollins (both markets)** · Reason: own volume TOUGH. Rate history is there but target volume is flagged as constrained; the leg is not winnable first in a reduced role.
+**Wan'Dale Robinson receptions 4+ / rec yds 31+** (-101 / -116 est.) — Team change (NYG to TEN). Last three are volatile (11, 5, 1 and 113, 38, 9 respectively), and role clarity in Tennessee is not established.
 
 ---
 
 ## Notes
 
-No author notes were provided with this slate. The fields above marked "opp D" and "own vol" are model output tags, not scheme or injury reads.
+The following are the author's outside reads — scheme and injury context, not model output.
 
----
-
-What would change our mind: any confirmed injury or inactive designation for Henry, LaPorta, or Hampton before kickoff voids the affected ticket entirely.
+> Outside read (ESPN power rankings, Wk 3) — context, not model output.
+>
+> Pressure environment: league pressure rate 35%, highest through two weeks since 2009. Lean away from pass-yard overs on QBs with bad pass protection.
+>
+> QB injuries / changes:
+> - CHI: Caleb Williams (hamstring) out, Tyson Bagent starts. Hold all CHI pass legs; Bears run volume likely rises.
+> - WAS: Jayden Daniels (elbow) out, Mariota starts vs SEA. Hold WAS pass legs; SEA D is the toughest pass D on the board.
+> - MIN: Kyler Murray returns from concussion at TB. Wentz-era receiver numbers understate Jefferson/Addison.
+> - NYG: Jaxson Dart status TBD; Winston was 5/12 in relief. Nabers downgrade if Dart out.
+> - HOU: Nico Collins (hamstring) missed Wk 2; Schultz 12/140 without him.
+> - LAR: Puka Nacua (groin) — Adams is the volume target if Puka sits.
+>
+> Pressure matchups:
+> - PIT @ CIN: Rodgers 8/24 under pressure; CIN generated 27 pressures in Wk 2. Rodgers pass unders.
+> - JAX vs NE: Lawrence 38.5% completions under pressure; NE blitzed 18 times in Wk 2. Lawrence pass unders; floors on JAX receivers only at low rungs.
+> - BAL @ DAL: BAL pass block win rate 33-38%, but DAL has 2 sacks all year. Neutral-to-good for Lamar.
+>
+> Usage notes:
+> - Josh Allen: 70 of his 92 rush yards on scrambles; rush floor is scramble-driven, strongest vs man coverage.
+> - Geno Smith averaging 5.8 air yards: Garrett Wilson receptions over > yards over.
+> - Deshaun Watson ADOT 
