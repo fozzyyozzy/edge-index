@@ -1,7 +1,7 @@
 import { useState } from "react";
-// v2026-09-24
+// v2026-09-25
 
-const TODAY = "2026-09-24";
+const TODAY = "2026-09-25";
 
 // >>> AUTO-GENERATED FREE PICK BEGIN — do not edit between markers
 const FREE_PICK = {
@@ -16,45 +16,41 @@ const FREE_PICK = {
 // <<< AUTO-GENERATED FREE PICK END
 
 const PITCHER_PLAYS = [
-  {pitcher:"Andrew Painter",team:"None",opp:"Philadelphia Phillies",home:"Philadelphia Phillies",
-   prop:"strikeouts",line:4.5,odds:-162,tier:"T1",model_prob:0.658,
-   streak:1,l5_avg:5.6,k_per_ip:0,opp_k_pct:0.225,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.6 Ks"]},
-  {pitcher:"Eduardo Rodriguez",team:"None",opp:"Colorado Rockies",home:"Colorado Rockies",
-   prop:"strikeouts",line:4.5,odds:-130,tier:"T1",model_prob:0.661,
-   streak:3,l5_avg:6.0,k_per_ip:0,opp_k_pct:0.252,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 6.0 Ks"]},
-  {pitcher:"Peter Lambert",team:"None",opp:"Athletics",home:"Athletics",
-   prop:"strikeouts",line:4.5,odds:120,tier:"T1",model_prob:0.697,
-   streak:1,l5_avg:5.4,k_per_ip:0,opp_k_pct:0.258,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.4 Ks"]},
-  {pitcher:"Tyler Glasnow",team:"None",opp:"Los Angeles Dodgers",home:"Los Angeles Dodgers",
-   prop:"strikeouts",line:6.5,odds:-144,tier:"T1",model_prob:0.75,
-   streak:3,l5_avg:7.6,k_per_ip:0,opp_k_pct:0.235,
-   alt_lines:[5.5,6.0],hand:"R",notes:["L5 avg 7.6 Ks"]},
+  {pitcher:"Andrew Alvarez",team:"None",opp:"Washington Nationals",home:"Washington Nationals",
+   prop:"strikeouts",line:4.5,odds:-125,tier:"AUTO",model_prob:0.902,
+   streak:6,l5_avg:6.6,k_per_ip:0,opp_k_pct:0.245,
+   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 6.6 Ks"]},
+  {pitcher:"Gavin Williams",team:"None",opp:"Kansas City Royals",home:"Kansas City Royals",
+   prop:"strikeouts",line:6.5,odds:-132,tier:"T1",model_prob:0.751,
+   streak:4,l5_avg:8.6,k_per_ip:0,opp_k_pct:0.228,
+   alt_lines:[5.5,6.0],hand:"R",notes:["L5 avg 8.6 Ks"]},
+  {pitcher:"Hunter Brown",team:"None",opp:"Athletics",home:"Athletics",
+   prop:"strikeouts",line:5.5,odds:-106,tier:"AUTO",model_prob:0.891,
+   streak:5,l5_avg:8.8,k_per_ip:0,opp_k_pct:0.258,
+   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 8.8 Ks"]},
 ];
 
 const BATTER_PLAYS = [
-  {batter:"Agustín Ramírez",team:"Miami Marlins",opp:"?",home:"Chicago Cubs",
-   prop:"hits",line:0.5,odds:-120,tier:"T1",model_prob:0.675,
-   hit_streak:2,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
-  {batter:"Brayan Rocchio",team:"Cleveland Guardians",opp:"?",home:"Boston Red Sox",
-   prop:"hits",line:0.5,odds:-139,tier:"T1",model_prob:0.755,
+  {batter:"Agustín Ramírez",team:"Miami Marlins",opp:"?",home:"Miami Marlins",
+   prop:"hits",line:0.5,odds:-128,tier:"T1",model_prob:0.66,
+   hit_streak:3,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["3-game hit streak"]},
+  {batter:"Andrew Knizner",team:"Los Angeles Dodgers",opp:"?",home:"San Francisco Giants",
+   prop:"hits",line:0.5,odds:-130,tier:"T1",model_prob:0.682,
+   hit_streak:3,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["3-game hit streak"]},
+  {batter:"Corbin Carroll",team:"Arizona Diamondbacks",opp:"?",home:"San Diego Padres",
+   prop:"hits",line:0.5,odds:-139,tier:"T1",model_prob:0.722,
    hit_streak:4,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
-  {batter:"Brett Baty",team:"New York Mets",opp:"?",home:"Texas Rangers",
-   prop:"hits",line:0.5,odds:-136,tier:"AUTO",model_prob:0.866,
+  {batter:"Francisco Alvarez",team:"New York Mets",opp:"?",home:"Washington Nationals",
+   prop:"hits",line:0.5,odds:-149,tier:"T1",model_prob:0.712,
+   hit_streak:4,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
+  {batter:"George Lombard Jr.",team:"Baltimore Orioles",opp:"?",home:"New York Yankees",
+   prop:"hits",line:0.5,odds:-136,tier:"AUTO",model_prob:0.894,
    hit_streak:5,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["5-game hit streak"]},
-  {batter:"George Lombard Jr.",team:"Tampa Bay Rays",opp:"?",home:"New York Yankees",
-   prop:"hits",line:0.5,odds:-120,tier:"T1",model_prob:0.749,
-   hit_streak:4,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
-  {batter:"Heliot Ramos",team:"Tampa Bay Rays",opp:"?",home:"New York Yankees",
-   prop:"hits",line:0.5,odds:-149,tier:"T1",model_prob:0.659,
-   hit_streak:2,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
 ];
 
 const SKIP_TODAY = [
@@ -65,18 +61,22 @@ const SKIP_TODAY = [
 ];
 
 const FADE_PLAYS = [
-  {batter:"Hector Rodriguez",team:"?",opp:"?",
+  {batter:"Cam Smith",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
-   reason:"2-for-30 L14 (.067)"}, 
-  {batter:"Tristan Peters",team:"?",opp:"?",
+   reason:"3-for-39 L14 (.077)"}, 
+  {batter:"Ryan Vilade",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
-   reason:"2-for-27 L14 (.074)"}, 
-  {batter:"Kyle Schwarber",team:"?",opp:"?",
+   reason:"2-for-23 L14 (.087)"}, 
+  {batter:"Tommy Edman",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
-   reason:"4-for-41 L14 (.098)"}, 
+   reason:"4-for-43 L14 (.093)"}, 
+  {batter:"Ryan Jeffers",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"3-for-32 L14 (.094)"}, 
 ];
 
 const PARLAY_POTENTIALS = [
