@@ -38,6 +38,15 @@ const rungStr = r => Number.isInteger(r) ? `${r}+` : `o${r}`;
 const clean = s => String(s || "").trim();
 const rowKey = p => `${p.player}|${p.market}`;
 
+// Per-leg hit probability for the slip: add-one smoothed clear rate over each window, (hits+1)/(games+2), take the lower
+// of L10 and L15, cap at 0.90. An estimate from clear rates, not a calibrated probability. null when a rung has no
+// L10/L15 (a hold with fewer than 10 games).
+function legProb(r) {
+  const win = s => { const m = /^(\d+)\/(\d+)$/.exec(s || ""); return m ? (+m[1] + 1) / (+m[2] + 2) : null; };
+  const a = win(r.l10), b = win(r.l15);
+  return a == null || b == null ? null : Math.min(a, b, 0.90);
+}
+
 // Formulas from LEGS_TAB_SPEC.md
 const dec = o => o < 0 ? 1 + 100 / (-o) : 1 + o / 100;
 const american = d => d >= 2 ? Math.round((d - 1) * 100) : Math.round(-100 / (d - 1));
@@ -268,8 +277,8 @@ function Slip({ slip, setSlip, notice, tickets, setTickets, meta, slate, onSave 
   const remove = i => setSlip(s => s.filter((_, j) => j !== i));
 
   const pd = slip.reduce((a, l) => a * dec(l.odds), 1);
-  const hitKnown = slip.every(l => l.clear_pct != null);
-  const hit = slip.reduce((a, l) => a * (l.clear_pct ?? 0) / 100, 1);
+  const hitKnown = slip.every(l => l.p != null);
+  const hit = slip.reduce((a, l) => a * (l.p ?? 0), 1);
   const be = 1 / pd;
   const ev = hit * (pd - 1) - (1 - hit);
 
@@ -297,10 +306,11 @@ function Slip({ slip, setSlip, notice, tickets, setTickets, meta, slate, onSave 
   };
   const del = id => { const next = tickets.filter(t => t.id !== id); setTickets(next); storeTickets(next); };
 
-  const stat = (label, value, color = T.text) => (
+  const stat = (label, value, color = T.text, note = null) => (
     <div>
       <div style={{fontSize:8,color:"#444",letterSpacing:2,marginBottom:3}}>{label}</div>
       <div style={{fontSize:15,fontWeight:800,color,fontFamily:T.mono,letterSpacing:-0.5}}>{value}</div>
+      {note && <div style={{fontSize:8.5,color:"#555",marginTop:2,lineHeight:1.4}}>{note}</div>}
     </div>
   );
 
@@ -339,7 +349,7 @@ function Slip({ slip, setSlip, notice, tickets, setTickets, meta, slate, onSave 
           paddingTop:12,borderTop:`1px solid ${T.border}`}}>
           {stat("PAYOUT", oddsStr(american(pd)), T.nfl)}
           {stat("DECIMAL", pd.toFixed(2))}
-          {stat("HIT %", hitKnown ? (hit * 100).toFixed(1) + "%" : "—")}
+          {stat("HIT %", hitKnown ? (hit * 100).toFixed(1) + "%" : "—", T.text, "estimated from clear rates, not calibrated")}
           {stat("BREAKEVEN", (be * 100).toFixed(1) + "%")}
           {stat("EV / UNIT", hitKnown ? `${ev >= 0 ? "+" : ""}${ev.toFixed(2)}u` : "—",
             !hitKnown ? T.text : ev >= 0 ? T.accent : T.red)}
@@ -487,7 +497,7 @@ export default function LegsHub() {
       if (slip.some(l => l.repeatOf && !same(l))) { setNotice(`This leg is already on Ticket ${saved.name}, and this ticket already repeats one A+ leg.`); return; }
     }
     const leg = { player:p.player, market:p.market, team:p.team, game:p.game, rung:r.rung, odds:r.est_odds,
-      oddsText:oddsStr(r.est_odds), grade:r.grade, clear_pct:r.clear_pct ?? null, reasons:r.reasons || [],
+      oddsText:oddsStr(r.est_odds), grade:r.grade, clear_pct:r.clear_pct ?? null, p:legProb(r), reasons:r.reasons || [],
       danger: r.grade === "F" || (ATTEMPT_MARKETS.has(p.market) && r.reasons?.some(x => /blowout/.test(x))),
       repeatOf: saved ? saved.name : null };
     // Another rung of the same player/market replaces the one in the slip.

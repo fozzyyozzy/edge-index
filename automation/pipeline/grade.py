@@ -4,7 +4,8 @@ Reads : cards/card_<season>_w<week>_<slate>.json   (from build_card_json.py)
         cards/handbuilt_<season>_w<week>_<slate>.json   (card tickets published by hand, outside the pipeline — each
                                                          carries a "flag"; they count in the ticket W-L but have no
                                                          pipeline grade, so they never enter by_grade)
-Writes: receipts/receipts_<season>_w<week>.json  +  receipts/season_ledger.csv (append)
+Writes: receipts/receipts_<season>_w<week>.json  +  receipts/season_ledger.csv (this week's rows replaced, so a
+        regrade — a late cron plus a manual run — never double-counts)
 Usage : python pipeline/grade.py --season 2026 --week 2
 """
 import argparse, glob, json, os
@@ -136,15 +137,19 @@ def main():
     out = P("receipts", f"receipts_{a.season}_w{a.week}.json")
     json.dump(summary, open(out, "w"), indent=1)
     ledger = P("receipts", "season_ledger.csv")
-    df.assign(season=a.season, week=a.week).reindex(columns=LEDGER_COLS).to_csv(ledger, mode="a", index=False,
-                                                                              header=not os.path.exists(ledger))
+    rows = df.assign(season=a.season, week=a.week).reindex(columns=LEDGER_COLS)
+    if os.path.exists(ledger):                                          # idempotent: replace this week, keep the rest
+        old = pd.read_csv(ledger)
+        rows = pd.concat([old[~((old.season == a.season) & (old.week == a.week))].reindex(columns=LEDGER_COLS), rows],
+                         ignore_index=True).sort_values(["season", "week"], kind="stable")
+    rows.to_csv(ledger, index=False)
     write_season_record(a.season)
     print(f"wrote {out}"); print(json.dumps({k: summary[k] for k in ("legs_graded", "legs_hit", "hit_rate", "avg_model_pct", "flat_pnl_1u", "ticket_record")}, indent=1))
 
 def write_season_record(season):
     """All of this season's receipts -> receipts/record_<season>.json, the site's NFL Record tab
     (tuesday.yml copies it to cfb-app/public/data/nfl_record.json). Rebuilt from the per-week files each run,
-    so re-grading a week replaces it rather than double-counting (the append-only ledger would)."""
+    so re-grading a week replaces it rather than double-counting."""
     weeks = []
     for path in sorted(glob.glob(P("receipts", f"receipts_{season}_w*.json")), key=lambda f: int(f.rsplit("_w", 1)[1][:-5])):
         weeks.append(json.load(open(path)))
