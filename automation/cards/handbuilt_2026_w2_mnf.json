@@ -1,0 +1,80 @@
+{
+ "season": 2026,
+ "week": 2,
+ "slate": "mnf",
+ "hand_built": true,
+ "why": "Published before the pipeline existed. Graded from nflverse. Official result = as settled at DraftKings, where Early Exit protection voids a leg whose player left the game early (early_exit: true); standard settlement grades every leg. Prices marked price_estimated were published as approximate.",
+ "tickets": [
+  {
+   "name": "MNF",
+   "flag": "hand-built, pre-automation",
+   "legs": [
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "opp": "NYG",
+     "market": "rush_att",
+     "rung": 12.0,
+     "odds_est": -280,
+     "odds_real": -280,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Matthew Stafford",
+     "team": "LA",
+     "opp": "NYG",
+     "market": "pass_att",
+     "rung": 28.0,
+     "odds_est": -455,
+     "odds_real": -455,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Jaxson Dart",
+     "team": "NYG",
+     "opp": "LA",
+     "market": "rush_yds",
+     "rung": 20.0,
+     "odds_est": -365,
+     "odds_real": -365,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation",
+     "early_exit": true
+    },
+    {
+     "player": "Davante Adams",
+     "team": "LA",
+     "opp": "NYG",
+     "market": "rec_yds",
+     "rung": 40.0,
+     "odds_est": -130,
+     "odds_real": null,
+     "price_estimated": true,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    }
+   ]
+  }
+ ]
+}

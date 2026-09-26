@@ -127,9 +127,9 @@ const STAT_COLS = "40px 48px 64px 70px 74px 118px 26px";
 function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
   const b = bestRung(p);
   const pc = POS_COLOR[p.pos] || T.muted;
-  const held = !!p.held;
+  const held = !!p.held || !!p.comp_held;   // comp_held: below C only because of new target competition — shown like a hold
   const est = p.prices === "estimated";
-  const sub = clean(b.reasons?.[0]);
+  const sub = p.comp_held ? clean(b.reasons?.find(x => x.startsWith("new target competition"))) : clean(b.reasons?.[0]);
   const hasMain = p.rungs.some(r => r.rung === p.main_line);
   const cat = CAT(p.market);
   const u = usage.get(normName(p.player));
@@ -157,7 +157,7 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
                 fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
           </div>
           {sub && <div style={{fontSize:9.5,fontFamily:T.mono,marginTop:2,
-            color: held ? "#d0707a" : "#666"}}>{held ? "HOLD · " : ""}{sub}</div>}
+            color: held ? "#d0707a" : "#666"}}>{p.held ? "HOLD · " : p.comp_held ? "BELOW C · " : ""}{sub}</div>}
         </div>
 
         <div className="legs-stats" style={{display:"grid",gridTemplateColumns:STAT_COLS,alignItems:"center",gap:8,flexShrink:0}}>
@@ -462,13 +462,13 @@ export default function LegsHub() {
     const nq = normName(q);
     return players
       .filter(p => p.rungs?.length)
-      .filter(p => p.held ? !hideHolds : gi(bestRung(p).grade) >= gi(minGrade))
+      .filter(p => p.held || p.comp_held ? !hideHolds : gi(bestRung(p).grade) >= gi(minGrade))
       .filter(p => market === "ALL" || p.market === market)
       .filter(p => team === "ALL" || p.team === team)
       .filter(p => game === "ALL" || p.game === game)
       .filter(p => !nq || normName(p.player).includes(nq))
       .map(p => ({ p, b: bestRung(p) }))
-      .sort((x, y) => (!!x.p.held - !!y.p.held) || (gi(y.b.grade) - gi(x.b.grade)) ||
+      .sort((x, y) => (!!(x.p.held || x.p.comp_held) - !!(y.p.held || y.p.comp_held)) || (gi(y.b.grade) - gi(x.b.grade)) ||
         ((y.b.clear_pct ?? 0) - (x.b.clear_pct ?? 0)) || x.p.player.localeCompare(y.p.player))
       .map(x => x.p);
   }, [players, minGrade, market, team, game, hideHolds, q]);
@@ -554,7 +554,7 @@ export default function LegsHub() {
                 <span style={{width:10}} />
                 <label style={{display:"inline-flex",alignItems:"center",gap:5,fontSize:9,color:"#666",letterSpacing:1,cursor:"pointer"}}>
                   <input type="checkbox" checked={hideHolds} onChange={e => setHideHolds(e.target.checked)}
-                    style={{accentColor:T.nfl,margin:0}} /> HIDE HOLDS (F)
+                    style={{accentColor:T.nfl,margin:0}} /> HIDE HOLDS (F · BELOW C)
                 </label>
               </div>
               <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>

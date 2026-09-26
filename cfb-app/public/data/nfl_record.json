@@ -1,0 +1,145 @@
+{
+ "meta": {
+  "season": 2026,
+  "generated": "2026-09-26T11:16+00:00",
+  "weeks": 1
+ },
+ "weeks": [
+  {
+   "week": 2,
+   "ticket_record": {
+    "WIN": 2,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "legs_graded": 11,
+   "ticket_record_standard": {
+    "WIN": 0,
+    "LOSS": 4,
+    "VOID": 0
+   },
+   "units": 1.22,
+   "units_standard": -4.0,
+   "legs_hit": 8,
+   "tickets": [
+    {
+     "slate": "mnf",
+     "name": "MNF",
+     "legs": 4,
+     "flag": "hand-built, pre-automation",
+     "est_american": null,
+     "clv_pts": null,
+     "leg_text": [
+      "Kyren Williams 12+ rush_att (-280)",
+      "Matthew Stafford 28+ pass_att (-455)",
+      "Jaxson Dart 20+ rush_yds (-365) \u00b7 early exit",
+      "Davante Adams 40+ rec_yds (~-130)"
+     ],
+     "early_exit": [
+      "Jaxson Dart"
+     ],
+     "result": "WIN",
+     "units": 1.93,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": []
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-1",
+     "legs": 3,
+     "flag": "hand-built, pre-automation",
+     "est_american": null,
+     "clv_pts": null,
+     "leg_text": [
+      "Derrick Henry 70+ rush_yds (-294)",
+      "Bijan Robinson 70+ rush_yds (-188)",
+      "Brock Purdy 27+ pass_att (~-260)"
+     ],
+     "early_exit": [],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Derrick Henry",
+      "Brock Purdy"
+     ]
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-2",
+     "legs": 3,
+     "flag": "hand-built, pre-automation",
+     "est_american": null,
+     "clv_pts": null,
+     "leg_text": [
+      "Jakobi Meyers 25+ rec_yds (~-177)",
+      "Tee Higgins 40+ rec_yds (-216)",
+      "Caleb Williams 28+ pass_att (-338) \u00b7 early exit"
+     ],
+     "early_exit": [
+      "Caleb Williams"
+     ],
+     "result": "WIN",
+     "units": 1.29,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": []
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-3",
+     "legs": 3,
+     "flag": "hand-built, pre-automation",
+     "est_american": null,
+     "clv_pts": null,
+     "leg_text": [
+      "Trevor Lawrence 190+ pass_yds (~-327)",
+      "Brian Thomas Jr. 25+ rec_yds (~-181)",
+      "Rashee Rice 4+ receptions (-314)"
+     ],
+     "early_exit": [],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Trevor Lawrence"
+     ]
+    }
+   ],
+   "clv": {
+    "n": 0,
+    "avg_leg_pts": null
+   }
+  }
+ ],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "A",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "A-",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "B",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  }
+ ],
+ "est_vs_real": []
+}

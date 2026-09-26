@@ -13,6 +13,7 @@ const MARKET_LABEL = { rec_yds:"rec yds", receptions:"rec", rush_yds:"rush yds",
 const oddsStr = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
 const implied = o => o < 0 ? -o / (-o + 100) : 100 / (o + 100);
 const pct = (a, b) => b ? `${(100 * a / b).toFixed(1)}%` : "—";
+const unitStr = u => u == null ? "—" : `${u > 0 ? "+" : ""}${u.toFixed(2)}u`;
 // CLV in implied-probability points: positive = the price shortened between posting and kickoff (we beat the close)
 const clvCell = v => v == null ? "—" :
   <span style={{color: v > 0 ? T.accent : v < 0 ? T.red : "#999"}}>{v > 0 ? "+" : ""}{v.toFixed(2)}</span>;
@@ -70,6 +71,8 @@ export default function NFLRecord() {
   const tot = weeks.reduce((a, w) => ({ W: a.W + w.ticket_record.WIN, L: a.L + w.ticket_record.LOSS,
     V: a.V + w.ticket_record.VOID, hit: a.hit + w.legs_hit, n: a.n + w.legs_graded }), { W:0, L:0, V:0, hit:0, n:0 });
   const grades = (rec?.by_grade || []).filter(g => g.n > 0);
+  // as settled at DraftKings (Early Exit voids a leg). grade.py also computes standard settlement; not displayed.
+  const units = weeks.reduce((a, w) => a + (w.units || 0), 0);
   const clvN = weeks.reduce((a, w) => a + (w.clv?.n || 0), 0);
   const clvSeason = clvN ? weeks.reduce((a, w) => a + (w.clv?.n ? w.clv.avg_leg_pts * w.clv.n : 0), 0) / clvN : null;
   const flagged = weeks.flatMap(w => (w.tickets || []).filter(t => t.flag).map(t => ({ ...t, week: w.week })));
@@ -92,11 +95,14 @@ export default function NFLRecord() {
         </div>
       ) : rec && <>
         <Label>TICKETS BY WEEK</Label>
-        <Table cols={[["WEEK","left"],["W","right"],["L","right"],["VOID","right"],["LEGS HIT","right"],["LEG HIT %","right"],["AVG CLV","right"]]}
+        <Table cols={[["WEEK","left"],["W","right"],["L","right"],["VOID","right"],["LEGS HIT","right"],["UNITS","right"],["LEG HIT %","right"],["AVG CLV","right"]]}
           rows={weeks.map(w => [<>{w.week}{(w.tickets || []).some(t => t.flag) &&
             <span title="includes a flagged ticket — see below" style={{color:T.amber,marginLeft:4}}>†</span>}</>, w.ticket_record.WIN, w.ticket_record.LOSS, w.ticket_record.VOID,
-            `${w.legs_hit}/${w.legs_graded}`, pct(w.legs_hit, w.legs_graded), clvCell(w.clv?.avg_leg_pts)])}
-          foot={["SEASON", tot.W, tot.L, tot.V, `${tot.hit}/${tot.n}`, pct(tot.hit, tot.n), clvCell(clvSeason)]} />
+            `${w.legs_hit}/${w.legs_graded}`, unitStr(w.units), pct(w.legs_hit, w.legs_graded), clvCell(w.clv?.avg_leg_pts)])}
+          foot={["SEASON", tot.W, tot.L, tot.V, `${tot.hit}/${tot.n}`, unitStr(units), pct(tot.hit, tot.n), clvCell(clvSeason)]} />
+        <div style={{fontSize:10,color:"#999",marginTop:8,lineHeight:1.6,maxWidth:"80ch"}}>
+          Tickets are graded as settled at DraftKings, where Early Exit protection applies.
+        </div>
         <div style={{fontSize:9.5,color:"#555",marginTop:8,lineHeight:1.6,maxWidth:"72ch"}}>
           CLV = closing line value, per card leg, in implied-probability points: the published price against the last
           price pulled before that game kicked off. Positive = the market moved toward the card. Hand-built tickets have no
@@ -112,6 +118,9 @@ export default function NFLRecord() {
                 <FlagBadge>{t.flag.toUpperCase()}</FlagBadge>
                 <span style={{color:"#999",flex:"1 1 260px"}}>{(t.leg_text || []).join(" · ")}{t.est_american != null ? ` · pays ${oddsStr(t.est_american)}` : ""}</span>
                 {t.clv_pts != null && <span style={{fontSize:10}}>CLV {clvCell(t.clv_pts)}</span>}
+                {t.early_exit?.length > 0 && <span style={{fontSize:9.5,color:"#888"}}>
+                  early exit: {t.early_exit.join(", ")}</span>}
+                {t.units != null && <span style={{fontSize:10,color:"#999"}}>{unitStr(t.units)}</span>}
                 <span style={{color: t.result === "WIN" ? T.accent : t.result === "LOSS" ? T.red : "#888",fontWeight:700}}>{t.result}</span>
               </div>
             ))}

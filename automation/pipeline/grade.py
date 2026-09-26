@@ -12,6 +12,9 @@ import pandas as pd
 from common import norm_name, COL, fetch_week, pay, P
 
 GRADES = ["A+", "A", "A-", "B"]
+LEDGER_COLS = ["season", "week", "slate", "ticket", "hand_built", "player", "team", "opp", "market", "rung", "grade",
+               "clear_pct", "model_pct", "published", "closing", "clv_pts", "actual", "hit", "hit_standard", "early_exit",
+               "pnl_1u", "miss_by"]
 
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 
@@ -22,6 +25,26 @@ def closing_odds(leg, kick):
     hist = [h for h in leg.get("price_history") or [] if h.get("at") and h.get("odds") is not None]
     if ko: hist = [h for h in hist if pd.Timestamp(h["at"]) < pd.Timestamp(ko)]
     return max(hist, key=lambda h: pd.Timestamp(h["at"]))["odds"] if hist else None
+
+def settle(hits, decs, est_american=None):
+    """(result, units at 1u flat) for one parlay. hits: True/False/None (None = void/no data -> VOID ticket).
+    Payout = product of the legs' decimal prices, or the ticket's own published price when every leg stands."""
+    if not hits or any(h is None for h in hits): return "VOID", 0.0
+    if not all(hits): return "LOSS", -1.0
+    d = 1.0
+    for x in decs: d *= x
+    return "WIN", round(d - 1, 2)
+
+def am_dec(am): return 1 + (am / 100 if am > 0 else 100 / -am)
+
+def official(t, hits, ee, prices):
+    """As DraftKings settled: early-exit legs drop out; the rest decide it. If no leg was voided and the ticket has its own
+    published price, a win pays that; otherwise the product of the standing legs' prices."""
+    stand = [(h, dec(o)) for h, e, (o, _) in zip(hits, ee, prices) if not e]
+    if not stand: return "VOID", 0.0
+    res, units = settle([h for h, _ in stand], [d for _, d in stand])
+    if res == "WIN" and not any(ee) and t.get("est_american"): units = round(am_dec(t["est_american"]) - 1, 2)
+    return res, units
 
 def clv_pts(pub, close):
     """Implied-probability points the price moved toward us: positive = it shortened after we published."""
@@ -42,29 +65,42 @@ def main():
         card = json.load(open(path))
         hand = bool(card.get("hand_built"))
         for t in card["tickets"]:
-            t_hits, t_prices = [], []
+            t_hits, t_prices, t_std, t_ee = [], [], [], []
             for l in t["legs"]:
                 actual = act.get((norm_name(l["player"]), l["market"]))
-                hit = None if actual is None or pd.isna(actual) else bool(actual >= l["rung"])
+                hit_std = None if actual is None or pd.isna(actual) else bool(actual >= l["rung"])
+                # DraftKings Early Exit protection: a leg whose player left the game early is voided and the parlay
+                # settles on the rest. Official record = as DK settled; hit_standard keeps the stat-only grade.
+                hit = None if l.get("early_exit") else hit_std
                 odds = l.get("published_odds") or l.get("odds_real") or l["odds_est"]     # the price the card published
                 close = None if hand else closing_odds(l, kick)   # hand-built legs stay out of every grade stat, CLV included
                 legs.append({**l, "slate": card["slate"], "ticket": t["name"], "hand_built": hand,
                              "actual": None if actual is None or pd.isna(actual) else float(actual), "hit": hit,
+                             "hit_standard": hit_std, "early_exit": bool(l.get("early_exit")),
                              "published": odds, "closing": close, "clv_pts": clv_pts(odds, close),
                              "pnl_1u": None if hit is None else (pay(odds) if hit else -1.0),
                              "miss_by": None if hit is None or hit else round(l["rung"] - float(actual), 1)})
-                t_hits.append(hit); t_prices.append((odds, close))
+                t_hits.append(hit); t_prices.append((odds, close)); t_std.append(hit_std); t_ee.append(bool(l.get("early_exit")))
             tickets.append({"slate": card["slate"], "name": t["name"], "legs": len(t["legs"]),
                             "flag": t.get("flag") if hand else None, "est_american": t.get("est_american"),
                             # ticket CLV: implied-probability points between the parlay at published vs closing prices
                             "clv_pts": round(100 * (1 / pd.Series([dec(c) for _, c in t_prices]).prod()
                                                     - 1 / pd.Series([dec(o) for o, _ in t_prices]).prod()), 2)
                                        if t_prices and all(c is not None for _, c in t_prices) else None,
-                            "leg_text": [f"{l['player']} {l['rung']:g}+ {l['market']} ({(l.get('odds_real') or l['odds_est']):+d})" for l in t["legs"]],
-                            "result": "VOID" if any(h is None for h in t_hits) else ("WIN" if all(t_hits) else "LOSS"),
+                            "leg_text": [f"{l['player']} {l['rung']:g}+ {l['market']} ({'~' if l.get('price_estimated') else ''}"
+                                         f"{(l.get('odds_real') or l['odds_est']):+d}){' · early exit' if l.get('early_exit') else ''}"
+                                         for l in t["legs"]],
+                            "early_exit": [l["player"] for l, e in zip(t["legs"], t_ee) if e],
+                            **dict(zip(("result", "units"), official(t, t_hits, t_ee, t_prices))),
+                            **dict(zip(("result_standard", "units_standard"),
+                                       settle(t_std, [dec(o) for o, _ in t_prices]) if not t.get("est_american") or None in t_std or not all(t_std)
+                                       else ("WIN", round(am_dec(t["est_american"]) - 1, 2)))),
                             "misses": [l["player"] for l, h in zip(t["legs"], t_hits) if h is False]})
 
-    df = pd.DataFrame(legs); g = df[df.hit.notna()].copy()
+    df = pd.DataFrame(legs)
+    for col in ("model_pct", "clear_pct", "clv_pts"):                  # all-None for hand-built weeks -> numeric NaN
+        if col in df: df[col] = pd.to_numeric(df[col], errors="coerce")
+    g = df[df.hit.notna()].copy()
     g["bucket"] = pd.cut(g.model_pct, [0, 75, 85, 101], labels=["<75", "75-85", "85+"])
     pg = g[g.hand_built != True] if "hand_built" in g else g        # pipeline legs only: hand-built legs have no grade
     pipe_clv = (df.hand_built != True) & df.clv_pts.notna() if len(df) else []
@@ -93,11 +129,15 @@ def main():
         "clv": dict(n=int(df[pipe_clv].shape[0]), avg_leg_pts=round(float(df[pipe_clv].clv_pts.mean()), 2)
                     if df[pipe_clv].shape[0] else None),
         "ticket_record": {r: sum(1 for t in tickets if t["result"] == r) for r in ("WIN", "LOSS", "VOID")},
+        "ticket_record_standard": {r: sum(1 for t in tickets if t["result_standard"] == r) for r in ("WIN", "LOSS", "VOID")},
+        "units": round(sum(t["units"] for t in tickets), 2),
+        "units_standard": round(sum(t["units_standard"] for t in tickets), 2),
     }
     out = P("receipts", f"receipts_{a.season}_w{a.week}.json")
     json.dump(summary, open(out, "w"), indent=1)
     ledger = P("receipts", "season_ledger.csv")
-    df.assign(season=a.season, week=a.week).to_csv(ledger, mode="a", index=False, header=not os.path.exists(ledger))
+    df.assign(season=a.season, week=a.week).reindex(columns=LEDGER_COLS).to_csv(ledger, mode="a", index=False,
+                                                                              header=not os.path.exists(ledger))
     write_season_record(a.season)
     print(f"wrote {out}"); print(json.dumps({k: summary[k] for k in ("legs_graded", "legs_hit", "hit_rate", "avg_model_pct", "flat_pnl_1u", "ticket_record")}, indent=1))
 
@@ -117,6 +157,8 @@ def write_season_record(season):
                              expected=round(sum(b["expected"] * b["n"] for b in exp_rows) / exp_n, 1) if exp_n else None))
     record = dict(meta=dict(season=season, generated=pd.Timestamp.now(tz="UTC").isoformat(timespec="minutes"), weeks=len(weeks)),
                   weeks=[dict(week=wk["week"], ticket_record=wk["ticket_record"], legs_graded=wk["legs_graded"],
+                              ticket_record_standard=wk.get("ticket_record_standard"), units=wk.get("units"),
+                              units_standard=wk.get("units_standard"),
                               legs_hit=wk["legs_hit"], tickets=wk["tickets"], clv=wk.get("clv")) for wk in weeks],
                   by_grade=by_grade,
                   est_vs_real=[dict(week=wk["week"], **r) for wk in weeks for r in wk.get("est_vs_real", [])])

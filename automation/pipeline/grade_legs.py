@@ -99,20 +99,26 @@ def main():
                 elif o < -400: letter = step(letter, -1); why.append("price worse than -400")
                 soft = (oppd == "TOUGH") + (vol == "TOUGH")
                 if soft: letter = step(letter, -soft); why.append("; ".join(x for x in ("opp D tough" if oppd == "TOUGH" else "", "own volume low" if vol == "TOUGH" else "") if x))
+                pre_comp = letter
                 if rivals: letter = step(letter, -1); why.append(f"new target competition ({', '.join(rivals)})")
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
-                              l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why))
+                              l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why,
+                              _pre_comp=None if holds else pre_comp))
         out.append(dict(player=r.Player, pos=pos, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
                         target_competition=rivals or None, spread=spread, games=int(len(v)),
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
-    # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows
+    # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows.
+    # Rungs pushed below C only by the target-competition downgrade stay too (grade D, with the reason); a player left with
+    # only those is comp_held — shown greyed like a hold on the Legs tab.
     KEEP = {"A+", "A", "A-", "B", "C"}
     trimmed = []
     for p in out:
-        good = [r for r in p["rungs"] if r["grade"] in KEEP]
+        good = [r for r in p["rungs"] if r["grade"] in KEEP or r.get("_pre_comp") in KEEP]
+        for r in p["rungs"]: r.pop("_pre_comp", None)
         if good:
             p["rungs"] = good
+            if all(r["grade"] not in KEEP for r in good): p["comp_held"] = True
         elif p["rungs"] and all(r["grade"] == "F" for r in p["rungs"]):
             p["rungs"] = sorted(p["rungs"], key=lambda r: abs(r["rung"] - p["main_line"]))[:3]
             p["rungs"].sort(key=lambda r: r["rung"]); p["held"] = True

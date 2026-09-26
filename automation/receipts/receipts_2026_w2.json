@@ -1,0 +1,221 @@
+{
+ "season": 2026,
+ "week": 2,
+ "legs_graded": 11,
+ "legs_hit": 8,
+ "hit_rate": 0.727,
+ "avg_model_pct": NaN,
+ "flat_pnl_1u": 0.78,
+ "by_market": [
+  {
+   "market": "pass_att",
+   "n": 2,
+   "hit": 0.5
+  },
+  {
+   "market": "pass_yds",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "market": "rec_yds",
+   "n": 4,
+   "hit": 1.0
+  },
+  {
+   "market": "receptions",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "market": "rush_att",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "market": "rush_yds",
+   "n": 2,
+   "hit": 0.5
+  }
+ ],
+ "by_bucket": [],
+ "near_misses": [
+  {
+   "player": "Derrick Henry",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "actual": 68.0,
+   "miss_by": 2.0
+  },
+  {
+   "player": "Trevor Lawrence",
+   "market": "pass_yds",
+   "rung": 190.0,
+   "actual": 189.0,
+   "miss_by": 1.0
+  }
+ ],
+ "misses": [
+  {
+   "player": "Derrick Henry",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "actual": 68.0,
+   "note": "hand-built, pre-automation",
+   "opp_d": null,
+   "own_vol": null,
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Brock Purdy",
+   "market": "pass_att",
+   "rung": 27.0,
+   "actual": 22.0,
+   "note": "hand-built, pre-automation",
+   "opp_d": null,
+   "own_vol": null,
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Trevor Lawrence",
+   "market": "pass_yds",
+   "rung": 190.0,
+   "actual": 189.0,
+   "note": "hand-built, pre-automation",
+   "opp_d": null,
+   "own_vol": null,
+   "ticket": "SUN-3"
+  }
+ ],
+ "est_vs_real": [],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "A",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "A-",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  },
+  {
+   "grade": "B",
+   "n": 0,
+   "hits": 0,
+   "expected": null
+  }
+ ],
+ "tickets": [
+  {
+   "slate": "mnf",
+   "name": "MNF",
+   "legs": 4,
+   "flag": "hand-built, pre-automation",
+   "est_american": null,
+   "clv_pts": null,
+   "leg_text": [
+    "Kyren Williams 12+ rush_att (-280)",
+    "Matthew Stafford 28+ pass_att (-455)",
+    "Jaxson Dart 20+ rush_yds (-365) \u00b7 early exit",
+    "Davante Adams 40+ rec_yds (~-130)"
+   ],
+   "early_exit": [
+    "Jaxson Dart"
+   ],
+   "result": "WIN",
+   "units": 1.93,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": []
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-1",
+   "legs": 3,
+   "flag": "hand-built, pre-automation",
+   "est_american": null,
+   "clv_pts": null,
+   "leg_text": [
+    "Derrick Henry 70+ rush_yds (-294)",
+    "Bijan Robinson 70+ rush_yds (-188)",
+    "Brock Purdy 27+ pass_att (~-260)"
+   ],
+   "early_exit": [],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Derrick Henry",
+    "Brock Purdy"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-2",
+   "legs": 3,
+   "flag": "hand-built, pre-automation",
+   "est_american": null,
+   "clv_pts": null,
+   "leg_text": [
+    "Jakobi Meyers 25+ rec_yds (~-177)",
+    "Tee Higgins 40+ rec_yds (-216)",
+    "Caleb Williams 28+ pass_att (-338) \u00b7 early exit"
+   ],
+   "early_exit": [
+    "Caleb Williams"
+   ],
+   "result": "WIN",
+   "units": 1.29,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": []
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-3",
+   "legs": 3,
+   "flag": "hand-built, pre-automation",
+   "est_american": null,
+   "clv_pts": null,
+   "leg_text": [
+    "Trevor Lawrence 190+ pass_yds (~-327)",
+    "Brian Thomas Jr. 25+ rec_yds (~-181)",
+    "Rashee Rice 4+ receptions (-314)"
+   ],
+   "early_exit": [],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Trevor Lawrence"
+   ]
+  }
+ ],
+ "clv": {
+  "n": 0,
+  "avg_leg_pts": null
+ },
+ "ticket_record": {
+  "WIN": 2,
+  "LOSS": 2,
+  "VOID": 0
+ },
+ "ticket_record_standard": {
+  "WIN": 0,
+  "LOSS": 4,
+  "VOID": 0
+ },
+ "units": 1.22,
+ "units_standard": -4.0
+}

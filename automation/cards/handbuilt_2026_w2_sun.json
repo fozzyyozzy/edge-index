@@ -1,0 +1,172 @@
+{
+ "season": 2026,
+ "week": 2,
+ "slate": "sun",
+ "hand_built": true,
+ "why": "Published before the pipeline existed. Graded from nflverse. Official result = as settled at DraftKings, where Early Exit protection voids a leg whose player left the game early (early_exit: true); standard settlement grades every leg. Prices marked price_estimated were published as approximate.",
+ "tickets": [
+  {
+   "name": "SUN-1",
+   "flag": "hand-built, pre-automation",
+   "legs": [
+    {
+     "player": "Derrick Henry",
+     "team": "BAL",
+     "opp": "NO",
+     "market": "rush_yds",
+     "rung": 70.0,
+     "odds_est": -294,
+     "odds_real": -294,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Bijan Robinson",
+     "team": "ATL",
+     "opp": "CAR",
+     "market": "rush_yds",
+     "rung": 70.0,
+     "odds_est": -188,
+     "odds_real": -188,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Brock Purdy",
+     "team": "SF",
+     "opp": "MIA",
+     "market": "pass_att",
+     "rung": 27.0,
+     "odds_est": -260,
+     "odds_real": null,
+     "price_estimated": true,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    }
+   ]
+  },
+  {
+   "name": "SUN-2",
+   "flag": "hand-built, pre-automation",
+   "legs": [
+    {
+     "player": "Jakobi Meyers",
+     "team": "JAX",
+     "opp": "DEN",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds_est": -177,
+     "odds_real": null,
+     "price_estimated": true,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Tee Higgins",
+     "team": "CIN",
+     "opp": "HOU",
+     "market": "rec_yds",
+     "rung": 40.0,
+     "odds_est": -216,
+     "odds_real": -216,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Caleb Williams",
+     "team": "CHI",
+     "opp": "MIN",
+     "market": "pass_att",
+     "rung": 28.0,
+     "odds_est": -338,
+     "odds_real": -338,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation",
+     "early_exit": true
+    }
+   ]
+  },
+  {
+   "name": "SUN-3",
+   "flag": "hand-built, pre-automation",
+   "legs": [
+    {
+     "player": "Trevor Lawrence",
+     "team": "JAX",
+     "opp": "DEN",
+     "market": "pass_yds",
+     "rung": 190.0,
+     "odds_est": -327,
+     "odds_real": null,
+     "price_estimated": true,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Brian Thomas Jr.",
+     "team": "JAX",
+     "opp": "DEN",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds_est": -181,
+     "odds_real": null,
+     "price_estimated": true,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    },
+    {
+     "player": "Rashee Rice",
+     "team": "KC",
+     "opp": "IND",
+     "market": "receptions",
+     "rung": 4.0,
+     "odds_est": -314,
+     "odds_real": -314,
+     "price_estimated": false,
+     "grade": null,
+     "clear_pct": null,
+     "model_pct": null,
+     "opp_d": null,
+     "own_vol": null,
+     "note": "hand-built, pre-automation"
+    }
+   ]
+  }
+ ]
+}
