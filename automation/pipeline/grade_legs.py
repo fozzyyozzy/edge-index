@@ -15,7 +15,7 @@ import argparse, io, json, os, sys, urllib.request
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder, implied_prob
-from common import norm_name, fetch_season, COL, load_real_ladders, P
+from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank
 from floors import INV, SLATE_DAYS, schedule, team_split
 
 LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"]
@@ -23,6 +23,21 @@ def base_letter(p):
     return "A+" if p >= .90 else "A" if p >= .85 else "A-" if p >= .80 else "B" if p >= .70 else "C" if p >= .60 else "D"
 def step(letter, n):
     i = max(1, min(len(LETTERS) - 1, LETTERS.index(letter) + n)); return LETTERS[i]
+# target competition: a WR/TE who joined the team this season (no games for it last season) and saw 8+ targets in one
+# of his last 3 games for it costs every other WR/TE on that team one grade on receiving legs. WR and TE count as one
+# receiving group (Waddle joining DEN hits both Sutton and Engram).
+REC_POS = {"WR", "TE"}
+REC_MARKETS = {"rec_yds", "receptions"}
+COMP_TARGETS = 8
+
+def target_competition(cur, prev):
+    out = {}
+    for (key, tm), g in cur[cur.position.isin(REC_POS)].groupby(["key", "team"]):
+        if ((prev.key == key) & (prev.team == tm)).any(): continue    # on this team last season: not new
+        mx = int(g.sort_values("week").tail(3).targets.fillna(0).max())
+        if mx >= COMP_TARGETS: out.setdefault(tm, []).append((g.player_display_name.iloc[-1], key, mx))
+    return out
+
 NEAR = {"rec_yds": 3, "rush_yds": 3, "pass_yds": 10, "receptions": 0, "pass_cmps": 1, "pass_att": 1, "rush_att": 1}
 
 def main():
@@ -42,9 +57,7 @@ def main():
         D = (1 - w26) * d_prev + w26 * d_cur.reindex(d_prev.index).fillna(d_prev)
         O = (1 - w26) * o_prev + w26 * o_cur.reindex(o_prev.index).fillna(o_prev)
     else: D, O = d_prev, o_prev
-    def tag(series, team):
-        r = series.rank(ascending=False); x = r.get(team)
-        return "?" if x is None or pd.isna(x) else ("SOFT" if x <= 8 else "TOUGH" if x >= 25 else "neutral")
+    comp = target_competition(cur, prev)                          # {team: [(name, key, max recent targets)]}
     sch = schedule(a.season, a.week); sch = sch[sch.weekday.isin(SLATE_DAYS[a.slate])]
     OPP, SPREAD, GAME = {}, {}, {}
     for g in sch.itertuples():
@@ -62,7 +75,9 @@ def main():
         v = g[col].fillna(0).to_numpy(); tm = team_now.get(key); opp = OPP.get(tm)
         if opp is None: continue
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
-        oppd, vol = tag(D[cat + "_yds"], opp), tag(O[cat + "_att"], tm)
+        (oppd, oppd_rank), (vol, vol_rank) = tag_rank(D[cat + "_yds"], opp, defense=True), tag_rank(O[cat + "_att"], tm)
+        pos = g.position.iloc[-1] if len(g) else None
+        rivals = [n for n, k, _ in comp.get(tm, []) if k != key] if pos in REC_POS and r.Market in REC_MARKETS else []
         spread = SPREAD.get(tm)
         holds = []
         if len(v) < 10: holds.append("fewer than 10 games")
@@ -84,10 +99,12 @@ def main():
                 elif o < -400: letter = step(letter, -1); why.append("price worse than -400")
                 soft = (oppd == "TOUGH") + (vol == "TOUGH")
                 if soft: letter = step(letter, -soft); why.append("; ".join(x for x in ("opp D tough" if oppd == "TOUGH" else "", "own volume low" if vol == "TOUGH" else "") if x))
+                if rivals: letter = step(letter, -1); why.append(f"new target competition ({', '.join(rivals)})")
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
                               l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why))
-        out.append(dict(player=r.Player, pos=(g.position.iloc[-1] if len(g) else None), team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
-                        main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, spread=spread, games=int(len(v)),
+        out.append(dict(player=r.Player, pos=pos, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
+                        main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
+                        target_competition=rivals or None, spread=spread, games=int(len(v)),
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
     # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows
     KEEP = {"A+", "A", "A-", "B", "C"}

@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled
+from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
@@ -60,9 +60,6 @@ def main():
     else:
         D, O = d_prev, o_prev
 
-    def tag(series, team):
-        r = series.rank(ascending=False); x = r.get(team)
-        return "?" if x is None or pd.isna(x) else ("SOFT" if x <= 8 else "TOUGH" if x >= 25 else "neutral")
 
     sch = schedule(a.season, a.week); sch = sch[sch.weekday.isin(SLATE_DAYS[a.slate])]
     OPP, SPREAD = {}, {}
@@ -96,7 +93,8 @@ def main():
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
         rows.append(dict(Player=r.Player, Team=tm, Opp=opp, Market=r.Market, Main=r.Line, MainOdds=r.Odds, Rung=f"{t:g}+",
                          EstOdds=o, L10=f"{int(round(l10*10))}/10", L15=f"{int(round(l15*15))}/15",
-                         OppD=tag(D[cat + "_yds"], opp), OwnVol=tag(O[cat + "_att"], tm), Spread=SPREAD.get(tm),
+                         OppD=tag_rank(D[cat + "_yds"], opp, defense=True)[0], OwnVol=tag_rank(O[cat + "_att"], tm)[0], Spread=SPREAD.get(tm),
+                         OppDRank=tag_rank(D[cat + "_yds"], opp, defense=True)[1], OwnVolRank=tag_rank(O[cat + "_att"], tm)[1],
                          TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
                          Last3=[int(x) for x in v[-3:]],    # plain ints: np.int64 wrote "np.int64(126)" into the CSV
                          Pos=g.position.iloc[-1], Games=int(len(v)), Avg10=round(float(v[-10:].mean()), 1), Streak=streak,
@@ -126,6 +124,8 @@ def write_site_json(df, a, path):
                          fair_odds=american(min(clear, 0.99)) if clear > 0 else None,
                          avg10=float(r.Avg10), streak=int(r.Streak), games=int(r.Games), last3=list(r.Last3),
                          opp_d=r.OppD, own_vol=r.OwnVol, spread=None if pd.isna(r.Spread) else float(r.Spread),
+                         opp_d_rank=None if pd.isna(r.OppDRank) else int(r.OppDRank),
+                         own_vol_rank=None if pd.isna(r.OwnVolRank) else int(r.OwnVolRank),
                          team_change=bool(r.TeamChange), prev_team=r.PrevTeam if isinstance(r.PrevTeam, str) and r.PrevTeam else None))
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=datetime.now(timezone.utc).isoformat(timespec="minutes"),
                 prices_pulled=prices_pulled(a.season, a.week, a.slate))

@@ -85,13 +85,17 @@ function Chip({ active, onClick, children, color = T.nfl }) {
 const selectStyle = {background:T.surface,border:`1px solid #ffffff14`,borderRadius:4,color:"#aaa",
   fontSize:10,fontFamily:T.mono,padding:"4px 6px",outline:"none"};
 
-function Tag({ label, v }) {
-  // opp_d: SOFT = easy matchup. own_vol: SOFT = high volume, TOUGH = low volume.
-  const good = v === "SOFT", bad = v === "TOUGH";
-  const text = label === "VOL" ? (good ? "HIGH" : bad ? "LOW" : "—") : (good ? "SOFT" : bad ? "TOUGH" : "—");
+function Tag({ label, v, rank }) {
+  // opp_d: SOFT = easy matchup (top 8 in yards allowed), TOUGH = bottom 8, neutral = 9-24 -> "AVG".
+  // own_vol: SOFT = high volume, TOUGH = low. rank of 32 — D: 1 = toughest (Matchups convention); VOL: 1 = most attempts.
+  // "—" only when the tag is truly unknown.
+  const good = v === "SOFT", bad = v === "TOUGH", known = v === "SOFT" || v === "TOUGH" || v === "neutral";
+  const text = !known ? "—" : label === "VOL" ? (good ? "HIGH" : bad ? "LOW" : "AVG") : (good ? "SOFT" : bad ? "TOUGH" : "AVG");
+  const title = rank == null ? "" : label === "VOL"
+    ? `own volume: rank ${rank} of 32 (1 = most attempts)` : `opponent D: rank ${rank} of 32 in yards allowed (1 = fewest allowed, tough; 32 = softest — as on Matchups)`;
   return (
-    <span style={{fontSize:9,fontFamily:T.mono,color: good ? T.accent : bad ? T.red : "#444"}}>
-      <span style={{color:"#444"}}>{label} </span>{text}
+    <span title={title} style={{fontSize:9,fontFamily:T.mono,color: good ? T.accent : bad ? T.red : known ? "#888" : "#444",whiteSpace:"nowrap"}}>
+      <span style={{color:"#444"}}>{label} </span>{text}{rank != null && <span style={{color:"#555"}}> {rank}</span>}
     </span>
   );
 }
@@ -164,7 +168,7 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
           </span>
           <span style={{fontSize:10,color:"#999",fontFamily:T.mono}}>{b.l10 ?? "—"} <span style={{color:"#555"}}>{b.l15 ?? ""}</span></span>
           <Last3 vals={p.last3} rung={b.rung} />
-          <span style={{display:"flex",gap:7}}><Tag label="D" v={p.opp_d} /><Tag label="VOL" v={p.own_vol} /></span>
+          <span style={{display:"flex",gap:7}}><Tag label="D" v={p.opp_d} rank={p.opp_d_rank} /><Tag label="VOL" v={p.own_vol} rank={p.own_vol_rank} /></span>
           <AddBtn on={inSlip(p, b)} title={`add ${rungStr(b.rung)} to slip`} onClick={() => onAdd(p, b)} />
         </div>
       </div>
@@ -220,9 +224,9 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
             <span>Spread: <span style={{color:T.text}}>
               {p.spread == null ? "—" : `${p.team} ${p.spread > 0 ? "+" : ""}${p.spread}`}</span></span>
             <span>Opp {cat} D: <span style={{color: p.opp_d === "SOFT" ? T.accent : p.opp_d === "TOUGH" ? T.red : T.text}}>
-              {p.opp_d}</span></span>
+              {p.opp_d === "neutral" ? "AVG" : p.opp_d}{p.opp_d_rank != null ? ` (${p.opp_d_rank} of 32; 1 = toughest, 32 = softest)` : ""}</span></span>
             <span>Own {cat} volume: <span style={{color: p.own_vol === "SOFT" ? T.accent : p.own_vol === "TOUGH" ? T.red : T.text}}>
-              {p.own_vol === "SOFT" ? "HIGH" : p.own_vol === "TOUGH" ? "LOW" : p.own_vol}</span></span>
+              {p.own_vol === "SOFT" ? "HIGH" : p.own_vol === "TOUGH" ? "LOW" : p.own_vol === "neutral" ? "AVG" : p.own_vol}{p.own_vol_rank != null ? ` (${p.own_vol_rank} of 32; 1 = most)` : ""}</span></span>
           </div>
 
           {/* usage (automation/pipeline/usage.py) — this season, then last season */}

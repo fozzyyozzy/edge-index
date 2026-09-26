@@ -111,7 +111,9 @@ function Row({ r }) {
                ["Longest price worth taking", oddsStr(r.fair_odds)],
                ["Clear rate minus price", (gap >= 0 ? "+" : "") + gap.toFixed(0) + " pts"],
                ["DK main line", `${r.main_line} at ${oddsStr(r.main_odds)}`],
-               ["Matchup · volume", `opp D ${r.opp_d} · own ${r.own_vol === "TOUGH" ? "LOW" : r.own_vol === "SOFT" ? "HIGH" : r.own_vol}`],
+               ["Matchup · volume", `opp D ${r.opp_d === "neutral" ? "AVG" : r.opp_d}${r.opp_d_rank != null ? ` ${r.opp_d_rank}` : ""}`
+                 + ` · own ${r.own_vol === "TOUGH" ? "LOW" : r.own_vol === "SOFT" ? "HIGH" : r.own_vol === "neutral" ? "AVG" : r.own_vol}`
+                 + `${r.own_vol_rank != null ? ` ${r.own_vol_rank}` : ""} (of 32; D 1 = toughest, VOL 1 = most)`],
               ].map(([k,v]) => (
               <div key={k} style={{display:"flex", justifyContent:"space-between", gap:10,
                 fontSize:10, fontFamily:T.mono, marginBottom:4}}>

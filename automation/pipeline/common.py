@@ -53,3 +53,14 @@ def prices_pulled(season, week, slate):
         if os.path.exists(f):
             return datetime.fromtimestamp(os.path.getmtime(f), timezone.utc).isoformat(timespec="minutes")
     return None
+
+
+def tag_rank(series, team, defense=False):
+    """Matchup tag + rank of 32. SOFT = the 8 most yards allowed (defense) / most attempts (own volume), TOUGH = the 8 fewest,
+    neutral = the middle 16 ("AVG" on the site).
+    Rank, defense: 1 = fewest yards allowed (toughest) ... 32 = most — the Matchups tab's convention.
+    Rank, volume:  1 = most attempts."""
+    r = series.rank(ascending=False); x = r.get(team)
+    if x is None or pd.isna(x): return "?", None
+    x = int(round(x)); tag = "SOFT" if x <= 8 else "TOUGH" if x >= 25 else "neutral"
+    return tag, (len(series) + 1 - x) if defense else x

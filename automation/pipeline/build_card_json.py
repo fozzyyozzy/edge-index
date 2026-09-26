@@ -47,6 +47,11 @@ def parse_last3(v):
     """floors CSV Last3 -> [126, 144, 68]; also reads old rows written as "[np.int64(126), ...]"."""
     return [int(float(x)) for x in re.findall(r"-?\d+(?:\.\d+)?", re.sub(r"np\.\w+\(", "", str(v)))]
 
+def rank_or_none(r, col):
+    """matchup rank from the floors CSV (1 = softest D / highest volume); older CSVs don't have the column"""
+    v = getattr(r, col, None)
+    return None if v is None or pd.isna(v) else int(v)
+
 def hold_reasons(r):
     """Why a floor row is not a card candidate (empty = candidate). Order: hard holds first."""
     why = []
@@ -103,6 +108,7 @@ def main():
                           odds_est=int(r.EstOdds), odds_real=int(real) if real is not None else None,
                           odds_model_est=int(model_est) if model_est is not None else None, l10=r.l10, l15=r.l15,
                           last3=last3, opp_d=r.OppD, own_vol=r.OwnVol, star=FLOOR_STAR(r.l10, r.l15),
+                          opp_d_rank=rank_or_none(r, "OppDRank"), own_vol_rank=rank_or_none(r, "OwnVolRank"),
                           model_pct=round(100 * min(r.l10, r.l15, 0.9), 1),   # conservative: min of L10/L15, capped 90
                           grade=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[0],
                           clear_pct=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[1],
