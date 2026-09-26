@@ -4,8 +4,8 @@ for the site's Legs tab and slip builder. Runs after floors.py (needs its matchu
 
   python pipeline/grade_legs.py --season 2026 --week 3 --slate sun --lines lines/dk_2026_w3_sun.csv
 
-Grade = how often this rung HITS, from the blended probability (common.leg_prob): the lower of L10/L15 add-one clear
-rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90. Not a value grade (that's edge_pts).
+Grade = our estimated hit probability after blending with DK's price (common.leg_prob: the lower of L10/L15 add-one
+clear rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90). Edge is shown separately (edge_pts).
   A+  >= 90%   A  >= 85%   A-  >= 80%   B  70-79   C  60-69   D  < 60   F  hard hold
 Modifiers (one step each, applied after the base letter, floor at D unless hard hold):
   +  last 3 all clear                  -  any of last 3 within 1 yard/1 unit of the rung (a "near miss" signal)
@@ -20,8 +20,10 @@ from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank,
 from floors import INV, SLATE_DAYS, schedule, team_split
 
 LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"]
+# thresholds on the blended probability (capped at 0.90, so the raw-clear-rate scale of .90/.85/.80/.70 would leave A+
+# unreachable); the modifiers below are unchanged
 def base_letter(p):
-    return "A+" if p >= .90 else "A" if p >= .85 else "A-" if p >= .80 else "B" if p >= .70 else "C" if p >= .60 else "D"
+    return "A+" if p >= .85 else "A" if p >= .80 else "A-" if p >= .75 else "B" if p >= .68 else "C" if p >= .60 else "D"
 def step(letter, n):
     i = max(1, min(len(LETTERS) - 1, LETTERS.index(letter) + n)); return LETTERS[i]
 # target competition: a WR/TE who joined the team this season (no games for it last season) and saw 8+ targets in one
@@ -131,7 +133,7 @@ def main():
         trimmed.append(p)
     out = trimmed
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
-                grade_key="Grade = how often this rung hits (lower of last-10 / last-15 clear rates, blended toward DK's no-vig price, capped at 90%, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
+                grade_key="Grade = our estimated hit probability after blending with DK's price. Edge is shown separately. A+>=85 A>=80 A->=75 B 68-74 C 60-67 D<60 F=hard hold; modifiers for form, price, matchup, target competition.",
                 rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")

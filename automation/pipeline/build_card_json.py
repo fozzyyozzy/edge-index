@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay, estimate_ladder
 from common import norm_name, P, load_real_ladders, prices_pulled
 
-FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15
+FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15   # raw clear rates on purpose: consistency, not price
 MAX_LEG_JUICE = -450
 MIN_EDGE_PTS = 2.0          # R4
 TARGET_DEC = 3.0          # +200

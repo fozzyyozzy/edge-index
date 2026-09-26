@@ -135,7 +135,7 @@ export default function NFLRecord() {
           ? <div style={{fontSize:10,color:"#555"}}>No graded legs carry a letter yet.</div>
           : <Table cols={[["GRADE","left"],["LEGS","right"],["HIT %","right"],["AVG PROB","right"],["DK IMPLIED","right"],["HIT − PROB","right"]]}
               rows={grades.map(g => {
-                const prob = g.avg_prob ?? g.expected;                  // older weeks: the clear % shown at the time
+                const prob = g.expected ?? g.avg_prob;                  // each week on its own basis (blended, or clear % before the blend)
                 const diff = prob == null ? null : 100 * g.hits / g.n - prob;
                 return [g.grade.replace("-", "−"), g.n, `${pct(g.hits, g.n)} (${g.hits})`,
                   prob == null ? "—" : `${prob.toFixed(1)}%`, g.avg_implied == null ? "—" : `${g.avg_implied.toFixed(1)}%`,
@@ -145,6 +145,12 @@ export default function NFLRecord() {
           AVG PROB = our blended probability for those legs when the card posted (clear rates pulled toward DK's no-vig
           price). DK IMPLIED = what DK's price implied, vig included. Small samples swing hard.
         </div>
+        {rec.clear_basis_weeks?.length > 0 && (
+          <div style={{fontSize:10,color:T.amber,marginTop:4}}>
+            Week{rec.clear_basis_weeks.length > 1 ? "s" : ""} {rec.clear_basis_weeks.join(", ")}: graded on published clear %
+            <span style={{color:"#666"}}> (the card predates the blend)</span>
+          </div>
+        )}
 
         <Label>ESTIMATED VS REAL PRICE</Label>
         {evr.length === 0

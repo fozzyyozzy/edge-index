@@ -550,7 +550,7 @@ export default function LegsHub() {
         {posted && <div style={{fontSize:10,color:T.muted}}>posted {posted}</div>}
       </div>
       <div title={data?.meta?.grade_key} style={{fontSize:10,color:"#777",marginBottom:18,maxWidth:"72ch",lineHeight:1.6}}>
-        Grade = how often this rung hits. It says nothing about whether the price is good.
+        Grade = our estimated hit probability after blending with DK's price. Edge is shown separately.
       </div>
 
       {!loaded && <div style={{fontSize:10,color:"#444"}}>loading…</div>}

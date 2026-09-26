@@ -137,6 +137,9 @@ def main():
                         if "odds_model_est" in g else []),
         # leg hit rate by the Legs-tab letter vs what the letter expected (mean clear %); older cards have no grade
         "by_grade": by_grade_table(pg) if "grade" in pg else [],
+        # "clear %" = the card's legs predate the blend (no prob), so AVG PROB for this week is the published clear %
+        "grade_basis": ("blended" if "prob" in pg and pd.to_numeric(pg["prob"], errors="coerce").notna().any()
+                        else "clear %") if "grade" in pg and pg.grade.notna().any() else None,
         "tickets": tickets,
         # pipeline legs only (hand-built legs have no price history); every leg counts, graded or void
         "clv": dict(n=int(df[pipe_clv].shape[0]), avg_leg_pts=round(float(df[pipe_clv].clv_pts.mean()), 2)
@@ -180,6 +183,9 @@ def write_season_record(season):
                               units_standard=wk.get("units_standard"),
                               legs_hit=wk["legs_hit"], tickets=wk["tickets"], clv=wk.get("clv")) for wk in weeks],
                   by_grade=by_grade,
+                  clear_basis_weeks=[wk["week"] for wk in weeks if wk.get("grade_basis") == "clear %"
+                                     or (wk.get("grade_basis") is None and any(b.get("n") and b.get("avg_prob") is None
+                                                                               for b in wk.get("by_grade", [])))],
                   est_vs_real=[dict(week=wk["week"], **r) for wk in weeks for r in wk.get("est_vs_real", [])])
     json.dump(record, open(P("receipts", f"record_{season}.json"), "w"), indent=1, allow_nan=False)
 
