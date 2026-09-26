@@ -133,14 +133,17 @@ export default function NFLRecord() {
         <Label>LEG HIT RATE BY GRADE</Label>
         {grades.length === 0
           ? <div style={{fontSize:10,color:"#555"}}>No graded legs carry a letter yet.</div>
-          : <Table cols={[["GRADE","left"],["LEGS","right"],["HIT","right"],["HIT %","right"],["EXPECTED","right"],["DIFF","right"]]}
+          : <Table cols={[["GRADE","left"],["LEGS","right"],["HIT %","right"],["AVG PROB","right"],["DK IMPLIED","right"],["HIT − PROB","right"]]}
               rows={grades.map(g => {
-                const diff = g.expected == null ? null : 100 * g.hits / g.n - g.expected;
-                return [g.grade.replace("-", "−"), g.n, g.hits, pct(g.hits, g.n), g.expected == null ? "—" : `${g.expected.toFixed(1)}%`,
+                const prob = g.avg_prob ?? g.expected;                  // older weeks: the clear % shown at the time
+                const diff = prob == null ? null : 100 * g.hits / g.n - prob;
+                return [g.grade.replace("-", "−"), g.n, `${pct(g.hits, g.n)} (${g.hits})`,
+                  prob == null ? "—" : `${prob.toFixed(1)}%`, g.avg_implied == null ? "—" : `${g.avg_implied.toFixed(1)}%`,
                   diff == null ? "—" : <span style={{color: diff >= 0 ? T.accent : T.red}}>{diff >= 0 ? "+" : ""}{diff.toFixed(1)} pts</span>];
               })} />}
         <div style={{fontSize:9.5,color:"#555",marginTop:8,lineHeight:1.6,maxWidth:"72ch"}}>
-          Expected = the average clear rate the Legs tab showed for those rungs when the card posted. Small samples swing hard.
+          AVG PROB = our blended probability for those legs when the card posted (clear rates pulled toward DK's no-vig
+          price). DK IMPLIED = what DK's price implied, vig included. Small samples swing hard.
         </div>
 
         <Label>ESTIMATED VS REAL PRICE</Label>

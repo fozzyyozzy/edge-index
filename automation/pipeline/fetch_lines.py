@@ -4,12 +4,13 @@ Replaces pasting. Writes:
   lines/ladders_<season>_w<week>.csv      Player,Market,Rung,Odds,Game,Commence,PulledAt   (every rung, real prices)
   lines/dk_<season>_w<week>_{all,tnf,sun,mnf}.csv   Player,Market,Line,Odds       (main line = rung priced closest to -110)
   lines/pulled_<season>_w<week>[_<slate>].txt       when this pull happened (UTC ISO)
+  lines/twoway_<season>_w<week>.csv                 Player,Market,Line,Over,Under,... DK standard markets (for no-vig)
   lines/odds_usage.csv                              one row per run: requests spent and quota left
 Only games that have NOT kicked off are pulled. A pull replaces the ladder rows of the games it fetched and keeps
 every other game's rows (so a TNF-only refresh doesn't wipe Sunday's ladders, and a started game keeps its last
 pre-kickoff prices).
 Env: ODDS_API_KEY; ODDS_WEEKLY_BUDGET (default 3000) caps requests per NFL week across every caller.
-Cost: 1 request per market per event -> 7 per game.
+Cost: 1 request per market per event -> 14 per game (7 alternate ladders + 7 standard two-way markets for the hold).
   python pipeline/fetch_lines.py --season 2026 --week 3                 (all games in the next 7 days)
   python pipeline/fetch_lines.py --season 2026 --week 3 --slate sun     (just that slate's unstarted games)
 Exit 3 = skipped because the weekly budget would be exceeded.
@@ -32,7 +33,11 @@ MARKETS = {                      # Odds API market key -> pipeline market
     "player_rush_attempts_alternate": "rush_att",
 }
 ET = ZoneInfo("America/New_York")
+# DK's standard (main-line) player markets come two-way; the alternates are Over-only. We pull both so the hold DK
+# charges on a player's market can be measured and removed from his alt rungs (common.novig).
+TWOWAY = {k.replace("_alternate", ""): v for k, v in MARKETS.items()}
 LADDER_COLS = ["Player", "Market", "Rung", "Odds", "Game", "Commence", "PulledAt"]
+TWOWAY_COLS = ["Player", "Market", "Line", "Over", "Under", "Game", "Commence", "PulledAt"]
 USAGE_COLS = ["pulled_at", "season", "week", "slate", "events", "cost", "remaining"]
 
 def slate_of(commence_iso):
@@ -74,7 +79,7 @@ def main():
     start = lambda e: datetime.fromisoformat(e["commence_time"].replace("Z", "+00:00"))
     events = [e for e in events if now < start(e) <= horizon]      # not kicked off yet
     if a.slate: events = [e for e in events if slate_of(e["commence_time"]) == a.slate]
-    used = week_usage(a.season, a.week); estimate = len(events) * len(MARKETS)
+    used = week_usage(a.season, a.week); estimate = len(events) * (len(MARKETS) + len(TWOWAY))
     print(f"{len(events)} unstarted {a.slate or 'all-slate'} events in window; quota remaining {rem}; "
           f"week {a.week} used {used}/{budget}, this pull ~{estimate}")
     if used + estimate > budget:
@@ -85,7 +90,7 @@ def main():
 
     pulled_at = now.isoformat(timespec="minutes")
     rows, cost, pulled_games = [], 0, set()
-    mk = ",".join(MARKETS)
+    mk = ",".join(list(MARKETS) + list(TWOWAY)); two = {}
     for e in events:
         url = f"{BASE}/events/{e['id']}/odds?apiKey={key}&regions=us&bookmakers={a.book}&markets={mk}&oddsFormat=american"
         try:
@@ -96,6 +101,12 @@ def main():
         game = f"{e['away_team']} @ {e['home_team']}"; pulled_games.add(game)
         for b in d.get("bookmakers", []):
             for m in b["markets"]:
+                if m["key"] in TWOWAY:                                  # standard market: keep both sides
+                    for o in m["outcomes"]:
+                        k = (o["description"], TWOWAY[m["key"]], float(o["point"]))
+                        two.setdefault(k, dict(Player=k[0], Market=k[1], Line=k[2], Game=game,
+                                               Commence=e["commence_time"], PulledAt=pulled_at))[o["name"]] = int(o["price"])
+                    continue
                 mkt = MARKETS.get(m["key"])
                 if not mkt: continue
                 for o in m["outcomes"]:
@@ -123,6 +134,13 @@ def main():
     else:
         lad = new
     lad.to_csv(lpath, index=False)
+    tpath = f"{a.out}/twoway_{a.season}_w{a.week}.csv"                  # same merge-by-game as the ladder
+    tnew = pd.DataFrame(list(two.values()), columns=TWOWAY_COLS)
+    if os.path.exists(tpath):
+        told = pd.read_csv(tpath)
+        tnew = pd.concat([told[~told.Game.isin(pulled_games)][TWOWAY_COLS], tnew], ignore_index=True)
+    tnew.to_csv(tpath, index=False)
+    print(f"two-way main lines: {len(two)} (hold measured where both sides are posted)")
 
     # when prices were pulled: per slate that had games in this pull, plus the week-level file (latest pull)
     for s in sorted({slate_of(r["Commence"]) for r in rows}):

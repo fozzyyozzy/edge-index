@@ -38,10 +38,11 @@ const rungStr = r => Number.isInteger(r) ? `${r}+` : `o${r}`;
 const clean = s => String(s || "").trim();
 const rowKey = p => `${p.player}|${p.market}`;
 
-// Per-leg hit probability for the slip: add-one smoothed clear rate over each window, (hits+1)/(games+2), take the lower
-// of L10 and L15, cap at 0.90. An estimate from clear rates, not a calibrated probability. null when a rung has no
-// L10/L15 (a hold with fewer than 10 games).
+// Per-leg hit probability for the slip: the rung's `prob` from grade_legs.py (common.leg_prob: lower of the L10/L15
+// add-one clear rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90). Older files without `prob`:
+// the add-one clear rate alone. Not calibrated. null when a rung has no L10/L15 (a hold with fewer than 10 games).
 function legProb(r) {
+  if (r.prob != null) return r.prob;
   const win = s => { const m = /^(\d+)\/(\d+)$/.exec(s || ""); return m ? (+m[1] + 1) / (+m[2] + 2) : null; };
   const a = win(r.l10), b = win(r.l15);
   return a == null || b == null ? null : Math.min(a, b, 0.90);
@@ -131,7 +132,7 @@ function AddBtn({ onClick, on, title }) {
 }
 
 /* ---------- one player/market row ---------- */
-const STAT_COLS = "40px 48px 64px 70px 74px 118px 26px";
+const STAT_COLS = "40px 48px 78px 70px 74px 118px 26px";
 
 function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
   const b = bestRung(p);
@@ -174,6 +175,8 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
           <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono}}>{rungStr(b.rung)}</span>
           <span style={{fontSize:11,color:T.text,fontFamily:T.mono}}>
             {oddsStr(b.est_odds)}{est && <sup style={{fontSize:7,color:T.amber,marginLeft:2}}>est</sup>}
+            {b.fair_odds != null && <div title="fair price from the blended probability; edge = our % minus DK's implied %"
+              style={{fontSize:8.5,color:"#666"}}>f {oddsStr(b.fair_odds)} <span style={{color: b.edge_pts >= 0 ? T.accent : T.red}}>{b.edge_pts >= 0 ? "+" : ""}{b.edge_pts.toFixed(1)}</span></div>}
           </span>
           <span style={{fontSize:10,color:"#999",fontFamily:T.mono}}>{b.l10 ?? "—"} <span style={{color:"#555"}}>{b.l15 ?? ""}</span></span>
           <Last3 vals={p.last3} rung={b.rung} />
@@ -188,7 +191,7 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
             <table style={{width:"100%",borderCollapse:"collapse",fontFamily:T.mono,fontSize:10,minWidth:560}}>
               <thead>
                 <tr style={{color:"#444",fontSize:8.5,letterSpacing:1.5,textAlign:"right"}}>
-                  {["RUNG","PRICE","IMPLIED","CLEAR","L10","L15","GRADE"].map(h =>
+                  {["RUNG","PRICE","FAIR","EDGE","IMPLIED","CLEAR","L10","L15","GRADE"].map(h =>
                     <th key={h} style={{fontWeight:600,padding:"3px 8px",textAlign: h === "RUNG" ? "left" : "right"}}>{h}</th>)}
                   <th style={{fontWeight:600,padding:"3px 8px",textAlign:"left"}}>REASONS</th>
                   <th />
@@ -205,6 +208,8 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
                       </td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:T.text}}>
                         {oddsStr(r.est_odds)}{est && <sup style={{fontSize:7,color:T.amber,marginLeft:2}}>est</sup>}</td>
+                      <td style={{padding:"5px 8px",textAlign:"right",color:"#aaa"}}>{r.fair_odds != null ? oddsStr(r.fair_odds) : "—"}</td>
+                      <td style={{padding:"5px 8px",textAlign:"right"}}>{r.edge_pts != null ? <span style={{color: r.edge_pts >= 0 ? T.accent : T.red}}>{r.edge_pts >= 0 ? "+" : ""}{r.edge_pts.toFixed(1)}</span> : "—"}</td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:"#888"}}>{r.implied_pct != null ? r.implied_pct.toFixed(1) + "%" : "—"}</td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:T.text,fontWeight:700}}>{r.clear_pct != null ? r.clear_pct.toFixed(1) + "%" : "—"}</td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:"#999"}}>{r.l10 ?? "—"}</td>
@@ -349,7 +354,7 @@ function Slip({ slip, setSlip, notice, tickets, setTickets, meta, slate, onSave 
           paddingTop:12,borderTop:`1px solid ${T.border}`}}>
           {stat("PAYOUT", oddsStr(american(pd)), T.nfl)}
           {stat("DECIMAL", pd.toFixed(2))}
-          {stat("HIT %", hitKnown ? (hit * 100).toFixed(1) + "%" : "—", T.text, "estimated from clear rates, not calibrated")}
+          {stat("HIT %", hitKnown ? (hit * 100).toFixed(1) + "%" : "—", T.text, "estimated from clear rates + DK's no-vig price, not calibrated")}
           {stat("BREAKEVEN", (be * 100).toFixed(1) + "%")}
           {stat("EV / UNIT", hitKnown ? `${ev >= 0 ? "+" : ""}${ev.toFixed(2)}u` : "—",
             !hitKnown ? T.text : ev >= 0 ? T.accent : T.red)}
@@ -592,7 +597,7 @@ export default function LegsHub() {
             <div className="legs-colhead" style={{gridTemplateColumns:`1fr ${STAT_COLS}`,gap:8,padding:"0 15px 6px 55px",
               fontSize:8,color:"#444",letterSpacing:1.5}}>
               <span />
-              <span>GRADE</span><span>RUNG</span><span>PRICE</span><span>L10 / 15</span><span>LAST 3</span><span>OPP D · VOL</span><span />
+              <span>GRADE</span><span>RUNG</span><span>PRICE · FAIR</span><span>L10 / 15</span><span>LAST 3</span><span>OPP D · VOL</span><span />
             </div>
 
             {rows.length === 0 && <div style={{padding:"28px 0",fontSize:11,color:"#444",textAlign:"center"}}>

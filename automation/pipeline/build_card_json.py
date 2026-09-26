@@ -7,7 +7,8 @@ Rules encoded here (do not relax without changing the newsletter copy too):
   R2  no PLAYER appears on more than one ticket (any market), except a FLOOR STAR (L10 >= 9/10 and L15 >= 13/15),
       max 2 tickets, and a ticket may carry at most one repeated star. Same player = same injury + same game script.
   R3  floor rung = highest rung clearing L10 >= 80% and L15 >= 73%; never stepped up for price
-  R4  every leg model% >= implied% - 2pts (winnable first; never a leg we know is overpriced)
+  R4  every leg needs edge >= +2 pts: blended probability (common.leg_prob — lower of L10/L15 add-one clear rates,
+      blended toward DK's no-vig price as 10 extra games, capped at 0.90) minus DK's implied probability at the price
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
   R6  team-change and injury holds are hard holds
   R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles; a 2-leg ticket
@@ -29,6 +30,7 @@ from common import norm_name, P, load_real_ladders, prices_pulled
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15
 MAX_LEG_JUICE = -450
+MIN_EDGE_PTS = 2.0          # R4
 TARGET_DEC = 3.0          # +200
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 SINGLE_GAME = {"tnf", "mnf", "snf"}
@@ -61,12 +63,15 @@ def hold_reasons(r):
     if r.OppD == "TOUGH": why.append("opp D tough")
     if r.OwnVol == "TOUGH": why.append("own volume low")
     if r.EstOdds < MAX_LEG_JUICE: why.append(f"price worse than {MAX_LEG_JUICE}")
+    edge = getattr(r, "EdgePts", None)
+    if edge is not None and not pd.isna(edge) and edge < MIN_EDGE_PTS:
+        why.append(f"edge {edge:+.1f} pts (< +{MIN_EDGE_PTS:g})")                 # R4
     return why
 
 def hold_rank(h):
     """hard holds (team change, blowout) first, then matchup/volume, then price-only; floor-scan order within each"""
     first = h["Reasons"][0]
-    return 0 if first.startswith(("team change", "blowout")) else 2 if first.startswith("price") else 1
+    return 0 if first.startswith(("team change", "blowout")) else 2 if first.startswith(("price", "edge")) else 1
 
 def blowout_flag(spread):
     return spread is not None and not pd.isna(spread) and spread <= -7
@@ -109,7 +114,13 @@ def main():
                           odds_model_est=int(model_est) if model_est is not None else None, l10=r.l10, l15=r.l15,
                           last3=last3, opp_d=r.OppD, own_vol=r.OwnVol, star=FLOOR_STAR(r.l10, r.l15),
                           opp_d_rank=rank_or_none(r, "OppDRank"), own_vol_rank=rank_or_none(r, "OwnVolRank"),
-                          model_pct=round(100 * min(r.l10, r.l15, 0.9), 1),   # conservative: min of L10/L15, capped 90
+                          # blended probability from floors.py (common.leg_prob); older floor CSVs fall back to min(L10, L15)
+                          model_pct=round(100 * float(r.Prob), 1) if not pd.isna(getattr(r, "Prob", float("nan")))
+                                    else round(100 * min(r.l10, r.l15, 0.9), 1),
+                          prob=None if pd.isna(getattr(r, "Prob", float("nan"))) else float(r.Prob),
+                          fair_odds=None if pd.isna(getattr(r, "FairOdds", float("nan"))) else int(r.FairOdds),
+                          edge_pts=None if pd.isna(getattr(r, "EdgePts", float("nan"))) else float(r.EdgePts),
+                          novig_pct=None if pd.isna(getattr(r, "NovigPct", float("nan"))) else float(r.NovigPct),
                           grade=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[0],
                           clear_pct=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[1],
                           note=f"L10 {r.L10}, L15 {r.L15}; last 3 {last3}; opp D {r.OppD}"))

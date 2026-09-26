@@ -4,7 +4,8 @@ for the site's Legs tab and slip builder. Runs after floors.py (needs its matchu
 
   python pipeline/grade_legs.py --season 2026 --week 3 --slate sun --lines lines/dk_2026_w3_sun.csv
 
-Grade = how often this rung HITS: 0.6*L10 + 0.4*L15 clear rate (recent form weighted, full sample respected). Not a value grade.
+Grade = how often this rung HITS, from the blended probability (common.leg_prob): the lower of L10/L15 add-one clear
+rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90. Not a value grade (that's edge_pts).
   A+  >= 90%   A  >= 85%   A-  >= 80%   B  70-79   C  60-69   D  < 60   F  hard hold
 Modifiers (one step each, applied after the base letter, floor at D unless hard hold):
   +  last 3 all clear                  -  any of last 3 within 1 yard/1 unit of the rung (a "near miss" signal)
@@ -15,7 +16,7 @@ import argparse, io, json, os, sys, urllib.request
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder, implied_prob
-from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank
+from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank, load_holds, price_fields
 from floors import INV, SLATE_DAYS, schedule, team_split
 
 LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"]
@@ -57,6 +58,7 @@ def main():
         D = (1 - w26) * d_prev + w26 * d_cur.reindex(d_prev.index).fillna(d_prev)
         O = (1 - w26) * o_prev + w26 * o_cur.reindex(o_prev.index).fillna(o_prev)
     else: D, O = d_prev, o_prev
+    HOLDS = load_holds(a.season, a.week)
     comp = target_competition(cur, prev)                          # {team: [(name, key, max recent targets)]}
     sch = schedule(a.season, a.week); sch = sch[sch.weekday.isin(SLATE_DAYS[a.slate])]
     OPP, SPREAD, GAME = {}, {}, {}
@@ -89,7 +91,9 @@ def main():
             if len(v) < 10:
                 rungs.append(dict(rung=t, est_odds=o, grade="F", reasons=holds)); continue
             l10 = float((v[-10:] >= t).mean()); l15 = float((v[-15:] >= t).mean())
-            p = 0.6 * l10 + 0.4 * l15; letter = base_letter(p); why = []
+            p = 0.6 * l10 + 0.4 * l15                                   # raw clear rate, shown as clear_pct
+            pf = price_fields(v, t, o, r.Player, r.Market, HOLDS)            # blended probability, fair price, edge
+            letter = base_letter(pf["prob"]); why = []                       # the letter grades the blended probability
             last3 = v[-3:]
             if holds: letter = "F"; why = holds
             else:
@@ -102,7 +106,7 @@ def main():
                 pre_comp = letter
                 if rivals: letter = step(letter, -1); why.append(f"new target competition ({', '.join(rivals)})")
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
-                              l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), grade=letter, reasons=why,
+                              l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), **pf, grade=letter, reasons=why,
                               _pre_comp=None if holds else pre_comp))
         out.append(dict(player=r.Player, pos=pos, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
@@ -127,7 +131,7 @@ def main():
         trimmed.append(p)
     out = trimmed
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
-                grade_key="Grade = how often this rung hits (60% last-10 + 40% last-15 clear rate, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
+                grade_key="Grade = how often this rung hits (lower of last-10 / last-15 clear rates, blended toward DK's no-vig price, capped at 90%, with form/price/matchup modifiers). It says nothing about whether the price is good. A+>=90 A>=85 A->=80 B 70-79 C 60-69 D<60 F=hard hold.",
                 rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")

@@ -92,6 +92,10 @@ function Leg({ l, last }) {
       </div>
       <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",fontFamily:T.mono}}>
         <Price leg={l} />
+        {l.fair_odds != null && (
+          <span title="fair price from our blended probability (clear rates + DK's no-vig price); edge = our % minus DK's implied %"
+            style={{fontSize:9.5,color:"#777",whiteSpace:"nowrap"}}>fair {oddsStr(l.fair_odds)} <span style={{color: l.edge_pts >= 0 ? T.accent : T.red}}>{l.edge_pts >= 0 ? "+" : ""}{l.edge_pts.toFixed(1)}</span></span>
+        )}
         {l.l10 != null && <span style={{fontSize:10,color:"#999"}}>{frac(l.l10, 10)} <span style={{color:"#555"}}>{frac(l.l15, 15)}</span></span>}
         {l3.length > 0 && <span style={{fontSize:10,minWidth:66}}>
           {l3.map((v, i) => <span key={i} style={{color: v >= l.rung ? "#7fe0b0" : "#c96b74",marginRight:5}}>{Math.round(v)}</span>)}

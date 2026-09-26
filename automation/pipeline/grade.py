@@ -14,7 +14,7 @@ from common import norm_name, COL, fetch_week, pay, P
 
 GRADES = ["A+", "A", "A-", "B"]
 LEDGER_COLS = ["season", "week", "slate", "ticket", "hand_built", "player", "team", "opp", "market", "rung", "grade",
-               "clear_pct", "model_pct", "published", "closing", "clv_pts", "actual", "hit", "hit_standard", "early_exit",
+               "clear_pct", "model_pct", "prob", "fair_odds", "edge_pts", "published", "closing", "clv_pts", "actual", "hit", "hit_standard", "early_exit",
                "pnl_1u", "miss_by"]
 
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
@@ -35,6 +35,21 @@ def settle(hits, decs, est_american=None):
     d = 1.0
     for x in decs: d *= x
     return "WIN", round(d - 1, 2)
+
+def by_grade_table(pg):
+    """Per letter (A+, A, A-, B): legs, hits, average blended probability (common.leg_prob, as published on the card),
+    average DK implied probability at the published price. `expected` = blended when known, else the old clear %."""
+    def mean_pct(x):
+        x = pd.to_numeric(x, errors="coerce")
+        return round(float(x.mean()), 1) if x.notna().any() else None
+    out = []
+    for gr in GRADES:
+        s = pg[pg.grade == gr]
+        avg_prob = mean_pct(100 * pd.to_numeric(s["prob"], errors="coerce")) if "prob" in s else None
+        out.append(dict(grade=gr, n=int(len(s)), hits=int(s.hit.sum()), avg_prob=avg_prob,
+                        avg_implied=mean_pct(100 / s.published.map(dec)) if len(s) else None,
+                        expected=avg_prob if avg_prob is not None else mean_pct(s.clear_pct)))
+    return out
 
 def am_dec(am): return 1 + (am / 100 if am > 0 else 100 / -am)
 
@@ -121,10 +136,7 @@ def main():
                         .rename(columns={"odds_model_est": "est", "odds_real": "real"}).to_dict("records")
                         if "odds_model_est" in g else []),
         # leg hit rate by the Legs-tab letter vs what the letter expected (mean clear %); older cards have no grade
-        "by_grade": [dict(grade=gr, n=int((pg.grade == gr).sum()), hits=int(pg[pg.grade == gr].hit.sum()),
-                          expected=round(float(pg[pg.grade == gr].clear_pct.mean()), 1)
-                          if (pg.grade == gr).any() and pg[pg.grade == gr].clear_pct.notna().any() else None)
-                     for gr in GRADES] if "grade" in pg else [],
+        "by_grade": by_grade_table(pg) if "grade" in pg else [],
         "tickets": tickets,
         # pipeline legs only (hand-built legs have no price history); every leg counts, graded or void
         "clv": dict(n=int(df[pipe_clv].shape[0]), avg_leg_pts=round(float(df[pipe_clv].clv_pts.mean()), 2)
@@ -156,10 +168,12 @@ def write_season_record(season):
     by_grade = []
     for gr in GRADES:
         rows = [b for wk in weeks for b in wk.get("by_grade", []) if b["grade"] == gr and b["n"]]
-        n = sum(b["n"] for b in rows); exp_rows = [b for b in rows if b["expected"] is not None]
-        exp_n = sum(b["n"] for b in exp_rows)
-        by_grade.append(dict(grade=gr, n=n, hits=sum(b["hits"] for b in rows),
-                             expected=round(sum(b["expected"] * b["n"] for b in exp_rows) / exp_n, 1) if exp_n else None))
+        n = sum(b["n"] for b in rows)
+        def wavg(k):                                                    # leg-weighted across weeks, skipping unknowns
+            rs = [b for b in rows if b.get(k) is not None]; m = sum(b["n"] for b in rs)
+            return round(sum(b[k] * b["n"] for b in rs) / m, 1) if m else None
+        by_grade.append(dict(grade=gr, n=n, hits=sum(b["hits"] for b in rows), avg_prob=wavg("avg_prob"),
+                             avg_implied=wavg("avg_implied"), expected=wavg("expected")))
     record = dict(meta=dict(season=season, generated=pd.Timestamp.now(tz="UTC").isoformat(timespec="minutes"), weeks=len(weeks)),
                   weeks=[dict(week=wk["week"], ticket_record=wk["ticket_record"], legs_graded=wk["legs_graded"],
                               ticket_record_standard=wk.get("ticket_record_standard"), units=wk.get("units"),

@@ -34,7 +34,7 @@ function Row({ r }) {
   const pc = POS_COLOR[r.pos] || T.muted;
   const newTeam = r.team_change && r.prev_team && r.prev_team !== r.team;
   // How far the clear rate sits above what the price asks. Positive = the log clears it more often than the price implies.
-  const gap = r.clear_pct - r.implied_pct;
+  const edge = r.edge_pts ?? (r.clear_pct - r.implied_pct);   // older files: raw clear rate minus implied
   const hit = Number(r.l10.split("/")[0]);
 
   return (
@@ -81,6 +81,13 @@ function Row({ r }) {
               fontFamily:T.mono}}>{oddsStr(r.odds)}{!r.real && <sup style={{fontSize:7,color:"#f5c518",marginLeft:2}}>est</sup>}</div>
             <div style={{fontSize:8, color:"#444"}}>DK PRICE</div>
           </div>
+          {r.fair_odds != null && (
+            <div style={{textAlign:"center", minWidth:58}} title="fair price from the blended probability; edge = our % minus DK's implied %">
+              <div style={{fontSize:12, fontWeight:700, color:"#aaa", fontFamily:T.mono}}>{oddsStr(r.fair_odds)}</div>
+              <div style={{fontSize:8, color:"#444"}}>FAIR <span style={{color: edge >= 0 ? T.accent : "#ff4757"}}>
+                {edge >= 0 ? "+" : ""}{edge.toFixed(1)}</span></div>
+            </div>
+          )}
           <span style={{fontSize:13, color:open ? pc : "#333"}}>{open ? "−" : "+"}</span>
         </div>
       </div>
@@ -108,8 +115,9 @@ function Row({ r }) {
             <div style={{fontSize:9, color:"#444", letterSpacing:2,
               fontFamily:T.mono, marginBottom:7}}>PRICE</div>
             {[["DK price" + (r.real ? "" : " (est)"), `${oddsStr(r.odds)} · ${r.implied_pct.toFixed(1)}% implied`],
-               ["Longest price worth taking", oddsStr(r.fair_odds)],
-               ["Clear rate minus price", (gap >= 0 ? "+" : "") + gap.toFixed(0) + " pts"],
+               ["Blended probability", r.prob != null ? (100 * r.prob).toFixed(1) + "%" : "—"],
+               ["Fair price (longest worth taking)", oddsStr(r.fair_odds)],
+               ["Edge (ours − DK implied)", (edge >= 0 ? "+" : "") + edge.toFixed(1) + " pts"],
                ["DK main line", `${r.main_line} at ${oddsStr(r.main_odds)}`],
                ["Matchup · volume", `opp D ${r.opp_d === "neutral" ? "AVG" : r.opp_d}${r.opp_d_rank != null ? ` ${r.opp_d_rank}` : ""}`
                  + ` · own ${r.own_vol === "TOUGH" ? "LOW" : r.own_vol === "SOFT" ? "HIGH" : r.own_vol === "neutral" ? "AVG" : r.own_vol}`
@@ -213,9 +221,11 @@ export default function StreakCenter() {
 
       <div style={{marginTop:26, paddingTop:16, borderTop:`1px solid ${T.border}`,
         fontSize:10, color:"#555", lineHeight:1.8, maxWidth:"74ch"}}>
-        LONGEST PRICE WORTH TAKING is the break-even odds at the clear rate, before vig. Paying longer
-        than that is a losing bet however good the log looks. A floor is not a pick: the card adds the
-        matchup and volume gates, and the Legs tab grades every rung.
+        FAIR is the break-even price at our blended probability: the lower of the L10/L15 clear rates
+        (smoothed), pulled toward DK's no-vig price as if the market were 10 more games, capped at 90%.
+        EDGE is that probability minus the one DK's price implies; the card needs +2 or better. Paying
+        longer than fair is a losing bet however good the log looks. A floor is not a pick: the card adds
+        the matchup, volume and edge gates, and the Legs tab grades every rung.
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank
+from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank, load_holds, price_fields
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
@@ -70,6 +70,7 @@ def main():
     team_prev = prev.groupby("key")["team"].last()
 
     REAL = load_real_ladders(a.ladders or a.lines.replace("dk_", "ladders_").rsplit("_", 1)[0] + ".csv")
+    HOLDS = load_holds(a.season, a.week)
     lines = pd.read_csv(a.lines); rows = []
     for r in lines.itertuples():
         key = norm_name(r.Player); col = COL[r.Market]; inv = INV[r.Market]
@@ -98,7 +99,8 @@ def main():
                          TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
                          Last3=[int(x) for x in v[-3:]],    # plain ints: np.int64 wrote "np.int64(126)" into the CSV
                          Pos=g.position.iloc[-1], Games=int(len(v)), Avg10=round(float(v[-10:].mean()), 1), Streak=streak,
-                         Real=(key, r.Market) in REAL))
+                         Real=(key, r.Market) in REAL,
+                         **{k.title().replace("_", ""): val for k, val in price_fields(v, t, o, r.Player, r.Market, HOLDS).items()}))
     df = pd.DataFrame(rows)
     if len(df):
         df["score"] = df.L10.str.split("/").str[0].astype(int) + (df.OppD == "SOFT") - 2 * (df.OppD == "TOUGH") - (df.OwnVol == "TOUGH")
@@ -121,7 +123,9 @@ def write_site_json(df, a, path):
                          odds=o, real=bool(r.Real), main_line=float(r.Main), main_odds=int(r.MainOdds),
                          l10=r.L10, l15=r.L15, clear_pct=round(100 * clear, 1),
                          implied_pct=round(100 * (-o / (-o + 100) if o < 0 else 100 / (o + 100)), 1),
-                         fair_odds=american(min(clear, 0.99)) if clear > 0 else None,
+                         # blended probability (common.leg_prob) and the price it implies; edge = prob - DK implied
+                         prob=float(r.Prob), fair_odds=int(r.FairOdds), edge_pts=float(r.EdgePts),
+                         novig_pct=float(r.NovigPct), novig_source=r.NovigSource,
                          avg10=float(r.Avg10), streak=int(r.Streak), games=int(r.Games), last3=list(r.Last3),
                          opp_d=r.OppD, own_vol=r.OwnVol, spread=None if pd.isna(r.Spread) else float(r.Spread),
                          opp_d_rank=None if pd.isna(r.OppDRank) else int(r.OppDRank),

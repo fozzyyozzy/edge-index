@@ -64,3 +64,62 @@ def tag_rank(series, team, defense=False):
     if x is None or pd.isna(x): return "?", None
     x = int(round(x)); tag = "SOFT" if x <= 8 else "TOUGH" if x >= 25 else "neutral"
     return tag, (len(series) + 1 - x) if defense else x
+
+
+# ── per-leg probability: shrunk clear rate, blended toward DK's no-vig price ───────────────────────────────────────
+# Start from the add-one clear rate (hits+1)/(games+2) over L10 and over L15 and take the lower window; then blend toward
+# DK's no-vig implied probability, counting the market as MARKET_GAMES extra games; cap at PROB_CAP. One implementation,
+# used by floors.py, grade_legs.py and build_card_json.py (the site's slip uses the rung's `prob` from grade_legs).
+MARKET_GAMES = 10
+PROB_CAP = 0.90
+# DK alt ladders come one-sided (Over only), so no-vig uses the hold DK charges on the same player's standard two-way
+# market (lines/twoway_<season>_w<week>.csv from fetch_lines.py): p_novig = p_implied / (1 + hold). Missing that
+# player/market: the slate's median hold for the market; no two-way data at all: an assumed DEFAULT_HOLD.
+# Main-line hold is a floor for alt rungs, which often carry more — so this errs toward crediting the market too little.
+DEFAULT_HOLD = 0.045
+
+def implied(o):
+    return -o / (-o + 100) if o < 0 else 100 / (o + 100)
+
+def fair_american(p):
+    """probability -> fair American odds, no vig"""
+    p = min(max(p, 0.01), 0.99)
+    return int(round(-100 * p / (1 - p))) if p >= 0.5 else int(round(100 * (1 - p) / p))
+
+def load_holds(season, week):
+    """{(norm_name, market): hold} from the week's two-way file, plus {("*", market): median hold}; {} if none."""
+    path = P("lines", f"twoway_{season}_w{week}.csv")
+    if not os.path.exists(path): return {}
+    tw = pd.read_csv(path).dropna(subset=["Over", "Under"])
+    tw["hold"] = [implied(o) + implied(u) - 1 for o, u in zip(tw.Over, tw.Under)]
+    tw = tw[(tw.hold > -0.01) & (tw.hold < 0.25)]                        # drop garbage quotes
+    out = {(norm_name(r.Player), r.Market): float(r.hold) for r in tw.itertuples()}
+    out.update({("*", m): float(g.hold.median()) for m, g in tw.groupby("Market")})
+    return out
+
+def novig(odds, name, market, holds):
+    """(no-vig probability, source) for a one-sided DK price."""
+    key = (norm_name(name), market)
+    if key in holds: h, src = holds[key], "two-way"
+    elif ("*", market) in holds: h, src = holds[("*", market)], "market median"
+    else: h, src = DEFAULT_HOLD, "assumed"
+    return implied(odds) / (1 + h), src
+
+def leg_prob(values, rung, p_market=None):
+    """values = the player's game log (oldest first). Returns the blended, capped probability of clearing `rung`."""
+    import numpy as np
+    v = np.asarray(values, dtype=float)
+    wins = []
+    for n in (10, 15):
+        w = v[-n:]; h = int((w >= rung).sum()); g = len(w)
+        wins.append(((h + 1) / (g + 2), h, g))
+    _, h, g = min(wins)                                                  # the lower (more cautious) window
+    p = (h + 1 + MARKET_GAMES * p_market) / (g + 2 + MARKET_GAMES) if p_market is not None else (h + 1) / (g + 2)
+    return min(p, PROB_CAP)
+
+def price_fields(values, rung, odds, name, market, holds):
+    """prob, fair price and edge for one rung at DK's price; edge = our probability minus DK's implied (vig included)."""
+    p_mkt, src = novig(odds, name, market, holds)
+    p = leg_prob(values, rung, p_mkt)
+    return dict(prob=round(p, 4), novig_pct=round(100 * p_mkt, 1), novig_source=src, fair_odds=fair_american(p),
+                edge_pts=round(100 * (p - implied(odds)), 1))
