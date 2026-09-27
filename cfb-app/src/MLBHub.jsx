@@ -1,7 +1,7 @@
 import { useState } from "react";
-// v2026-09-26
+// v2026-09-27
 
-const TODAY = "2026-09-26";
+const TODAY = "2026-09-27";
 
 // >>> AUTO-GENERATED FREE PICK BEGIN — do not edit between markers
 const FREE_PICK = {
@@ -16,35 +16,31 @@ const FREE_PICK = {
 // <<< AUTO-GENERATED FREE PICK END
 
 const PITCHER_PLAYS = [
-  {pitcher:"Jonah Tong",team:"None",opp:"Washington Nationals",home:"Washington Nationals",
-   prop:"strikeouts",line:4.5,odds:109,tier:"T1",model_prob:0.927,
-   streak:3,l5_avg:6.0,k_per_ip:0,opp_k_pct:0.245,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 6.0 Ks"]},
-  {pitcher:"Ryan Johnson",team:"None",opp:"Seattle Mariners",home:"Seattle Mariners",
-   prop:"strikeouts",line:4.5,odds:112,tier:"T1",model_prob:0.686,
-   streak:4,l5_avg:5.2,k_per_ip:0,opp_k_pct:0.228,
-   alt_lines:[3.5,4.0],hand:"R",notes:["L5 avg 5.2 Ks"]},
+  {pitcher:"Jared Jones",team:"None",opp:"Detroit Tigers",home:"Detroit Tigers",
+   prop:"strikeouts",line:5.5,odds:-144,tier:"AUTO",model_prob:0.868,
+   streak:5,l5_avg:8.2,k_per_ip:0,opp_k_pct:0.222,
+   alt_lines:[4.5,5.0],hand:"R",notes:["L5 avg 8.2 Ks"]},
 ];
 
 const BATTER_PLAYS = [
   {batter:"Agustín Ramírez",team:"Miami Marlins",opp:"?",home:"Miami Marlins",
-   prop:"hits",line:0.5,odds:-125,tier:"T1",model_prob:0.725,
-   hit_streak:4,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
+   prop:"hits",line:0.5,odds:-127,tier:"AUTO",model_prob:0.845,
+   hit_streak:5,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["5-game hit streak"]},
+  {batter:"Andrés Chaparro",team:"New York Mets",opp:"?",home:"Washington Nationals",
+   prop:"hits",line:0.5,odds:-146,tier:"T1",model_prob:0.672,
+   hit_streak:3,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["3-game hit streak"]},
   {batter:"Bo Davidson",team:"Los Angeles Dodgers",opp:"?",home:"San Francisco Giants",
-   prop:"hits",line:0.5,odds:-143,tier:"T1",model_prob:0.892,
+   prop:"hits",line:0.5,odds:-130,tier:"AUTO",model_prob:0.892,
+   hit_streak:5,pitcher_hand:"R",
+   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["5-game hit streak"]},
+  {batter:"Cedric Mullins",team:"Tampa Bay Rays",opp:"?",home:"Philadelphia Phillies",
+   prop:"hits",line:0.5,odds:101,tier:"T1",model_prob:0.683,
    hit_streak:4,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
-  {batter:"John Rave",team:"Cleveland Guardians",opp:"?",home:"Kansas City Royals",
-   prop:"hits",line:0.5,odds:-134,tier:"T1",model_prob:0.669,
-   hit_streak:2,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["2-game hit streak"]},
-  {batter:"Matt McLain",team:"Cincinnati Reds",opp:"?",home:"Toronto Blue Jays",
-   prop:"hits",line:0.5,odds:-117,tier:"T1",model_prob:0.656,
-   hit_streak:4,pitcher_hand:"R",
-   xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
-  {batter:"Munetaka Murakami",team:"Chicago White Sox",opp:"?",home:"Chicago White Sox",
-   prop:"hits",line:0.5,odds:-146,tier:"T1",model_prob:0.693,
+  {batter:"David Fry",team:"Cleveland Guardians",opp:"?",home:"Kansas City Royals",
+   prop:"hits",line:0.5,odds:-149,tier:"T1",model_prob:0.659,
    hit_streak:4,pitcher_hand:"R",
    xba:null,xba_diff:null,xwoba:null,vs_team:null,notes:["4-game hit streak"]},
 ];
@@ -57,19 +53,19 @@ const SKIP_TODAY = [
 ];
 
 const FADE_PLAYS = [
-  {batter:"Josh Smith",team:"?",opp:"?",
-   l14_avg:"?",l14:"?",
-   odds_over:0,odds_under:0,
-   reason:"2-for-28 L14 (.071)"}, 
-  {batter:"Sean Murphy",team:"?",opp:"?",
-   l14_avg:"?",l14:"?",
-   odds_over:0,odds_under:0,
-   reason:"2-for-28 L14 (.071)"}, 
-  {batter:"Cam Smith",team:"?",opp:"?",
+  {batter:"Colson Montgomery",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
    reason:"3-for-38 L14 (.079)"}, 
-  {batter:"Andrew Vaughn",team:"?",opp:"?",
+  {batter:"Cam Smith",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"3-for-37 L14 (.081)"}, 
+  {batter:"Austin Martin",team:"?",opp:"?",
+   l14_avg:"?",l14:"?",
+   odds_over:0,odds_under:0,
+   reason:"1-for-12 L14 (.083)"}, 
+  {batter:"Luisangel Acuna",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
    reason:"1-for-11 L14 (.091)"}, 
@@ -77,10 +73,10 @@ const FADE_PLAYS = [
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
    reason:"3-for-32 L14 (.094)"}, 
-  {batter:"Tristan Peters",team:"?",opp:"?",
+  {batter:"Ernie Clement",team:"?",opp:"?",
    l14_avg:"?",l14:"?",
    odds_over:0,odds_under:0,
-   reason:"3-for-31 L14 (.097)"}, 
+   reason:"4-for-41 L14 (.098)"}, 
 ];
 
 const PARLAY_POTENTIALS = [
