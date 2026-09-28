@@ -15,8 +15,7 @@ function Link({ href, children }) {
       style={{color:"#00e5ff",textDecoration:"none",borderBottom:"1px dotted #00e5ff80"}}>{children}</a>
   );
 }
-const RecordLink = () => <Link href="#record">Record tab</Link>;          // NFL record + calibration
-const MLBRecordLink = () => <Link href="#mlbrecord">MLB Record tab</Link>;
+const RecordLink = () => <Link href="#record">Record tab</Link>;
 
 const FAQS = [
   {
@@ -24,28 +23,20 @@ const FAQS = [
     color: "#00ff88",
     items: [
       {
-        q: "What model do you use to generate picks?",
-        a: "A 7-layer signal stack combining: (1) streak momentum from pybaseball game logs, (2) current form via MLB Stats API L14 batting average, (3) LHP/RHP platoon splits from Statcast p_throws data, (4) park factors across all 30 stadiums, (5) opposing lineup strikeout rate, (6) trade detection via daily 40-man roster diffs, and (7) xBA regression signals from Baseball Savant. Each layer contributes an additive probability adjustment. Every play shows its full signal stack in the dropdown.",
+        q: "How is the card built?",
+        a: "From DraftKings alternate ladders. For every player with a DK line on the slate, the floor rung is the highest rung he cleared in at least 8 of his last 10 games and 11 of his last 15. Floors then pass gates: no tough opposing defense or low team volume, no team change this season, no attempt props when his team is favored by 7+, no price worse than −450, and at least +2 points of edge at DK's price. Tickets are 3–4 legs (2 allowed on a single-game Thursday or Monday slate), aiming for +200 by adding a fourth floor leg, never by stepping a rung up.",
       },
       {
-        q: "What were your coefficients on the regression analysis?",
-        a: "The model uses a weighted signal stack rather than traditional OLS regression. Primary weights: L5 hit rate at 60% of base probability, L10 rate at 25%. Platoon splits apply a +/-8-15% multiplicative adjustment, park factors +/-3-5%, and xBA regression +/-2-8%. Slump detection is binary — players below .150 L14 with 10+ AB are excluded entirely from OVER plays. Tier thresholds: AUTO at model prob >= 88% with streak >= 7 and 100% L5; T1 at 75-87%; T2 at 65-74%.",
+        q: "What does a leg's grade mean?",
+        a: "Grade = our estimated hit probability after blending with DK's price. Edge is shown separately. A+ is 85% and up, A 80%, A− 75%, B 68%, C 60%; form, price, matchup and new target competition move a grade one step. F is a hard hold (team change, likely blowout on an attempt prop, or fewer than 10 games).",
       },
       {
-        q: "What is xBA and why does it matter?",
-        a: "xBA (expected batting average) uses Statcast exit velocity and launch angle to calculate hit probability on each batted ball, independent of defense. If a player's xBA is .040 above their actual BA, they're hitting below their true skill — a positive regression signal shown as 'DUE UP' on the card. If actual BA exceeds xBA by .040+, they're getting lucky — shown as 'LUCKY', a caution flag.",
+        q: "How is the probability estimated?",
+        a: "Take the player's clear rate at that rung over his last 10 and last 15 games, smoothed as (hits + 1) / (games + 2), and use the lower of the two. Then blend it toward DK's no-vig price as if the market were 10 more games, and cap it at 90%. The fair price is the odds that probability implies; edge is our probability minus the one DK's price implies.",
       },
       {
-        q: "How does the fade model work?",
-        a: <>Players below .150 batting average over the last 14 days (minimum 10 AB) are excluded from OVER plays and added to the fade list. When books still price their hit OVER at -180 to -250, the UNDER becomes plus money (+100 to +175). Every fade and its result is on the <MLBRecordLink />.</>,
-      },
-      {
-        q: "Why 2-3 leg parlays instead of singles on juiced plays?",
-        a: "For plays priced at -200 to -280, the juice consumes most of the edge on a straight single. Pairing two -220 plays produces roughly +120 to +140 odds at about 80% combined hit probability — better risk-adjusted return. The paired-by-juice system ensures no player appears in more than 2 parlays per slate, preventing cascade failures.",
-      },
-      {
-        q: "How do you handle mid-season trades?",
-        a: "The trade tracker pulls all 30 MLB 40-man rosters daily and diffs against the previous day. Any player changing teams is flagged immediately with a NEW TEAM indicator. This prevents using stale park factors or platoon data for a player now in a different division.",
+        q: "Why parlays of short-priced legs?",
+        a: "Floor legs are priced heavily (often −200 to −450), so a single returns little. Three or four of them from different games make a ticket near +200. No player appears on more than one ticket, except a floor star (9 of his last 10 and 13 of his last 15) on at most two.",
       },
     ],
   },
@@ -54,20 +45,20 @@ const FAQS = [
     color: "#f5c518",
     items: [
       {
-        q: "What is your verified track record?",
-        a: <>Every graded play since live MLB operations began on May 8, 2026 is on the <MLBRecordLink />, day by day, wins and losses.</>,
+        q: "Where is the track record?",
+        a: <>Every card ticket as published, graded each Tuesday against nflverse box scores, is on the <RecordLink />. Tickets are graded as settled at DraftKings, where Early Exit protection applies. Tickets published by hand before the pipeline existed are flagged and left out of the grade statistics.</>,
       },
       {
-        q: "Why do fades outperform singles?",
-        a: <>Sportsbooks adjust OVER pricing slowly on cold bats because their algorithms weight season-long reputation heavily. A player hitting .094 L14 priced at -200 OVER implies 67% probability — when true probability is closer to 35-45%. That mispricing creates plus money UNDER value. At +120 average odds you only need 45.5% to break even. Whether fades clear that bar is tracked on the <MLBRecordLink />.</>,
+        q: "What is CLV?",
+        a: "Closing line value: the price each leg was published at against the last price pulled before its game kicked off, in implied-probability points. Positive means the market moved toward the card after it posted. Published prices are locked; the Card tab shows published → current.",
       },
       {
-        q: "What is your biggest known weakness?",
-        a: "Three documented weaknesses: (1) Lineup confirmation — the model uses prop line availability as a proxy for starting status, but players can appear in markets while listed as bench. We are adding lineup verification. (2) Blowout risk — when a team falls behind 5+ runs early, starters get pulled with fewer AB. (3) 2026 Statcast data lag — pybaseball game logs are from 2025; current season bridges via MLB Stats API but lacks pitch-level granularity.",
+        q: "What are the known weaknesses?",
+        a: "Samples are small: a season is a few dozen tickets. DK posts alternate ladders one-sided, so the no-vig price uses the hold on the player's main line, which understates the hold on alt rungs. Clear rates look back 10–15 games, so a role change shows up late; the target-competition rule catches only new teammates with 8+ targets.",
       },
       {
         q: "How do you define a unit?",
-        a: "1 unit = $100 at our standard flat-bet tracking rate. Quarter Kelly criterion sizing is recommended for actual bankroll management. AUTO tier singles: 1.0-1.5 units. T1 singles: 0.75-1.0 units. Parlays: 0.5 units. Fades: 0.5-1.0 units.",
+        a: "Flat: every card ticket is 1 unit.",
       },
     ],
   },
@@ -76,24 +67,16 @@ const FAQS = [
     color: "#00e5ff",
     items: [
       {
-        q: "What is included in the free tier?",
-        a: "One play per day — the model's highest-confidence FREE PICK, typically an AUTO tier play with significant plus money value or a strong cold streak fade. The free pick is posted by 9:00 AM ET and available at edge-index.com with no signup required.",
-      },
-      {
-        q: "When are plays posted each day?",
-        a: "By approximately 9:00 AM ET. The morning routine pulls live lines from DraftKings, FanDuel, and BetMGM, runs slump detection, platoon adjustments, xBA signals, and pitcher K analysis before publishing. Lines are real — directly from the books, not estimated.",
-      },
-      {
-        q: "Do you cover NFL?",
-        a: <>Yes — NFL is the lead product. The card posts Wednesday (Thursday game), Friday (Sunday slate) and Monday (Monday game), and receipts grading every card leg post Tuesday, at <Link href="https://fozzyyozzy.substack.com">fozzyyozzy.substack.com</Link>.</>,
+        q: "When is the card posted?",
+        a: <>Wednesday (Thursday game), Friday (Sunday slate) and Monday (Monday game), and receipts grading every card leg post Tuesday, at <Link href="https://fozzyyozzy.substack.com">fozzyyozzy.substack.com</Link>. Prices on the site refresh through the week until each game kicks off.</>,
       },
       {
         q: "How is this different from other pick services?",
-        a: "Three things: (1) Full transparency — every play shows its signal stack, model probability, market implied probability, and edge calculation. No black box. (2) We track UNDERS alongside OVERs — the cold streak fade model is our biggest edge and most services ignore it entirely. (3) Discipline over volume — 2-3 leg SGPs on floor lines, not 8-leg parlays.",
+        a: "Every leg shows its rung, DK's price, our fair price, the edge, its grade, its last 10/15 clear rates and its matchup tags. Every ticket is graded in public, misses included, and nothing is removed after it posts.",
       },
       {
         q: "Do you guarantee results?",
-        a: <>No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. The model identifies statistical edges — it does not predict individual outcomes with certainty. For the NFL model only, a stated probability is checked against what happened: 90% should hit about 90% of the time over a large sample — see “Does 80% mean 80%?” on the <RecordLink />. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.</>,
+        a: <>No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. A stated probability is an estimate, and the <RecordLink /> checks it against what happened, including “Does 80% mean 80%?”. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.</>,
       },
     ],
   },

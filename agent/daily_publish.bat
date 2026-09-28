@@ -1,5 +1,6 @@
 @echo off
 REM Edge Index — daily publish: pull -> MLB morning routine -> commit + push the MLB site files.
+REM (MLB PAUSED until 2027: currently only pulls main; see the goto below step 1.)
 REM No local build or deploy: the push to main (cfb-app/**) triggers .github/workflows/deploy.yml,
 REM which builds and deploys to Cloudflare Pages.
 REM Usage: agent\daily_publish.bat   (scheduled as EdgeIndexPublish)
@@ -16,6 +17,12 @@ if errorlevel 1 (
     echo PULL FAILED — local changes or a diverged branch. Not running the routine. See %LOG%
     exit /b 1
 )
+
+REM MLB paused until 2027 (see cfb-app/src/_archive/mlb/README.md): the routine and the MLB commit below are
+REM skipped. To turn them back on, delete these five lines and move the MLB files back as the README says.
+echo MLB paused until 2027: pulled main, not running the MLB routine. >> %LOG%
+echo MLB paused until 2027 - nothing to publish.
+goto :done
 
 echo [2/3] MLB morning routine (grades yesterday, builds today's card, updates the MLB site files)...
 python backtest\mlb\morning_routine.py

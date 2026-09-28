@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
-import KBoard from "./KBoard";
 import StreakCenter from "./StreakCenter";
 import MatchupsHub from "./MatchupsHub";
 import LegsHub from "./LegsHub";
-import MLBHub from "./MLBHub";
 import NFLHub from "./NFLHub";
-import RecordTracker from "./RecordTracker";
 import NFLRecord from "./NFLRecord";
 import FAQ from "./FAQ";
 
 
-// NFL leads — it's the product. MLB was the offseason trial and is
-// labelled as one rather than presented as a parallel offering.
+// NFL only. MLB is paused until 2027: its pages and data are in src/_archive/mlb/ (not built, not served).
 const NAV_SECTIONS = [
   {
     sport: "NFL",
@@ -24,16 +20,6 @@ const NAV_SECTIONS = [
       { id: "matchups", label: "Matchups",     component: MatchupsHub },
       { id: "record",   label: "Record",       component: NFLRecord },
       { id: "faq",      label: "FAQ",          component: FAQ },
-    ],
-  },
-  {
-    sport: "MLB",
-    note: "OFFSEASON TEST",
-    color: "#f5c518",
-    tabs: [
-      { id: "kboard",   label: "K Board",        component: KBoard },
-      { id: "mlb",      label: "Full Card",      component: MLBHub },
-      { id: "mlbrecord",label: "MLB Record",     component: RecordTracker },
     ],
   },
 ];
