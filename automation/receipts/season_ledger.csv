@@ -1,14 +1,27 @@
-season,week,slate,ticket,hand_built,player,team,opp,market,rung,grade,clear_pct,model_pct,published,closing,clv_pts,actual,hit,hit_standard,early_exit,pnl_1u,miss_by
-2026,2,mnf,MNF,True,Kyren Williams,LA,NYG,rush_att,12.0,,,,-280,,,12.0,True,True,False,0.35714285714285715,
-2026,2,mnf,MNF,True,Matthew Stafford,LA,NYG,pass_att,28.0,,,,-455,,,31.0,True,True,False,0.21978021978021978,
-2026,2,mnf,MNF,True,Jaxson Dart,NYG,LA,rush_yds,20.0,,,,-365,,,0.0,,False,True,,
-2026,2,mnf,MNF,True,Davante Adams,LA,NYG,rec_yds,40.0,,,,-130,,,195.0,True,True,False,0.7692307692307693,
-2026,2,sun,SUN-1,True,Derrick Henry,BAL,NO,rush_yds,70.0,,,,-294,,,68.0,False,False,False,-1.0,2.0
-2026,2,sun,SUN-1,True,Bijan Robinson,ATL,CAR,rush_yds,70.0,,,,-188,,,72.0,True,True,False,0.5319148936170213,
-2026,2,sun,SUN-1,True,Brock Purdy,SF,MIA,pass_att,27.0,,,,-260,,,22.0,False,False,False,-1.0,5.0
-2026,2,sun,SUN-2,True,Jakobi Meyers,JAX,DEN,rec_yds,25.0,,,,-177,,,28.0,True,True,False,0.5649717514124294,
-2026,2,sun,SUN-2,True,Tee Higgins,CIN,HOU,rec_yds,40.0,,,,-216,,,95.0,True,True,False,0.46296296296296297,
-2026,2,sun,SUN-2,True,Caleb Williams,CHI,MIN,pass_att,28.0,,,,-338,,,26.0,,False,True,,
-2026,2,sun,SUN-3,True,Trevor Lawrence,JAX,DEN,pass_yds,190.0,,,,-327,,,189.0,False,False,False,-1.0,1.0
-2026,2,sun,SUN-3,True,Brian Thomas Jr.,JAX,DEN,rec_yds,25.0,,,,-181,,,40.0,True,True,False,0.5524861878453039,
-2026,2,sun,SUN-3,True,Rashee Rice,KC,IND,receptions,4.0,,,,-314,,,4.0,True,True,False,0.3184713375796178,
+season,week,slate,ticket,hand_built,player,team,opp,market,rung,grade,clear_pct,model_pct,prob,fair_odds,edge_pts,published,closing,clv_pts,actual,hit,hit_standard,early_exit,pnl_1u,miss_by
+2026,2,mnf,MNF,True,Kyren Williams,LA,NYG,rush_att,12.0,,,,,,,-280,,,12.0,True,True,False,0.3571428571428571,
+2026,2,mnf,MNF,True,Matthew Stafford,LA,NYG,pass_att,28.0,,,,,,,-455,,,31.0,True,True,False,0.2197802197802197,
+2026,2,mnf,MNF,True,Jaxson Dart,NYG,LA,rush_yds,20.0,,,,,,,-365,,,0.0,,False,True,,
+2026,2,mnf,MNF,True,Davante Adams,LA,NYG,rec_yds,40.0,,,,,,,-130,,,195.0,True,True,False,0.7692307692307693,
+2026,2,sun,SUN-1,True,Derrick Henry,BAL,NO,rush_yds,70.0,,,,,,,-294,,,68.0,False,False,False,-1.0,2.0
+2026,2,sun,SUN-1,True,Bijan Robinson,ATL,CAR,rush_yds,70.0,,,,,,,-188,,,72.0,True,True,False,0.5319148936170213,
+2026,2,sun,SUN-1,True,Brock Purdy,SF,MIA,pass_att,27.0,,,,,,,-260,,,22.0,False,False,False,-1.0,5.0
+2026,2,sun,SUN-2,True,Jakobi Meyers,JAX,DEN,rec_yds,25.0,,,,,,,-177,,,28.0,True,True,False,0.5649717514124294,
+2026,2,sun,SUN-2,True,Tee Higgins,CIN,HOU,rec_yds,40.0,,,,,,,-216,,,95.0,True,True,False,0.4629629629629629,
+2026,2,sun,SUN-2,True,Caleb Williams,CHI,MIN,pass_att,28.0,,,,,,,-338,,,26.0,,False,True,,
+2026,2,sun,SUN-3,True,Trevor Lawrence,JAX,DEN,pass_yds,190.0,,,,,,,-327,,,189.0,False,False,False,-1.0,1.0
+2026,2,sun,SUN-3,True,Brian Thomas Jr.,JAX,DEN,rec_yds,25.0,,,,,,,-181,,,40.0,True,True,False,0.5524861878453039,
+2026,2,sun,SUN-3,True,Rashee Rice,KC,IND,receptions,4.0,,,,,,,-314,,,4.0,True,True,False,0.3184713375796178,
+2026,3,sun,SUN-1,False,Derrick Henry,BAL,DAL,rush_yds,60.0,A+,97.3,90.0,,,,-377,-397.0,0.84,89.0,True,True,False,0.26525198938992045,
+2026,3,sun,SUN-1,False,Juwan Johnson,NO,LV,receptions,3.0,A,94.7,86.7,,,,-228,-218.0,-0.96,8.0,True,True,False,0.43859649122807015,
+2026,3,sun,SUN-1,False,Omarion Hampton,LAC,BUF,rush_att,12.0,A-,90.4,90.0,,,,-431,-422.0,-0.32,15.0,True,True,False,0.23201856148491878,
+2026,3,sun,SUN-1,False,Courtland Sutton,DEN,LA,receptions,3.0,C,77.3,73.3,,,,-232,-247.0,1.3,3.0,True,True,False,0.43103448275862066,
+2026,3,sun,SUN-2,False,Derrick Henry,BAL,DAL,rush_yds,60.0,A+,97.3,90.0,,,,-377,-397.0,0.84,89.0,True,True,False,0.26525198938992045,
+2026,3,sun,SUN-2,False,Rashee Rice,KC,MIA,receptions,4.0,A,90.9,90.0,,,,-192,-186.0,-0.72,7.0,True,True,False,0.5208333333333334,
+2026,3,sun,SUN-2,False,Kyren Williams,LA,DEN,rush_att,12.0,A,91.3,90.0,,,,-152,-147.0,-0.8,15.0,True,True,False,0.6578947368421053,
+2026,3,sun,SUN-3,False,Juwan Johnson,NO,LV,receptions,3.0,A,94.7,86.7,,,,-228,-218.0,-0.96,8.0,True,True,False,0.43859649122807015,
+2026,3,sun,SUN-3,False,George Kittle,SF,ARI,rec_yds,25.0,A-,88.7,86.7,,,,-407,-414.0,0.27,82.0,True,True,False,0.2457002457002457,
+2026,3,sun,SUN-3,False,Cade Otton,TB,MIN,rec_yds,15.0,A+,88.7,86.7,,,,-299,-316.0,1.02,56.0,True,True,False,0.33444816053511706,
+2026,3,sun,SUN-3,False,Evan Engram,DEN,LA,receptions,2.0,A-,80.0,80.0,,,,-366,-401.0,1.5,0.0,False,False,False,-1.0,2.0
+2026,3,tnf,TNF-1,True,Bijan Robinson,ATL,GB,rush_yds,70.0,,,,,,,-161,,,194.0,True,True,False,0.6211180124223602,
+2026,3,tnf,TNF-1,True,Christian Watson,GB,ATL,rec_yds,40.0,,,,,,,-355,,,96.0,True,True,False,0.28169014084507044,

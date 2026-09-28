@@ -1,0 +1,291 @@
+{
+ "season": 2026,
+ "week": 3,
+ "legs_graded": 13,
+ "legs_hit": 12,
+ "hit_rate": 0.923,
+ "avg_model_pct": 86.4,
+ "flat_pnl_1u": 3.73,
+ "by_market": [
+  {
+   "market": "rec_yds",
+   "n": 3,
+   "hit": 1.0
+  },
+  {
+   "market": "receptions",
+   "n": 5,
+   "hit": 0.8
+  },
+  {
+   "market": "rush_att",
+   "n": 2,
+   "hit": 1.0
+  },
+  {
+   "market": "rush_yds",
+   "n": 3,
+   "hit": 1.0
+  }
+ ],
+ "by_bucket": [
+  {
+   "bucket": "<75",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "bucket": "75-85",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "bucket": "85+",
+   "n": 9,
+   "hit": 1.0
+  }
+ ],
+ "near_misses": [
+  {
+   "player": "Evan Engram",
+   "market": "receptions",
+   "rung": 2.0,
+   "actual": 0.0,
+   "miss_by": 2.0
+  }
+ ],
+ "misses": [
+  {
+   "player": "Evan Engram",
+   "market": "receptions",
+   "rung": 2.0,
+   "actual": 0.0,
+   "note": "L10 8/10, L15 12/15; last 3 [3, 4, 1]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-3"
+  }
+ ],
+ "est_vs_real": [
+  {
+   "player": "Derrick Henry",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "est": -435.0,
+   "real": -377,
+   "hit": true
+  },
+  {
+   "player": "Juwan Johnson",
+   "market": "receptions",
+   "rung": 3.0,
+   "est": -251.0,
+   "real": -228,
+   "hit": true
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_att",
+   "rung": 12.0,
+   "est": -739.0,
+   "real": -431,
+   "hit": true
+  },
+  {
+   "player": "Courtland Sutton",
+   "market": "receptions",
+   "rung": 3.0,
+   "est": -251.0,
+   "real": -232,
+   "hit": true
+  },
+  {
+   "player": "Derrick Henry",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "est": -435.0,
+   "real": -377,
+   "hit": true
+  },
+  {
+   "player": "Rashee Rice",
+   "market": "receptions",
+   "rung": 4.0,
+   "est": -208.0,
+   "real": -192,
+   "hit": true
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_att",
+   "rung": 12.0,
+   "est": -166.0,
+   "real": -152,
+   "hit": true
+  },
+  {
+   "player": "Juwan Johnson",
+   "market": "receptions",
+   "rung": 3.0,
+   "est": -251.0,
+   "real": -228,
+   "hit": true
+  },
+  {
+   "player": "George Kittle",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "est": -353.0,
+   "real": -407,
+   "hit": true
+  },
+  {
+   "player": "Cade Otton",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "est": -221.0,
+   "real": -299,
+   "hit": true
+  },
+  {
+   "player": "Evan Engram",
+   "market": "receptions",
+   "rung": 2.0,
+   "est": -419.0,
+   "real": -366,
+   "hit": false
+  }
+ ],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 3,
+   "hits": 3,
+   "avg_prob": null,
+   "avg_implied": 77.7,
+   "expected": 94.4
+  },
+  {
+   "grade": "A",
+   "n": 4,
+   "hits": 4,
+   "avg_prob": null,
+   "avg_implied": 66.3,
+   "expected": 92.9
+  },
+  {
+   "grade": "A-",
+   "n": 3,
+   "hits": 2,
+   "avg_prob": null,
+   "avg_implied": 80.0,
+   "expected": 86.4
+  },
+  {
+   "grade": "B",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  }
+ ],
+ "grade_basis": "clear %",
+ "tickets": [
+  {
+   "slate": "sun",
+   "name": "SUN-1",
+   "legs": 4,
+   "flag": null,
+   "est_american": 221,
+   "clv_pts": 0.35,
+   "leg_text": [
+    "Derrick Henry 60+ rush_yds (-377)",
+    "Juwan Johnson 3+ receptions (-228)",
+    "Omarion Hampton 12+ rush_att (-431)",
+    "Courtland Sutton 3+ receptions (-232)"
+   ],
+   "early_exit": [],
+   "result": "WIN",
+   "units": 2.21,
+   "result_standard": "WIN",
+   "units_standard": 2.21,
+   "misses": []
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-2",
+   "legs": 3,
+   "flag": null,
+   "est_american": 219,
+   "clv_pts": -0.43,
+   "leg_text": [
+    "Derrick Henry 60+ rush_yds (-377)",
+    "Rashee Rice 4+ receptions (-192)",
+    "Kyren Williams 12+ rush_att (-152)"
+   ],
+   "early_exit": [],
+   "result": "WIN",
+   "units": 2.19,
+   "result_standard": "WIN",
+   "units_standard": 2.19,
+   "misses": []
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-3",
+   "legs": 4,
+   "flag": null,
+   "est_american": 204,
+   "clv_pts": 0.73,
+   "leg_text": [
+    "Juwan Johnson 3+ receptions (-228)",
+    "George Kittle 25+ rec_yds (-407)",
+    "Cade Otton 15+ rec_yds (-299)",
+    "Evan Engram 2+ receptions (-366)"
+   ],
+   "early_exit": [],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Evan Engram"
+   ]
+  },
+  {
+   "slate": "tnf",
+   "name": "TNF-1",
+   "legs": 2,
+   "flag": "hand-built, pre-automation",
+   "est_american": 100,
+   "clv_pts": null,
+   "leg_text": [
+    "Bijan Robinson 70+ rush_yds (-161)",
+    "Christian Watson 40+ rec_yds (-355)"
+   ],
+   "early_exit": [],
+   "result": "WIN",
+   "units": 1.0,
+   "result_standard": "WIN",
+   "units_standard": 1.0,
+   "misses": []
+  }
+ ],
+ "clv": {
+  "n": 11,
+  "avg_leg_pts": 0.18
+ },
+ "ticket_record": {
+  "WIN": 3,
+  "LOSS": 1,
+  "VOID": 0
+ },
+ "ticket_record_standard": {
+  "WIN": 3,
+  "LOSS": 1,
+  "VOID": 0
+ },
+ "units": 4.4,
+ "units_standard": 4.4
+}
