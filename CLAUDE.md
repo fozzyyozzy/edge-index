@@ -8,18 +8,23 @@ matchup-gated, graded publicly with CLV. Sell transparency, never win%.
 - `engine/` — v2 (current, leak-free). core/odds.py is the single source of
   truth for de-vig/EV/Kelly. nfl/ has props engine, backtests, floor/matchup
   studies. collector.py snapshots pregame odds (The Odds API).
-- `backtest/` — v1 legacy. mlb/ pipeline is LIVE (morning_routine.py runs
-  daily). nfl/ + nfl_fixed/ are near-duplicate legacy; superseded by engine/.
-- `cfb-app/` — React/Vite site, deploys to Cloudflare Pages.
-- `agent/` — Windows .bat entry points (scheduled): daily_publish.bat
-  (routine -> npm build -> wrangler deploy; ORDER MATTERS), collect_odds.bat.
+- `backtest/` — v1 legacy. mlb/ pipeline is PAUSED until 2027: the site's MLB
+  pages and data are in `cfb-app/src/_archive/mlb/` (see its README), and
+  mlb/morning_routine.py exits unless run with `--force`. nfl/ + nfl_fixed/
+  are near-duplicate legacy; superseded by engine/.
+- `automation/` — the NFL pipeline (fetch_lines, floors, grade_legs,
+  build_card_json, refresh_odds, grade) run by .github/workflows.
+- `cfb-app/` — React/Vite site on Cloudflare Pages, deployed by
+  .github/workflows/deploy.yml.
+- `agent/` — Windows .bat entry points (scheduled): daily_publish.bat only
+  runs `git pull` while MLB is paused; collect_odds.bat.
 - `models/` — v1 model files, reference only.
 - `ROADMAP.md` — READ THIS: all validated findings + product plan.
 
 ## Commands
-- Publish site: `agent\daily_publish.bat` (never deploy dist without
-  `npm run build` first — src/RecordTracker.jsx is auto-injected by the
-  morning routine, dist goes stale silently)
+- Publish site: push to main. deploy.yml builds and deploys on pushes that
+  touch cfb-app/**, after the card / refresh-odds / receipts workflows, or
+  by hand (Actions -> deploy-site -> Run workflow).
 - Odds snapshots: `python engine\collector.py --sport americanfootball_nfl`
   (add `--ladders` to view alt ladders)
 - Data gate after any reseed: `python engine\nfl\verify_data.py`
@@ -62,7 +67,7 @@ matchup-gated, graded publicly with CLV. Sell transparency, never win%.
 ## Known issues / next build
 - Card generator: join floor fair-prices x collector live ladders x matchup
   gates -> daily card + Floor Board page for the site (chip-row UX).
-- mlb_umpire.py crashes daily in morning routine (line ~437, unfixed).
+- mlb_umpire.py crashes in the morning routine (line ~437, unfixed; MLB paused).
 - nflverse legacy player_stats.csv is frozen at 2024; loader tops up per-season
   (stats_player_week_YYYY.csv). New schema: passing_interceptions, NaN-heavy
   (use the _i() helper pattern).

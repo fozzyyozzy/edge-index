@@ -17,6 +17,11 @@ Schedule with Windows Task Scheduler:
 import os, sys, json, subprocess, re, argparse
 from datetime import date, datetime, timedelta
 
+# MLB is paused until 2027 (see cfb-app/src/_archive/mlb/README.md). This script writes straight into the site
+# (cfb-app/src/MLBHub.jsx, RecordTracker.jsx, public/data/), so it refuses to run unless asked with --force.
+if "--force" not in sys.argv[1:]:
+    sys.exit("MLB paused until 2027, see archive README (cfb-app/src/_archive/mlb/README.md). Run with --force to override.")
+
 # Force UTF-8 everywhere. Under Task Scheduler the console defaults to cp1252,
 # which crashes on ✓ / emoji / accented names (Martín Pérez, Jesús Luzardo).
 os.environ["PYTHONUTF8"] = "1"
@@ -356,6 +361,7 @@ if __name__ == "__main__":
     parser.add_argument("--deploy", action="store_true", help="Build + deploy after pipeline")
     parser.add_argument("--skip-grade",  action="store_true", help="Skip grading yesterday")
     parser.add_argument("--skip-cache",  action="store_true", help="Skip stat cache updates")
+    parser.add_argument("--force",  action="store_true", help="Run although MLB is paused (see the guard at the top)")
     args = parser.parse_args()
 
     log(f"\nEDGE INDEX MORNING ROUTINE — {TODAY}")
