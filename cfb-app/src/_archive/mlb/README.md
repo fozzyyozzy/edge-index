@@ -13,3 +13,5 @@ To bring MLB back:
 
 `backtest/mlb/morning_routine.py` still writes to the original paths (`cfb-app/src/MLBHub.jsx`,
 `cfb-app/src/RecordTracker.jsx`, `cfb-app/public/data/`), so move the files back before running it again.
+
+`backtest/mlb/_archive/morning_routine.py` is the old July version (from agent/), superseded by `backtest/mlb/morning_routine.py`; it deploys locally with wrangler, so don't use it.
