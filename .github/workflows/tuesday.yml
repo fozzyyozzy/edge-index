@@ -6,13 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       week:
-        description: "week just completed"
-        required: true
+        description: "week to grade (blank = the week just completed, from the schedule)"
+        required: false
 
 permissions:
   contents: write
   issues: write
-  actions: write
 
 concurrency:                   # shared with card.yml and refresh-odds.yml: they all commit to main
   group: data-main
@@ -31,8 +30,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r automation/requirements.txt
-      - name: resolve week
-        run: echo "WEEK=${{ github.event.inputs.week || vars.CURRENT_WEEK }}" >> "$GITHUB_ENV"
+      - name: resolve week to grade from the nflverse schedule (a manual week input overrides)
+        run: |
+          W="${{ github.event.inputs.week }}"
+          [ -z "$W" ] && W=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode graded)
+          echo "WEEK=$W" >> "$GITHUB_ENV"; echo "grading week $W"
       - name: grade last week's card
         run: python automation/pipeline/grade.py --season "$SEASON" --week "$WEEK"
       - name: publish season record to site (NFL Record tab)
@@ -46,8 +48,6 @@ jobs:
           SUBJ=$(cat automation/newsletter/drafts/LATEST_SUBJECT.txt)
           FILE="automation/newsletter/drafts/$(echo "$SUBJ" | tr 'A-Z ' 'a-z_').md"
           gh issue create --title "DRAFT: $SUBJ" --body-file "$FILE" --label newsletter
-      - name: bump week
-        run: gh variable set CURRENT_WEEK --body "$((WEEK+1))"
       - name: commit outputs
         run: |
           git config user.name edge-index-bot

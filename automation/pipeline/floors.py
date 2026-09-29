@@ -17,10 +17,14 @@ INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "p
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
 SLATE_DAYS = {"tnf": {"Thursday"}, "sun": {"Sunday", "Saturday"}, "mnf": {"Monday"}}
 
-def schedule(season, week):
+def schedule_all(season):
     req = urllib.request.Request("https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv", headers={"User-Agent": "Mozilla/5.0"})
     g = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=60).read()), low_memory=False)
-    return g[(g.season == season) & (g.week == week)]
+    return g[g.season == season]
+
+def schedule(season, week):
+    g = schedule_all(season)
+    return g[g.week == week]
 
 def kickoffs(season, week):
     """{team: kickoff as UTC ISO} for the week, from the nflverse schedule (gameday + gametime are Eastern)."""

@@ -7,6 +7,9 @@ on:
     - cron: "0 13 * * 1"        # Mon 09:00 ET -> mnf
   workflow_dispatch:
     inputs:
+      week:
+        description: "NFL week (blank = from the schedule)"
+        required: false
       slate:
         description: "tnf | sun | mnf"
         required: true
@@ -24,7 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SEASON: 2026
-      WEEK: ${{ vars.CURRENT_WEEK }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,6 +36,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r automation/requirements.txt
+      - name: resolve week from the nflverse schedule (current; a manual week input overrides)
+        run: |
+          W="${{ github.event.inputs.week }}"
+          [ -z "$W" ] && W=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode current)
+          echo "WEEK=$W" >> "$GITHUB_ENV"; echo "week $W"
       - name: resolve slate from weekday
         run: |
           S="${{ github.event.inputs.slate }}"

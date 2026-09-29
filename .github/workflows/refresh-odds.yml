@@ -32,6 +32,9 @@ on:
     - cron: "7 0 * * 2"       # Mon 7pm EST
   workflow_dispatch:
     inputs:
+      week:
+        description: "NFL week (blank = from the schedule)"
+        required: false
       slate:
         description: "tnf | sun | mnf (blank = the upcoming slate)"
         required: false
@@ -48,7 +51,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SEASON: 2026
-      WEEK: ${{ vars.CURRENT_WEEK }}
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       ODDS_WEEKLY_BUDGET: 3000
     steps:
@@ -59,6 +61,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r automation/requirements.txt
+      - name: resolve week from the nflverse schedule (current; a manual week input overrides)
+        run: |
+          W="${{ github.event.inputs.week }}"
+          [ -z "$W" ] && W=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode current)
+          echo "WEEK=$W" >> "$GITHUB_ENV"; echo "week $W"
       - name: which slate (scheduled runs serve the latest unserved ET slot; manual runs always go)
         id: slot
         run: |

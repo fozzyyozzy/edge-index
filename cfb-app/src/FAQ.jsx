@@ -76,7 +76,7 @@ const FAQS = [
       },
       {
         q: "Do you guarantee results?",
-        a: <>No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. A stated probability is an estimate, and the <RecordLink /> checks it against what happened, including “Does 80% mean 80%?”. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.</>,
+        a: <>No. Edge Index provides sports analytics for entertainment and informational purposes only. This is not financial advice. Sports betting involves risk. A stated probability is an estimate; the <RecordLink /> shows how each grade has actually hit. Please gamble responsibly. Must be 21+. If you have a gambling problem call 1-800-GAMBLER.</>,
       },
     ],
   },

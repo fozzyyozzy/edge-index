@@ -93,27 +93,60 @@
    "grade": "A+",
    "n": 0,
    "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
    "expected": null
   },
   {
    "grade": "A",
    "n": 0,
    "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
    "expected": null
   },
   {
    "grade": "A-",
    "n": 0,
    "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
    "expected": null
   },
   {
    "grade": "B",
    "n": 0,
    "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "C",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "D",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "F",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
    "expected": null
   }
  ],
+ "grade_basis": null,
  "tickets": [
   {
    "slate": "mnf",
@@ -130,6 +163,64 @@
    ],
    "early_exit": [
     "Jaxson Dart"
+   ],
+   "legs_detail": [
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "market": "rush_att",
+     "rung": 12.0,
+     "odds": -280,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 12.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Matthew Stafford",
+     "team": "LA",
+     "market": "pass_att",
+     "rung": 28.0,
+     "odds": -455,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 31.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Jaxson Dart",
+     "team": "NYG",
+     "market": "rush_yds",
+     "rung": 20.0,
+     "odds": -365,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 0.0,
+     "hit": null,
+     "early_exit": true,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Davante Adams",
+     "team": "LA",
+     "market": "rec_yds",
+     "rung": 40.0,
+     "odds": -130,
+     "price_estimated": true,
+     "grade": null,
+     "actual": 195.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    }
    ],
    "result": "WIN",
    "units": 1.93,
@@ -150,6 +241,50 @@
     "Brock Purdy 27+ pass_att (~-260)"
    ],
    "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Derrick Henry",
+     "team": "BAL",
+     "market": "rush_yds",
+     "rung": 70.0,
+     "odds": -294,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 68.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Bijan Robinson",
+     "team": "ATL",
+     "market": "rush_yds",
+     "rung": 70.0,
+     "odds": -188,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 72.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Brock Purdy",
+     "team": "SF",
+     "market": "pass_att",
+     "rung": 27.0,
+     "odds": -260,
+     "price_estimated": true,
+     "grade": null,
+     "actual": 22.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    }
+   ],
    "result": "LOSS",
    "units": -1.0,
    "result_standard": "LOSS",
@@ -174,6 +309,50 @@
    "early_exit": [
     "Caleb Williams"
    ],
+   "legs_detail": [
+    {
+     "player": "Jakobi Meyers",
+     "team": "JAX",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds": -177,
+     "price_estimated": true,
+     "grade": null,
+     "actual": 28.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Tee Higgins",
+     "team": "CIN",
+     "market": "rec_yds",
+     "rung": 40.0,
+     "odds": -216,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 95.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Caleb Williams",
+     "team": "CHI",
+     "market": "pass_att",
+     "rung": 28.0,
+     "odds": -338,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 26.0,
+     "hit": null,
+     "early_exit": true,
+     "closing": null,
+     "clv_pts": null
+    }
+   ],
    "result": "WIN",
    "units": 1.29,
    "result_standard": "LOSS",
@@ -193,6 +372,50 @@
     "Rashee Rice 4+ receptions (-314)"
    ],
    "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Trevor Lawrence",
+     "team": "JAX",
+     "market": "pass_yds",
+     "rung": 190.0,
+     "odds": -327,
+     "price_estimated": true,
+     "grade": null,
+     "actual": 189.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Brian Thomas Jr.",
+     "team": "JAX",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds": -181,
+     "price_estimated": true,
+     "grade": null,
+     "actual": 40.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    },
+    {
+     "player": "Rashee Rice",
+     "team": "KC",
+     "market": "receptions",
+     "rung": 4.0,
+     "odds": -314,
+     "price_estimated": false,
+     "grade": null,
+     "actual": 4.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": null,
+     "clv_pts": null
+    }
+   ],
    "result": "LOSS",
    "units": -1.0,
    "result_standard": "LOSS",

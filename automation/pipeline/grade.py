@@ -12,7 +12,7 @@ import argparse, glob, json, os
 import pandas as pd
 from common import norm_name, COL, fetch_week, pay, P
 
-GRADES = ["A+", "A", "A-", "B"]
+GRADES = ["A+", "A", "A-", "B", "C", "D", "F"]          # every letter: leaving the low ones out reads as cherry-picking
 LEDGER_COLS = ["season", "week", "slate", "ticket", "hand_built", "player", "team", "opp", "market", "rung", "grade",
                "clear_pct", "model_pct", "prob", "fair_odds", "edge_pts", "published", "closing", "clv_pts", "actual", "hit", "hit_standard", "early_exit",
                "pnl_1u", "miss_by"]
@@ -37,7 +37,7 @@ def settle(hits, decs, est_american=None):
     return "WIN", round(d - 1, 2)
 
 def by_grade_table(pg):
-    """Per letter (A+, A, A-, B): legs, hits, average blended probability (common.leg_prob, as published on the card),
+    """Per letter (A+ ... F): legs, hits, average blended probability (common.leg_prob, as published on the card),
     average DK implied probability at the published price. `expected` = blended when known, else the old clear %."""
     def mean_pct(x):
         x = pd.to_numeric(x, errors="coerce")
@@ -81,7 +81,7 @@ def main():
         card = json.load(open(path))
         hand = bool(card.get("hand_built"))
         for t in card["tickets"]:
-            t_hits, t_prices, t_std, t_ee = [], [], [], []
+            t_hits, t_prices, t_std, t_ee, t_detail = [], [], [], [], []
             for l in t["legs"]:
                 actual = act.get((norm_name(l["player"]), l["market"]))
                 hit_std = None if actual is None or pd.isna(actual) else bool(actual >= l["rung"])
@@ -97,6 +97,10 @@ def main():
                              "pnl_1u": None if hit is None else (pay(odds) if hit else -1.0),
                              "miss_by": None if hit is None or hit else round(l["rung"] - float(actual), 1)})
                 t_hits.append(hit); t_prices.append((odds, close)); t_std.append(hit_std); t_ee.append(bool(l.get("early_exit")))
+                t_detail.append(dict(player=l["player"], team=l.get("team"), market=l["market"], rung=l["rung"], odds=odds,
+                                     price_estimated=bool(l.get("price_estimated")), grade=l.get("grade"),
+                                     actual=None if actual is None or pd.isna(actual) else float(actual),
+                                     hit=hit, early_exit=bool(l.get("early_exit")), closing=close, clv_pts=clv_pts(odds, close)))
             tickets.append({"slate": card["slate"], "name": t["name"], "legs": len(t["legs"]),
                             "flag": t.get("flag") if hand else None, "est_american": t.get("est_american"),
                             # ticket CLV: implied-probability points between the parlay at published vs closing prices
@@ -107,6 +111,7 @@ def main():
                                          f"{(l.get('odds_real') or l['odds_est']):+d}){' · early exit' if l.get('early_exit') else ''}"
                                          for l in t["legs"]],
                             "early_exit": [l["player"] for l, e in zip(t["legs"], t_ee) if e],
+                            "legs_detail": t_detail,                     # the Record tab's ticket list
                             **dict(zip(("result", "units"), official(t, t_hits, t_ee, t_prices))),
                             **dict(zip(("result_standard", "units_standard"),
                                        settle(t_std, [dec(o) for o, _ in t_prices]) if not t.get("est_american") or None in t_std or not all(t_std)
