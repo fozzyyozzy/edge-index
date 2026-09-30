@@ -15,6 +15,9 @@ Rules encoded here (do not relax without changing the newsletter copy too):
       is allowed there (thin menu) and is always labelled "Reduced payout"
   R8  Bloom target: each ticket aims for >= +200 (3.0x). Reach it by ADDING a 4th floor leg, never by stepping a rung up.
       If 4 legs still fall short, publish as "reduced payout" — floors held, still recommended.
+  R9  every leg is graded C or better on the Legs board (same cutoff as the Legs tab); anything below is held
+      "grade below C". If that leaves no valid ticket (R7: a single-game slate needs 2 legs), the card has no ticket —
+      never padded with a weaker leg.
 
 Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
          projections.csv (from make_projections.py), floors_<...>.csv (from floors.py)
@@ -31,6 +34,7 @@ from common import norm_name, P, load_real_ladders, prices_pulled
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15   # raw clear rates on purpose: consistency, not price
 MAX_LEG_JUICE = -450
 MIN_EDGE_PTS = 2.0          # R4
+GRADE_OK = {"A+", "A", "A-", "B", "C"}   # R9
 TARGET_DEC = 3.0          # +200
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 SINGLE_GAME = {"tnf", "mnf", "snf"}
@@ -100,6 +104,9 @@ def main():
     cands, held = [], []
     for r in fl.itertuples():
         why = hold_reasons(r)                                         # tough matchup/volume, R5 blowout, R6 team change, juice
+        # R9: the leg's Legs-board grade must be C or better (the Legs tab's cutoff). No grade = trimmed below C.
+        g = GRADED.get((norm_name(r.Player), r.Market, float(r.Rung.rstrip("+"))), (None, None))[0]
+        if g not in GRADE_OK: why.append("grade below C")
         if why:
             held.append(dict(Player=r.Player, Market=r.Market, Rung=r.Rung, EstOdds=int(r.EstOdds), L10=r.L10, L15=r.L15,
                              OppD=r.OppD, OwnVol=r.OwnVol, TeamChange=bool(getattr(r, "TeamChange", False) == True),

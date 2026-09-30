@@ -45,99 +45,7 @@
   "roman wilson|rec_yds",
   "roman wilson|receptions"
  ],
- "tickets": [
-  {
-   "name": "TNF-1",
-   "legs": [
-    {
-     "player": "Harold Fannin Jr.",
-     "team": "CLE",
-     "opp": "PIT",
-     "market": "rec_yds",
-     "rung": 25.0,
-     "odds_est": -330,
-     "odds_real": -330,
-     "odds_model_est": -239,
-     "l10": 0.9,
-     "l15": 0.8666666666666667,
-     "last3": [
-      21,
-      54,
-      51
-     ],
-     "opp_d": "SOFT",
-     "own_vol": "neutral",
-     "star": true,
-     "opp_d_rank": 25,
-     "own_vol_rank": 20,
-     "model_pct": 78.8,
-     "prob": 0.7875,
-     "fair_odds": -371,
-     "edge_pts": 2.0,
-     "novig_pct": 72.6,
-     "grade": "B",
-     "clear_pct": 88.7,
-     "note": "L10 9/10, L15 13/15; last 3 [21, 54, 51]; opp D SOFT",
-     "published_odds": -330,
-     "published_at": "2026-09-30T13:39+00:00",
-     "current_odds": -330,
-     "current_at": "2026-09-30T13:39+00:00",
-     "price_history": [
-      {
-       "at": "2026-09-30T13:39+00:00",
-       "odds": -330
-      }
-     ]
-    },
-    {
-     "player": "Jerry Jeudy",
-     "team": "CLE",
-     "opp": "PIT",
-     "market": "rec_yds",
-     "rung": 15.0,
-     "odds_est": -106,
-     "odds_real": -106,
-     "odds_model_est": -106,
-     "l10": 0.8,
-     "l15": 0.8,
-     "last3": [
-      17,
-      26,
-      0
-     ],
-     "opp_d": "SOFT",
-     "own_vol": "neutral",
-     "star": false,
-     "opp_d_rank": 25,
-     "own_vol_rank": 20,
-     "model_pct": 63.0,
-     "prob": 0.6305,
-     "fair_odds": -171,
-     "edge_pts": 11.6,
-     "novig_pct": 48.7,
-     "grade": "D",
-     "clear_pct": 80.0,
-     "note": "L10 8/10, L15 12/15; last 3 [17, 26, 0]; opp D SOFT",
-     "published_odds": -106,
-     "published_at": "2026-09-30T13:39+00:00",
-     "current_odds": -106,
-     "current_at": "2026-09-30T13:39+00:00",
-     "price_history": [
-      {
-       "at": "2026-09-30T13:39+00:00",
-       "odds": -106
-      }
-     ]
-    }
-   ],
-   "model_hit": 0.496,
-   "est_payout": 2.53,
-   "est_american": 153,
-   "reduced": true,
-   "correlated": true,
-   "label": "Reduced payout: floors held, not stretched \u2014 still recommended"
-  }
- ],
+ "tickets": [],
  "floors_singles": [
   {
    "player": "Harold Fannin Jr.",
@@ -178,86 +86,6 @@
      "odds": -330
     }
    ]
-  },
-  {
-   "player": "Jerry Jeudy",
-   "team": "CLE",
-   "opp": "PIT",
-   "market": "rec_yds",
-   "rung": 15.0,
-   "odds_est": -106,
-   "odds_real": -106,
-   "odds_model_est": -106,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    17,
-    26,
-    0
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 25,
-   "own_vol_rank": 20,
-   "model_pct": 63.0,
-   "prob": 0.6305,
-   "fair_odds": -171,
-   "edge_pts": 11.6,
-   "novig_pct": 48.7,
-   "grade": "D",
-   "clear_pct": 80.0,
-   "note": "L10 8/10, L15 12/15; last 3 [17, 26, 0]; opp D SOFT",
-   "published_odds": -106,
-   "published_at": "2026-09-30T13:39+00:00",
-   "current_odds": -106,
-   "current_at": "2026-09-30T13:39+00:00",
-   "price_history": [
-    {
-     "at": "2026-09-30T13:39+00:00",
-     "odds": -106
-    }
-   ]
-  },
-  {
-   "player": "Jerry Jeudy",
-   "team": "CLE",
-   "opp": "PIT",
-   "market": "receptions",
-   "rung": 2.0,
-   "odds_est": 113,
-   "odds_real": 113,
-   "odds_model_est": 113,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    2,
-    2,
-    0
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 25,
-   "own_vol_rank": 20,
-   "model_pct": 61.0,
-   "prob": 0.6104,
-   "fair_odds": -157,
-   "edge_pts": 14.1,
-   "novig_pct": 44.3,
-   "grade": null,
-   "clear_pct": null,
-   "note": "L10 8/10, L15 12/15; last 3 [2, 2, 0]; opp D SOFT",
-   "published_odds": 113,
-   "published_at": "2026-09-30T13:39+00:00",
-   "current_odds": 113,
-   "current_at": "2026-09-30T13:39+00:00",
-   "price_history": [
-    {
-     "at": "2026-09-30T13:39+00:00",
-     "odds": 113
-    }
-   ]
   }
  ],
  "held": [
@@ -279,7 +107,46 @@
    "Reasons": [
     "team change (IND->PIT)",
     "opp D tough",
-    "edge -3.8 pts (< +2)"
+    "edge -3.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": 113,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    2,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -106,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    17,
+    26,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
    ]
   },
   {
@@ -418,7 +285,8 @@
     67
    ],
    "Reasons": [
-    "opp D tough"
+    "opp D tough",
+    "grade below C"
    ]
   },
   {
@@ -437,7 +305,8 @@
     3
    ],
    "Reasons": [
-    "opp D tough"
+    "opp D tough",
+    "grade below C"
    ]
   },
   {

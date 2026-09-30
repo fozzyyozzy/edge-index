@@ -47,6 +47,7 @@ jobs:
           if [ -z "$S" ]; then
             case "$(date -u +%u)" in 3) S=tnf ;; 5) S=sun ;; 1) S=mnf ;; esac
           fi
+          S=$(echo "$S" | tr 'A-Z' 'a-z')                     # "Tnf" -> "tnf"
           echo "SLATE=$S" >> "$GITHUB_ENV"
       - name: fetch DK ladders (The Odds API) - falls back to pastes if no key
         run: |
