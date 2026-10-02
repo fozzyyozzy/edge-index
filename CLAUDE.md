@@ -61,6 +61,10 @@ matchup-gated, graded publicly with CLV. Sell transparency, never win%.
   -174 avg juice (cut). CFB spreads: ratings models do NOT clear the vig
   (tested 4 seasons, open+close, with/without SP+) — newsletter content only,
   no CFB spread picks.
+- Card lock: a card locks when its newsletter is sent. Before that, a rule fix may
+  rebuild it from the same pulled prices (no new odds pull), logged in
+  automation/MODEL_CHANGELOG.md; after that, never. Injury flags/prices/results
+  may update, tickets can't.
 - Card rules: max 2-3 plays/parlays via engine/parlay.py daily_card();
   negative-correlation legs blocked; flat 1u or quarter-Kelly capped 2%.
 

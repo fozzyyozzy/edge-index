@@ -3,6 +3,60 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-02 — standing rule: a card locks when its newsletter is sent
+
+- **Rule:** before a slate's newsletter is sent, a rule fix may rebuild that card. The rebuild uses the same pulled
+  prices, with no new odds pull, and gets a change-log entry. Once the newsletter is sent, the card is locked: no
+  rebuilds and no swaps, for any reason. Prices, results and injury-watch flags may still update, but tickets can't.
+- **Why:** Week 4 Sunday was rebuilt twice on 2026-10-02 after going live on the site (R6, then grade-first). Both
+  times the newsletter hadn't been sent, so nobody had been sold those tickets. That window needs a clear end.
+- **Applied:** Week 4 Sunday's rebuilt 2-ticket card (entry below) replaced the live one at about 20:45 UTC. Its
+  newsletter has not been sent yet.
+
+## 2026-10-02 — strategy change: legs are chosen by grade first (R3, R8, R10, R11)
+
+- **What:** `build_card_json.py` picks legs by Legs-board grade instead of raw clear rate.
+  - **R3:** each player/market offers its best-graded qualifying rung. A qualifying rung is any rung at or below the
+    floor rung that still clears L10 ≥ 80% and L15 ≥ 73% and passes R4, R9 and the −450 cap. Ties go to higher edge.
+    Before, the card only saw the floor rung itself (the highest one that clears).
+  - **R10:** candidates rank by grade (A+ > A > A− > B > C), then edge. A C leg is used only when no B-or-better
+    leg can fill the spot. A third ticket that would need a C leg is not built, because R1 allows two.
+  - **R8:** the 4th leg comes from the best grade available, and payout only chooses within that grade.
+  - **R11:** a player with an injury-watch flag goes on one ticket at most.
+- **Why:** the published Week 4 Sunday card (prices 2026-10-02 17:51 UTC) used Pat Bryant 15+ rec yds (C) and Dak
+  Prescott 240+ pass yds (B, +2.0 edge) while A-tier legs went unused.
+  - Kyren Williams 40+ rush yds (A+, −349) and Brian Thomas Jr. 15+ rec yds (A−) were never candidates. Their floor
+    rungs were 60+ (C) and 27+ (C).
+  - Kyren 12+ rush att (B) outranked them on L10+L15 sum.
+  - Prescott was SUN-2's 4th leg because his price landed closest to 3.0x.
+- **Evidence:** settled board hit rates by grade, Week 3 (TNF, Sunday, MNF) plus Week 4 TNF:
+
+  | Grade | Every settled rung | Best rung per row |
+  |---|---|---|
+  | A-tier (A+/A/A−) | 129/141 (91.5%) | 83/91 (91%) |
+  | B | 225/256 (88%) | 104/118 (88%) |
+  | C | 225/288 (78%) | 69/83 (83%) |
+  | D | 29/39 (74%) | 8/10 (80%) |
+  | F | 210/496 (42%) | 81/166 (49%) |
+
+  Within the A tier, by rung: A+ 4/4, A 8/10, A− 117/127. This is a hypothesis, not a validated finding.
+  - Small samples: only 4 A+ rungs and 10 A rungs.
+  - Most rows come from one Sunday board.
+  - Rungs on the same player and game are correlated.
+  - The cut was read after the question was asked (CLAUDE.md rule 5).
+
+  Re-check once Weeks 4–6 settle.
+- **Effect:** Week 4 Sunday was rebuilt from the same 17:51 UTC prices and the same availability snapshot.
+  The card that went live earlier today (SUN-1 +227, SUN-2 +302, SUN-3 +218) is replaced before the newsletter went
+  out. New card, 2 tickets, no C legs:
+  - **SUN-1 (+217):** Jakobi Meyers 25+ rec yds (−295, A+, injury watch), Kyren Williams 40+ rush yds (−349, A+),
+    Cooper Kupp 15+ rec yds (−256, A), Christian McCaffrey 4+ rec (−309, A−).
+  - **SUN-2 (+233):** Kyren Williams 40+ rush yds (−349, A+), Jaxon Smith-Njigba 70+ rec yds (−269, A),
+    Brian Thomas Jr. 2+ rec (−256, A−), Jacoby Brissett 200+ pass yds (−280, A−).
+
+  A third ticket would have needed Calvin Ridley 7+ rec yds (C) after Jaylin Noel (B) and Rashee Rice (B), so it
+  isn't built. Kyren is the one repeated star. Meyers is on one ticket only (R11).
+
 ## 2026-10-02 — bug fix: R2 repeated-star cap was only checked on the later ticket
 
 - **What:** `build_card_json.py` now limits each ticket to one player shared with all the other tickets combined.
@@ -10,7 +64,7 @@ and what it did to published cards.
 - **Why:** R2 says a ticket may carry at most one repeated star. The code counted repeats only on the ticket being
   built, so the first ticket could share one star with SUN-2 and another with SUN-3. The Week 4 Sunday rebuild had
   this problem: SUN-1 shared Jakobi Meyers with SUN-2 and Rashee Rice with SUN-3.
-- **Effect:** Week 4 Sunday SUN-3 no longer repeats Rice (see the R6 entry below for the final tickets). The
+- **Effect:** Week 4 Sunday SUN-3 no longer repeats Rice (see the R6 entry below for the tickets published then; the grade-first entry above replaced them). The
   published Week 3 Sunday card had the same violation: SUN-1 shared Derrick Henry and Juwan Johnson with other
   tickets. It stays as published and graded, because the record is locked. No other 2026 card is affected.
 
