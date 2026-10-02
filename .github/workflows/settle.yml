@@ -1,0 +1,50 @@
+name: settle-results
+
+# Every morning: write final-game results (actual + hit/miss/void) into the legs JSON for this week and last week,
+# so the Legs tab shows results the day after a game. nflverse only (no Odds API requests). Never changes grades,
+# prices or published fields. Idempotent, so the EST/EDT twin cron is just a harmless rerun; deploy-site follows.
+on:
+  schedule:
+    - cron: "7 14 * * *"      # 10:07 ET during EDT
+    - cron: "7 15 * * *"      # 10:07 ET during EST
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "week to settle (blank = this week and last week, from the schedule)"
+        required: false
+
+concurrency:                   # shared with card / refresh-odds / tuesday: they all commit to main
+  group: data-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      SEASON: 2026
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r automation/requirements.txt
+      - name: settle final games
+        run: |
+          W="${{ github.event.inputs.week }}"
+          if [ -z "$W" ]; then
+            C=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode current)
+            W="$((C-1)) $C"
+          fi
+          for wk in $W; do [ "$wk" -ge 1 ] && python automation/pipeline/settle.py --season "$SEASON" --week "$wk"; done
+      - name: commit
+        run: |
+          git config user.name edge-index-bot
+          git config user.email bot@edge-index.com
+          git add automation/cards cfb-app/public/data
+          git commit -m "settle results" || exit 0
+          git push || { git pull --rebase && git push; }

@@ -66,6 +66,26 @@ function storeTickets(t) {
 }
 
 /* ---------- small pieces ---------- */
+// Result of a settled rung (automation/pipeline/settle.py writes `result` per rung and `actual` per row once the game is
+// final): green check = hit, red cross = miss, gray dash = void (no stat row: the player didn't play). Hover / tap: the stat.
+const STAT_UNIT = { rec_yds:"rec yds", receptions:"rec", rush_yds:"rush yds", rush_att:"rush att",
+  pass_yds:"pass yds", pass_cmps:"cmp", pass_att:"pass att" };
+function ResultBadge({ result, actual, market }) {
+  const [show, setShow] = useState(false);                     // tap shows the stat (no hover on phones)
+  if (!result) return null;
+  const [sym, color] = result === "hit" ? ["✓", T.accent] : result === "miss" ? ["✗", T.red] : ["–", "#777"];
+  const tip = result === "void" ? "void: no stat line (didn't play)" : `${Number.isInteger(actual) ? actual : actual?.toFixed(1)} ${STAT_UNIT[market] || market}`;
+  return (
+    <span style={{whiteSpace:"nowrap"}}>
+      <span title={tip} onClick={e => { e.stopPropagation(); setShow(v => !v); }}
+        style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:15,height:15,borderRadius:"50%",
+          marginLeft:4,fontSize:9,fontWeight:800,fontFamily:T.mono,color:result === "void" ? "#aaa" : T.bg,
+          background:result === "void" ? "#333" : color,cursor:"help",verticalAlign:"middle"}}>{sym}</span>
+      {show && <span style={{fontSize:9,color:"#aaa",marginLeft:4}}>{tip}</span>}
+    </span>
+  );
+}
+
 function GradePill({ g }) {
   const s = {
     "A+": { color:T.bg,      background:T.accent,        border:T.accent },
@@ -131,8 +151,30 @@ function AddBtn({ onClick, on, title }) {
   );
 }
 
+/* ---------- board tally: one row per player/market at its best rung, exactly the rows the table shows ---------- */
+function BoardTally({ rows, slate }) {
+  const done = rows.filter(p => p.settled);
+  if (!done.length) return null;
+  const order = ["A+", "A", "A-", "B", "C", "D", "F"];
+  const t = {}; const all = { hit:0, miss:0, void:0 };
+  for (const p of done) {
+    const b = bestRung(p); if (!b.result) continue;
+    (t[b.grade] = t[b.grade] || { hit:0, miss:0, void:0 })[b.result]++; all[b.result]++;
+  }
+  const wl = x => `${x.hit}–${x.miss}${x.void ? ` (${x.void} void)` : ""}`;
+  const label = { tnf:"TNF", sun:"Sunday", mnf:"MNF" }[slate] || slate;
+  return (
+    <div style={{fontSize:10.5,fontFamily:T.mono,color:"#999",margin:"0 0 10px",lineHeight:1.7}}
+      title="Final games only: each row the table shows, at its best (displayed) rung. Follows the filters above.">
+      <span style={{color:T.text,fontWeight:700}}>{label} board: {wl(all)}</span>
+      {order.filter(g => t[g]).map(g => <span key={g}> · {g.replace("-", "−")} {wl(t[g])}</span>)}
+      {done.length < rows.length && <span style={{color:"#555"}}> · {rows.length - done.length} not final yet</span>}
+    </div>
+  );
+}
+
 /* ---------- one player/market row ---------- */
-const STAT_COLS = "40px 48px 78px 70px 74px 118px 26px";
+const STAT_COLS = "58px 48px 78px 70px 74px 118px 26px";
 
 function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
   const b = bestRung(p);
@@ -171,7 +213,7 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
         </div>
 
         <div className="legs-stats" style={{display:"grid",gridTemplateColumns:STAT_COLS,alignItems:"center",gap:8,flexShrink:0}}>
-          <GradePill g={b.grade} />
+          <span style={{whiteSpace:"nowrap"}}><GradePill g={b.grade} /><ResultBadge result={b.result} actual={p.actual} market={p.market} /></span>
           <span style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono}}>{rungStr(b.rung)}</span>
           <span style={{fontSize:11,color:T.text,fontFamily:T.mono}}>
             {oddsStr(b.est_odds)}{est && <sup style={{fontSize:7,color:T.amber,marginLeft:2}}>est</sup>}
@@ -214,7 +256,7 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
                       <td style={{padding:"5px 8px",textAlign:"right",color:T.text,fontWeight:700}}>{r.clear_pct != null ? r.clear_pct.toFixed(1) + "%" : "—"}</td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:"#999"}}>{r.l10 ?? "—"}</td>
                       <td style={{padding:"5px 8px",textAlign:"right",color:"#999"}}>{r.l15 ?? "—"}</td>
-                      <td style={{padding:"5px 8px",textAlign:"right"}}><GradePill g={r.grade} /></td>
+                      <td style={{padding:"5px 8px",textAlign:"right",whiteSpace:"nowrap"}}><GradePill g={r.grade} /><ResultBadge result={r.result} actual={p.actual} market={p.market} /></td>
                       <td style={{padding:"5px 8px",color: r.grade === "F" ? "#d0707a" : "#666",fontSize:9.5}}>
                         {r.reasons.map(clean).filter(Boolean).join(" · ") || ""}</td>
                       <td style={{padding:"5px 0 5px 8px",textAlign:"right"}}>
@@ -593,11 +635,13 @@ export default function LegsHub() {
                 padding:"8px 12px",marginBottom:10}}>{focus.missing} has no graded rungs on the posted slates.</div>
             )}
 
+            <BoardTally rows={rows} slate={slate} />
+
             {/* column header */}
             <div className="legs-colhead" style={{gridTemplateColumns:`1fr ${STAT_COLS}`,gap:8,padding:"0 15px 6px 55px",
               fontSize:8,color:"#444",letterSpacing:1.5}}>
               <span />
-              <span>GRADE</span><span>RUNG</span><span>PRICE · FAIR</span><span>L10 / 15</span><span>LAST 3</span><span>OPP D · VOL</span><span />
+              <span>GRADE · RESULT</span><span>RUNG</span><span>PRICE · FAIR</span><span>L10 / 15</span><span>LAST 3</span><span>OPP D · VOL</span><span />
             </div>
 
             {rows.length === 0 && <div style={{padding:"28px 0",fontSize:11,color:"#444",textAlign:"center"}}>

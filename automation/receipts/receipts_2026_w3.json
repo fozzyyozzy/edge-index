@@ -486,6 +486,108 @@
    "misses": []
   }
  ],
+ "held_by_reason": [
+  {
+   "reason": "team change",
+   "n": 12,
+   "hits": 9,
+   "misses": 3,
+   "voids": 0
+  },
+  {
+   "reason": "blowout risk",
+   "n": 3,
+   "hits": 1,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "reason": "tough defense",
+   "n": 7,
+   "hits": 6,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "reason": "low own volume",
+   "n": 3,
+   "hits": 0,
+   "misses": 3,
+   "voids": 0
+  },
+  {
+   "reason": "price worse than \u2212450",
+   "n": 6,
+   "hits": 6,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "reason": "edge below +2",
+   "n": 6,
+   "hits": 5,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "reason": "grade below C",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  }
+ ],
+ "board_by_grade": [
+  {
+   "grade": "A+",
+   "n": 4,
+   "hits": 4,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "grade": "A",
+   "n": 9,
+   "hits": 7,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "grade": "A-",
+   "n": 77,
+   "hits": 70,
+   "misses": 7,
+   "voids": 0
+  },
+  {
+   "grade": "B",
+   "n": 109,
+   "hits": 94,
+   "misses": 14,
+   "voids": 1
+  },
+  {
+   "grade": "C",
+   "n": 75,
+   "hits": 60,
+   "misses": 14,
+   "voids": 1
+  },
+  {
+   "grade": "D",
+   "n": 8,
+   "hits": 6,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "grade": "F",
+   "n": 156,
+   "hits": 46,
+   "misses": 107,
+   "voids": 3
+  }
+ ],
  "clv": {
   "n": 11,
   "avg_leg_pts": 0.18

@@ -12,7 +12,42 @@ import argparse, glob, json, os
 import pandas as pd
 from common import norm_name, COL, fetch_week, pay, P
 
-GRADES = ["A+", "A", "A-", "B", "C", "D", "F"]          # every letter: leaving the low ones out reads as cherry-picking
+GRADES = ["A+", "A", "A-", "B", "C", "D", "F"]
+LETTER_ORDER = ["F", "D", "C", "B", "A-", "A", "A+"]
+# hold reason -> receipts category (a held leg with several reasons counts under each)
+HOLD_CATS = [("team change", "team change"), ("blowout", "blowout risk"), ("opp D tough", "tough defense"),
+             ("own volume low", "low own volume"), ("price worse than", "price worse than −450"),
+             ("edge", "edge below +2"), ("grade below C", "grade below C")]
+
+def tally(results):
+    """list of 'hit'/'miss'/'void' -> {n, hits, misses, voids}"""
+    return dict(n=len(results), hits=results.count("hit"), misses=results.count("miss"), voids=results.count("void"))
+
+def held_by_reason(cards, act):
+    """Every held floor on the week's pipeline cards (held_all; older cards only kept the top 15 as held), graded at its
+    floor rung against the box score, grouped by hold reason."""
+    res = {cat: [] for _, cat in HOLD_CATS}
+    for card in cards:
+        for h in card.get("held_all") or card.get("held") or []:
+            v = act.get((norm_name(h["Player"]), h["Market"]))
+            r = "void" if v is None or pd.isna(v) else ("hit" if float(v) >= float(str(h["Rung"]).rstrip("+")) else "miss")
+            cats = {cat for pre, cat in HOLD_CATS for why in h.get("Reasons") or [] if why.startswith(pre)}
+            for cat in cats: res[cat].append(r)
+    return [dict(reason=cat, **tally(rs)) for cat, rs in res.items()]
+
+def board_by_grade(season, week, act, w):
+    """The whole Legs board, counted like the Legs tab's tally: one row per player/market at its best rung (highest
+    grade, then higher rung), final games only, every row including holds."""
+    from settle import settled_teams
+    teams = settled_teams(season, week, w)
+    res = {g: [] for g in GRADES}
+    for path in sorted(glob.glob(P("cards", f"legs_{season}_w{week}_*.json"))):
+        for p in json.load(open(path))["players"]:
+            if p.get("team") not in teams or not p.get("rungs"): continue
+            b = max(p["rungs"], key=lambda r: (LETTER_ORDER.index(r["grade"]), r["rung"]))
+            v = act.get((norm_name(p["player"]), p["market"]))
+            res[b["grade"]].append("void" if v is None or pd.isna(v) else ("hit" if float(v) >= b["rung"] else "miss"))
+    return [dict(grade=g, **tally(rs)) for g, rs in res.items()]          # every letter: leaving the low ones out reads as cherry-picking
 LEDGER_COLS = ["season", "week", "slate", "ticket", "hand_built", "player", "team", "opp", "market", "rung", "grade",
                "clear_pct", "model_pct", "prob", "fair_odds", "edge_pts", "published", "closing", "clv_pts", "actual", "hit", "hit_standard", "early_exit",
                "pnl_1u", "miss_by"]
@@ -77,8 +112,10 @@ def main():
 
     legs, tickets = [], []
     paths = sorted(glob.glob(P("cards", f"card_{a.season}_w{a.week}_*.json"))) +             sorted(glob.glob(P("cards", f"handbuilt_{a.season}_w{a.week}_*.json")))
+    pipe_cards = []
     for path in paths:
         card = json.load(open(path))
+        if not card.get("hand_built"): pipe_cards.append(card)
         hand = bool(card.get("hand_built"))
         for t in card["tickets"]:
             t_hits, t_prices, t_std, t_ee, t_detail = [], [], [], [], []
@@ -146,6 +183,8 @@ def main():
         "grade_basis": ("blended" if "prob" in pg and pd.to_numeric(pg["prob"], errors="coerce").notna().any()
                         else "clear %") if "grade" in pg and pg.grade.notna().any() else None,
         "tickets": tickets,
+        "held_by_reason": held_by_reason(pipe_cards, act),
+        "board_by_grade": board_by_grade(a.season, a.week, act, w),
         # pipeline legs only (hand-built legs have no price history); every leg counts, graded or void
         "clv": dict(n=int(df[pipe_clv].shape[0]), avg_leg_pts=round(float(df[pipe_clv].clv_pts.mean()), 2)
                     if df[pipe_clv].shape[0] else None),
@@ -188,6 +227,11 @@ def write_season_record(season):
                               units_standard=wk.get("units_standard"),
                               legs_hit=wk["legs_hit"], tickets=wk["tickets"], clv=wk.get("clv")) for wk in weeks],
                   by_grade=by_grade,
+                  # cumulative across weeks: held legs by hold reason, and the whole board by grade (tally counting)
+                  held_by_reason=[dict(reason=cat, **{k: sum(r[k] for wk in weeks for r in wk.get("held_by_reason", []) if r["reason"] == cat)
+                                                     for k in ("n", "hits", "misses", "voids")}) for _, cat in HOLD_CATS],
+                  board_by_grade=[dict(grade=g, **{k: sum(r[k] for wk in weeks for r in wk.get("board_by_grade", []) if r["grade"] == g)
+                                                  for k in ("n", "hits", "misses", "voids")}) for g in GRADES],
                   clear_basis_weeks=[wk["week"] for wk in weeks if wk.get("grade_basis") == "clear %"
                                      or (wk.get("grade_basis") is None and any(b.get("n") and b.get("avg_prob") is None
                                                                                for b in wk.get("by_grade", [])))],

@@ -3,6 +3,17 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-02 — results and record (display / record-keeping, not a model change)
+
+- **What:** `settle.py` (daily 10:07 ET, `settle.yml`) writes each final game's stat (`actual`) and per-rung result
+  (hit / miss / void) into the week's legs JSON — nflverse only, never touching grades, prices or published fields;
+  idempotent. The Legs tab shows a result circle per row and rung and a board tally (rows the table shows, best rung).
+  Tuesday receipts add held legs graded by hold reason and the whole board by grade, cumulative. Cards now keep every
+  hold in `held_all` (`held` stays the top 15 for display).
+- **Why:** results the morning after, and a check on whether the holds and the letters are doing their job.
+- **Effect:** none on cards or grades. Weeks 2–3 regraded (results unchanged). Held-by-reason for weeks 2–3 covers only
+  each card's top-15 held list; full lists from Week 4 on.
+
 ## 2026-09-30 — bug fix: card legs must be graded C or better (R9)
 
 - **What:** `build_card_json.py` now holds any floor whose Legs-board grade is below C (or that the Legs board didn't

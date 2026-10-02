@@ -185,7 +185,8 @@ def main():
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=pulled,
                 published_at=pulled, markets_at_publish=at_publish,
-                tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15], notes=notes)
+                tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15],
+                held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display) notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")
