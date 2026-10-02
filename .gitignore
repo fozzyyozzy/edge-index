@@ -6,3 +6,6 @@ data/cache/
 .DS_Store 
 data/odds_snapshots.db
 edge-index-scraper-*.json
+
+# local run logs: can contain request URLs (with API keys) and machine-specific output
+agent/logs/

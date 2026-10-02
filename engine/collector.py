@@ -16,8 +16,12 @@ Usage:
 Schedule 2-3x daily via agent\\collect_odds.bat.
 """
 from __future__ import annotations
-import argparse, os, sqlite3, sys
+import argparse, csv, os, re, sqlite3, sys
 from datetime import datetime, timezone
+
+# Every run is logged to automation/lines/odds_usage.csv (the pipeline's ledger) as slate "collector:<sport>", with the
+# requests it actually spent. The collector stops for the week once its own spend reaches COLLECTOR_WEEKLY_BUDGET
+# (default 1000), so it can't eat the pipeline's share of the weekly cap. Error messages never include the API key.
 
 BASE = "https://api.the-odds-api.com/v4"
 DB = os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -44,9 +48,47 @@ CREATE INDEX IF NOT EXISTS ix_snap ON snapshots(sport, event_id, market, player)
 """
 
 
+LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "automation", "lines", "odds_usage.csv")
+LEDGER_COLS = ["pulled_at", "season", "week", "slate", "events", "cost", "remaining"]
+
+
+def _redact(text) -> str:
+    """never let the key reach a log: requests' errors quote the full URL, query string included"""
+    return re.sub(r"apiKey=[^&\s'\")]+", "apiKey=REDACTED", str(text))
+
+
 def _get(url, params, session=None):
     import requests
-    return (session or requests).get(url, params=params, timeout=30)
+    try:
+        return (session or requests).get(url, params=params, timeout=30)
+    except requests.RequestException as ex:                  # `from None`: drop the chained traceback that shows the URL
+        raise RuntimeError(_redact(f"{type(ex).__name__}: {ex}")) from None
+
+
+def _nfl_week():
+    """(season, week) for the ledger, from the nflverse schedule; (season, 0) if that can't be fetched"""
+    season = datetime.now(timezone.utc).year
+    try:
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "automation", "pipeline"))
+        from nfl_week import week_for
+        return season, week_for(season, "current")
+    except Exception:
+        return season, 0
+
+
+def _collector_spend(season, week):
+    if not os.path.exists(LEDGER): return 0
+    with open(LEDGER, newline="") as f:
+        return sum(int(r["cost"] or 0) for r in csv.DictReader(f)
+                   if r["slate"].startswith("collector") and r["season"] == str(season) and r["week"] == str(week))
+
+
+def _log(row):
+    new = not os.path.exists(LEDGER)
+    with open(LEDGER, "a", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=LEDGER_COLS)
+        if new: w.writeheader()
+        w.writerow(row)
 
 
 def collect(sport: str, key: str, books: str = BOOKS) -> None:
@@ -55,9 +97,16 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
     con.executescript(SCHEMA)
     now = datetime.now(timezone.utc)
     pull = now.isoformat(timespec="seconds")
-    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})
-    r.raise_for_status()
-    stored = skipped = 0
+    season, week = _nfl_week()
+    budget = int(os.environ.get("COLLECTOR_WEEKLY_BUDGET", "1000"))
+    spent = _collector_spend(season, week)
+    if spent >= budget:
+        print(f"[{pull}] {sport}: collector already spent {spent}/{budget} this week (wk {week}); skipping")
+        return
+    r = _get(f"{BASE}/sports/{sport}/events", {"apiKey": key})   # the events list is free
+    if r.status_code != 200:
+        sys.exit(_redact(f"events: HTTP {r.status_code}"))
+    stored = skipped = cost = pulled = 0
     remaining = "?"
     for ev in r.json():
         commence = datetime.fromisoformat(
@@ -72,6 +121,7 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
             print(f"  skip {ev['id']}: HTTP {ro.status_code}")
             continue
         remaining = ro.headers.get("x-requests-remaining", "?")
+        cost += int(ro.headers.get("x-requests-last", 0) or 0); pulled += 1
         for bk in ro.json().get("bookmakers", []):
             for m in bk.get("markets", []):
                 for o in m.get("outcomes", []):
@@ -84,8 +134,10 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
                          o.get("point"), o.get("price")))
                     stored += 1
         con.commit()
-    print(f"[{pull}] {sport}: {stored} rows stored, "
-          f"{skipped} started events skipped, API quota left: {remaining}")
+    _log(dict(pulled_at=now.isoformat(timespec="minutes"), season=season, week=week, slate=f"collector:{sport}",
+              events=pulled, cost=cost, remaining=remaining))
+    print(f"[{pull}] {sport}: {stored} rows stored, {skipped} started events skipped, "
+          f"{cost} requests spent (collector week total {spent + cost}/{budget}), API quota left: {remaining}")
 
 
 def closing_lines(sport: str) -> list[tuple]:
