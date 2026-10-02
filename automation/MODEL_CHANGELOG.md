@@ -3,6 +3,17 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-02 — Thursday Sunday-slate price snapshot (data collection, not a model change)
+
+- **What:** `sun-snapshot.yml` runs Thursday 9:07 ET and saves DraftKings prices for the coming Sunday slate to
+  `automation/lines/snapshots/` (`fetch_lines.py --snapshot`, pull time in the filename). No floors, card, site publish
+  or newsletter draft. Friday's card puts each Sunday leg's Thursday price first in its `price_history`; the Card tab
+  shows Thursday › published → current; Tuesday receipts report Thursday → published and published → close per leg.
+- **Why:** to see how much Sunday prices move between Thursday and the Friday card, before deciding anything about
+  when to publish.
+- **Effect:** none on tickets, grades or CLV (CLV is still published vs close). About 14 requests per Sunday game
+  (~196 a week), counted in the usage ledger and the weekly cap.
+
 ## 2026-10-02 — results and record (display / record-keeping, not a model change)
 
 - **What:** `settle.py` (daily 10:07 ET, `settle.yml`) writes each final game's stat (`actual`) and per-rung result

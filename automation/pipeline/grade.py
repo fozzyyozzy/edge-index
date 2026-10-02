@@ -86,6 +86,19 @@ def by_grade_table(pg):
                         expected=avg_prob if avg_prob is not None else mean_pct(s.clear_pct)))
     return out
 
+def sunday_moves(tickets):
+    seen, out = set(), []
+    for t in tickets:
+        if t["slate"] != "sun" or t.get("flag"): continue
+        for l in t.get("legs_detail", []):
+            k = (l["player"], l["market"], l["rung"])
+            if k in seen: continue
+            seen.add(k)
+            out.append(dict(player=l["player"], market=l["market"], rung=l["rung"], thursday=l.get("thursday_odds"),
+                            published=l["odds"], closing=l.get("closing"), thu_to_pub_pts=l.get("thu_to_pub_pts"),
+                            pub_to_close_pts=l.get("clv_pts")))
+    return out
+
 def am_dec(am): return 1 + (am / 100 if am > 0 else 100 / -am)
 
 def official(t, hits, ee, prices):
@@ -137,7 +150,9 @@ def main():
                 t_detail.append(dict(player=l["player"], team=l.get("team"), market=l["market"], rung=l["rung"], odds=odds,
                                      price_estimated=bool(l.get("price_estimated")), grade=l.get("grade"),
                                      actual=None if actual is None or pd.isna(actual) else float(actual),
-                                     hit=hit, early_exit=bool(l.get("early_exit")), closing=close, clv_pts=clv_pts(odds, close)))
+                                     hit=hit, early_exit=bool(l.get("early_exit")), closing=close, clv_pts=clv_pts(odds, close),
+                                     thursday_odds=l.get("thursday_odds"),
+                                     thu_to_pub_pts=None if hand else clv_pts(l.get("thursday_odds"), odds)))
             tickets.append({"slate": card["slate"], "name": t["name"], "legs": len(t["legs"]),
                             "flag": t.get("flag") if hand else None, "est_american": t.get("est_american"),
                             # ticket CLV: implied-probability points between the parlay at published vs closing prices
@@ -184,6 +199,9 @@ def main():
                         else "clear %") if "grade" in pg and pg.grade.notna().any() else None,
         "tickets": tickets,
         "held_by_reason": held_by_reason(pipe_cards, act),
+        # Sunday card legs (one per player/market/rung): Thursday snapshot -> published -> close, in implied-prob points
+        # (positive = the price shortened). Cards before the Thursday snapshot existed have no Thursday price.
+        "sunday_price_moves": sunday_moves(tickets),
         "board_by_grade": board_by_grade(a.season, a.week, act, w),
         # pipeline legs only (hand-built legs have no price history); every leg counts, graded or void
         "clv": dict(n=int(df[pipe_clv].shape[0]), avg_leg_pts=round(float(df[pipe_clv].clv_pts.mean()), 2)

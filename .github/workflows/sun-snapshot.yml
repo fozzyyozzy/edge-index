@@ -1,0 +1,56 @@
+name: sun-snapshot
+
+# Thursday 9:07am ET: a record of DraftKings prices for the coming Sunday slate, taken before Friday's card.
+# Friday's build_card_json.py puts each Sunday leg's Thursday price first in its price_history (Thursday -> published
+# -> close), and Tuesday receipts report both moves. No floors, no card, no site publish, no newsletter draft: it commits
+# the snapshot files plus its row in the usage ledger (so the weekly Odds API cap counts it). ~14 requests per game.
+on:
+  schedule:
+    - cron: "7 13 * * 4"      # Thu 9:07am EDT
+    - cron: "7 14 * * 4"      # Thu 9:07am EST
+  workflow_dispatch:
+
+concurrency:                   # shared with the other jobs that commit to main
+  group: data-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      SEASON: 2026
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      ODDS_WEEKLY_BUDGET: 3000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r automation/requirements.txt
+      - name: resolve week; one snapshot per week, Thursdays only (a manual run still goes)
+        run: |
+          W=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode current)
+          echo "WEEK=$W" >> "$GITHUB_ENV"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$(TZ=America/New_York date +%u)" != "4" ]; then
+              echo "::notice::not Thursday in New York (late run); no snapshot"; echo "SKIP=1" >> "$GITHUB_ENV"
+            elif ls automation/lines/snapshots/ladders_${SEASON}_w${W}_sun_*.csv >/dev/null 2>&1; then
+              echo "::notice::week $W Sunday snapshot already taken (EDT/EST twin or a late duplicate)"; echo "SKIP=1" >> "$GITHUB_ENV"
+            fi
+          fi
+      - name: snapshot Sunday-slate prices (unstarted games only)
+        if: env.SKIP != '1'
+        run: python automation/pipeline/fetch_lines.py --season "$SEASON" --week "$WEEK" --slate sun --days 5 --snapshot
+      - name: commit the snapshot (and its usage-ledger row)
+        if: env.SKIP != '1'
+        run: |
+          git config user.name edge-index-bot
+          git config user.email bot@edge-index.com
+          git add automation/lines/snapshots automation/lines/odds_usage.csv
+          git commit -m "week $WEEK sun snapshot (Thursday)" || exit 0
+          git push || { git pull --rebase && git push; }

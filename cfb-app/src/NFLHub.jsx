@@ -58,10 +58,15 @@ function Price({ leg }) {
   const cur = leg.current_odds;
   const moved = cur != null && cur !== pub;
   const toward = moved && implied(cur) > implied(pub);
+  const thu = leg.thursday_odds;                                // Sunday legs: Thursday snapshot price, before the card
+  const thuAt = leg.price_history?.[0]?.source === "thursday snapshot" ? leg.price_history[0].at : null;
+  const tip = (thu != null ? `Thursday ${oddsStr(thu)} (${when(thuAt)}) › ` : "") +
+    (moved ? `published ${oddsStr(pub)} (${when(leg.published_at)}) → now ${oddsStr(cur)} (${when(leg.current_at)})`
+           : leg.current_at ? `published ${oddsStr(pub)}, unchanged since · checked ${when(leg.current_at)}` : "");
   return (
-    <span title={moved ? `published ${oddsStr(pub)} (${when(leg.published_at)}) → now ${oddsStr(cur)} (${when(leg.current_at)})`
-                       : leg.current_at ? `unchanged since publish · checked ${when(leg.current_at)}` : ""}
+    <span title={tip}
       style={{fontSize:12,fontWeight:700,color:T.text,fontFamily:T.mono,whiteSpace:"nowrap"}}>
+      {thu != null && <span style={{color:"#666",fontWeight:400,fontSize:10.5}}>Thu {oddsStr(thu)}<span style={{margin:"0 4px"}}>›</span></span>}
       {oddsStr(pub)}
       {!real && <sup style={{fontSize:7,color:T.amber,marginLeft:2,fontWeight:500}}>est</sup>}
       {moved && <>

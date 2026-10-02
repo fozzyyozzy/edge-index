@@ -6,6 +6,7 @@ Replaces pasting. Writes:
   lines/pulled_<season>_w<week>[_<slate>].txt       when this pull happened (UTC ISO)
   lines/twoway_<season>_w<week>.csv                 Player,Market,Line,Over,Under,... DK standard markets (for no-vig)
   lines/odds_usage.csv                              one row per run: requests spent and quota left
+  lines/snapshots/{ladders,twoway}_<season>_w<week>_<slate>_<UTC stamp>.csv   with --snapshot, and nothing else
 Only games that have NOT kicked off are pulled. A pull replaces the ladder rows of the games it fetched and keeps
 every other game's rows (so a TNF-only refresh doesn't wipe Sunday's ladders, and a started game keeps its last
 pre-kickoff prices).
@@ -69,6 +70,9 @@ def main():
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--days", type=int, default=7); ap.add_argument("--book", default="draftkings")
     ap.add_argument("--slate", choices=["tnf", "sun", "mnf"], default=None, help="only this slate's games")
+    ap.add_argument("--snapshot", action="store_true",
+                    help="write only timestamped files to lines/snapshots/ (Thursday Sunday-slate prices); the week's "
+                         "ladders, main lines and pull times are left alone")
     ap.add_argument("--out", default=None); a = ap.parse_args()
     key = os.environ.get("ODDS_API_KEY") or sys.exit("set ODDS_API_KEY")
     budget = int(os.environ.get("ODDS_WEEKLY_BUDGET", "3000"))
@@ -115,11 +119,20 @@ def main():
                     rows.append(dict(Player=o["description"], Market=mkt, Rung=rung, Odds=int(o["price"]),
                                      Game=game, Commence=e["commence_time"], PulledAt=pulled_at))
         print(f"  {game}: {sum(1 for r in rows if r['Game']==game)} rungs  (cost {last}, remaining {rem})")
-    log_usage(dict(pulled_at=pulled_at, season=a.season, week=a.week, slate=a.slate or "all",
+    log_usage(dict(pulled_at=pulled_at, season=a.season, week=a.week,
+                   slate=("snapshot:" if a.snapshot else "") + (a.slate or "all"),
                    events=len(pulled_games), cost=cost, remaining=rem))
     print(f"spent {cost} requests; quota remaining {rem}; week {a.week} total {used + cost}/{budget}")
     if not rows:
         print("::warning::no rungs came back; ladders and pull times left as they were"); return
+
+    if a.snapshot:                                                     # a record of prices, nothing downstream reads it live
+        stamp = now.strftime("%Y-%m-%dT%H%MZ"); snap = P("lines", "snapshots")
+        os.makedirs(snap, exist_ok=True)
+        base = f"{a.season}_w{a.week}_{a.slate or 'all'}_{stamp}"
+        pd.DataFrame(rows, columns=LADDER_COLS).drop_duplicates(["Player", "Market", "Rung"]).to_csv(f"{snap}/ladders_{base}.csv", index=False)
+        pd.DataFrame(list(two.values()), columns=TWOWAY_COLS).to_csv(f"{snap}/twoway_{base}.csv", index=False)
+        print(f"snapshot -> lines/snapshots/ladders_{base}.csv ({len(rows)} rungs) + twoway_{base}.csv"); return
 
     # merge: replace the fetched games' rows, keep every other game's (older rows get PulledAt from the pulled_ file)
     os.makedirs(a.out, exist_ok=True)
