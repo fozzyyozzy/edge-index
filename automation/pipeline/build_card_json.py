@@ -5,12 +5,15 @@ that obey the house rules, and writes it as JSON for the site and the newsletter
 Rules encoded here (do not relax without changing the newsletter copy too):
   R1  3–4 legs per ticket, 2–3 tickets per slate (single-game slates: 2 legs allowed, always "Reduced payout")
   R2  no PLAYER appears on more than one ticket (any market), except a FLOOR STAR (L10 >= 9/10 and L15 >= 13/15),
-      max 2 tickets, and a ticket may carry at most one repeated star. Same player = same injury + same game script.
+      max 2 tickets, and a ticket may carry at most one repeated star — counted on every ticket the star is on, so no
+      ticket shares more than one player with the rest of the card. Same player = same injury + same game script.
   R3  floor rung = highest rung clearing L10 >= 80% and L15 >= 73%; never stepped up for price
   R4  every leg needs edge >= +2 pts: blended probability (common.leg_prob — lower of L10/L15 add-one clear rates,
       blended toward DK's no-vig price as 10 extra games, capped at 0.90) minus DK's implied probability at the price
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
-  R6  team-change and injury holds are hard holds
+  R6  team-change and injury holds are hard holds. Injury (availability.py, the same snapshot grade_legs.py wrote): missed
+      one of the team's last two games, Out/Doubtful/Questionable, DNP in practice, or held by hand in
+      notes/holds_<season>_w<week>.csv. Limited practice with no game status yet is an "injury watch" flag on the leg.
   R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles; a 2-leg ticket
       is allowed there (thin menu) and is always labelled "Reduced payout"
   R8  Bloom target: each ticket aims for >= +200 (3.0x). Reach it by ADDING a 4th floor leg, never by stepping a rung up.
@@ -30,6 +33,7 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay, estimate_ladder
 from common import norm_name, P, load_real_ladders, prices_pulled
+import availability
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15   # raw clear rates on purpose: consistency, not price
 MAX_LEG_JUICE = -450
@@ -58,9 +62,10 @@ def rank_or_none(r, col):
     v = getattr(r, col, None)
     return None if v is None or pd.isna(v) else int(v)
 
-def hold_reasons(r):
+def hold_reasons(r, avail=None):
     """Why a floor row is not a card candidate (empty = candidate). Order: hard holds first."""
     why = []
+    if avail is not None: why += availability.reasons(avail, r.Player, r.Market, r.Team)[0]   # R6 injury / by hand
     if getattr(r, "TeamChange", False) == True:
         why.append(f"team change ({r.PrevTeam}->{r.Team})" if isinstance(getattr(r, "PrevTeam", None), str) and r.PrevTeam else "team change")
     if r.Market in ("pass_att", "pass_cmps") and blowout_flag(r.Spread): why.append(f"blowout risk (fav by {-r.Spread:g})")
@@ -75,7 +80,7 @@ def hold_reasons(r):
 def hold_rank(h):
     """hard holds (team change, blowout) first, then matchup/volume, then price-only; floor-scan order within each"""
     first = h["Reasons"][0]
-    return 0 if first.startswith(("team change", "blowout")) else 2 if first.startswith(("price", "edge")) else 1
+    return 0 if first.startswith(("team change", "blowout", "injury", "held by hand")) else 2 if first.startswith(("price", "edge")) else 1
 
 def thursday_prices(season, week, slate, before):
     """Sunday slate only: the latest Thursday snapshot (sun-snapshot.yml) pulled before this card's prices.
@@ -102,6 +107,7 @@ def main():
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
     pulled = prices_pulled(a.season, a.week, a.slate)
     THU, THU_AT = thursday_prices(a.season, a.week, a.slate, pulled)
+    AVAIL = availability.load(a.season, a.week, a.slate)          # grade_legs.py's snapshot (built here if missing)
     lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
     # every player/market DK had posted when this card was built; refresh_odds.py flags anything newer "posted_after_card"
     at_publish = sorted({f"{norm_name(r.Player)}|{r.Market}" for r in pd.read_csv(lines_path).itertuples()})         if os.path.exists(lines_path) else []
@@ -116,7 +122,7 @@ def main():
     # candidate legs: floors that are winnable AND not over-priced, sorted by strength
     cands, held = [], []
     for r in fl.itertuples():
-        why = hold_reasons(r)                                         # tough matchup/volume, R5 blowout, R6 team change, juice
+        why = hold_reasons(r, AVAIL)                                  # R6 injury/team change, R5 blowout, tough matchup/volume, juice
         # R9: the leg's Legs-board grade must be C or better (the Legs tab's cutoff). No grade = trimmed below C.
         g = GRADED.get((norm_name(r.Player), r.Market, float(r.Rung.rstrip("+"))), (None, None))[0]
         if g not in GRADE_OK: why.append("grade below C")
@@ -143,6 +149,7 @@ def main():
                           novig_pct=None if pd.isna(getattr(r, "NovigPct", float("nan"))) else float(r.NovigPct),
                           grade=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[0],
                           clear_pct=GRADED.get((norm_name(r.Player), r.Market, rung), (None, None))[1],
+                          injury_watch=availability.reasons(AVAIL, r.Player, r.Market, r.Team)[1] or None,
                           note=f"L10 {r.L10}, L15 {r.L15}; last 3 {last3}; opp D {r.OppD}"))
         # locked at publish, never changed: the price the card was built on and when. refresh_odds.py appends to
         # price_history (only before the game's kickoff) and moves current_odds; grade.py reads closing from the history.
@@ -156,14 +163,16 @@ def main():
     cands.sort(key=lambda c: (-(c["l10"] + c["l15"]), c["odds_est"]))
 
     tickets, used = [], {}
+    owner, shared = {}, []      # R2: player -> the ticket he first went on; per ticket, players it shares with another ticket
     n_tickets = 1 if a.slate in SINGLE_GAME else a.tickets
-    # star cap: a floor star may anchor two tickets, but never two tickets in the same slate that would otherwise share nothing
+    # star cap: a floor star may anchor two tickets, and each ticket shares at most ONE player with all the other tickets
+    # combined — checked on both sides, so an earlier ticket can't end up sharing one star with SUN-2 and another with SUN-3
     for i in range(n_tickets):
         legs, games, reused = [], set(), 0
         def can_take(c):
             k = c["player"]                                   # player-level uniqueness across tickets
             if used.get(k, 0) >= (2 if c["star"] else 1): return False
-            if used.get(k, 0) == 1 and reused >= 1: return False
+            if used.get(k, 0) == 1 and (reused >= 1 or shared[owner[k]] >= 1): return False
             g = frozenset([c["team"], c["opp"]])
             if a.slate not in SINGLE_GAME and g in games: return False
             if any(l["player"] == c["player"] for l in legs): return False
@@ -189,7 +198,12 @@ def main():
                 c, payout = best
                 if used.get(c["player"], 0) == 1: reused += 1
                 legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
-        for l in legs: used[l["player"]] = used.get(l["player"], 0) + 1
+        shared.append(0)
+        for l in legs:
+            k = l["player"]
+            if used.get(k, 0) == 1: shared[owner[k]] += 1; shared[i] += 1      # a repeat counts on both tickets
+            else: owner[k] = i
+            used[k] = used.get(k, 0) + 1
         p = 1.0
         for l in legs: p *= l["model_pct"] / 100
         reduced = payout < TARGET_DEC or len(legs) == 2                     # a 2-leg ticket is always reduced
@@ -202,6 +216,7 @@ def main():
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=pulled,
                 published_at=pulled, thursday_pulled=THU_AT, markets_at_publish=at_publish,
+                availability=dict(fetched_at=AVAIL.get("fetched_at"), sources=AVAIL.get("sources")),
                 tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15],
                 held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display)
                 notes=notes)

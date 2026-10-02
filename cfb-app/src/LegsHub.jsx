@@ -207,7 +207,12 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
             {p.posted_after_card && <span title="DK posted this market after the card was built; it can't be on a card ticket"
               style={{fontSize:8,color:"#9aa",border:"1px solid #ffffff22",borderRadius:3,padding:"1px 5px",
                 fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
+            {p.injury && !p.held && <span title={p.injury.join("; ")}
+              style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
+                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>INJURY WATCH</span>}
           </div>
+          {p.injury && !p.held && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
+            {p.injury.map(x => x.replace(/^injury watch: /, "")).join(" · ")}</div>}
           {sub && <div style={{fontSize:9.5,fontFamily:T.mono,marginTop:2,
             color: held ? "#d0707a" : "#666"}}>{p.held ? "HOLD · " : p.comp_held ? "BELOW C · " : ""}{sub}</div>}
         </div>

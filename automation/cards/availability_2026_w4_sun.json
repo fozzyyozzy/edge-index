@@ -1,0 +1,3276 @@
+{
+ "season": 2026,
+ "week": 4,
+ "fetched_at": "2026-10-02T18:28+00:00",
+ "sources": {
+  "snap_counts": "weeks 1-4",
+  "weekly_stats": "weeks 1-4",
+  "injuries": "week 4: 291 report rows",
+  "manual": "notes/holds_2026_w4.csv"
+ },
+ "team_games": {
+  "ARI": {
+   "2": [
+    "bam knight",
+    "elijah higgins",
+    "elijah wilkinson",
+    "hjalte froholdt",
+    "hunter long",
+    "isaac seumalo",
+    "isaiah adams",
+    "jacoby brissett",
+    "jalen brooks",
+    "jayden williams",
+    "jeremiyah love",
+    "kendrick bourne",
+    "marvin harrison",
+    "michael wilson",
+    "paris johnson",
+    "simi fehoko",
+    "trey mcbride",
+    "tyler allgeier",
+    "zonovan knight"
+   ],
+   "3": [
+    "elijah higgins",
+    "elijah wilkinson",
+    "hjalte froholdt",
+    "hunter long",
+    "isaac seumalo",
+    "isaiah adams",
+    "jacoby brissett",
+    "jalen brooks",
+    "jayden williams",
+    "jeremiyah love",
+    "kendrick bourne",
+    "marvin harrison",
+    "michael wilson",
+    "paris johnson",
+    "trey mcbride",
+    "tyler allgeier"
+   ]
+  },
+  "ATL": {
+   "2": [
+    "austin hooper",
+    "bijan robinson",
+    "brian robinson",
+    "charlie woerner",
+    "chris blair",
+    "chris lindstrom",
+    "cooper rush",
+    "drake london",
+    "jack strand",
+    "jahan dotson",
+    "jake matthews",
+    "jawaan taylor",
+    "kyle hinton",
+    "kyle pitts",
+    "matthew bergeron",
+    "michael jerrell",
+    "nick muse",
+    "olamide zaccheaus",
+    "ryan neuzil",
+    "zachariah branch"
+   ],
+   "3": [
+    "austin hooper",
+    "bijan robinson",
+    "brian robinson",
+    "charlie woerner",
+    "chris blair",
+    "chris lindstrom",
+    "corey levin",
+    "drake london",
+    "jahan dotson",
+    "jake matthews",
+    "jawaan taylor",
+    "kyle hinton",
+    "kyle pitts",
+    "matthew bergeron",
+    "michael jerrell",
+    "michael penix",
+    "nick muse",
+    "olamide zaccheaus",
+    "ryan neuzil",
+    "zachariah branch"
+   ]
+  },
+  "BAL": {
+   "2": [
+    "carson vinson",
+    "chris moore",
+    "derrick henry",
+    "devontez walker",
+    "durham smythe",
+    "john simpson",
+    "josh cuevas",
+    "jovaughn gwyn",
+    "justice hill",
+    "lajohntay wester",
+    "lamar jackson",
+    "mark andrews",
+    "matthew hibner",
+    "olaivavega ioane",
+    "rashod bateman",
+    "roger rosengarten",
+    "ronnie stanley"
+   ],
+   "3": [
+    "andrew vorhees",
+    "carson vinson",
+    "chris moore",
+    "derrick henry",
+    "devontez walker",
+    "durham smythe",
+    "emery jones",
+    "ethan pocic",
+    "john simpson",
+    "josh cuevas",
+    "jovaughn gwyn",
+    "justice hill",
+    "lajohntay wester",
+    "lamar jackson",
+    "mark andrews",
+    "matthew hibner",
+    "olaivavega ioane",
+    "rashod bateman",
+    "roger rosengarten",
+    "zay flowers"
+   ]
+  },
+  "BUF": {
+   "2": [
+    "alec anderson",
+    "connor mcgovern",
+    "dalton kincaid",
+    "dawson knox",
+    "dion dawkins",
+    "dj moore",
+    "frank gore",
+    "greg dortch",
+    "jackson hawes",
+    "james cook",
+    "josh allen",
+    "josh palmer",
+    "keleki latu",
+    "keon coleman",
+    "khalil shakir",
+    "o'cyrus torrence",
+    "ray davis",
+    "spencer brown",
+    "tylan grable"
+   ],
+   "3": [
+    "alec anderson",
+    "connor mcgovern",
+    "dalton kincaid",
+    "dawson knox",
+    "dion dawkins",
+    "dj moore",
+    "greg dortch",
+    "jackson hawes",
+    "james cook",
+    "josh allen",
+    "josh palmer",
+    "keleki latu",
+    "keon coleman",
+    "khalil shakir",
+    "o'cyrus torrence",
+    "ray davis",
+    "spencer brown",
+    "ty johnson"
+   ]
+  },
+  "CAR": {
+   "2": [
+    "aj dillon",
+    "bryce young",
+    "brycen tremayne",
+    "chuba hubbard",
+    "corey bullock",
+    "damien lewis",
+    "darren waller",
+    "feleipe franks",
+    "jalen coker",
+    "john metchie",
+    "jonathon brooks",
+    "kenny pickett",
+    "luke fortner",
+    "mitchell evans",
+    "monroe freeling",
+    "rasheed walker",
+    "robert hunt",
+    "sam hecht",
+    "stone forsythe",
+    "tetairoa mcmillan",
+    "tommy tremble",
+    "xavier legette"
+   ],
+   "3": [
+    "aj dillon",
+    "bryce young",
+    "brycen tremayne",
+    "chuba hubbard",
+    "corey bullock",
+    "damien lewis",
+    "darren waller",
+    "david moore",
+    "jalen coker",
+    "john metchie",
+    "luke fortner",
+    "mitchell evans",
+    "monroe freeling",
+    "rasheed walker",
+    "robert hunt",
+    "tetairoa mcmillan",
+    "tommy tremble"
+   ]
+  },
+  "CHI": {
+   "2": [
+    "braxton jones",
+    "caleb williams",
+    "cole kmet",
+    "colston loveland",
+    "d'andre swift",
+    "darnell wright",
+    "garrett bradbury",
+    "jahdae walker",
+    "joe thuney",
+    "jonah jackson",
+    "kalif raymond",
+    "kyle monangai",
+    "luther burden",
+    "rome odunze",
+    "roschon johnson",
+    "sam roush",
+    "theo benedet",
+    "tyson bagent",
+    "zavion thomas"
+   ],
+   "3": [
+    "braxton jones",
+    "case keenum",
+    "cole kmet",
+    "colston loveland",
+    "d'andre swift",
+    "darnell wright",
+    "garrett bradbury",
+    "jahdae walker",
+    "joe thuney",
+    "jonah jackson",
+    "kalif raymond",
+    "kyle monangai",
+    "luke newman",
+    "luther burden",
+    "rome odunze",
+    "sam roush",
+    "theo benedet",
+    "zavion thomas"
+   ]
+  },
+  "CIN": {
+   "2": [
+    "amarius mims",
+    "andrei iosivas",
+    "chase brown",
+    "colbie young",
+    "dalton risner",
+    "dohnte meyers",
+    "drew sample",
+    "dylan fairchild",
+    "erick all",
+    "ja'marr chase",
+    "jack endries",
+    "jacob bayer",
+    "javon foster",
+    "joe burrow",
+    "mike gesicki",
+    "orlando brown",
+    "samaje perine",
+    "tahj brooks",
+    "ted karras",
+    "tee higgins"
+   ],
+   "3": [
+    "amarius mims",
+    "chase brown",
+    "colbie young",
+    "dalton risner",
+    "dohnte meyers",
+    "drew sample",
+    "dylan fairchild",
+    "erick all",
+    "ja'marr chase",
+    "jacob bayer",
+    "joe burrow",
+    "mike gesicki",
+    "orlando brown",
+    "samaje perine",
+    "tanner hudson",
+    "ted karras",
+    "tee higgins"
+   ]
+  },
+  "CLE": {
+   "2": [
+    "austin barber",
+    "blake whiteheart",
+    "carsen ryan",
+    "dawand jones",
+    "denzel boston",
+    "deshaun watson",
+    "elgton jenkins",
+    "harold fannin",
+    "isaiah bond",
+    "jaleel mclaughlin",
+    "jerry jeudy",
+    "kc concepcion",
+    "michael burton",
+    "quinshon judkins",
+    "raheim sanders",
+    "spencer fano",
+    "tylan wallace",
+    "tytus howard",
+    "zion johnson"
+   ],
+   "3": [
+    "austin barber",
+    "blake whiteheart",
+    "denzel boston",
+    "deshaun watson",
+    "elgton jenkins",
+    "harold fannin",
+    "isaiah bond",
+    "jaleel mclaughlin",
+    "jerry jeudy",
+    "kc concepcion",
+    "malachi corley",
+    "michael burton",
+    "quinshon judkins",
+    "raheim sanders",
+    "shedeur sanders",
+    "spencer fano",
+    "tylan wallace",
+    "tytus howard",
+    "zion johnson"
+   ]
+  },
+  "DAL": {
+   "2": [
+    "brevyn spann-ford",
+    "ceedee lamb",
+    "cooper beebe",
+    "dak prescott",
+    "drew shelton",
+    "emari demercado",
+    "george pickens",
+    "hunter luepke",
+    "jake ferguson",
+    "javonte williams",
+    "jonathan mingo",
+    "kavontae turpin",
+    "luke schoonmaker",
+    "ryan flournoy",
+    "t.j. bass",
+    "terence steele",
+    "tyler booker",
+    "tyler guyton"
+   ],
+   "3": [
+    "brevyn spann-ford",
+    "broderick jones",
+    "ceedee lamb",
+    "cooper beebe",
+    "dak prescott",
+    "george pickens",
+    "hunter luepke",
+    "jake ferguson",
+    "javonte williams",
+    "jonathan mingo",
+    "kavontae turpin",
+    "luke schoonmaker",
+    "ryan flournoy",
+    "t.j. bass",
+    "terence steele",
+    "tyler booker",
+    "tyler goodson",
+    "tyler guyton"
+   ]
+  },
+  "DEN": {
+   "2": [
+    "adam prentice",
+    "adam trautman",
+    "alex palczewski",
+    "ben powers",
+    "bo nix",
+    "courtland sutton",
+    "evan engram",
+    "garett bolles",
+    "j.k. dobbins",
+    "jaylen waddle",
+    "jonah coleman",
+    "lil'jordan humphrey",
+    "luke wattenberg",
+    "mike mcglinchey",
+    "nate adkins",
+    "pat bryant",
+    "quinn meinerz",
+    "talanoa hufanga",
+    "troy franklin",
+    "tyler badie"
+   ],
+   "3": [
+    "adam prentice",
+    "adam trautman",
+    "alex palczewski",
+    "ben powers",
+    "bo nix",
+    "courtland sutton",
+    "evan engram",
+    "garett bolles",
+    "j.k. dobbins",
+    "jaylen waddle",
+    "luke wattenberg",
+    "mike mcglinchey",
+    "nate adkins",
+    "pat bryant",
+    "quinn meinerz",
+    "rj harvey",
+    "troy franklin",
+    "tyler badie"
+   ]
+  },
+  "DET": {
+   "2": [
+    "amon-ra st. brown",
+    "ben bartch",
+    "brock wright",
+    "isaac teslaa",
+    "jackson meeks",
+    "jahmyr gibbs",
+    "jameson williams",
+    "jared goff",
+    "juice scruggs",
+    "larry borom",
+    "penei sewell",
+    "sam laporta",
+    "sione vaki",
+    "tate ratledge",
+    "tyler conklin"
+   ],
+   "3": [
+    "amon-ra st. brown",
+    "blake miller",
+    "brock wright",
+    "christian mahogany",
+    "isaac teslaa",
+    "jackson meeks",
+    "jacob saylors",
+    "jahmyr gibbs",
+    "jameson williams",
+    "jared goff",
+    "juice scruggs",
+    "larry borom",
+    "penei sewell",
+    "sam laporta",
+    "sione vaki",
+    "skyler gill-howard",
+    "tate ratledge",
+    "tay martin"
+   ]
+  },
+  "GB": {
+   "2": [
+    "aaron banks",
+    "anthony belton",
+    "bo melton",
+    "chris brooks",
+    "christian watson",
+    "donovan jennings",
+    "j. michael sturdivant",
+    "jacob monk",
+    "jager burton",
+    "jayden reed",
+    "jonnu smith",
+    "jordan love",
+    "jordan morgan",
+    "kaleb johnson",
+    "mark redman",
+    "marshawn lloyd",
+    "matthew golden",
+    "sean rhyan",
+    "skyy moore",
+    "tucker kraft",
+    "zach bako-bewele"
+   ],
+   "3": [
+    "anthony belton",
+    "bo melton",
+    "chris brooks",
+    "christian watson",
+    "donovan jennings",
+    "j. michael sturdivant",
+    "jacob monk",
+    "jager burton",
+    "jonnu smith",
+    "jordan love",
+    "jordan morgan",
+    "josh whyle",
+    "kaleb johnson",
+    "mark redman",
+    "marshawn lloyd",
+    "matthew golden",
+    "sean rhyan",
+    "skyy moore",
+    "tucker kraft"
+   ]
+  },
+  "HOU": {
+   "2": [
+    "aireontae ersery",
+    "blake fisher",
+    "c.j. stroud",
+    "cade stover",
+    "dalton schultz",
+    "david montgomery",
+    "evan brown",
+    "foster moreau",
+    "jared wayne",
+    "jaylin noel",
+    "kai kroeger",
+    "kayshon boutte",
+    "keylan rutledge",
+    "lewis bond",
+    "marlin klein",
+    "trent brown",
+    "woody marks",
+    "wyatt teller",
+    "xavier hutchinson"
+   ],
+   "3": [
+    "aireontae ersery",
+    "blake fisher",
+    "c.j. stroud",
+    "cade stover",
+    "dalton schultz",
+    "david montgomery",
+    "evan brown",
+    "foster moreau",
+    "jared wayne",
+    "jaylin noel",
+    "kayshon boutte",
+    "keylan rutledge",
+    "lewis bond",
+    "marlin klein",
+    "trent brown",
+    "woody marks",
+    "wyatt teller",
+    "xavier hutchinson"
+   ]
+  },
+  "IND": {
+   "2": [
+    "alec pierce",
+    "andrew ogletree",
+    "bernhard raimann",
+    "daniel jones",
+    "deion burks",
+    "jalen travis",
+    "jonathan taylor",
+    "josh downs",
+    "keenan allen",
+    "laquon treadwell",
+    "luke tenuta",
+    "matt goncalves",
+    "mo alie-cox",
+    "quenton nelson",
+    "seth mcgowan",
+    "tanor bortolini",
+    "tyler warren"
+   ],
+   "3": [
+    "andrew ogletree",
+    "bernhard raimann",
+    "daniel jones",
+    "deion burks",
+    "jalen travis",
+    "jonathan taylor",
+    "josh downs",
+    "keenan allen",
+    "laquon treadwell",
+    "luke tenuta",
+    "matt goncalves",
+    "mo alie-cox",
+    "nick westbrook-ikhine",
+    "quenton nelson",
+    "seth mcgowan",
+    "tanor bortolini",
+    "tyler warren"
+   ]
+  },
+  "JAX": {
+   "2": [
+    "ameer abdullah",
+    "anton harrison",
+    "bhayshul tuten",
+    "brenton strange",
+    "brian thomas",
+    "chris rodriguez",
+    "cole van lanen",
+    "emmanuel pregnon",
+    "ezra cleveland",
+    "jakobi meyers",
+    "josh cameron",
+    "lequint allen",
+    "nate boerkircher",
+    "parker washington",
+    "quintin morris",
+    "robert hainsey",
+    "travis hunter",
+    "trevor lawrence",
+    "wyatt milum"
+   ],
+   "3": [
+    "ameer abdullah",
+    "anton harrison",
+    "bhayshul tuten",
+    "brenton strange",
+    "brian thomas",
+    "chris rodriguez",
+    "cole van lanen",
+    "emmanuel pregnon",
+    "ezra cleveland",
+    "jakobi meyers",
+    "jonah monheim",
+    "josh cameron",
+    "lequint allen",
+    "nate boerkircher",
+    "parker washington",
+    "quinn ewers",
+    "quintin morris",
+    "robert hainsey",
+    "tanner koziol",
+    "travis hunter",
+    "trevor lawrence",
+    "walker little",
+    "wyatt milum"
+   ]
+  },
+  "KC": {
+   "2": [
+    "creed humphrey",
+    "cyrus allen",
+    "emmett johnson",
+    "hunter nourzad",
+    "jake briningstool",
+    "jalen royals",
+    "jaylon moore",
+    "joshua ezeudu",
+    "kahlil benson",
+    "kenneth walker",
+    "khyiris tonga",
+    "kingsley suamataia",
+    "mike caliendo",
+    "noah gray",
+    "patrick mahomes",
+    "rashee rice",
+    "travis kelce",
+    "trey smith",
+    "tyquan thornton",
+    "xavier worthy"
+   ],
+   "3": [
+    "brashard smith",
+    "creed humphrey",
+    "cyrus allen",
+    "emmett johnson",
+    "hunter nourzad",
+    "jake briningstool",
+    "jalen royals",
+    "jaylon moore",
+    "joshua ezeudu",
+    "kahlil benson",
+    "kenneth walker",
+    "kingsley suamataia",
+    "mike caliendo",
+    "noah gray",
+    "patrick mahomes",
+    "rashee rice",
+    "travis kelce",
+    "trey smith",
+    "tyquan thornton",
+    "xavier worthy"
+   ]
+  },
+  "LA": {
+   "2": [
+    "alaric jackson",
+    "blake corum",
+    "colby parkinson",
+    "coleman shelton",
+    "davante adams",
+    "davis allen",
+    "kevin dotson",
+    "konata mumpfield",
+    "kyren williams",
+    "matthew stafford",
+    "steve avila",
+    "terrance ferguson",
+    "tutu atwell",
+    "tyler higbee",
+    "warren mcclendon",
+    "xavier smith"
+   ],
+   "3": [
+    "alaric jackson",
+    "beaux limmer",
+    "blake corum",
+    "colby parkinson",
+    "coleman shelton",
+    "davante adams",
+    "davis allen",
+    "jordan whittington",
+    "kevin dotson",
+    "konata mumpfield",
+    "kyren williams",
+    "matthew stafford",
+    "steve avila",
+    "terrance ferguson",
+    "tyler higbee",
+    "warren mcclendon",
+    "xavier smith"
+   ]
+  },
+  "LAC": {
+   "2": [
+    "alec ingold",
+    "brenen thompson",
+    "charlie kolar",
+    "cole strange",
+    "david njoku",
+    "derius davis",
+    "jake slaughter",
+    "joe alt",
+    "justin herbert",
+    "kayode awosika",
+    "keaton mitchell",
+    "kimani vidal",
+    "ladd mcconkey",
+    "omarion hampton",
+    "oronde gadsden",
+    "quentin johnston",
+    "rashawn slater",
+    "tre harris",
+    "trevor penning"
+   ],
+   "3": [
+    "alec ingold",
+    "cole strange",
+    "derius davis",
+    "hayden rucci",
+    "jake slaughter",
+    "joe alt",
+    "justin herbert",
+    "keaton mitchell",
+    "kimani vidal",
+    "ladd mcconkey",
+    "marquez valdes-scantling",
+    "omarion hampton",
+    "oronde gadsden",
+    "patrick herbert",
+    "quentin johnston",
+    "rashawn slater",
+    "travis burke",
+    "tre harris",
+    "trevor penning"
+   ]
+  },
+  "LV": {
+   "2": [
+    "ashton jeanty",
+    "chris myarick",
+    "cody white",
+    "connor heyward",
+    "dareke young",
+    "delmar glaze",
+    "dylan laube",
+    "ian thomas",
+    "jack bech",
+    "jackson powers-johnson",
+    "jalen nailor",
+    "kirk cousins",
+    "kolton miller",
+    "malik benson",
+    "michael mayer",
+    "mike washington",
+    "spencer burford",
+    "tre tucker",
+    "trey zuhn",
+    "tyler linderbaum"
+   ],
+   "3": [
+    "ashton jeanty",
+    "brock bowers",
+    "caleb rogers",
+    "cody white",
+    "connor heyward",
+    "dareke young",
+    "delmar glaze",
+    "dylan laube",
+    "ian thomas",
+    "jack bech",
+    "jackson powers-johnson",
+    "jalen nailor",
+    "kirk cousins",
+    "kolton miller",
+    "malik benson",
+    "michael mayer",
+    "mike washington",
+    "spencer burford",
+    "tre tucker",
+    "trey zuhn",
+    "tyler linderbaum"
+   ]
+  },
+  "MIA": {
+   "2": [
+    "aaron brewer",
+    "austin jackson",
+    "bradley pinion",
+    "caedan wallace",
+    "caleb douglas",
+    "chris bell",
+    "de'von achane",
+    "dj herman",
+    "greg dulcich",
+    "jaylen wright",
+    "jonah savaiinaea",
+    "kadyn proctor",
+    "kevin coleman",
+    "malik washington",
+    "malik willis",
+    "ollie gordon",
+    "patrick paul",
+    "ryan miller",
+    "will kacmarek"
+   ],
+   "3": [
+    "aaron brewer",
+    "austin jackson",
+    "caedan wallace",
+    "chris bell",
+    "de'von achane",
+    "dj herman",
+    "greg dulcich",
+    "jalen tolbert",
+    "jonah savaiinaea",
+    "kadyn proctor",
+    "kevin coleman",
+    "malik washington",
+    "malik willis",
+    "ollie gordon",
+    "patrick paul",
+    "ryan miller",
+    "will kacmarek"
+   ]
+  },
+  "MIN": {
+   "2": [
+    "aaron jones",
+    "blake brandel",
+    "brian o'neill",
+    "carson wentz",
+    "christian darrisaw",
+    "deejay dallas",
+    "demond claiborne",
+    "donovan jackson",
+    "jordan addison",
+    "josh oliver",
+    "justin jefferson",
+    "max bredeson",
+    "myles price",
+    "t.j. hockenson",
+    "will fries"
+   ],
+   "3": [
+    "aaron jones",
+    "blake brandel",
+    "brian o'neill",
+    "christian darrisaw",
+    "deejay dallas",
+    "demond claiborne",
+    "donovan jackson",
+    "gavin bartholomew",
+    "jauan jennings",
+    "jordan addison",
+    "josh oliver",
+    "justin jefferson",
+    "kyler murray",
+    "max bredeson",
+    "myles price",
+    "t.j. hockenson",
+    "tai felton",
+    "will fries"
+   ]
+  },
+  "NE": {
+   "2": [
+    "alijah vera-tucker",
+    "caleb lomu",
+    "cameron latu",
+    "corey kiner",
+    "demario douglas",
+    "drake maye",
+    "efton chism",
+    "eli raridon",
+    "greg van roten",
+    "hunter henry",
+    "jared wilson",
+    "kyle williams",
+    "mack hollins",
+    "michael onwenu",
+    "morgan moses",
+    "reggie gilliam",
+    "rhamondre stevenson",
+    "romeo doubs",
+    "treveyon henderson",
+    "will campbell"
+   ],
+   "3": [
+    "alijah vera-tucker",
+    "ben brown",
+    "caleb lomu",
+    "cameron latu",
+    "corey kiner",
+    "demario douglas",
+    "drake maye",
+    "efton chism",
+    "greg van roten",
+    "hunter henry",
+    "jared wilson",
+    "kyle williams",
+    "mack hollins",
+    "morgan moses",
+    "reggie gilliam",
+    "rhamondre stevenson",
+    "romeo doubs",
+    "tanner arkin",
+    "tommy devito",
+    "treveyon henderson",
+    "walter rouse",
+    "will campbell"
+   ]
+  },
+  "NO": {
+   "2": [
+    "alvin kamara",
+    "asim richards",
+    "barion brown",
+    "bryce lance",
+    "cesar ruiz",
+    "chris olave",
+    "cj donaldson",
+    "david edwards",
+    "devaughn vele",
+    "erik mccoy",
+    "juwan johnson",
+    "kelvin banks",
+    "kevin austin",
+    "noah fant",
+    "oscar delp",
+    "taliese fuaga",
+    "travis etienne",
+    "treyton welch",
+    "tyler shough"
+   ],
+   "3": [
+    "alvin kamara",
+    "asim richards",
+    "bryce lance",
+    "cesar ruiz",
+    "chris olave",
+    "cj donaldson",
+    "david edwards",
+    "devaughn vele",
+    "erik mccoy",
+    "juwan johnson",
+    "kendre miller",
+    "kevin austin",
+    "noah fant",
+    "oscar delp",
+    "taliese fuaga",
+    "travis etienne",
+    "tyler shough"
+   ]
+  },
+  "NYG": {
+   "2": [
+    "andrew thomas",
+    "braxton berrios",
+    "cam skattebo",
+    "chris manhertz",
+    "darnell mooney",
+    "devin singletary",
+    "francis mauigoa",
+    "isaiah likely",
+    "jameis winston",
+    "jaxson dart",
+    "jermaine eluemunor",
+    "john michael schmitz",
+    "jon runyan",
+    "malachi fields",
+    "malik nabers",
+    "najee harris",
+    "odell beckham",
+    "patrick ricard",
+    "theo johnson",
+    "tyrone tracy"
+   ],
+   "3": [
+    "andrew thomas",
+    "braxton berrios",
+    "cam skattebo",
+    "chris manhertz",
+    "darnell mooney",
+    "francis mauigoa",
+    "isaiah likely",
+    "jameis winston",
+    "jermaine eluemunor",
+    "john michael schmitz",
+    "jon runyan",
+    "malachi fields",
+    "malik nabers",
+    "najee harris",
+    "odell beckham",
+    "patrick ricard",
+    "theo johnson",
+    "tyrone tracy"
+   ]
+  },
+  "NYJ": {
+   "2": [
+    "adonai mitchell",
+    "andrew beck",
+    "arian smith",
+    "armand membou",
+    "braelon allen",
+    "breece hall",
+    "dylan parham",
+    "garrett wilson",
+    "geno smith",
+    "isaiah williams",
+    "jelani woods",
+    "jeremy ruckert",
+    "joe tippmann",
+    "josh myers",
+    "kenyon sadiq",
+    "mason taylor",
+    "olu fashanu"
+   ],
+   "3": [
+    "andrew beck",
+    "armand membou",
+    "braelon allen",
+    "breece hall",
+    "dylan parham",
+    "garrett wilson",
+    "geno smith",
+    "isaiah williams",
+    "jelani woods",
+    "jeremy ruckert",
+    "joe tippmann",
+    "jordan meredith",
+    "josh myers",
+    "kenyon sadiq",
+    "malik mcclain",
+    "max mitchell",
+    "olu fashanu",
+    "sterling shepard"
+   ]
+  },
+  "PHI": {
+   "2": [
+    "cam jurgens",
+    "dallas goedert",
+    "darius cooper",
+    "devonta smith",
+    "dontayvion wicks",
+    "drew kendall",
+    "e.j. jenkins",
+    "jalen hurts",
+    "johnny mundt",
+    "jordan mailata",
+    "lane johnson",
+    "makai lemon",
+    "marquise brown",
+    "saquon barkley",
+    "tank bigsby",
+    "tyler steen",
+    "will shipley"
+   ],
+   "3": [
+    "andy dalton",
+    "cam jurgens",
+    "darius cooper",
+    "devonta smith",
+    "dontayvion wicks",
+    "drew kendall",
+    "e.j. jenkins",
+    "elijah moore",
+    "jalen hurts",
+    "johnny mundt",
+    "jordan mailata",
+    "lane johnson",
+    "makai lemon",
+    "markel bell",
+    "saquon barkley",
+    "tank bigsby",
+    "tyler steen",
+    "will shipley",
+    "zach ertz"
+   ]
+  },
+  "PIT": {
+   "2": [
+    "aaron rodgers",
+    "ben skowronek",
+    "brock hoffman",
+    "d.k. metcalf",
+    "darnell washington",
+    "dk metcalf",
+    "dylan cook",
+    "germie bernard",
+    "jaylen warren",
+    "mason mccormick",
+    "mason rudolph",
+    "max iheanachor",
+    "pat freiermuth",
+    "rico dowdle",
+    "riley nowakowski",
+    "robert tonyan",
+    "roman wilson",
+    "spencer anderson",
+    "travis homer",
+    "troy fautanu",
+    "zach frazier"
+   ],
+   "3": [
+    "aaron rodgers",
+    "ben skowronek",
+    "brock hoffman",
+    "d.k. metcalf",
+    "darnell washington",
+    "dk metcalf",
+    "germie bernard",
+    "jaylen warren",
+    "lew nichols",
+    "mason mccormick",
+    "max iheanachor",
+    "michael pittman",
+    "pat freiermuth",
+    "riley nowakowski",
+    "robert tonyan",
+    "roman wilson",
+    "travis homer",
+    "troy fautanu",
+    "zach frazier"
+   ]
+  },
+  "SEA": {
+   "2": [
+    "abraham lucas",
+    "aj barner",
+    "beau stephens",
+    "brady russell",
+    "charles cross",
+    "christian haynes",
+    "cooper kupp",
+    "drew lock",
+    "elijah arroyo",
+    "emanuel wilson",
+    "eric saubert",
+    "george holani",
+    "grey zabel",
+    "jadarian price",
+    "jalen sundell",
+    "jaxon smith-njigba",
+    "josh jones",
+    "nick kallerup",
+    "olusegun oluwatimi",
+    "rashid shaheed",
+    "tory horton"
+   ],
+   "3": [
+    "abraham lucas",
+    "aj barner",
+    "beau stephens",
+    "brady russell",
+    "charles cross",
+    "christian haynes",
+    "cooper kupp",
+    "elijah arroyo",
+    "emanuel wilson",
+    "eric saubert",
+    "george holani",
+    "grey zabel",
+    "jadarian price",
+    "jalen sundell",
+    "jaxon smith-njigba",
+    "josh jones",
+    "nick kallerup",
+    "olusegun oluwatimi",
+    "rashid shaheed",
+    "sam darnold",
+    "tory horton"
+   ]
+  },
+  "SF": {
+   "2": [
+    "brayden willis",
+    "brock purdy",
+    "carver willis",
+    "christian mccaffrey",
+    "colton mckivitz",
+    "connor colby",
+    "deebo samuel",
+    "demarcus robinson",
+    "dominick puni",
+    "george kittle",
+    "jacob cowing",
+    "jake brendel",
+    "jarrett patterson",
+    "jordan james",
+    "kaelon black",
+    "khadarel hodge",
+    "kyle juszczyk",
+    "luke farrell",
+    "mac jones",
+    "mike evans",
+    "trent williams",
+    "vederian lowe"
+   ],
+   "3": [
+    "brayden willis",
+    "brock purdy",
+    "christian mccaffrey",
+    "colton mckivitz",
+    "connor colby",
+    "deebo samuel",
+    "dominick puni",
+    "george kittle",
+    "jacob cowing",
+    "jake brendel",
+    "jordan watkins",
+    "kaelon black",
+    "khadarel hodge",
+    "kyle juszczyk",
+    "luke farrell",
+    "mike evans",
+    "trent williams",
+    "vederian lowe"
+   ]
+  },
+  "TB": {
+   "2": [
+    "baker mayfield",
+    "bauer sharp",
+    "ben bredeson",
+    "bucky irving",
+    "cade otton",
+    "chris godwin",
+    "cody mauch",
+    "emeka egbuka",
+    "graham barton",
+    "jalen mcmillan",
+    "kenneth gainwell",
+    "kenny gainwell",
+    "luke goedeke",
+    "payne durham",
+    "ted hurst",
+    "tez johnson",
+    "tristan wirfs"
+   ],
+   "3": [
+    "baker mayfield",
+    "bauer sharp",
+    "ben bredeson",
+    "bucky irving",
+    "cade otton",
+    "chris godwin",
+    "cody mauch",
+    "emeka egbuka",
+    "graham barton",
+    "jalen mcmillan",
+    "jalon daniels",
+    "kameron johnson",
+    "kenneth gainwell",
+    "kenny gainwell",
+    "ko kieft",
+    "luke goedeke",
+    "payne durham",
+    "sean tucker",
+    "ted hurst",
+    "tez johnson",
+    "tristan wirfs"
+   ]
+  },
+  "TEN": {
+   "2": [
+    "austin schlottmann",
+    "calvin ridley",
+    "cam ward",
+    "carnell tate",
+    "chimere dike",
+    "dan moore",
+    "daniel bellinger",
+    "david martin-robinson",
+    "elic ayomanor",
+    "fernando carmona",
+    "gunnar helm",
+    "james hudson",
+    "jc latham",
+    "nicholas singleton",
+    "peter skoronski",
+    "tony pollard",
+    "tyjae spears",
+    "wan'dale robinson"
+   ],
+   "3": [
+    "austin schlottmann",
+    "calvin ridley",
+    "cam ward",
+    "carnell tate",
+    "chimere dike",
+    "dan moore",
+    "daniel bellinger",
+    "david martin-robinson",
+    "elic ayomanor",
+    "fernando carmona",
+    "gunnar helm",
+    "jackson slater",
+    "jc latham",
+    "peter skoronski",
+    "tony pollard",
+    "tyjae spears",
+    "wan'dale robinson"
+   ]
+  },
+  "WAS": {
+   "2": [
+    "andrew wylie",
+    "antonio williams",
+    "ben sinnott",
+    "brandon coleman",
+    "chris paul",
+    "colson yankoff",
+    "dyami brown",
+    "jacory croskey-merritt",
+    "jayden daniels",
+    "jaylin lane",
+    "john bates",
+    "josh conerly",
+    "kaytron allen",
+    "marcus mariota",
+    "matt gulbin",
+    "nick allegretti",
+    "rachaad white",
+    "samuel cosmi",
+    "stefon diggs",
+    "terry mclaurin",
+    "treylon burks"
+   ],
+   "3": [
+    "andrew wylie",
+    "antonio williams",
+    "ben sinnott",
+    "brandon coleman",
+    "chris paul",
+    "colson yankoff",
+    "dyami brown",
+    "jacory croskey-merritt",
+    "jaylin lane",
+    "john bates",
+    "josh conerly",
+    "lucas patrick",
+    "marcus mariota",
+    "matt gulbin",
+    "nick allegretti",
+    "rachaad white",
+    "stefon diggs",
+    "terry mclaurin",
+    "treylon burks"
+   ]
+  }
+ },
+ "players": {
+  "mack wilson": {
+   "team": "ARI",
+   "hold": [],
+   "flag": [
+    "limited in practice (thumb), no game status yet"
+   ],
+   "status": null,
+   "injury": "Thumb",
+   "practice": "Limited Participation in Practice"
+  },
+  "hjalte froholdt": {
+   "team": "ARI",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "roy lopez": {
+   "team": "ARI",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "dadrion taylor-demerson": {
+   "team": "ARI",
+   "hold": [
+    "did not practice (back)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Back",
+   "practice": "Did Not Participate In Practice"
+  },
+  "walter nolen": {
+   "team": "ARI",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "samson ebukam": {
+   "team": "ATL",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "divine deablo": {
+   "team": "ATL",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "chris moore": {
+   "team": "BAL",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "ronnie stanley": {
+   "team": "BAL",
+   "hold": [],
+   "flag": [
+    "limited in practice (toe), no game status yet"
+   ],
+   "status": null,
+   "injury": "Toe",
+   "practice": "Limited Participation in Practice"
+  },
+  "ethan pocic": {
+   "team": "BAL",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "trey hendrickson": {
+   "team": "BAL",
+   "hold": [
+    "did not practice (finger)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Finger",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jovaughn gwyn": {
+   "team": "BAL",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dj moore": {
+   "team": "BUF",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "sam franklin": {
+   "team": "BUF",
+   "hold": [
+    "did not practice (not injury related - personal matter)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Not injury related - personal matter",
+   "practice": "Did Not Participate In Practice"
+  },
+  "damar hamlin": {
+   "team": "BUF",
+   "hold": [],
+   "flag": [
+    "limited in practice (ribs), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ribs",
+   "practice": "Limited Participation in Practice"
+  },
+  "christian benford": {
+   "team": "BUF",
+   "hold": [
+    "did not practice (toe)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Toe",
+   "practice": "Did Not Participate In Practice"
+  },
+  "joe andreessen": {
+   "team": "BUF",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "keon coleman": {
+   "team": "BUF",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "t.j. sanders": {
+   "team": "BUF",
+   "hold": [],
+   "flag": [
+    "limited in practice (illness), no game status yet"
+   ],
+   "status": null,
+   "injury": "Illness",
+   "practice": "Limited Participation in Practice"
+  },
+  "damien lewis": {
+   "team": "CAR",
+   "hold": [
+    "did not practice (elbow)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Elbow",
+   "practice": "Did Not Participate In Practice"
+  },
+  "xavier legette": {
+   "team": "CAR",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jalen coker": {
+   "team": "CAR",
+   "hold": [],
+   "flag": [
+    "limited in practice (quadricep), no game status yet"
+   ],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Limited Participation in Practice"
+  },
+  "monroe freeling": {
+   "team": "CAR",
+   "hold": [],
+   "flag": [
+    "limited in practice (concussion), no game status yet"
+   ],
+   "status": null,
+   "injury": "Concussion",
+   "practice": "Limited Participation in Practice"
+  },
+  "lee hunter": {
+   "team": "CAR",
+   "hold": [],
+   "flag": [
+    "limited in practice (foot), no game status yet"
+   ],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "cam lewis": {
+   "team": "CHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (hip), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hip",
+   "practice": "Limited Participation in Practice"
+  },
+  "d'andre swift": {
+   "team": "CHI",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "braxton jones": {
+   "team": "CHI",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "noah sewell": {
+   "team": "CHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (achilles), no game status yet"
+   ],
+   "status": null,
+   "injury": "Achilles",
+   "practice": "Limited Participation in Practice"
+  },
+  "caleb williams": {
+   "team": "CHI",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "shemar turner": {
+   "team": "CHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "b.j. hill": {
+   "team": "CIN",
+   "hold": [
+    "did not practice (achilles)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Achilles",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dalton risner": {
+   "team": "CIN",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "kyle dugger": {
+   "team": "CIN",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "bryan cook": {
+   "team": "CIN",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "dj turner": {
+   "team": "CIN",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "jordan battle": {
+   "team": "CIN",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "swayze bozeman": {
+   "team": "CIN",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "colbie young": {
+   "team": "CIN",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "elgton jenkins": {
+   "team": "CLE",
+   "hold": [
+    "out (concussion)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "tylan wallace": {
+   "team": "CLE",
+   "hold": [
+    "out (knee)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "teven jenkins": {
+   "team": "CLE",
+   "hold": [
+    "out (back)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "malik hooker": {
+   "team": "DAL",
+   "hold": [],
+   "flag": [
+    "limited in practice (forearm), no game status yet"
+   ],
+   "status": null,
+   "injury": "Forearm",
+   "practice": "Limited Participation in Practice"
+  },
+  "cobie durant": {
+   "team": "DAL",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "demarvion overshown": {
+   "team": "DAL",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "shavon revel": {
+   "team": "DAL",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dondrea tillman": {
+   "team": "DEN",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "d.j. reed": {
+   "team": "DET",
+   "hold": [],
+   "flag": [
+    "limited in practice (rib), no game status yet"
+   ],
+   "status": null,
+   "injury": "Rib",
+   "practice": "Limited Participation in Practice"
+  },
+  "ben bartch": {
+   "team": "DET",
+   "hold": [
+    "did not practice (foot)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Did Not Participate In Practice"
+  },
+  "aaron banks": {
+   "team": "GB",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "karl brooks": {
+   "team": "GB",
+   "hold": [],
+   "flag": [
+    "limited in practice (illness), no game status yet"
+   ],
+   "status": null,
+   "injury": "Illness",
+   "practice": "Limited Participation in Practice"
+  },
+  "lukas van ness": {
+   "team": "GB",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "jacob monk": {
+   "team": "GB",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "edgerrin cooper": {
+   "team": "GB",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "warren brinson": {
+   "team": "GB",
+   "hold": [
+    "did not practice (calf)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Did Not Participate In Practice"
+  },
+  "anthony campbell": {
+   "team": "GB",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jager burton": {
+   "team": "GB",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "jadeveon clowney": {
+   "team": "HOU",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "trent brown": {
+   "team": "HOU",
+   "hold": [],
+   "flag": [
+    "limited in practice (illness), no game status yet"
+   ],
+   "status": null,
+   "injury": "Illness",
+   "practice": "Limited Participation in Practice"
+  },
+  "azeez al-shaair": {
+   "team": "HOU",
+   "hold": [
+    "did not practice (groin)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Did Not Participate In Practice"
+  },
+  "nico collins": {
+   "team": "HOU",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice",
+   "manual": [
+    {
+     "reason": "questionable, returning from 2-game hamstring absence",
+     "market": null
+    }
+   ]
+  },
+  "jake hansen": {
+   "team": "HOU",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "ed ingram": {
+   "team": "HOU",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "british brooks": {
+   "team": "HOU",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "mo alie-cox": {
+   "team": "IND",
+   "hold": [
+    "did not practice (illness)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Illness",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jakobi meyers": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (thumb), no game status yet"
+   ],
+   "status": null,
+   "injury": "Thumb",
+   "practice": "Limited Participation in Practice"
+  },
+  "davon hamilton": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (back), no game status yet"
+   ],
+   "status": null,
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "cole van lanen": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "montaric brown": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "christian braswell": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "lequint allen": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (hip), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hip",
+   "practice": "Limited Participation in Practice"
+  },
+  "albert regis": {
+   "team": "JAX",
+   "hold": [],
+   "flag": [
+    "limited in practice (elbow), no game status yet"
+   ],
+   "status": null,
+   "injury": "Elbow",
+   "practice": "Limited Participation in Practice"
+  },
+  "nate boerkircher": {
+   "team": "JAX",
+   "hold": [
+    "did not practice (illness)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Illness",
+   "practice": "Did Not Participate In Practice"
+  },
+  "l'jarius sneed": {
+   "team": "KC",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "josh simmons": {
+   "team": "KC",
+   "hold": [
+    "did not practice (back)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Back",
+   "practice": "Did Not Participate In Practice"
+  },
+  "aaron donald": {
+   "team": "LA",
+   "hold": [
+    "did not practice (back)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Back",
+   "practice": "Did Not Participate In Practice"
+  },
+  "colby parkinson": {
+   "team": "LA",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jaylen watson": {
+   "team": "LA",
+   "hold": [
+    "did not practice (shoulder)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Did Not Participate In Practice"
+  },
+  "nate landman": {
+   "team": "LA",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "puka nacua": {
+   "team": "LA",
+   "hold": [],
+   "flag": [
+    "limited in practice (hip), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hip",
+   "practice": "Limited Participation in Practice"
+  },
+  "josh wallace": {
+   "team": "LA",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "kamren kinchens": {
+   "team": "LA",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "terrance ferguson": {
+   "team": "LA",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dalvin tomlinson": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "donte jackson": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (concussion)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "derwin james": {
+   "team": "LAC",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "kayode awosika": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (fibula)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Fibula",
+   "practice": "Did Not Participate In Practice"
+  },
+  "elijah molden": {
+   "team": "LAC",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "trey lance": {
+   "team": "LAC",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "charlie kolar": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (forearm)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Forearm",
+   "practice": "Did Not Participate In Practice"
+  },
+  "keaton mitchell": {
+   "team": "LAC",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "justin eboigbe": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (eye)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Eye",
+   "practice": "Did Not Participate In Practice"
+  },
+  "ladd mcconkey": {
+   "team": "LAC",
+   "hold": [],
+   "flag": [
+    "limited in practice (foot), no game status yet"
+   ],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "brenen thompson": {
+   "team": "LAC",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "aidan o'connell": {
+   "team": "LV",
+   "hold": [
+    "did not practice (not injury related - personal matter)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Not injury related - personal matter",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jackson powers-johnson": {
+   "team": "LV",
+   "hold": [
+    "did not practice (groin)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Did Not Participate In Practice"
+  },
+  "aaron brewer": {
+   "team": "MIA",
+   "hold": [],
+   "flag": [
+    "limited in practice (hand), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hand",
+   "practice": "Limited Participation in Practice"
+  },
+  "tucker addington": {
+   "team": "MIA",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "rob beal": {
+   "team": "MIA",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "storm duck": {
+   "team": "MIA",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "caleb douglas": {
+   "team": "MIA",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "chris bell": {
+   "team": "MIA",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "blake cashman": {
+   "team": "MIN",
+   "hold": [],
+   "flag": [
+    "limited in practice (elbow), no game status yet"
+   ],
+   "status": null,
+   "injury": "Elbow",
+   "practice": "Limited Participation in Practice"
+  },
+  "justin jefferson": {
+   "team": "MIN",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "charles demmings": {
+   "team": "MIN",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "brett thorson": {
+   "team": "MIN",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "morgan moses": {
+   "team": "NE",
+   "hold": [
+    "did not practice (foot)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dre'mont jones": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "reggie gilliam": {
+   "team": "NE",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "christian elliss": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (chest), no game status yet"
+   ],
+   "status": null,
+   "injury": "Chest",
+   "practice": "Limited Participation in Practice"
+  },
+  "christian barmore": {
+   "team": "NE",
+   "hold": [
+    "did not practice (shoulder)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Did Not Participate In Practice"
+  },
+  "brenden schooler": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (back), no game status yet"
+   ],
+   "status": null,
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "christian gonzalez": {
+   "team": "NE",
+   "hold": [
+    "did not practice (shoulder)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Did Not Participate In Practice"
+  },
+  "craig woodson": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "channing canada": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "eli raridon": {
+   "team": "NE",
+   "hold": [],
+   "flag": [
+    "limited in practice (thigh), no game status yet"
+   ],
+   "status": null,
+   "injury": "Thigh",
+   "practice": "Limited Participation in Practice"
+  },
+  "kaden elliss": {
+   "team": "NO",
+   "hold": [
+    "did not practice (calf)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Did Not Participate In Practice"
+  },
+  "carl granderson": {
+   "team": "NO",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "noah fant": {
+   "team": "NO",
+   "hold": [],
+   "flag": [
+    "limited in practice (abdomen), no game status yet"
+   ],
+   "status": null,
+   "injury": "Abdomen",
+   "practice": "Limited Participation in Practice"
+  },
+  "anfernee jennings": {
+   "team": "NO",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "julian blackmon": {
+   "team": "NO",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "pete werner": {
+   "team": "NO",
+   "hold": [
+    "did not practice (shoulder)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Did Not Participate In Practice"
+  },
+  "barion brown": {
+   "team": "NO",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "christen miller": {
+   "team": "NO",
+   "hold": [],
+   "flag": [
+    "limited in practice (toe), no game status yet"
+   ],
+   "status": null,
+   "injury": "Toe",
+   "practice": "Limited Participation in Practice"
+  },
+  "andrew thomas": {
+   "team": "NYG",
+   "hold": [
+    "did not practice (groin)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Did Not Participate In Practice"
+  },
+  "deonte banks": {
+   "team": "NYG",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "tyrone tracy": {
+   "team": "NYG",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "tyler nubin": {
+   "team": "NYG",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "kingsley enagbare": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dylan parham": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jeremy ruckert": {
+   "team": "NYJ",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "breece hall": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "adonai mitchell": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (finger)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Finger",
+   "practice": "Did Not Participate In Practice"
+  },
+  "francisco mauigoa": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "mason taylor": {
+   "team": "NYJ",
+   "hold": [
+    "did not practice (thumb)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Thumb",
+   "practice": "Did Not Participate In Practice"
+  },
+  "kenyon sadiq": {
+   "team": "NYJ",
+   "hold": [],
+   "flag": [
+    "limited in practice (back), no game status yet"
+   ],
+   "status": null,
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "dallas goedert": {
+   "team": "PHI",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "fred johnson": {
+   "team": "PHI",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "marcus epps": {
+   "team": "PHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "marquise brown": {
+   "team": "PHI",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "zack baun": {
+   "team": "PHI",
+   "hold": [
+    "did not practice (concussion)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "devonta smith": {
+   "team": "PHI",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jordan davis": {
+   "team": "PHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "moro ojomo": {
+   "team": "PHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "will shipley": {
+   "team": "PHI",
+   "hold": [],
+   "flag": [
+    "limited in practice (foot), no game status yet"
+   ],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "jalen ramsey": {
+   "team": "PIT",
+   "hold": [
+    "questionable (wrist)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Wrist",
+   "practice": "Limited Participation in Practice"
+  },
+  "rico dowdle": {
+   "team": "PIT",
+   "hold": [
+    "out (toe)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Toe",
+   "practice": "Did Not Participate In Practice"
+  },
+  "brandin echols": {
+   "team": "PIT",
+   "hold": [],
+   "flag": [
+    "limited in practice (concussion), no game status yet"
+   ],
+   "status": null,
+   "injury": "Concussion",
+   "practice": "Limited Participation in Practice"
+  },
+  "joey porter": {
+   "team": "PIT",
+   "hold": [
+    "out (not injury related - other)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Not injury related - other",
+   "practice": "Limited Participation in Practice"
+  },
+  "yahya black": {
+   "team": "PIT",
+   "hold": [
+    "questionable (not injury related - personal matter)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Not injury related - personal matter",
+   "practice": null
+  },
+  "jarran reed": {
+   "team": "SEA",
+   "hold": [],
+   "flag": [
+    "limited in practice (foot), no game status yet"
+   ],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "julian love": {
+   "team": "SEA",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "ty okada": {
+   "team": "SEA",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "george holani": {
+   "team": "SEA",
+   "hold": [],
+   "flag": [
+    "limited in practice (rib), no game status yet"
+   ],
+   "status": null,
+   "injury": "Rib",
+   "practice": "Limited Participation in Practice"
+  },
+  "grey zabel": {
+   "team": "SEA",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "jadarian price": {
+   "team": "SEA",
+   "hold": [],
+   "flag": [
+    "limited in practice (chest), no game status yet"
+   ],
+   "status": null,
+   "injury": "Chest",
+   "practice": "Limited Participation in Practice"
+  },
+  "mike evans": {
+   "team": "SF",
+   "hold": [
+    "did not practice (ribs)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ribs",
+   "practice": "Did Not Participate In Practice"
+  },
+  "khadarel hodge": {
+   "team": "SF",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "dre greenlaw": {
+   "team": "SF",
+   "hold": [
+    "did not practice (quadricep)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "nick bosa": {
+   "team": "SF",
+   "hold": [
+    "did not practice (knee)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "keion white": {
+   "team": "SF",
+   "hold": [
+    "did not practice (hamstring)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "mykel williams": {
+   "team": "SF",
+   "hold": [],
+   "flag": [
+    "limited in practice (knee), no game status yet"
+   ],
+   "status": null,
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "james thompson": {
+   "team": "SF",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "romello height": {
+   "team": "SF",
+   "hold": [],
+   "flag": [
+    "limited in practice (hand), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hand",
+   "practice": "Limited Participation in Practice"
+  },
+  "rakeem nunez-roches": {
+   "team": "TB",
+   "hold": [
+    "did not practice (ankle)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "baker mayfield": {
+   "team": "TB",
+   "hold": [
+    "did not practice (thumb)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Thumb",
+   "practice": "Did Not Participate In Practice"
+  },
+  "ko kieft": {
+   "team": "TB",
+   "hold": [
+    "did not practice (elbow)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Elbow",
+   "practice": "Did Not Participate In Practice"
+  },
+  "sirvocea dennis": {
+   "team": "TB",
+   "hold": [
+    "did not practice (calf)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Did Not Participate In Practice"
+  },
+  "yaya diaby": {
+   "team": "TB",
+   "hold": [],
+   "flag": [
+    "limited in practice (calf), no game status yet"
+   ],
+   "status": null,
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "bucky irving": {
+   "team": "TB",
+   "hold": [],
+   "flag": [
+    "limited in practice (glute), no game status yet"
+   ],
+   "status": null,
+   "injury": "Glute",
+   "practice": "Limited Participation in Practice"
+  },
+  "jacob parrish": {
+   "team": "TB",
+   "hold": [],
+   "flag": [
+    "limited in practice (not injury related - personal matter), no game status yet"
+   ],
+   "status": null,
+   "injury": "Not injury related - personal matter",
+   "practice": "Limited Participation in Practice"
+  },
+  "benjamin morrison": {
+   "team": "TB",
+   "hold": [],
+   "flag": [
+    "limited in practice (quadricep), no game status yet"
+   ],
+   "status": null,
+   "injury": "Quadricep",
+   "practice": "Limited Participation in Practice"
+  },
+  "rueben bain": {
+   "team": "TB",
+   "hold": [
+    "did not practice (groin)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Did Not Participate In Practice"
+  },
+  "keionte scott": {
+   "team": "TB",
+   "hold": [],
+   "flag": [
+    "limited in practice (toe), no game status yet"
+   ],
+   "status": null,
+   "injury": "Toe",
+   "practice": "Limited Participation in Practice"
+  },
+  "john franklin-myers": {
+   "team": "TEN",
+   "hold": [],
+   "flag": [
+    "limited in practice (back), no game status yet"
+   ],
+   "status": null,
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "tyjae spears": {
+   "team": "TEN",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "lucas patrick": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (foot), no game status yet"
+   ],
+   "status": null,
+   "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "frankie luvu": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (groin), no game status yet"
+   ],
+   "status": null,
+   "injury": "Groin",
+   "practice": "Limited Participation in Practice"
+  },
+  "nick allegretti": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (hip), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hip",
+   "practice": "Limited Participation in Practice"
+  },
+  "charles omenihu": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (ankle), no game status yet"
+   ],
+   "status": null,
+   "injury": "Ankle",
+   "practice": "Limited Participation in Practice"
+  },
+  "javon kinlaw": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (shoulder), no game status yet"
+   ],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "sam cosmi": {
+   "team": "WAS",
+   "hold": [
+    "out (concussion)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "rachaad white": {
+   "team": "WAS",
+   "hold": [
+    "did not practice (shoulder)"
+   ],
+   "flag": [],
+   "status": null,
+   "injury": "Shoulder",
+   "practice": "Did Not Participate In Practice"
+  },
+  "nick cross": {
+   "team": "WAS",
+   "hold": [
+    "out (illness)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Illness",
+   "practice": "Did Not Participate In Practice"
+  },
+  "chig okonkwo": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (hamstring), no game status yet"
+   ],
+   "status": null,
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "jayden daniels": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (elbow), no game status yet"
+   ],
+   "status": null,
+   "injury": "Elbow",
+   "practice": "Limited Participation in Practice"
+  },
+  "ben sinnott": {
+   "team": "WAS",
+   "hold": [],
+   "flag": [
+    "limited in practice (rib), no game status yet"
+   ],
+   "status": null,
+   "injury": "Rib",
+   "practice": "Limited Participation in Practice"
+  }
+ }
+}

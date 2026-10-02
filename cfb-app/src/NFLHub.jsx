@@ -89,7 +89,12 @@ function Leg({ l, last }) {
           {l.star && <span title="floor star: L10 ≥ 9/10 and L15 ≥ 13/15 — may anchor two tickets"
             style={{fontSize:10,color:T.amber}}>★</span>}
           <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>{l.team} v {l.opp}</span>
+          {l.injury_watch && <span title={l.injury_watch.join("; ")}
+            style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
+              fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>INJURY WATCH</span>}
         </div>
+        {l.injury_watch && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
+          {l.injury_watch.map(x => x.replace(/^injury watch: /, "")).join(" · ")}</div>}
         <div style={{fontSize:11,fontFamily:T.mono,marginTop:2}}>
           <span style={{color:T.accent,fontWeight:700}}>{rungStr(l.rung)}</span>{" "}
           <span style={{color:"#999"}}>{MARKET_LABEL[l.market] || l.market}</span>
