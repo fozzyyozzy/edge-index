@@ -10,7 +10,7 @@ and what it did to published cards.
   rebuilds and no swaps, for any reason. Prices, results and injury-watch flags may still update, but tickets can't.
 - **Why:** Week 4 Sunday was rebuilt twice on 2026-10-02 after going live on the site (R6, then grade-first). Both
   times the newsletter hadn't been sent, so nobody had been sold those tickets. That window needs a clear end.
-- **Applied:** Week 4 Sunday's rebuilt 2-ticket card (entry below) replaced the live one at about 20:45 UTC. Its
+- **Applied:** Week 4 Sunday's rebuilt 2-ticket card (entry below) replaced the live one at 20:20 UTC (www.edge-index.com serving it). Its
   newsletter has not been sent yet.
 
 ## 2026-10-02 — strategy change: legs are chosen by grade first (R3, R8, R10, R11)
