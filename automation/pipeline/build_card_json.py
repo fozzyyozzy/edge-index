@@ -25,7 +25,7 @@ Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
 Output : cards/card_<season>_w<week>_<slate>.json
 Usage  : python pipeline/build_card_json.py --season 2026 --week 3 --slate sun
 """
-import argparse, json, os, re, sys
+import argparse, glob, json, os, re, sys
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay, estimate_ladder
@@ -77,6 +77,18 @@ def hold_rank(h):
     first = h["Reasons"][0]
     return 0 if first.startswith(("team change", "blowout")) else 2 if first.startswith(("price", "edge")) else 1
 
+def thursday_prices(season, week, slate, before):
+    """Sunday slate only: the latest Thursday snapshot (sun-snapshot.yml) pulled before this card's prices.
+    Returns ({(name, market, rung): odds}, pulled_at) or ({}, None)."""
+    if slate != "sun" or not before: return {}, None
+    best = None
+    for f in sorted(glob.glob(P("lines", "snapshots", f"ladders_{season}_w{week}_sun_*.csv"))):
+        d = pd.read_csv(f)
+        if len(d) and str(d.PulledAt.iloc[0]) < before: best = d      # ISO UTC strings compare in time order
+    if best is None: return {}, None
+    return ({(norm_name(r.Player), r.Market, float(r.Rung)): int(r.Odds) for r in best.itertuples()},
+            str(best.PulledAt.iloc[0]))
+
 def blowout_flag(spread):
     return spread is not None and not pd.isna(spread) and spread <= -7
 
@@ -89,6 +101,7 @@ def main():
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
     pulled = prices_pulled(a.season, a.week, a.slate)
+    THU, THU_AT = thursday_prices(a.season, a.week, a.slate, pulled)
     lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
     # every player/market DK had posted when this card was built; refresh_odds.py flags anything newer "posted_after_card"
     at_publish = sorted({f"{norm_name(r.Player)}|{r.Market}" for r in pd.read_csv(lines_path).itertuples()})         if os.path.exists(lines_path) else []
@@ -134,8 +147,12 @@ def main():
         # locked at publish, never changed: the price the card was built on and when. refresh_odds.py appends to
         # price_history (only before the game's kickoff) and moves current_odds; grade.py reads closing from the history.
         c = cands[-1]; pub = c["odds_real"] if c["odds_real"] is not None else c["odds_est"]
+        hist = [dict(at=pulled, odds=pub)]
+        thu = THU.get((norm_name(r.Player), r.Market, rung))
+        if thu is not None:                                            # Sunday card: Thursday -> published -> close
+            hist.insert(0, dict(at=THU_AT, odds=thu, source="thursday snapshot"))
         c.update(published_odds=pub, published_at=pulled, current_odds=pub, current_at=pulled,
-                 price_history=[dict(at=pulled, odds=pub)])
+                 thursday_odds=thu, price_history=hist)
     cands.sort(key=lambda c: (-(c["l10"] + c["l15"]), c["odds_est"]))
 
     tickets, used = [], {}
@@ -184,9 +201,10 @@ def main():
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R8 (see build_card_json.py)", prices_pulled=pulled,
-                published_at=pulled, markets_at_publish=at_publish,
+                published_at=pulled, thursday_pulled=THU_AT, markets_at_publish=at_publish,
                 tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15],
-                held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display) notes=notes)
+                held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display)
+                notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")
