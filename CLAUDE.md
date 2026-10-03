@@ -28,6 +28,11 @@ matchup-gated, graded publicly with CLV. Sell transparency, never win%.
 - Odds snapshots: `python engine\collector.py --sport americanfootball_nfl`
   (add `--ladders` to view alt ladders)
 - Data gate after any reseed: `python engine\nfl\verify_data.py`
+- Tests: `python -m pytest automation/tests` (CI: tests.yml). A rule change that moves a
+  card must update the golden fixtures in the same commit:
+  `python automation/tests/make_fixtures.py --expected` (`--extract` re-snapshots inputs)
+- Card QA: `python automation/pipeline/card_qa.py --season S --week W --slate X`
+  (card.yml runs it; a failure publishes nothing and opens "CARD FAILED QA")
 - NFL studies: `python engine\nfl\floor_study.py`, `matchup_study.py`,
   `backtest.py`, `alt_backtest.py`
 - Reseed NFL logs: `python backtest\nfl\nflverse_loader.py`

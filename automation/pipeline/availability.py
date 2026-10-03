@@ -37,9 +37,16 @@ STATUS_HOLD = {"Out", "Doubtful", "Questionable"}
 DNP = "Did Not Participate In Practice"
 LIMITED = "Limited Participation in Practice"
 
-def _get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    return pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=120).read()), low_memory=False)
+def _get(url, tries=3, wait=10):
+    """nflverse CSV; retried, so a brief GitHub blip doesn't leave the card without R6 data (card_qa.py fails on that)"""
+    import time
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            return pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=120).read()), low_memory=False)
+        except Exception:
+            if i == tries - 1: raise
+            time.sleep(wait * (i + 1))
 
 def team_games(snaps, stats, week):
     """{team: {week: [norm_name who played on offense]}} for the team's last two played weeks before `week` (a bye is

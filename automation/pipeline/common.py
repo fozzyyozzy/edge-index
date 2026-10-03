@@ -1,6 +1,6 @@
 """Shared helpers for the pipeline."""
 import os
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the automation/ folder
+ROOT = os.environ.get("EDGE_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # automation/ (tests: a fixture copy)
 def P(*parts):
     """path under automation/, created if needed"""
     p = os.path.join(ROOT, *parts); os.makedirs(os.path.dirname(p) if os.path.splitext(p)[1] else p, exist_ok=True); return p

@@ -27,7 +27,8 @@ Rules encoded here (do not relax without changing the newsletter copy too):
       "grade below C". If that leaves no valid ticket (R7: a single-game slate needs 2 legs), the card has no ticket —
       never padded with a weaker leg.
   R10 selection is grade first (A+ > A > A- > B > C), then edge. A C leg is used only when no B-or-better leg can fill
-      the spot; a third ticket that would need a C leg is not built (two tickets beat a weaker third).
+      one of a ticket's first three spots — never as a 4th leg (3 legs already make a ticket; it runs reduced instead).
+      A third ticket that would need a C leg is not built (two tickets beat a weaker third).
   R11 a player with an injury-watch flag goes on one ticket at most (no star repeat).
 
 Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
@@ -55,9 +56,13 @@ SINGLE_GAME = {"tnf", "mnf", "snf"}
 def load_floors(season, week, slate):
     name = f"floors_{season}_w{week}_{slate}.csv"
     for cand in (P("floors", name), name, os.path.join("automation", name)):
-        if os.path.exists(cand): f = pd.read_csv(cand); break
+        if os.path.exists(cand):
+            try: f = pd.read_csv(cand)
+            except pd.errors.EmptyDataError: f = pd.DataFrame()        # floors.py found no floor legs on this slate
+            break
     else:
         raise SystemExit(f"floor scan output not found: run floors.py first ({name})")
+    if f.empty: return pd.DataFrame(columns=["Player", "Market", "Rung", "L10", "L15", "l10", "l15"])
     f["l10"] = f.L10.str.split("/").str[0].astype(int) / 10
     f["l15"] = f.L15.str.split("/").str[0].astype(int) / 15
     return f
@@ -121,6 +126,64 @@ def thursday_prices(season, week, slate, before):
 def blowout_flag(spread):
     return spread is not None and not pd.isna(spread) and spread <= -7
 
+def build_tickets(cands, slate, n_tickets):
+    """Assemble tickets from candidates already sorted grade-first (R10). Pure: no files, no network — the rule
+    tests call it directly. Enforces R1/R2/R7/R8/R10/R11 and one leg per game (multi-game slates)."""
+    tickets, used = [], {}
+    owner, shared = {}, []      # R2: player -> the ticket he first went on; per ticket, players it shares with another ticket
+    # star cap: a floor star may anchor two tickets, and each ticket shares at most ONE player with all the other tickets
+    # combined — checked on both sides, so an earlier ticket can't end up sharing one star with SUN-2 and another with SUN-3
+    for i in range(n_tickets):
+        legs, games, reused = [], set(), 0
+        def can_take(c):
+            k = c["player"]                                   # player-level uniqueness across tickets
+            if used.get(k, 0) >= (2 if c["star"] and not c["injury_watch"] else 1): return False     # R2, R11
+            if used.get(k, 0) == 1 and (reused >= 1 or shared[owner[k]] >= 1): return False
+            g = frozenset([c["team"], c["opp"]])
+            if slate not in SINGLE_GAME and g in games: return False
+            if any(l["player"] == c["player"] for l in legs): return False
+            return True
+        # pass 1: three best legs, grade first then edge (R10: a C only when nothing B-or-better fits)
+        for c in cands:
+            if len(legs) == 3: break
+            if can_take(c):
+                if used.get(c["player"], 0) == 1: reused += 1
+                legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
+        if len(legs) < (2 if slate in SINGLE_GAME else 3): break          # R1/R7
+        payout = 1.0
+        for l in legs: payout *= dec(l["odds_est"])
+        # pass 2 (R8): under target -> add the 4th leg that gets closest to / past 3.0x, floors only
+        if i >= 2 and any(l["grade"] == "C" for l in legs): break     # R10: no third ticket that needs a C leg
+        if payout < TARGET_DEC:
+            best = None
+            # 4th leg is a floor, not a flyer; R8/R10: from the best grade available, payout decides within that grade
+            elig = [c for c in cands if can_take(c) and c["odds_est"] <= -130 and min(c["l10"], c["l15"]) >= 0.73]
+            top = max((GRADE_RANK[c["grade"]] for c in elig), default=0)
+            if top < GRADE_RANK["B"]: elig = []          # R10: 3 legs already make a ticket, so a C is never needed here
+            for c in elig:
+                if GRADE_RANK[c["grade"]] == top:
+                    p2 = payout * dec(c["odds_est"])
+                    if best is None or abs(p2 - TARGET_DEC) < abs(best[1] - TARGET_DEC) or (p2 >= TARGET_DEC and best[1] < TARGET_DEC):
+                        best = (c, p2)
+            if best:
+                c, payout = best
+                if used.get(c["player"], 0) == 1: reused += 1
+                legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
+        shared.append(0)
+        for l in legs:
+            k = l["player"]
+            if used.get(k, 0) == 1: shared[owner[k]] += 1; shared[i] += 1      # a repeat counts on both tickets
+            else: owner[k] = i
+            used[k] = used.get(k, 0) + 1
+        p = 1.0
+        for l in legs: p *= l["model_pct"] / 100
+        reduced = payout < TARGET_DEC or len(legs) == 2                     # a 2-leg ticket is always reduced
+        tickets.append(dict(name=f"{slate.upper()}-{i+1}", legs=legs, model_hit=round(p, 3), est_payout=round(payout, 2),
+                            est_american=int(round((payout - 1) * 100)) if payout >= 2 else int(round(-100 / (payout - 1))),
+                            reduced=reduced, correlated=slate in SINGLE_GAME,
+                            label="Reduced payout: floors held, not stretched — still recommended" if reduced else "Bloom: +200 target met"))
+    return tickets
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
@@ -134,7 +197,10 @@ def main():
     AVAIL = availability.load(a.season, a.week, a.slate)          # grade_legs.py's snapshot (built here if missing)
     lines_path = P("lines", f"dk_{a.season}_w{a.week}_{a.slate}.csv")
     # every player/market DK had posted when this card was built; refresh_odds.py flags anything newer "posted_after_card"
-    at_publish = sorted({f"{norm_name(r.Player)}|{r.Market}" for r in pd.read_csv(lines_path).itertuples()})         if os.path.exists(lines_path) else []
+    try:
+        at_publish = sorted({f"{norm_name(r.Player)}|{r.Market}" for r in pd.read_csv(lines_path).itertuples()})
+    except (FileNotFoundError, pd.errors.EmptyDataError):
+        at_publish = []
     # grade letter + clear % per rung from grade_legs.py (runs first in card.yml) — the Record tab grades by letter
     legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
     GRADED, RUNGS = {}, {}
@@ -193,67 +259,14 @@ def main():
                  thursday_odds=thu, price_history=hist)
     cands.sort(key=lambda c: (-GRADE_RANK[c["grade"]], -c["edge_pts"], c["odds_est"]))      # R10: grade, then edge
 
-    tickets, used = [], {}
-    owner, shared = {}, []      # R2: player -> the ticket he first went on; per ticket, players it shares with another ticket
-    n_tickets = 1 if a.slate in SINGLE_GAME else a.tickets
-    # star cap: a floor star may anchor two tickets, and each ticket shares at most ONE player with all the other tickets
-    # combined — checked on both sides, so an earlier ticket can't end up sharing one star with SUN-2 and another with SUN-3
-    for i in range(n_tickets):
-        legs, games, reused = [], set(), 0
-        def can_take(c):
-            k = c["player"]                                   # player-level uniqueness across tickets
-            if used.get(k, 0) >= (2 if c["star"] and not c["injury_watch"] else 1): return False     # R2, R11
-            if used.get(k, 0) == 1 and (reused >= 1 or shared[owner[k]] >= 1): return False
-            g = frozenset([c["team"], c["opp"]])
-            if a.slate not in SINGLE_GAME and g in games: return False
-            if any(l["player"] == c["player"] for l in legs): return False
-            return True
-        # pass 1: three best legs, grade first then edge (R10: a C only when nothing B-or-better fits)
-        for c in cands:
-            if len(legs) == 3: break
-            if can_take(c):
-                if used.get(c["player"], 0) == 1: reused += 1
-                legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
-        if len(legs) < (2 if a.slate in SINGLE_GAME else 3): break          # R1/R7
-        payout = 1.0
-        for l in legs: payout *= dec(l["odds_est"])
-        # pass 2 (R8): under target -> add the 4th leg that gets closest to / past 3.0x, floors only
-        if i >= 2 and any(l["grade"] == "C" for l in legs): break     # R10: no third ticket that needs a C leg
-        if payout < TARGET_DEC:
-            best = None
-            # 4th leg is a floor, not a flyer; R8/R10: from the best grade available, payout decides within that grade
-            elig = [c for c in cands if can_take(c) and c["odds_est"] <= -130 and min(c["l10"], c["l15"]) >= 0.73]
-            top = max((GRADE_RANK[c["grade"]] for c in elig), default=0)
-            if i >= 2 and top < GRADE_RANK["B"]: elig = []                          # third ticket: reduced, not a C leg
-            for c in elig:
-                if GRADE_RANK[c["grade"]] == top:
-                    p2 = payout * dec(c["odds_est"])
-                    if best is None or abs(p2 - TARGET_DEC) < abs(best[1] - TARGET_DEC) or (p2 >= TARGET_DEC and best[1] < TARGET_DEC):
-                        best = (c, p2)
-            if best:
-                c, payout = best
-                if used.get(c["player"], 0) == 1: reused += 1
-                legs.append(c); games.add(frozenset([c["team"], c["opp"]]))
-        shared.append(0)
-        for l in legs:
-            k = l["player"]
-            if used.get(k, 0) == 1: shared[owner[k]] += 1; shared[i] += 1      # a repeat counts on both tickets
-            else: owner[k] = i
-            used[k] = used.get(k, 0) + 1
-        p = 1.0
-        for l in legs: p *= l["model_pct"] / 100
-        reduced = payout < TARGET_DEC or len(legs) == 2                     # a 2-leg ticket is always reduced
-        tickets.append(dict(name=f"{a.slate.upper()}-{i+1}", legs=legs, model_hit=round(p, 3), est_payout=round(payout, 2),
-                            est_american=int(round((payout - 1) * 100)) if payout >= 2 else int(round(-100 / (payout - 1))),
-                            reduced=reduced, correlated=a.slate in SINGLE_GAME,
-                            label="Reduced payout: floors held, not stretched — still recommended" if reduced else "Bloom: +200 target met"))
+    tickets = build_tickets(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path).read() if os.path.exists(notes_path) else ""
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R11 (see build_card_json.py)", prices_pulled=pulled,
                 published_at=pulled, thursday_pulled=THU_AT, markets_at_publish=at_publish,
                 availability=dict(fetched_at=AVAIL.get("fetched_at"), sources=AVAIL.get("sources")),
-                tickets=tickets, floors_singles=cands[:12], held=sorted(held, key=hold_rank)[:15],
+                tickets=tickets, floors_singles=cands[:12], candidates=cands, held=sorted(held, key=hold_rank)[:15],
                 held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display)
                 notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")

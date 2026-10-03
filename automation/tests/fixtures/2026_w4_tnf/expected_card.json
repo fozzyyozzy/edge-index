@@ -1,0 +1,716 @@
+{
+ "season": 2026,
+ "week": 4,
+ "slate": "tnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2026-09-30T13:39+00:00",
+ "published_at": "2026-09-30T13:39+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "aaron rodgers|pass_att",
+  "aaron rodgers|pass_cmps",
+  "aaron rodgers|pass_yds",
+  "aaron rodgers|rush_yds",
+  "darnell washington|rec_yds",
+  "darnell washington|receptions",
+  "denzel boston|rec_yds",
+  "denzel boston|receptions",
+  "deshaun watson|pass_att",
+  "deshaun watson|pass_cmps",
+  "deshaun watson|pass_yds",
+  "deshaun watson|rush_att",
+  "deshaun watson|rush_yds",
+  "dk metcalf|rec_yds",
+  "dk metcalf|receptions",
+  "harold fannin|rec_yds",
+  "harold fannin|receptions",
+  "jaylen warren|rec_yds",
+  "jaylen warren|receptions",
+  "jaylen warren|rush_att",
+  "jaylen warren|rush_yds",
+  "jerry jeudy|rec_yds",
+  "jerry jeudy|receptions",
+  "kc concepcion|rec_yds",
+  "kc concepcion|receptions",
+  "michael pittman|rec_yds",
+  "michael pittman|receptions",
+  "pat freiermuth|rec_yds",
+  "pat freiermuth|receptions",
+  "quinshon judkins|rec_yds",
+  "quinshon judkins|receptions",
+  "quinshon judkins|rush_att",
+  "quinshon judkins|rush_yds",
+  "raheim sanders|rec_yds",
+  "raheim sanders|receptions",
+  "raheim sanders|rush_yds",
+  "roman wilson|rec_yds",
+  "roman wilson|receptions"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-03T13:39+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-4",
+   "weekly_stats": "weeks 1-4",
+   "injuries": "week 4: 313 report rows",
+   "manual": "notes/holds_2026_w4.csv"
+  }
+ },
+ "tickets": [],
+ "floors_singles": [
+  {
+   "player": "Harold Fannin Jr.",
+   "team": "CLE",
+   "opp": "PIT",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "floor_rung": 25.0,
+   "odds_est": -330,
+   "odds_real": -330,
+   "odds_model_est": -239,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    21,
+    54,
+    51
+   ],
+   "opp_d": "SOFT",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 25,
+   "own_vol_rank": 20,
+   "model_pct": 78.8,
+   "prob": 0.7875,
+   "fair_odds": -371,
+   "edge_pts": 2.0,
+   "novig_pct": 72.6,
+   "grade": "B",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [21, 54, 51]; opp D SOFT",
+   "published_odds": -330,
+   "published_at": "2026-09-30T13:39+00:00",
+   "current_odds": -330,
+   "current_at": "2026-09-30T13:39+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-09-30T13:39+00:00",
+     "odds": -330
+    }
+   ]
+  }
+ ],
+ "candidates": [
+  {
+   "player": "Harold Fannin Jr.",
+   "team": "CLE",
+   "opp": "PIT",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "floor_rung": 25.0,
+   "odds_est": -330,
+   "odds_real": -330,
+   "odds_model_est": -239,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    21,
+    54,
+    51
+   ],
+   "opp_d": "SOFT",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 25,
+   "own_vol_rank": 20,
+   "model_pct": 78.8,
+   "prob": 0.7875,
+   "fair_odds": -371,
+   "edge_pts": 2.0,
+   "novig_pct": 72.6,
+   "grade": "B",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [21, 54, 51]; opp D SOFT",
+   "published_odds": -330,
+   "published_at": "2026-09-30T13:39+00:00",
+   "current_odds": -330,
+   "current_at": "2026-09-30T13:39+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-09-30T13:39+00:00",
+     "odds": -330
+    }
+   ]
+  }
+ ],
+ "held": [
+  {
+   "Player": "Michael Pittman Jr.",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -364,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": true,
+   "Last3": [
+    11,
+    58,
+    16
+   ],
+   "Reasons": [
+    "team change (IND->PIT)",
+    "opp D tough",
+    "edge -3.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": 113,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    2,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -106,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    17,
+    26,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "DK Metcalf",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -344,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    4,
+    3
+   ],
+   "Reasons": [
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Jaylen Warren",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -511,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    2,
+    3
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "DK Metcalf",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -309,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    27,
+    31
+   ],
+   "Reasons": [
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Pat Freiermuth",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -378,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    32,
+    30
+   ],
+   "Reasons": [
+    "opp D tough",
+    "edge -3.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -534,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    38,
+    22,
+    45
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -7.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "rush_att",
+   "Rung": "4+",
+   "EstOdds": -590,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    7,
+    11
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -7.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Darnell Washington",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -140,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    18,
+    7,
+    67
+   ],
+   "Reasons": [
+    "opp D tough",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Darnell Washington",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -186,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    1,
+    3
+   ],
+   "Reasons": [
+    "opp D tough",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Aaron Rodgers",
+   "Market": "pass_yds",
+   "Rung": "160+",
+   "EstOdds": -464,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    221,
+    187,
+    292
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450",
+    "edge -6.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Aaron Rodgers",
+   "Market": "pass_cmps",
+   "Rung": "18+",
+   "EstOdds": -467,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    24,
+    23,
+    19
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450",
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "pass_cmps",
+   "Rung": "16+",
+   "EstOdds": -337,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    16,
+    24,
+    16
+   ],
+   "Reasons": [
+    "edge -3.2 pts (< +2)"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Michael Pittman Jr.",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -364,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": true,
+   "Last3": [
+    11,
+    58,
+    16
+   ],
+   "Reasons": [
+    "team change (IND->PIT)",
+    "opp D tough",
+    "edge -3.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": 113,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    2,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -106,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    17,
+    26,
+    0
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "DK Metcalf",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -344,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    4,
+    3
+   ],
+   "Reasons": [
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Jaylen Warren",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -511,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    2,
+    3
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "DK Metcalf",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -309,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    27,
+    31
+   ],
+   "Reasons": [
+    "opp D tough"
+   ]
+  },
+  {
+   "Player": "Pat Freiermuth",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -378,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    32,
+    30
+   ],
+   "Reasons": [
+    "opp D tough",
+    "edge -3.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -534,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    38,
+    22,
+    45
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -7.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "rush_att",
+   "Rung": "4+",
+   "EstOdds": -590,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    7,
+    11
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -7.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Darnell Washington",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -140,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    18,
+    7,
+    67
+   ],
+   "Reasons": [
+    "opp D tough",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Darnell Washington",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -186,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    1,
+    3
+   ],
+   "Reasons": [
+    "opp D tough",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Aaron Rodgers",
+   "Market": "pass_yds",
+   "Rung": "160+",
+   "EstOdds": -464,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    221,
+    187,
+    292
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450",
+    "edge -6.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Aaron Rodgers",
+   "Market": "pass_cmps",
+   "Rung": "18+",
+   "EstOdds": -467,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    24,
+    23,
+    19
+   ],
+   "Reasons": [
+    "opp D tough",
+    "price worse than -450",
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deshaun Watson",
+   "Market": "pass_cmps",
+   "Rung": "16+",
+   "EstOdds": -337,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    16,
+    24,
+    16
+   ],
+   "Reasons": [
+    "edge -3.2 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": ""
+}

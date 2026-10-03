@@ -3,6 +3,40 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-03 — card QA gate and test suite (process, plus one rule clarification)
+
+- **What:**
+  - **`pipeline/card_qa.py`** checks a built card against every house rule, independently of the code that built it:
+    R1–R11, the −450 cap, one leg per game, the published price, and that prices and availability actually loaded.
+    It recomputes injury holds and flags from the availability snapshot rather than trusting the card.
+  - **`card.yml` runs it** right after the card is built.
+    - Pass: the checklist goes into the newsletter draft issue.
+    - Fail: nothing publishes (no site data, no draft, no card commit), an issue titled "CARD FAILED QA" opens with
+      the checklist, and the run fails. Only the Odds API usage-ledger row is committed, so the weekly cap stays right.
+  - **`automation/tests`** (pytest; `tests.yml` runs it on every push and pull request):
+    - every pipeline script parses and imports;
+    - golden rebuilds of Week 3 Sunday, Week 4 TNF and Week 4 Sunday from their saved inputs;
+    - house rules on made-up cards;
+    - settle and grade on fixed box scores.
+- **Rule clarification (R10):** a C leg is never a 4th leg. Three legs already make a ticket, so if no B-or-better
+  4th leg fits, the ticket runs at reduced payout instead. Before, a C could fill the 4th spot when nothing better fit.
+  None of the saved cards changed.
+- **Found on the way:** the odds-refresh job rewrites a slate's legs file, floors and price-pull file with current
+  prices after the card is published. Tickets and published prices are untouched (checked for Week 4 Sunday), but a
+  later rebuild from main would not use publish-time prices. A rule-fix rebuild under the lock rule must start from
+  the card commit's inputs. The golden fixtures do exactly that.
+- **Empty slates (found in a dry run of Monday's MNF job):**
+  - **Crash fixed:** when no floor leg qualifies, `floors.py` writes an empty file and `build_card_json.py` used to
+    crash on it. It now builds a 0-ticket card, which passes QA like Week 4 TNF.
+  - **No lines fails QA:** if the slate has no DraftKings lines at all (props not posted by the 9am run), QA fails
+    with "no DK lines for this slate's games". Nothing publishes, and a manual card.yml run once props are up
+    rebuilds it.
+  - **Retries:** availability fetches from nflverse retry 3 times.
+  - **Week 4 TNF:** it fails QA only because its card predates availability snapshots. A new card always has one,
+    because the build writes it if the Legs grader didn't.
+- **Effect:** no published card changed. The Week 4 Sunday fixture rebuilds the live card exactly (SUN-1 +217,
+  SUN-2 +233).
+
 ## 2026-10-02 — standing rule: a card locks when its newsletter is sent
 
 - **Rule:** before a slate's newsletter is sent, a rule fix may rebuild that card. The rebuild uses the same pulled

@@ -80,8 +80,34 @@ jobs:
       - name: usage for every graded player (Legs tab ladder row)
         if: env.SKIP != '1'
         run: python automation/pipeline/usage.py --season "$SEASON" --week "$WEEK"
-      - name: publish to site
+      - name: card QA - every house rule and the availability snapshot (a failure publishes nothing)
         if: env.SKIP != '1'
+        run: |
+          if python automation/pipeline/card_qa.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --out "$RUNNER_TEMP/qa.md"; then
+            echo "QA=pass" >> "$GITHUB_ENV"
+          else
+            echo "QA=fail" >> "$GITHUB_ENV"                  # a rule failed, or card_qa.py itself crashed
+          fi
+      - name: QA failed - open "CARD FAILED QA"; publish nothing (only the odds-usage ledger row is kept)
+        if: env.SKIP != '1' && env.QA == 'fail'
+        run: |
+          {
+            echo "Week $WEEK $SLATE card failed QA. Nothing was published: no site data, no newsletter draft, no card commit."
+            echo
+            if [ -s "$RUNNER_TEMP/qa.md" ]; then cat "$RUNNER_TEMP/qa.md"; else echo "card_qa.py crashed before writing a checklist; see the run log."; fi
+            echo
+            echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } > "$RUNNER_TEMP/qa_fail.md"
+          gh issue create --title "CARD FAILED QA" --body-file "$RUNNER_TEMP/qa_fail.md"
+          # the Odds API requests were spent either way: keep the weekly cap honest
+          git config user.name edge-index-bot
+          git config user.email bot@edge-index.com
+          git add automation/lines/odds_usage.csv
+          git commit -m "week $WEEK $SLATE odds usage (card failed QA, not published)" || true
+          git push || { git pull --rebase && git push; }
+          exit 1
+      - name: publish to site
+        if: env.SKIP != '1' && env.QA == 'pass'
         run: |
           mkdir -p cfb-app/public/data
           cp "automation/cards/matchups_${SEASON}_w${WEEK}.json" cfb-app/public/data/nfl_matchups.json
@@ -96,16 +122,17 @@ jobs:
             rm -f "cfb-app/public/data/nfl_handbuilt_${SLATE}.json"
           fi
       - name: draft card issue
-        if: env.SKIP != '1'
+        if: env.SKIP != '1' && env.QA == 'pass'
         run: python automation/newsletter/draft.py --kind card --season "$SEASON" --week "$WEEK" --slate "$SLATE"
       - name: open GitHub issue with the draft (copy into Substack)
-        if: env.SKIP != '1'
+        if: env.SKIP != '1' && env.QA == 'pass'
         run: |
           SUBJ=$(cat automation/newsletter/drafts/LATEST_SUBJECT.txt)
           FILE="automation/newsletter/drafts/$(echo "$SUBJ" | tr 'A-Z ' 'a-z_').md"
-          gh issue create --title "DRAFT: $SUBJ" --body-file "$FILE" --label newsletter
+          { cat "$FILE"; echo; echo; echo '---'; echo; cat "$RUNNER_TEMP/qa.md"; } > "$RUNNER_TEMP/draft_body.md"   # draft + QA checklist
+          gh issue create --title "DRAFT: $SUBJ" --body-file "$RUNNER_TEMP/draft_body.md" --label newsletter
       - name: commit
-        if: env.SKIP != '1'
+        if: env.SKIP != '1' && env.QA == 'pass'
         run: |
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com

@@ -5,6 +5,7 @@ import LegsHub from "./LegsHub";
 import NFLHub from "./NFLHub";
 import NFLRecord from "./NFLRecord";
 import FAQ from "./FAQ";
+import SignupPrompt from "./SignupPrompt";
 
 
 // NFL only. MLB is paused until 2027: its pages and data are in src/_archive/mlb/ (not built, not served).
@@ -112,6 +113,8 @@ export default function App() {
       <div style={{ minHeight:"calc(100vh - 57px)" }}>
         {ActiveComponent && <ActiveComponent />}
       </div>
+
+      <SignupPrompt />
 
       <style>{`
         .topnav-tabs { scrollbar-width:none; }
