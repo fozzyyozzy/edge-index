@@ -262,7 +262,7 @@ def main():
     tickets = build_tickets(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
-    notes = open(notes_path).read() if os.path.exists(notes_path) else ""
+    notes = open(notes_path, encoding="utf-8").read() if os.path.exists(notes_path) else ""   # utf-8: Windows would read cp1252
     card = dict(season=a.season, week=a.week, slate=a.slate, rules="R1-R11 (see build_card_json.py)", prices_pulled=pulled,
                 published_at=pulled, thursday_pulled=THU_AT, markets_at_publish=at_publish,
                 availability=dict(fetched_at=AVAIL.get("fetched_at"), sources=AVAIL.get("sources")),
