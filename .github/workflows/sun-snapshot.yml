@@ -19,16 +19,16 @@ permissions:
 
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned for the season; ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (test it in the offseason)
     env:
       SEASON: 2026
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       ODDS_WEEKLY_BUDGET: 3000
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - run: pip install -r automation/requirements.txt

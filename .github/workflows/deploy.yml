@@ -5,7 +5,7 @@ name: deploy-site
 on:
   push:
     branches: [main]
-    paths: ["cfb-app/**"]            # site code or data changed (daily_publish.bat pushes the MLB files)
+    paths: ["cfb-app/**", ".github/workflows/deploy.yml"]   # site code or data changed, or this workflow did
   workflow_run:                      # bot commits made with GITHUB_TOKEN don't fire `push`, so follow the data jobs
     workflows: ["card-build-and-draft", "tuesday-refresh-grade-receipts", "refresh-odds", "settle-results"]
     types: [completed]
@@ -22,12 +22,12 @@ jobs:
   deploy:
     # after a data job, deploy only if it succeeded (a failed job commits nothing new)
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned for the season; ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (test it in the offseason)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main                  # workflow_run would otherwise check out the triggering run's commit, before its data push
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22                 # wrangler 4.x requires Node >= 22
           cache: npm

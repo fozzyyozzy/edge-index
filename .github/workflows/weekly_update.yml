@@ -21,17 +21,17 @@ on:
 
 jobs:
   update-data:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned for the season; ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (test it in the offseason)
     timeout-minutes: 30
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: "pip"
@@ -44,7 +44,7 @@ jobs:
           playwright install chromium --with-deps
 
       - name: Restore parquet cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             data/cache/
@@ -94,7 +94,7 @@ jobs:
             --season ${{ steps.week.outputs.season }}
 
       - name: Save parquet cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             data/cache/
@@ -111,16 +111,16 @@ jobs:
           git push
 
   update-results:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned for the season; ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (test it in the offseason)
     if: github.event.schedule == '0 13 * * 1'
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
