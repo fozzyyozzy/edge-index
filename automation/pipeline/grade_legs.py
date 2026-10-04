@@ -10,6 +10,9 @@ clear rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90)
 Modifiers (one step each, applied after the base letter, floor at D unless hard hold):
   +  last 3 all clear                  -  any of last 3 within 1 yard/1 unit of the rung (a "near miss" signal)
   -  est price worse than -400         -  one soft flag (opp D TOUGH or own volume TOUGH); both soft flags = two steps
+Every rung DK offers is shown from the lowest up to the last one graded C or better (D rungs in between included); rungs
+past -450 are marked "price past -450, not card-eligible" (past -600: "price past -600: not card-eligible", one note).
+Rungs left off are listed in `omitted` with the reason.
   F  hard hold: team change this season, attempt prop with team favored >= 7, fewer than 10 games of data,
      injury (availability.py: missed one of the team's last two games, Out/Doubtful/Questionable, DNP, held by hand)
   Injury watch (Limited practice, no game status yet) is a flag on the player, not a grade change.
@@ -44,7 +47,59 @@ def target_competition(cur, prev):
         if mx >= COMP_TARGETS: out.setdefault(tm, []).append((g.player_display_name.iloc[-1], key, mx))
     return out
 
+CARD_MAX_JUICE = -450      # build_card_json.MAX_LEG_JUICE: rungs past it are marked, never on a ticket
 NEAR = {"rec_yds": 3, "rush_yds": 3, "pass_yds": 10, "receptions": 0, "pass_cmps": 1, "pass_att": 1, "rush_att": 1}
+
+def grade_rung(prob, t, o, last3, market, holds, oppd, vol, rivals):
+    """(letter, reasons, letter before the target-competition step) for one rung. The letter grades the blended
+    probability; the modifiers below step it. Holds make it F."""
+    if holds: return "F", holds, None
+    letter = base_letter(prob); why = []
+    if (last3 >= t).all(): letter = step(letter, +1); why.append("last 3 all clear")
+    if any(0 <= t - x <= NEAR[market] for x in last3): letter = step(letter, -1); why.append("near miss in last 3")
+    if o < -600: letter = step(letter, -2); why.append("price past -600: not card-eligible")
+    elif o < -400: letter = step(letter, -1); why.append("price worse than -400")
+    if -600 <= o < CARD_MAX_JUICE: why.append(f"price past {CARD_MAX_JUICE}, not card-eligible")
+    soft = (oppd == "TOUGH") + (vol == "TOUGH")
+    if soft: letter = step(letter, -soft); why.append("; ".join(x for x in ("opp D tough" if oppd == "TOUGH" else "", "own volume low" if vol == "TOUGH" else "") if x))
+    pre_comp = letter
+    if rivals: letter = step(letter, -1); why.append(f"new target competition ({', '.join(rivals)})")
+    return letter, why, pre_comp
+
+
+def trim_ladders(out, skipped=(), REAL=None):
+    """(players to show, omitted records). Pure — the coverage tests call it directly."""
+    # trim: every player shows a contiguous ladder — every DK rung from the lowest up to the last one graded C or better
+    # (D rungs inside that range stay, with their reasons). Held players (all F) show the 3 rungs nearest the main line so
+    # the hold reason still shows. A rung counts as C-or-better if the target-competition downgrade alone pushed it to D;
+    # a player whose only such rungs are those is comp_held — shown greyed like a hold on the Legs tab.
+    # Every rung left off goes into `omitted` with the reason (legs_coverage.py checks that nothing is dropped silently).
+    KEEP = {"A+", "A", "A-", "B", "C"}
+    trimmed, omitted = [], []
+    def omit(p, rungs, reason):
+        if rungs: omitted.append(dict(player=p["player"], market=p["market"], rungs=sorted(r["rung"] for r in rungs), reason=reason))
+    for p in out:
+        good = [r for r in p["rungs"] if r["grade"] in KEEP or r.get("_pre_comp") in KEEP]
+        for r in p["rungs"]: r.pop("_pre_comp", None)
+        if good:
+            last = max(r["rung"] for r in good)
+            omit(p, [r for r in p["rungs"] if r["rung"] > last], "above the last rung graded C or better")
+            p["rungs"] = [r for r in p["rungs"] if r["rung"] <= last]
+            if not any(r["grade"] in KEEP for r in p["rungs"]): p["comp_held"] = True
+        elif p["rungs"] and all(r["grade"] == "F" for r in p["rungs"]):
+            keep = sorted(p["rungs"], key=lambda r: abs(r["rung"] - p["main_line"]))[:3]
+            omit(p, [r for r in p["rungs"] if r not in keep],
+                 "held (" + "; ".join(keep[0]["reasons"]) + "): only the 3 rungs nearest the DK line are shown")
+            p["rungs"] = sorted(keep, key=lambda r: r["rung"]); p["held"] = True
+        else:
+            omit(p, p["rungs"], "no rung graded C or better")
+            continue
+        trimmed.append(p)
+    for name, market, reason in skipped:
+        omitted.append(dict(player=name, market=market, rungs=sorted(t for t, _ in (REAL or {}).get((norm_name(name), market), [])),
+                            reason=reason))
+    return trimmed, omitted
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -77,12 +132,14 @@ def main():
     team_prev = prev.groupby("key")["team"].last()
 
     REAL = load_real_ladders(a.ladders or a.lines.replace("dk_", "ladders_").rsplit("_", 1)[0] + ".csv")
-    lines = pd.read_csv(a.lines); out = []
+    lines = pd.read_csv(a.lines); out = []; skipped = []
     for r in lines.itertuples():
         key = norm_name(r.Player); col = COL[r.Market]; inv = INV[r.Market]
         g = w[(w.key == key) & (w[inv].fillna(0) > 0)].sort_values(["season", "week"])
         v = g[col].fillna(0).to_numpy(); tm = team_now.get(key); opp = OPP.get(tm)
-        if opp is None: continue
+        if opp is None:                   # another slate's player (the lines file is week-wide), or no game log at all
+            if tm is None: skipped.append((r.Player, r.Market, "no NFL game log found, so his team is unknown"))
+            continue
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
         (oppd, oppd_rank), (vol, vol_rank) = tag_rank(D[cat + "_yds"], opp, defense=True), tag_rank(O[cat + "_att"], tm)
         pos = g.position.iloc[-1] if len(g) else None
@@ -102,50 +159,22 @@ def main():
             l10 = float((v[-10:] >= t).mean()); l15 = float((v[-15:] >= t).mean())
             p = 0.6 * l10 + 0.4 * l15                                   # raw clear rate, shown as clear_pct
             pf = price_fields(v, t, o, r.Player, r.Market, HOLDS)            # blended probability, fair price, edge
-            letter = base_letter(pf["prob"]); why = []                       # the letter grades the blended probability
-            last3 = v[-3:]
-            if holds: letter = "F"; why = holds
-            else:
-                if (last3 >= t).all(): letter = step(letter, +1); why.append("last 3 all clear")
-                if any(0 <= t - x <= NEAR[r.Market] for x in last3): letter = step(letter, -1); why.append("near miss in last 3")
-                if o < -600: letter = step(letter, -2); why.append("juice past -600: not playable in a parlay")
-                elif o < -400: letter = step(letter, -1); why.append("price worse than -400")
-                soft = (oppd == "TOUGH") + (vol == "TOUGH")
-                if soft: letter = step(letter, -soft); why.append("; ".join(x for x in ("opp D tough" if oppd == "TOUGH" else "", "own volume low" if vol == "TOUGH" else "") if x))
-                pre_comp = letter
-                if rivals: letter = step(letter, -1); why.append(f"new target competition ({', '.join(rivals)})")
+            letter, why, pre_comp = grade_rung(pf["prob"], t, o, v[-3:], r.Market, holds, oppd, vol, rivals)
             rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
                               l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), **pf, grade=letter, reasons=why,
-                              _pre_comp=None if holds else pre_comp))
+                              _pre_comp=pre_comp))
         out.append(dict(player=r.Player, pos=pos, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
                         target_competition=rivals or None, injury=(inj_holds or inj_flags) or None,
                         injury_hold=bool(inj_holds), spread=spread, games=int(len(v)),
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
-    # trim: keep C and up; held players (all F) keep the 3 rungs nearest the main line so the hold reason still shows.
-    # Rungs pushed below C only by the target-competition downgrade stay too (grade D, with the reason); a player left with
-    # only those is comp_held — shown greyed like a hold on the Legs tab.
-    KEEP = {"A+", "A", "A-", "B", "C"}
-    trimmed = []
-    for p in out:
-        good = [r for r in p["rungs"] if r["grade"] in KEEP or r.get("_pre_comp") in KEEP]
-        for r in p["rungs"]: r.pop("_pre_comp", None)
-        if good:
-            p["rungs"] = good
-            if all(r["grade"] not in KEEP for r in good): p["comp_held"] = True
-        elif p["rungs"] and all(r["grade"] == "F" for r in p["rungs"]):
-            p["rungs"] = sorted(p["rungs"], key=lambda r: abs(r["rung"] - p["main_line"]))[:3]
-            p["rungs"].sort(key=lambda r: r["rung"]); p["held"] = True
-        else:
-            continue
-        trimmed.append(p)
-    out = trimmed
+    out, omitted = trim_ladders(out, skipped, REAL)
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
                 grade_key="Grade = our estimated hit probability after blending with DK's price. Edge is shown separately. A+>=85 A>=80 A->=75 B 68-74 C 60-67 D<60 F=hard hold; modifiers for form, price, matchup, target competition.",
                 rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
-    json.dump(dict(meta=meta, players=out), open(path, "w"), separators=(",", ":"))
+    json.dump(dict(meta=meta, players=out, omitted=omitted), open(path, "w"), separators=(",", ":"))
     n = sum(len(p["rungs"]) for p in out); a_plus = sum(1 for p in out for r in p["rungs"] if r["grade"] == "A+")
     print(f"wrote {path}: {len(out)} player/markets, {n} rungs graded, {a_plus} A+")
 

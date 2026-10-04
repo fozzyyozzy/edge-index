@@ -88,6 +88,8 @@ jobs:
           else
             echo "QA=fail" >> "$GITHUB_ENV"                  # a rule failed, or card_qa.py itself crashed
           fi
+          # Legs board coverage: every DK rung shown or recorded with a reason. A warning line in the checklist, never a block.
+          python automation/pipeline/legs_coverage.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --md >> "$RUNNER_TEMP/qa.md" || true
       - name: QA failed - open "CARD FAILED QA"; publish nothing (only the odds-usage ledger row is kept)
         if: env.SKIP != '1' && env.QA == 'fail'
         run: |

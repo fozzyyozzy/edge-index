@@ -71,5 +71,6 @@ def test_card_workflow_runs_qa_before_anything_publishes():
     assert idx("grade every rung") < idx("build card") < idx("card QA") < idx("publish to site")
     for key in ("publish to site", "draft card issue", "open GitHub issue", "commit"):
         assert "env.QA == 'pass'" in steps[idx(key)]["if"], key
+    assert "legs_coverage.py" in steps[idx("card QA")]["run"]           # dropped Legs rungs show up in the checklist
     fail = steps[idx("QA failed")]
     assert "env.QA == 'fail'" in fail["if"] and 'CARD FAILED QA' in fail["run"] and "exit 1" in fail["run"]

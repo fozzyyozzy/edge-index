@@ -3,6 +3,28 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-04 — bug fix: Legs board dropped D-graded rungs inside a ladder (display; cards unaffected)
+
+- **What:** `grade_legs.py` now shows every DK rung from the lowest up to the last one graded C or better, D rungs in
+  between included. Rungs past −450 are marked "price past −450, not card-eligible", and rungs past −600 get one note,
+  "price past −600: not card-eligible" (it replaces "juice past −600: not playable in a parlay"). Every rung it leaves off goes
+  into a new `omitted` record with the reason:
+  - above the last rung graded C or better;
+  - held (only the 3 rungs nearest the DK line are shown);
+  - no rung graded C or better;
+  - no NFL game log, so his team is unknown.
+
+  `pipeline/legs_coverage.py` checks every DK rung on a slate is either shown or recorded with a reason. card.yml
+  adds its result to the QA checklist as a warning that doesn't block the card, and the tests run it on real Week 4
+  data.
+- **Why:** the trim kept only C-or-better rungs wherever they sat, so rungs a modifier pushed to D left holes:
+  - C.J. Stroud showed 160 and 200 but not 170, 180 or 190;
+  - Trevor Lawrence was missing 190;
+  - 40 holes in all on the Week 4 Sunday board, every one graded D (price past −400/−600, near miss, tough matchup).
+- **Effect on cards:** none. Every rung that was missing from the Sunday board graded D or F, so the card builder
+  (which uses C or better only) never lost a candidate. Rebuilding Week 4 Sunday from the old and the new Legs file
+  gives identical candidates and tickets.
+
 ## 2026-10-03 — card QA gate and test suite (process, plus one rule clarification)
 
 - **What:**
