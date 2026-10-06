@@ -1,0 +1,580 @@
+{
+ "season": 2026,
+ "week": 4,
+ "legs_graded": 8,
+ "legs_hit": 5,
+ "hit_rate": 0.625,
+ "avg_model_pct": 79.2,
+ "flat_pnl_1u": -1.33,
+ "by_market": [
+  {
+   "market": "pass_yds",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "market": "rec_yds",
+   "n": 3,
+   "hit": 0.67
+  },
+  {
+   "market": "receptions",
+   "n": 2,
+   "hit": 0.5
+  },
+  {
+   "market": "rush_yds",
+   "n": 2,
+   "hit": 1.0
+  }
+ ],
+ "by_bucket": [
+  {
+   "bucket": "75-85",
+   "n": 8,
+   "hit": 0.62
+  }
+ ],
+ "near_misses": [
+  {
+   "player": "Cooper Kupp",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "actual": 13.0,
+   "miss_by": 2.0
+  },
+  {
+   "player": "Christian McCaffrey",
+   "market": "receptions",
+   "rung": 4.0,
+   "actual": 3.0,
+   "miss_by": 1.0
+  }
+ ],
+ "misses": [
+  {
+   "player": "Cooper Kupp",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "actual": 13.0,
+   "note": "L10 9/10, L15 14/15; last 3 [35, 20, 46]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Christian McCaffrey",
+   "market": "receptions",
+   "rung": 4.0,
+   "actual": 3.0,
+   "note": "L10 9/10, L15 13/15; last 3 [5, 4, 4]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Jacoby Brissett",
+   "market": "pass_yds",
+   "rung": 200.0,
+   "actual": 166.0,
+   "note": "L10 9/10, L15 14/15; last 3 [277, 95, 280]; opp D neutral; floor rung 210+ graded lower",
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "ticket": "SUN-2"
+  }
+ ],
+ "est_vs_real": [
+  {
+   "player": "Jakobi Meyers",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "est": -237,
+   "real": -295,
+   "hit": true
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -275,
+   "real": -349,
+   "hit": true
+  },
+  {
+   "player": "Cooper Kupp",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "est": -199,
+   "real": -256,
+   "hit": false
+  },
+  {
+   "player": "Christian McCaffrey",
+   "market": "receptions",
+   "rung": 4.0,
+   "est": -348,
+   "real": -309,
+   "hit": false
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -275,
+   "real": -349,
+   "hit": true
+  },
+  {
+   "player": "Jaxon Smith-Njigba",
+   "market": "rec_yds",
+   "rung": 70.0,
+   "est": -272,
+   "real": -269,
+   "hit": true
+  },
+  {
+   "player": "Brian Thomas Jr",
+   "market": "receptions",
+   "rung": 2.0,
+   "est": -280,
+   "real": -256,
+   "hit": true
+  },
+  {
+   "player": "Jacoby Brissett",
+   "market": "pass_yds",
+   "rung": 200.0,
+   "est": -306,
+   "real": -280,
+   "hit": false
+  }
+ ],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 3,
+   "hits": 3,
+   "avg_prob": 82.9,
+   "avg_implied": 76.7,
+   "expected": 82.9
+  },
+  {
+   "grade": "A",
+   "n": 2,
+   "hits": 1,
+   "avg_prob": 76.6,
+   "avg_implied": 72.4,
+   "expected": 76.6
+  },
+  {
+   "grade": "A-",
+   "n": 3,
+   "hits": 1,
+   "avg_prob": 77.2,
+   "avg_implied": 73.7,
+   "expected": 77.2
+  },
+  {
+   "grade": "B",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "C",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "D",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "F",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  }
+ ],
+ "grade_basis": "blended",
+ "tickets": [
+  {
+   "slate": "sun",
+   "name": "SUN-1",
+   "legs": 4,
+   "flag": null,
+   "est_american": 217,
+   "clv_pts": -0.58,
+   "leg_text": [
+    "Jakobi Meyers 25+ rec_yds (-295)",
+    "Kyren Williams 40+ rush_yds (-349)",
+    "Cooper Kupp 15+ rec_yds (-256)",
+    "Christian McCaffrey 4+ receptions (-309)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Jakobi Meyers",
+     "team": "JAX",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds": -295,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 33.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -292,
+     "clv_pts": -0.19,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "market": "rush_yds",
+     "rung": 40.0,
+     "odds": -349,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 80.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -361,
+     "clv_pts": 0.58,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Cooper Kupp",
+     "team": "SEA",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "odds": -256,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 13.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -236,
+     "clv_pts": -1.67,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Christian McCaffrey",
+     "team": "SF",
+     "market": "receptions",
+     "rung": 4.0,
+     "odds": -309,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 3.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -309,
+     "clv_pts": 0.0,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Cooper Kupp",
+    "Christian McCaffrey"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-2",
+   "legs": 4,
+   "flag": null,
+   "est_american": 233,
+   "clv_pts": -0.55,
+   "leg_text": [
+    "Kyren Williams 40+ rush_yds (-349)",
+    "Jaxon Smith-Njigba 70+ rec_yds (-269)",
+    "Brian Thomas Jr 2+ receptions (-256)",
+    "Jacoby Brissett 200+ pass_yds (-280)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "market": "rush_yds",
+     "rung": 40.0,
+     "odds": -349,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 80.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -361,
+     "clv_pts": 0.58,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "market": "rec_yds",
+     "rung": 70.0,
+     "odds": -269,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 76.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -259,
+     "clv_pts": -0.75,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Brian Thomas Jr",
+     "team": "JAX",
+     "market": "receptions",
+     "rung": 2.0,
+     "odds": -256,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 2.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -249,
+     "clv_pts": -0.56,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Jacoby Brissett",
+     "team": "ARI",
+     "market": "pass_yds",
+     "rung": 200.0,
+     "odds": -280,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 166.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -272,
+     "clv_pts": -0.57,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Jacoby Brissett"
+   ]
+  }
+ ],
+ "held_by_reason": [
+  {
+   "reason": "team change",
+   "n": 20,
+   "hits": 13,
+   "misses": 5,
+   "voids": 2
+  },
+  {
+   "reason": "blowout risk",
+   "n": 4,
+   "hits": 3,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "reason": "tough defense",
+   "n": 54,
+   "hits": 44,
+   "misses": 10,
+   "voids": 0
+  },
+  {
+   "reason": "low own volume",
+   "n": 33,
+   "hits": 22,
+   "misses": 9,
+   "voids": 2
+  },
+  {
+   "reason": "price worse than \u2212450",
+   "n": 37,
+   "hits": 28,
+   "misses": 6,
+   "voids": 3
+  },
+  {
+   "reason": "edge below +2",
+   "n": 108,
+   "hits": 82,
+   "misses": 21,
+   "voids": 5
+  },
+  {
+   "reason": "grade below C",
+   "n": 53,
+   "hits": 38,
+   "misses": 11,
+   "voids": 4
+  }
+ ],
+ "sunday_price_moves": [
+  {
+   "player": "Jakobi Meyers",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "thursday": null,
+   "published": -295,
+   "closing": -292,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -0.19
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "thursday": null,
+   "published": -349,
+   "closing": -361,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": 0.58
+  },
+  {
+   "player": "Cooper Kupp",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "thursday": null,
+   "published": -256,
+   "closing": -236,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -1.67
+  },
+  {
+   "player": "Christian McCaffrey",
+   "market": "receptions",
+   "rung": 4.0,
+   "thursday": null,
+   "published": -309,
+   "closing": -309,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": 0.0
+  },
+  {
+   "player": "Jaxon Smith-Njigba",
+   "market": "rec_yds",
+   "rung": 70.0,
+   "thursday": null,
+   "published": -269,
+   "closing": -259,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -0.75
+  },
+  {
+   "player": "Brian Thomas Jr",
+   "market": "receptions",
+   "rung": 2.0,
+   "thursday": null,
+   "published": -256,
+   "closing": -249,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -0.56
+  },
+  {
+   "player": "Jacoby Brissett",
+   "market": "pass_yds",
+   "rung": 200.0,
+   "thursday": null,
+   "published": -280,
+   "closing": -272,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -0.57
+  }
+ ],
+ "board_by_grade": [
+  {
+   "grade": "A+",
+   "n": 2,
+   "hits": 2,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "grade": "A",
+   "n": 15,
+   "hits": 12,
+   "misses": 3,
+   "voids": 0
+  },
+  {
+   "grade": "A-",
+   "n": 78,
+   "hits": 66,
+   "misses": 11,
+   "voids": 1
+  },
+  {
+   "grade": "B",
+   "n": 89,
+   "hits": 67,
+   "misses": 19,
+   "voids": 3
+  },
+  {
+   "grade": "C",
+   "n": 80,
+   "hits": 65,
+   "misses": 15,
+   "voids": 0
+  },
+  {
+   "grade": "D",
+   "n": 19,
+   "hits": 12,
+   "misses": 6,
+   "voids": 1
+  },
+  {
+   "grade": "F",
+   "n": 188,
+   "hits": 53,
+   "misses": 125,
+   "voids": 10
+  }
+ ],
+ "clv": {
+  "n": 8,
+  "avg_leg_pts": -0.32
+ },
+ "ticket_record": {
+  "WIN": 0,
+  "LOSS": 2,
+  "VOID": 0
+ },
+ "ticket_record_standard": {
+  "WIN": 0,
+  "LOSS": 2,
+  "VOID": 0
+ },
+ "units": -2.0,
+ "units_standard": -2.0
+}

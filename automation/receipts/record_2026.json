@@ -1,8 +1,8 @@
 {
  "meta": {
   "season": 2026,
-  "generated": "2026-10-02T17:47+00:00",
-  "weeks": 2
+  "generated": "2026-10-06T17:04+00:00",
+  "weeks": 3
  },
  "weeks": [
   {
@@ -595,32 +595,232 @@
     "n": 11,
     "avg_leg_pts": 0.18
    }
+  },
+  {
+   "week": 4,
+   "ticket_record": {
+    "WIN": 0,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "legs_graded": 8,
+   "ticket_record_standard": {
+    "WIN": 0,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "units": -2.0,
+   "units_standard": -2.0,
+   "legs_hit": 5,
+   "tickets": [
+    {
+     "slate": "sun",
+     "name": "SUN-1",
+     "legs": 4,
+     "flag": null,
+     "est_american": 217,
+     "clv_pts": -0.58,
+     "leg_text": [
+      "Jakobi Meyers 25+ rec_yds (-295)",
+      "Kyren Williams 40+ rush_yds (-349)",
+      "Cooper Kupp 15+ rec_yds (-256)",
+      "Christian McCaffrey 4+ receptions (-309)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Jakobi Meyers",
+       "team": "JAX",
+       "market": "rec_yds",
+       "rung": 25.0,
+       "odds": -295,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 33.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -292,
+       "clv_pts": -0.19,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Kyren Williams",
+       "team": "LA",
+       "market": "rush_yds",
+       "rung": 40.0,
+       "odds": -349,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 80.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -361,
+       "clv_pts": 0.58,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Cooper Kupp",
+       "team": "SEA",
+       "market": "rec_yds",
+       "rung": 15.0,
+       "odds": -256,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 13.0,
+       "hit": false,
+       "early_exit": false,
+       "closing": -236,
+       "clv_pts": -1.67,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Christian McCaffrey",
+       "team": "SF",
+       "market": "receptions",
+       "rung": 4.0,
+       "odds": -309,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 3.0,
+       "hit": false,
+       "early_exit": false,
+       "closing": -309,
+       "clv_pts": 0.0,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      }
+     ],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Cooper Kupp",
+      "Christian McCaffrey"
+     ]
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-2",
+     "legs": 4,
+     "flag": null,
+     "est_american": 233,
+     "clv_pts": -0.55,
+     "leg_text": [
+      "Kyren Williams 40+ rush_yds (-349)",
+      "Jaxon Smith-Njigba 70+ rec_yds (-269)",
+      "Brian Thomas Jr 2+ receptions (-256)",
+      "Jacoby Brissett 200+ pass_yds (-280)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Kyren Williams",
+       "team": "LA",
+       "market": "rush_yds",
+       "rung": 40.0,
+       "odds": -349,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 80.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -361,
+       "clv_pts": 0.58,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Jaxon Smith-Njigba",
+       "team": "SEA",
+       "market": "rec_yds",
+       "rung": 70.0,
+       "odds": -269,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 76.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -259,
+       "clv_pts": -0.75,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Brian Thomas Jr",
+       "team": "JAX",
+       "market": "receptions",
+       "rung": 2.0,
+       "odds": -256,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 2.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -249,
+       "clv_pts": -0.56,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Jacoby Brissett",
+       "team": "ARI",
+       "market": "pass_yds",
+       "rung": 200.0,
+       "odds": -280,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 166.0,
+       "hit": false,
+       "early_exit": false,
+       "closing": -272,
+       "clv_pts": -0.57,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      }
+     ],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Jacoby Brissett"
+     ]
+    }
+   ],
+   "clv": {
+    "n": 8,
+    "avg_leg_pts": -0.32
+   }
   }
  ],
  "by_grade": [
   {
    "grade": "A+",
-   "n": 3,
-   "hits": 3,
-   "avg_prob": null,
-   "avg_implied": 77.7,
-   "expected": 94.4
+   "n": 6,
+   "hits": 6,
+   "avg_prob": 82.9,
+   "avg_implied": 77.2,
+   "expected": 88.7
   },
   {
    "grade": "A",
-   "n": 4,
-   "hits": 4,
-   "avg_prob": null,
-   "avg_implied": 66.3,
-   "expected": 92.9
+   "n": 6,
+   "hits": 5,
+   "avg_prob": 76.6,
+   "avg_implied": 68.3,
+   "expected": 87.5
   },
   {
    "grade": "A-",
-   "n": 3,
-   "hits": 2,
-   "avg_prob": null,
-   "avg_implied": 80.0,
-   "expected": 86.4
+   "n": 6,
+   "hits": 3,
+   "avg_prob": 77.2,
+   "avg_implied": 76.9,
+   "expected": 81.8
   },
   {
    "grade": "B",
@@ -658,103 +858,103 @@
  "held_by_reason": [
   {
    "reason": "team change",
-   "n": 12,
-   "hits": 9,
-   "misses": 3,
-   "voids": 0
+   "n": 32,
+   "hits": 22,
+   "misses": 8,
+   "voids": 2
   },
   {
    "reason": "blowout risk",
-   "n": 3,
-   "hits": 1,
-   "misses": 2,
+   "n": 7,
+   "hits": 4,
+   "misses": 3,
    "voids": 0
   },
   {
    "reason": "tough defense",
-   "n": 7,
-   "hits": 6,
-   "misses": 1,
+   "n": 61,
+   "hits": 50,
+   "misses": 11,
    "voids": 0
   },
   {
    "reason": "low own volume",
-   "n": 3,
-   "hits": 0,
-   "misses": 3,
-   "voids": 0
+   "n": 36,
+   "hits": 22,
+   "misses": 12,
+   "voids": 2
   },
   {
    "reason": "price worse than \u2212450",
-   "n": 6,
-   "hits": 6,
-   "misses": 0,
-   "voids": 0
+   "n": 43,
+   "hits": 34,
+   "misses": 6,
+   "voids": 3
   },
   {
    "reason": "edge below +2",
-   "n": 6,
-   "hits": 5,
-   "misses": 1,
-   "voids": 0
+   "n": 114,
+   "hits": 87,
+   "misses": 22,
+   "voids": 5
   },
   {
    "reason": "grade below C",
-   "n": 0,
-   "hits": 0,
-   "misses": 0,
-   "voids": 0
+   "n": 53,
+   "hits": 38,
+   "misses": 11,
+   "voids": 4
   }
  ],
  "board_by_grade": [
   {
    "grade": "A+",
-   "n": 4,
-   "hits": 4,
+   "n": 6,
+   "hits": 6,
    "misses": 0,
    "voids": 0
   },
   {
    "grade": "A",
-   "n": 9,
-   "hits": 7,
-   "misses": 2,
+   "n": 24,
+   "hits": 19,
+   "misses": 5,
    "voids": 0
   },
   {
    "grade": "A-",
-   "n": 77,
-   "hits": 70,
-   "misses": 7,
-   "voids": 0
-  },
-  {
-   "grade": "B",
-   "n": 109,
-   "hits": 94,
-   "misses": 14,
+   "n": 155,
+   "hits": 136,
+   "misses": 18,
    "voids": 1
   },
   {
+   "grade": "B",
+   "n": 198,
+   "hits": 161,
+   "misses": 33,
+   "voids": 4
+  },
+  {
    "grade": "C",
-   "n": 75,
-   "hits": 60,
-   "misses": 14,
+   "n": 155,
+   "hits": 125,
+   "misses": 29,
    "voids": 1
   },
   {
    "grade": "D",
-   "n": 8,
-   "hits": 6,
-   "misses": 2,
-   "voids": 0
+   "n": 27,
+   "hits": 18,
+   "misses": 8,
+   "voids": 1
   },
   {
    "grade": "F",
-   "n": 156,
-   "hits": 46,
-   "misses": 107,
-   "voids": 3
+   "n": 344,
+   "hits": 99,
+   "misses": 232,
+   "voids": 13
   }
  ],
  "clear_basis_weeks": [
@@ -858,6 +1058,78 @@
    "rung": 2.0,
    "est": -419.0,
    "real": -366,
+   "hit": false
+  },
+  {
+   "week": 4,
+   "player": "Jakobi Meyers",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "est": -237,
+   "real": -295,
+   "hit": true
+  },
+  {
+   "week": 4,
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -275,
+   "real": -349,
+   "hit": true
+  },
+  {
+   "week": 4,
+   "player": "Cooper Kupp",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "est": -199,
+   "real": -256,
+   "hit": false
+  },
+  {
+   "week": 4,
+   "player": "Christian McCaffrey",
+   "market": "receptions",
+   "rung": 4.0,
+   "est": -348,
+   "real": -309,
+   "hit": false
+  },
+  {
+   "week": 4,
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -275,
+   "real": -349,
+   "hit": true
+  },
+  {
+   "week": 4,
+   "player": "Jaxon Smith-Njigba",
+   "market": "rec_yds",
+   "rung": 70.0,
+   "est": -272,
+   "real": -269,
+   "hit": true
+  },
+  {
+   "week": 4,
+   "player": "Brian Thomas Jr",
+   "market": "receptions",
+   "rung": 2.0,
+   "est": -280,
+   "real": -256,
+   "hit": true
+  },
+  {
+   "week": 4,
+   "player": "Jacoby Brissett",
+   "market": "pass_yds",
+   "rung": 200.0,
+   "est": -306,
+   "real": -280,
    "hit": false
   }
  ]
