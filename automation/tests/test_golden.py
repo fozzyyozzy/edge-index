@@ -30,8 +30,9 @@ def test_expected_card_passes_qa(case):
     assert not failed, failed
 
 
-def test_week4_sunday_is_the_published_card():
-    """the fixture reproduces the card that went live 2026-10-02 20:20 UTC (a1d71f9c), ticket for ticket"""
+def test_week4_sunday_under_current_rules():
+    """the card that went live 2026-10-02 20:20 UTC (a1d71f9c: SUN-1 +217, SUN-2 +233) was built with the tough-D hold.
+    Without it (2026-10-07, MODEL_CHANGELOG) the same inputs give SUN-1 unchanged, Otton on SUN-2, and a third ticket."""
     c = json.load(open(os.path.join(FIX, "2026_w4_sun", "expected_card.json"), encoding="utf-8"))
-    assert [(t["name"], t["est_american"]) for t in c["tickets"]] == [("SUN-1", 217), ("SUN-2", 233)]
+    assert [(t["name"], t["est_american"]) for t in c["tickets"]] == [("SUN-1", 217), ("SUN-2", 231), ("SUN-3", 389)]
     assert c["prices_pulled"] == "2026-10-02T17:51+00:00"

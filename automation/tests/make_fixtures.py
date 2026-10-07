@@ -23,6 +23,9 @@ CASES = {
     # the Week 3 Sunday legs as published (7553b8e8) predate blended probabilities (no prob/edge_pts), so this case
     # uses the regraded Week 3 board on main (same prices, grades recomputed when blended probability shipped)
     "2026_w3_sun": ("25fc99f6", 2026, 3, "sun", "regraded Week 3 board (published card 7553b8e8 can't be rebuilt as-is)"),
+    "2026_w3_tnf": ("25fc99f6", 2026, 3, "tnf", "regraded Week 3 board (the TNF legs as published predate blended probability)"),
+    "2026_w3_mnf": ("61aade4", 2026, 3, "mnf", "Week 3 MNF card build"),
+    "2026_w4_mnf": ("2d932a2", 2026, 4, "mnf", "Week 4 MNF card build"),
 }
 
 def inputs(season, week, slate):

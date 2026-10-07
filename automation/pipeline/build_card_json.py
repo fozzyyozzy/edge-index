@@ -81,13 +81,14 @@ def frac(v):
     n, d = str(v).split("/"); return int(n) / int(d)
 
 def player_market_holds(r, avail=None):
-    """holds that apply to every rung of a player/market: injury, team change, blowout, matchup, volume"""
+    """holds that apply to every rung of a player/market: injury, team change, blowout, own volume. A tough opposing
+    defense is not a hold: it costs the leg a grade step on the Legs board (grade_legs.py), and competes on grade/edge."""
     why = []
     if avail is not None: why += availability.reasons(avail, r.Player, r.Market, r.Team)[0]   # R6 injury / by hand
     if getattr(r, "TeamChange", False) == True:
         why.append(f"team change ({r.PrevTeam}->{r.Team})" if isinstance(getattr(r, "PrevTeam", None), str) and r.PrevTeam else "team change")
     if r.Market in ("pass_att", "pass_cmps") and blowout_flag(r.Spread): why.append(f"blowout risk (fav by {-r.Spread:g})")
-    if r.OppD == "TOUGH": why.append("opp D tough")
+    # no "opp D tough" hold: the Legs grade already takes a step for it, so a hold counted it twice (2026-10-07)
     if r.OwnVol == "TOUGH": why.append("own volume low")
     return why
 
@@ -98,7 +99,6 @@ def hold_reasons(r, avail=None):
     if getattr(r, "TeamChange", False) == True:
         why.append(f"team change ({r.PrevTeam}->{r.Team})" if isinstance(getattr(r, "PrevTeam", None), str) and r.PrevTeam else "team change")
     if r.Market in ("pass_att", "pass_cmps") and blowout_flag(r.Spread): why.append(f"blowout risk (fav by {-r.Spread:g})")
-    if r.OppD == "TOUGH": why.append("opp D tough")
     if r.OwnVol == "TOUGH": why.append("own volume low")
     if r.EstOdds < MAX_LEG_JUICE: why.append(f"price worse than {MAX_LEG_JUICE}")
     edge = getattr(r, "EdgePts", None)

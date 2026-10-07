@@ -3,6 +3,39 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-07 — fix: tough defense was counted twice (grade step + card hold)
+
+- **What:** `build_card_json.py` no longer holds a leg for "opp D tough". The Legs grade still takes one step off for a
+  tough opposing defense (`grade_legs.py`, unchanged). Those legs now compete on grade and edge like everything else,
+  and every other hold stays: injury, team change, blowout, own volume low, price past −450, edge below +2 (R4,
+  unchanged), grade below C.
+- **Why:** the defense was counted twice, once in the grade and again as a hard hold. The held-legs record says the
+  hold cost us. Held for tough defense, Weeks 3–4 (Week 3 kept only each card's top-15 holds):
+  - **All held for tough D:** 50–11 (82.0%). Average implied probability at the listed single price was 73.0%,
+    ours 73.6%. Flat 1u at the listed prices: +13.8% ROI, +8.43u.
+  - **Held only for tough D:** 11–3 (78.6%), implied 66.2%, ROI +16.1%.
+
+  This is a hypothesis-grade sample: two weeks, and correlated legs (same player, same game). The held-legs price
+  check stays in the Tuesday receipts.
+- **Effect on Weeks 3–4:** rebuilt from each card's saved inputs with the current builder, with and without the
+  hold. Week 3 TNF and Week 4 MNF are unchanged; the rest change:
+
+  | Card | Before | After |
+  |---|---|---|
+  | Week 3 Sunday | SUN-1 W, SUN-2 L, SUN-3 L | SUN-1 W, SUN-2 L, SUN-3 L |
+  | Week 3 MNF | no ticket | MNF-1 +100 W |
+  | Week 4 TNF | no ticket | TNF-1 −147 W |
+  | Week 4 Sunday | SUN-1 L, SUN-2 L | SUN-1 L, SUN-2 W, SUN-3 L |
+
+  - Week 3 Sunday: Brenton Strange and Jakobi Meyers (tough D) replace Cade Otton and Juwan Johnson, who move to SUN-3.
+  - Week 3 MNF: Luther Burden III and Rome Odunze, both C and both tough D.
+  - Week 4 TNF: DK Metcalf (tough D) with Harold Fannin Jr.
+  - Week 4 Sunday: Cade Otton (tough D) replaces Brissett on SUN-2. The new SUN-3 is Brissett, Ty Johnson (tough D)
+    and Jaylin Noel.
+
+  Published cards are locked (their newsletters went out), so none of this changes the record. The golden fixtures
+  are updated to the new rule in the same commit.
+
 ## 2026-10-04 — bug fix: Legs board dropped D-graded rungs inside a ladder (display; cards unaffected)
 
 - **What:** `grade_legs.py` now shows every DK rung from the lowest up to the last one graded C or better, D rungs in

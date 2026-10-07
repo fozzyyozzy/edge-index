@@ -171,7 +171,7 @@ def test_r3_best_graded_rung_at_or_below_the_floor(slate_root):
     (dict(odds=-500), "price worse than -450"),                                      # price cap
     (dict(market="pass_att", floor=30, spread=-8.0), "blowout risk"),                 # R5
     (dict(team_change=True, prev_team="OLD"), "team change"),                        # R6
-    (dict(opp_d="TOUGH"), "opp D tough"),
+    (dict(own_vol="TOUGH"), "own volume low"),
 ])
 def test_holds_keep_a_leg_off_the_card(slate_root, bad, reason):
     kw = dict(bad); grade = kw.pop("grade", "A"); odds = kw.pop("odds", -250); edge = kw.pop("edge", 4.0)
@@ -179,6 +179,14 @@ def test_holds_keep_a_leg_off_the_card(slate_root, bad, reason):
     card = run_card(slate_root)
     assert "Bad" not in {c["player"] for c in card["candidates"]}
     assert any(reason in r for r in held_reasons(card, "Bad")), held_reasons(card, "Bad")
+
+
+def test_tough_defense_is_not_a_hold(slate_root):
+    """the Legs grade already steps a tough-D leg down; the card no longer holds it too (double count, 2026-10-07)"""
+    write_slate(slate_root, [row("ToughD", GAMES[0], grade="B", opp_d="TOUGH")] + filler())
+    card = run_card(slate_root)
+    assert "ToughD" in {c["player"] for c in card["candidates"]}
+    assert not any("opp D tough" in r for r in held_reasons(card, "ToughD"))
 
 
 def test_r6_injury_holds_from_the_availability_snapshot(slate_root):
