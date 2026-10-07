@@ -41,6 +41,11 @@ const rowKey = p => `${p.player}|${p.market}`;
 // Per-leg hit probability for the slip: the rung's `prob` from grade_legs.py (common.leg_prob: lower of the L10/L15
 // add-one clear rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90). Older files without `prob`:
 // the add-one clear rate alone. Not calibrated. null when a rung has no L10/L15 (a hold with fewer than 10 games).
+// watch flags (availability.py): injury watch and/or QB change. One ticket max either way (R11).
+const watchLabel = fs => fs.every(f => f.startsWith("injury watch")) ? "INJURY WATCH"
+  : fs.every(f => f.startsWith("QB change")) ? "QB CHANGE" : "WATCH";
+const watchText = fs => fs.map(x => x.replace(/^injury watch: /, "")).join(" · ");
+
 function legProb(r) {
   if (r.prob != null) return r.prob;
   const win = s => { const m = /^(\d+)\/(\d+)$/.exec(s || ""); return m ? (+m[1] + 1) / (+m[2] + 2) : null; };
@@ -209,10 +214,10 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
                 fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
             {p.injury && !p.held && <span title={p.injury.join("; ")}
               style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
-                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>INJURY WATCH</span>}
+                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>{watchLabel(p.injury)}</span>}
           </div>
           {p.injury && !p.held && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
-            {p.injury.map(x => x.replace(/^injury watch: /, "")).join(" · ")}</div>}
+            {watchText(p.injury)}</div>}
           {sub && <div style={{fontSize:9.5,fontFamily:T.mono,marginTop:2,
             color: held ? "#d0707a" : "#666"}}>{p.held ? "HOLD · " : p.comp_held ? "BELOW C · " : ""}{sub}</div>}
         </div>

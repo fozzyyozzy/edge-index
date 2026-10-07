@@ -23,6 +23,11 @@ const last3Of = v => Array.isArray(v) ? v :
   (String(v || "").replace(/np\.\w+\(/g, "").match(/-?\d+(\.\d+)?/g) || []).map(Number);
 
 // Older cards have no Reasons on held rows; rebuild them from the flags.
+// watch flags (availability.py): injury watch and/or QB change. One ticket max either way (R11).
+const watchLabel = fs => fs.every(f => f.startsWith("injury watch")) ? "INJURY WATCH"
+  : fs.every(f => f.startsWith("QB change")) ? "QB CHANGE" : "WATCH";
+const watchText = fs => fs.map(x => x.replace(/^injury watch: /, "")).join(" · ");
+
 function heldReasons(h) {
   if (h.Reasons?.length) return h.Reasons;
   const r = [];
@@ -91,10 +96,10 @@ function Leg({ l, last }) {
           <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>{l.team} v {l.opp}</span>
           {l.injury_watch && <span title={l.injury_watch.join("; ")}
             style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
-              fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>INJURY WATCH</span>}
+              fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>{watchLabel(l.injury_watch)}</span>}
         </div>
         {l.injury_watch && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
-          {l.injury_watch.map(x => x.replace(/^injury watch: /, "")).join(" · ")}</div>}
+          {watchText(l.injury_watch)}</div>}
         <div style={{fontSize:11,fontFamily:T.mono,marginTop:2}}>
           <span style={{color:T.accent,fontWeight:700}}>{rungStr(l.rung)}</span>{" "}
           <span style={{color:"#999"}}>{MARKET_LABEL[l.market] || l.market}</span>

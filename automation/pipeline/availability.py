@@ -21,6 +21,9 @@ Rules (a hold is a hard hold: grade F on the Legs tab, never on a card ticket):
   hold  Did Not Participate in this week's latest practice report (a "resting player" rest day is ignored)
   hold  manual hold
   flag  Limited practice this week with no game status yet
+  flag  QB change: the team's leading passer (pass attempts) in its most recent game isn't the QB who led most of its
+        last 10 games -> every pass-catcher's and passer's receiving/passing legs on that team ("QB change: history from
+        a different QB"). The L10/L15 history was built with someone else throwing.
 Flags are warnings on the leg (Legs tab and card); they don't change the grade or keep a leg off a ticket.
 Only weeks strictly before `week` count for missed games (walk-forward).
 
@@ -75,6 +78,28 @@ def missed(snap, name, team):
     k = norm_name(name); wks = sorted(int(w) for w in games)
     return [w for w in wks if k not in games[str(w)]], wks[-1]
 
+PASS_MARKETS = {"rec_yds", "receptions", "pass_yds", "pass_att", "pass_cmps"}   # a QB change touches these legs
+
+
+def qb_changes(stats, season, week, window=10):
+    """{team: dict(recent, usual, usual_games, games, week)} for teams whose leading passer in their most recent game
+    (by pass attempts) is not the one who led most of their last `window` games. Walk-forward: only games before
+    (season, week). stats = weekly player rows (several seasons) with team, season, week, attempts, player_display_name."""
+    s = stats[(stats.attempts.fillna(0) > 0) & ((stats.season < season) | ((stats.season == season) & (stats.week < week)))]
+    out = {}
+    for tm, g in s.groupby("team"):
+        lead = g.sort_values("attempts", ascending=False).drop_duplicates(["season", "week"])
+        lead = lead.sort_values(["season", "week"]).tail(window)
+        if lead.empty: continue
+        counts = lead.player_display_name.value_counts()
+        recent, usual = lead.player_display_name.iloc[-1], counts.index[0]
+        if recent != usual and counts.iloc[0] > len(lead) / 2:       # "most of the window" led by someone else
+            last = lead.iloc[-1]
+            out[tm] = dict(recent=recent, usual=usual, usual_games=int(counts.iloc[0]), games=int(len(lead)),
+                           week=f"{int(last.season)} wk {int(last.week)}")
+    return out
+
+
 def build(season, week, stats=None):
     """players: {norm_name: dict(team, hold=[reasons], flag=[reasons], status, injury, practice, manual)} for everyone
     the injury report or the manual file names; team_games: who played in each team's last two games; plus sources."""
@@ -93,6 +118,14 @@ def build(season, week, stats=None):
     except Exception as ex:
         stats = None; src["weekly_stats"] = f"unavailable ({type(ex).__name__})"
     games = team_games(snaps, stats, week)
+    qb = {}
+    try:                                   # L10 reaches into last season early in the year
+        both = pd.concat([fetch_season(season - 1), stats]) if stats is not None else None
+        if both is not None:
+            qb = qb_changes(both, season, week)
+            src["qb_change"] = f"{len(qb)} team(s): " + ", ".join(sorted(qb)) if qb else "none"
+    except Exception as ex:
+        src["qb_change"] = f"unavailable ({type(ex).__name__})"
     try:
         inj = _get(f"{REL}/injuries/injuries_{season}.csv")
         inj = inj[(inj.week == week) & (inj.season_type == "REG")]
@@ -122,7 +155,7 @@ def build(season, week, stats=None):
     # drop players with nothing to say (a Full-practice row and no misses)
     out = {k: v for k, v in out.items() if v["hold"] or v["flag"] or v.get("manual")}
     return dict(season=season, week=week, fetched_at=datetime.now(timezone.utc).isoformat(timespec="minutes"),
-                sources=src, team_games=games, players=out)
+                sources=src, team_games=games, qb_change=qb, players=out)
 
 def path(season, week, slate):
     return P("cards", f"availability_{season}_w{week}_{slate}.json")
@@ -148,6 +181,10 @@ def reasons(snap, name, market, team=None):
     if e and (team is None or e["team"] in (None, team)):
         holds += [f"injury: {h}" for h in e["hold"]]
         flags += [f"injury watch: {f}" for f in e["flag"]]
+    q = snap.get("qb_change", {}).get(team or "")
+    if q and market in PASS_MARKETS:       # a watch (one ticket max, R11), not a hold
+        flags.append(f"QB change: history from a different QB ({q['recent']} led the team's last game, {q['week']}; "
+                     f"{q['usual']} led {q['usual_games']} of its last {q['games']})")
     return holds, flags
 
 if __name__ == "__main__":
