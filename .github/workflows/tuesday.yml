@@ -37,6 +37,10 @@ jobs:
           echo "WEEK=$W" >> "$GITHUB_ENV"; echo "grading week $W"
       - name: grade last week's card
         run: python automation/pipeline/grade.py --season "$SEASON" --week "$WEEK"
+      - name: price check (report only) - holds, carded legs and the Legs board against their prices
+        run: |
+          python automation/pipeline/price_check.py --season "$SEASON" --through "$WEEK" --out "automation/receipts/price_check_${SEASON}.md"
+          gh issue create --title "PRICE CHECK: ${SEASON} through week ${WEEK}" --body-file "automation/receipts/price_check_${SEASON}.md"
       - name: publish season record to site (NFL Record tab)
         run: |
           mkdir -p cfb-app/public/data
