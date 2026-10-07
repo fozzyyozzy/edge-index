@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { teamColor } from "./nflTeams";
 import { SLATES, defaultSlate } from "./nflSlates";
 import SlateSwitch from "./SlateSwitch";
+import { WatchChip, Footnotes, buildNotes } from "./watchNotes";
 // NFL Card — the plays. Reads /data/nfl_card_<slate>.json (automation/pipeline/build_card_json.py).
 
 const T = {
@@ -23,11 +24,6 @@ const last3Of = v => Array.isArray(v) ? v :
   (String(v || "").replace(/np\.\w+\(/g, "").match(/-?\d+(\.\d+)?/g) || []).map(Number);
 
 // Older cards have no Reasons on held rows; rebuild them from the flags.
-// watch flags (availability.py): injury watch and/or QB change. One ticket max either way (R11).
-const watchLabel = fs => fs.every(f => f.startsWith("injury watch")) ? "INJURY WATCH"
-  : fs.every(f => f.startsWith("QB change")) ? "QB CHANGE" : "WATCH";
-const watchText = fs => fs.map(x => x.replace(/^injury watch: /, "")).join(" · ");
-
 function heldReasons(h) {
   if (h.Reasons?.length) return h.Reasons;
   const r = [];
@@ -82,7 +78,7 @@ function Price({ leg }) {
   );
 }
 
-function Leg({ l, last }) {
+function Leg({ l, last, marks }) {
   const l3 = last3Of(l.last3);
   return (
     <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",padding:"9px 12px 9px 10px",
@@ -94,12 +90,9 @@ function Leg({ l, last }) {
           {l.star && <span title="floor star: L10 ≥ 9/10 and L15 ≥ 13/15 — may anchor two tickets"
             style={{fontSize:10,color:T.amber}}>★</span>}
           <span style={{fontSize:10,color:T.muted,fontFamily:T.mono}}>{l.team} v {l.opp}</span>
-          {l.injury_watch && <span title={l.injury_watch.join("; ")}
-            style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
-              fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>{watchLabel(l.injury_watch)}</span>}
+          {l.injury_watch && <WatchChip flags={l.injury_watch} mono={T.mono}
+            marks={marks ? marks(l.player, l.team, l.injury_watch) : []} />}
         </div>
-        {l.injury_watch && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
-          {watchText(l.injury_watch)}</div>}
         <div style={{fontSize:11,fontFamily:T.mono,marginTop:2}}>
           <span style={{color:T.accent,fontWeight:700}}>{rungStr(l.rung)}</span>{" "}
           <span style={{color:"#999"}}>{MARKET_LABEL[l.market] || l.market}</span>
@@ -123,7 +116,7 @@ function Leg({ l, last }) {
 
 // hand = a ticket published by hand before the automated card (nfl_handbuilt_<slate>.json): amber flag instead of the
 // Bloom/Reduced label, no model hit (it has no pipeline numbers), payout as published.
-function Ticket({ t, hand }) {
+function Ticket({ t, hand, marks }) {
   const color = hand || t.reduced ? T.amber : T.accent;
   const payoutX = t.est_payout ?? (t.est_american != null ? (t.est_american > 0 ? 1 + t.est_american / 100 : 1 + 100 / -t.est_american) : null);
   return (
@@ -149,7 +142,7 @@ function Ticket({ t, hand }) {
       </div>
       {hand && <div style={{fontSize:10,color:"#999",padding:"8px 14px",borderBottom:`1px solid ${T.border}`,lineHeight:1.6}}>
         Published in the newsletter before the automated card; graded Tuesday, excluded from grade stats.</div>}
-      {t.legs.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === t.legs.length - 1} />)}
+      {t.legs.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === t.legs.length - 1} marks={marks} />)}
     </div>
   );
 }
@@ -178,6 +171,10 @@ export default function NFLHub() {
   const card = files && slate ? files[slate] : null;
   // a hand-built file only shows with the same week's card (or alone, before the card posts)
   const hand = slate && hands[slate] && (!card || hands[slate].week === card.week) ? hands[slate] : null;
+  // watch-flag footnotes, numbered per list: the tickets, and the floors listed as singles
+  const legItems = legs => legs.map(l => ({ player: l.player, team: l.team, flags: l.injury_watch }));
+  const ticketNotes = buildNotes(legItems((card?.tickets || []).flatMap(t => t.legs)));
+  const singleNotes = buildNotes(legItems(card?.floors_singles || []));
   const available = files ? Object.fromEntries(SLATES.map(([s]) => [s, files[s] || hands[s]])) : null;
   const pulled = card?.prices_pulled ? new Date(card.prices_pulled).toLocaleString(undefined,
     { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit" }) : null;
@@ -218,13 +215,16 @@ export default function NFLHub() {
         )}
         {card.tickets.length === 0 && <div style={{fontSize:10,color:"#555"}}>
           No ticket cleared the rules this slate — see what was held back below.</div>}
-        {card.tickets.map(t => <Ticket key={t.name} t={t} />)}
+        {card.tickets.map(t => <Ticket key={t.name} t={t} marks={ticketNotes.marks} />)}
+        <Footnotes notes={ticketNotes.notes} mono={T.mono} style={{margin:"-4px 2px 0"}} />
 
         {SINGLE_GAME.has(slate) && card.floors_singles?.length > 0 && <>
           <Label>FLOORS AS SINGLES · {card.floors_singles.length}</Label>
           <div style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,overflow:"hidden"}}>
-            {card.floors_singles.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === card.floors_singles.length - 1} />)}
+            {card.floors_singles.map((l, i) => <Leg key={`${l.player}|${l.market}`} l={l} last={i === card.floors_singles.length - 1}
+              marks={singleNotes.marks} />)}
           </div>
+          <Footnotes notes={singleNotes.notes} mono={T.mono} style={{margin:"8px 2px 0"}} />
         </>}
 
         {card.notes?.trim() && <>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { teamColor, normName } from "./nflTeams";
 import { SLATES, defaultSlate } from "./nflSlates";
 import SlateSwitch from "./SlateSwitch";
+import { WatchChip, Footnotes, buildNotes } from "./watchNotes";
 // NFL Legs — every graded rung for the slate + a slip builder. Reads /data/nfl_legs_<slate>.json
 // (automation/pipeline/grade_legs.py) and /data/nfl_usage.json (automation/pipeline/usage.py). Absorbs the old Usage tab.
 // Deep link: #legs?player=<name> opens that player's rows (used by the Matchups tab's Edge Leans).
@@ -41,11 +42,6 @@ const rowKey = p => `${p.player}|${p.market}`;
 // Per-leg hit probability for the slip: the rung's `prob` from grade_legs.py (common.leg_prob: lower of the L10/L15
 // add-one clear rates, blended toward DK's no-vig price as 10 extra games, capped at 0.90). Older files without `prob`:
 // the add-one clear rate alone. Not calibrated. null when a rung has no L10/L15 (a hold with fewer than 10 games).
-// watch flags (availability.py): injury watch and/or QB change. One ticket max either way (R11).
-const watchLabel = fs => fs.every(f => f.startsWith("injury watch")) ? "INJURY WATCH"
-  : fs.every(f => f.startsWith("QB change")) ? "QB CHANGE" : "WATCH";
-const watchText = fs => fs.map(x => x.replace(/^injury watch: /, "")).join(" · ");
-
 function legProb(r) {
   if (r.prob != null) return r.prob;
   const win = s => { const m = /^(\d+)\/(\d+)$/.exec(s || ""); return m ? (+m[1] + 1) / (+m[2] + 2) : null; };
@@ -181,7 +177,7 @@ function BoardTally({ rows, slate }) {
 /* ---------- one player/market row ---------- */
 const STAT_COLS = "58px 48px 78px 70px 74px 118px 26px";
 
-function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
+function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused, marks }) {
   const b = bestRung(p);
   const pc = POS_COLOR[p.pos] || T.muted;
   const held = !!p.held || !!p.comp_held;   // comp_held: below C only because of new target competition — shown like a hold
@@ -212,12 +208,8 @@ function LegRow({ p, usage, open, onToggle, onAdd, inSlip, focused }) {
             {p.posted_after_card && <span title="DK posted this market after the card was built; it can't be on a card ticket"
               style={{fontSize:8,color:"#9aa",border:"1px solid #ffffff22",borderRadius:3,padding:"1px 5px",
                 fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>POSTED AFTER CARD</span>}
-            {p.injury && !p.held && <span title={p.injury.join("; ")}
-              style={{fontSize:8,color:T.amber,border:`1px solid ${T.amber}55`,borderRadius:3,padding:"1px 5px",
-                fontFamily:T.mono,letterSpacing:1,whiteSpace:"nowrap"}}>{watchLabel(p.injury)}</span>}
+            {p.injury && !p.held && <WatchChip flags={p.injury} mono={T.mono} marks={marks(p.player, p.team, p.injury)} />}
           </div>
-          {p.injury && !p.held && <div style={{fontSize:9.5,color:T.amber,fontFamily:T.mono,marginTop:2}}>
-            {watchText(p.injury)}</div>}
           {sub && <div style={{fontSize:9.5,fontFamily:T.mono,marginTop:2,
             color: held ? "#d0707a" : "#666"}}>{p.held ? "HOLD · " : p.comp_held ? "BELOW C · " : ""}{sub}</div>}
         </div>
@@ -539,6 +531,8 @@ export default function LegsHub() {
         ((y.b.clear_pct ?? 0) - (x.b.clear_pct ?? 0)) || x.p.player.localeCompare(y.p.player))
       .map(x => x.p);
   }, [players, minGrade, market, team, game, hideHolds, q]);
+  // watch-flag footnotes for the rows on screen (held rows show their hold, not a watch chip)
+  const legNotes = buildNotes(rows.filter(p => !p.held).map(p => ({ player: p.player, team: p.team, flags: p.injury })));
 
   const toggle = k => setOpen(s => { const n = new Set(s); n.has(k) ? n.delete(k) : n.add(k); return n; });
   const inSlip = (p, r) => slip.some(l => l.player === p.player && l.market === p.market && l.rung === r.rung);
@@ -658,8 +652,9 @@ export default function LegsHub() {
               No legs at that grade for this filter.</div>}
             {rows.map(p => (
               <LegRow key={rowKey(p)} p={p} usage={usage} open={open.has(rowKey(p))} onToggle={() => toggle(rowKey(p))}
-                onAdd={addLeg} inSlip={inSlip} focused={focus?.key === rowKey(p)} />
+                onAdd={addLeg} inSlip={inSlip} focused={focus?.key === rowKey(p)} marks={legNotes.marks} />
             ))}
+            <Footnotes notes={legNotes.notes} mono={T.mono} style={{margin:"10px 2px 0"}} />
             <div style={{marginTop:10,fontSize:9,color:"#444"}}>{rows.length} of {players.length} player/markets shown</div>
           </div>
 
