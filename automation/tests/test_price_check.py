@@ -18,3 +18,17 @@ def test_board_split_counts_every_rung_and_one_per_row():
     one = rows[("-500 or better, edge >= +2", "one rung per player/market")]
     assert one["n"] == 1 and one["record"] == "1-0"                       # the A rung (25+) over the C rung
     assert rows[("worse than -500", "every rung")]["n"] == 1
+
+
+def test_calibration_buckets_one_rung_per_row_for_both_sources():
+    from price_check import calibration
+    b = pd.DataFrame([dict(week=4, slate="sun", player=f"P{i}", market="rec_yds", rung=25.0, odds=-300, grade="A", edge=3.0,
+                           prob=0.82, result="hit" if i < 3 else "miss") for i in range(4)]
+                     + [dict(week=4, slate="sun", player="P0", market="rec_yds", rung=15.0, odds=-900, grade="C", edge=1.0,
+                             prob=0.90, result="hit")])                   # P0's lower C rung: not the row's best rung
+    rows, summary = calibration(b)
+    ours = [r for r in rows if r["source"] == "ours"]
+    assert ours == [dict(source="ours", bucket="80-85", n=4, predicted=82.0, hit=75.0, gap=-7.0)]
+    dk = [r for r in rows if r["source"] == "DK implied"]
+    assert dk == [dict(source="DK implied", bucket="75-80", n=4, predicted=75.0, hit=75.0, gap=0.0)]
+    assert {s["source"]: s["mean_abs_gap"] for s in summary} == {"ours": 7.0, "DK implied": 0.0}

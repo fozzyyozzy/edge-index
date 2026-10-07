@@ -12,6 +12,8 @@ shows a pattern over at least 4 weeks).
    better range split by edge (>= +2 vs < +2). Hit %, implied %, our %, flat ROI — counting every rung, and counting one
    rung per player/market (the row's best rung within that split: highest grade, then the higher rung — what the Legs
    tab headlines). Prices are the board's: the last pre-kickoff regrade (odds refresh), not the card's publish price.
+3. Calibration: the board's C-or-better rungs, one per player/market, bucketed by our probability and by DK's implied
+   probability (60-65 ... 90+), with hit % per bucket, Brier score and mean |gap| for each.
 """
 import argparse, glob, json, os, sys
 import pandas as pd
@@ -115,6 +117,33 @@ def board_split(b):
     return out
 
 
+BUCKETS = [(0, .60, "< 60"), (.60, .65, "60-65"), (.65, .70, "65-70"), (.70, .75, "70-75"), (.75, .80, "75-80"),
+           (.80, .85, "80-85"), (.85, .90, "85-90"), (.90, 1.01, "90+")]
+
+
+def calibration(b):
+    """One rung per player/market (the row's best C-or-better rung: highest grade, then the higher rung), bucketed by our
+    probability and, separately, by DK's implied probability at the board price. Returns (rows, summary): per bucket n,
+    average predicted %, hit %, gap; summary = Brier score and n-weighted mean |hit - predicted| for each source."""
+    s = b[b.result.isin(["hit", "miss"]) & b.prob.notna()].copy()
+    if s.empty: return [], []
+    s["gi"] = s.grade.map({g: i for i, g in enumerate(reversed(GRADE_OK))})
+    s = s.sort_values(["gi", "rung"], ascending=False).drop_duplicates(["week", "slate", "player", "market"])
+    s["y"] = (s.result == "hit").astype(float); s["dk"] = s.odds.map(implied)
+    rows, summary = [], []
+    for src, col in (("ours", "prob"), ("DK implied", "dk")):
+        gaps = []
+        for lo, hi, lab in BUCKETS:
+            x = s[(s[col] >= lo) & (s[col] < hi)]
+            if not len(x): continue
+            pred, hit = 100 * x[col].mean(), 100 * x.y.mean()
+            rows.append(dict(source=src, bucket=lab, n=len(x), predicted=round(pred, 1), hit=round(hit, 1), gap=round(hit - pred, 1)))
+            gaps.append((len(x), abs(hit - pred)))
+        summary.append(dict(source=src, rows=len(s), brier=round(float(((s[col] - s.y) ** 2).mean()), 4),
+                            mean_abs_gap=round(sum(n * g for n, g in gaps) / sum(n for n, _ in gaps), 1)))
+    return rows, summary
+
+
 def table(rows, cols):
     head = "| " + " | ".join(cols) + " |\n|" + "|".join("---" for _ in cols) + "|\n"
     return head + "".join("| " + " | ".join("" if r.get(c) is None else str(r.get(c)) for c in cols) + " |\n" for r in rows)
@@ -137,6 +166,13 @@ def main():
           f"## Legs board, C-or-better rungs (weeks {', '.join(map(str, weeks)) or 'none'})", "",
           "Board prices = last pre-kickoff regrade. One rung per player/market = the row's best rung within the split.", "",
           table(board_split(b), ["group", "count", "n", "record", "hit", "implied", "ours", "beat_price", "roi", "units"])]
+    cal, cal_sum = calibration(b) if len(b) else ([], [])
+    md += ["## Calibration: our probability vs DK's implied, one rung per player/market", "",
+           "Every settled C-or-better rung, the row's best rung only. Gap = hit % minus predicted %. Lower Brier / mean gap = "
+           "tracks hit rates better. Our probability is capped at 90%. If DK keeps tracking better, test a blend that weights "
+           "the market more (report only).", "",
+           table(cal_sum, ["source", "rows", "brier", "mean_abs_gap"]),
+           table(cal, ["source", "bucket", "n", "predicted", "hit", "gap"])]
     text = "\n".join(md)
     if a.out: open(a.out, "w", encoding="utf-8").write(text)
     sys.stdout.buffer.write(text.encode("utf-8"))
