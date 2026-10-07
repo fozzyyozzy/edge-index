@@ -38,6 +38,10 @@ on:
       slate:
         description: "tnf | sun | mnf (blank = the upcoming slate)"
         required: false
+      retry:
+        description: "true = automatic retry of a failed scheduled run (retry-failed.yml): use the scheduled slot guard"
+        required: false
+        default: "false"
 
 concurrency:                   # shared with card.yml and tuesday.yml: they all commit to main
   group: data-main
@@ -66,11 +70,11 @@ jobs:
           W="${{ github.event.inputs.week }}"
           [ -z "$W" ] && W=$(python automation/pipeline/nfl_week.py --season "$SEASON" --mode current)
           echo "WEEK=$W" >> "$GITHUB_ENV"; echo "week $W"
-      - name: which slate (scheduled runs serve the latest unserved ET slot; manual runs always go)
+      - name: which slate (scheduled runs and retries serve the latest unserved ET slot; manual runs always go)
         id: slot
         run: |
           S="${{ github.event.inputs.slate }}"; SLOT=""
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.retry }}" != "true" ]; then
             [ -z "$S" ] && S=$(python -c "import sys; sys.path.insert(0,'automation/pipeline'); import refresh_odds as r; from datetime import datetime, timezone; print(r.upcoming_slate(datetime.now(timezone.utc).astimezone(r.ET)))")
           else
             read -r S SLOT <<< "$(python automation/pipeline/refresh_odds.py --which-slate)"

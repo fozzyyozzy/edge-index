@@ -50,19 +50,6 @@ def test_builder_writes_the_snapshot_when_grade_legs_did_not(tmp_path, monkeypat
     assert os.path.exists(f) and json.load(open(f)) == stub
 
 
-def test_nflverse_fetch_is_retried(monkeypatch):
-    calls = []
-    class Resp:
-        def read(self): return b"a,b\n1,2\n"
-    def flaky(req, timeout=0):
-        calls.append(1)
-        if len(calls) < 3: raise OSError("blip")
-        return Resp()
-    monkeypatch.setattr(availability.urllib.request, "urlopen", flaky)
-    df = availability._get("https://example.invalid/x.csv", wait=0)
-    assert len(calls) == 3 and list(df.columns) == ["a", "b"]
-
-
 def test_card_workflow_runs_qa_before_anything_publishes():
     wf = yaml.safe_load(open(os.path.join(REPO, ".github", "workflows", "card.yml"), encoding="utf-8"))
     steps = wf["jobs"]["run"]["steps"]
@@ -74,3 +61,18 @@ def test_card_workflow_runs_qa_before_anything_publishes():
     assert "legs_coverage.py" in steps[idx("card QA")]["run"]           # dropped Legs rungs show up in the checklist
     fail = steps[idx("QA failed")]
     assert "env.QA == 'fail'" in fail["if"] and 'CARD FAILED QA' in fail["run"] and "exit 1" in fail["run"]
+
+
+def test_failed_scheduled_settle_and_refresh_retry_once_card_never():
+    wf = yaml.safe_load(open(os.path.join(REPO, ".github", "workflows", "retry-failed.yml"), encoding="utf-8"))
+    on = wf.get("on") or wf.get(True)                                   # PyYAML reads the key `on` as True
+    assert sorted(on["workflow_run"]["workflows"]) == ["refresh-odds", "settle-results"]   # never card-build-and-draft
+    job = wf["jobs"]["retry"]
+    assert "conclusion == 'failure'" in job["if"] and "event == 'schedule'" in job["if"]    # a retry (dispatch) isn't retried
+    steps = "\n".join(s.get("run", "") for s in job["steps"])
+    assert "sleep 3600" in steps and "-f retry=true" in steps
+    names = {yaml.safe_load(open(f, encoding="utf-8"))["name"] for f in
+             (os.path.join(REPO, ".github", "workflows", n) for n in ("settle.yml", "refresh-odds.yml"))}
+    assert names == {"settle-results", "refresh-odds"}                  # the names retry-failed listens for
+    ro = open(os.path.join(REPO, ".github", "workflows", "refresh-odds.yml"), encoding="utf-8").read()
+    assert 'github.event.inputs.retry }}" != "true"' in ro               # a retry uses the scheduled slot guard

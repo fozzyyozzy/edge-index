@@ -1,0 +1,37 @@
+name: retry-failed
+
+# When a SCHEDULED settle-results or refresh-odds run fails, wait about an hour and run it once more (latest main, a
+# fresh download of everything). Only scheduled runs are retried, and the retry is a workflow_dispatch run, so a retry
+# that fails is never retried again. card-build-and-draft is deliberately not here: a failed card stays failed until a
+# person looks at it (its QA gate decides what publishes).
+on:
+  workflow_run:
+    workflows: ["settle-results", "refresh-odds"]
+    types: [completed]
+
+permissions:
+  actions: write                 # workflow_dispatch with GITHUB_TOKEN
+
+jobs:
+  retry:
+    if: github.event.workflow_run.conclusion == 'failure' && github.event.workflow_run.event == 'schedule'
+    runs-on: ubuntu-24.04            # pinned for the season; ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (test it in the offseason)
+    timeout-minutes: 75
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FAILED: ${{ github.event.workflow_run.name }}
+      FAILED_URL: ${{ github.event.workflow_run.html_url }}
+      WORKFLOW_FILE: ${{ github.event.workflow_run.path }}
+    steps:
+      - name: wait about an hour (an upstream outage often clears; a late schedule may also have served the slot)
+        run: |
+          echo "::warning::$FAILED failed ($FAILED_URL); retrying once in ~60 minutes"
+          sleep 3600
+      - name: run it once more
+        run: |
+          WF=$(basename "$WORKFLOW_FILE")
+          case "$WF" in
+            refresh-odds.yml) gh workflow run "$WF" --repo "$GITHUB_REPOSITORY" --ref main -f retry=true ;;   # slot guard, as if scheduled
+            *)                gh workflow run "$WF" --repo "$GITHUB_REPOSITORY" --ref main ;;
+          esac
+          echo "::notice::retry of $FAILED dispatched ($WF); the original failure: $FAILED_URL"

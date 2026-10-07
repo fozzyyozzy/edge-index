@@ -16,14 +16,13 @@ Cost: 1 request per market per event -> 14 per game (7 alternate ladders + 7 sta
   python pipeline/fetch_lines.py --season 2026 --week 3 --slate sun     (just that slate's unstarted games)
 Exit 3 = skipped because the weekly budget would be exceeded.
 """
-import argparse, csv, json, os, shutil, sys, urllib.request
+import argparse, csv, json, os, shutil, sys
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import P
+from common import P, download
 
-BASE = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl"
 MARKETS = {                      # Odds API market key -> pipeline market
     "player_reception_yds_alternate": "rec_yds",
     "player_receptions_alternate": "receptions",
@@ -46,11 +45,10 @@ def slate_of(commence_iso):
     d = datetime.fromisoformat(commence_iso.replace("Z", "+00:00")).astimezone(ET).strftime("%A")
     return "tnf" if d == "Thursday" else "mnf" if d == "Monday" else "sun"
 
-def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "edge-index/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        h = r.headers
-        return json.loads(r.read()), h.get("x-requests-remaining"), h.get("x-requests-last")
+def get(path):
+    """The Odds API via common.download (retries + backoff; errors name the source with the key redacted)"""
+    raw, h, _ = download("The Odds API", timeout=60, path=path)
+    return json.loads(raw), h.get("x-requests-remaining"), h.get("x-requests-last")
 
 def week_usage(season, week):
     path = P("lines", "odds_usage.csv")
@@ -78,7 +76,7 @@ def main():
     budget = int(os.environ.get("ODDS_WEEKLY_BUDGET", "3000"))
     a.out = a.out or P("lines")
 
-    events, rem, _ = get(f"{BASE}/events?apiKey={key}")          # the events list doesn't count against the quota
+    events, rem, _ = get(f"/events?apiKey={key}")          # the events list doesn't count against the quota
     now = datetime.now(timezone.utc); horizon = now + timedelta(days=a.days)
     start = lambda e: datetime.fromisoformat(e["commence_time"].replace("Z", "+00:00"))
     events = [e for e in events if now < start(e) <= horizon]      # not kicked off yet
@@ -96,9 +94,9 @@ def main():
     rows, cost, pulled_games = [], 0, set()
     mk = ",".join(list(MARKETS) + list(TWOWAY)); two = {}
     for e in events:
-        url = f"{BASE}/events/{e['id']}/odds?apiKey={key}&regions=us&bookmakers={a.book}&markets={mk}&oddsFormat=american"
+        path = f"/events/{e['id']}/odds?apiKey={key}&regions=us&bookmakers={a.book}&markets={mk}&oddsFormat=american"
         try:
-            d, rem, last = get(url)
+            d, rem, last = get(path)
         except Exception as ex:
             print("  skip", e["away_team"], "@", e["home_team"], ex); continue
         cost += int(last or 0)

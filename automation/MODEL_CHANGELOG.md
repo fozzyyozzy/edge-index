@@ -3,6 +3,25 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-07 — downloads survive upstream changes (process, not a model change)
+
+- **What:**
+  - **One download path.** Every outside download (nflverse stats, schedule, injuries and snap counts; The Odds API)
+    goes through `common.download()`.
+  - **Retries.** Three tries per URL with backoff (5s, then 15s) on network errors, timeouts, 429 and 5xx. A 404 or
+    another permanent error moves straight on.
+  - **Fallbacks.** Each nflverse file falls back to its `.csv.gz` copy, and the schedule also to the nfldata mirror.
+    The Odds API has no second source, so it gets retries only.
+  - **Errors.** When every source fails, the error names the source and every URL tried, with API keys redacted.
+  - **Automatic retry.** `retry-failed.yml` re-runs a failed scheduled settle-results or refresh-odds run once,
+    about an hour later. The refresh retry uses the scheduled slot guard. card.yml is never retried automatically.
+  - **Test.** `tests/test_downloads.py` fails if any pipeline or newsletter code opens a URL outside `download()`,
+    puts a download URL anywhere but `common.SOURCES`, or adds a source without a fallback or a written reason.
+- **Why:** on 2026-10-06 at 19:47 UTC nflverse replaced `games.csv` with `games.csv.gz`. Every schedule read
+  returned 404, and the 20:13 UTC settle run failed. It was patched by hand at 08:39 ET today, before the week 5 TNF
+  card.
+- **Effect:** none on cards or grades.
+
 ## 2026-10-07 — fix: tough defense was counted twice (grade step + card hold)
 
 - **What:** `build_card_json.py` no longer holds a leg for "opp D tough". The Legs grade still takes one step off for a

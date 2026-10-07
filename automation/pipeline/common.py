@@ -16,31 +16,73 @@ def norm_name(s):
     s = _SUFFIX.sub("", str(s).strip()).lower()
     return _ALIAS.get(s, s)
 
+# ── every outside download goes through download(): retries with backoff, then the next source, then one clear error ──
+# SOURCES is the only place a download URL may appear (tests/test_downloads.py enforces it). Templates are filled with
+# download()'s keyword arguments; the first URL is the primary, the rest are fallbacks, tried in order.
+NFLVERSE = "https://github.com/nflverse/nflverse-data/releases/download"
+SOURCES = {
+    "nflverse weekly player stats": [NFLVERSE + "/stats_player/stats_player_week_{season}.csv",
+                                     NFLVERSE + "/stats_player/stats_player_week_{season}.csv.gz"],
+    # nflverse swapped games.csv for games.csv.gz on 2026-10-06 (the .csv 404s); keep both, then the nfldata mirror
+    "nflverse schedule": [NFLVERSE + "/schedules/games.csv.gz",
+                          NFLVERSE + "/schedules/games.csv",
+                          "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"],
+    "nflverse injuries": [NFLVERSE + "/injuries/injuries_{season}.csv", NFLVERSE + "/injuries/injuries_{season}.csv.gz"],
+    "nflverse snap counts": [NFLVERSE + "/snap_counts/snap_counts_{season}.csv",
+                             NFLVERSE + "/snap_counts/snap_counts_{season}.csv.gz"],
+    "The Odds API": ["https://api.the-odds-api.com/v4/sports/americanfootball_nfl{path}"],     # no second source
+}
+TRIES = 3                      # per URL
+RETRY_WAIT = float(os.environ.get("EDGE_RETRY_WAIT", "5"))   # seconds before retry 1; x3 each time (5s, 15s). Tests: 0
+NO_RETRY = {400, 401, 404, 410, 422}                         # this URL won't get better: go straight to the next source
+
+
+class DownloadError(RuntimeError):
+    """every URL for a source failed; the message names the source and each URL with its error (keys redacted)"""
+
+
+def redact(text):
+    """never let an API key reach a log or an error message"""
+    return re.sub(r"(apiKey|api_key|key)=[^&\s'\")]+", r"\1=REDACTED", str(text))
+
+
+def download(source, timeout=120, **fmt):
+    """(bytes, response headers, url used) for `source`. Each URL gets TRIES attempts with backoff (network errors,
+    timeouts, 429, 5xx); a 4xx in NO_RETRY moves on at once. Raises DownloadError naming the source and every URL."""
+    import time, urllib.error
+    errors = []
+    for template in SOURCES[source]:
+        url = template.format(**fmt)
+        for i in range(TRIES):
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "edge-index/1.0 (+https://www.edge-index.com)"})
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    return r.read(), r.headers, url
+            except urllib.error.HTTPError as ex:
+                errors.append(f"{redact(url)} -> HTTP {ex.code} (attempt {i + 1})")
+                if ex.code in NO_RETRY: break
+            except Exception as ex:                    # URLError, timeout, connection reset ...
+                errors.append(f"{redact(url)} -> {type(ex).__name__}: {redact(ex)} (attempt {i + 1})")
+            if i < TRIES - 1: time.sleep(RETRY_WAIT * 3 ** i)
+    raise DownloadError(f"{source}: every source failed after retries:\n  " + "\n  ".join(errors)) from None
+
+
+def read_csv_source(source, **fmt):
+    """a CSV (plain or gzip, detected from the bytes) from download()"""
+    raw, _, _ = download(source, **fmt)
+    return pd.read_csv(io.BytesIO(raw), low_memory=False, compression="gzip" if raw[:2] == b"\x1f\x8b" else None)
+
+
 def fetch_season(yr):
-    url = f"https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{yr}.csv"
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    w = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=120).read()), low_memory=False)
+    w = read_csv_source("nflverse weekly player stats", season=yr)
     w = w[(w.season_type == "REG") & w.player_display_name.notna()].copy()
     w["key"] = w.player_display_name.map(norm_name)
     return w
 
-SCHEDULE_URLS = [   # nflverse swapped games.csv for games.csv.gz on 2026-10-06; try both, then the nfldata mirror
-    "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv.gz",
-    "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
-    "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-]
 
 def fetch_games():
-    """the nflverse schedule (every season), from the first URL that answers; raises with every URL's error if none do"""
-    errors = []
-    for url in SCHEDULE_URLS:
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            raw = urllib.request.urlopen(req, timeout=60).read()
-            return pd.read_csv(io.BytesIO(raw), low_memory=False, compression="gzip" if url.endswith(".gz") else None)
-        except Exception as ex:
-            errors.append(f"{url}: {type(ex).__name__} {ex}")
-    raise RuntimeError("no nflverse schedule source answered: " + " | ".join(errors))
+    """the nflverse schedule (every season)"""
+    return read_csv_source("nflverse schedule")
 
 
 def fetch_week(yr, wk):

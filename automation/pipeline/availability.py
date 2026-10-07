@@ -29,27 +29,16 @@ Only weeks strictly before `week` count for missed games (walk-forward).
 
   python pipeline/availability.py --season 2026 --week 4 --slate sun      # print the snapshot
 """
-import argparse, io, json, os, sys, urllib.request
+import argparse, json, os, sys
 from datetime import datetime, timezone
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
-from common import norm_name, P, fetch_season
+from common import norm_name, P, fetch_season, read_csv_source
 
-REL = "https://github.com/nflverse/nflverse-data/releases/download"
 STATUS_HOLD = {"Out", "Doubtful", "Questionable"}
 DNP = "Did Not Participate In Practice"
 LIMITED = "Limited Participation in Practice"
 
-def _get(url, tries=3, wait=10):
-    """nflverse CSV; retried, so a brief GitHub blip doesn't leave the card without R6 data (card_qa.py fails on that)"""
-    import time
-    for i in range(tries):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            return pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=120).read()), low_memory=False)
-        except Exception:
-            if i == tries - 1: raise
-            time.sleep(wait * (i + 1))
 
 def team_games(snaps, stats, week):
     """{team: {week: [norm_name who played on offense]}} for the team's last two played weeks before `week` (a bye is
@@ -108,7 +97,7 @@ def build(season, week, stats=None):
         return out.setdefault(key, dict(team=tm, hold=[], flag=[], status=None, injury=None, practice=None))
     snaps = None
     try:
-        snaps = _get(f"{REL}/snap_counts/snap_counts_{season}.csv")
+        snaps = read_csv_source("nflverse snap counts", season=season)
         src["snap_counts"] = f"weeks {int(snaps.week.min())}-{int(snaps.week.max())}"
     except Exception as ex:                                        # no data = no automatic hold, but say so on the card
         src["snap_counts"] = f"unavailable ({type(ex).__name__})"
@@ -127,7 +116,7 @@ def build(season, week, stats=None):
     except Exception as ex:
         src["qb_change"] = f"unavailable ({type(ex).__name__})"
     try:
-        inj = _get(f"{REL}/injuries/injuries_{season}.csv")
+        inj = read_csv_source("nflverse injuries", season=season)
         inj = inj[(inj.week == week) & (inj.season_type == "REG")]
         for r in inj.itertuples():
             key = norm_name(r.full_name); e = ent(key, r.team)
