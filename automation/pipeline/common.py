@@ -24,6 +24,25 @@ def fetch_season(yr):
     w["key"] = w.player_display_name.map(norm_name)
     return w
 
+SCHEDULE_URLS = [   # nflverse swapped games.csv for games.csv.gz on 2026-10-06; try both, then the nfldata mirror
+    "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv.gz",
+    "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
+    "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
+]
+
+def fetch_games():
+    """the nflverse schedule (every season), from the first URL that answers; raises with every URL's error if none do"""
+    errors = []
+    for url in SCHEDULE_URLS:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            raw = urllib.request.urlopen(req, timeout=60).read()
+            return pd.read_csv(io.BytesIO(raw), low_memory=False, compression="gzip" if url.endswith(".gz") else None)
+        except Exception as ex:
+            errors.append(f"{url}: {type(ex).__name__} {ex}")
+    raise RuntimeError("no nflverse schedule source answered: " + " | ".join(errors))
+
+
 def fetch_week(yr, wk):
     w = fetch_season(yr)
     return w[w.week == wk]

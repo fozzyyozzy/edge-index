@@ -13,7 +13,7 @@ Blend: prev season weighted (1-w), current w = min(0.6, games/8). Ranks: 1 = few
 import argparse, json, os, sys
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import fetch_season, norm_name, P
+from common import fetch_games, fetch_season, norm_name, P
 from floors import schedule
 
 SLOTS = ["QB", "RB", "WR1", "WR2", "TE", "RUN", "PASS"]
@@ -42,9 +42,7 @@ def main():
     t = slot_table(w)
     # home/away for the DEFENSE from the schedule
 
-    import io, urllib.request
-    req = urllib.request.Request("https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv", headers={"User-Agent": "Mozilla/5.0"})
-    games = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=60).read()), low_memory=False)
+    games = fetch_games()
     games = games[games.season.isin([a.season - 1, a.season])][["season", "week", "home_team", "away_team", "roof"]]
     home = {(r.season, r.week, r.home_team): True for r in games.itertuples()}
     home.update({(r.season, r.week, r.away_team): False for r in games.itertuples()})

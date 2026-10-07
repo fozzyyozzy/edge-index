@@ -11,15 +11,14 @@ from datetime import datetime, timezone
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank, load_holds, price_fields
+from common import fetch_games, norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank, load_holds, price_fields
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
 SLATE_DAYS = {"tnf": {"Thursday"}, "sun": {"Sunday", "Saturday"}, "mnf": {"Monday"}}
 
 def schedule_all(season):
-    req = urllib.request.Request("https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv", headers={"User-Agent": "Mozilla/5.0"})
-    g = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=60).read()), low_memory=False)
+    g = fetch_games()
     return g[g.season == season]
 
 def schedule(season, week):
