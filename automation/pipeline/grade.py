@@ -17,7 +17,8 @@ LETTER_ORDER = ["F", "D", "C", "B", "A-", "A", "A+"]
 # hold reason -> receipts category (a held leg with several reasons counts under each)
 HOLD_CATS = [("team change", "team change"), ("blowout", "blowout risk"), ("opp D tough", "tough defense"),
              ("own volume low", "low own volume"), ("price worse than", "price worse than −450"),
-             ("edge", "edge below +2"), ("grade below C", "grade below C")]
+             ("edge", "edge below +2"), ("grade below C", "grade below C"),
+             ("injury", "injury"), ("held by hand", "held by hand")]          # R6 holds, counted from Week 5
 
 def tally(results):
     """list of 'hit'/'miss'/'void' -> {n, hits, misses, voids}"""
