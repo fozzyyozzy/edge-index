@@ -1,0 +1,29 @@
+{
+  "half_life_games": null,
+  "lambda": {
+    "epa": 100,
+    "sr": 33,
+    "rush_epa": 100,
+    "pass_epa": 300
+  },
+  "garbage": {
+    "q2": 38,
+    "q3": 28,
+    "q4": 23
+  },
+  "prior_no_history_factor": 0.6,
+  "to_points": {
+    "spec": "rp_sr",
+    "hfa": 3.067894290840779,
+    "rush_epa": 23.622069131573618,
+    "pass_epa": 28.065898047191094,
+    "sr": 47.58319376361264
+  },
+  "tuned_on": [
+    2022,
+    2023,
+    2024
+  ],
+  "tuning_mae": 12.8692,
+  "frozen_at": "2026-10-10T15:12:12+00:00"
+}
