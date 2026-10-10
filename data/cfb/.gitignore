@@ -1,4 +1,7 @@
 # CFBD raw responses: large, re-creatable from the cache/ledger (Phase 1 brief §3)
 raw/
 *.tmp
-clean/plays.parquet
+# Rebuilt from raw/ by `python -m engine.cfb.build_tables` (Phase 2 brief §1.2)
+clean/
+# Phase 2 ratings outputs, rebuilt by `python -m engine.cfb.ratings.run`
+derived/
