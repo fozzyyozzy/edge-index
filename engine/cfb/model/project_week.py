@@ -12,14 +12,16 @@ Outputs data/cfb/derived/projections_<season>_wk<NN>.parquet and .json.
 """
 from __future__ import annotations
 import argparse
+import hashlib
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 from engine.cfb import config
 from engine.cfb.cfbd_client import CFBDClient
-from engine.cfb.model import distribution as dist, features, margin_model as mm, run as mrun
+from engine.cfb.model import distribution as dist, features, forward, margin_model as mm, run as mrun
 from engine.cfb.ratings import evaluate as reval, run as rrun
 
 OVERRIDES = config.DATA / "manual" / "qb_overrides.csv"
@@ -29,15 +31,9 @@ def name_key(name: str) -> str | None:
     return features.passer_key(f"{name} pass")
 
 
-def live_lines(season: int, week: int, fetch: bool) -> pd.DataFrame:
-    client = CFBDClient()
-    name = f"{season}_wk{week:02d}"
-    if fetch or not client.is_cached("lines_live", name):
-        raw = client.get("lines_live", "/lines",
-                         {"year": season, "week": week, "seasonType": "regular"}, name,
-                         refresh=True)
-    else:
-        raw = json.loads(client.cache_path("lines_live", name).read_text(encoding="utf-8"))
+def live_lines(season: int, week: int, fetch: bool) -> tuple[pd.DataFrame, str]:
+    """(lines, capture_ts_utc). Projection line: DraftKings, else Bovada, else median."""
+    raw, ts = forward.fetch_lines(season, week, fetch, tag="")
     rows = []
     for g in raw:
         by = {ln["provider"]: ln for ln in g.get("lines") or [] if ln.get("spread") is not None}
@@ -54,7 +50,9 @@ def live_lines(season: int, week: int, fetch: bool) -> pd.DataFrame:
         tots = [v.get("overUnder") for v in by.values() if v.get("overUnder") is not None]
         rows.append({"game_id": g["id"], "provider": pick, "spread": float(spread),
                      "total": total if total is not None else (np.median(tots) if tots else np.nan)})
-    return pd.DataFrame(rows)
+    lines = pd.DataFrame(rows)
+    dk = forward.parse_lines(raw)[["game_id", "dk_spread", "dk_total"]]
+    return (lines.merge(dk, on="game_id", how="left") if len(lines) else lines), ts
 
 
 def qb_overrides(mg: pd.DataFrame, week: int, plays) -> pd.DataFrame:
@@ -107,6 +105,11 @@ def main(argv=None) -> int:
     ap.add_argument("--season", type=int, default=config.CURRENT_SEASON)
     ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--no-fetch", action="store_true", help="use the cached live lines")
+    ap.add_argument("--no-log", action="store_true",
+                    help="don't append to the forward-test log (testing)")
+    ap.add_argument("--log-dir", type=Path, default=forward.FORWARD)
+    ap.add_argument("--log-anyway", action="store_true",
+                    help="log even if completed games before the cutoff lack plays")
     a = ap.parse_args(argv)
     params = mrun.load_params()
     dp = mrun.dist_params(params)
@@ -123,7 +126,7 @@ def main(argv=None) -> int:
             & (mg.season_type == "regular")].copy()
 
     # live lines replace the historical open
-    ll = live_lines(a.season, a.week, fetch=not a.no_fetch)
+    ll, capture_ts = live_lines(a.season, a.week, fetch=not a.no_fetch)
     mg = mg.drop(columns=["provider", "spread_open", "total_bet", "open_margin"]).merge(
         ll.rename(columns={"spread": "spread_open", "total": "total_bet"}), on="game_id", how="left")
     mg["open_margin"] = -mg.spread_open
@@ -141,6 +144,9 @@ def main(argv=None) -> int:
 
     d = mm.prep(mg.dropna(subset=["open_margin"]))
     d["proj"] = mm.predict(d, {"groups": params["groups"], "coef": params["coef"]})
+    # ratings only (QB term off): reported alongside in the forward test
+    d["proj_ratings_only"] = mm.predict(d.assign(qb_delta=0.0),
+                                        {"groups": params["groups"], "coef": params["coef"]})
     d["absline"] = d.open_margin.abs()
     P = dist.pmf(d.proj, d.absline, d.total_bet, dp)
     d["sigma"] = dist.sigma([dp["a"], dp["b"], dp["c"]], d.absline, d.total_bet)
@@ -167,6 +173,29 @@ def main(argv=None) -> int:
     stem.with_suffix(".json").write_text(json.dumps(
         {"season": a.season, "week": a.week, "params_frozen_at": params["frozen_at"],
          "games": records}, indent=1, default=float))
+
+    # forward-test guard: the scored capture is the FIRST one per game, so never log a
+    # projection whose ratings are missing completed games (run update_week first)
+    cut = slate.cutoff.iloc[0]
+    done = games[(games.season == a.season) & games.fbs_involved & (games.completed == True)  # noqa: E712
+                 & (games.kickoff_utc < cut) & ~(games.is_bowl & ~games.is_cfp)]
+    missing = int((~done.game_id.isin(plays.game_id)).sum())
+    if not a.no_log and missing and not a.log_anyway:
+        print(f"forward log: NOT logged: {missing} completed games before the week-{a.week} "
+              f"cutoff have no plays (run python -m engine.cfb.update_week, then re-run)")
+    elif not a.no_log:
+        log = d[["game_id", "season", "week", "home_team", "away_team", "kickoff_utc",
+                 "dk_spread", "dk_total", "provider", "spread_open", "ratings_margin",
+                 "qb_delta", "qb_note", "proj", "proj_ratings_only", "sigma"]].rename(
+            columns={"spread_open": "line_used", "proj": "proj_primary"})
+        log.insert(0, "capture_ts_utc", capture_ts)
+        log["kickoff_utc"] = pd.to_datetime(log.kickoff_utc, utc=True).dt.strftime("%Y-%m-%dT%H:%M:%S%z")
+        log["params_sha256"] = hashlib.sha256(mrun.PARAMS.read_bytes()).hexdigest()[:12]
+        n0 = len(log)
+        log = forward.pregame(log, capture_ts)
+        path = forward.append(a.log_dir, forward.PROJ_LOG, log)
+        print(f"forward log: {len(log)} rows appended ({n0 - len(log)} skipped: already kicked "
+              f"off), lines captured {capture_ts} -> {path}")
 
     k = params["coef"]
     print(f"{a.season} week {a.week}: {len(d)} games projected "
