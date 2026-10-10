@@ -7,8 +7,13 @@ Brief: `docs/CFB_PHASE2_BRIEF.md`. Built 2026-10-10 from the Phase 1 cache (0 AP
 - **Tuning seasons 2022-2024: ratings MAE 12.87 vs closing-line MAE 12.07** on the same
   2,253 FBS-vs-FBS games (prior-only 14.08, home-field-only 15.69). The gap to the
   close is widest in weeks 1-3 (14.49 vs 12.16) and narrowest in weeks 4-8 (12.32 vs 11.78).
-- **2025 held-out: not run yet.** It runs once, after `params.json` is committed
-  (see "Holdout" below).
+- **2025 held-out: PASS.** Ratings MAE **12.32** vs closing-line MAE **11.88** on 773
+  games: a **0.45-point gap**, inside the pre-registered bar (≤ ~1.1 pass, 1.1-1.5 soft,
+  > 1.5 fail) and smaller than the tuning-season gap (0.80). It was run once, at
+  2026-10-10 15:30 UTC, with params.json frozen in commit `78aee98`
+  (sha256 `35a44517…`, logged in `docs/cfb/holdout_2025.json`). Prior-only 14.25,
+  home-field-only 16.07; preseason prior R² (net EPA) 0.61. Against the number, 2025:
+  52.7% / 53.4% / 55.0% at ≥3 / ≥5 / ≥7, all CIs spanning 50% (uncalibrated diagnostic).
 - **Leakage tests: 4/4 pass** (`python -m pytest engine/cfb/ratings/tests -q`).
 - **Against the number: about 50%** at every threshold in 2022-2024 (an uncalibrated
   diagnostic, as expected from ratings alone).
@@ -52,7 +57,7 @@ Brief: `docs/CFB_PHASE2_BRIEF.md`. Built 2026-10-10 from the Phase 1 cache (0 AP
 
 `python -m engine.cfb.ratings.run --holdout` refuses unless `engine/cfb/ratings/params.json`
 is committed and unchanged, and refuses a second run (`docs/cfb/holdout_2025.json`).
-The 2025 results land in the HOLDOUT block below.
+The 2025 results are in the HOLDOUT block at the end of this report.
 
 ## Leakage tests (`engine/cfb/ratings/tests/test_no_leakage.py`)
 
@@ -80,10 +85,68 @@ Outputs (gitignored) in `data/cfb/derived/`: `model_plays.parquet`, `ratings_aso
 (season, week_asof, cutoff, team_id, team, is_fcs, o_/d_ per metric, net_*, power_pts,
 n_plays_off/def), `priors.parquet`, `prior_info.json`, `tuning_grid.csv`.
 
+## SP+ disagreements (top 40 by our power rating; SP+ is leaky, end-of-season)
+
+Plausible reasons, read off each team's record, one-score record, schedule and play-level
+nets. These are hypotheses, not proven causes. Two systematic differences explain most of
+them:
+- **Close games and luck.** Our ratings are per-play efficiency only. SP+ is also
+  efficiency-based, but the gaps line up with teams that lost close games or played
+  brutal schedules.
+- **Plays we leave out.** We use scrimmage plays only, so special teams, field position
+  and turnover luck are missing, and our end-of-regular-season snapshot excludes bowls.
+  SP+ final includes all of these.
+
+**2024** (our rank vs SP+):
+- Georgia Tech (28 vs 66): 7-5 with a +4.2 average margin against a +7.3 average-power
+  schedule. Efficient on a per-play basis (net EPA +0.21); SP+ is far lower.
+- Kansas (22 vs 50): 5-7 but 1-5 in one-score games, with a +3.7 average margin.
+  Strong efficiency and poor close-game luck.
+- UCF (36 vs 61): 4-8 but 1-3 in one-score games, with a +3.5 average margin. Good
+  success rate (net SR +0.11), which our formula weights heavily.
+- Washington (38 vs 58): 6-6 with an even margin against a +6.5 schedule. Opponent
+  adjustment credits the schedule.
+- Arizona State (16 vs 35): 11-2 and 6-1 in one-score games. Our rating was +1.8 in
+  preseason and +14.6 at season end, so it moved quickly once the efficiency was real
+  (net EPA +0.29).
+
+**2025** (held-out season):
+- Florida (32 vs 63): 4-8 against the hardest schedule in this group (opponents average
+  +15.3) and a high preseason prior (+12.9). Opponent adjustment plus the prior keep it up.
+- Arizona State (39 vs 60): 8-4, 5-2 in one-score games, only +1.7 average margin.
+  Its prior (+7.3) still carries weight.
+- Arkansas (35 vs 53): 2-10 but **0-6 in one-score games** against a +13.4 schedule.
+  A textbook efficiency-vs-results split.
+- NC State (37 vs 55): 7-5 with a +1.3 average margin. A modest efficiency edge against
+  a +9.0 schedule.
+- Iowa (28 vs 12, **we are lower**): +13.8 average margin, but our play-level nets are
+  middling (net SR +0.10). Iowa's edge lives in special teams, field position and
+  defense-driven short fields, which scrimmage-play ratings don't see.
+
+**2026 to date** (SP+ is CFBD's current value):
+- Kansas (31 vs 66), Wake Forest (26 vs 57), Baylor (25 vs 43): 4-5 games each, mostly
+  against weak schedules (opponents average +1.4 to +3.6), with big margins. With λ
+  33-300, a month of lopsided play moves our ratings faster than SP+ moves off its own
+  preseason prior. Expect these to regress; this matches the 2026 weeks 1-3 MAE gap.
+- Northwestern (28 vs 50): 3-1 with a +16.2 margin against a +8.0 schedule. Strong
+  early efficiency (net EPA +0.24).
+- Iowa (39 vs 19, **we are lower**): the same scrimmage-only blind spot as 2025.
+
+## Open questions for Tim
+
+1. **Special teams and field position.** The Iowa pattern suggests a field-position or
+   special-teams term (CFBD has kicking and punting plays) as a Phase 3 feature. Worth it?
+2. **Early-season gap.** Weeks 1-3 are the weakest bucket (2025: 13.06 vs 12.16; tuning:
+   14.49 vs 12.16), even though the prior is the main driver there. Ideas: a stronger
+   prior, or a per-week λ schedule. Phase 3?
+3. **`prior_no_history_factor` 0.6** only affects 2022 and isn't tuned. Leave it as is?
+4. **Phase 3 inputs.** `ratings_asof.parquet` (power_pts, plus the net_* components)
+   and `params.to_points.hfa` (3.07) are what Phase 3 should consume. Agreed?
+
 ## Results (generated)
 
 <!-- AUTO:TUNING:BEGIN -->
-_Generated by `python -m engine.cfb.ratings.run` at 2026-10-10 11:15._
+_Generated by `python -m engine.cfb.ratings.run` at 2026-10-10 11:30._
 
 ### Play filtering (plays from FBS-involved games; first matching reason)
 
@@ -401,3 +464,86 @@ Biggest disagreements (top 40 by power):
 | 2026 | 5 | 0.945 | 0.877 | 2 | 0.877 | 0.945 |
 
 <!-- AUTO:TUNING:END -->
+
+<!-- AUTO:HOLDOUT:BEGIN -->
+_2025 held-out evaluation, run once at 2026-10-10 15:30 UTC with params.json sha256 35a4451753ec._
+
+| slice | games | ratings_MAE | ratings_RMSE | close_MAE | prior_only_MAE | hfa_only_MAE |
+|---|---|---|---|---|---|---|
+| 2025 held out | 773.00 | 12.32 | 15.71 | 11.88 | 14.25 | 16.07 |
+
+
+By week bucket:
+
+| bucket | games | ratings_MAE | ratings_RMSE | close_MAE | prior_only_MAE | hfa_only_MAE |
+|---|---|---|---|---|---|---|
+| post (CFP) | 11.00 | 15.21 | 18.68 | 14.02 | 17.99 | 16.55 |
+| wk 1-3 | 145.00 | 13.06 | 16.84 | 12.16 | 13.73 | 18.29 |
+| wk 4-8 | 266.00 | 12.05 | 15.56 | 11.54 | 13.40 | 15.00 |
+| wk 9+ | 351.00 | 12.13 | 15.22 | 11.95 | 14.98 | 15.96 |
+
+
+Prior accuracy, 2025:
+
+| season | teams | method | R2_o_epa | R2_d_epa | R2_o_sr | R2_d_sr | R2_net_epa |
+|---|---|---|---|---|---|---|---|
+| 2025 | 136 | ridge | 0.479 | 0.476 | 0.473 | 0.489 | 0.612 |
+
+
+Against the number, 2025 (UNCALIBRATED DIAGNOSTIC):
+
+| games | |ratings - close| >= | bets | wins | win_pct | ci95_lo | ci95_hi | pushes |
+|---|---|---|---|---|---|---|---|
+| 2025 | 3 | 389 | 205 | 52.7 | 47.7 | 57.6 | 7 |
+| 2025 | 5 | 206 | 110 | 53.4 | 46.6 | 60.1 | 2 |
+| 2025 | 7 | 109 | 60 | 55.0 | 45.7 | 64.1 | 1 |
+
+
+Stability, 2025:
+
+| season | weeks | mean_rho | min_rho | min_at_week | rho_wk2 | rho_late_mean |
+|---|---|---|---|---|---|---|
+| 2025 | 16 | 0.983 | 0.906 | 2 | 0.906 | 0.996 |
+
+
+**2025 top 25, end of regular season** (SP+ = leaky benchmark, season-final)
+
+| rank | team | power_pts | sp_rank |
+|---|---|---|---|
+| 1 | Ohio State | +31.9 | +2.0 |
+| 2 | Notre Dame | +29.0 | +5.0 |
+| 3 | Texas Tech | +26.8 | +3.0 |
+| 4 | Oregon | +25.4 | +4.0 |
+| 5 | Indiana | +24.1 | +1.0 |
+| 6 | Georgia | +23.8 | +6.0 |
+| 7 | Miami | +23.6 | +9.0 |
+| 8 | Texas A&M | +23.6 | +9.0 |
+| 9 | Vanderbilt | +22.6 | +11.0 |
+| 10 | Alabama | +21.9 | +20.0 |
+| 11 | Tennessee | +18.3 | +19.0 |
+| 12 | Utah | +17.9 | +8.0 |
+| 13 | Missouri | +17.8 | +21.0 |
+| 14 | Texas | +17.6 | +17.0 |
+| 15 | Oklahoma | +16.5 | +14.0 |
+| 16 | USC | +15.9 | +16.0 |
+| 17 | Auburn | +15.9 | +29.0 |
+| 18 | Ole Miss | +15.7 | +7.0 |
+| 19 | Washington | +15.2 | +13.0 |
+| 20 | Louisville | +14.3 | +25.0 |
+| 21 | LSU | +13.5 | +32.0 |
+| 22 | BYU | +13.4 | +18.0 |
+| 23 | Michigan | +12.6 | +25.0 |
+| 24 | Penn State | +12.6 | +15.0 |
+| 25 | Pittsburgh | +11.8 | +36.0 |
+
+Biggest disagreements:
+
+| rank | team | power_pts | sp_rank | gap |
+|---|---|---|---|---|
+| 32 | Florida | +9.8 | +63.0 | -31.0 |
+| 39 | Arizona State | +7.6 | +60.0 | -21.0 |
+| 35 | Arkansas | +8.8 | +53.0 | -18.0 |
+| 37 | NC State | +8.1 | +55.0 | -18.0 |
+| 28 | Iowa | +10.9 | +12.0 | +16.0 |
+
+<!-- AUTO:HOLDOUT:END -->
