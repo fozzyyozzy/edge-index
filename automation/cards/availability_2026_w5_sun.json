@@ -1,12 +1,12 @@
 {
  "season": 2026,
  "week": 5,
- "fetched_at": "2026-10-09T23:08+00:00",
+ "fetched_at": "2026-10-10T20:00+00:00",
  "sources": {
   "snap_counts": "weeks 1-5",
   "weekly_stats": "weeks 1-5",
   "qb_change": "5 team(s): ATL, CHI, CLE, NYG, TB",
-  "injuries": "week 5: 346 report rows"
+  "injuries": "week 5: 357 report rows"
  },
  "team_games": {
   "ARI": {
@@ -1424,55 +1424,95 @@
   "andrew wingard": {
    "team": "ARI",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
   "isaiah adams": {
    "team": "ARI",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
-   "practice": "Did Not Participate In Practice"
-  },
-  "dadrion taylor-demerson": {
-   "team": "ARI",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
-   ],
-   "status": null,
-   "injury": "Back",
-   "practice": "Limited Participation in Practice"
-  },
-  "jordan burch": {
-   "team": "ARI",
-   "hold": [
-    "did not practice (not injury related - personal matter)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Not injury related - personal matter",
    "practice": "Did Not Participate In Practice"
   },
   "walter nolen": {
    "team": "ARI",
-   "hold": [],
-   "flag": [
-    "limited in practice (calf), no game status yet"
+   "hold": [
+    "questionable (calf)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Calf",
    "practice": "Limited Participation in Practice"
   },
-  "jeremiyah love": {
+  "karson sharar": {
    "team": "ARI",
+   "hold": [
+    "questionable (hamstring)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "jake matthews": {
+   "team": "ATL",
+   "hold": [
+    "questionable (groin)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Groin",
+   "practice": "Full Participation in Practice"
+  },
+  "za'darius smith": {
+   "team": "ATL",
+   "hold": [
+    "questionable (concussion)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Concussion",
+   "practice": "Limited Participation in Practice"
+  },
+  "samson ebukam": {
+   "team": "ATL",
+   "hold": [
+    "questionable (hamstring)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "divine deablo": {
+   "team": "ATL",
+   "hold": [
+    "questionable (hamstring)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Hamstring",
+   "practice": "Limited Participation in Practice"
+  },
+  "yasir abdullah": {
+   "team": "ATL",
+   "hold": [
+    "out (hamstring)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "ronnie stanley": {
+   "team": "BAL",
    "hold": [],
    "flag": [
     "limited in practice (ankle), no game status yet"
@@ -1481,93 +1521,33 @@
    "injury": "Ankle",
    "practice": "Limited Participation in Practice"
   },
-  "karson sharar": {
-   "team": "ARI",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
-  "jake matthews": {
-   "team": "ATL",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
-  },
-  "za'darius smith": {
-   "team": "ATL",
-   "hold": [
-    "did not practice (concussion)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Concussion",
-   "practice": "Did Not Participate In Practice"
-  },
-  "samson ebukam": {
-   "team": "ATL",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
-  "divine deablo": {
-   "team": "ATL",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
-  "yasir abdullah": {
-   "team": "ATL",
-   "hold": [
-    "did not practice (hamstring)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Did Not Participate In Practice"
-  },
   "marlon humphrey": {
    "team": "BAL",
    "hold": [
-    "did not practice (hamstring)"
+    "questionable (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Hamstring",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "trey hendrickson": {
    "team": "BAL",
    "hold": [
-    "did not practice (finger)"
+    "out (finger)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Finger",
    "practice": "Did Not Participate In Practice"
   },
   "lamar jackson": {
    "team": "BAL",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
@@ -1581,43 +1561,33 @@
    "injury": "Achilles",
    "practice": "Did Not Participate In Practice"
   },
-  "john simpson": {
-   "team": "BAL",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
-  },
   "cam jurgens": {
    "team": "BAL",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
   "andrew vorhees": {
    "team": "BAL",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
    "practice": "Limited Participation in Practice"
   },
   "zay flowers": {
    "team": "BAL",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
    "practice": "Limited Participation in Practice"
   },
@@ -1671,154 +1641,124 @@
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
-  "joe thuney": {
+  "kyler gordon": {
    "team": "CHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (pectoral), no game status yet"
+   "hold": [
+    "questionable (calf)"
    ],
-   "status": null,
-   "injury": "Pectoral",
-   "practice": "Limited Participation in Practice"
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Calf",
+   "practice": "Full Participation in Practice"
   },
-  "jonah jackson": {
+  "noah sewell": {
    "team": "CHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (achilles)"
    ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
-  },
-  "d'andre swift": {
-   "team": "CHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (hip), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hip",
-   "practice": "Limited Participation in Practice"
-  },
-  "darnell wright": {
-   "team": "CHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Achilles",
+   "practice": "Full Participation in Practice"
   },
   "caleb williams": {
    "team": "CHI",
    "hold": [
-    "did not practice (hamstring)"
+    "questionable (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Hamstring",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "kyle monangai": {
    "team": "CHI",
    "hold": [
-    "did not practice (thumb)"
+    "out (thumb)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Thumb",
    "practice": "Did Not Participate In Practice"
+  },
+  "shemar turner": {
+   "team": "CHI",
+   "hold": [
+    "questionable (knee)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
+   "practice": "Full Participation in Practice"
   },
   "keyshaun elliott": {
    "team": "CHI",
    "hold": [
-    "did not practice (quadricep)"
+    "out (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
-  },
-  "b.j. hill": {
-   "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (achilles), no game status yet"
-   ],
-   "status": null,
-   "injury": "Achilles",
-   "practice": "Limited Participation in Practice"
-  },
-  "dexter lawrence": {
-   "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (wrist), no game status yet"
-   ],
-   "status": null,
-   "injury": "Wrist",
-   "practice": "Limited Participation in Practice"
-  },
-  "dalton risner": {
-   "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
   },
   "kyle dugger": {
    "team": "CIN",
    "hold": [
-    "did not practice (quadricep)"
+    "out (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
   },
   "tee higgins": {
    "team": "CIN",
    "hold": [
-    "did not practice (groin)"
+    "questionable (groin)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Groin",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Full Participation in Practice"
   },
   "ja'marr chase": {
    "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (concussion), no game status yet"
+   "hold": [
+    "questionable (concussion)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Concussion",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "bryan cook": {
    "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "swayze bozeman": {
    "team": "CIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
+   "hold": [
+    "questionable (groin)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Groin",
+   "practice": "Full Participation in Practice"
+  },
+  "colbie young": {
+   "team": "CIN",
+   "hold": [
+    "questionable (knee)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "derek barnett": {
@@ -1834,72 +1774,72 @@
   "tylan wallace": {
    "team": "CLE",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
   "teven jenkins": {
    "team": "CLE",
    "hold": [
-    "did not practice (back)"
+    "out (back)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Back",
    "practice": "Did Not Participate In Practice"
   },
   "kalia davis": {
    "team": "CLE",
    "hold": [
-    "did not practice (quadricep)"
+    "out (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
-  },
-  "mekhi blackmon": {
-   "team": "CLE",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
-   ],
-   "status": null,
-   "injury": "Back",
-   "practice": "Limited Participation in Practice"
   },
   "mike hall": {
    "team": "CLE",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "mason graham": {
    "team": "CLE",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
+  "dillon gabriel": {
+   "team": "CLE",
+   "hold": [
+    "out (back)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Back",
+   "practice": "Full Participation in Practice"
+  },
   "carsen ryan": {
    "team": "CLE",
-   "hold": [],
-   "flag": [
-    "limited in practice (calf), no game status yet"
+   "hold": [
+    "out (calf)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Calf",
-   "practice": "Limited Participation in Practice"
+   "practice": "Did Not Participate In Practice"
   },
   "tyler smith": {
    "team": "DAL",
@@ -1954,20 +1894,20 @@
   "pat surtain": {
    "team": "DEN",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "riley moss": {
    "team": "DEN",
    "hold": [
-    "did not practice (ribs)"
+    "out (ribs)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ribs",
    "practice": "Did Not Participate In Practice"
   },
@@ -1984,72 +1924,72 @@
   "rock ya-sin": {
    "team": "DET",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "ben bartch": {
    "team": "DET",
    "hold": [
-    "did not practice (foot)"
+    "out (foot)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Foot",
    "practice": "Did Not Participate In Practice"
   },
-  "d.j. wonnum": {
-   "team": "DET",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
-   ],
-   "status": null,
-   "injury": "Back",
-   "practice": "Limited Participation in Practice"
-  },
   "cade mays": {
    "team": "DET",
-   "hold": [],
-   "flag": [
-    "limited in practice (wrist), no game status yet"
+   "hold": [
+    "out (wrist)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Wrist",
    "practice": "Limited Participation in Practice"
   },
   "brian branch": {
    "team": "DET",
-   "hold": [],
-   "flag": [
-    "limited in practice (achilles), no game status yet"
+   "hold": [
+    "out (achilles)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Achilles",
    "practice": "Limited Participation in Practice"
   },
   "tyleik williams": {
    "team": "DET",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
+   "practice": "Limited Participation in Practice"
+  },
+  "javon hargrave": {
+   "team": "GB",
+   "hold": [
+    "questionable (toe)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Toe",
    "practice": "Limited Participation in Practice"
   },
   "aaron banks": {
    "team": "GB",
    "hold": [
-    "did not practice (knee)"
+    "doubtful (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Doubtful",
    "injury": "Knee",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "devonte wyatt": {
    "team": "GB",
@@ -2064,10 +2004,10 @@
   "chris brooks": {
    "team": "GB",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
@@ -2084,30 +2024,30 @@
   "jacob monk": {
    "team": "GB",
    "hold": [
-    "did not practice (quadricep)"
+    "doubtful (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Doubtful",
    "injury": "Quadricep",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "savion williams": {
    "team": "GB",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "out (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Limited Participation in Practice"
   },
   "anthony campbell": {
    "team": "GB",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Ankle",
    "practice": "Limited Participation in Practice"
   },
@@ -2123,131 +2063,171 @@
   },
   "jager burton": {
    "team": "GB",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
+   "hold": [
+    "questionable (back)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Back",
    "practice": "Limited Participation in Practice"
   },
-  "azeez al-shaair": {
+  "jadeveon clowney": {
    "team": "HOU",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
+   "hold": [
+    "did not practice (knee)"
    ],
+   "flag": [],
    "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "m.j. stewart": {
+   "team": "HOU",
+   "hold": [
+    "questionable (knee)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
+   "practice": "Full Participation in Practice"
+  },
+  "braden smith": {
+   "team": "HOU",
+   "hold": [
+    "questionable (foot)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Foot",
+   "practice": "Full Participation in Practice"
   },
   "ed ingram": {
    "team": "HOU",
    "hold": [
-    "did not practice (illness)"
+    "questionable (illness)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Illness",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "tank dell": {
    "team": "HOU",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "out (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "will anderson": {
-   "team": "HOU",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
-  },
-  "jamal hill": {
-   "team": "HOU",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
+   "practice": "Did Not Participate In Practice"
   },
   "blake fisher": {
    "team": "HOU",
    "hold": [
-    "did not practice (illness)"
+    "questionable (illness)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Illness",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "aireontae ersery": {
    "team": "HOU",
    "hold": [
-    "did not practice (illness)"
+    "questionable (illness)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Illness",
    "practice": "Did Not Participate In Practice"
+  },
+  "kayden mcdonald": {
+   "team": "HOU",
+   "hold": [
+    "questionable (ankle)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Ankle",
+   "practice": "Full Participation in Practice"
+  },
+  "keenan allen": {
+   "team": "IND",
+   "hold": [
+    "questionable (not injury related - resting player)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Not injury related - resting player",
+   "practice": "Full Participation in Practice"
+  },
+  "charvarius ward": {
+   "team": "IND",
+   "hold": [
+    "questionable (not injury related - resting player)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Not injury related - resting player",
+   "practice": "Full Participation in Practice"
   },
   "arden key": {
    "team": "IND",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "ashton dulin": {
    "team": "IND",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
+  },
+  "darius slayton": {
+   "team": "IND",
+   "hold": [
+    "questionable (knee)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
+   "practice": "Limited Participation in Practice"
+  },
+  "will mallory": {
+   "team": "IND",
+   "hold": [
+    "out (thumb)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Thumb",
+   "practice": "Full Participation in Practice"
   },
   "jaylon carlies": {
    "team": "IND",
    "hold": [
-    "did not practice (ribs)"
+    "out (ribs)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ribs",
    "practice": "Did Not Participate In Practice"
   },
-  "tanor bortolini": {
-   "team": "IND",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
-  },
   "eric murray": {
    "team": "JAX",
-   "hold": [],
-   "flag": [
-    "limited in practice (concussion), no game status yet"
+   "hold": [
+    "doubtful (concussion)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Doubtful",
    "injury": "Concussion",
    "practice": "Limited Participation in Practice"
   },
@@ -2281,23 +2261,13 @@
    "injury": "Foot",
    "practice": "Limited Participation in Practice"
   },
-  "cole van lanen": {
-   "team": "JAX",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
   "jaylon jones": {
    "team": "JAX",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
+   "hold": [
+    "out (hamstring)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Limited Participation in Practice"
   },
@@ -2309,16 +2279,6 @@
    ],
    "status": null,
    "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
-  "anton harrison": {
-   "team": "JAX",
-   "hold": [],
-   "flag": [
-    "limited in practice (elbow), no game status yet"
-   ],
-   "status": null,
-   "injury": "Elbow",
    "practice": "Limited Participation in Practice"
   },
   "jarrian jones": {
@@ -2401,53 +2361,33 @@
    "injury": "Groin",
    "practice": "Did Not Participate In Practice"
   },
-  "dalvin tomlinson": {
-   "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
   "donte jackson": {
    "team": "LAC",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "derwin james": {
    "team": "LAC",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
-  },
-  "alec ingold": {
-   "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
-   ],
-   "status": null,
-   "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
   },
   "kayode awosika": {
    "team": "LAC",
    "hold": [
-    "did not practice (fibula)"
+    "out (fibula)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Fibula",
    "practice": "Did Not Participate In Practice"
   },
@@ -2463,173 +2403,143 @@
   },
   "trey lance": {
    "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
+   "hold": [
+    "doubtful (groin)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Doubtful",
    "injury": "Groin",
    "practice": "Limited Participation in Practice"
   },
   "trevor penning": {
    "team": "LAC",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
-  "deane leonard": {
-   "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (rib), no game status yet"
-   ],
-   "status": null,
-   "injury": "Rib",
-   "practice": "Limited Participation in Practice"
-  },
   "charlie kolar": {
    "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (forearm), no game status yet"
+   "hold": [
+    "questionable (forearm)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Forearm",
    "practice": "Limited Participation in Practice"
   },
   "quentin johnston": {
    "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (chest), no game status yet"
+   "hold": [
+    "out (chest)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Chest",
    "practice": "Limited Participation in Practice"
   },
   "scott matlock": {
    "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
-   "practice": "Limited Participation in Practice"
-  },
-  "cam hart": {
-   "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "joe alt": {
    "team": "LAC",
    "hold": [
-    "did not practice (neck)"
+    "out (neck)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Neck",
    "practice": "Did Not Participate In Practice"
   },
   "ladd mcconkey": {
    "team": "LAC",
    "hold": [
-    "did not practice (foot)"
+    "questionable (foot)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Foot",
    "practice": "Did Not Participate In Practice"
   },
   "branson taylor": {
    "team": "LAC",
-   "hold": [],
-   "flag": [
-    "limited in practice (neck), no game status yet"
+   "hold": [
+    "questionable (neck)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Neck",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
+  },
+  "rodney shelley": {
+   "team": "LAC",
+   "hold": [
+    "questionable (hamstring)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
   },
   "brenen thompson": {
    "team": "LAC",
    "hold": [
-    "did not practice (quadricep)"
+    "out (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
-  },
-  "cody white": {
-   "team": "LV",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
   },
   "jalen nailor": {
    "team": "LV",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
-  "spencer burford": {
-   "team": "LV",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
   "ashton jeanty": {
    "team": "LV",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
+   "practice": "Did Not Participate In Practice"
+  },
+  "dont'e thornton": {
+   "team": "LV",
+   "hold": [
+    "out (hamstring)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Hamstring",
+   "practice": "Full Participation in Practice"
   },
   "trey zuhn": {
    "team": "LV",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "out (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "austin jackson": {
-   "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
+   "practice": "Did Not Participate In Practice"
   },
   "tucker addington": {
    "team": "MIA",
@@ -2644,295 +2554,495 @@
   "reese taylor": {
    "team": "MIA",
    "hold": [
-    "did not practice (quadricep)"
+    "out (quadricep)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
   },
   "rob beal": {
    "team": "MIA",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
-  "julius brents": {
+  "storm duck": {
    "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (heel), no game status yet"
+   "hold": [
+    "questionable (knee)"
    ],
-   "status": null,
-   "injury": "Heel",
-   "practice": "Limited Participation in Practice"
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
+   "practice": "Full Participation in Practice"
   },
   "jaylen wright": {
    "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
    "practice": "Limited Participation in Practice"
   },
   "jackson woodard": {
    "team": "MIA",
    "hold": [
-    "did not practice (ankle)"
+    "questionable (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Ankle",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "kenneth grant": {
    "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (toe), no game status yet"
+   "hold": [
+    "questionable (toe)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Toe",
-   "practice": "Limited Participation in Practice"
-  },
-  "dante trader": {
-   "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (shin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Shin",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "justin joly": {
    "team": "MIA",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
   "caleb douglas": {
    "team": "MIA",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
-  "chris bell": {
-   "team": "MIA",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
   "brian o'neill": {
    "team": "MIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "questionable (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "justin jefferson": {
    "team": "MIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Ankle",
    "practice": "Limited Participation in Practice"
   },
   "christian darrisaw": {
    "team": "MIN",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
   "jordan addison": {
    "team": "MIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
+   "hold": [
+    "questionable (hamstring)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Hamstring",
    "practice": "Limited Participation in Practice"
   },
+  "michael jurgens": {
+   "team": "MIN",
+   "hold": [
+    "questionable (elbow)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Elbow",
+   "practice": "Full Participation in Practice"
+  },
+  "ben yurosek": {
+   "team": "MIN",
+   "hold": [
+    "questionable (ankle)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Ankle",
+   "practice": "Full Participation in Practice"
+  },
   "charles demmings": {
    "team": "MIN",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
+   "hold": [
+    "out (hamstring)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Limited Participation in Practice"
   },
   "morgan moses": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (foot), no game status yet"
+   "hold": [
+    "questionable (foot)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Foot",
    "practice": "Limited Participation in Practice"
   },
   "mack hollins": {
    "team": "NE",
    "hold": [
-    "did not practice (calf)"
+    "out (calf)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Calf",
    "practice": "Did Not Participate In Practice"
   },
   "carlton davis": {
    "team": "NE",
    "hold": [
-    "did not practice (neck)"
+    "out (neck)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Neck",
    "practice": "Did Not Participate In Practice"
   },
   "dre'mont jones": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
+   "hold": [
+    "questionable (shoulder)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Shoulder",
    "practice": "Limited Participation in Practice"
   },
   "reggie gilliam": {
    "team": "NE",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "christian elliss": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (chest), no game status yet"
+   "hold": [
+    "questionable (chest)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Chest",
    "practice": "Limited Participation in Practice"
   },
   "rhamondre stevenson": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "questionable (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "christian barmore": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
+   "hold": [
+    "questionable (shoulder)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "christian gonzalez": {
    "team": "NE",
    "hold": [
-    "did not practice (shoulder)"
+    "out (shoulder)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Shoulder",
    "practice": "Did Not Participate In Practice"
   },
   "charles woods": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
+   "hold": [
+    "questionable (shoulder)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Shoulder",
    "practice": "Limited Participation in Practice"
   },
   "craig woodson": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
+   "hold": [
+    "questionable (shoulder)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Shoulder",
    "practice": "Limited Participation in Practice"
   },
   "karon prunty": {
    "team": "NE",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "channing canada": {
    "team": "NE",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
+   "hold": [
+    "out (hamstring)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Limited Participation in Practice"
   },
-  "davon godchaux": {
+  "alvin kamara": {
    "team": "NO",
    "hold": [
-    "did not practice (groin)"
+    "questionable (back)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
+   "injury": "Back",
+   "practice": "Limited Participation in Practice"
+  },
+  "kaden elliss": {
+   "team": "NO",
+   "hold": [
+    "out (calf)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Calf",
+   "practice": "Did Not Participate In Practice"
+  },
+  "anfernee jennings": {
+   "team": "NO",
+   "hold": [
+    "out (knee)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "julian blackmon": {
+   "team": "NO",
+   "hold": [
+    "questionable (shoulder)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Shoulder",
+   "practice": "Limited Participation in Practice"
+  },
+  "jaylan ford": {
+   "team": "NO",
+   "hold": [
+    "questionable (ankle)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Ankle",
+   "practice": "Full Participation in Practice"
+  },
+  "jeremiah wright": {
+   "team": "NO",
+   "hold": [
+    "out (concussion)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "lorenzo styles": {
+   "team": "NO",
+   "hold": [
+    "questionable (calf)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Calf",
+   "practice": "Full Participation in Practice"
+  },
+  "barion brown": {
+   "team": "NO",
+   "hold": [
+    "questionable (thigh)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Thigh",
+   "practice": "Full Participation in Practice"
+  },
+  "christen miller": {
+   "team": "NO",
+   "hold": [
+    "questionable (illness)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Illness",
+   "practice": "Did Not Participate In Practice"
+  },
+  "jason pinnock": {
+   "team": "NYG",
+   "hold": [
+    "out (concussion)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Concussion",
+   "practice": "Did Not Participate In Practice"
+  },
+  "chauncey golston": {
+   "team": "NYG",
+   "hold": [
+    "out (neck)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Neck",
+   "practice": "Did Not Participate In Practice"
+  },
+  "tim patrick": {
+   "team": "NYJ",
+   "hold": [
+    "questionable (groin)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Groin",
+   "practice": "Full Participation in Practice"
+  },
+  "kingsley enagbare": {
+   "team": "NYJ",
+   "hold": [
+    "questionable (knee)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Knee",
+   "practice": "Full Participation in Practice"
+  },
+  "dylan parham": {
+   "team": "NYJ",
+   "hold": [
+    "out (knee)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "breece hall": {
+   "team": "NYJ",
+   "hold": [
+    "out (quadricep)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "will mcdonald": {
+   "team": "NYJ",
+   "hold": [
+    "questionable (calf)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Calf",
+   "practice": "Limited Participation in Practice"
+  },
+  "adonai mitchell": {
+   "team": "NYJ",
+   "hold": [
+    "out (finger)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Finger",
+   "practice": "Did Not Participate In Practice"
+  },
+  "francisco mauigoa": {
+   "team": "NYJ",
+   "hold": [
+    "out (quadricep)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Quadricep",
+   "practice": "Did Not Participate In Practice"
+  },
+  "saquon barkley": {
+   "team": "PHI",
+   "hold": [
+    "out (hamstring)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "marcus epps": {
+   "team": "PHI",
+   "hold": [
+    "out (groin)"
+   ],
+   "flag": [],
+   "status": "Out",
    "injury": "Groin",
    "practice": "Did Not Participate In Practice"
   },
-  "alvin kamara": {
-   "team": "NO",
+  "marquise brown": {
+   "team": "PHI",
+   "hold": [
+    "out (ankle)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Ankle",
+   "practice": "Did Not Participate In Practice"
+  },
+  "a.j. epenesa": {
+   "team": "PHI",
    "hold": [],
    "flag": [
     "limited in practice (back), no game status yet"
@@ -2941,293 +3051,23 @@
    "injury": "Back",
    "practice": "Limited Participation in Practice"
   },
-  "kaden elliss": {
-   "team": "NO",
-   "hold": [
-    "did not practice (calf)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Calf",
-   "practice": "Did Not Participate In Practice"
-  },
-  "carl granderson": {
-   "team": "NO",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
-  },
-  "noah fant": {
-   "team": "NO",
-   "hold": [],
-   "flag": [
-    "limited in practice (abdomen), no game status yet"
-   ],
-   "status": null,
-   "injury": "Abdomen",
-   "practice": "Limited Participation in Practice"
-  },
-  "anfernee jennings": {
-   "team": "NO",
-   "hold": [
-    "did not practice (knee)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Did Not Participate In Practice"
-  },
-  "julian blackmon": {
-   "team": "NO",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
-   ],
-   "status": null,
-   "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
-  },
-  "jayden price": {
-   "team": "NO",
-   "hold": [
-    "did not practice (not injury related - personal matter)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Not injury related - personal matter",
-   "practice": "Did Not Participate In Practice"
-  },
-  "jeremiah wright": {
-   "team": "NO",
-   "hold": [],
-   "flag": [
-    "limited in practice (concussion), no game status yet"
-   ],
-   "status": null,
-   "injury": "Concussion",
-   "practice": "Limited Participation in Practice"
-  },
-  "barion brown": {
-   "team": "NO",
-   "hold": [],
-   "flag": [
-    "limited in practice (thigh), no game status yet"
-   ],
-   "status": null,
-   "injury": "Thigh",
-   "practice": "Limited Participation in Practice"
-  },
-  "chris manhertz": {
-   "team": "NYG",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
-   ],
-   "status": null,
-   "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
-  },
-  "andrew thomas": {
-   "team": "NYG",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
-  },
-  "jason pinnock": {
-   "team": "NYG",
-   "hold": [
-    "did not practice (concussion)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Concussion",
-   "practice": "Did Not Participate In Practice"
-  },
-  "chauncey golston": {
-   "team": "NYG",
-   "hold": [
-    "did not practice (neck)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Neck",
-   "practice": "Did Not Participate In Practice"
-  },
-  "isaiah likely": {
-   "team": "NYG",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "malik nabers": {
-   "team": "NYG",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "cam skattebo": {
-   "team": "NYG",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
-   ],
-   "status": null,
-   "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
-  },
-  "kingsley enagbare": {
-   "team": "NYJ",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "dylan parham": {
-   "team": "NYJ",
-   "hold": [
-    "did not practice (knee)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Did Not Participate In Practice"
-  },
-  "breece hall": {
-   "team": "NYJ",
-   "hold": [
-    "did not practice (quadricep)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Quadricep",
-   "practice": "Did Not Participate In Practice"
-  },
-  "jarvis brownlee": {
-   "team": "NYJ",
-   "hold": [],
-   "flag": [
-    "limited in practice (concussion), no game status yet"
-   ],
-   "status": null,
-   "injury": "Concussion",
-   "practice": "Limited Participation in Practice"
-  },
-  "adonai mitchell": {
-   "team": "NYJ",
-   "hold": [
-    "did not practice (finger)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Finger",
-   "practice": "Did Not Participate In Practice"
-  },
-  "francisco mauigoa": {
-   "team": "NYJ",
-   "hold": [
-    "did not practice (quadricep)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Quadricep",
-   "practice": "Did Not Participate In Practice"
-  },
-  "dallas goedert": {
-   "team": "PHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "saquon barkley": {
-   "team": "PHI",
-   "hold": [
-    "did not practice (hamstring)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Did Not Participate In Practice"
-  },
-  "fred johnson": {
-   "team": "PHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
-  "marcus epps": {
-   "team": "PHI",
-   "hold": [
-    "did not practice (groin)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Did Not Participate In Practice"
-  },
-  "marquise brown": {
-   "team": "PHI",
-   "hold": [
-    "did not practice (ankle)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Did Not Participate In Practice"
-  },
   "jonathan greenard": {
    "team": "PHI",
    "hold": [
-    "did not practice (ankle)"
+    "questionable (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
-  },
-  "zack baun": {
-   "team": "PHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (concussion), no game status yet"
-   ],
-   "status": null,
-   "injury": "Concussion",
-   "practice": "Limited Participation in Practice"
   },
   "devonta smith": {
    "team": "PHI",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
@@ -3244,115 +3084,125 @@
   "drew kendall": {
    "team": "PHI",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
-  "jihaad campbell": {
-   "team": "PHI",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
   "jalen ramsey": {
    "team": "PIT",
-   "hold": [],
-   "flag": [
-    "limited in practice (wrist), no game status yet"
+   "hold": [
+    "questionable (wrist)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Wrist",
    "practice": "Limited Participation in Practice"
   },
   "deshon elliott": {
    "team": "PIT",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "out (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "jamel dean": {
    "team": "PIT",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "rico dowdle": {
    "team": "PIT",
-   "hold": [],
-   "flag": [
-    "limited in practice (toe), no game status yet"
+   "hold": [
+    "questionable (toe)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Toe",
    "practice": "Limited Participation in Practice"
   },
   "michael pittman": {
    "team": "PIT",
    "hold": [
-    "did not practice (foot)"
+    "out (foot)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Foot",
-   "practice": "Did Not Participate In Practice"
-  },
-  "leonard williams": {
-   "team": "SEA",
-   "hold": [
-    "did not practice (ankle)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "chazz surratt": {
    "team": "SEA",
    "hold": [
-    "did not practice (calf)"
+    "out (calf)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Calf",
    "practice": "Did Not Participate In Practice"
   },
   "irvin charles": {
    "team": "SEA",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "questionable (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "zach charbonnet": {
    "team": "SEA",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "out (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
   "george holani": {
    "team": "SEA",
+   "hold": [
+    "questionable (ribs)"
+   ],
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Ribs",
+   "practice": "Limited Participation in Practice"
+  },
+  "julian neal": {
+   "team": "SEA",
+   "hold": [
+    "out (hamstring)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Hamstring",
+   "practice": "Did Not Participate In Practice"
+  },
+  "kyle juszczyk": {
+   "team": "SF",
+   "hold": [
+    "out (knee)"
+   ],
+   "flag": [],
+   "status": "Out",
+   "injury": "Knee",
+   "practice": "Did Not Participate In Practice"
+  },
+  "mike evans": {
+   "team": "SF",
    "hold": [],
    "flag": [
     "limited in practice (ribs), no game status yet"
@@ -3361,93 +3211,53 @@
    "injury": "Ribs",
    "practice": "Limited Participation in Practice"
   },
-  "nehemiah pritchett": {
-   "team": "SEA",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
-   ],
-   "status": null,
-   "injury": "Ankle",
-   "practice": "Limited Participation in Practice"
-  },
-  "julian neal": {
-   "team": "SEA",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
-   "practice": "Limited Participation in Practice"
-  },
-  "kyle juszczyk": {
-   "team": "SF",
-   "hold": [
-    "did not practice (knee)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Did Not Participate In Practice"
-  },
-  "mike evans": {
-   "team": "SF",
-   "hold": [
-    "did not practice (ribs)"
-   ],
-   "flag": [],
-   "status": null,
-   "injury": "Ribs",
-   "practice": "Did Not Participate In Practice"
-  },
   "nick bosa": {
    "team": "SF",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
   "upton stout": {
    "team": "SF",
-   "hold": [],
-   "flag": [
-    "limited in practice (shoulder), no game status yet"
+   "hold": [
+    "questionable (shoulder)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Shoulder",
-   "practice": "Limited Participation in Practice"
+   "practice": "Did Not Participate In Practice"
   },
   "marques sigle": {
    "team": "SF",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
   "mykel williams": {
    "team": "SF",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
+   "hold": [
+    "questionable (knee)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Knee",
-   "practice": "Limited Participation in Practice"
+   "practice": "Full Participation in Practice"
   },
   "james thompson": {
    "team": "SF",
    "hold": [
-    "did not practice (ankle)"
+    "out (ankle)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Ankle",
    "practice": "Did Not Participate In Practice"
   },
@@ -3501,43 +3311,33 @@
    "injury": "Quadricep",
    "practice": "Did Not Participate In Practice"
   },
-  "john franklin-myers": {
-   "team": "TEN",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
-   ],
-   "status": null,
-   "injury": "Back",
-   "practice": "Limited Participation in Practice"
-  },
   "amani hooker": {
    "team": "TEN",
    "hold": [
-    "did not practice (concussion)"
+    "out (concussion)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Concussion",
    "practice": "Did Not Participate In Practice"
   },
-  "jeffery simmons": {
+  "joshua williams": {
    "team": "TEN",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
+   "hold": [
+    "questionable (pectoral)"
    ],
-   "status": null,
-   "injury": "Back",
-   "practice": "Limited Participation in Practice"
+   "flag": [],
+   "status": "Questionable",
+   "injury": "Pectoral",
+   "practice": "Full Participation in Practice"
   },
   "david martin-robinson": {
    "team": "TEN",
    "hold": [
-    "did not practice (hamstring)"
+    "questionable (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
@@ -3561,105 +3361,75 @@
    "injury": "Knee",
    "practice": "Limited Participation in Practice"
   },
-  "gunnar helm": {
-   "team": "TEN",
-   "hold": [],
-   "flag": [
-    "limited in practice (knee), no game status yet"
-   ],
-   "status": null,
-   "injury": "Knee",
-   "practice": "Limited Participation in Practice"
-  },
   "carnell tate": {
    "team": "TEN",
-   "hold": [],
-   "flag": [
-    "limited in practice (back), no game status yet"
+   "hold": [
+    "questionable (back)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Back",
    "practice": "Limited Participation in Practice"
   },
   "stefon diggs": {
    "team": "WAS",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "marcus mariota": {
    "team": "WAS",
    "hold": [
-    "did not practice (knee)"
+    "out (knee)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Knee",
    "practice": "Did Not Participate In Practice"
   },
   "deatrich wise": {
    "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (quadricep), no game status yet"
+   "hold": [
+    "questionable (quadricep)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Quadricep",
    "practice": "Limited Participation in Practice"
   },
   "jeremy mcnichols": {
    "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (quadricep), no game status yet"
-   ],
-   "status": null,
-   "injury": "Quadricep",
-   "practice": "Limited Participation in Practice"
-  },
-  "frankie luvu": {
-   "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
-  },
-  "nick allegretti": {
-   "team": "WAS",
    "hold": [
-    "did not practice (hip)"
+    "questionable (quadricep)"
    ],
    "flag": [],
-   "status": null,
-   "injury": "Hip",
-   "practice": "Did Not Participate In Practice"
+   "status": "Questionable",
+   "injury": "Quadricep",
+   "practice": "Limited Participation in Practice"
   },
   "charles omenihu": {
    "team": "WAS",
    "hold": [
-    "did not practice (groin)"
+    "out (groin)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Groin",
    "practice": "Did Not Participate In Practice"
   },
   "terry mclaurin": {
    "team": "WAS",
    "hold": [
-    "did not practice (hamstring)"
+    "questionable (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Questionable",
    "injury": "Hamstring",
-   "practice": "Did Not Participate In Practice"
+   "practice": "Limited Participation in Practice"
   },
   "rachaad white": {
    "team": "WAS",
@@ -3673,61 +3443,41 @@
   },
   "nick cross": {
    "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (illness), no game status yet"
+   "hold": [
+    "out (illness)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Out",
    "injury": "Illness",
-   "practice": "Limited Participation in Practice"
-  },
-  "chig okonkwo": {
-   "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (hamstring), no game status yet"
-   ],
-   "status": null,
-   "injury": "Hamstring",
    "practice": "Limited Participation in Practice"
   },
   "percy butler": {
    "team": "WAS",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
   "tyler owens": {
    "team": "WAS",
    "hold": [
-    "did not practice (hamstring)"
+    "out (hamstring)"
    ],
    "flag": [],
-   "status": null,
+   "status": "Out",
    "injury": "Hamstring",
    "practice": "Did Not Participate In Practice"
   },
-  "jacory croskey-merritt": {
-   "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (groin), no game status yet"
-   ],
-   "status": null,
-   "injury": "Groin",
-   "practice": "Limited Participation in Practice"
-  },
   "trey amos": {
    "team": "WAS",
-   "hold": [],
-   "flag": [
-    "limited in practice (ankle), no game status yet"
+   "hold": [
+    "questionable (ankle)"
    ],
-   "status": null,
+   "flag": [],
+   "status": "Questionable",
    "injury": "Ankle",
    "practice": "Limited Participation in Practice"
   }
