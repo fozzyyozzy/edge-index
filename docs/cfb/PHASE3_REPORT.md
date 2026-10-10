@@ -85,16 +85,38 @@ been run yet (section at the end).
 - Per your data rule #5 these are hypotheses. Testing one properly means freezing it
   *before* a holdout, which would spend 2025 on it.
 
-## Open questions for Tim
+## Decision (Tim, 2026-10-10) and pre-registered 2025 pass bars
 
-1. **The laying-points miscalibration** (−3.3 in the 75-90 band, worst in 2022): options are
-   (a) freeze as is and let 2025 tell us whether it persists; it shrank to −0.8 in 2024.
-   (b) Adopt the favorite-direction term or a calibration haircut on laying rungs *now*,
-   before the holdout. (c) Restrict tickets to getting-points rungs until Phase 4.
-   I'd lean (a); your call, since it changes what 2025 tests.
-2. **Weeks 1-3:** k ≈ 0. Skip publishing CFB plays in weeks 1-3?
-3. **QB news timing:** OK to keep the QB term (it's live only via the override file)?
-4. **Key numbers 17/21:** OK with the extension beyond the brief's four?
+**Decision:** (a) freeze the primary as-is, with (c) as the operating rule: tickets use
+getting-points rungs only until further notice. The laying-points correction is added as a
+**pre-declared secondary model** (`params.json → secondary`, name `fav_direction_shrink`):
+primary groups + `fav_gap`, fit exactly as tested (OLS on 2022-2024, normal distribution
+with the primary's spike keys), **not retuned**. Coefficients: k 1-3 −0.059, k 4-8 +0.333,
+k 9+ +0.564, qb_delta +0.367, fav_gap −0.251. The primary's parameters are unchanged.
+
+**Pass bars, recorded before the 2025 run** (also in `params.json → preregistered_2025`):
+
+1. **k for weeks 4+ pooled > 0, CI excluding 0.** Re-estimated on 2025 games:
+   `margin − open = k_1-3·gap·[wk 1-3] + k_4+·gap·[wk 4+] + b·qb_delta`, game bootstrap,
+   1,000 draws.
+2. **CLV at |proj − open| ≥ 1.5:** the close moves toward the model in **≥ 58%** of the
+   games where it moves (primary).
+3. **75-90% calibration within ±2.0 points**, separately for getting-points and
+   laying-points rungs (primary). If laying-points misses, the secondary is adopted
+   **only if** its log loss beats the primary's on 2025 laying-points rungs. Comparison set,
+   fixed in advance: every (game, side, x.5 rung < 0) pair that **either** model puts
+   in [75%, 90%), each scored under both models.
+4. **ATS vs open and vs close:** informational only.
+
+Primary = the frozen model. Secondary = the correction. Both are scored in the one
+holdout run (`python -m engine.cfb.model.run --holdout`), which refuses unless
+`params.json` (with these bars) is committed and unchanged, and refuses a second run.
+
+## Remaining open questions for Tim
+
+1. **Weeks 1-3:** k ≈ 0. Skip publishing CFB plays in weeks 1-3?
+2. **QB news timing:** OK to keep the QB term (it's live only via the override file)?
+3. **Key numbers 17/21:** OK with the extension beyond the brief's four?
 
 ## Leakage tests
 

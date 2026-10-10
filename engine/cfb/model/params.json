@@ -50,5 +50,43 @@
     2023,
     2024
   ],
-  "frozen_at": "2026-10-10T16:04:46+00:00"
+  "frozen_at": "2026-10-10T16:04:46+00:00",
+  "secondary": {
+    "name": "fav_direction_shrink",
+    "groups": [
+      "qb",
+      "favgap"
+    ],
+    "coef": {
+      "k_1-3": -0.05853411069438653,
+      "k_4-8": 0.33334842351166466,
+      "k_9+": 0.5641552986692544,
+      "qb_delta": 0.3667337005597269,
+      "fav_gap": -0.25107837970225155
+    },
+    "n_fit": 2243,
+    "distribution": {
+      "shape": "normal",
+      "a": 12.336689734177074,
+      "b": -0.004910072873409711,
+      "c": 0.05548195843095739,
+      "spikes": {
+        "3": 3.6679242219182964,
+        "7": 3.207930028126754,
+        "10": 1.9225591307659888,
+        "14": 1.814171715650721,
+        "17": 1.8599787038982691,
+        "21": 2.2122813699506607
+      }
+    },
+    "note": "laying-points correction; hypothesis found after looking at tuning data; pre-declared secondary for the 2025 holdout, not retuned"
+  },
+  "preregistered_2025": {
+    "recorded_at": "2026-10-10T17:16:24+00:00",
+    "1_k_weeks4plus": "k for weeks 4+ pooled, re-estimated on 2025 (game bootstrap, 1,000 draws), > 0 with the 95% CI excluding 0",
+    "2_clv": "CLV at |proj - open| >= 1.5: the close moves toward the model in >= 58% of the games where it moves",
+    "3_calibration": "75-90% band, |actual - predicted| <= 2.0 pts, separately for getting-points and laying-points rungs (primary model)",
+    "3b_secondary_rule": "if laying-points misses, the secondary is adopted only if its log loss beats the primary's on 2025 laying-points rungs: the fixed set of (game, side, x.5 rung < 0) pairs that EITHER model puts in [75%, 90%), each pair scored under both models",
+    "4_ats": "ATS vs open and vs close: informational only"
+  }
 }

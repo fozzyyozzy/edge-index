@@ -246,26 +246,166 @@ def report(d: pd.DataFrame, params: dict, holdout: bool) -> None:
     write_block("TUNING", "\n".join(P_))
 
     if holdout:
-        h = d[(d.season == HOLDOUT) & d.margin_home.notna()]
-        gh, Ph = bt.project(h, model, dp)
-        rh = bt.rung_pairs(gh, Ph)
-        sha = hashlib.sha256(PARAMS.read_bytes()).hexdigest()
-        H = [f"_2025 held-out evaluation, run once at {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC, "
-             f"params.json sha256 {sha[:12]}._\n"]
-        H += headline(gh, rh, "2025 holdout")
-        H += ["\n**Margin accuracy, 2025**\n", md(bt.accuracy(gh)), md(bt.accuracy(gh, "bucket"))]
-        H += calibration_section(rh, "2025 holdout")
-        H += ["\n**ATS, 2025**\n", md(pd.concat([bt.ats(gh, "2025", "open"),
-                                                 bt.ats(gh, "2025", "close")]), "{:.1f}")]
-        write_block("HOLDOUT", "\n".join(H))
-        c = bt.clv(gh, "2025")
-        HOLDOUT_LOG.write_text(json.dumps({
-            "evaluated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "params_sha256": sha, "games": len(gh),
-            "clv_corr": c.attrs["corr"],
-            "band_75_90": bt.band(rh),
-            **{k: float(v) for k, v in bt.accuracy(gh).iloc[0].items()}}, indent=2, default=str) + "\n")
+        holdout_report(d, params)
     print(f"report -> {REPORT.relative_to(config.ROOT)}")
+
+
+# ------------------------------------------------------------------ secondary + 2025 bars
+SECONDARY_NAME = "fav_direction_shrink"
+BARS = {
+    "1_k_weeks4plus": "k for weeks 4+ pooled, re-estimated on 2025 (game bootstrap, 1,000 draws), "
+                      "> 0 with the 95% CI excluding 0",
+    "2_clv": "CLV at |proj - open| >= 1.5: the close moves toward the model in >= 58% of the "
+             "games where it moves",
+    "3_calibration": "75-90% band, |actual - predicted| <= 2.0 pts, separately for getting-points "
+                     "and laying-points rungs (primary model)",
+    "3b_secondary_rule": "if laying-points misses, the secondary is adopted only if its log loss "
+                         "beats the primary's on 2025 laying-points rungs: the fixed set of "
+                         "(game, side, x.5 rung < 0) pairs that EITHER model puts in [75%, 90%), "
+                         "each pair scored under both models",
+    "4_ats": "ATS vs open and vs close: informational only",
+}
+
+
+def freeze_secondary(d: pd.DataFrame) -> dict:
+    """Pre-declared secondary model: primary groups + fav_gap, fit exactly as tested
+    (OLS on 2022-2024; normal distribution with the primary's spike keys). No tuning."""
+    params = load_params()
+    if "secondary" in params:
+        raise SystemExit("secondary already frozen")
+    keys = [int(k) for k in params["distribution"]["spikes"]]
+    groups = params["groups"] + ["favgap"]
+    tr = d[d.season.isin(TUNE)]
+    m = mm.fit(tr, groups)
+    f = bt.fit_dist(tr, m, "normal", keys)
+    params["secondary"] = {
+        "name": SECONDARY_NAME, "groups": groups, "coef": m["coef"], "n_fit": m["n"],
+        "distribution": {k: v for k, v in f.items() if not k.startswith("kde")},
+        "note": "laying-points correction; hypothesis found after looking at tuning data; "
+                "pre-declared secondary for the 2025 holdout, not retuned"}
+    params["preregistered_2025"] = {
+        "recorded_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), **BARS}
+    PARAMS.write_text(json.dumps(params, indent=2) + "\n")
+    print(json.dumps(params["secondary"]["coef"], indent=1))
+    return params
+
+
+def secondary_model(params: dict):
+    sec = params["secondary"]
+    dd = dict(sec["distribution"])
+    dd["spikes"] = {int(k): v for k, v in dd.get("spikes", {}).items()}
+    return {"groups": sec["groups"], "coef": sec["coef"]}, dd
+
+
+def all_laying_pairs(g: pd.DataFrame, P: np.ndarray) -> pd.DataFrame:
+    out = []
+    m = g.margin_home.to_numpy()
+    for side in ("home", "away"):
+        tm = m if side == "home" else -m
+        for L in bt.RUNGS[bt.RUNGS < 0]:
+            c, _ = dist.cover(P, L, side)
+            out.append(pd.DataFrame({"game_id": g.game_id.to_numpy(), "side": side, "rung": L,
+                                     "p": c, "y": (tm + L > 0).astype(float)}))
+    return pd.concat(out, ignore_index=True)
+
+
+def k_pooled(h: pd.DataFrame, n: int = 1000, seed: int = 0) -> dict:
+    x = mm.usable(h.dropna(subset=["margin_home"]), ["gap", "qb_delta"])
+    early = (x.bucket == "1-3").to_numpy()
+    X = np.column_stack([x.gap * early, x.gap * ~early, x.qb_delta.fillna(0)])
+    y = (x.margin_home - x.open_margin).to_numpy(float)
+    point = np.linalg.lstsq(X, y, rcond=None)[0]
+    rng = np.random.default_rng(seed)
+    draws = np.array([np.linalg.lstsq(X[i], y[i], rcond=None)[0]
+                      for i in (rng.integers(0, len(x), len(x)) for _ in range(n))])
+    lo, hi = np.percentile(draws[:, 1], [2.5, 97.5])
+    return {"games": len(x), "k_1_3": float(point[0]), "k_4plus": float(point[1]),
+            "ci95_lo": float(lo), "ci95_hi": float(hi), "qb": float(point[2])}
+
+
+def logloss(p, y) -> float:
+    p = np.clip(np.asarray(p, float), 1e-6, 1 - 1e-6)
+    y = np.asarray(y, float)
+    return float(-(y * np.log(p) + (1 - y) * np.log(1 - p)).mean())
+
+
+def holdout_report(d: pd.DataFrame, params: dict) -> None:
+    dp = dist_params(params)
+    h = d[(d.season == HOLDOUT) & d.margin_home.notna()]
+    gh, Ph = bt.project(h, {"groups": params["groups"], "coef": params["coef"]}, dp)
+    rh = bt.rung_pairs(gh, Ph)
+    sm, sd = secondary_model(params)
+    gs, Ps = bt.project(h, sm, sd)
+    rs = bt.rung_pairs(gs, Ps)
+
+    k = k_pooled(h)
+    c = bt.clv(gh, "2025 primary")
+    clv15 = float(c.loc[c["|proj-open| >="] == 1.5, "toward_share_of_moves_pct"].iloc[0])
+    bands = {kind: bt.band(x) for kind, x in rh.groupby("kind")}
+    get_gap, lay_gap = bands["dog (getting)"]["gap_pts"], bands["fav (laying)"]["gap_pts"]
+    bands_s = {kind: bt.band(x) for kind, x in rs.groupby("kind")}
+
+    key = ["game_id", "side", "rung"]
+    lp = all_laying_pairs(gh, Ph).merge(all_laying_pairs(gs, Ps)[key + ["p"]], on=key,
+                                        suffixes=("_pri", "_sec"))
+    inband = (lp.p_pri.between(0.75, 0.90, inclusive="left")
+              | lp.p_sec.between(0.75, 0.90, inclusive="left"))
+    lp = lp[inband]
+    ll_pri, ll_sec = logloss(lp.p_pri, lp.y), logloss(lp.p_sec, lp.y)
+
+    bar1 = k["ci95_lo"] > 0
+    bar2 = clv15 >= 58.0
+    bar3_get, bar3_lay = abs(get_gap) <= 2.0, abs(lay_gap) <= 2.0
+    adopt = (not bar3_lay) and (ll_sec < ll_pri)
+    verdict = pd.DataFrame([
+        {"bar": "1. k weeks 4+ (2025) > 0, CI excl. 0",
+         "result": f"{k['k_4plus']:+.3f} [{k['ci95_lo']:+.3f}, {k['ci95_hi']:+.3f}] ({k['games']} games)",
+         "pass": "PASS" if bar1 else "FAIL"},
+        {"bar": "2. CLV >= 1.5: toward share of moves >= 58%", "result": f"{clv15:.1f}%",
+         "pass": "PASS" if bar2 else "FAIL"},
+        {"bar": "3a. 75-90 getting points within +-2.0",
+         "result": f"{get_gap:+.1f} pts ({bands['dog (getting)']['gap_ci95']})",
+         "pass": "PASS" if bar3_get else "FAIL"},
+        {"bar": "3b. 75-90 laying points within +-2.0",
+         "result": f"{lay_gap:+.1f} pts ({bands['fav (laying)']['gap_ci95']})",
+         "pass": "PASS" if bar3_lay else "FAIL"},
+        {"bar": "3c. secondary adopted? (only if 3b fails and it wins laying log loss)",
+         "result": f"laying log loss primary {ll_pri:.4f} vs secondary {ll_sec:.4f} on {len(lp):,} pairs",
+         "pass": ("ADOPT secondary" if adopt else
+                  ("not needed (3b passed)" if bar3_lay else "NOT adopted"))},
+        {"bar": "4. ATS", "result": "informational (below)", "pass": "-"},
+    ])
+    sha = hashlib.sha256(PARAMS.read_bytes()).hexdigest()
+    H = [f"_2025 held-out evaluation, run once at {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC, "
+         f"params.json sha256 {sha[:12]} (primary + pre-declared secondary)._\n",
+         "### Pre-registered bars: verdict\n", md(verdict),
+         "\n### Primary (frozen)\n"]
+    H += headline(gh, rh, "2025 holdout, primary")
+    H += ["\n**k re-estimated on 2025** (diagnostic for bar 1)\n",
+          md(pd.DataFrame([k]), "{:+.3f}"),
+          "\n**Margin accuracy, 2025**\n", md(bt.accuracy(gh)), md(bt.accuracy(gh, "bucket"))]
+    H += calibration_section(rh, "2025 holdout, primary")
+    H += ["\n**ATS, 2025 (informational)**\n",
+          md(pd.concat([bt.ats(gh, "2025 primary", "open"),
+                        bt.ats(gh, "2025 primary", "close")]), "{:.1f}")]
+    H += ["\n### Secondary: fav_direction_shrink (pre-declared)\n"]
+    H += headline(gs, rs, "2025 holdout, secondary")
+    H += ["\n", md(bt.accuracy(gs)),
+          md(pd.concat([bt.ats(gs, "2025 secondary", "open"),
+                        bt.ats(gs, "2025 secondary", "close")]), "{:.1f}")]
+    write_block("HOLDOUT", "\n".join(H))
+    HOLDOUT_LOG.write_text(json.dumps({
+        "evaluated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "params_sha256": sha, "games": len(gh),
+        "bars": {"k_weeks4plus": k, "clv_toward_share_ge1_5": clv15,
+                 "band_getting": bands["dog (getting)"], "band_laying": bands["fav (laying)"],
+                 "secondary_band": bands_s,
+                 "laying_logloss": {"primary": ll_pri, "secondary": ll_sec, "pairs": len(lp)},
+                 "pass": {"1": bool(bar1), "2": bool(bar2), "3_getting": bool(bar3_get),
+                          "3_laying": bool(bar3_lay), "secondary_adopted": bool(adopt)}},
+        "primary_accuracy": {k_: float(v) for k_, v in bt.accuracy(gh).iloc[0].items()},
+        "clv_corr": c.attrs["corr"]}, indent=2, default=str) + "\n")
+    print(verdict.to_string(index=False))
 
 
 def params_committed() -> bool:
@@ -281,10 +421,15 @@ def main(argv=None) -> int:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tune", action="store_true")
     ap.add_argument("--holdout", action="store_true")
+    ap.add_argument("--freeze-secondary", action="store_true",
+                    help="one time: freeze the pre-declared secondary model + 2025 pass bars")
     a = ap.parse_args(argv)
     d = data()
     if a.tune:
         tune(d)
+        return 0
+    if a.freeze_secondary:
+        freeze_secondary(d)
         return 0
     if not PARAMS.exists():
         print("no params.json; run --tune first")
@@ -292,6 +437,9 @@ def main(argv=None) -> int:
     if a.holdout:
         if not params_committed():
             print("refusing: commit engine/cfb/model/params.json (unchanged) before the holdout run")
+            return 2
+        if "secondary" not in load_params() or "preregistered_2025" not in load_params():
+            print("refusing: freeze the secondary model and pass bars first (--freeze-secondary)")
             return 2
         if HOLDOUT_LOG.exists():
             print(f"refusing: 2025 model holdout already evaluated ({HOLDOUT_LOG.name})")

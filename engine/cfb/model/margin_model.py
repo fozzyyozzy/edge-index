@@ -25,6 +25,10 @@ GROUPS = {
 # sign a feature should have (home perspective) for it to "make sense"
 EXPECTED_SIGN = {"st_fp_diff": 1, "st_fg_diff": 1, "qb_delta": 1, "rest_diff": 1,
                  "bye_diff": 1, "travel_k": 1, "tz_diff": 1, "w2e_diff": 1}
+# Not a selection candidate. Pre-declared SECONDARY model only (Tim, 2026-10-10):
+# the part of the ratings gap pointing toward the opening favorite (home pts),
+# found after looking at tuning-season calibration (PHASE3_REPORT, hypotheses).
+EXTRA_GROUPS = {"favgap": ["fav_gap"]}
 
 
 def ratings_hfa() -> float:
@@ -38,11 +42,14 @@ def prep(df: pd.DataFrame) -> pd.DataFrame:
     d["gap"] = d.ratings_margin - d.open_margin
     for b in BUCKETS:
         d[f"k_{b}"] = d.gap * (d.bucket == b)
+    fav = np.where(d.open_margin < 0, -1.0, 1.0)            # open favorite (0 -> home)
+    d["fav_gap"] = fav * np.clip(fav * d.gap, 0, None)
     return d
 
 
 def columns(groups: list[str]) -> list[str]:
-    return [f"k_{b}" for b in BUCKETS] + [c for g in groups for c in GROUPS[g]]
+    allg = {**GROUPS, **EXTRA_GROUPS}
+    return [f"k_{b}" for b in BUCKETS] + [c for g in groups for c in allg[g]]
 
 
 def usable(d: pd.DataFrame, cols) -> pd.DataFrame:
