@@ -1,0 +1,168 @@
+timestamp,dataset,endpoint,params,status,rows,cache_file
+2026-10-10T13:11:52+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2021}",200,2454,data/cfb/raw/games/2021.json
+2026-10-10T13:11:53+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2022}",200,3705,data/cfb/raw/games/2022.json
+2026-10-10T13:11:54+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2023}",200,3734,data/cfb/raw/games/2023.json
+2026-10-10T13:11:56+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2024}",200,3801,data/cfb/raw/games/2024.json
+2026-10-10T13:11:57+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2025}",200,3831,data/cfb/raw/games/2025.json
+2026-10-10T13:11:58+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2026}",200,3679,data/cfb/raw/games/2026.json
+2026-10-10T13:11:59+00:00,elo,/ratings/elo,"{""year"": 2021}",200,130,data/cfb/raw/elo/2021.json
+2026-10-10T13:11:59+00:00,elo,/ratings/elo,"{""year"": 2022}",200,131,data/cfb/raw/elo/2022.json
+2026-10-10T13:12:00+00:00,elo,/ratings/elo,"{""year"": 2023}",200,133,data/cfb/raw/elo/2023.json
+2026-10-10T13:12:00+00:00,elo,/ratings/elo,"{""year"": 2024}",200,134,data/cfb/raw/elo/2024.json
+2026-10-10T13:12:00+00:00,elo,/ratings/elo,"{""year"": 2025}",200,136,data/cfb/raw/elo/2025.json
+2026-10-10T13:12:00+00:00,elo,/ratings/elo,"{""year"": 2026}",200,138,data/cfb/raw/elo/2026.json
+2026-10-10T13:12:00+00:00,portal,/player/portal,"{""year"": 2021}",200,1770,data/cfb/raw/portal/2021.json
+2026-10-10T13:12:00+00:00,portal,/player/portal,"{""year"": 2022}",200,2273,data/cfb/raw/portal/2022.json
+2026-10-10T13:12:00+00:00,portal,/player/portal,"{""year"": 2023}",200,2502,data/cfb/raw/portal/2023.json
+2026-10-10T13:12:04+00:00,portal,/player/portal,"{""year"": 2024}",200,3378,data/cfb/raw/portal/2024.json
+2026-10-10T13:12:07+00:00,portal,/player/portal,"{""year"": 2025}",200,4499,data/cfb/raw/portal/2025.json
+2026-10-10T13:12:07+00:00,portal,/player/portal,"{""year"": 2026}",200,4474,data/cfb/raw/portal/2026.json
+2026-10-10T13:12:10+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2021}",200,1657,data/cfb/raw/ppa_games/2021.json
+2026-10-10T13:12:14+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2022}",200,1672,data/cfb/raw/ppa_games/2022.json
+2026-10-10T13:12:21+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2023}",200,1702,data/cfb/raw/ppa_games/2023.json
+2026-10-10T13:12:27+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2024}",200,1711,data/cfb/raw/ppa_games/2024.json
+2026-10-10T13:12:34+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2025}",200,1742,data/cfb/raw/ppa_games/2025.json
+2026-10-10T13:12:37+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2026}",200,685,data/cfb/raw/ppa_games/2026.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2021}",200,191,data/cfb/raw/recruiting/2021.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2022}",200,184,data/cfb/raw/recruiting/2022.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2023}",200,177,data/cfb/raw/recruiting/2023.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2024}",200,194,data/cfb/raw/recruiting/2024.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2025}",200,232,data/cfb/raw/recruiting/2025.json
+2026-10-10T13:12:37+00:00,recruiting,/recruiting/teams,"{""year"": 2026}",200,221,data/cfb/raw/recruiting/2026.json
+2026-10-10T13:12:37+00:00,returning,/player/returning,"{""year"": 2021}",200,128,data/cfb/raw/returning/2021.json
+2026-10-10T13:12:37+00:00,returning,/player/returning,"{""year"": 2022}",200,130,data/cfb/raw/returning/2022.json
+2026-10-10T13:12:38+00:00,returning,/player/returning,"{""year"": 2023}",200,131,data/cfb/raw/returning/2023.json
+2026-10-10T13:12:38+00:00,returning,/player/returning,"{""year"": 2024}",200,133,data/cfb/raw/returning/2024.json
+2026-10-10T13:12:38+00:00,returning,/player/returning,"{""year"": 2025}",200,134,data/cfb/raw/returning/2025.json
+2026-10-10T13:12:38+00:00,returning,/player/returning,"{""year"": 2026}",200,136,data/cfb/raw/returning/2026.json
+2026-10-10T13:12:40+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2021}",200,887,data/cfb/raw/lines/2021.json
+2026-10-10T13:12:43+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2022}",200,1463,data/cfb/raw/lines/2022.json
+2026-10-10T13:12:47+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2023}",200,1416,data/cfb/raw/lines/2023.json
+2026-10-10T13:12:49+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2024}",200,1573,data/cfb/raw/lines/2024.json
+2026-10-10T13:12:50+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2025}",200,1597,data/cfb/raw/lines/2025.json
+2026-10-10T13:12:53+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2026}",200,1187,data/cfb/raw/lines/2026.json
+2026-10-10T13:12:53+00:00,sp,/ratings/sp,"{""year"": 2021}",200,131,data/cfb/raw/sp/2021.json
+2026-10-10T13:12:53+00:00,sp,/ratings/sp,"{""year"": 2022}",200,132,data/cfb/raw/sp/2022.json
+2026-10-10T13:12:53+00:00,sp,/ratings/sp,"{""year"": 2023}",200,134,data/cfb/raw/sp/2023.json
+2026-10-10T13:12:53+00:00,sp,/ratings/sp,"{""year"": 2024}",200,135,data/cfb/raw/sp/2024.json
+2026-10-10T13:12:53+00:00,sp,/ratings/sp,"{""year"": 2025}",200,137,data/cfb/raw/sp/2025.json
+2026-10-10T13:12:54+00:00,sp,/ratings/sp,"{""year"": 2026}",200,139,data/cfb/raw/sp/2026.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2021}",200,130,data/cfb/raw/fpi/2021.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2022}",200,131,data/cfb/raw/fpi/2022.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2023}",200,133,data/cfb/raw/fpi/2023.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2024}",200,134,data/cfb/raw/fpi/2024.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2025}",200,136,data/cfb/raw/fpi/2025.json
+2026-10-10T13:12:54+00:00,fpi,/ratings/fpi,"{""year"": 2026}",200,138,data/cfb/raw/fpi/2026.json
+2026-10-10T13:12:54+00:00,coaches,/coaches,"{""year"": 2021}",200,152,data/cfb/raw/coaches/2021.json
+2026-10-10T13:12:54+00:00,coaches,/coaches,"{""year"": 2022}",200,146,data/cfb/raw/coaches/2022.json
+2026-10-10T13:12:55+00:00,coaches,/coaches,"{""year"": 2023}",200,143,data/cfb/raw/coaches/2023.json
+2026-10-10T13:12:55+00:00,coaches,/coaches,"{""year"": 2024}",200,152,data/cfb/raw/coaches/2024.json
+2026-10-10T13:12:55+00:00,coaches,/coaches,"{""year"": 2025}",200,161,data/cfb/raw/coaches/2025.json
+2026-10-10T13:12:55+00:00,coaches,/coaches,"{""year"": 2026}",200,138,data/cfb/raw/coaches/2026.json
+2026-10-10T13:12:55+00:00,venues,/venues,{},200,852,data/cfb/raw/venues/all.json
+2026-10-10T13:13:00+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2021}",200,1774,data/cfb/raw/advanced/2021.json
+2026-10-10T13:13:07+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2022}",200,2918,data/cfb/raw/advanced/2022.json
+2026-10-10T13:13:15+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2023}",200,2984,data/cfb/raw/advanced/2023.json
+2026-10-10T13:13:23+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2024}",200,3212,data/cfb/raw/advanced/2024.json
+2026-10-10T13:13:31+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2025}",200,3316,data/cfb/raw/advanced/2025.json
+2026-10-10T13:13:36+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2026}",200,1428,data/cfb/raw/advanced/2026.json
+2026-10-10T13:13:36+00:00,talent,/talent,"{""year"": 2021}",200,224,data/cfb/raw/talent/2021.json
+2026-10-10T13:13:36+00:00,talent,/talent,"{""year"": 2022}",200,233,data/cfb/raw/talent/2022.json
+2026-10-10T13:13:36+00:00,talent,/talent,"{""year"": 2023}",200,238,data/cfb/raw/talent/2023.json
+2026-10-10T13:13:36+00:00,talent,/talent,"{""year"": 2024}",200,134,data/cfb/raw/talent/2024.json
+2026-10-10T13:13:37+00:00,talent,/talent,"{""year"": 2025}",200,134,data/cfb/raw/talent/2025.json
+2026-10-10T13:13:37+00:00,talent,/talent,"{""year"": 2026}",200,138,data/cfb/raw/talent/2026.json
+2026-10-10T13:13:38+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 1, ""year"": 2021}",200,6865,data/cfb/raw/plays/2021_post_wk01.json
+2026-10-10T13:13:40+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2021}",200,15066,data/cfb/raw/plays/2021_wk01.json
+2026-10-10T13:13:44+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2021}",200,14556,data/cfb/raw/plays/2021_wk02.json
+2026-10-10T13:13:46+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2021}",200,13096,data/cfb/raw/plays/2021_wk03.json
+2026-10-10T13:13:49+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2021}",200,12063,data/cfb/raw/plays/2021_wk04.json
+2026-10-10T13:13:50+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2021}",200,10962,data/cfb/raw/plays/2021_wk05.json
+2026-10-10T13:13:51+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2021}",200,9515,data/cfb/raw/plays/2021_wk06.json
+2026-10-10T13:13:52+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2021}",200,9347,data/cfb/raw/plays/2021_wk07.json
+2026-10-10T13:13:53+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 8, ""year"": 2021}",200,9524,data/cfb/raw/plays/2021_wk08.json
+2026-10-10T13:13:54+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 9, ""year"": 2021}",200,9567,data/cfb/raw/plays/2021_wk09.json
+2026-10-10T13:13:55+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 10, ""year"": 2021}",200,11039,data/cfb/raw/plays/2021_wk10.json
+2026-10-10T13:13:56+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 11, ""year"": 2021}",200,11533,data/cfb/raw/plays/2021_wk11.json
+2026-10-10T13:13:58+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 12, ""year"": 2021}",200,11612,data/cfb/raw/plays/2021_wk12.json
+2026-10-10T13:13:59+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 13, ""year"": 2021}",200,11496,data/cfb/raw/plays/2021_wk13.json
+2026-10-10T13:14:00+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 14, ""year"": 2021}",200,2110,data/cfb/raw/plays/2021_wk14.json
+2026-10-10T13:14:00+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 15, ""year"": 2021}",200,147,data/cfb/raw/plays/2021_wk15.json
+2026-10-10T13:14:01+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 1, ""year"": 2022}",200,8488,data/cfb/raw/plays/2022_post_wk01.json
+2026-10-10T13:14:03+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2022}",200,23676,data/cfb/raw/plays/2022_wk01.json
+2026-10-10T13:14:05+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2022}",200,21611,data/cfb/raw/plays/2022_wk02.json
+2026-10-10T13:14:08+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2022}",200,19150,data/cfb/raw/plays/2022_wk03.json
+2026-10-10T13:14:10+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2022}",200,18490,data/cfb/raw/plays/2022_wk04.json
+2026-10-10T13:14:12+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2022}",200,18112,data/cfb/raw/plays/2022_wk05.json
+2026-10-10T13:14:14+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2022}",200,17334,data/cfb/raw/plays/2022_wk06.json
+2026-10-10T13:14:16+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2022}",200,17064,data/cfb/raw/plays/2022_wk07.json
+2026-10-10T13:14:18+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 8, ""year"": 2022}",200,16870,data/cfb/raw/plays/2022_wk08.json
+2026-10-10T13:14:20+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 9, ""year"": 2022}",200,16958,data/cfb/raw/plays/2022_wk09.json
+2026-10-10T13:14:21+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 10, ""year"": 2022}",200,18556,data/cfb/raw/plays/2022_wk10.json
+2026-10-10T13:14:23+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 11, ""year"": 2022}",200,20062,data/cfb/raw/plays/2022_wk11.json
+2026-10-10T13:14:25+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 12, ""year"": 2022}",200,19339,data/cfb/raw/plays/2022_wk12.json
+2026-10-10T13:14:27+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 13, ""year"": 2022}",200,12487,data/cfb/raw/plays/2022_wk13.json
+2026-10-10T13:14:27+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 14, ""year"": 2022}",200,3238,data/cfb/raw/plays/2022_wk14.json
+2026-10-10T13:14:28+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 15, ""year"": 2022}",200,827,data/cfb/raw/plays/2022_wk15.json
+2026-10-10T13:14:29+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 1, ""year"": 2023}",200,8172,data/cfb/raw/plays/2023_post_wk01.json
+2026-10-10T13:14:29+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 11, ""year"": 2023}",200,0,data/cfb/raw/plays/2023_post_wk11.json
+2026-10-10T13:14:29+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 12, ""year"": 2023}",200,0,data/cfb/raw/plays/2023_post_wk12.json
+2026-10-10T13:14:30+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 13, ""year"": 2023}",200,1120,data/cfb/raw/plays/2023_post_wk13.json
+2026-10-10T13:14:30+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 14, ""year"": 2023}",200,1456,data/cfb/raw/plays/2023_post_wk14.json
+2026-10-10T13:14:30+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 15, ""year"": 2023}",200,418,data/cfb/raw/plays/2023_post_wk15.json
+2026-10-10T13:14:32+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2023}",200,20700,data/cfb/raw/plays/2023_wk01.json
+2026-10-10T13:14:34+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2023}",200,18364,data/cfb/raw/plays/2023_wk02.json
+2026-10-10T13:14:35+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2023}",200,19455,data/cfb/raw/plays/2023_wk03.json
+2026-10-10T13:14:37+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2023}",200,18732,data/cfb/raw/plays/2023_wk04.json
+2026-10-10T13:14:39+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2023}",200,19422,data/cfb/raw/plays/2023_wk05.json
+2026-10-10T13:14:41+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2023}",200,16920,data/cfb/raw/plays/2023_wk06.json
+2026-10-10T13:14:42+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2023}",200,18141,data/cfb/raw/plays/2023_wk07.json
+2026-10-10T13:14:45+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 8, ""year"": 2023}",200,18409,data/cfb/raw/plays/2023_wk08.json
+2026-10-10T13:14:46+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 9, ""year"": 2023}",200,18359,data/cfb/raw/plays/2023_wk09.json
+2026-10-10T13:14:48+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 10, ""year"": 2023}",200,20892,data/cfb/raw/plays/2023_wk10.json
+2026-10-10T13:14:50+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 11, ""year"": 2023}",200,20158,data/cfb/raw/plays/2023_wk11.json
+2026-10-10T13:14:52+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 12, ""year"": 2023}",200,19936,data/cfb/raw/plays/2023_wk12.json
+2026-10-10T13:14:53+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 13, ""year"": 2023}",200,11490,data/cfb/raw/plays/2023_wk13.json
+2026-10-10T13:14:54+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 14, ""year"": 2023}",200,1778,data/cfb/raw/plays/2023_wk14.json
+2026-10-10T13:14:54+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 15, ""year"": 2023}",200,166,data/cfb/raw/plays/2023_wk15.json
+2026-10-10T13:14:56+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 1, ""year"": 2024}",200,8812,data/cfb/raw/plays/2024_post_wk01.json
+2026-10-10T13:14:58+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2024}",200,22356,data/cfb/raw/plays/2024_wk01.json
+2026-10-10T13:15:00+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2024}",200,22036,data/cfb/raw/plays/2024_wk02.json
+2026-10-10T13:15:08+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2024}",200,19492,data/cfb/raw/plays/2024_wk03.json
+2026-10-10T13:15:18+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2024}",200,19809,data/cfb/raw/plays/2024_wk04.json
+2026-10-10T13:15:25+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2024}",200,17323,data/cfb/raw/plays/2024_wk05.json
+2026-10-10T13:15:28+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2024}",200,16886,data/cfb/raw/plays/2024_wk06.json
+2026-10-10T13:15:30+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2024}",200,17728,data/cfb/raw/plays/2024_wk07.json
+2026-10-10T13:15:35+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 8, ""year"": 2024}",200,19574,data/cfb/raw/plays/2024_wk08.json
+2026-10-10T13:15:37+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 9, ""year"": 2024}",200,18914,data/cfb/raw/plays/2024_wk09.json
+2026-10-10T13:15:38+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 10, ""year"": 2024}",200,17954,data/cfb/raw/plays/2024_wk10.json
+2026-10-10T13:15:40+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 11, ""year"": 2024}",200,18711,data/cfb/raw/plays/2024_wk11.json
+2026-10-10T13:15:42+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 12, ""year"": 2024}",200,19155,data/cfb/raw/plays/2024_wk12.json
+2026-10-10T13:15:45+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 13, ""year"": 2024}",200,20769,data/cfb/raw/plays/2024_wk13.json
+2026-10-10T13:15:47+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 14, ""year"": 2024}",200,13628,data/cfb/raw/plays/2024_wk14.json
+2026-10-10T13:15:49+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 15, ""year"": 2024}",200,3098,data/cfb/raw/plays/2024_wk15.json
+2026-10-10T13:15:49+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 16, ""year"": 2024}",200,799,data/cfb/raw/plays/2024_wk16.json
+2026-10-10T13:15:50+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 1, ""year"": 2025}",200,9051,data/cfb/raw/plays/2025_post_wk01.json
+2026-10-10T13:15:51+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 13, ""year"": 2025}",200,0,data/cfb/raw/plays/2025_post_wk13.json
+2026-10-10T13:15:51+00:00,plays,/plays,"{""seasonType"": ""postseason"", ""week"": 14, ""year"": 2025}",200,0,data/cfb/raw/plays/2025_post_wk14.json
+2026-10-10T13:15:53+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2025}",200,24398,data/cfb/raw/plays/2025_wk01.json
+2026-10-10T13:15:55+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2025}",200,23460,data/cfb/raw/plays/2025_wk02.json
+2026-10-10T13:15:58+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2025}",200,21055,data/cfb/raw/plays/2025_wk03.json
+2026-10-10T13:16:01+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2025}",200,20097,data/cfb/raw/plays/2025_wk04.json
+2026-10-10T13:16:06+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2025}",200,18837,data/cfb/raw/plays/2025_wk05.json
+2026-10-10T13:16:08+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2025}",200,18429,data/cfb/raw/plays/2025_wk06.json
+2026-10-10T13:16:11+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2025}",200,19054,data/cfb/raw/plays/2025_wk07.json
+2026-10-10T13:16:15+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 8, ""year"": 2025}",200,18994,data/cfb/raw/plays/2025_wk08.json
+2026-10-10T13:16:18+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 9, ""year"": 2025}",200,19902,data/cfb/raw/plays/2025_wk09.json
+2026-10-10T13:16:21+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 10, ""year"": 2025}",200,19431,data/cfb/raw/plays/2025_wk10.json
+2026-10-10T13:16:23+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 11, ""year"": 2025}",200,20287,data/cfb/raw/plays/2025_wk11.json
+2026-10-10T13:16:26+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 12, ""year"": 2025}",200,21107,data/cfb/raw/plays/2025_wk12.json
+2026-10-10T13:16:29+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 13, ""year"": 2025}",200,21548,data/cfb/raw/plays/2025_wk13.json
+2026-10-10T13:16:31+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 14, ""year"": 2025}",200,13746,data/cfb/raw/plays/2025_wk14.json
+2026-10-10T13:16:31+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 15, ""year"": 2025}",200,3162,data/cfb/raw/plays/2025_wk15.json
+2026-10-10T13:16:32+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 16, ""year"": 2025}",200,825,data/cfb/raw/plays/2025_wk16.json
+2026-10-10T13:16:35+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 1, ""year"": 2026}",200,35773,data/cfb/raw/plays/2026_wk01.json
+2026-10-10T13:16:37+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 2, ""year"": 2026}",200,23131,data/cfb/raw/plays/2026_wk02.json
+2026-10-10T13:16:42+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 3, ""year"": 2026}",200,22765,data/cfb/raw/plays/2026_wk03.json
+2026-10-10T13:16:44+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2026}",200,21833,data/cfb/raw/plays/2026_wk04.json
+2026-10-10T13:16:47+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2026}",200,20368,data/cfb/raw/plays/2026_wk05.json
