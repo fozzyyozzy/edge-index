@@ -1,0 +1,93 @@
+name: cfb-lines
+
+# DraftKings CFB line capture (docs/cfb/ODDS_BUDGET.md, Phase 4 brief §2).
+# Slots (ET): Sun 6pm, 10pm · Mon 9am (open watch) · Tue 10am, Wed 10am (bet window, all-game ladders)
+#             Fri 10am (late) · Tue/Wed/Thu/Fri 6pm (close, only if games kick off) · Sat 11am, 3pm, 7pm (close)
+# Cron is UTC: each slot has an EDT and an EST line at :07. engine/cfb/lines/slots.py serves a slot only
+# inside its ET window and records it in data/cfb/lines/served_slots.txt, so the twin cron skips.
+# Own concurrency group on purpose: joining NFL's data-main group could let a queued CFB run cancel a
+# pending NFL run (GitHub keeps one pending run per group). Pushes retry with a rebase instead.
+on:
+  schedule:
+    - cron: "7 22 * * 0"     # Sun 6pm EDT
+    - cron: "7 23 * * 0"     # Sun 6pm EST
+    - cron: "7 2 * * 1"      # Sun 10pm EDT
+    - cron: "7 3 * * 1"      # Sun 10pm EST
+    - cron: "7 13 * * 1"     # Mon 9am EDT
+    - cron: "7 14 * * 1"     # Mon 9am EST
+    - cron: "7 14 * * 2"     # Tue 10am EDT
+    - cron: "7 15 * * 2"     # Tue 10am EST
+    - cron: "7 14 * * 3"     # Wed 10am EDT
+    - cron: "7 15 * * 3"     # Wed 10am EST
+    - cron: "7 14 * * 5"     # Fri 10am EDT
+    - cron: "7 15 * * 5"     # Fri 10am EST
+    - cron: "7 22 * * 2"     # Tue 6pm EDT
+    - cron: "7 23 * * 2"     # Tue 6pm EST
+    - cron: "7 22 * * 3"     # Wed 6pm EDT
+    - cron: "7 23 * * 3"     # Wed 6pm EST
+    - cron: "7 22 * * 4"     # Thu 6pm EDT
+    - cron: "7 23 * * 4"     # Thu 6pm EST
+    - cron: "7 22 * * 5"     # Fri 6pm EDT
+    - cron: "7 23 * * 5"     # Fri 6pm EST
+    - cron: "7 15 * * 6"     # Sat 11am EDT
+    - cron: "7 16 * * 6"     # Sat 11am EST
+    - cron: "7 19 * * 6"     # Sat 3pm EDT
+    - cron: "7 20 * * 6"     # Sat 3pm EST
+    - cron: "7 23 * * 6"     # Sat 7pm EDT
+    - cron: "7 0 * * 0"      # Sat 7pm EST
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "capture.py args for a manual snapshot (e.g. --label manual --ladders none)"
+        required: false
+        default: "--label manual --ladders none"
+
+concurrency:
+  group: cfb-lines
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    env:
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      CFB_ODDS_RESERVE: 100000        # never spend below this many remaining credits (NFL protection)
+      CFB_ODDS_CYCLE_CAP: 3000        # CFB credits per quota cycle (plan: ~1,200)
+      CFB_LADDER_CAP: 70
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install pandas requests python-dotenv
+      - name: which slot (scheduled) / manual args
+        id: slot
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=" >> "$GITHUB_OUTPUT"
+            echo "args=${{ github.event.inputs.args }}" >> "$GITHUB_OUTPUT"
+          else
+            read -r TAG ARGS <<< "$(python -m engine.cfb.lines.slots --which)"
+            echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+            echo "args=$ARGS" >> "$GITHUB_OUTPUT"
+            [ -z "$TAG" ] && echo "no unserved ET slot now (twin cron or already served); skipping"
+          fi
+      - name: capture DK lines
+        if: steps.slot.outputs.args != ''
+        run: python -m engine.cfb.lines.capture ${{ steps.slot.outputs.args }}
+      - name: commit snapshots + usage ledger
+        if: always() && steps.slot.outputs.args != ''
+        run: |
+          TAG="${{ steps.slot.outputs.tag }}"
+          [ -n "$TAG" ] && python -m engine.cfb.lines.slots --mark-served "$TAG"
+          git config user.name edge-index-bot
+          git config user.email bot@edge-index.com
+          git add data/cfb/lines
+          git commit -m "cfb lines ${TAG:-manual}" || exit 0
+          for i in 1 2 3; do git push && exit 0; git pull --rebase && continue; done
+          exit 1
