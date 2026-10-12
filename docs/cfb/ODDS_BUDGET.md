@@ -70,7 +70,7 @@ disagree with the line (the targets) would give a biased sample, and the extra c
 about 0.01% of the plan. The cheaper targets-only variant (~600 a month) is one flag away:
 `--ladders targets` on the Tue/Wed slots.
 
-## Phase 5C extension: alternate totals + alternate team totals (pending approval, 2026-10-12)
+## Phase 5C extension: alternate totals + alternate team totals (APPROVED 2026-10-12: option A)
 
 **Verified with one test call** (Georgia Southern @ Old Dominion, 2026-10-12 13:03 UTC):
 `markets=alternate_totals,team_totals,alternate_team_totals`, DK, per-event endpoint →
@@ -94,3 +94,7 @@ unset in `cfb_lines.yml`.
 Option A means the **CFB cycle cap rises from 3,000 to 6,000** (it would bind at ~2,750).
 Worst case total with NFL (~13,000 a month) stays **< 0.4% of the 5,000,000 plan**. The
 100,000-credit NFL reserve and the separate CFB ledger are unchanged.
+
+**Approved by Tim, 2026-10-12: option A.** `cfb_lines.yml` sets
+`CFB_EXTRA_MARKETS=alternate_totals,alternate_team_totals` and `CFB_ODDS_CYCLE_CAP=6000`.
+New rows go to `data/cfb/lines/snapshots/dk_alt_totals_<season>_wk<NN>.csv`.

@@ -55,8 +55,9 @@ jobs:
     env:
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       CFB_ODDS_RESERVE: 100000        # never spend below this many remaining credits (NFL protection)
-      CFB_ODDS_CYCLE_CAP: 3000        # CFB credits per quota cycle (plan: ~1,200)
+      CFB_ODDS_CYCLE_CAP: 6000        # CFB credits per quota cycle (plan with 5C extras: ~2,750)
       CFB_LADDER_CAP: 70
+      CFB_EXTRA_MARKETS: "alternate_totals,alternate_team_totals"   # Phase 5C, approved 2026-10-12 (+2/game)
     steps:
       - uses: actions/checkout@v7
         with:

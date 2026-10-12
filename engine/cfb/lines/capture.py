@@ -49,7 +49,7 @@ SPORT = "americanfootball_ncaaf"
 MAIN_MARKETS = "spreads,totals,h2h"
 EDGE_MIN = 1.5
 RESERVE = int(os.environ.get("CFB_ODDS_RESERVE", "100000"))
-CYCLE_CAP = int(os.environ.get("CFB_ODDS_CYCLE_CAP", "3000"))
+CYCLE_CAP = int(os.environ.get("CFB_ODDS_CYCLE_CAP", "6000"))
 USAGE_COLS = ["captured_at_utc", "label", "endpoint", "events", "cost", "used", "remaining"]
 # Phase 5C: extra per-event markets, OFF until Tim approves the budget (docs/cfb/ODDS_BUDGET.md).
 # Enable with CFB_EXTRA_MARKETS="alternate_totals,alternate_team_totals" (+2 credits per game,
