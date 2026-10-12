@@ -260,7 +260,7 @@ def forecast(season: int, week: int) -> pd.DataFrame:
         if r.venue_id not in v.index:
             continue
         vv = v.loc[r.venue_id]
-        if vv.dome is True or vv.country != "US" or pd.isna(vv.latitude):
+        if (pd.notna(vv.dome) and bool(vv.dome)) or vv.country != "US" or pd.isna(vv.latitude):
             continue
         pt = _get(f"https://api.weather.gov/points/{vv.latitude:.4f},{vv.longitude:.4f}")
         if pt.status_code != 200:

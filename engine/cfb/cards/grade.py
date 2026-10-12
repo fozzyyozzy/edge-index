@@ -22,7 +22,7 @@ BAR = {"min_legs": 100, "roi_ci_lo": -0.02}
 
 def outcome(leg: dict, g: pd.Series) -> float | None:
     """1 win, 0 loss, None for push/ungraded."""
-    if pd.isna(g.home_points) or pd.isna(g.away_points) or g.completed is not True:
+    if pd.isna(g.home_points) or pd.isna(g.away_points) or not bool(g.completed):   # numpy bool safe
         return None
     hp, ap = float(g.home_points), float(g.away_points)
     m = leg["market"]
@@ -48,13 +48,49 @@ def legs(season: int) -> pd.DataFrame:
         c = json.loads(open(f, encoding="utf-8").read())
         for x in c["floor_legs"]:
             y = outcome(x, g.loc[x["game_id"]]) if x["game_id"] in g.index else None
-            rows.append({"week": c["week"], "snapshot_utc": c["snapshot_utc"], **{k: x[k] for k in
-                         ("game_id", "game", "pick", "market", "role", "price", "p_used", "ev")}, "result": y})
+            rows.append({"week": c["week"], "snapshot_utc": c["snapshot_utc"], **{k: x.get(k) for k in
+                         ("game_id", "game", "pick", "market", "role", "price", "p_used", "ev",
+                          "dk_home_spread")}, "result": y})
     d = pd.DataFrame(rows)
     if len(d):
         d["units"] = np.where(d.result == 1, payout(d.price), np.where(d.result == 0, -1.0, np.nan))
         d["breakeven"] = implied(d.price)
     return d
+
+
+def edge_legs(season: int) -> pd.DataFrame:
+    """Track 2: the card's main-spread edge list (|edge| >= 1.5 vs the Tuesday line), graded at the
+    posted Tuesday line and price, 1 unit each. Separate from the floor card."""
+    g = pd.read_parquet(config.CLEAN / "games.parquet").set_index("game_id")
+    rows = []
+    for f in sorted(glob.glob(str(CARDS / f"card_{season}_wk*.json"))):
+        c = json.loads(open(f, encoding="utf-8").read())
+        for x in c.get("spread_edges", []):
+            leg = {**x, "market": "SPREAD-CLV"}
+            y = outcome(leg, g.loc[x["game_id"]]) if x.get("game_id") in g.index else None
+            rows.append({"week": c["week"], "game_id": x.get("game_id"), "game": x["game"], "pick": x["pick"],
+                         "market": "SPREAD-CLV", "role": "edge", "price": x["price"], "edge_pts": x["edge_pts"],
+                         "p_used": x["p_model"], "ev": x["ev"], "result": y})
+    d = pd.DataFrame(rows)
+    if len(d):
+        d["units"] = np.where(d.result == 1, payout(d.price), np.where(d.result == 0, -1.0, np.nan))
+        d["breakeven"] = implied(d.price)
+    return d
+
+
+def alt_shape_split(d: pd.DataFrame) -> dict:
+    """DIAGNOSTIC (not a bar): ALT-SHAPE floor legs split by game spread |DK main line| <= 14 vs > 14."""
+    x = d[(d.role == "floor") & (d.market == "ALT-SHAPE")].dropna(subset=["result"]) if len(d) else d
+    if x is None or x.empty:
+        return {}
+    big = x.dk_home_spread.abs() > 14
+    out = {}
+    for name, grp in (("|spread| <= 14", x[~big]), ("|spread| > 14", x[big])):
+        if len(grp):
+            out[name] = {"legs": len(grp), "hit_%": round(100 * grp.result.mean(), 1),
+                         "breakeven_%": round(100 * grp.breakeven.mean(), 1),
+                         "roi_%": round(100 * grp.units.mean(), 1)}
+    return out
 
 
 def summary(d: pd.DataFrame, role="floor", n_boot=2000, seed=0) -> dict:

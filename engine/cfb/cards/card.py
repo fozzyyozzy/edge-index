@@ -203,26 +203,34 @@ def floor_legs(L: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([floor, sec], ignore_index=True)
 
 
-def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n=12):
-    f = floor[floor.role == "floor"].sort_values("p_used", ascending=False).head(pool_n).reset_index(drop=True)
-    if len(f) < 3:
+MAX_ALT_SHAPE = 2       # Tim, 2026-10-12: at most 2 ALT-SHAPE legs per ticket
+
+
+def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n=16):
+    """Pool = floor legs + second legs (one leg per game per ticket). At most MAX_ALT_SHAPE
+    ALT-SHAPE legs per ticket; the rest come from other labels. No leg repeats across tickets
+    except the floor star (highest-probability floor leg, <= 2 tickets). Pick the highest joint
+    probability at >= +200; if no combination reaches +200 under the rules, take the best one
+    and label it "reduced payout, floors held"."""
+    f = floor.sort_values("p_used", ascending=False).head(pool_n).reset_index(drop=True)
+    if f.game_id.nunique() < 3:
         return []
-    star = f.index[0]
-    used = {}
-    out = []
+    fl = f[f.role == "floor"]
+    star = fl.index[0] if len(fl) else None
+    used, out = {}, []
     for t in range(n_tickets):
         best = None
         for k in sizes:
             for combo in itertools.combinations(f.index, k):
+                c = f.loc[list(combo)]
                 if any(used.get(i, 0) >= (2 if i == star else 1) for i in combo):
                     continue
-                if f.loc[list(combo)].game_id.nunique() < k:
+                if c.game_id.nunique() < k or (c.market == "ALT-SHAPE").sum() > MAX_ALT_SHAPE:
                     continue
-                dec = float(np.prod(1 + payout(f.loc[list(combo)].price)))
-                pj = float(np.prod(f.loc[list(combo)].p_used))
+                dec = float(np.prod(1 + payout(c.price)))
+                pj = float(np.prod(c.p_used))
                 price = float(american(dec))
-                ok = price >= target
-                key = (ok, pj)
+                key = (price >= target, pj)
                 if best is None or key > best[0]:
                     best = (key, combo, dec, pj, price)
         if best is None:
@@ -230,8 +238,10 @@ def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n
         _, combo, dec, pj, price = best
         for i in combo:
             used[i] = used.get(i, 0) + 1
-        out.append({"ticket": t + 1, "legs": f.loc[list(combo)][["game", "pick", "market", "price", "p_used"]].to_dict("records"),
+        out.append({"ticket": t + 1,
+                    "legs": f.loc[list(combo)][["game_id", "game", "pick", "market", "role", "price", "p_used"]].to_dict("records"),
                     "price_american": round(price), "p_joint": pj, "ev": pj * dec - 1,
+                    "alt_shape_legs": int((f.loc[list(combo)].market == "ALT-SHAPE").sum()),
                     "label": "Bloom (>= +200)" if price >= target else "reduced payout, floors held"})
     return out
 
@@ -241,7 +251,8 @@ def spread_edges(g: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
     m["edge_pts"] = np.where(m.side == "home", m.proj_home_margin + m.dk_home_spread,
                              -(m.proj_home_margin + m.dk_home_spread))
     return m[m.edge_pts >= 1.5].sort_values("edge_pts", ascending=False)[
-        ["game", "pick", "price", "edge_pts", "p_model", "ev", "proj_home_margin", "dk_home_spread"]]
+        ["game_id", "game", "pick", "side", "line", "price", "edge_pts", "p_model", "ev",
+         "proj_home_margin", "dk_home_spread"]]
 
 
 def readout(card: dict) -> str:
@@ -256,7 +267,7 @@ def readout(card: dict) -> str:
     lines.append("\n## Tickets")
     for t in card["tickets"]:
         lines.append(f"**Ticket {t['ticket']}** ({t['label']}): {t['price_american']:+d}, joint p "
-                     f"{100 * t['p_joint']:.1f}%, EV {100 * t['ev']:+.1f}%")
+                     f"{100 * t['p_joint']:.1f}%, EV {100 * t['ev']:+.1f}%, ALT-SHAPE legs {t['alt_shape_legs']}")
         for x in t["legs"]:
             lines.append(f"- {x['game']}: {x['pick']} ({x['market']}) {x['price']:+.0f}, p {100 * x['p_used']:.1f}%")
     lines.append("\n## Main-spread edges vs this snapshot (edge >= 1.5 pts; strongest signal, both sides)")

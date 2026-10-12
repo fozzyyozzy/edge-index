@@ -337,6 +337,20 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
             lines.append("- **Floor card:** published, no graded legs yet.")
     else:
         lines.append("- **Floor card:** none published yet.")
+    if len(cd):
+        sp = cg.alt_shape_split(cd)
+        if sp:
+            lines.append(f"- **ALT-SHAPE split by game spread (diagnostic, not a bar):** {sp}.")
+    # track 2: main-spread edge list at the Tuesday line (separate from the card)
+    ed = cg.edge_legs(season)
+    es = cg.summary(ed, "edge") if len(ed) else {"graded_legs": 0}
+    if es.get("graded_legs"):
+        lines.append(
+            f"- **Edge list, main spreads at the Tuesday line (separate track):** {es['graded_legs']} graded, "
+            f"hit {es['hit_%']:.1f}% vs break-even {es['mean_breakeven_%']:.1f}%, ROI {es['roi_%']:+.1f}% "
+            f"(game-clustered CI {es['roi_ci95']}).")
+    else:
+        lines.append("- **Edge list (separate track):** no graded legs yet.")
     return "\n".join(lines) + "\n"
 
 

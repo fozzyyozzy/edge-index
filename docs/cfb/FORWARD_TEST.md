@@ -128,6 +128,16 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
   (SPREAD-CLV, ALT-SHAPE, ML-SHADED, TEAM-TOTAL, PAPER-UNPROVEN).
 - **$0 until passed.** Paper only: not on the site or in the newsletter.
 
+**Graded tracks and diagnostics (Tim, 2026-10-12; none of these is a new bar):**
+- **Track 1, floor card:** the floor legs above (the bar).
+- **Track 2, edge list:** every main spread with |edge| >= 1.5 vs the **Tuesday 10 AM** DK line
+  (both sides, as listed on the card), graded at that posted line and price, 1 unit each.
+  It's reported separately in `forward weekly`, and it complements the CLV forward test.
+- **Diagnostic:** `ALT-SHAPE` floor legs split by game spread, |DK main line| <= 14 vs > 14
+  (hit, break-even, ROI). This is where our σ and DK's ladder disagree most.
+- **Ticket rule:** at most 2 `ALT-SHAPE` legs per ticket, with the rest from other labels; a
+  ticket that can't reach +200 under the rules is labeled "reduced payout, floors held".
+
 ## Current score
 
 <!-- AUTO:SCORE:BEGIN -->
