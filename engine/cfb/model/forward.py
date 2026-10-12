@@ -323,6 +323,20 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
             f"{lift['games']}/{le.BAR['min_games']} toward the bar.")
     else:
         lines.append("- **Rung log:** no graded bar-sample rungs yet.")
+    # floor card (Phase 5E): published cards only
+    from engine.cfb.cards import grade as cg
+    cd = cg.legs(season)
+    if len(cd):
+        fs = cg.summary(cd, "floor")
+        if fs.get("graded_legs"):
+            lines.append(
+                f"- **Floor card (to date):** {fs['graded_legs']} graded floor legs, hit {fs['hit_%']:.1f}% vs "
+                f"mean implied break-even {fs['mean_breakeven_%']:.1f}%, **ROI at posted prices {fs['roi_%']:+.1f}%** "
+                f"(game-clustered CI {fs['roi_ci95']}); {fs['bar']}. By market: {fs['by_market']}.")
+        else:
+            lines.append("- **Floor card:** published, no graded legs yet.")
+    else:
+        lines.append("- **Floor card:** none published yet.")
     return "\n".join(lines) + "\n"
 
 

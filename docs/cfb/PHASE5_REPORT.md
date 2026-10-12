@@ -169,6 +169,24 @@ margin) / 2; bivariate normal with ρ = +0.075 (re-measured around the market to
   Built, **off**, and pending approval (`docs/cfb/ODDS_BUDGET.md`). DK's implied totals and
   team-total ladder fits (σ, hold, reproduction error) need captured ladders first.
 
+## 5. The first paper floor card (5E): built, waiting for Tuesday's snapshot
+
+`python -m engine.cfb.cards.card --week N` builds the card from the **Tue 10 AM ET DK `bet`
+snapshot** (it refuses any other snapshot unless `--snapshot` is given). Every leg is
+timestamped and labeled `SPREAD-CLV`, `ALT-SHAPE`, `ML-SHADED`, `TEAM-TOTAL` or
+`PAPER-UNPROVEN`. The rules applied: big-favorite ML shading (|spread| > 14), the
+getting-points rule on all spread legs, price −500..+150, p ≥ 65% and EV ≥ +2% at the posted
+price. Teasers are off. Drafts go to `data/cfb/derived/` (gitignored). Only `--publish` (after
+Tim's OK) writes `data/cfb/cards/` and enters grading (`forward weekly`), against the floor-card
+bar pre-registered in `FORWARD_TEST.md`.
+
+**Test run on Monday's manual snapshot (NOT the bet-time card):** 46 of 5,298 priced legs were
+eligible (43 ALT-SHAPE, 3 ML-SHADED), giving 8 floor legs and 2 Bloom tickets (+204, +206).
+Every ALT-SHAPE floor leg was a big getting cushion (+13.5 to +23.5 at −244 to −489), exactly
+where our σ is narrower than DK's ladder. The card leans on the unproven shape hypothesis,
+and the labels say so. No totals legs qualified: market-anchored totals rarely beat DK's hold.
+The test snapshot had no alt-totals ladders, since the extras start with Tuesday's slot.
+
 Detailed tables follow under "Results (generated)".
 
 ## Results (generated)

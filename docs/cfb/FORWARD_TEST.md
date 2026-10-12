@@ -115,6 +115,19 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
 - **$0 until passed.** Grading uses `games.parquet` final margins only.
 - **Status** is written to `docs/cfb/PHASE4_REPORT.md` by `python -m engine.cfb.lines.ladder_edge`.
 
+## Floor-card bar (pre-registered 2026-10-12, Phase 5 brief §5E, before any card is published or graded)
+
+- **What's graded:** the **floor legs** (one per game, the highest-probability eligible leg) of
+  each published card (`data/cfb/cards/card_<season>_wk<NN>.json`), built from the **Tue 10 AM ET
+  DK snapshot** at its posted prices, 1 unit each. Pushes are void. Results come from
+  `games.parquet` only.
+- **Pass:** after **>= 100 graded floor legs**: ROI at posted prices **> 0**, with a
+  game-clustered 95% bootstrap CI (2,000 draws) whose **lower bound is > -2%**, **and** a
+  realized hit rate **>=** the mean implied break-even of those legs' posted prices.
+- **Reported, not barred:** second legs and tickets, and the split by evidence label
+  (SPREAD-CLV, ALT-SHAPE, ML-SHADED, TEAM-TOTAL, PAPER-UNPROVEN).
+- **$0 until passed.** Paper only: not on the site or in the newsletter.
+
 ## Current score
 
 <!-- AUTO:SCORE:BEGIN -->
