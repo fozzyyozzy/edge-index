@@ -73,6 +73,8 @@ def edge_legs(season: int) -> pd.DataFrame:
                          "p_used": x["p_model"], "ev": x["ev"], "result": y})
     d = pd.DataFrame(rows)
     if len(d):
+        # one bet per game per card (the model's side, largest edge); never both sides
+        d = d.sort_values("edge_pts", ascending=False).drop_duplicates(["week", "game_id"])
         d["units"] = np.where(d.result == 1, payout(d.price), np.where(d.result == 0, -1.0, np.nan))
         d["breakeven"] = implied(d.price)
     return d

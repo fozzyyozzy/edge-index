@@ -250,9 +250,11 @@ def spread_edges(g: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
     m = L[(L.market == "SPREAD-CLV")].copy()
     m["edge_pts"] = np.where(m.side == "home", m.proj_home_margin + m.dk_home_spread,
                              -(m.proj_home_margin + m.dk_home_spread))
-    return m[m.edge_pts >= 1.5].sort_values("edge_pts", ascending=False)[
-        ["game_id", "game", "pick", "side", "line", "price", "edge_pts", "p_model", "ev",
-         "proj_home_margin", "dk_home_spread"]]
+    # ONE bet per game, the model's side: the two sides' edges are exact negatives, so at most one
+    # can reach +1.5; the drop_duplicates makes that explicit (and safe if pricing ever changes)
+    m = m[m.edge_pts >= 1.5].sort_values("edge_pts", ascending=False).drop_duplicates("game_id")
+    return m[["game_id", "game", "pick", "side", "line", "price", "edge_pts", "p_model", "ev",
+              "proj_home_margin", "dk_home_spread"]]
 
 
 def readout(card: dict) -> str:
@@ -270,7 +272,7 @@ def readout(card: dict) -> str:
                      f"{100 * t['p_joint']:.1f}%, EV {100 * t['ev']:+.1f}%, ALT-SHAPE legs {t['alt_shape_legs']}")
         for x in t["legs"]:
             lines.append(f"- {x['game']}: {x['pick']} ({x['market']}) {x['price']:+.0f}, p {100 * x['p_used']:.1f}%")
-    lines.append("\n## Main-spread edges vs this snapshot (edge >= 1.5 pts; strongest signal, both sides)")
+    lines.append("\n## Main-spread edges vs this snapshot (edge >= 1.5 pts; strongest signal; one bet per game, the model's side)")
     lines.append("| game | pick | price | edge pts | p cover | EV |\n|---|---|---|---|---|---|")
     for x in card["spread_edges"]:
         lines.append(f"| {x['game']} | {x['pick']} | {x['price']:+.0f} | {x['edge_pts']:+.1f} | "

@@ -53,3 +53,41 @@ def test_tracks_end_to_end(tmp_path, monkeypatch):
     ed = grade.edge_legs(2026)
     assert ed.result.iloc[0] == 0.0                       # away +(margin-0.5) loses by 0.5
     assert np.isclose(ed.units.iloc[0], -1.0)
+
+
+def test_edge_list_is_one_bet_per_game_on_models_side():
+    """spread_edges keeps only the model's side: home/away edges are exact negatives."""
+    from engine.cfb.cards.card import spread_edges
+    base = {"game": "A @ H", "market": "SPREAD-CLV", "price": -110, "p_model": .55, "ev": .02}
+    L = pd.DataFrame([
+        {**base, "game_id": 1, "side": "home", "pick": "H -3", "line": -3.0, "proj_home_margin": 6.0, "dk_home_spread": -3.0},
+        {**base, "game_id": 1, "side": "away", "pick": "A +3", "line": 3.0, "proj_home_margin": 6.0, "dk_home_spread": -3.0},
+        {**base, "game_id": 2, "side": "home", "pick": "H2 -10", "line": -10.0, "proj_home_margin": 7.0, "dk_home_spread": -10.0},
+        {**base, "game_id": 2, "side": "away", "pick": "A2 +10", "line": 10.0, "proj_home_margin": 7.0, "dk_home_spread": -10.0},
+        {**base, "game_id": 3, "side": "home", "pick": "H3 -7", "line": -7.0, "proj_home_margin": 8.0, "dk_home_spread": -7.0},
+        {**base, "game_id": 3, "side": "away", "pick": "A3 +7", "line": 7.0, "proj_home_margin": 8.0, "dk_home_spread": -7.0},
+    ])
+    e = spread_edges(None, L)
+    assert e.game_id.is_unique
+    picks = dict(zip(e.game_id, e.side))
+    assert picks == {1: "home", 2: "away"}           # game 1: model +6 vs -3 -> home; game 2: +7 vs -10 -> away
+    assert 3 not in picks                            # game 3: edge +1.0 < 1.5 -> no bet
+
+
+def test_edge_grading_never_counts_both_sides(tmp_path, monkeypatch):
+    """Even if a card listed both sides of a game, grading keeps one bet (largest edge)."""
+    import json
+    from engine.cfb import config
+    from engine.cfb.cards import grade
+    g = pd.read_parquet(config.CLEAN / "games.parquet")
+    r = g[(g.season == 2026) & (g.completed == True) & g.both_fbs].iloc[0]  # noqa: E712
+    name = f"{r.away_team} @ {r.home_team}"
+    both = [{"game_id": int(r.game_id), "game": name, "pick": "h", "side": "home", "line": -3.0, "price": -110,
+             "edge_pts": 2.5, "p_model": .56, "ev": .05},
+            {"game_id": int(r.game_id), "game": name, "pick": "a", "side": "away", "line": 3.0, "price": -110,
+             "edge_pts": 1.6, "p_model": .52, "ev": .01}]
+    (tmp_path / "card_2026_wk98.json").write_text(json.dumps({"week": 98, "snapshot_utc": "x",
+                                                               "floor_legs": [], "spread_edges": both}))
+    monkeypatch.setattr(grade, "CARDS", tmp_path)
+    ed = grade.edge_legs(2026)
+    assert len(ed) == 1 and ed.pick.iloc[0] == "h"

@@ -131,7 +131,7 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
 **Graded tracks and diagnostics (Tim, 2026-10-12; none of these is a new bar):**
 - **Track 1, floor card:** the floor legs above (the bar).
 - **Track 2, edge list:** every main spread with |edge| >= 1.5 vs the **Tuesday 10 AM** DK line
-  (both sides, as listed on the card), graded at that posted line and price, 1 unit each.
+  (**one bet per game, on the model's side**: home or away, favorite or dog; the two sides' edges are exact negatives, so only one can reach +1.5. Wording clarified 2026-10-12; no rule change), graded at that posted line and price, 1 unit each.
   It's reported separately in `forward weekly`, and it complements the CLV forward test.
 - **Diagnostic:** `ALT-SHAPE` floor legs split by game spread, |DK main line| <= 14 vs > 14
   (hit, break-even, ROI). This is where our σ and DK's ladder disagree most.
