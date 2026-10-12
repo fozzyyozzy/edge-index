@@ -254,6 +254,96 @@ def score(log_dir: Path = FORWARD, write_doc: bool = True) -> dict:
     return out
 
 
+# ------------------------------------------------------------------ weekly log entry (Tim, 2026-10-12)
+def scored_all(log_dir: Path = FORWARD) -> pd.DataFrame:
+    """Same game set the score uses: DK snapshot lines first, CFBD fallback otherwise."""
+    g_dk = dk_snapshot_games(log_dir)
+    g_cf = scored_games(log_dir)
+    if len(g_cf):
+        g_cf = g_cf.assign(source="cfbd_fallback")
+        if len(g_dk):
+            g_cf = g_cf[~g_cf.game_id.isin(g_dk.game_id)]
+    parts = [x for x in (g_dk, g_cf) if len(x)]
+    return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
+
+
+def _ats(x: pd.DataFrame, proj_col: str) -> tuple[int, int, int]:
+    """(wins, losses, pushes) betting the model side at the bet-time DK spread, |edge| >= 1.5."""
+    e = x[proj_col] + x.dk_spread
+    q = x[e.abs() >= BARS["edge"]]
+    res = q.margin_home + q.dk_spread
+    push = int((res == 0).sum())
+    win = int(((np.sign(res) == np.sign(e[q.index])) & (res != 0)).sum())
+    return win, len(q) - win - push, push
+
+
+def _fmt_rec(w, l, p):
+    n = w + l
+    return f"{w}-{l}" + (f"-{p}" if p else "") + (f" ({100 * w / n:.1f}%)" if n else "")
+
+
+def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
+    g = scored_all(log_dir)
+    games = pd.read_parquet(config.CLEAN / "games.parquet")[["game_id", "margin_home"]]
+    if len(g):
+        g = g.merge(games, on="game_id", how="left")
+    wk = g[(g.week == week)] if len(g) else g
+    todate = g[(g.week >= BARS["first_week"]) & (g.week <= week)] if len(g) else g
+    lines = [f"### Week {week} ({season}), graded {datetime.now(timezone.utc):%Y-%m-%d}"]
+    for label, x in (("This week", wk), ("To date (weeks 4+)", todate)):
+        if x is None or x.empty:
+            lines.append(f"- **{label}:** no logged games.")
+            continue
+        wc = x.dropna(subset=["close_spread"])
+        prim, ronly = clv_stats(wc, "proj_primary"), clv_stats(wc, "proj_ratings_only")
+        gr = wc.dropna(subset=["margin_home"])
+        lines.append(
+            f"- **{label}:** {len(x)} games logged, {len(wc)} with a DK close, "
+            f"{prim['games_edge']} at |edge| >= 1.5"
+            + (f" ({prim['games_edge']}/{BARS['min_games']} toward the bar)" if label.startswith("To") else "")
+            + f". CLV toward model: **{prim['toward_share_pct']:.1f}%** of {prim['moves']} moves, "
+            f"avg move {prim['avg_move_toward_model']:+.2f} pts (ratings-only {ronly['toward_share_pct']:.1f}%, "
+            f"{ronly['avg_move_toward_model']:+.2f}). ATS vs bet-time line (|edge| >= 1.5): "
+            f"**{_fmt_rec(*_ats(gr, 'proj_primary'))}**, ratings-only {_fmt_rec(*_ats(gr, 'proj_ratings_only'))}."
+            .replace("nan%", "n/a").replace("+nan", "n/a"))
+    # rung log (shape bar sample), to date
+    from engine.cfb.lines import ladder_edge as le
+    p = le.grade(season)
+    s = le.bar_sample(p) if len(p) else p
+    lift = le.clustered_lift(s) if len(s) else None
+    if lift:
+        lines.append(
+            f"- **Rung log (shape-bar sample, to date):** {lift['games']} graded games / {lift['rungs']} rungs; "
+            f"hit {lift['hit_%']:.1f}% vs DK no-vig {lift['dk_novig_%']:.1f}% "
+            f"(**lift {lift['lift_pp']:+.1f} pp**, 95% CI {lift['ci95_lo']:+.1f} to {lift['ci95_hi']:+.1f}); "
+            f"break-even at posted prices {lift['breakeven_at_price_%']:.1f}%; "
+            f"**EV at posted price: predicted {lift['pred_ev_shape_per_unit']:+.3f}, realized "
+            f"{lift['realized_units_per_rung']:+.3f} units/rung** "
+            f"(CI {lift['units_ci95_lo']:+.3f} to {lift['units_ci95_hi']:+.3f}). "
+            f"{lift['games']}/{le.BAR['min_games']} toward the bar.")
+    else:
+        lines.append("- **Rung log:** no graded bar-sample rungs yet.")
+    return "\n".join(lines) + "\n"
+
+
+def append_weekly(season: int, week: int, dry_run: bool = False, force: bool = False) -> str:
+    entry = weekly_entry(season, week)
+    if dry_run or not DOC.exists():
+        return entry
+    doc = DOC.read_text(encoding="utf-8")
+    tag = f"### Week {week} ({season}),"
+    if tag in doc and not force:
+        return f"(week {week} already logged; use --force to add another entry)\n"
+    head, anchor = "## Weekly log", "## Current score"
+    if head not in doc:
+        doc = doc.replace(anchor, f"{head}\n\nAppended after each week grades by "
+                                  f"`python -m engine.cfb.model.forward weekly --week N`. "
+                                  f"Informational; the bars above decide.\n\n{anchor}")
+    doc = doc.replace(anchor, entry + "\n" + anchor)
+    DOC.write_text(doc, encoding="utf-8")
+    return entry
+
+
 def write_doc_block(out: dict) -> None:
     if not DOC.exists():
         return
@@ -275,9 +365,17 @@ def main(argv=None) -> int:
     cc.add_argument("--week", type=int, required=True)
     cc.add_argument("--no-fetch", action="store_true", help="use the cached response (testing)")
     cc.add_argument("--log-dir", type=Path, default=FORWARD)
+    wk = sub.add_parser("weekly", help="append a dated weekly entry to FORWARD_TEST.md")
+    wk.add_argument("--season", type=int, default=config.CURRENT_SEASON)
+    wk.add_argument("--week", type=int, required=True)
+    wk.add_argument("--dry-run", action="store_true")
+    wk.add_argument("--force", action="store_true")
     sc = sub.add_parser("score", help="score the forward test against the pre-registered bars")
     sc.add_argument("--log-dir", type=Path, default=FORWARD)
     a = ap.parse_args(argv)
+    if a.cmd == "weekly":
+        print(append_weekly(a.season, a.week, dry_run=a.dry_run, force=a.force))
+        return 0
     if a.cmd == "capture-close":
         capture_close(a.season, a.week, fetch=not a.no_fetch, log_dir=a.log_dir)
     else:

@@ -123,7 +123,8 @@ def historical() -> str:
     # 2. the model vs DK's open, next to Bovada on the same games
     rows = []
     for label, seasons in (("2023", [2023]), ("2024", [2024]), ("2023-2024 (tuning)", [2023, 2024]),
-                           ("2025 (holdout)", [2025])):
+                           ("2025 (holdout)", [2025]), ("2023-2025 (full set)", [2023, 2024, 2025]),
+                           ("2024-2025 (sensitivity: excl. 2023)", [2024, 2025])):
         x = d[d.season.isin(seasons)].dropna(subset=["dk_open_spread", "dk_close_spread",
                                                       "bov_open_spread", "bov_close_spread"])
         for book in ("dk", "bov"):

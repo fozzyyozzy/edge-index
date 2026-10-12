@@ -50,6 +50,8 @@ python -m engine.cfb.model.project_week --season 2026 --week N     # 1 call; log
 python -m engine.cfb.model.project_week --season 2026 --week N     # again Mon/Tue as more DK lines post
 python -m engine.cfb.model.forward capture-close --season 2026 --week N   # 1 call per run
 python -m engine.cfb.model.forward score                           # 0 calls; updates this file
+python -m engine.cfb.lines.ladder_edge                             # 0 calls; logs + grades paper rungs (lift + EV at posted price)
+python -m engine.cfb.model.forward weekly --week N                 # after week N grades (Sun, post update_week): dated entry below
 ```
 
 - **Projections:** run `project_week` after `update_week`, and again whenever new DK lines
