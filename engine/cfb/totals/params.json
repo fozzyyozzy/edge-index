@@ -1,0 +1,40 @@
+{
+  "status": "market_anchored",
+  "label": "PAPER-UNPROVEN",
+  "center": "market total (history: provider open; live: DK current total)",
+  "sigma_t": {
+    "a": 10.902950960205317,
+    "c": 0.09448923995109887
+  },
+  "key_totals": {
+    "23": 1.8652255069543415,
+    "41": 1.7996319863373045,
+    "37": 1.541832599883859,
+    "51": 1.5402277652613208,
+    "38": 1.5209210845019387,
+    "55": 1.4674033680933005
+  },
+  "rho_margin_total_resid": 0.075,
+  "decision": "k_t weeks 4+ pooled +0.12 [-0.11, +0.33] with observed weather (2022-24): CI spans 0 -> per Tim's rule, no 2025 totals holdout",
+  "tuned_on": [
+    2022,
+    2023,
+    2024
+  ],
+  "recency_weighting": false,
+  "frozen_at": "2026-10-12T13:02:11+00:00",
+  "loso_key_total_choice": [
+    {
+      "key_totals": 6,
+      "loso_loglik_per_game": -4.183543323872301
+    },
+    {
+      "key_totals": 4,
+      "loso_loglik_per_game": -4.185512773922564
+    },
+    {
+      "key_totals": 0,
+      "loso_loglik_per_game": -4.188055418326901
+    }
+  ]
+}

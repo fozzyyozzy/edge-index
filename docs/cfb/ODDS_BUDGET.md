@@ -69,3 +69,28 @@ shape-edge test doesn't depend on our projection. Laddering only the games where
 disagree with the line (the targets) would give a biased sample, and the extra cost is
 about 0.01% of the plan. The cheaper targets-only variant (~600 a month) is one flag away:
 `--ladders targets` on the Tue/Wed slots.
+
+## Phase 5C extension: alternate totals + alternate team totals (pending approval, 2026-10-12)
+
+**Verified with one test call** (Georgia Southern @ Old Dominion, 2026-10-12 13:03 UTC):
+`markets=alternate_totals,team_totals,alternate_team_totals`, DK, per-event endpoint →
+`x-requests-last: 2`.
+
+- DK offers **`alternate_totals`** (84 outcomes, 27.5-69.5) and **`alternate_team_totals`**
+  (84 outcomes, 11.5-34.5 per team).
+- DK has **no separate `team_totals`** market for NCAAF, so it isn't charged; the alt team
+  ladder contains the main team total.
+
+Asked for in the same per-game call as `alternate_spreads`, the extras add **+2 credits per
+laddered game** and no extra requests. The code is in place but off: `CFB_EXTRA_MARKETS` is
+unset in `cfb_lines.yml`.
+
+| Option | Which ladder calls carry the extras | Extra / week | CFB total / week | CFB / month |
+|---|---|---|---|---|
+| **A (recommended): all ladder calls** | open-watch first sighting, Tue, Wed, last-before-close | ~+400 | ~635 | ~2,750 |
+| B: bet-time + close only | Tue 10 AM + last-before-close | ~+230 | ~465 | ~2,000 |
+| Current (spreads only) | n/a | 0 | ~235 | ~1,000 |
+
+Option A means the **CFB cycle cap rises from 3,000 to 6,000** (it would bind at ~2,750).
+Worst case total with NFL (~13,000 a month) stays **< 0.4% of the 5,000,000 plan**. The
+100,000-credit NFL reserve and the separate CFB ledger are unchanged.

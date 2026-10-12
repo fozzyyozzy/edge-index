@@ -51,6 +51,10 @@ EDGE_MIN = 1.5
 RESERVE = int(os.environ.get("CFB_ODDS_RESERVE", "100000"))
 CYCLE_CAP = int(os.environ.get("CFB_ODDS_CYCLE_CAP", "3000"))
 USAGE_COLS = ["captured_at_utc", "label", "endpoint", "events", "cost", "used", "remaining"]
+# Phase 5C: extra per-event markets, OFF until Tim approves the budget (docs/cfb/ODDS_BUDGET.md).
+# Enable with CFB_EXTRA_MARKETS="alternate_totals,alternate_team_totals" (+2 credits per game,
+# verified 2026-10-12: x-requests-last = 2; DK offers no separate team_totals market for NCAAF).
+EXTRA_MARKETS = [m for m in os.environ.get("CFB_EXTRA_MARKETS", "").split(",") if m]
 
 # CFBD name -> how the Odds API starts the team name, where they differ
 ALIASES = {
@@ -244,7 +248,7 @@ def main(argv=None) -> int:
         if not soon:
             print(f"no kickoffs in the next {a.next_hours:g}h: skipping (0 credits)")
             return 0
-    planned = 3 + (min(a.ladder_cap, len(m)) if a.ladders != "none" else 0)
+    planned = 3 + ((1 + len(EXTRA_MARKETS)) * min(a.ladder_cap, len(m)) if a.ladders != "none" else 0)
     spent = guard(h, planned)
     print(f"CFB spent this cycle: {spent}; this run plans up to {planned} credits")
     if a.dry_run:
@@ -300,26 +304,37 @@ def main(argv=None) -> int:
             soon = ev[pd.to_datetime(ev.commence_time, utc=True) <= now + timedelta(hours=a.next_hours)].index
             tg = tg[tg.game_id.isin(soon)]
         tg = tg.head(a.ladder_cap)
-        lrows, spent_l = [], 0
+        lrows, trows, spent_l = [], [], 0
         for gid in tg.game_id:
             eid = ev.loc[gid, "event_id"]
+            mkts = ",".join(["alternate_spreads"] + EXTRA_MARKETS)
             d, h = call(f"/sports/{SPORT}/events/{eid}/odds",
                         {"regions": "us", "bookmakers": "draftkings",
-                         "markets": "alternate_spreads", "oddsFormat": "american"})
-            log_usage(a.label, "event:alternate_spreads", 1, h)
+                         "markets": mkts, "oddsFormat": "american"})
+            log_usage(a.label, "event:" + mkts, 1, h)
             spent_l += int(h.get("x-requests-last") or 0)
             for b in d.get("bookmakers", []):
                 for mk in b["markets"]:
                     for o in mk["outcomes"]:
-                        lrows.append({"captured_at_utc": ts, "label": a.label, "event_id": eid,
-                                      "game_id": gid, "week": int(ev.loc[gid, "week"]),
-                                      "commence_time": d.get("commence_time"),
-                                      "home_team": d.get("home_team"), "away_team": d.get("away_team"),
-                                      "team": o["name"], "is_home": int(o["name"] == d.get("home_team")),
-                                      "rung": o.get("point"), "price": o.get("price"),
-                                      "dk_last_update": mk.get("last_update")})
+                        base = {"captured_at_utc": ts, "label": a.label, "event_id": eid,
+                                "game_id": gid, "week": int(ev.loc[gid, "week"]),
+                                "commence_time": d.get("commence_time"),
+                                "home_team": d.get("home_team"), "away_team": d.get("away_team"),
+                                "price": o.get("price"), "dk_last_update": mk.get("last_update")}
+                        if mk["key"] == "alternate_spreads":
+                            lrows.append({**base, "team": o["name"],
+                                          "is_home": int(o["name"] == d.get("home_team")),
+                                          "rung": o.get("point")})
+                        else:     # alternate_totals / alternate_team_totals (Phase 5C)
+                            trows.append({**base, "market": mk["key"], "side": o["name"],
+                                          "team": o.get("description"),
+                                          "is_home": (int(o.get("description") == d.get("home_team"))
+                                                      if o.get("description") else None),
+                                          "point": o.get("point")})
         if lrows:
             write_rows(pd.DataFrame(lrows), "dk_ladders", a.season)
+        if trows:
+            write_rows(pd.DataFrame(trows), "dk_alt_totals", a.season)
         print(f"ladders: {len(tg)} games requested, {len({r['game_id'] for r in lrows})} returned, "
               f"cost {spent_l}")
     print(f"quota remaining {h['x-requests-remaining']}")
