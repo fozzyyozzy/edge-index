@@ -1,0 +1,19 @@
+{
+  "_instructions": "Tim: fill in DK's CFB teaser prices from the DK app (American odds, e.g. -120 or +160). Leave null for teaser types DK doesn't offer. Set 'updated' to the date you checked. Break-even per leg = implied(price) ** (1/legs). Then run: python -m engine.cfb.model.teasers",
+  "updated": null,
+  "book": "DraftKings",
+  "sport": "NCAAF",
+  "teasers": [
+    {"legs": 2, "points": 6, "price": null},
+    {"legs": 2, "points": 6.5, "price": null},
+    {"legs": 2, "points": 7, "price": null},
+    {"legs": 3, "points": 6, "price": null},
+    {"legs": 3, "points": 6.5, "price": null},
+    {"legs": 3, "points": 7, "price": null},
+    {"legs": 3, "points": 10, "price": null},
+    {"legs": 4, "points": 6, "price": null},
+    {"legs": 4, "points": 7, "price": null}
+  ],
+  "push_rule": null,
+  "_push_rule_help": "How DK grades a teaser leg that pushes, e.g. 'leg removed, ticket reprices with fewer legs' or 'push = loss'. Affects the leg math."
+}
