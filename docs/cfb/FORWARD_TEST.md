@@ -10,7 +10,7 @@ Model: the Phase 3 frozen primary (`engine/cfb/model/params.json`, sha256 prefix
 The 2025 holdout passed on CLV (60.5% of moves toward the model) but failed on k
 (+0.16, CI spanning 0). Historical "opens" from CFBD are of uneven quality: DK's 2023 open
 equals its close 47% of the time, and the 2026 to-date CLV is implausibly high (88-91%).
-This test uses lines **we** timestamp, so bet time and close are known exactly.
+This test uses lines **we** timestamp, so bet time and close are known exactly. Since Amendment 1 (below), those lines come from DK snapshots via The Odds API.
 
 ## Pass bars
 
@@ -78,17 +78,71 @@ python -m engine.cfb.model.forward score                           # 0 calls; up
 - `data/cfb/forward/closes_log.csv`: capture time, game, kickoff, DK spread/total, and
   the providers seen.
 
+## Amendment 1 (2026-10-12, Phase 4 brief §2), made before any game was scored
+
+Capture moved to The Odds API (`engine/cfb/lines/capture.py`, `.github/workflows/cfb_lines.yml`).
+The first week-7 kickoff is 2026-10-13 23:00 UTC, so no forward game had been scored. The pass
+bars above don't change. Line sources change:
+
+- **Bet-time line:** the DK spread in the **earliest `bet` snapshot** (Tue 10 AM ET) for the
+  game. If the game wasn't listed by then, its **first-seen** DK snapshot. The first-seen line
+  is also reported alongside, for every game.
+- **Close:** the DK spread in the **last snapshot before kickoff** taken after the bet snapshot.
+  Snapshots never include games that have started.
+- **Projection at the bet line:** the frozen model recomputed at that line,
+  `L + k[bucket]·(ratings_margin − L) + b_qb·qb_delta`. Its inputs are taken from the latest
+  `projections_log.csv` row captured at or before the bet snapshot (else the earliest row).
+  Ratings-only = the same with `qb_delta = 0`.
+- **Fallback:** a game with no DK snapshot is scored on the CFBD-captured lines as originally
+  defined (`source = cfbd_fallback`).
+
+## Ladder-shape bar (pre-registered 2026-10-12, Phase 4 brief §5, before any rung was graded)
+
+Tests whether DK's alt-spread **pricing** is off, independent of our projection.
+
+- **Shape edge** = our Phase 3 probability **centered at DK's own main line** (frozen σ and
+  spikes) − DK's no-vig probability (proportional de-vig within each home/away rung pair).
+- **Candidate rungs:** getting points (rung > 0), priced −500 to −150, shape edge ≥ 3 pp, in
+  `data/cfb/lines/paper_rungs_2026.csv`. Laying rungs are logged for diagnostics only.
+- **Unit:** one rung per game per side, from the game's **bet-time ladder** (earliest `bet`
+  snapshot, else its first captured ladder). Among that ladder's candidate rungs for that
+  side, it's the one with the largest shape edge.
+- **Sample:** the first **60 games** by kickoff with a graded unit.
+- **Pass:** realized hit rate − mean DK no-vig probability **≥ +3.0 points**, with a 95% CI
+  (game-clustered bootstrap, 2,000 draws) **excluding 0**.
+- **$0 until passed.** Grading uses `games.parquet` final margins only.
+- **Status** is written to `docs/cfb/PHASE4_REPORT.md` by `python -m engine.cfb.lines.ladder_edge`.
+
 ## Current score
 
 <!-- AUTO:SCORE:BEGIN -->
-_Scored 2026-10-10T17:29:44+00:00 by `python -m engine.cfb.model.forward score`._
+_Scored 2026-10-12T11:17:31+00:00 by `python -m engine.cfb.model.forward score`._
 
-**Status: no projections logged yet**
+**Status: IN PROGRESS: 0/150 qualifying games; $0**
 
 ```json
 {
-  "scored_at": "2026-10-10T17:29:44+00:00",
-  "status": "no projections logged yet"
+  "scored_at": "2026-10-12T11:17:31+00:00",
+  "games_logged": 59,
+  "games_with_close": 0,
+  "line_source": {
+    "dk_first_seen": 59
+  },
+  "primary": {
+    "games_edge": 0,
+    "moves": 0,
+    "toward_share_pct": NaN,
+    "avg_move_toward_model": NaN,
+    "corr": NaN
+  },
+  "ratings_only": {
+    "games_edge": 0,
+    "moves": 0,
+    "toward_share_pct": NaN,
+    "avg_move_toward_model": NaN,
+    "corr": NaN
+  },
+  "status": "IN PROGRESS: 0/150 qualifying games; $0"
 }
 ```
 <!-- AUTO:SCORE:END -->

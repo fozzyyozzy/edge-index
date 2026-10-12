@@ -31,8 +31,33 @@ def name_key(name: str) -> str | None:
     return features.passer_key(f"{name} pass")
 
 
-def live_lines(season: int, week: int, fetch: bool) -> tuple[pd.DataFrame, str]:
-    """(lines, capture_ts_utc). Projection line: DraftKings, else Bovada, else median."""
+def snapshot_lines(season: int, week: int, max_age_h: float = 24.0):
+    """Latest Odds API DK snapshot for the week (Phase 4), if fresher than max_age_h."""
+    path = forward.SNAP / f"dk_main_{season}_wk{week:02d}.csv"
+    if not path.exists():
+        return None
+    m = pd.read_csv(path).dropna(subset=["game_id"])
+    m["captured_at_utc"] = pd.to_datetime(m.captured_at_utc, utc=True)
+    last = m.captured_at_utc.max()
+    if (pd.Timestamp.now(tz="UTC") - last).total_seconds() / 3600 > max_age_h:
+        return None
+    m = m[m.captured_at_utc == last]
+    sp = m[(m.market == "spreads") & (m.is_home == 1)][["game_id", "point"]]
+    tot = m[(m.market == "totals") & (m.team == "Over")][["game_id", "point"]].rename(columns={"point": "total"})
+    out = sp.rename(columns={"point": "spread"}).merge(tot, on="game_id", how="left")
+    out["game_id"] = out.game_id.astype(int)
+    out["provider"] = "DraftKings (snapshot)"
+    out["dk_spread"], out["dk_total"] = out.spread, out.total
+    return out, last.isoformat(timespec="seconds")
+
+
+def live_lines(season: int, week: int, fetch: bool, cfbd: bool = False) -> tuple[pd.DataFrame, str]:
+    """(lines, capture_ts_utc). DK snapshot (Odds API, < 24 h old) first; else CFBD /lines
+    (1 call): DraftKings, else Bovada, else median."""
+    if not cfbd:
+        snap = snapshot_lines(season, week)
+        if snap is not None:
+            return snap
     raw, ts = forward.fetch_lines(season, week, fetch, tag="")
     rows = []
     for g in raw:
@@ -105,6 +130,8 @@ def main(argv=None) -> int:
     ap.add_argument("--season", type=int, default=config.CURRENT_SEASON)
     ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--no-fetch", action="store_true", help="use the cached live lines")
+    ap.add_argument("--cfbd-lines", action="store_true",
+                    help="ignore DK snapshots; use CFBD /lines (the fallback path)")
     ap.add_argument("--no-log", action="store_true",
                     help="don't append to the forward-test log (testing)")
     ap.add_argument("--log-dir", type=Path, default=forward.FORWARD)
@@ -126,7 +153,8 @@ def main(argv=None) -> int:
             & (mg.season_type == "regular")].copy()
 
     # live lines replace the historical open
-    ll, capture_ts = live_lines(a.season, a.week, fetch=not a.no_fetch)
+    ll, capture_ts = live_lines(a.season, a.week, fetch=not a.no_fetch, cfbd=a.cfbd_lines)
+    print(f"lines: {ll.provider.iloc[0] if len(ll) else 'none'} captured {capture_ts}")
     mg = mg.drop(columns=["provider", "spread_open", "total_bet", "open_margin"]).merge(
         ll.rename(columns={"spread": "spread_open", "total": "total_bet"}), on="game_id", how="left")
     mg["open_margin"] = -mg.spread_open

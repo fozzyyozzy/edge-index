@@ -139,8 +139,80 @@ def clv_stats(g: pd.DataFrame, proj_col: str) -> dict:
             "corr": float(np.corrcoef(edge, move)[0, 1]) if len(x) > 2 else np.nan}
 
 
+# ------------------------------------------------------------------ DK snapshot path (Phase 4)
+SNAP = config.DATA / "lines" / "snapshots"
+
+
+def _bucket_k(week: pd.Series, coef: dict) -> pd.Series:
+    b = np.where(week <= 3, "1-3", np.where(week <= 8, "4-8", "9+"))
+    return pd.Series([coef[f"k_{x}"] for x in b], index=week.index)
+
+
+def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
+    """Per game from Odds API DK snapshots (pregame only by construction):
+    bet line = earliest 'bet' snapshot (Tue 10 AM ET), else the first-seen snapshot;
+    close = last snapshot before kickoff (taken after the bet snapshot).
+    Projection recomputed at each line with the frozen model from the latest projection-log
+    row captured at or before the bet snapshot (else the earliest row)."""
+    import glob
+    files = sorted(glob.glob(str(SNAP / "dk_main_*_wk*.csv")))
+    p, _ = load_logs(log_dir)
+    if not files or p.empty:
+        return pd.DataFrame()
+    m = pd.concat(pd.read_csv(x) for x in files)
+    m = m[(m.market == "spreads") & (m.is_home == 1)].dropna(subset=["game_id"])
+    m["game_id"] = m.game_id.astype(int)
+    m["captured_at_utc"] = pd.to_datetime(m.captured_at_utc, utc=True)
+    m["kick"] = pd.to_datetime(m.commence_time, utc=True)
+    m = m[m.captured_at_utc < m.kick].sort_values("captured_at_utc")
+    first = m.drop_duplicates("game_id", keep="first").set_index("game_id")
+    bet = m[m.label == "bet"].drop_duplicates("game_id", keep="first").set_index("game_id")
+    bet = bet.reindex(first.index)
+    bet_src = np.where(bet.point.notna(), "dk_tue_bet", "dk_first_seen")
+    bet = bet.combine_first(first)
+    rows = []
+    p = p.copy()
+    p["capture_ts_utc"] = pd.to_datetime(p.capture_ts_utc, utc=True)
+    import json as _json
+    from engine.cfb.model.run import PARAMS
+    coef = _json.loads(PARAMS.read_text())["coef"]
+    for i, gid in enumerate(first.index):
+        later = m[(m.game_id == gid) & (m.captured_at_utc > bet.loc[gid, "captured_at_utc"])]
+        pr = p[p.game_id == gid]
+        if pr.empty:
+            continue
+        before = pr[pr.capture_ts_utc <= bet.loc[gid, "captured_at_utc"]]
+        row = (before if len(before) else pr).sort_values("capture_ts_utc").iloc[-1 if len(before) else 0]
+        rows.append({"game_id": gid, "season": row.season, "week": row.week,
+                     "kickoff_utc": first.loc[gid, "kick"], "source": bet_src[i],
+                     "bet_ts_utc": bet.loc[gid, "captured_at_utc"], "dk_spread": bet.loc[gid, "point"],
+                     "first_seen_spread": first.loc[gid, "point"],
+                     "close_spread": later.point.iloc[-1] if len(later) else np.nan,
+                     "close_ts_utc": later.captured_at_utc.iloc[-1] if len(later) else pd.NaT,
+                     "ratings_margin": row.ratings_margin, "qb_delta": row.qb_delta})
+    g = pd.DataFrame(rows)
+    if g.empty:
+        return g
+    g = g[g.week >= BARS["first_week"]]
+    k = _bucket_k(g.week, coef)
+    bq = coef.get("qb_delta", 0.0)
+    for col, spread in (("", "dk_spread"), ("_first_seen", "first_seen_spread")):
+        L = -g[spread]
+        g[f"proj_primary{col}"] = L + k * (g.ratings_margin - L) + bq * g.qb_delta.fillna(0)
+        g[f"proj_ratings_only{col}"] = L + k * (g.ratings_margin - L)
+    return g
+
+
 def score(log_dir: Path = FORWARD, write_doc: bool = True) -> dict:
-    g = scored_games(log_dir)
+    # DK snapshot lines first (Phase 4 amendment); CFBD-captured lines only where no snapshot exists
+    g_dk = dk_snapshot_games(log_dir)
+    g_cf = scored_games(log_dir)
+    if len(g_cf):
+        g_cf = g_cf.assign(source="cfbd_fallback")
+        if len(g_dk):
+            g_cf = g_cf[~g_cf.game_id.isin(g_dk.game_id)]
+    g = pd.concat([x for x in (g_dk, g_cf) if len(x)], ignore_index=True) if (len(g_dk) or len(g_cf)) \
+        else pd.DataFrame()
     out = {"scored_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     if g.empty:
         out["status"] = "no projections logged yet"
@@ -154,7 +226,13 @@ def score(log_dir: Path = FORWARD, write_doc: bool = True) -> dict:
         ev = with_close[~((edge.abs() >= BARS["edge"]) & ~with_close.game_id.isin(sample_ids))]
         prim, ronly = clv_stats(ev, "proj_primary"), clv_stats(ev, "proj_ratings_only")
         out.update({"games_logged": int(len(g)), "games_with_close": int(len(with_close)),
+                    "line_source": g.source.value_counts().to_dict() if "source" in g else {},
                     "primary": prim, "ratings_only": ronly})
+        fs = with_close.dropna(subset=["first_seen_spread"]) if "first_seen_spread" in with_close else None
+        if fs is not None and len(fs):
+            out["first_seen_line_primary"] = clv_stats(
+                fs.assign(dk_spread=fs.first_seen_spread, proj_primary=fs.proj_primary_first_seen),
+                "proj_primary")
         n = prim["games_edge"]
         if n < BARS["min_games"]:
             out["status"] = f"IN PROGRESS: {n}/{BARS['min_games']} qualifying games; $0"
