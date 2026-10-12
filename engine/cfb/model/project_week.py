@@ -142,6 +142,10 @@ def main(argv=None) -> int:
         mg.loc[mg.game_id == q.game_id, "qb_delta"] += sign * q.qb_delta
         mg.loc[mg.game_id == q.game_id, "qb_note"] += q.note + " "
 
+    # every game of the week (with or without a line yet) -> committed capture targets
+    from engine.cfb.lines.exports import export_targets
+    print(f"capture targets -> {export_targets(mm.prep(mg), params, a.season, a.week)}")
+
     d = mm.prep(mg.dropna(subset=["open_margin"]))
     d["proj"] = mm.predict(d, {"groups": params["groups"], "coef": params["coef"]})
     # ratings only (QB term off): reported alongside in the forward test
@@ -179,7 +183,7 @@ def main(argv=None) -> int:
     cut = slate.cutoff.iloc[0]
     done = games[(games.season == a.season) & games.fbs_involved & (games.completed == True)  # noqa: E712
                  & (games.kickoff_utc < cut) & ~(games.is_bowl & ~games.is_cfp)]
-    missing = int((~done.game_id.isin(plays.game_id)).sum())
+    missing = int((~done.game_id.isin(rd.mp.game_id)).sum())   # plays the ratings use
     if not a.no_log and missing and not a.log_anyway:
         print(f"forward log: NOT logged: {missing} completed games before the week-{a.week} "
               f"cutoff have no plays (run python -m engine.cfb.update_week, then re-run)")

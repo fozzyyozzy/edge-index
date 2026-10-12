@@ -66,6 +66,13 @@ def main(argv=None) -> int:
     if not a.no_build:
         from engine.cfb import build_tables
         build_tables.main([])
+        # Phase 2 ratings read derived/model_plays.parquet: rebuild it too, or
+        # as-of ratings silently miss the newly pulled week
+        from engine.cfb.ratings import plays_prep
+        mp, _ = plays_prep.build()
+        print(f"  model_plays      {len(mp):>9,} rows (ratings input)")
+        from engine.cfb.lines.exports import export_schedule
+        print(f"  schedule -> {export_schedule(y)}  (DK line capture input)")
     return 0
 
 

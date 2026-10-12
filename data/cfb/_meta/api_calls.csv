@@ -167,3 +167,9 @@ timestamp,dataset,endpoint,params,status,rows,cache_file
 2026-10-10T13:16:44+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 4, ""year"": 2026}",200,21833,data/cfb/raw/plays/2026_wk04.json
 2026-10-10T13:16:47+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 5, ""year"": 2026}",200,20368,data/cfb/raw/plays/2026_wk05.json
 2026-10-10T15:55:31+00:00,lines_live,/lines,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2026}",200,62,data/cfb/raw/lines_live/2026_wk07.json
+2026-10-12T10:55:54+00:00,games,/games,"{""seasonType"": ""both"", ""year"": 2026}",200,3679,data/cfb/raw/games/2026.json
+2026-10-12T10:55:55+00:00,lines,/lines,"{""seasonType"": ""both"", ""year"": 2026}",200,1187,data/cfb/raw/lines/2026.json
+2026-10-12T10:55:59+00:00,advanced,/stats/game/advanced,"{""seasonType"": ""both"", ""year"": 2026}",200,1614,data/cfb/raw/advanced/2026.json
+2026-10-12T10:56:00+00:00,ppa_games,/ppa/games,"{""seasonType"": ""both"", ""year"": 2026}",200,777,data/cfb/raw/ppa_games/2026.json
+2026-10-12T10:56:03+00:00,plays,/plays,"{""seasonType"": ""regular"", ""week"": 6, ""year"": 2026}",200,19056,data/cfb/raw/plays/2026_wk06.json
+2026-10-12T10:57:53+00:00,lines_live,/lines,"{""seasonType"": ""regular"", ""week"": 7, ""year"": 2026}",200,62,data/cfb/raw/lines_live/2026_wk07.json
