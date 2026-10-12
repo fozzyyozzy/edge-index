@@ -34,6 +34,64 @@ information. Win probability = P(margin > 0) from the frozen Phase 3 distributio
   carries more upset risk than our spread distribution does. Shading toward the ML there is
   safer, which matters for any moneyline leg in 5E.
 
+**5E rule (Tim, 2026-10-12): big-favorite moneyline shading.** For any moneyline leg in a game
+whose DK spread is **larger than 14 points**, the model win probability used for eligibility
+and EV is **shaded toward DK's no-vig moneyline probability**. This follows from the finding
+above: on spreads over 14, the market's ML carries more upset risk than our spread
+distribution, and the ML was right more often when they disagreed. Implementation:
+`p_used = (p_model + p_novig) / 2` for spreads > 14 (an equal-weight blend; no parameter
+fit, so 2025 isn't spent). Unchanged for spreads ≤ 14. The card JSON records both
+probabilities.
+
+## 2. Totals (5B): interim, before the weather decision and the freeze
+
+**Non-weather build, tuning seasons 2022-24, LOSO.** Team-game stats come from
+`games.parquet` (points), CFBD advanced game stats (drives: PBP drive/offense labels proved
+unreliable, e.g. punts credited to the receiving team) and Phase 2 model plays (plays per
+game and explosiveness, garbage time excluded), plus clock-based seconds per play. Each gets
+an opponent-adjusted as-of ridge with a 0.5 × last-season prior and fixed λ.
+
+| LOSO MAE, 2022-24 (2,237 games) | |
+|---|---|
+| **Open total, no model** | **12.67** |
+| T_pts (points per game) + k_t | 12.71 |
+| T_ppd (points per drive × drives) + k_t | 12.72 |
+| T_epa (Phase 2 EPA × expected plays) + k_t | 12.72 |
+| T_pts + tempo clash + explosive matchup | 12.72 |
+
+- **No totals model beats the opening total.** k_t (best spec, T_pts): weeks 1-3 +0.08
+  [−0.31, +0.44], weeks 4-8 +0.06 [−0.23, +0.36], weeks 9+ +0.11 [−0.19, +0.38]. Every CI
+  spans 0. The raw signal is near zero: corr(model − open, actual − open) is −0.01 to +0.04
+  in every bucket.
+- **Both style interactions fail** drop-one (dropping either lowers LOSO MAE; the explosive
+  matchup also has the wrong sign).
+- **σ_t** = 11.06 + 0.093 × total (≈ 16.0 at 53.5). Adding pace doesn't help LOSO (−4.1915 vs
+  −4.1918), so it's line only, with **no recency weighting** per Tim.
+- **Key totals are weak but present:** 41, 51, 55 and 37 land 1.5-1.8× as often as implied
+  (~3% vs ~2%). Spikes will be tested LOSO at the freeze.
+- **Margin/total residual correlation:** +0.075 (+0.080 favorite-oriented). Small, and it
+  feeds 5C team totals.
+- **Disclosure:** one early sanity printout pooled correlations across 2021-2026, which
+  includes the 2025 totals holdout (three summary numbers, no fitting). Every tuning step
+  since uses 2022-24 only.
+
+**Weather options (no weather data pulled)**
+
+| | Open-Meteo | NOAA (NCEI ISD + NWS) |
+|---|---|---|
+| Commercial use | **Free tier is non-commercial only**; sites with paid subscriptions count as commercial | U.S. federal data: NCEI restricts only **non-U.S.** ISD data (WMO Res. 40, per its readme); NWS API: "open data, free to use for any purpose" |
+| History | Historical API needs **Professional, ~$99/mo** (Standard $29/mo has no history) | ISD-Lite hourly (temp, wind, 1h/6h precip), about 150 MB for all venues 2021-26, free |
+| Live | Included in paid plans | NWS `points` → `forecastHourly`, free; a User-Agent with contact info is required |
+| License | CC BY 4.0 (attribution) | Public-domain U.S. government work (inferred from federal-work status; no explicit "commercial OK" sentence found for ISD) |
+| Coverage | Gridded, every venue | **98.6% of 3,647 outdoor FBS games have an active U.S. station ≤ 25 km** (median 6.5 km, p90 14 km). Only Dublin/London (6 games) lack one; those are left as missing |
+
+**Recommendation: NOAA.** It's free, the terms fit commercial use for U.S. stations, and
+coverage is near-complete. One caveat to verify on the first pull: the station list
+(`isd-history.csv`) was last updated August 2025, so 2025-26 file availability per station
+gets confirmed then. **Expectation is modest:** the non-weather features carry no signal over
+the open, and the market already prices forecast wind and rain. Weather is worth one honest
+test, not a lot of build.
+
 Detailed tables follow under "Results (generated)".
 
 ## Results (generated)
