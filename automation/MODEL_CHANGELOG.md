@@ -28,6 +28,16 @@ and what it did to published cards.
   - SUN 138–40.
   - MON 18–3 with 1 void: A 4–1 · A− 9–0 · B 3–0 · C 2–2.
 
+## 2026-10-07 — QB-change watch flag (R11 extended)
+
+- **What:** `availability.py` flags a team when the QB who led its most recent game in pass attempts isn't the QB
+  who led most of its last 10 games (walk-forward). Every receiving and passing leg on that team gets "QB change:
+  history from a different QB". Rushing legs don't. It's a watch, not a hold. Like an injury watch, it limits the
+  player to one ticket (R11), and card QA checks it. The Card and Legs tabs show a QB CHANGE chip with a footnote.
+- **Why:** a player's L10/L15 history was built with someone else throwing.
+- **Effect:** Week 5 flagged TB (Jalon Daniels for Baker Mayfield), ATL, CHI, CLE and NYG. No ticket changed; the TNF
+  card is a single ticket anyway.
+
 ## 2026-10-07 — downloads survive upstream changes (process, not a model change)
 
 - **What:**

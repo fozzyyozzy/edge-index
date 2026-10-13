@@ -13,6 +13,8 @@ Set DRY_RUN=1 to print the issue instead of saving it.
 """
 import argparse, json, os, sys, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import house_rules
 def P(*p): return os.path.join(ROOT, *p)
 
 MODEL = "claude-sonnet-4-6"
@@ -47,7 +49,7 @@ def main():
     ap.add_argument("--to", choices=["file", "beehiiv"], default="file")
     a = ap.parse_args()
 
-    system = open(P("newsletter", "prompts", "system.md")).read()
+    system = open(P("newsletter", "prompts", "system.md"), encoding="utf-8").read().replace("{{HOUSE_RULES}}", house_rules.prompt_block())
     tmpl = open(P("newsletter", "prompts", f"{a.kind}.md")).read()
     if a.kind == "card":
         data = json.load(open(P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")))
@@ -55,11 +57,23 @@ def main():
         subject = f"Week {a.week} {a.slate.upper()} card"
     elif a.kind == "receipts":
         data = json.load(open(P("receipts", f"receipts_{a.season}_w{a.week}.json")))
+        # "What changed" may only quote these: MODEL_CHANGELOG.md entries from the last 7 days, verbatim
+        data["changelog"] = house_rules.changelog_entries(*house_rules.receipts_window())
         subject = f"Week {a.week} receipts"
     else:
         data = {}; subject = "Edge Index: what this is, and the rules"
     user = tmpl.replace("{{DATA}}", json.dumps(data, indent=1, default=str))
     md = claude(system, user)
+    # every draft is checked against the house rules and the changelog; one rewrite, then a warning on top if it fails
+    problems = house_rules.check_draft(md)
+    if problems:
+        md = claude(system, user + "\n\nYour previous draft broke these rules; rewrite the whole issue without them:\n- "
+                    + "\n- ".join(problems) + "\n\nPREVIOUS DRAFT:\n" + md)
+        problems = house_rules.check_draft(md)
+    if problems:
+        md = ("> **DRAFT CHECK FAILED — fix before posting.** It describes rules or changes that aren't in "
+              "build_card_json.py / MODEL_CHANGELOG.md:\n" + "".join(f"> - {p}\n" for p in problems) + "\n" + md)
+        print("draft check failed:", *problems, sep="\n  ")
 
     if os.environ.get("DRY_RUN"):
         print(md); return

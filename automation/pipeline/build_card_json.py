@@ -29,7 +29,7 @@ Rules encoded here (do not relax without changing the newsletter copy too):
   R10 selection is grade first (A+ > A > A- > B > C), then edge. A C leg is used only when no B-or-better leg can fill
       one of a ticket's first three spots — never as a 4th leg (3 legs already make a ticket; it runs reduced instead).
       A third ticket that would need a C leg is not built (two tickets beat a weaker third).
-  R11 a player with an injury-watch flag goes on one ticket at most (no star repeat).
+  R11 a player with a watch flag (injury watch, or QB change) goes on one ticket at most (no star repeat).
 
 Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
          projections.csv (from make_projections.py), floors_<...>.csv (from floors.py)
