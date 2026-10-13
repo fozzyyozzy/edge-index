@@ -1,8 +1,8 @@
 {
  "meta": {
   "season": 2026,
-  "generated": "2026-10-06T17:04+00:00",
-  "weeks": 3
+  "generated": "2026-10-13T18:00+00:00",
+  "weeks": 4
  },
  "weeks": [
   {
@@ -795,40 +795,360 @@
     "n": 8,
     "avg_leg_pts": -0.32
    }
+  },
+  {
+   "week": 5,
+   "ticket_record": {
+    "WIN": 2,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "legs_graded": 13,
+   "ticket_record_standard": {
+    "WIN": 2,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "units": 0.83,
+   "units_standard": 0.83,
+   "legs_hit": 11,
+   "tickets": [
+    {
+     "slate": "mnf",
+     "name": "MNF-1",
+     "legs": 3,
+     "flag": null,
+     "est_american": 268,
+     "clv_pts": -0.68,
+     "leg_text": [
+      "Kyren Williams 50+ rush_yds (-330)",
+      "James Cook 74+ rush_yds (-110)",
+      "Davante Adams 4+ receptions (-208)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Kyren Williams",
+       "team": "LA",
+       "market": "rush_yds",
+       "rung": 50.0,
+       "odds": -330,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 49.0,
+       "hit": false,
+       "early_exit": false,
+       "closing": -320,
+       "clv_pts": -0.55,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "James Cook",
+       "team": "BUF",
+       "market": "rush_yds",
+       "rung": 74.0,
+       "odds": -110,
+       "price_estimated": false,
+       "grade": "B",
+       "actual": 111.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -110,
+       "clv_pts": 0.0,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Davante Adams",
+       "team": "LA",
+       "market": "receptions",
+       "rung": 4.0,
+       "odds": -208,
+       "price_estimated": false,
+       "grade": "B",
+       "actual": 5.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -197,
+       "clv_pts": -1.2,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      }
+     ],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Kyren Williams"
+     ]
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-1",
+     "legs": 4,
+     "flag": null,
+     "est_american": 186,
+     "clv_pts": -0.31,
+     "leg_text": [
+      "Nico Collins 50+ rec_yds (-389)",
+      "Omarion Hampton 25+ rush_yds (-348)",
+      "Derrick Henry 60+ rush_yds (-296)",
+      "Joe Burrow 30+ pass_att (-313)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Nico Collins",
+       "team": "HOU",
+       "market": "rec_yds",
+       "rung": 50.0,
+       "odds": -389,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 56.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -395,
+       "clv_pts": 0.25,
+       "thursday_odds": -428,
+       "thu_to_pub_pts": -1.51
+      },
+      {
+       "player": "Omarion Hampton",
+       "team": "LAC",
+       "market": "rush_yds",
+       "rung": 25.0,
+       "odds": -348,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 33.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -372,
+       "clv_pts": 1.13,
+       "thursday_odds": -352,
+       "thu_to_pub_pts": -0.2
+      },
+      {
+       "player": "Derrick Henry",
+       "team": "BAL",
+       "market": "rush_yds",
+       "rung": 60.0,
+       "odds": -296,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 102.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -278,
+       "clv_pts": -1.2,
+       "thursday_odds": -382,
+       "thu_to_pub_pts": -4.51
+      },
+      {
+       "player": "Joe Burrow",
+       "team": "CIN",
+       "market": "pass_att",
+       "rung": 30.0,
+       "odds": -313,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 32.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -300,
+       "clv_pts": -0.79,
+       "thursday_odds": -324,
+       "thu_to_pub_pts": -0.63
+      }
+     ],
+     "result": "WIN",
+     "units": 1.86,
+     "result_standard": "WIN",
+     "units_standard": 1.86,
+     "misses": []
+    },
+    {
+     "slate": "sun",
+     "name": "SUN-2",
+     "legs": 4,
+     "flag": null,
+     "est_american": 210,
+     "clv_pts": 2.22,
+     "leg_text": [
+      "Omarion Hampton 25+ rush_yds (-348)",
+      "Juwan Johnson 25+ rec_yds (-330)",
+      "Pat Freiermuth 15+ rec_yds (-323)",
+      "Bijan Robinson 70+ rush_yds (-244)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Omarion Hampton",
+       "team": "LAC",
+       "market": "rush_yds",
+       "rung": 25.0,
+       "odds": -348,
+       "price_estimated": false,
+       "grade": "A+",
+       "actual": 33.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -372,
+       "clv_pts": 1.13,
+       "thursday_odds": -352,
+       "thu_to_pub_pts": -0.2
+      },
+      {
+       "player": "Juwan Johnson",
+       "team": "NO",
+       "market": "rec_yds",
+       "rung": 25.0,
+       "odds": -330,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 16.0,
+       "hit": false,
+       "early_exit": false,
+       "closing": -358,
+       "clv_pts": 1.42,
+       "thursday_odds": -374,
+       "thu_to_pub_pts": -2.16
+      },
+      {
+       "player": "Pat Freiermuth",
+       "team": "PIT",
+       "market": "rec_yds",
+       "rung": 15.0,
+       "odds": -323,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 44.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -317,
+       "clv_pts": -0.34,
+       "thursday_odds": -339,
+       "thu_to_pub_pts": -0.86
+      },
+      {
+       "player": "Bijan Robinson",
+       "team": "ATL",
+       "market": "rush_yds",
+       "rung": 70.0,
+       "odds": -244,
+       "price_estimated": false,
+       "grade": "B",
+       "actual": 86.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -280,
+       "clv_pts": 2.75,
+       "thursday_odds": -267,
+       "thu_to_pub_pts": -1.82
+      }
+     ],
+     "result": "LOSS",
+     "units": -1.0,
+     "result_standard": "LOSS",
+     "units_standard": -1.0,
+     "misses": [
+      "Juwan Johnson"
+     ]
+    },
+    {
+     "slate": "tnf",
+     "name": "TNF-1",
+     "legs": 2,
+     "flag": null,
+     "est_american": -103,
+     "clv_pts": 7.99,
+     "leg_text": [
+      "Bucky Irving 40+ rush_yds (-240)",
+      "Chris Godwin 3+ receptions (-257)"
+     ],
+     "early_exit": [],
+     "legs_detail": [
+      {
+       "player": "Bucky Irving",
+       "team": "TB",
+       "market": "rush_yds",
+       "rung": 40.0,
+       "odds": -240,
+       "price_estimated": false,
+       "grade": "A",
+       "actual": 165.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -287,
+       "clv_pts": 3.57,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      },
+      {
+       "player": "Chris Godwin",
+       "team": "TB",
+       "market": "receptions",
+       "rung": 3.0,
+       "odds": -257,
+       "price_estimated": false,
+       "grade": "A-",
+       "actual": 3.0,
+       "hit": true,
+       "early_exit": false,
+       "closing": -383,
+       "clv_pts": 7.31,
+       "thursday_odds": null,
+       "thu_to_pub_pts": null
+      }
+     ],
+     "result": "WIN",
+     "units": 0.97,
+     "result_standard": "WIN",
+     "units_standard": 0.97,
+     "misses": []
+    }
+   ],
+   "clv": {
+    "n": 13,
+    "avg_leg_pts": 1.04
+   }
   }
  ],
  "by_grade": [
   {
    "grade": "A+",
-   "n": 6,
-   "hits": 6,
-   "avg_prob": 82.9,
-   "avg_implied": 77.2,
-   "expected": 88.7
+   "n": 9,
+   "hits": 9,
+   "avg_prob": 82.5,
+   "avg_implied": 77.6,
+   "expected": 86.5
   },
   {
    "grade": "A",
-   "n": 6,
-   "hits": 5,
-   "avg_prob": 76.6,
-   "avg_implied": 68.3,
-   "expected": 87.5
+   "n": 10,
+   "hits": 8,
+   "avg_prob": 78.2,
+   "avg_implied": 70.8,
+   "expected": 84.1
   },
   {
    "grade": "A-",
-   "n": 6,
-   "hits": 3,
-   "avg_prob": 77.2,
-   "avg_implied": 76.9,
-   "expected": 81.8
+   "n": 9,
+   "hits": 5,
+   "avg_prob": 78.4,
+   "avg_implied": 76.2,
+   "expected": 81.0
   },
   {
    "grade": "B",
-   "n": 0,
-   "hits": 0,
-   "avg_prob": null,
-   "avg_implied": null,
-   "expected": null
+   "n": 3,
+   "hits": 3,
+   "avg_prob": 68.6,
+   "avg_implied": 63.6,
+   "expected": 68.6
   },
   {
    "grade": "C",
@@ -858,15 +1178,15 @@
  "held_by_reason": [
   {
    "reason": "team change",
-   "n": 32,
-   "hits": 22,
-   "misses": 8,
+   "n": 54,
+   "hits": 35,
+   "misses": 17,
    "voids": 2
   },
   {
    "reason": "blowout risk",
-   "n": 7,
-   "hits": 4,
+   "n": 11,
+   "hits": 8,
    "misses": 3,
    "voids": 0
   },
@@ -879,82 +1199,96 @@
   },
   {
    "reason": "low own volume",
-   "n": 36,
-   "hits": 22,
-   "misses": 12,
+   "n": 69,
+   "hits": 47,
+   "misses": 20,
    "voids": 2
   },
   {
    "reason": "price worse than \u2212450",
-   "n": 43,
-   "hits": 34,
-   "misses": 6,
+   "n": 71,
+   "hits": 54,
+   "misses": 14,
    "voids": 3
   },
   {
    "reason": "edge below +2",
-   "n": 114,
-   "hits": 87,
-   "misses": 22,
+   "n": 222,
+   "hits": 166,
+   "misses": 51,
    "voids": 5
   },
   {
    "reason": "grade below C",
-   "n": 53,
-   "hits": 38,
-   "misses": 11,
+   "n": 107,
+   "hits": 73,
+   "misses": 30,
    "voids": 4
+  },
+  {
+   "reason": "injury",
+   "n": 7,
+   "hits": 5,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "reason": "held by hand",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
   }
  ],
  "board_by_grade": [
   {
    "grade": "A+",
-   "n": 6,
-   "hits": 6,
+   "n": 8,
+   "hits": 8,
    "misses": 0,
    "voids": 0
   },
   {
    "grade": "A",
-   "n": 24,
-   "hits": 19,
-   "misses": 5,
+   "n": 41,
+   "hits": 33,
+   "misses": 8,
    "voids": 0
   },
   {
    "grade": "A-",
-   "n": 155,
-   "hits": 136,
-   "misses": 18,
+   "n": 211,
+   "hits": 185,
+   "misses": 25,
    "voids": 1
   },
   {
    "grade": "B",
-   "n": 198,
-   "hits": 161,
-   "misses": 33,
+   "n": 275,
+   "hits": 226,
+   "misses": 45,
    "voids": 4
   },
   {
    "grade": "C",
-   "n": 155,
-   "hits": 125,
-   "misses": 29,
-   "voids": 1
+   "n": 226,
+   "hits": 171,
+   "misses": 53,
+   "voids": 2
   },
   {
    "grade": "D",
-   "n": 27,
-   "hits": 18,
-   "misses": 8,
+   "n": 33,
+   "hits": 23,
+   "misses": 9,
    "voids": 1
   },
   {
    "grade": "F",
-   "n": 344,
-   "hits": 99,
-   "misses": 232,
-   "voids": 13
+   "n": 517,
+   "hits": 148,
+   "misses": 347,
+   "voids": 22
   }
  ],
  "clear_basis_weeks": [
@@ -1131,6 +1465,123 @@
    "est": -306,
    "real": -280,
    "hit": false
+  },
+  {
+   "week": 5,
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 50.0,
+   "est": -286,
+   "real": -330,
+   "hit": false
+  },
+  {
+   "week": 5,
+   "player": "James Cook",
+   "market": "rush_yds",
+   "rung": 74.0,
+   "est": -110,
+   "real": -110,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Davante Adams",
+   "market": "receptions",
+   "rung": 4.0,
+   "est": -228,
+   "real": -208,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Nico Collins",
+   "market": "rec_yds",
+   "rung": 50.0,
+   "est": -378,
+   "real": -389,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Omarion Hampton",
+   "market": "rush_yds",
+   "rung": 25.0,
+   "est": -229,
+   "real": -348,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Derrick Henry",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "est": -268,
+   "real": -296,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Joe Burrow",
+   "market": "pass_att",
+   "rung": 30.0,
+   "est": -371,
+   "real": -313,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Omarion Hampton",
+   "market": "rush_yds",
+   "rung": 25.0,
+   "est": -229,
+   "real": -348,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Juwan Johnson",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "est": -250,
+   "real": -330,
+   "hit": false
+  },
+  {
+   "week": 5,
+   "player": "Pat Freiermuth",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "est": -205,
+   "real": -323,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Bijan Robinson",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "est": -235,
+   "real": -244,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Bucky Irving",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -201,
+   "real": -240,
+   "hit": true
+  },
+  {
+   "week": 5,
+   "player": "Chris Godwin",
+   "market": "receptions",
+   "rung": 3.0,
+   "est": -302,
+   "real": -257,
+   "hit": true
   }
  ]
 }
