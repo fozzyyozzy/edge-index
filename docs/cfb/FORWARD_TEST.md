@@ -135,6 +135,8 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
   It's reported separately in `forward weekly`, and it complements the CLV forward test.
 - **Diagnostic:** `ALT-SHAPE` floor legs split by game spread, |DK main line| <= 14 vs > 14
   (hit, break-even, ROI). This is where our σ and DK's ladder disagree most.
+- **Ticket rule (2026-10-13):** each game appears on **at most one ticket per slate** (any market,
+  any leg; this replaces the floor-star exception).
 - **Ticket rule:** at most 2 `ALT-SHAPE` legs per ticket, with the rest from other labels; a
   ticket that can't reach +200 under the rules is labeled "reduced payout, floors held".
 

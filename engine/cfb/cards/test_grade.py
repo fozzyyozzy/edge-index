@@ -91,3 +91,18 @@ def test_edge_grading_never_counts_both_sides(tmp_path, monkeypatch):
     monkeypatch.setattr(grade, "CARDS", tmp_path)
     ed = grade.edge_legs(2026)
     assert len(ed) == 1 and ed.pick.iloc[0] == "h"
+
+
+def test_each_game_on_at_most_one_ticket():
+    from engine.cfb.cards.card import tickets
+    rows = []
+    for gid in range(1, 9):
+        for j, (mkt, p, price) in enumerate([("ALT-SHAPE", .80, -300), ("ML-SHADED", .70, -200)]):
+            rows.append({"game_id": gid, "game": f"G{gid}", "pick": f"p{gid}{j}", "market": mkt,
+                         "role": "floor" if j == 0 else "second", "price": price, "p_used": p - gid / 100})
+    t = tickets(pd.DataFrame(rows))
+    games = [leg["game_id"] for tk in t for leg in tk["legs"]]
+    assert len(games) == len(set(games))                       # no game on two tickets
+    assert all(tk["alt_shape_legs"] <= 2 for tk in t)
+    for tk in t:
+        assert (tk["price_american"] >= 200) == (tk["label"] == "Bloom (>= +200)")

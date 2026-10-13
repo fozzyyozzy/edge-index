@@ -16,7 +16,8 @@ Markets and evidence labels (Tim, 2026-10-12):
 Eligibility: week >= 4, price in [-500, +150], p >= 65%, EV at the posted price >= +2%,
 spread rungs getting points only. Per game: floor leg = highest-probability eligible leg; second leg =
 best eligible leg from a different market family. Tickets: 3-4 cross-game legs, 2-3 tickets, no leg
-repeated except one floor star (<= 2 tickets), target >= +200, else "reduced payout, floors held".
+repeated and each game on at most one ticket per slate (any market), target >= +200, else
+"reduced payout, floors held".
 """
 from __future__ import annotations
 import argparse
@@ -219,24 +220,22 @@ MAX_ALT_SHAPE = 2       # Tim, 2026-10-12: at most 2 ALT-SHAPE legs per ticket
 
 
 def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n=16):
-    """Pool = floor legs + second legs (one leg per game per ticket). At most MAX_ALT_SHAPE
-    ALT-SHAPE legs per ticket; the rest come from other labels. No leg repeats across tickets
-    except the floor star (highest-probability floor leg, <= 2 tickets). Pick the highest joint
-    probability at >= +200; if no combination reaches +200 under the rules, take the best one
-    and label it "reduced payout, floors held"."""
+    """Pool = floor legs + second legs. Rules (Tim, 2026-10-12/13):
+      * each GAME appears on at most ONE ticket per slate (any market, any leg); this supersedes the
+        earlier floor-star exception, so no leg or game repeats across tickets
+      * cross-game only within a ticket; at most MAX_ALT_SHAPE ALT-SHAPE legs per ticket
+      * pick the highest joint probability at >= +200; if no combination reaches +200 under the
+        rules, take the best one and label it "reduced payout, floors held"."""
     f = floor.sort_values("p_used", ascending=False).head(pool_n).reset_index(drop=True)
-    if f.game_id.nunique() < 3:
-        return []
-    fl = f[f.role == "floor"]
-    star = fl.index[0] if len(fl) else None
-    used, out = {}, []
+    used_games, out = set(), []
     for t in range(n_tickets):
+        avail = f[~f.game_id.isin(used_games)]
+        if avail.game_id.nunique() < min(sizes):
+            break
         best = None
         for k in sizes:
-            for combo in itertools.combinations(f.index, k):
+            for combo in itertools.combinations(avail.index, k):
                 c = f.loc[list(combo)]
-                if any(used.get(i, 0) >= (2 if i == star else 1) for i in combo):
-                    continue
                 if c.game_id.nunique() < k or (c.market == "ALT-SHAPE").sum() > MAX_ALT_SHAPE:
                     continue
                 dec = float(np.prod(1 + payout(c.price)))
@@ -248,8 +247,7 @@ def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n
         if best is None:
             break
         _, combo, dec, pj, price = best
-        for i in combo:
-            used[i] = used.get(i, 0) + 1
+        used_games |= set(f.loc[list(combo)].game_id)
         out.append({"ticket": t + 1,
                     "legs": f.loc[list(combo)][["game_id", "game", "pick", "market", "role", "price", "p_used"]].to_dict("records"),
                     "price_american": round(price), "p_joint": pj, "ev": pj * dec - 1,
