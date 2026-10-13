@@ -3,6 +3,31 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-13 — bug fix: a late odds refresh regraded the played Week 5 TNF board (data correction)
+
+- **What happened:** the Monday 2026-10-12 7pm ET refresh slot started at 9:16pm, after MNF kickoff.
+  - `upcoming_slate()` used the run's start time. With every Week 5 kickoff past, it wrapped to "tnf", and the week
+    still resolved to 5.
+  - `fetch_lines.py` then pulled Week 6's Thursday game (SEA @ DEN) into the Week 5 files.
+  - The Legs grader regraded Week 5's TNF board, which had been played on Oct 8. That dropped its settled results,
+    and the new grades used the game's own stats, which breaks walk-forward (CLAUDE.md rule 4).
+- **Fix:**
+  - The refresh takes its slate from the slot time, and serves nothing once a week's games have all started.
+  - `fetch_lines.py` only takes games from the NFL week's schedule. When nothing is left to pull it exits "skip",
+    so nothing is regraded.
+  - `grade_legs.py` keeps settled rows exactly as settled through any later regrade.
+  - card.yml carries on to QA when nothing was pulled.
+  - Tests in `tests/test_settled_survive.py`.
+- **Data correction:** every file that run changed is back to its state before the run: the Week 5 TNF legs, floors
+  and availability, the ladder, two-way and main-line files, the pull times, and the site copies. The usage ledger
+  still records the 14 requests it spent. The TNF board is again the pre-kickoff one (Oct 8, 7:43pm ET), with its
+  Oct 9 settle results. MON was settled for the first time. The card and its tickets were never touched.
+- **Week 5 board tallies (one row per player/market, as displayed):**
+  - THU 19–3: A 3–1 · A− 6–1 · B 4–1 · C 6–0. Monday's regraded board would have shown 20–3, with grades that
+    already knew the result.
+  - SUN 138–40.
+  - MON 18–3 with 1 void: A 4–1 · A− 9–0 · B 3–0 · C 2–2.
+
 ## 2026-10-07 — downloads survive upstream changes (process, not a model change)
 
 - **What:**

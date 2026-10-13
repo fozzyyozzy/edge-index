@@ -101,6 +101,21 @@ def trim_ladders(out, skipped=(), REAL=None):
     return trimmed, omitted
 
 
+def keep_settled(out, path):
+    """A settled row (settle.py: the game is final, `actual` and per-rung `result` written) is history: a later regrade
+    (an odds refresh, a card re-run) keeps it exactly as settled instead of replacing it, and keeps it even if the new
+    grade no longer lists it. 2026-10-12: a late refresh regraded the played Week 5 TNF board and wiped its results."""
+    if not os.path.exists(path): return out
+    try:
+        old = json.load(open(path, encoding="utf-8")).get("players", [])
+    except (ValueError, OSError):
+        return out
+    settled = {(p["player"], p["market"]): p for p in old if p.get("settled")}
+    if not settled: return out
+    merged = [settled.pop((p["player"], p["market"]), p) for p in out]
+    return merged + list(settled.values())
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
@@ -174,6 +189,7 @@ def main():
                 rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])
     path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
+    out = keep_settled(out, path)
     json.dump(dict(meta=meta, players=out, omitted=omitted), open(path, "w"), separators=(",", ":"))
     n = sum(len(p["rungs"]) for p in out); a_plus = sum(1 for p in out for r in p["rungs"] if r["grade"] == "A+")
     print(f"wrote {path}: {len(out)} player/markets, {n} rungs graded, {a_plus} A+")

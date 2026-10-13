@@ -60,7 +60,11 @@ jobs:
         run: |
           if [ -n "$ODDS_API_KEY" ]; then
             case "$SLATE" in tnf|mnf) DAYS=2 ;; *) DAYS=5 ;; esac
+            set +e
             python automation/pipeline/fetch_lines.py --season "$SEASON" --week "$WEEK" --days "$DAYS" --slate "$SLATE" --out automation/lines
+            code=$?; set -e
+            # 3 = nothing pulled (no unstarted games, or the weekly budget): carry on; card QA fails it with the reason
+            if [ $code -ne 0 ] && [ $code -ne 3 ]; then exit $code; fi
           else
             test -d "automation/lines/raw/w${WEEK}" || { echo "::error::no ODDS_API_KEY and no pastes in automation/lines/raw/w${WEEK}/"; exit 1; }
             python automation/pipeline/parse_lines.py --season "$SEASON" --week "$WEEK"

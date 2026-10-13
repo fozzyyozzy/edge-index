@@ -50,6 +50,15 @@ def get(path):
     raw, h, _ = download("The Odds API", timeout=60, path=path)
     return json.loads(raw), h.get("x-requests-remaining"), h.get("x-requests-last")
 
+def in_week(events, season, week):
+    """events whose kickoff falls inside the NFL week's schedule (first kickoff - 12h ... last kickoff + 12h)"""
+    from floors import kickoffs
+    ko = [datetime.fromisoformat(str(t).replace("Z", "+00:00")) for t in kickoffs(season, week).values()]
+    if not ko: return events
+    lo, hi = min(ko) - timedelta(hours=12), max(ko) + timedelta(hours=12)
+    start = lambda e: datetime.fromisoformat(e["commence_time"].replace("Z", "+00:00"))
+    return [e for e in events if lo <= start(e) <= hi]
+
 def week_usage(season, week):
     path = P("lines", "odds_usage.csv")
     if not os.path.exists(path): return 0
@@ -81,14 +90,16 @@ def main():
     start = lambda e: datetime.fromisoformat(e["commence_time"].replace("Z", "+00:00"))
     events = [e for e in events if now < start(e) <= horizon]      # not kicked off yet
     if a.slate: events = [e for e in events if slate_of(e["commence_time"]) == a.slate]
+    # only this NFL week's games: next week's Thursday game is inside the --days window on a Monday night
+    events = in_week(events, a.season, a.week)
     used = week_usage(a.season, a.week); estimate = len(events) * (len(MARKETS) + len(TWOWAY))
     print(f"{len(events)} unstarted {a.slate or 'all-slate'} events in window; quota remaining {rem}; "
           f"week {a.week} used {used}/{budget}, this pull ~{estimate}")
     if used + estimate > budget:
         print(f"::warning::skipping pull: {used} + ~{estimate} would pass the weekly budget of {budget}")
         sys.exit(3)
-    if not events:
-        print("nothing to pull"); return
+    if not events:                 # exit 3 = skip: the workflow then doesn't regrade a slate whose games have started
+        print("nothing to pull (no unstarted games on this slate this week)"); sys.exit(3)
 
     pulled_at = now.isoformat(timespec="minutes")
     rows, cost, pulled_games = [], 0, set()

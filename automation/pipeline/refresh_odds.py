@@ -29,8 +29,11 @@ KICKOFF = {"tnf": 2 * DAY + 20 * 60 + 15, "sun": 5 * DAY + 13 * 60, "mnf": 6 * D
 WEEKDAY = {"Tue": 0, "Wed": 1, "Thu": 2, "Fri": 3, "Sat": 4, "Sun": 5, "Mon": 6}
 
 def upcoming_slate(now_et):
+    """the first of this NFL week's slates (weeks run Tue->Mon) not yet kicked off at now_et; None once MNF has started.
+    (It used to wrap to "tnf" after MNF kickoff, which the current week then mislabelled: 2026-10-12, a late Monday 7pm
+    refresh pulled week 6's TNF game into week 5 and regraded week 5's played TNF board.)"""
     t = WEEKDAY[now_et.strftime("%a")] * DAY + now_et.hour * 60 + now_et.minute
-    return next((s for s in ("tnf", "sun", "mnf") if t < KICKOFF[s]), "tnf")
+    return next((s for s in ("tnf", "sun", "mnf") if t < KICKOFF[s]), None)
 
 # GitHub starts scheduled runs late — hours late at busy times (Thu 9am ran at 1:38pm ET). A run therefore serves the most
 # recent scheduled slot if it is less than WINDOW_H old and not yet served; lines/refresh_slots.txt records served slots,
@@ -52,12 +55,14 @@ def served_slots():
     return set(open(path).read().split()) if os.path.exists(path) else set()
 
 def which_slate(now=None):
-    """(slate, slot id) if a scheduled slot is due and unserved, else None. The slate is the upcoming one as of now."""
+    """(slate, slot id) if a scheduled slot is due and unserved, else None. The slate is the one upcoming AT THE SLOT TIME
+    (a run GitHub starts hours late still serves the slot's slate; fetch_lines.py then skips games that have started)."""
     now = now or datetime.now(timezone.utc)
     t = due_slot(now)
     if t is None: return None
     sid = t.isoformat(timespec="minutes")
-    return None if sid in served_slots() else (upcoming_slate(now.astimezone(ET)), sid)
+    slate = upcoming_slate(t)
+    return None if sid in served_slots() or slate is None else (slate, sid)
 
 def iso(s):
     return datetime.fromisoformat(str(s).replace("Z", "+00:00")) if s else None

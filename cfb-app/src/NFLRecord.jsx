@@ -12,7 +12,12 @@ const MARKET_LABEL = { rec_yds:"rec yds", receptions:"rec", rush_yds:"rush yds",
 const oddsStr = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
 const implied = o => o < 0 ? -o / (-o + 100) : 100 / (o + 100);
 const pct = (a, b) => b ? `${(100 * a / b).toFixed(1)}%` : "—";
-const unitStr = u => u == null ? "—" : `${u > 0 ? "+" : ""}${u.toFixed(2)}u`;
+// units, coloured: positive green with "+", negative red with a true minus "−", zero neutral grey
+const unitCell = u => {
+  if (u == null) return "—";
+  const z = Math.abs(u) < 0.005;
+  return <span style={{color: z ? "#999" : u > 0 ? T.accent : T.red}}>{z ? "" : u > 0 ? "+" : "−"}{Math.abs(u).toFixed(2)}u</span>;
+};
 // CLV in implied-probability points: positive = the price shortened between posting and kickoff (we beat the close)
 const clvCell = v => v == null ? "—" :
   <span style={{color: v > 0 ? T.accent : v < 0 ? T.red : "#999"}}>{v > 0 ? "+" : ""}{v.toFixed(2)}</span>;
@@ -98,8 +103,8 @@ export default function NFLRecord() {
         <Table cols={[["WEEK","left"],["W","right"],["L","right"],["VOID","right"],["LEGS HIT","right"],["UNITS","right"],["LEG HIT %","right"],["AVG CLV","right"]]}
           rows={weeks.map(w => [<>{w.week}{(w.tickets || []).some(t => t.flag) &&
             <span title="includes a hand-built ticket — see the ticket list" style={{color:T.amber,marginLeft:4}}>†</span>}</>, w.ticket_record.WIN, w.ticket_record.LOSS, w.ticket_record.VOID,
-            `${w.legs_hit}/${w.legs_graded}`, unitStr(w.units), pct(w.legs_hit, w.legs_graded), clvCell(w.clv?.avg_leg_pts)])}
-          foot={["SEASON", tot.W, tot.L, tot.V, `${tot.hit}/${tot.n}`, unitStr(units), pct(tot.hit, tot.n), clvCell(clvSeason)]} />
+            `${w.legs_hit}/${w.legs_graded}`, unitCell(w.units), pct(w.legs_hit, w.legs_graded), clvCell(w.clv?.avg_leg_pts)])}
+          foot={["SEASON", tot.W, tot.L, tot.V, `${tot.hit}/${tot.n}`, unitCell(units), pct(tot.hit, tot.n), clvCell(clvSeason)]} />
         <div style={{fontSize:10,color:"#999",marginTop:8,lineHeight:1.6,maxWidth:"80ch"}}>
           Tickets are graded as settled at DraftKings, where Early Exit protection applies.
         </div>
@@ -121,7 +126,7 @@ export default function NFLRecord() {
                 {t.est_american != null && <span style={{color:"#777"}}>pays {oddsStr(t.est_american)}</span>}
                 <span style={{flex:1}} />
                 <span style={{fontSize:10,color:"#999"}}>CLV {t.clv_pts != null ? clvCell(t.clv_pts) : "—"}</span>
-                <span style={{fontSize:10,color:"#999"}}>{unitStr(t.units)}</span>
+                <span style={{fontSize:10}}>{unitCell(t.units)}</span>
                 <span style={{color:resColor,fontWeight:700}}>{t.result}</span>
               </div>
               {(t.legs_detail || []).map((l, k) => {
