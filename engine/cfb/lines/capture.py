@@ -210,11 +210,23 @@ def targets(season: int, weeks, main: pd.DataFrame) -> pd.DataFrame:
 
 
 # ------------------------------------------------------------------ snapshot
+SLOT_TAG = {"slot": "", "slot_lag_min": None}
+
+
 def write_rows(df: pd.DataFrame, prefix: str, season: int):
     SNAP.mkdir(parents=True, exist_ok=True)
+    df = df.assign(slot=SLOT_TAG["slot"], slot_lag_min=SLOT_TAG["slot_lag_min"])
     for w, part in df.groupby(df.week.fillna(0).astype(int)):
         name = f"{prefix}_{season}_wk{w:02d}.csv" if w else f"{prefix}_{season}_unmapped.csv"
         path = SNAP / name
+        if path.exists():
+            head = list(pd.read_csv(path, nrows=0).columns)
+            if head != list(part.columns):
+                # schema changed (e.g. new slot columns): rewrite with the union, old rows keep blanks
+                old = pd.read_csv(path)
+                cols = head + [c for c in part.columns if c not in head]
+                pd.concat([old, part], ignore_index=True).reindex(columns=cols).to_csv(path, index=False)
+                continue
         part.to_csv(path, mode="a", header=not path.exists(), index=False)
 
 
@@ -231,9 +243,13 @@ def main(argv=None) -> int:
                     help="before_next: ladder target games kicking off within this many hours")
     ap.add_argument("--ladder-cap", type=int, default=int(os.environ.get("CFB_LADDER_CAP", "70")))
     ap.add_argument("--dry-run", action="store_true", help="free /events call only")
+    ap.add_argument("--slot", default="", help="intended slot tag, e.g. 2026-10-13:tue10 (from slots.py)")
+    ap.add_argument("--slot-lag-min", type=float, default=None,
+                    help="minutes between the intended slot time and this capture")
     a = ap.parse_args(argv)
     now = datetime.now(timezone.utc)
     ts = now.isoformat(timespec="seconds")
+    SLOT_TAG.update({"slot": a.slot, "slot_lag_min": a.slot_lag_min})
 
     events, h = call(f"/sports/{SPORT}/events", {})            # free
     events = [e for e in events if pd.Timestamp(e["commence_time"]) > now]

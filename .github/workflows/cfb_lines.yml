@@ -3,40 +3,73 @@ name: cfb-lines
 # DraftKings CFB line capture (docs/cfb/ODDS_BUDGET.md, Phase 4 brief §2).
 # Slots (ET): Sun 6pm, 10pm · Mon 9am (open watch) · Tue 10am, Wed 10am (bet window, all-game ladders)
 #             Fri 10am (late) · Tue/Wed/Thu/Fri 6pm (close, only if games kick off) · Sat 11am, 3pm, 7pm (close)
-# Cron is UTC: each slot has an EDT and an EST line at :07. engine/cfb/lines/slots.py serves a slot only
-# inside its ET window and records it in data/cfb/lines/served_slots.txt, so the twin cron skips.
+# Cron is UTC: each slot has an EDT and an EST line at :07 plus a backup at :37 (GitHub delays/drops
+# scheduled runs: week 7's Tue 10 AM never fired). engine/cfb/lines/slots.py tags a run with its INTENDED
+# slot if it starts within 90 min of it (grace window), records it in data/cfb/lines/served_slots.txt
+# so twins/backups skip, and every snapshot row carries `slot` + `slot_lag_min` (actual capture time is
+# captured_at_utc). Recover a missed slot with workflow_dispatch input `slot` (e.g. tue10).
 # Own concurrency group on purpose: joining NFL's data-main group could let a queued CFB run cancel a
 # pending NFL run (GitHub keeps one pending run per group). Pushes retry with a rebase instead.
 on:
   schedule:
     - cron: "7 22 * * 0"     # Sun 6pm EDT
+    - cron: "37 22 * * 0"    # backup +30 min: Sun 6pm EDT
     - cron: "7 23 * * 0"     # Sun 6pm EST
+    - cron: "37 23 * * 0"    # backup +30 min: Sun 6pm EST
     - cron: "7 2 * * 1"      # Sun 10pm EDT
+    - cron: "37 2 * * 1"    # backup +30 min: Sun 10pm EDT
     - cron: "7 3 * * 1"      # Sun 10pm EST
+    - cron: "37 3 * * 1"    # backup +30 min: Sun 10pm EST
     - cron: "7 13 * * 1"     # Mon 9am EDT
+    - cron: "37 13 * * 1"    # backup +30 min: Mon 9am EDT
     - cron: "7 14 * * 1"     # Mon 9am EST
+    - cron: "37 14 * * 1"    # backup +30 min: Mon 9am EST
     - cron: "7 14 * * 2"     # Tue 10am EDT
+    - cron: "37 14 * * 2"    # backup +30 min: Tue 10am EDT
     - cron: "7 15 * * 2"     # Tue 10am EST
+    - cron: "37 15 * * 2"    # backup +30 min: Tue 10am EST
     - cron: "7 14 * * 3"     # Wed 10am EDT
+    - cron: "37 14 * * 3"    # backup +30 min: Wed 10am EDT
     - cron: "7 15 * * 3"     # Wed 10am EST
+    - cron: "37 15 * * 3"    # backup +30 min: Wed 10am EST
     - cron: "7 14 * * 5"     # Fri 10am EDT
+    - cron: "37 14 * * 5"    # backup +30 min: Fri 10am EDT
     - cron: "7 15 * * 5"     # Fri 10am EST
+    - cron: "37 15 * * 5"    # backup +30 min: Fri 10am EST
     - cron: "7 22 * * 2"     # Tue 6pm EDT
+    - cron: "37 22 * * 2"    # backup +30 min: Tue 6pm EDT
     - cron: "7 23 * * 2"     # Tue 6pm EST
+    - cron: "37 23 * * 2"    # backup +30 min: Tue 6pm EST
     - cron: "7 22 * * 3"     # Wed 6pm EDT
+    - cron: "37 22 * * 3"    # backup +30 min: Wed 6pm EDT
     - cron: "7 23 * * 3"     # Wed 6pm EST
+    - cron: "37 23 * * 3"    # backup +30 min: Wed 6pm EST
     - cron: "7 22 * * 4"     # Thu 6pm EDT
+    - cron: "37 22 * * 4"    # backup +30 min: Thu 6pm EDT
     - cron: "7 23 * * 4"     # Thu 6pm EST
+    - cron: "37 23 * * 4"    # backup +30 min: Thu 6pm EST
     - cron: "7 22 * * 5"     # Fri 6pm EDT
+    - cron: "37 22 * * 5"    # backup +30 min: Fri 6pm EDT
     - cron: "7 23 * * 5"     # Fri 6pm EST
+    - cron: "37 23 * * 5"    # backup +30 min: Fri 6pm EST
     - cron: "7 15 * * 6"     # Sat 11am EDT
+    - cron: "37 15 * * 6"    # backup +30 min: Sat 11am EDT
     - cron: "7 16 * * 6"     # Sat 11am EST
+    - cron: "37 16 * * 6"    # backup +30 min: Sat 11am EST
     - cron: "7 19 * * 6"     # Sat 3pm EDT
+    - cron: "37 19 * * 6"    # backup +30 min: Sat 3pm EDT
     - cron: "7 20 * * 6"     # Sat 3pm EST
+    - cron: "37 20 * * 6"    # backup +30 min: Sat 3pm EST
     - cron: "7 23 * * 6"     # Sat 7pm EDT
+    - cron: "37 23 * * 6"    # backup +30 min: Sat 7pm EDT
     - cron: "7 0 * * 0"      # Sat 7pm EST
+    - cron: "37 0 * * 0"    # backup +30 min: Sat 7pm EST
   workflow_dispatch:
     inputs:
+      slot:
+        description: "recover a missed slot by name (tue10, wed10, sat15, ...): runs that slot's capture, tagged with its latest occurrence"
+        required: false
+        default: ""
       args:
         description: "capture.py args for a manual snapshot (e.g. --label manual --ladders none)"
         required: false
@@ -66,18 +99,20 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install pandas requests python-dotenv
-      - name: which slot (scheduled) / manual args
+      - name: which slot (scheduled, 90-min grace) / manual slot recovery / manual args
         id: slot
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "tag=" >> "$GITHUB_OUTPUT"
-            echo "args=${{ github.event.inputs.args }}" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.slot }}" ]; then
+            read -r TAG LAG ARGS <<< "$(python -m engine.cfb.lines.slots --resolve '${{ github.event.inputs.slot }}')"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG=""; LAG=""; ARGS="${{ github.event.inputs.args }}"
           else
-            read -r TAG ARGS <<< "$(python -m engine.cfb.lines.slots --which)"
-            echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-            echo "args=$ARGS" >> "$GITHUB_OUTPUT"
-            [ -z "$TAG" ] && echo "no unserved ET slot now (twin cron or already served); skipping"
+            read -r TAG LAG ARGS <<< "$(python -m engine.cfb.lines.slots --which)"
+            [ -z "$TAG" ] && echo "no unserved ET slot within the 90-min grace window (twin/backup cron or already served); skipping"
           fi
+          [ -n "$TAG" ] && ARGS="$ARGS --slot $TAG --slot-lag-min $LAG" && echo "slot $TAG, capture lag $LAG min"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
       - name: capture DK lines
         if: steps.slot.outputs.args != ''
         run: python -m engine.cfb.lines.capture ${{ steps.slot.outputs.args }}

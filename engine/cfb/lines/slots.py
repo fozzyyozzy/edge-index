@@ -1,11 +1,16 @@
 """CFB DK capture schedule (ET) and the slot guard used by .github/workflows/cfb_lines.yml.
 
-    python -m engine.cfb.lines.slots --which        # prints "<slot> <capture args>" or nothing
-    python -m engine.cfb.lines.slots --mark-served SLOT
+    python -m engine.cfb.lines.slots --which              # "<tag> <lag_min> <capture args>" or nothing
+    python -m engine.cfb.lines.slots --resolve tue10      # manual recovery of a named slot (any lag)
+    python -m engine.cfb.lines.slots --mark-served TAG
 
-Cron is UTC and ET shifts with DST, so every slot has an EDT and an EST cron. The guard
-serves a slot only when the current ET time is within WINDOW_MIN after its start and it
-isn't recorded in data/cfb/lines/served_slots.txt yet; the twin cron then finds it served.
+Cron is UTC and ET shifts with DST, so every slot has EDT and EST crons, plus a BACKUP cron 30
+minutes later: GitHub delays or drops scheduled runs (the week-7 Tue 10 AM slot never fired, and
+Monday's 9 AM fired ~8 h late). A scheduled run is tagged with its INTENDED slot if it starts within
+GRACE_MIN (90) minutes after the slot time and that slot isn't served yet; the twin/backup cron then
+skips. Every capture records the actual capture time and its lag behind the slot (snapshot columns
+`slot`, `slot_lag_min`). A missed slot is recovered with the workflow_dispatch `slot` input, which
+runs that slot's own capture args and tags it with the most recent occurrence of the slot.
 A close slot with no kickoffs in its window makes no paid call (capture.py checks).
 """
 from __future__ import annotations
@@ -16,7 +21,7 @@ from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
 SERVED = Path(__file__).resolve().parents[3] / "data" / "cfb" / "lines" / "served_slots.txt"
-WINDOW_MIN = 150
+GRACE_MIN = 90
 
 # name: (weekday 0=Mon, hour ET, capture args)
 SLOTS = {
@@ -40,16 +45,34 @@ def served() -> set[str]:
     return set(SERVED.read_text().split()) if SERVED.exists() else set()
 
 
-def which(now: datetime | None = None) -> tuple[str, str] | None:
+def last_occurrence(name: str, now: datetime) -> datetime:
+    wd, hr, _ = SLOTS[name]
+    start = now.replace(hour=hr, minute=0, second=0, microsecond=0)
+    start -= timedelta(days=(now.weekday() - wd) % 7)
+    if start > now:
+        start -= timedelta(days=7)
+    return start
+
+
+def which(now: datetime | None = None):
+    """(tag, lag_min, args) for the most recent unserved slot within the grace window, else None."""
     now = (now or datetime.now(ET)).astimezone(ET)
     done = served()
-    for name, (wd, hr, args) in SLOTS.items():
-        start = now.replace(hour=hr, minute=0, second=0, microsecond=0)
-        start -= timedelta(days=(now.weekday() - wd) % 7)
+    best = None
+    for name, (_, _, args) in SLOTS.items():
+        start = last_occurrence(name, now)
+        lag = (now - start).total_seconds() / 60
         tag = f"{start:%Y-%m-%d}:{name}"
-        if start <= now <= start + timedelta(minutes=WINDOW_MIN) and tag not in done:
-            return tag, args
-    return None
+        if 0 <= lag <= GRACE_MIN and tag not in done and (best is None or lag < best[1]):
+            best = (tag, round(lag), args)
+    return best
+
+
+def resolve(name: str, now: datetime | None = None):
+    """Manual recovery: tag with the most recent occurrence of `name`, any lag."""
+    now = (now or datetime.now(ET)).astimezone(ET)
+    start = last_occurrence(name, now)
+    return f"{start:%Y-%m-%d}:{name}", round((now - start).total_seconds() / 60), SLOTS[name][2]
 
 
 def mark(tag: str) -> None:
@@ -61,10 +84,14 @@ def mark(tag: str) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--which", action="store_true")
+    ap.add_argument("--resolve", choices=list(SLOTS))
     ap.add_argument("--mark-served")
     a = ap.parse_args()
     if a.which:
         w = which()
-        print(f"{w[0]} {w[1]}" if w else "")
+        print(f"{w[0]} {w[1]} {w[2]}" if w else "")
+    elif a.resolve:
+        t = resolve(a.resolve)
+        print(f"{t[0]} {t[1]} {t[2]}")
     elif a.mark_served:
         mark(a.mark_served)
