@@ -85,8 +85,20 @@ def load_snapshot(season: int, week: int, which: str):
         ts = main.ts.max()
     else:
         ts = pd.Timestamp(which)
-    pick = lambda df: df[pd.to_datetime(df.captured_at_utc, utc=True) == ts] if len(df) else df  # noqa: E731
-    return ts, pick(main), pick(lad), pick(alt)
+    pick = lambda df, t: df[pd.to_datetime(df.captured_at_utc, utc=True) == t] if len(df) else df  # noqa: E731
+    # ladders: from the same snapshot if it has them; for the Tue bet card, otherwise the earliest
+    # Tuesday 'bet' snapshot that does (e.g. a main-lines-only capture re-tagged as the bet snapshot)
+    lad_ts = ts
+    if which == "tue10" and (lad.empty or pick(lad, ts).empty) and len(lad):
+        lt = pd.to_datetime(lad.captured_at_utc, utc=True)
+        cand = lad[(lad.label == "bet") & (lt.dt.tz_convert(ET).dt.weekday == 1)]
+        if len(cand):
+            lad_ts = pd.to_datetime(cand.captured_at_utc, utc=True).min()
+    LADDER_TS["ts"] = lad_ts
+    return ts, pick(main, ts), pick(lad, lad_ts), pick(alt, lad_ts)
+
+
+LADDER_TS = {"ts": None}
 
 
 # ------------------------------------------------------------------ pricing
@@ -258,9 +270,12 @@ def spread_edges(g: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
 
 
 def readout(card: dict) -> str:
+    lad = card.get("ladder_snapshot_utc")
     lines = [f"# CFB floor card: {card['season']} week {card['week']} ({card['status']})",
-             f"Snapshot: {card['snapshot_utc']} ({card['snapshot_et']} ET, label {card['snapshot_label']}). "
-             f"Generated {card['generated_at_utc']}. PAPER ONLY.", ""]
+             f"Main lines: {card['snapshot_utc']} ({card['snapshot_et']} ET, label {card['snapshot_label']}). "
+             + (f"Ladders (alt spreads/totals/team totals): {lad}. " if lad and lad != card['snapshot_utc'] else "")
+             + f"Generated {card['generated_at_utc']}. PAPER ONLY.",
+             (f"Note: {card['snapshot_note']}" if card.get("snapshot_note") else ""), ""]
     lines.append("## Floor legs (per game: highest-probability eligible leg; + second leg, other market)")
     lines.append("| role | game | pick | market | price | p | EV |\n|---|---|---|---|---|---|---|")
     for x in card["floor_legs"]:
@@ -301,6 +316,8 @@ def main(argv=None) -> int:
     card = {"season": a.season, "week": a.week, "status": status,
             "snapshot_utc": ts.isoformat(), "snapshot_et": ts.tz_convert(ET).strftime("%a %Y-%m-%d %H:%M"),
             "snapshot_label": label, "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "ladder_snapshot_utc": LADDER_TS["ts"].isoformat() if LADDER_TS["ts"] is not None else None,
+            "snapshot_note": (main_.retag_note.dropna().iloc[0] if "retag_note" in main_ and main_.retag_note.notna().any() else ""),
             "params": {"phase3": sha(mrun.PARAMS), "totals": sha(anchored.PARAMS)},
             "rules": {"price": [PRICE_LO, PRICE_HI], "p_min": P_MIN, "ev_min": EV_MIN,
                       "spread_rungs": "getting points only", "ml_shading": "|spread| > 14 -> (p_model + p_novig)/2",
