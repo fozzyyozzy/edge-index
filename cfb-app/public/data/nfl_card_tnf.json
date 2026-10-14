@@ -1,1110 +1,355 @@
 {
  "season": 2026,
- "week": 5,
+ "week": 6,
  "slate": "tnf",
  "rules": "R1-R11 (see build_card_json.py)",
- "prices_pulled": "2026-10-07T13:10+00:00",
- "published_at": "2026-10-07T13:10+00:00",
+ "prices_pulled": "2026-10-14T14:28+00:00",
+ "published_at": "2026-10-14T14:28+00:00",
  "thursday_pulled": null,
  "markets_at_publish": [
-  "bucky irving|rec_yds",
-  "bucky irving|receptions",
-  "bucky irving|rush_att",
-  "bucky irving|rush_yds",
-  "cade otton|rec_yds",
-  "cade otton|receptions",
-  "ceedee lamb|rec_yds",
-  "ceedee lamb|receptions",
-  "chris godwin|rec_yds",
-  "chris godwin|receptions",
-  "dak prescott|pass_att",
-  "dak prescott|pass_cmps",
-  "dak prescott|pass_yds",
-  "dak prescott|rush_yds",
-  "emeka egbuka|rec_yds",
-  "emeka egbuka|receptions",
-  "george pickens|rec_yds",
-  "george pickens|receptions",
-  "jake ferguson|rec_yds",
-  "jake ferguson|receptions",
-  "jalon daniels|pass_att",
-  "jalon daniels|pass_cmps",
-  "jalon daniels|pass_yds",
-  "jalon daniels|rush_att",
-  "jalon daniels|rush_yds",
-  "javonte williams|rec_yds",
-  "javonte williams|receptions",
-  "javonte williams|rush_att",
-  "javonte williams|rush_yds",
-  "kenny gainwell|rec_yds",
-  "kenny gainwell|receptions",
-  "kenny gainwell|rush_yds",
-  "ryan flournoy|rec_yds",
-  "ryan flournoy|receptions",
-  "ted hurst|rec_yds",
-  "ted hurst|receptions",
-  "tez johnson|rec_yds",
-  "tez johnson|receptions",
-  "tyler goodson|rush_yds"
+  "aj barner|rec_yds",
+  "aj barner|receptions",
+  "bo nix|pass_att",
+  "bo nix|pass_cmps",
+  "bo nix|pass_yds",
+  "bo nix|rush_att",
+  "bo nix|rush_yds",
+  "cooper kupp|rec_yds",
+  "cooper kupp|receptions",
+  "courtland sutton|rec_yds",
+  "courtland sutton|receptions",
+  "emanuel wilson|rec_yds",
+  "emanuel wilson|receptions",
+  "emanuel wilson|rush_att",
+  "emanuel wilson|rush_yds",
+  "evan engram|rec_yds",
+  "evan engram|receptions",
+  "george holani|rec_yds",
+  "george holani|receptions",
+  "george holani|rush_yds",
+  "j.k. dobbins|rush_att",
+  "j.k. dobbins|rush_yds",
+  "jaxon smith-njigba|rec_yds",
+  "jaxon smith-njigba|receptions",
+  "jaylen waddle|rec_yds",
+  "jaylen waddle|receptions",
+  "marvin mims|rec_yds",
+  "marvin mims|receptions",
+  "rashid shaheed|rec_yds",
+  "rashid shaheed|receptions",
+  "rj harvey|rec_yds",
+  "rj harvey|receptions",
+  "rj harvey|rush_att",
+  "rj harvey|rush_yds",
+  "sam darnold|pass_att",
+  "sam darnold|pass_cmps",
+  "sam darnold|pass_yds",
+  "sam darnold|rush_att",
+  "sam darnold|rush_yds",
+  "tory horton|rec_yds",
+  "tory horton|receptions",
+  "troy franklin|rec_yds",
+  "troy franklin|receptions"
  ],
  "availability": {
-  "fetched_at": "2026-10-07T13:10+00:00",
+  "fetched_at": "2026-10-14T14:28+00:00",
   "sources": {
-   "snap_counts": "weeks 1-4",
-   "weekly_stats": "weeks 1-4",
-   "qb_change": "5 team(s): ATL, CHI, CLE, NYG, TB",
-   "injuries": "week 5: 19 report rows"
+   "snap_counts": "weeks 1-5",
+   "weekly_stats": "weeks 1-5",
+   "qb_change": "4 team(s): BAL, CHI, NYG, TB",
+   "injuries": "week 6: 15 report rows"
   }
  },
- "tickets": [
-  {
-   "name": "TNF-1",
-   "legs": [
-    {
-     "player": "Bucky Irving",
-     "team": "TB",
-     "opp": "DAL",
-     "market": "rush_yds",
-     "rung": 40.0,
-     "floor_rung": 40.0,
-     "odds_est": -240,
-     "odds_real": -240,
-     "odds_model_est": -201,
-     "l10": 0.9,
-     "l15": 0.8666666666666667,
-     "last3": [
-      89,
-      46,
-      61
-     ],
-     "opp_d": "SOFT",
-     "own_vol": "neutral",
-     "star": true,
-     "opp_d_rank": 31,
-     "own_vol_rank": 17,
-     "model_pct": 76.6,
-     "prob": 0.766,
-     "fair_odds": -327,
-     "edge_pts": 6.0,
-     "novig_pct": 66.8,
-     "grade": "A",
-     "clear_pct": 88.7,
-     "injury_watch": null,
-     "note": "L10 9/10, L15 13/15; last 3 [89, 46, 61]; opp D SOFT",
-     "published_odds": -240,
-     "published_at": "2026-10-07T13:10+00:00",
-     "current_odds": -287,
-     "current_at": "2026-10-08T23:43+00:00",
-     "thursday_odds": null,
-     "price_history": [
-      {
-       "at": "2026-10-07T13:10+00:00",
-       "odds": -240
-      },
-      {
-       "at": "2026-10-07T23:33+00:00",
-       "odds": -240
-      },
-      {
-       "at": "2026-10-08T19:15+00:00",
-       "odds": -253
-      },
-      {
-       "at": "2026-10-08T23:43+00:00",
-       "odds": -287
-      }
-     ],
-     "kickoff": "2026-10-09T00:15+00:00"
-    },
-    {
-     "player": "Chris Godwin",
-     "team": "TB",
-     "opp": "DAL",
-     "market": "receptions",
-     "rung": 3.0,
-     "floor_rung": 3.0,
-     "odds_est": -257,
-     "odds_real": -257,
-     "odds_model_est": -302,
-     "l10": 0.9,
-     "l15": 0.8666666666666667,
-     "last3": [
-      3,
-      3,
-      6
-     ],
-     "opp_d": "SOFT",
-     "own_vol": "neutral",
-     "star": true,
-     "opp_d_rank": 27,
-     "own_vol_rank": 16,
-     "model_pct": 77.0,
-     "prob": 0.77,
-     "fair_odds": -335,
-     "edge_pts": 5.0,
-     "novig_pct": 67.9,
-     "grade": "A-",
-     "clear_pct": 88.7,
-     "injury_watch": [
-      "QB change: history from a different QB (Jalon Daniels led the team's last game, 2026 wk 4; Baker Mayfield led 9 of its last 10)"
-     ],
-     "note": "L10 9/10, L15 13/15; last 3 [3, 3, 6]; opp D SOFT",
-     "published_odds": -257,
-     "published_at": "2026-10-07T13:10+00:00",
-     "current_odds": -383,
-     "current_at": "2026-10-08T23:43+00:00",
-     "thursday_odds": null,
-     "price_history": [
-      {
-       "at": "2026-10-07T13:10+00:00",
-       "odds": -257
-      },
-      {
-       "at": "2026-10-07T23:33+00:00",
-       "odds": -285
-      },
-      {
-       "at": "2026-10-08T19:15+00:00",
-       "odds": -338
-      },
-      {
-       "at": "2026-10-08T23:43+00:00",
-       "odds": -383
-      }
-     ],
-     "kickoff": "2026-10-09T00:15+00:00"
-    }
-   ],
-   "model_hit": 0.59,
-   "est_payout": 1.97,
-   "est_american": -103,
-   "reduced": true,
-   "correlated": true,
-   "label": "Reduced payout: floors held, not stretched \u2014 still recommended"
-  }
- ],
- "floors_singles": [
-  {
-   "player": "Bucky Irving",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rush_yds",
-   "rung": 40.0,
-   "floor_rung": 40.0,
-   "odds_est": -240,
-   "odds_real": -240,
-   "odds_model_est": -201,
-   "l10": 0.9,
-   "l15": 0.8666666666666667,
-   "last3": [
-    89,
-    46,
-    61
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": true,
-   "opp_d_rank": 31,
-   "own_vol_rank": 17,
-   "model_pct": 76.6,
-   "prob": 0.766,
-   "fair_odds": -327,
-   "edge_pts": 6.0,
-   "novig_pct": 66.8,
-   "grade": "A",
-   "clear_pct": 88.7,
-   "injury_watch": null,
-   "note": "L10 9/10, L15 13/15; last 3 [89, 46, 61]; opp D SOFT",
-   "published_odds": -240,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -287,
-   "current_at": "2026-10-08T23:43+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -240
-    },
-    {
-     "at": "2026-10-07T23:33+00:00",
-     "odds": -240
-    },
-    {
-     "at": "2026-10-08T19:15+00:00",
-     "odds": -253
-    },
-    {
-     "at": "2026-10-08T23:43+00:00",
-     "odds": -287
-    }
-   ],
-   "kickoff": "2026-10-09T00:15+00:00"
-  },
-  {
-   "player": "Chris Godwin",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "receptions",
-   "rung": 3.0,
-   "floor_rung": 3.0,
-   "odds_est": -257,
-   "odds_real": -257,
-   "odds_model_est": -302,
-   "l10": 0.9,
-   "l15": 0.8666666666666667,
-   "last3": [
-    3,
-    3,
-    6
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": true,
-   "opp_d_rank": 27,
-   "own_vol_rank": 16,
-   "model_pct": 77.0,
-   "prob": 0.77,
-   "fair_odds": -335,
-   "edge_pts": 5.0,
-   "novig_pct": 67.9,
-   "grade": "A-",
-   "clear_pct": 88.7,
-   "injury_watch": [
-    "QB change: history from a different QB (Jalon Daniels led the team's last game, 2026 wk 4; Baker Mayfield led 9 of its last 10)"
-   ],
-   "note": "L10 9/10, L15 13/15; last 3 [3, 3, 6]; opp D SOFT",
-   "published_odds": -257,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -383,
-   "current_at": "2026-10-08T23:43+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -257
-    },
-    {
-     "at": "2026-10-07T23:33+00:00",
-     "odds": -285
-    },
-    {
-     "at": "2026-10-08T19:15+00:00",
-     "odds": -338
-    },
-    {
-     "at": "2026-10-08T23:43+00:00",
-     "odds": -383
-    }
-   ],
-   "kickoff": "2026-10-09T00:15+00:00"
-  },
-  {
-   "player": "Bucky Irving",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rush_att",
-   "rung": 14.0,
-   "floor_rung": 14.0,
-   "odds_est": -106,
-   "odds_real": -106,
-   "odds_model_est": -106,
-   "l10": 0.8,
-   "l15": 0.8666666666666667,
-   "last3": [
-    17,
-    15,
-    16
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 31,
-   "own_vol_rank": 17,
-   "model_pct": 62.9,
-   "prob": 0.6293,
-   "fair_odds": -170,
-   "edge_pts": 11.5,
-   "novig_pct": 48.4,
-   "grade": "B",
-   "clear_pct": 82.7,
-   "injury_watch": null,
-   "note": "L10 8/10, L15 13/15; last 3 [17, 15, 16]; opp D SOFT",
-   "published_odds": -106,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -113,
-   "current_at": "2026-10-08T23:43+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -106
-    },
-    {
-     "at": "2026-10-07T23:33+00:00",
-     "odds": -109
-    },
-    {
-     "at": "2026-10-08T19:15+00:00",
-     "odds": 105
-    },
-    {
-     "at": "2026-10-08T23:43+00:00",
-     "odds": -113
-    }
-   ],
-   "kickoff": "2026-10-09T00:15+00:00"
-  },
-  {
-   "player": "Chris Godwin",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rec_yds",
-   "rung": 25.0,
-   "floor_rung": 25.0,
-   "odds_est": -150,
-   "odds_real": -150,
-   "odds_model_est": -134,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    46,
-    25,
-    31
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 27,
-   "own_vol_rank": 16,
-   "model_pct": 66.7,
-   "prob": 0.6672,
-   "fair_odds": -201,
-   "edge_pts": 6.7,
-   "novig_pct": 56.8,
-   "grade": "C",
-   "clear_pct": 80.0,
-   "injury_watch": [
-    "QB change: history from a different QB (Jalon Daniels led the team's last game, 2026 wk 4; Baker Mayfield led 9 of its last 10)"
-   ],
-   "note": "L10 8/10, L15 12/15; last 3 [46, 25, 31]; opp D SOFT",
-   "published_odds": -150,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -204,
-   "current_at": "2026-10-08T23:43+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -150
-    },
-    {
-     "at": "2026-10-07T23:33+00:00",
-     "odds": -162
-    },
-    {
-     "at": "2026-10-08T19:15+00:00",
-     "odds": -211
-    },
-    {
-     "at": "2026-10-08T23:43+00:00",
-     "odds": -204
-    }
-   ],
-   "kickoff": "2026-10-09T00:15+00:00"
-  }
- ],
- "candidates": [
-  {
-   "player": "Bucky Irving",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rush_yds",
-   "rung": 40.0,
-   "floor_rung": 40.0,
-   "odds_est": -240,
-   "odds_real": -240,
-   "odds_model_est": -201,
-   "l10": 0.9,
-   "l15": 0.8666666666666667,
-   "last3": [
-    89,
-    46,
-    61
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": true,
-   "opp_d_rank": 31,
-   "own_vol_rank": 17,
-   "model_pct": 76.6,
-   "prob": 0.766,
-   "fair_odds": -327,
-   "edge_pts": 6.0,
-   "novig_pct": 66.8,
-   "grade": "A",
-   "clear_pct": 88.7,
-   "injury_watch": null,
-   "note": "L10 9/10, L15 13/15; last 3 [89, 46, 61]; opp D SOFT",
-   "published_odds": -240,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -240,
-   "current_at": "2026-10-07T13:10+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -240
-    }
-   ]
-  },
-  {
-   "player": "Chris Godwin",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "receptions",
-   "rung": 3.0,
-   "floor_rung": 3.0,
-   "odds_est": -257,
-   "odds_real": -257,
-   "odds_model_est": -302,
-   "l10": 0.9,
-   "l15": 0.8666666666666667,
-   "last3": [
-    3,
-    3,
-    6
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": true,
-   "opp_d_rank": 27,
-   "own_vol_rank": 16,
-   "model_pct": 77.0,
-   "prob": 0.77,
-   "fair_odds": -335,
-   "edge_pts": 5.0,
-   "novig_pct": 67.9,
-   "grade": "A-",
-   "clear_pct": 88.7,
-   "injury_watch": [
-    "QB change: history from a different QB (Jalon Daniels led the team's last game, 2026 wk 4; Baker Mayfield led 9 of its last 10)"
-   ],
-   "note": "L10 9/10, L15 13/15; last 3 [3, 3, 6]; opp D SOFT",
-   "published_odds": -257,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -257,
-   "current_at": "2026-10-07T13:10+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -257
-    }
-   ]
-  },
-  {
-   "player": "Bucky Irving",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rush_att",
-   "rung": 14.0,
-   "floor_rung": 14.0,
-   "odds_est": -106,
-   "odds_real": -106,
-   "odds_model_est": -106,
-   "l10": 0.8,
-   "l15": 0.8666666666666667,
-   "last3": [
-    17,
-    15,
-    16
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 31,
-   "own_vol_rank": 17,
-   "model_pct": 62.9,
-   "prob": 0.6293,
-   "fair_odds": -170,
-   "edge_pts": 11.5,
-   "novig_pct": 48.4,
-   "grade": "B",
-   "clear_pct": 82.7,
-   "injury_watch": null,
-   "note": "L10 8/10, L15 13/15; last 3 [17, 15, 16]; opp D SOFT",
-   "published_odds": -106,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -106,
-   "current_at": "2026-10-07T13:10+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -106
-    }
-   ]
-  },
-  {
-   "player": "Chris Godwin",
-   "team": "TB",
-   "opp": "DAL",
-   "market": "rec_yds",
-   "rung": 25.0,
-   "floor_rung": 25.0,
-   "odds_est": -150,
-   "odds_real": -150,
-   "odds_model_est": -134,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    46,
-    25,
-    31
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "neutral",
-   "star": false,
-   "opp_d_rank": 27,
-   "own_vol_rank": 16,
-   "model_pct": 66.7,
-   "prob": 0.6672,
-   "fair_odds": -201,
-   "edge_pts": 6.7,
-   "novig_pct": 56.8,
-   "grade": "C",
-   "clear_pct": 80.0,
-   "injury_watch": [
-    "QB change: history from a different QB (Jalon Daniels led the team's last game, 2026 wk 4; Baker Mayfield led 9 of its last 10)"
-   ],
-   "note": "L10 8/10, L15 12/15; last 3 [46, 25, 31]; opp D SOFT",
-   "published_odds": -150,
-   "published_at": "2026-10-07T13:10+00:00",
-   "current_odds": -150,
-   "current_at": "2026-10-07T13:10+00:00",
-   "thursday_odds": null,
-   "price_history": [
-    {
-     "at": "2026-10-07T13:10+00:00",
-     "odds": -150
-    }
-   ]
-  }
- ],
+ "tickets": [],
+ "floors_singles": [],
+ "candidates": [],
  "held": [
   {
-   "Player": "Kenny Gainwell",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -177,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
-   "Last3": [
-    3,
-    2,
-    2
-   ],
-   "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Kenny Gainwell",
+   "Player": "Jaxon Smith-Njigba",
    "Market": "rec_yds",
-   "Rung": "11+",
-   "EstOdds": -112,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
-   "Last3": [
-    5,
-    14,
-    22
-   ],
-   "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Kenny Gainwell",
-   "Market": "rush_yds",
-   "Rung": "10+",
-   "EstOdds": -163,
+   "Rung": "80+",
+   "EstOdds": -177,
    "L10": "8/10",
    "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    128,
+    76,
+    102
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -192,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    13,
+    15
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -251,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
    "Last3": [
     10,
-    -4,
+    5,
     5
    ],
    "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
+    "own volume low",
+    "edge -2.1 pts (< +2)"
    ]
   },
   {
-   "Player": "Dak Prescott",
-   "Market": "pass_att",
-   "Rung": "30+",
-   "EstOdds": -393,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    31,
-    40,
-    45
-   ],
-   "Reasons": [
-    "blowout risk (fav by 8.5)",
-    "edge -0.1 pts (< +2)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Dak Prescott",
-   "Market": "pass_cmps",
-   "Rung": "20+",
-   "EstOdds": -441,
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -279,
    "L10": "8/10",
    "L15": "12/15",
    "OppD": "neutral",
-   "OwnVol": "SOFT",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    26,
-    25,
-    32
-   ],
-   "Reasons": [
-    "blowout risk (fav by 8.5)",
-    "edge -5.7 pts (< +2)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Cade Otton",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -337,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    38,
-    56,
-    37
-   ],
-   "Reasons": [
-    "edge +1.5 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Bucky Irving",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -235,
-   "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    7,
     4,
+    1,
     2
    ],
    "Reasons": [
-    "edge +0.8 pts (< +2)"
+    "own volume low",
+    "edge -1.1 pts (< +2)",
+    "grade below C"
    ]
   },
   {
-   "Player": "Cade Otton",
+   "Player": "AJ Barner",
    "Market": "receptions",
-   "Rung": "3+",
-   "EstOdds": -239,
+   "Rung": "2+",
+   "EstOdds": -364,
    "L10": "8/10",
    "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
     5,
-    3,
-    4
+    1,
+    3
    ],
    "Reasons": [
-    "edge +0.6 pts (< +2)"
+    "own volume low",
+    "edge -3.9 pts (< +2)"
    ]
   },
   {
-   "Player": "CeeDee Lamb",
-   "Market": "receptions",
-   "Rung": "5+",
-   "EstOdds": -373,
-   "L10": "9/10",
-   "L15": "13/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    8,
-    7,
-    17
-   ],
-   "Reasons": [
-    "edge +0.6 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Emeka Egbuka",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -373,
+   "Player": "Sam Darnold",
+   "Market": "pass_att",
+   "Rung": "26+",
+   "EstOdds": -534,
    "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    16,
-    62,
-    13
-   ],
-   "Reasons": [
-    "edge -4.0 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Ryan Flournoy",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -408,
-   "L10": "9/10",
    "L15": "11/15",
    "OppD": "neutral",
-   "OwnVol": "SOFT",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    23,
+    45,
     22,
-    37
+    29
    ],
    "Reasons": [
-    "edge -7.7 pts (< +2)"
+    "own volume low",
+    "price worse than -450",
+    "edge -10.4 pts (< +2)",
+    "grade below C"
    ]
   },
   {
-   "Player": "Emeka Egbuka",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -515,
+   "Player": "J.K. Dobbins",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -202,
    "L10": "8/10",
    "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    3,
-    5,
-    2
+    49,
+    40,
+    68
    ],
    "Reasons": [
-    "price worse than -450",
-    "edge -6.9 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Dak Prescott",
-   "Market": "pass_yds",
-   "Rung": "240+",
-   "EstOdds": -221,
-   "L10": "8/10",
-   "L15": "12/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    279,
-    276,
-    335
-   ],
-   "Reasons": [
-    "edge +1.7 pts (< +2)"
+    "own volume low",
+    "grade below C"
    ]
   }
  ],
  "held_all": [
   {
-   "Player": "Kenny Gainwell",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -177,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
-   "Last3": [
-    3,
-    2,
-    2
-   ],
-   "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Kenny Gainwell",
+   "Player": "Jaxon Smith-Njigba",
    "Market": "rec_yds",
-   "Rung": "11+",
-   "EstOdds": -112,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
-   "Last3": [
-    5,
-    14,
-    22
-   ],
-   "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Kenny Gainwell",
-   "Market": "rush_yds",
-   "Rung": "10+",
-   "EstOdds": -163,
+   "Rung": "80+",
+   "EstOdds": -177,
    "L10": "8/10",
    "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": true,
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    128,
+    76,
+    102
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -192,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    13,
+    15
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -251,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
    "Last3": [
     10,
-    -4,
+    5,
     5
    ],
    "Reasons": [
-    "team change (PIT->TB)",
-    "grade below C"
+    "own volume low",
+    "edge -2.1 pts (< +2)"
    ]
   },
   {
-   "Player": "Dak Prescott",
-   "Market": "pass_att",
-   "Rung": "30+",
-   "EstOdds": -393,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    31,
-    40,
-    45
-   ],
-   "Reasons": [
-    "blowout risk (fav by 8.5)",
-    "edge -0.1 pts (< +2)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Dak Prescott",
-   "Market": "pass_cmps",
-   "Rung": "20+",
-   "EstOdds": -441,
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -279,
    "L10": "8/10",
    "L15": "12/15",
    "OppD": "neutral",
-   "OwnVol": "SOFT",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    26,
-    25,
-    32
-   ],
-   "Reasons": [
-    "blowout risk (fav by 8.5)",
-    "edge -5.7 pts (< +2)",
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Cade Otton",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -337,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    38,
-    56,
-    37
-   ],
-   "Reasons": [
-    "edge +1.5 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Bucky Irving",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -235,
-   "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    7,
     4,
+    1,
     2
    ],
    "Reasons": [
-    "edge +0.8 pts (< +2)"
+    "own volume low",
+    "edge -1.1 pts (< +2)",
+    "grade below C"
    ]
   },
   {
-   "Player": "Cade Otton",
+   "Player": "AJ Barner",
    "Market": "receptions",
-   "Rung": "3+",
-   "EstOdds": -239,
+   "Rung": "2+",
+   "EstOdds": -364,
    "L10": "8/10",
    "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
     5,
-    3,
-    4
+    1,
+    3
    ],
    "Reasons": [
-    "edge +0.6 pts (< +2)"
+    "own volume low",
+    "edge -3.9 pts (< +2)"
    ]
   },
   {
-   "Player": "CeeDee Lamb",
-   "Market": "receptions",
-   "Rung": "5+",
-   "EstOdds": -373,
-   "L10": "9/10",
-   "L15": "13/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    8,
-    7,
-    17
-   ],
-   "Reasons": [
-    "edge +0.6 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Emeka Egbuka",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -373,
+   "Player": "Sam Darnold",
+   "Market": "pass_att",
+   "Rung": "26+",
+   "EstOdds": -534,
    "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    16,
-    62,
-    13
-   ],
-   "Reasons": [
-    "edge -4.0 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Ryan Flournoy",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -408,
-   "L10": "9/10",
    "L15": "11/15",
    "OppD": "neutral",
-   "OwnVol": "SOFT",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    23,
+    45,
     22,
-    37
+    29
    ],
    "Reasons": [
-    "edge -7.7 pts (< +2)"
+    "own volume low",
+    "price worse than -450",
+    "edge -10.4 pts (< +2)",
+    "grade below C"
    ]
   },
   {
-   "Player": "Emeka Egbuka",
-   "Market": "receptions",
-   "Rung": "2+",
-   "EstOdds": -515,
+   "Player": "J.K. Dobbins",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -202,
    "L10": "8/10",
    "L15": "13/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
    "TeamChange": false,
    "Last3": [
-    3,
-    5,
-    2
+    49,
+    40,
+    68
    ],
    "Reasons": [
-    "price worse than -450",
-    "edge -6.9 pts (< +2)"
-   ]
-  },
-  {
-   "Player": "Dak Prescott",
-   "Market": "pass_yds",
-   "Rung": "240+",
-   "EstOdds": -221,
-   "L10": "8/10",
-   "L15": "12/15",
-   "OppD": "neutral",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    279,
-    276,
-    335
-   ],
-   "Reasons": [
-    "edge +1.7 pts (< +2)"
+    "own volume low",
+    "grade below C"
    ]
   }
  ],
- "notes": "",
- "current_at": "2026-10-08T23:43+00:00"
+ "notes": ""
 }

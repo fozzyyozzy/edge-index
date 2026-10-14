@@ -1,0 +1,355 @@
+{
+ "season": 2026,
+ "week": 6,
+ "slate": "tnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2026-10-14T14:28+00:00",
+ "published_at": "2026-10-14T14:28+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "aj barner|rec_yds",
+  "aj barner|receptions",
+  "bo nix|pass_att",
+  "bo nix|pass_cmps",
+  "bo nix|pass_yds",
+  "bo nix|rush_att",
+  "bo nix|rush_yds",
+  "cooper kupp|rec_yds",
+  "cooper kupp|receptions",
+  "courtland sutton|rec_yds",
+  "courtland sutton|receptions",
+  "emanuel wilson|rec_yds",
+  "emanuel wilson|receptions",
+  "emanuel wilson|rush_att",
+  "emanuel wilson|rush_yds",
+  "evan engram|rec_yds",
+  "evan engram|receptions",
+  "george holani|rec_yds",
+  "george holani|receptions",
+  "george holani|rush_yds",
+  "j.k. dobbins|rush_att",
+  "j.k. dobbins|rush_yds",
+  "jaxon smith-njigba|rec_yds",
+  "jaxon smith-njigba|receptions",
+  "jaylen waddle|rec_yds",
+  "jaylen waddle|receptions",
+  "marvin mims|rec_yds",
+  "marvin mims|receptions",
+  "rashid shaheed|rec_yds",
+  "rashid shaheed|receptions",
+  "rj harvey|rec_yds",
+  "rj harvey|receptions",
+  "rj harvey|rush_att",
+  "rj harvey|rush_yds",
+  "sam darnold|pass_att",
+  "sam darnold|pass_cmps",
+  "sam darnold|pass_yds",
+  "sam darnold|rush_att",
+  "sam darnold|rush_yds",
+  "tory horton|rec_yds",
+  "tory horton|receptions",
+  "troy franklin|rec_yds",
+  "troy franklin|receptions"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-14T14:28+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-5",
+   "weekly_stats": "weeks 1-5",
+   "qb_change": "4 team(s): BAL, CHI, NYG, TB",
+   "injuries": "week 6: 15 report rows"
+  }
+ },
+ "tickets": [],
+ "floors_singles": [],
+ "candidates": [],
+ "held": [
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "80+",
+   "EstOdds": -177,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    128,
+    76,
+    102
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -192,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    13,
+    15
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -251,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    10,
+    5,
+    5
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -2.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -279,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    1,
+    2
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -1.1 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "AJ Barner",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -364,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    1,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -3.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam Darnold",
+   "Market": "pass_att",
+   "Rung": "26+",
+   "EstOdds": -534,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    45,
+    22,
+    29
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -10.4 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "J.K. Dobbins",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -202,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    49,
+    40,
+    68
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "80+",
+   "EstOdds": -177,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    128,
+    76,
+    102
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -192,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    13,
+    15
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -251,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    10,
+    5,
+    5
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -2.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -279,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    1,
+    2
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -1.1 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "AJ Barner",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -364,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    1,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -3.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam Darnold",
+   "Market": "pass_att",
+   "Rung": "26+",
+   "EstOdds": -534,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    45,
+    22,
+    29
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -10.4 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "J.K. Dobbins",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -202,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    49,
+    40,
+    68
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  }
+ ],
+ "notes": ""
+}
