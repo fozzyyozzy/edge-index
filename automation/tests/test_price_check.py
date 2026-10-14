@@ -32,3 +32,22 @@ def test_calibration_buckets_one_rung_per_row_for_both_sources():
     dk = [r for r in rows if r["source"] == "DK implied"]
     assert dk == [dict(source="DK implied", bucket="75-80", n=4, predicted=75.0, hit=75.0, gap=0.0)]
     assert {s["source"]: s["mean_abs_gap"] for s in summary} == {"ours": 7.0, "DK implied": 0.0}
+
+
+def test_volume_share_split_is_walk_forward_and_by_team():
+    from price_check import share_bucket
+    w = pd.DataFrame([
+        # week 1-2: JSN leads SEA targets; week 3 (the week being checked) must not count
+        dict(season=2026, week=1, team="SEA", key="jaxon smith-njigba", targets=11, carries=0),
+        dict(season=2026, week=1, team="SEA", key="cooper kupp", targets=6, carries=0),
+        dict(season=2026, week=2, team="SEA", key="jaxon smith-njigba", targets=9, carries=0),
+        dict(season=2026, week=2, team="SEA", key="cooper kupp", targets=7, carries=0),
+        dict(season=2026, week=3, team="SEA", key="cooper kupp", targets=30, carries=0),
+        dict(season=2025, week=17, team="SEA", key="cooper kupp", targets=8, carries=1),
+        dict(season=2025, week=17, team="SEA", key="kenneth walker", targets=2, carries=18),
+    ])
+    assert share_bucket(w, 2026, "Jaxon Smith-Njigba", "rec_yds", 3) == "top-1"
+    assert share_bucket(w, 2026, "Cooper Kupp", "receptions", 3) == "rest"          # week 3's 30 targets not seen
+    assert share_bucket(w, 2026, "Cooper Kupp", "receptions", 1) == "top-1"         # week 1: last season's share
+    assert share_bucket(w, 2026, "Kenneth Walker", "rush_yds", 1) == "top-1"
+    assert share_bucket(w, 2026, "Sam Darnold", "pass_yds", 3) == "passer"

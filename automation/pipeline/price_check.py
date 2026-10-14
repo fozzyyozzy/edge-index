@@ -8,6 +8,9 @@ shows a pattern over at least 4 weeks).
    reason"), all held legs once, and carded legs — count, record, hit %, average implied % at the listed single price,
    our average probability (common.leg_prob, recomputed walk-forward: only games before that week, blended with DK's
    no-vig price at the listed odds), and flat 1u ROI at the listed single prices. Voids (no stat row) are excluded.
+   "low own volume" is also split by the player's own share (JSN-type cases): top-1 target/carry share on his team vs
+   the rest (team games before that week; last season in week 1), passing legs apart. If high-share players held for
+   team volume keep beating their prices, that's evidence for a player-level volume rule.
 2. The Legs board, C-or-better rungs that settled: split at -500 (worse than -500 vs -500 or better), and the -500-or-
    better range split by edge (>= +2 vs < +2). Hit %, implied %, our %, flat ROI — counting every rung, and counting one
    rung per player/market (the row's best rung within that split: highest grade, then the higher rung — what the Legs
@@ -40,6 +43,23 @@ def summarize(sub, label):
                 roi=round(100 * pnl / n, 1), units=round(pnl, 2))
 
 
+def share_bucket(w, season, name, market, week):
+    """The player's share of his team's targets (receiving markets) or carries (rushing), from the team's games before
+    `week` this season (last season in week 1): "top-1" if no teammate had more, else "rest". Passing legs: "passer".
+    Walk-forward. JSN-type case: a team's volume is low, but this player gets the biggest share of it."""
+    col = {"rec_yds": "targets", "receptions": "targets", "rush_yds": "carries", "rush_att": "carries"}.get(market)
+    if col is None: return "passer"
+    key = norm_name(name)
+    for pool in (w[(w.season == season) & (w.week < week)], w[w.season == season - 1]):
+        mine = pool[pool.key == key]
+        if mine.empty: continue
+        tm = mine.sort_values(["season", "week"]).team.iloc[-1]
+        team = pool[pool.team == tm].groupby("key")[col].sum()
+        if team.empty or team.max() <= 0: continue
+        return "top-1" if team.get(key, 0) >= team.max() else "rest"
+    return "unknown"
+
+
 def holds_and_carded(season, through):
     w = pd.concat([fetch_season(y) for y in (season - 2, season - 1, season)])
     cur = w[w.season == season]
@@ -62,6 +82,7 @@ def holds_and_carded(season, through):
             cats = sorted({cat for pre, cat in HOLD_CATS for why in h.get("Reasons") or [] if why.startswith(pre)})
             rows.append(dict(kind="held", week=wk, slate=c["slate"], player=h["Player"], market=h["Market"], rung=rung,
                              odds=odds, cats=cats, sole=cats[0] if len(cats) == 1 else None,
+                             share=share_bucket(w, season, h["Player"], h["Market"], wk) if "low own volume" in cats else None,
                              actual=actual(h["Player"], h["Market"], wk), prob=our_prob(h["Player"], h["Market"], rung, odds, wk, holds)))
         seen = set()
         for t in c["tickets"]:
@@ -83,6 +104,11 @@ def holds_and_carded(season, through):
         out.append(summarize(s, f"held: {cat}"))
         o = df[(df.kind == "held") & (df.sole == cat)]
         if len(o): out.append(summarize(o, f"held: {cat} (sole reason)"))
+        if cat == "low own volume":            # JSN-type split: does a high-share player beat his price anyway?
+            for b, label in (("top-1", "top-1 target/carry share on his team"), ("rest", "not top-1 share"),
+                             ("passer", "passing legs (no share split)")):
+                x = s[s.share == b]
+                if len(x): out.append(summarize(x, f"held: low own volume, {label}"))
     out.append(summarize(df[df.kind == "held"].drop_duplicates(["week", "slate", "player", "market", "rung"]), "held: all, each leg once"))
     out.append(summarize(df[df.kind == "carded"], "carded legs"))
     return out, sources
