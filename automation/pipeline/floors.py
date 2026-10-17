@@ -25,6 +25,19 @@ def schedule(season, week):
     g = schedule_all(season)
     return g[g.week == week]
 
+def implied_totals(sch):
+    """{team: (game total line, team implied total)} from the schedule's betting lines: total_line (NOT `total`, which
+    is the final combined score) and spread_line (positive = home favored). home = (total + spread) / 2,
+    away = (total - spread) / 2. Pregame lines when the card is built; nflverse keeps them updated to the close.
+    Research fields only: no rule reads them."""
+    out = {}
+    for g in sch.itertuples():
+        t, s = getattr(g, "total_line", None), getattr(g, "spread_line", None)
+        if t is None or s is None or pd.isna(t) or pd.isna(s): continue
+        out[g.home_team] = (float(t), round((t + s) / 2, 2))
+        out[g.away_team] = (float(t), round((t - s) / 2, 2))
+    return out
+
 def kickoffs(season, week):
     """{team: kickoff as UTC ISO} for the week, from the nflverse schedule (gameday + gametime are Eastern)."""
     from zoneinfo import ZoneInfo
@@ -66,6 +79,7 @@ def main():
 
     sch = schedule(a.season, a.week); sch = sch[sch.weekday.isin(SLATE_DAYS[a.slate])]
     OPP, SPREAD = {}, {}
+    TOT = implied_totals(sch)                       # research: game total line, team implied total
     for g in sch.itertuples():
         OPP[g.away_team] = g.home_team; OPP[g.home_team] = g.away_team
         SPREAD[g.home_team] = -g.spread_line; SPREAD[g.away_team] = g.spread_line   # negative = favored
@@ -97,7 +111,7 @@ def main():
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
         rows.append(dict(Player=r.Player, Team=tm, Opp=opp, Market=r.Market, Main=r.Line, MainOdds=r.Odds, Rung=f"{t:g}+",
                          EstOdds=o, L10=f"{int(round(l10*10))}/10", L15=f"{int(round(l15*15))}/15",
-                         OppD=tag_rank(D[cat + "_yds"], opp, defense=True)[0], OwnVol=tag_rank(O[cat + "_att"], tm)[0], Spread=SPREAD.get(tm),
+                         OppD=tag_rank(D[cat + "_yds"], opp, defense=True)[0], OwnVol=tag_rank(O[cat + "_att"], tm)[0], Spread=SPREAD.get(tm), GameTotal=TOT.get(tm, (None, None))[0], TeamTotal=TOT.get(tm, (None, None))[1],
                          OppDRank=tag_rank(D[cat + "_yds"], opp, defense=True)[1], OwnVolRank=tag_rank(O[cat + "_att"], tm)[1],
                          TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
                          Last3=[int(x) for x in v[-3:]],    # plain ints: np.int64 wrote "np.int64(126)" into the CSV
@@ -131,6 +145,8 @@ def write_site_json(df, a, path):
                          novig_pct=float(r.NovigPct), novig_source=r.NovigSource,
                          avg10=float(r.Avg10), streak=int(r.Streak), games=int(r.Games), last3=list(r.Last3),
                          opp_d=r.OppD, own_vol=r.OwnVol, spread=None if pd.isna(r.Spread) else float(r.Spread),
+                         game_total=None if pd.isna(getattr(r, "GameTotal", None)) else float(r.GameTotal),
+                         team_total=None if pd.isna(getattr(r, "TeamTotal", None)) else float(r.TeamTotal),
                          opp_d_rank=None if pd.isna(r.OppDRank) else int(r.OppDRank),
                          own_vol_rank=None if pd.isna(r.OwnVolRank) else int(r.OwnVolRank),
                          team_change=bool(r.TeamChange), prev_team=r.PrevTeam if isinstance(r.PrevTeam, str) and r.PrevTeam else None))

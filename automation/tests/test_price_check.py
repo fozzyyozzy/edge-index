@@ -51,3 +51,31 @@ def test_volume_share_split_is_walk_forward_and_by_team():
     assert share_bucket(w, 2026, "Cooper Kupp", "receptions", 1) == "top-1"         # week 1: last season's share
     assert share_bucket(w, 2026, "Kenneth Walker", "rush_yds", 1) == "top-1"
     assert share_bucket(w, 2026, "Sam Darnold", "pass_yds", 3) == "passer"
+
+
+def test_implied_totals_use_the_betting_lines_not_the_final_score():
+    from floors import implied_totals
+    sch = pd.DataFrame([dict(away_team="SEA", home_team="DEN", total_line=40.5, spread_line=-2.5, total=31.0),
+                        dict(away_team="CHI", home_team="ATL", total_line=52.5, spread_line=-1.5, total=None)])
+    tt = implied_totals(sch)
+    assert tt["SEA"] == (40.5, 21.5) and tt["DEN"] == (40.5, 19.0)          # SEA favored by 2.5; `total` (31) ignored
+    assert tt["CHI"] == (52.5, 27.0) and tt["ATL"] == (52.5, 25.5)
+
+
+def test_team_total_buckets_and_held_team_lookup():
+    from price_check import by_team_total, team_before
+    w = pd.DataFrame([dict(season=2026, week=4, team="SEA", key="jaxon smith-njigba"),
+                      dict(season=2026, week=6, team="DEN", key="jaxon smith-njigba")])   # week 6 not yet known in wk 6
+    assert team_before(w, 2026, "Jaxon Smith-Njigba", 6) == "SEA"
+    held = pd.DataFrame([
+        dict(kind="held", week=6, slate="tnf", player="JSN", market="rec_yds", rung=80.0, odds=-177, team="SEA",
+             cats=["low own volume"], result="hit", prob=0.7),
+        dict(kind="held", week=6, slate="tnf", player="X", market="rec_yds", rung=20.0, odds=-200, team="DEN",
+             cats=["edge below +2"], result="miss", prob=0.7),
+        dict(kind="carded", week=6, slate="tnf", player="Y", market="receptions", rung=3.0, odds=-250, team="KC",
+             cats=["carded"], result="hit", prob=0.8)])
+    tt = {(6, "SEA"): 21.5, (6, "DEN"): 19.0, (6, "KC"): 27.5}
+    rows = {(r["group"], r["bucket"]): r for r in by_team_total(held, pd.DataFrame(), tt)}
+    assert rows[("held for low own volume", "team total 20 to 23.5")]["record"] == "1-0"
+    assert rows[("held, each leg once", "team total under 20")]["record"] == "0-1"
+    assert rows[("carded legs", "team total 24+")]["n"] == 1

@@ -17,6 +17,10 @@ shows a pattern over at least 4 weeks).
    tab headlines). Prices are the board's: the last pre-kickoff regrade (odds refresh), not the card's publish price.
 3. Calibration: the board's C-or-better rungs, one per player/market, bucketed by our probability and by DK's implied
    probability (60-65 ... 90+), with hit % per bucket, Brier score and mean |gap| for each.
+4. Implied team totals (research): every leg bucketed by its team's implied total from the schedule's betting lines
+   (floors.implied_totals: total_line and spread_line, never the final score): under 20, 20 to 23.5, 24+. Do legs on
+   high-total teams beat their prices more often (board one per row, carded, held)? And does the "low own volume" hold
+   misfire on high-total teams (held legs there beating their prices)?
 """
 import argparse, glob, json, os, sys
 import pandas as pd
@@ -60,6 +64,15 @@ def share_bucket(w, season, name, market, week):
     return "unknown"
 
 
+def team_before(w, season, name, week):
+    """the player's team in his latest game before `week` this season (last season's team in week 1); None if unknown"""
+    key = norm_name(name)
+    for pool in (w[(w.season == season) & (w.week < week)], w[w.season == season - 1]):
+        mine = pool[pool.key == key]
+        if not mine.empty: return mine.sort_values(["season", "week"]).team.iloc[-1]
+    return None
+
+
 def holds_and_carded(season, through):
     w = pd.concat([fetch_season(y) for y in (season - 2, season - 1, season)])
     cur = w[w.season == season]
@@ -83,6 +96,7 @@ def holds_and_carded(season, through):
             rows.append(dict(kind="held", week=wk, slate=c["slate"], player=h["Player"], market=h["Market"], rung=rung,
                              odds=odds, cats=cats, sole=cats[0] if len(cats) == 1 else None,
                              share=share_bucket(w, season, h["Player"], h["Market"], wk) if "low own volume" in cats else None,
+                             team=team_before(w, season, h["Player"], wk),
                              actual=actual(h["Player"], h["Market"], wk), prob=our_prob(h["Player"], h["Market"], rung, odds, wk, holds)))
         seen = set()
         for t in c["tickets"]:
@@ -91,11 +105,11 @@ def holds_and_carded(season, through):
                 if k in seen: continue
                 seen.add(k)
                 odds = int(l.get("published_odds") or l.get("odds_real") or l["odds_est"])
-                rows.append(dict(kind="carded", week=wk, slate=c["slate"], player=l["player"], market=l["market"],
+                rows.append(dict(kind="carded", week=wk, slate=c["slate"], player=l["player"], market=l["market"], team=l.get("team"),
                                  rung=float(l["rung"]), odds=odds, cats=["carded"], sole="carded",
                                  actual=actual(l["player"], l["market"], wk), prob=our_prob(l["player"], l["market"], float(l["rung"]), odds, wk, holds)))
     df = pd.DataFrame(rows)
-    if df.empty: return [], sources
+    if df.empty: return [], sources, df
     df["result"] = [("void" if pd.isna(a) else "hit" if a >= r else "miss") for a, r in zip(df.actual, df.rung)]
     out, ex = [], df.explode("cats")
     for _, cat in HOLD_CATS:
@@ -111,7 +125,7 @@ def holds_and_carded(season, through):
                 if len(x): out.append(summarize(x, f"held: low own volume, {label}"))
     out.append(summarize(df[df.kind == "held"].drop_duplicates(["week", "slate", "player", "market", "rung"]), "held: all, each leg once"))
     out.append(summarize(df[df.kind == "carded"], "carded legs"))
-    return out, sources
+    return out, sources, df
 
 
 def board_rows(season, through):
@@ -122,7 +136,8 @@ def board_rows(season, through):
         for p in d["players"]:
             for r in p["rungs"]:
                 if r.get("grade") in GRADE_OK and r.get("result") in ("hit", "miss", "void"):
-                    rows.append(dict(week=wk, slate=d["meta"]["slate"], player=p["player"], market=p["market"], rung=float(r["rung"]),
+                    rows.append(dict(week=wk, slate=d["meta"]["slate"], player=p["player"], market=p["market"], team=p.get("team"),
+                                     rung=float(r["rung"]),
                                      odds=int(r["est_odds"]), grade=r["grade"], edge=r.get("edge_pts"), prob=r.get("prob"), result=r["result"]))
     return pd.DataFrame(rows)
 
@@ -170,6 +185,42 @@ def calibration(b):
     return rows, summary
 
 
+TT_BUCKETS = [(0, 20, "team total under 20"), (20, 24, "team total 20 to 23.5"), (24, 99, "team total 24+")]
+
+
+def team_totals(season, weeks):
+    """{(week, team): implied team total} from the schedule's betting lines (research fields)"""
+    from common import fetch_games
+    from floors import implied_totals
+    g = fetch_games(); g = g[g.season == season]
+    return {(int(wk), tm): v[1] for wk in weeks for tm, v in implied_totals(g[g.week == wk]).items()}
+
+
+def by_team_total(held_df, b, tt):
+    """rows for section 4: board (one per row), carded, held (each leg once) and 'low own volume' holds, per bucket"""
+    def tag(df):
+        df = df.copy()
+        df["tt"] = [tt.get((int(wk), tm)) for wk, tm in zip(df.week, df.team)]
+        return df[df.tt.notna()]
+    out = []
+    groups = []
+    if len(b):
+        bb = b[b.result.isin(["hit", "miss", "void"])].copy()
+        bb["gi"] = bb.grade.map({g: i for i, g in enumerate(reversed(GRADE_OK))})
+        bb = bb.sort_values(["gi", "rung"], ascending=False).drop_duplicates(["week", "slate", "player", "market"])
+        groups.append(("board, one rung per row", tag(bb)))
+    if len(held_df):
+        groups.append(("carded legs", tag(held_df[held_df.kind == "carded"])))
+        h = held_df[held_df.kind == "held"]
+        groups.append(("held, each leg once", tag(h.drop_duplicates(["week", "slate", "player", "market", "rung"]))))
+        groups.append(("held for low own volume", tag(h[h.cats.map(lambda c: "low own volume" in c)])))
+    for label, df in groups:
+        for lo, hi, name in TT_BUCKETS:
+            x = df[(df.tt >= lo) & (df.tt < hi)]
+            if len(x): out.append(dict(summarize(x, label), bucket=name, avg_team_total=round(float(x.tt.mean()), 1)))
+    return out
+
+
 def table(rows, cols):
     head = "| " + " | ".join(cols) + " |\n|" + "|".join("---" for _ in cols) + "|\n"
     return head + "".join("| " + " | ".join("" if r.get(c) is None else str(r.get(c)) for c in cols) + " |\n" for r in rows)
@@ -180,7 +231,7 @@ def main():
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--through", type=int, required=True)
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    held, sources = holds_and_carded(a.season, a.through)
+    held, sources, held_df = holds_and_carded(a.season, a.through)
     b = board_rows(a.season, a.through)
     weeks = sorted(set(b.week)) if len(b) else []
     md = [f"# Price check, {a.season} through week {a.through}", "",
@@ -199,6 +250,13 @@ def main():
            "the market more (report only).", "",
            table(cal_sum, ["source", "rows", "brier", "mean_abs_gap"]),
            table(cal, ["source", "bucket", "n", "predicted", "hit", "gap"])]
+    wks = sorted(set(b.week) | (set(held_df.week) if len(held_df) else set()))
+    tt = team_totals(a.season, wks) if wks else {}
+    md += ["## Implied team totals (research): do high-total teams beat their prices?", "",
+           "Team implied total from the schedule's closing total and spread (never the final score). Single prices; "
+           "voids excluded. A 'low own volume' hold that keeps beating its price on 24+ teams is the hold misfiring.", "",
+           table(by_team_total(held_df, b, tt), ["group", "bucket", "avg_team_total", "n", "record", "hit", "implied",
+                                                  "beat_price", "roi", "units"])]
     text = "\n".join(md)
     if a.out: open(a.out, "w", encoding="utf-8").write(text)
     sys.stdout.buffer.write(text.encode("utf-8"))

@@ -22,7 +22,7 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder, implied_prob
 from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank, load_holds, price_fields
-from floors import INV, SLATE_DAYS, schedule, team_split
+from floors import INV, SLATE_DAYS, schedule, team_split, implied_totals
 import availability
 
 LETTERS = ["F", "D", "C", "B", "A-", "A", "A+"]
@@ -139,6 +139,7 @@ def main():
     comp = target_competition(cur, prev)                          # {team: [(name, key, max recent targets)]}
     sch = schedule(a.season, a.week); sch = sch[sch.weekday.isin(SLATE_DAYS[a.slate])]
     OPP, SPREAD, GAME = {}, {}, {}
+    TOT = implied_totals(sch)                                     # research fields: game total line, team implied total
     for g in sch.itertuples():
         OPP[g.away_team] = g.home_team; OPP[g.home_team] = g.away_team
         SPREAD[g.home_team] = -g.spread_line; SPREAD[g.away_team] = g.spread_line
@@ -182,6 +183,7 @@ def main():
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
                         target_competition=rivals or None, injury=(inj_holds or inj_flags) or None,
                         injury_hold=bool(inj_holds), spread=spread, games=int(len(v)),
+                        game_total=TOT.get(tm, (None, None))[0], team_total=TOT.get(tm, (None, None))[1],
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
     out, omitted = trim_ladders(out, skipped, REAL)
     meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
