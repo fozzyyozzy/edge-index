@@ -94,3 +94,14 @@ def test_grade_edge_splits_each_grade_and_counts_shares():
     assert hi["record"] == "1-1" and hi["share"] == "50%"
     assert rows[("board, one rung per row", "A", "edge < +2")]["record"] == "2-0"
     assert rows[("carded legs", "A", "edge not recorded")]["n"] == 1        # pre-R4 cards: kept, labelled
+
+
+def test_settled_movers_get_their_own_board_row():
+    from price_check import board_split
+    b = pd.DataFrame([dict(week=7, slate="sun", player=p, market="receptions", rung=3.0, odds=-250, grade="B", edge=2.5,
+                           prob=0.75, result=r, settled_mover=sm)
+                      for p, r, sm in [("Mike Evans", "hit", True), ("Kittle", "miss", False), ("Waller", "hit", True)]])
+    rows = {(r["group"], r["count"]): r for r in board_split(b)}
+    assert rows[("settled movers (4-9 new-team games)", "one rung per player/market")]["record"] == "2-0"
+    none = board_split(b.assign(settled_mover=False))
+    assert any(r["group"].startswith("settled movers") and r["count"] == "none yet" for r in none)

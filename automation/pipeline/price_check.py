@@ -143,7 +143,8 @@ def board_rows(season, through):
                 if r.get("grade") in GRADE_OK and r.get("result") in ("hit", "miss", "void"):
                     rows.append(dict(week=wk, slate=d["meta"]["slate"], player=p["player"], market=p["market"], team=p.get("team"),
                                      rung=float(r["rung"]),
-                                     odds=int(r["est_odds"]), grade=r["grade"], edge=r.get("edge_pts"), prob=r.get("prob"), result=r["result"]))
+                                     odds=int(r["est_odds"]), grade=r["grade"], edge=r.get("edge_pts"), prob=r.get("prob"), result=r["result"],
+                                     settled_mover=bool(p.get("settled_mover"))))
     return pd.DataFrame(rows)
 
 
@@ -156,8 +157,12 @@ def board_split(b):
               ("-500 or better", b[b.odds >= -500]),
               ("-500 or better, edge >= +2", b[(b.odds >= -500) & (b.edge >= 2)]),
               ("-500 or better, edge < +2", b[(b.odds >= -500) & (b.edge < 2)])]
+    if "settled_mover" in b:      # R6 (2026-10-19): changed teams, graded on 4-9 new-team games - do those grades hold up?
+        splits.append(("settled movers (4-9 new-team games)", b[b.settled_mover.fillna(False).astype(bool)]))
     out = []
     for label, s in splits:
+        if s.empty:
+            out.append(dict(group=label, count="none yet", n=0)); continue
         out.append(dict(summarize(s, label), count="every rung"))
         out.append(dict(summarize(one_per_row(s), label), count="one rung per player/market"))
     return out

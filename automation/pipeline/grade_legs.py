@@ -188,6 +188,8 @@ def main():
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,
                         target_competition=rivals or None, injury=(inj_holds or inj_flags) or None,
                         injury_hold=bool(inj_holds), spread=spread, games=int(len(v)),
+                        # R6 settled mover: changed teams, graded on 4-9 new-team games (price check tracks these)
+                        settled_mover=bool(min_games < 10 and len(v) < 10) or None,
                         game_total=TOT.get(tm, (None, None))[0], team_total=TOT.get(tm, (None, None))[1],
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
     out, omitted = trim_ladders(out, skipped, REAL)
