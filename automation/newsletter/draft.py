@@ -57,6 +57,7 @@ def main():
         subject = f"Week {a.week} {a.slate.upper()} card"
     elif a.kind == "receipts":
         data = json.load(open(P("receipts", f"receipts_{a.season}_w{a.week}.json")))
+        data.pop("shadow", None)           # shadow cards are research, never newsletter copy
         # "What changed" may only quote these: MODEL_CHANGELOG.md entries from the last 7 days, verbatim
         data["changelog"] = house_rules.changelog_entries(*house_rules.receipts_window())
         subject = f"Week {a.week} receipts"

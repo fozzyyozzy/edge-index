@@ -260,6 +260,21 @@ def grade_edge(b, held_df):
     return out
 
 
+def shadow_table(season, through):
+    """cumulative 'old rule' (live) vs each shadow blend, from the weekly receipts (grade.py shadow_vs_live)"""
+    acc = {}
+    for f in sorted(glob.glob(P("receipts", f"receipts_{season}_w*.json"))):
+        r = json.load(open(f, encoding="utf-8"))
+        if int(r.get("week", 0)) > through or not r.get("shadow"): continue
+        for slug, s in r["shadow"].items():
+            a = acc.setdefault(slug, dict(label=s["label"], weeks=0, tickets=0, W=0, L=0, V=0, units=0.0, legs_hit=0, legs_graded=0))
+            a["weeks"] += 1; a["tickets"] += s["tickets"]; a["units"] = round(a["units"] + s["units"], 2)
+            a["W"] += s["record"]["WIN"]; a["L"] += s["record"]["LOSS"]; a["V"] += s["record"]["VOID"]
+            a["legs_hit"] += s["legs_hit"]; a["legs_graded"] += s["legs_graded"]
+    return [dict(blend=a["label"], weeks=a["weeks"], tickets=a["tickets"], record=f"{a['W']}-{a['L']}" + (f"-{a['V']}" if a["V"] else ""),
+                 units=a["units"], legs=f"{a['legs_hit']}/{a['legs_graded']}") for a in acc.values()]
+
+
 def table(rows, cols):
     head = "| " + " | ".join(cols) + " |\n|" + "|".join("---" for _ in cols) + "|\n"
     return head + "".join("| " + " | ".join("" if r.get(c) is None else str(r.get(c)) for c in cols) + " |\n" for r in rows)
@@ -302,6 +317,11 @@ def main():
            "beat implied, the grade is being dragged down by legs where our probability exceeds the market's.", "",
            table(grade_edge(b, held_df), ["group", "grade", "split", "share", "n", "record", "hit", "implied", "ours",
                                           "beat_price", "roi", "units"])]
+    sh = shadow_table(a.season, a.through)
+    md += ["## Shadow cards: old rule vs new rule (research, not published)", "",
+           "Live cards vs shadow cards built from the same board under an alternate probability blend, scored the same "
+           "simple way (every leg clears, paid at the legs' card prices). Weeks with shadow cards only.", "",
+           table(sh, ["blend", "weeks", "tickets", "record", "units", "legs"]) if sh else "No shadow cards graded yet.\n"]
     text = "\n".join(md)
     if a.out: open(a.out, "w", encoding="utf-8").write(text)
     sys.stdout.buffer.write(text.encode("utf-8"))

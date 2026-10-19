@@ -187,21 +187,42 @@ def novig(odds, name, market, holds):
     else: h, src = DEFAULT_HOLD, "assumed"
     return implied(odds) / (1 + h), src
 
-def leg_prob(values, rung, p_market=None):
-    """values = the player's game log (oldest first). Returns the blended, capped probability of clearing `rung`."""
+# The blend is configurable for research and shadow cards. LIVE is what the live card, grades and R4 use; changing it
+# is a model change (MODEL_CHANGELOG + golden fixtures). A config: market_games (the market counts as that many extra
+# games), or history_weight (p = (1-w) * market + w * history), and cap.
+LIVE_BLEND = dict(market_games=MARKET_GAMES, history_weight=None, cap=PROB_CAP)
+BLEND_VARIANTS = {          # slug -> (label, config); shadow cards and blend_study use these
+    "live": ("live (market = 10 games)", LIVE_BLEND),
+    "m20": ("market = 20 games", dict(market_games=20, history_weight=None, cap=PROB_CAP)),
+    "m40": ("market = 40 games", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
+    # cap raised: at 0.90 every big favorite would be clipped, and DK's 90%+ prices tracked hit rates well
+    "mkt10": ("market + 10% history", dict(market_games=None, history_weight=0.10, cap=0.97)),
+}
+
+def lower_window(h10, g10, h15, g15):
+    """(hits, games) of the window with the lower add-one clear rate (the more cautious one)"""
+    return min(((h10 + 1) / (g10 + 2), h10, g10), ((h15 + 1) / (g15 + 2), h15, g15))[1:]
+
+def blend_prob(h, g, p_market, market_games=MARKET_GAMES, history_weight=None, cap=PROB_CAP):
+    """blended probability from (hits, games) and DK's no-vig probability, under a blend config"""
+    p_hist = (h + 1) / (g + 2)
+    if p_market is None: p = p_hist
+    elif history_weight is not None: p = (1 - history_weight) * p_market + history_weight * p_hist
+    else: p = (h + 1 + market_games * p_market) / (g + 2 + market_games)
+    return min(p, cap) if cap else p
+
+def leg_prob(values, rung, p_market=None, blend=None):
+    """values = the player's game log (oldest first). Returns the blended, capped probability of clearing `rung`
+    (blend = a config; default LIVE_BLEND)."""
     import numpy as np
     v = np.asarray(values, dtype=float)
-    wins = []
-    for n in (10, 15):
-        w = v[-n:]; h = int((w >= rung).sum()); g = len(w)
-        wins.append(((h + 1) / (g + 2), h, g))
-    _, h, g = min(wins)                                                  # the lower (more cautious) window
-    p = (h + 1 + MARKET_GAMES * p_market) / (g + 2 + MARKET_GAMES) if p_market is not None else (h + 1) / (g + 2)
-    return min(p, PROB_CAP)
+    w10, w15 = v[-10:], v[-15:]
+    h, g = lower_window(int((w10 >= rung).sum()), len(w10), int((w15 >= rung).sum()), len(w15))
+    return blend_prob(h, g, p_market, **(blend or LIVE_BLEND))
 
-def price_fields(values, rung, odds, name, market, holds):
+def price_fields(values, rung, odds, name, market, holds, blend=None):
     """prob, fair price and edge for one rung at DK's price; edge = our probability minus DK's implied (vig included)."""
     p_mkt, src = novig(odds, name, market, holds)
-    p = leg_prob(values, rung, p_mkt)
+    p = leg_prob(values, rung, p_mkt, blend)
     return dict(prob=round(p, 4), novig_pct=round(100 * p_mkt, 1), novig_source=src, fair_odds=fair_american(p),
                 edge_pts=round(100 * (p - implied(odds)), 1))

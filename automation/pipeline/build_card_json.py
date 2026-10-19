@@ -190,6 +190,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--slate", required=True, help="tnf | sun | mnf"); ap.add_argument("--tickets", type=int, default=3)
+    ap.add_argument("--shadow", default=None, help="research: build a SHADOW card under common.BLEND_VARIANTS[slug] into "
+                    "cards/shadow/ (never published; Tuesday grades it next to the live card)")
     a = ap.parse_args()
     fl = load_floors(a.season, a.week, a.slate)
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
@@ -207,10 +209,20 @@ def main():
     legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
     GRADED, RUNGS = {}, {}
     if os.path.exists(legs_path):
-        for p in json.load(open(legs_path, encoding="utf-8"))["players"]:
+        legs_doc = json.load(open(legs_path, encoding="utf-8"))
+        if a.shadow:                  # shadow card: the live board re-graded under the alternate blend
+            from grade_legs import reblend
+            from common import BLEND_VARIANTS
+            legs_doc = reblend(legs_doc, BLEND_VARIANTS[a.shadow][1])
+        for p in legs_doc["players"]:
             for r in p["rungs"]:
                 GRADED[(norm_name(p["player"]), p["market"], float(r["rung"]))] = (r["grade"], r.get("clear_pct"))
             RUNGS[(norm_name(p["player"]), p["market"])] = p["rungs"]
+        if a.shadow:                  # floor-rung edge in the hold reasons follows the alternate blend too
+            edge_at = {(norm_name(p["player"]), p["market"], float(r["rung"])): r.get("edge_pts")
+                       for p in legs_doc["players"] for r in p["rungs"]}
+            fl["EdgePts"] = [edge_at.get((norm_name(r.Player), r.Market, float(str(r.Rung).rstrip("+"))), r.EdgePts)
+                             for r in fl.itertuples()]
 
     # candidate legs: floors that are winnable AND not over-priced, sorted by strength
     cands, held = [], []
@@ -272,6 +284,12 @@ def main():
                 held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display)
                 notes=notes)
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
+    if a.shadow:
+        from common import BLEND_VARIANTS
+        label, cfg = BLEND_VARIANTS[a.shadow]
+        card["shadow"] = dict(slug=a.shadow, label=label, blend=cfg, live_card=os.path.basename(out),
+                              note="research only: never published; graded Tuesday next to the live card")
+        out = P("cards", "shadow", f"card_{a.season}_w{a.week}_{a.slate}_{a.shadow}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")
     for t in tickets:

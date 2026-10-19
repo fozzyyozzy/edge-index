@@ -111,6 +111,35 @@ def official(t, hits, ee, prices):
     if res == "WIN" and not any(ee) and t.get("est_american"): units = round(am_dec(t["est_american"]) - 1, 2)
     return res, units
 
+def shadow_vs_live(season, week, act):
+    """'old rule' (the live pipeline cards) vs each shadow card set under an alternate blend (cards/shadow/), scored the
+    same simple way for both: a ticket wins when every leg clears, loses on any miss, voids otherwise; units at the
+    product of the legs' card prices. None when the week has no shadow cards. Research only: not in the newsletter."""
+    def score(cards):
+        res, units, legs_n, legs_hit = [], 0.0, 0, 0
+        for c in cards:
+            for t in c["tickets"]:
+                hits = []
+                for l in t["legs"]:
+                    v = act.get((norm_name(l["player"]), l["market"]))
+                    hits.append(None if v is None or pd.isna(v) else bool(v >= l["rung"]))
+                legs_n += sum(h is not None for h in hits); legs_hit += sum(h is True for h in hits)
+                r, u = settle(hits, [dec(l.get("published_odds") or l["odds_est"]) for l in t["legs"]])
+                res.append(r); units += u
+        return dict(tickets=len(res), record={k: res.count(k) for k in ("WIN", "LOSS", "VOID")}, units=round(units, 2),
+                    legs_hit=legs_hit, legs_graded=legs_n)
+    shadows = {}
+    for f in sorted(glob.glob(P("cards", "shadow", f"card_{season}_w{week}_*_*.json"))):
+        c = json.load(open(f, encoding="utf-8")); sh = c.get("shadow") or {}
+        shadows.setdefault(sh.get("slug"), dict(label=sh.get("label"), blend=sh.get("blend"), cards=[]))["cards"].append(c)
+    if not shadows: return None
+    live = [json.load(open(f, encoding="utf-8")) for f in sorted(glob.glob(P("cards", f"card_{season}_w{week}_*.json")))]
+    out = {"live": dict(label="old rule: live (market = 10 games)", **score([c for c in live if not c.get("hand_built")]))}
+    for slug, s in shadows.items():
+        out[slug] = dict(label=f"new rule candidate: {s['label']}", blend=s["blend"], **score(s["cards"]))
+    return out
+
+
 def clv_pts(pub, close):
     """Implied-probability points the price moved toward us: positive = it shortened after we published."""
     if pub is None or close is None: return None
@@ -211,6 +240,8 @@ def main():
         "ticket_record_standard": {r: sum(1 for t in tickets if t["result_standard"] == r) for r in ("WIN", "LOSS", "VOID")},
         "units": round(sum(t["units"] for t in tickets), 2),
         "units_standard": round(sum(t["units_standard"] for t in tickets), 2),
+        # research: live cards ("old rule") vs shadow cards under alternate blends ("new rule" candidates); not published
+        "shadow": shadow_vs_live(a.season, a.week, act),
     }
     out = P("receipts", f"receipts_{a.season}_w{a.week}.json")
     json.dump(summary, open(out, "w"), indent=1)

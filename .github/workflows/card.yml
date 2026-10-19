@@ -78,6 +78,13 @@ jobs:
       - name: build card
         if: env.SKIP != '1'
         run: python automation/pipeline/build_card_json.py --season "$SEASON" --week "$WEEK" --slate "$SLATE"
+      - name: shadow cards (research under automation/shadow_blends.json; never published, never block the card)
+        if: env.SKIP != '1'
+        run: |
+          for S in $(python -c "import json; print(' '.join(json.load(open('automation/shadow_blends.json'))))" 2>/dev/null); do
+            python automation/pipeline/build_card_json.py --season "$SEASON" --week "$WEEK" --slate "$SLATE" --shadow "$S" \
+              || echo "::warning::shadow card $S failed (the live card is unaffected)"
+          done
       - name: matchups board (defense vs position)
         if: env.SKIP != '1'
         run: python automation/pipeline/matchups.py --season "$SEASON" --week "$WEEK"

@@ -103,6 +103,28 @@ def trim_ladders(out, skipped=(), REAL=None):
     return trimmed, omitted
 
 
+def reblend(doc, blend):
+    """A Legs document re-graded under another blend config, from what each rung already stores (its L10/L15 counts and
+    DK's no-vig probability) - no stats refetch. Held rows stay as they are. For research and shadow cards only; the live
+    board is graded by main(). Rungs the live trim left off the board aren't recovered."""
+    import copy
+    import numpy as np
+    from common import lower_window, blend_prob, fair_american, frac_count
+    d = copy.deepcopy(doc)
+    for p in d["players"]:
+        if p.get("held"): continue
+        rivals = p.get("target_competition") or []
+        for r in p["rungs"]:
+            if "l10" not in r or r.get("novig_pct") is None: continue
+            (h10, g10), (h15, g15) = frac_count(r["l10"]), frac_count(r["l15"])
+            prob = blend_prob(*lower_window(h10, g10, h15, g15), r["novig_pct"] / 100, **blend)
+            letter, why, _ = grade_rung(prob, r["rung"], r["est_odds"], np.asarray(p.get("last3") or [], dtype=float),
+                                        p["market"], [], p.get("opp_d"), p.get("own_vol"), rivals)
+            r.update(prob=round(prob, 4), fair_odds=fair_american(prob), edge_pts=round(100 * (prob - implied_prob(r["est_odds"])), 1),
+                     grade=letter, reasons=why)
+    return d
+
+
 def keep_settled(out, path):
     """A settled row (settle.py: the game is final, `actual` and per-rung `result` written) is history: a later regrade
     (an odds refresh, a card re-run) keeps it exactly as settled instead of replacing it, and keeps it even if the new
