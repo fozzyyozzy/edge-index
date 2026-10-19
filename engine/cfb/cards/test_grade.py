@@ -106,3 +106,11 @@ def test_each_game_on_at_most_one_ticket():
     assert all(tk["alt_shape_legs"] <= 2 for tk in t)
     for tk in t:
         assert (tk["price_american"] >= 200) == (tk["label"] == "Bloom (>= +200)")
+
+
+def test_hook_key_next_rung():
+    from engine.cfb.cards.card import hook_key
+    assert hook_key(6.5) == (7, 7.5) and hook_key(-7.5) == (7, -6.5)       # fail exactly on 7
+    assert hook_key(-3.5) == (3, -2.5) and hook_key(2.5) == (3, 3.5)
+    assert hook_key(-14.0) == (14, -13.5) and hook_key(7.0) == (7, 7.5)     # whole lines push on the key
+    assert hook_key(3.5) is None and hook_key(7.5) is None and hook_key(23.5) is None

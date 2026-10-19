@@ -117,3 +117,31 @@ def summary(d: pd.DataFrame, role="floor", n_boot=2000, seed=0) -> dict:
         else:
             out["bar"] = f"IN PROGRESS: {len(x)}/{BAR['min_legs']} graded floor legs; $0"
     return out
+
+
+def hook_losses(season: int) -> pd.DataFrame:
+    """DIAGNOSTIC: published spread/alt-spread legs (floor, second, edge list) that LOST or PUSHED by
+    landing exactly on the key number (3/7/10/14/17/21) they stopped short of: a x.5 line that failed by
+    exactly the key, or a whole line that pushed on it. Shows what the next rung would have done."""
+    from engine.cfb.cards.card import hook_key
+    g = pd.read_parquet(config.CLEAN / "games.parquet").set_index("game_id")
+    rows = []
+    for f in sorted(glob.glob(str(CARDS / f"card_{season}_wk*.json"))):
+        c = json.loads(open(f, encoding="utf-8").read())
+        legs_ = [{**x, "track": x.get("role", "floor")} for x in c["floor_legs"]] + \
+                [{**x, "market": "SPREAD-CLV", "track": "edge"} for x in c.get("spread_edges", [])]
+        for x in legs_:
+            if x.get("market") not in ("SPREAD-CLV", "ALT-SHAPE") or x.get("line") is None:
+                continue
+            hk = hook_key(float(x["line"]))
+            gg = g.loc[x["game_id"]] if x["game_id"] in g.index else None
+            if not hk or gg is None or pd.isna(gg.home_points) or not bool(gg.completed):
+                continue
+            tm_ = (gg.home_points - gg.away_points) * (1 if x["side"] == "home" else -1)
+            fail_margin = -(float(x["line"]) + 0.5) if abs(float(x["line"]) % 1 - 0.5) < 1e-9 else -float(x["line"])
+            if np.isclose(tm_, fail_margin):
+                rows.append({"week": c["week"], "track": x["track"], "game": x["game"], "pick": x["pick"],
+                             "price": x["price"], "key": hk[0], "team_margin": float(tm_),
+                             "outcome": "push" if float(x["line"]) % 1 == 0 else "loss",
+                             "next_rung": hk[1], "next_rung_would": "win"})
+    return pd.DataFrame(rows)

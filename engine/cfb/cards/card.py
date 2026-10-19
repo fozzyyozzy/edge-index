@@ -203,6 +203,43 @@ def build_legs(g: pd.DataFrame, lad: pd.DataFrame, alt: pd.DataFrame) -> pd.Data
     return L
 
 
+# ------------------------------------------------------------------ hooks (display only; no selection change)
+KEYS = (3, 7, 10, 14, 17, 21)
+
+
+def hook_key(line: float):
+    """(key, next_line) when a spread leg stops on/half a point short of a key number, else None.
+    Team covers if team_margin + line > 0. A x.5 line fails at margin -(line + 0.5); a whole line
+    pushes at margin -line. If that margin is +-key, the next rung across it is line + 1 (x.5) or
+    line + 0.5 (whole). E.g. +6.5 -> loses by exactly 7 -> +7.5; -7.5 -> wins by exactly 7 -> -6.5."""
+    half = abs(line % 1 - 0.5) < 1e-9
+    k = -(line + 0.5) if half else -line
+    if abs(k) in KEYS:
+        return int(abs(k)), line + (1.0 if half else 0.5)
+    return None
+
+
+def add_hooks(rows: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
+    """For spread-family rows, attach the next rung across the key (price, p, EV from the priced legs)."""
+    rows = rows.copy()
+    sp = L[L.family == "spread"]
+    out = []
+    for r in rows.itertuples():
+        h = None
+        if r.market in ("SPREAD-CLV", "ALT-SHAPE") and pd.notna(r.line):
+            hk = hook_key(float(r.line))
+            if hk:
+                key, nxt = hk
+                z = sp[(sp.game_id == r.game_id) & (sp.side == r.side) & np.isclose(sp.line, nxt)]
+                h = {"key": key, "next_rung": nxt, "available": bool(len(z))}
+                if len(z):
+                    z = z.sort_values("price", ascending=False).iloc[0]
+                    h.update({"price": float(z.price), "p": float(z.p_used), "ev": float(z.ev)})
+        out.append(h)
+    rows["hook"] = out
+    return rows
+
+
 # ------------------------------------------------------------------ card + tickets
 def floor_legs(L: pd.DataFrame) -> pd.DataFrame:
     e = L[L.eligible].sort_values(["p_used", "ev"], ascending=False)
@@ -267,6 +304,15 @@ def spread_edges(g: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
               "proj_home_margin", "dk_home_spread"]]
 
 
+def hook_text(h) -> str:
+    if not h or not isinstance(h, dict):
+        return ""
+    if not h.get("available"):
+        return f"stops at {h['key']}; {h['next_rung']:+g} not offered"
+    return (f"stops at {h['key']}: {h['next_rung']:+g} @ {h['price']:+.0f}, p {100 * h['p']:.1f}%, "
+            f"EV {100 * h['ev']:+.1f}%")
+
+
 def readout(card: dict) -> str:
     lad = card.get("ladder_snapshot_utc")
     lines = [f"# CFB floor card: {card['season']} week {card['week']} ({card['status']})",
@@ -275,10 +321,11 @@ def readout(card: dict) -> str:
              + f"Generated {card['generated_at_utc']}. PAPER ONLY.",
              (f"Note: {card['snapshot_note']}" if card.get("snapshot_note") else ""), ""]
     lines.append("## Floor legs (per game: highest-probability eligible leg; + second leg, other market)")
-    lines.append("| role | game | pick | market | price | p | EV |\n|---|---|---|---|---|---|---|")
+    lines.append("| role | game | pick | market | price | p | EV | hook: next rung across the key |\n"
+                 "|---|---|---|---|---|---|---|---|")
     for x in card["floor_legs"]:
         lines.append(f"| {x['role']} | {x['game']} | {x['pick']} | {x['market']} | {x['price']:+.0f} | "
-                     f"{100 * x['p_used']:.1f}% | {100 * x['ev']:+.1f}% |")
+                     f"{100 * x['p_used']:.1f}% | {100 * x['ev']:+.1f}% | {hook_text(x.get('hook'))} |")
     lines.append("\n## Tickets")
     for t in card["tickets"]:
         lines.append(f"**Ticket {t['ticket']}** ({t['label']}): {t['price_american']:+d}, joint p "
@@ -286,10 +333,11 @@ def readout(card: dict) -> str:
         for x in t["legs"]:
             lines.append(f"- {x['game']}: {x['pick']} ({x['market']}) {x['price']:+.0f}, p {100 * x['p_used']:.1f}%")
     lines.append("\n## Main-spread edges vs this snapshot (edge >= 1.5 pts; strongest signal; one bet per game, the model's side)")
-    lines.append("| game | pick | price | edge pts | p cover | EV |\n|---|---|---|---|---|---|")
+    lines.append("| game | pick | price | edge pts | p cover | EV | hook: next rung across the key |\n"
+                 "|---|---|---|---|---|---|---|")
     for x in card["spread_edges"]:
         lines.append(f"| {x['game']} | {x['pick']} | {x['price']:+.0f} | {x['edge_pts']:+.1f} | "
-                     f"{100 * x['p_model']:.1f}% | {100 * x['ev']:+.1f}% |")
+                     f"{100 * x['p_model']:.1f}% | {100 * x['ev']:+.1f}% | {hook_text(x.get('hook'))} |")
     lines.append(f"\nEligible legs: {card['counts']['eligible']} of {card['counts']['priced']} priced "
                  f"(by market: {card['counts']['eligible_by_market']}). Teasers: off until DK prices are filled in.")
     return "\n".join(lines)
@@ -308,6 +356,8 @@ def main(argv=None) -> int:
     fl = floor_legs(L)
     tk = tickets(fl)
     ed = spread_edges(g, L)
+    fl = add_hooks(fl, L)                       # display only: selection above is unchanged
+    ed = add_hooks(ed.assign(market="SPREAD-CLV", family="spread"), L)
     label = main_.label.iloc[0]
     status = "PUBLISHED (paper)" if a.publish else ("DRAFT" if a.snapshot == "tue10" else "DRAFT - TEST SNAPSHOT, NOT THE BET-TIME CARD")
     elig = L[L.eligible]

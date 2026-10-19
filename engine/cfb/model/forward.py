@@ -363,6 +363,13 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
         sp = cg.alt_shape_split(cd)
         if sp:
             lines.append(f"- **ALT-SHAPE split by game spread (diagnostic, not a bar):** {sp}.")
+    hl = cg.hook_losses(season)
+    hl_w = hl[hl.week == week] if len(hl) else hl
+    lines.append("- **Hook losses (diagnostic):** "
+                 + (f"{len(hl_w)} this week ({', '.join(f'{r.pick} [{r.track}] {r.outcome} on {r.key}' for r in hl_w.itertuples())}); "
+                    if len(hl_w) else "0 this week; ")
+                 + f"{len(hl)} to date. Legs that lost/pushed landing exactly on the key they stopped short of "
+                   "(the next rung across it would have won).")
     # track 2: main-spread edge list at the Tuesday line (separate from the card)
     ed = cg.edge_legs(season)
     es = cg.summary(ed, "edge") if len(ed) else {"graded_legs": 0}
