@@ -3,6 +3,28 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-19 — rule change: a team change stops being a hold after 4 games with the new team (R6)
+
+- **What:** a player whose team changed since last season is "settled" once he has 4+ games for his new team this
+  season. Every appearance counts, walk-forward. From then on:
+  - no team-change hold;
+  - he's graded on new-team games only, with a 4-game minimum for that market instead of 10;
+  - he stops counting as "new target competition" for his teammates.
+
+  Before 4 games, the hold stands as before. L10/L15 now show real counts, such as 4/5, for those shorter histories.
+- **Why:** the hold was too sticky. Mike Evans had 5 games with SF and was still held as a team change, and George
+  Kittle still carried a target-competition step from him.
+- **Effect:** applies from the Week 7 cards. Published cards are not rebuilt. Week 6, as it would have graded (same
+  lines, stats before week 6):
+  - **Settled movers:** 31 players. Those with a C-or-better leg: Brian Robinson Jr. (A), Kenneth Walker III (A),
+    Darren Waller, Dontayvion Wicks, Kayshon Boutte, Kirk Cousins, Kalif Raymond, Wan'Dale Robinson (A−), Keenan
+    Allen, Keaton Mitchell, Romeo Doubs, Kendrick Bourne, Tyler Allgeier (B), Jaylen Waddle, Isaiah Likely, Najee
+    Harris, Emanuel Wilson (C).
+  - **Still held:** Evans and Diggs on injury. Players with fewer than 4 new-team games (A.J. Brown, Charlie Kolar,
+    Jaleel McLaughlin, Jonnu Smith, Chig Okonkwo and others) keep the team-change hold.
+  - **Competition step removed:** 16 teammates' grades rise, for example Kittle (rec B→A−, rec yds D→C), Terry
+    McLaurin, Harold Fannin Jr., Trey McBride and Malik Nabers.
+
 ## 2026-10-13 — bug fix: a late odds refresh regraded the played Week 5 TNF board (data correction)
 
 - **What happened:** the Monday 2026-10-12 7pm ET refresh slot started at 9:16pm, after MNF kickoff.

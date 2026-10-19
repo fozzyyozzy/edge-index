@@ -85,6 +85,27 @@ def fetch_games():
     return read_csv_source("nflverse schedule")
 
 
+SETTLED_GAMES = 4      # a player who changed teams is graded on new-team games only once he has this many (R6)
+
+
+def grading_history(g, season, tm, prev_team, played=None):
+    """(rows to grade on, team-change hold?, minimum games) for a player's game rows `g` in one market (sorted, games
+    with involvement in that market). `played` = all his stat rows (every game he appeared in, any market).
+    No team change: all rows, no hold, 10-game minimum. Changed teams (last season's team != his team now): once he has
+    SETTLED_GAMES+ games for the new team this season (counted from `played`) he's settled - graded on new-team games
+    only, no hold, minimum SETTLED_GAMES; before that, the team-change hold stands (all rows, 10-game minimum)."""
+    if not (prev_team and tm and prev_team != tm): return g, False, 10
+    p = g if played is None else played
+    games_with_new = p[(p.season == season) & (p.team == tm)].week.nunique()
+    if games_with_new >= SETTLED_GAMES: return g[(g.season == season) & (g.team == tm)], False, SETTLED_GAMES
+    return g, True, 10
+
+
+def frac_count(v):
+    """'9/10' or '4/5' -> (9, 10)"""
+    n, d = str(v).split("/"); return int(n), int(d)
+
+
 def fetch_week(yr, wk):
     w = fetch_season(yr)
     return w[w.week == wk]

@@ -13,7 +13,8 @@ Modifiers (one step each, applied after the base letter, floor at D unless hard 
 Every rung DK offers is shown from the lowest up to the last one graded C or better (D rungs in between included); rungs
 past -450 are marked "price past -450, not card-eligible" (past -600: "price past -600: not card-eligible", one note).
 Rungs left off are listed in `omitted` with the reason.
-  F  hard hold: team change this season, attempt prop with team favored >= 7, fewer than 10 games of data,
+  F  hard hold: team change this season (until 4 games with the new team; then graded on those games only, 4-game
+     minimum, and he no longer counts as new target competition), attempt prop with team favored >= 7, fewer than 10 games,
      injury (availability.py: missed one of the team's last two games, Out/Doubtful/Questionable, DNP, held by hand)
   Injury watch (Limited practice, no game status yet) is a flag on the player, not a grade change.
 """
@@ -21,7 +22,7 @@ import argparse, io, json, os, sys, urllib.request
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder, implied_prob
-from common import norm_name, fetch_season, COL, load_real_ladders, P, tag_rank, load_holds, price_fields
+from common import grading_history, SETTLED_GAMES, norm_name, fetch_season, COL, load_real_ladders, P, tag_rank, load_holds, price_fields
 from floors import INV, SLATE_DAYS, schedule, team_split, implied_totals
 import availability
 
@@ -43,6 +44,7 @@ def target_competition(cur, prev):
     out = {}
     for (key, tm), g in cur[cur.position.isin(REC_POS)].groupby(["key", "team"]):
         if ((prev.key == key) & (prev.team == tm)).any(): continue    # on this team last season: not new
+        if g.week.nunique() >= SETTLED_GAMES: continue                 # 4+ games with the team: settled, not "new" (R6)
         mx = int(g.sort_values("week").tail(3).targets.fillna(0).max())
         if mx >= COMP_TARGETS: out.setdefault(tm, []).append((g.player_display_name.iloc[-1], key, mx))
     return out
@@ -152,7 +154,9 @@ def main():
     for r in lines.itertuples():
         key = norm_name(r.Player); col = COL[r.Market]; inv = INV[r.Market]
         g = w[(w.key == key) & (w[inv].fillna(0) > 0)].sort_values(["season", "week"])
-        v = g[col].fillna(0).to_numpy(); tm = team_now.get(key); opp = OPP.get(tm)
+        tm = team_now.get(key); opp = OPP.get(tm)
+        g, change_hold, min_games = grading_history(g, a.season, tm, team_prev.get(key), w[w.key == key])   # R6: settled movers
+        v = g[col].fillna(0).to_numpy()
         if opp is None:                   # another slate's player (the lines file is week-wide), or no game log at all
             if tm is None: skipped.append((r.Player, r.Market, "no NFL game log found, so his team is unknown"))
             continue
@@ -162,22 +166,23 @@ def main():
         rivals = [n for n, k, _ in comp.get(tm, []) if k != key] if pos in REC_POS and r.Market in REC_MARKETS else []
         spread = SPREAD.get(tm)
         holds = []
-        if len(v) < 10: holds.append("fewer than 10 games")
-        if team_prev.get(key) and tm and team_prev.get(key) != tm: holds.append(f"team change ({team_prev.get(key)}->{tm})")
+        if len(v) < min_games: holds.append(f"fewer than {min_games} games" + (f" with {tm}" if min_games < 10 else ""))
+        if change_hold: holds.append(f"team change ({team_prev.get(key)}->{tm})")
         if r.Market in ("pass_att", "pass_cmps") and spread is not None and spread <= -7: holds.append(f"blowout risk (fav by {-spread:g})")
         inj_holds, inj_flags = availability.reasons(AVAIL, r.Player, r.Market, tm)
         holds += inj_holds
         ladder = REAL.get((key, r.Market)) or estimate_ladder(r.Market, float(r.Line), int(r.Odds))[0]
         rungs = []; real = (key, r.Market) in REAL
         for t, o in sorted(ladder):
-            if len(v) < 10 or inj_holds:
+            if len(v) < min_games or inj_holds:
                 rungs.append(dict(rung=t, est_odds=o, grade="F", reasons=holds)); continue
             l10 = float((v[-10:] >= t).mean()); l15 = float((v[-15:] >= t).mean())
             p = 0.6 * l10 + 0.4 * l15                                   # raw clear rate, shown as clear_pct
             pf = price_fields(v, t, o, r.Player, r.Market, HOLDS)            # blended probability, fair price, edge
             letter, why, pre_comp = grade_rung(pf["prob"], t, o, v[-3:], r.Market, holds, oppd, vol, rivals)
-            rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10*10))}/10",
-                              l15=f"{int(round(l15*15))}/15", clear_pct=round(100 * p, 1), **pf, grade=letter, reasons=why,
+            n10, n15 = len(v[-10:]), len(v[-15:])           # real counts: a settled mover may have fewer than 10
+            rungs.append(dict(rung=t, est_odds=o, implied_pct=round(100 * implied_prob(o), 1), l10=f"{int(round(l10 * n10))}/{n10}",
+                              l15=f"{int(round(l15 * n15))}/{n15}", clear_pct=round(100 * p, 1), **pf, grade=letter, reasons=why,
                               _pre_comp=pre_comp))
         out.append(dict(player=r.Player, pos=pos, team=tm, opp=opp, game=GAME.get(tm), market=r.Market, main_line=float(r.Line), prices="real" if real else "estimated",
                         main_odds=int(r.Odds), opp_d=oppd, own_vol=vol, opp_d_rank=oppd_rank, own_vol_rank=vol_rank,

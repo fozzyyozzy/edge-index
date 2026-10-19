@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from altline_engine import estimate_ladder
-from common import fetch_games, norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank, load_holds, price_fields
+from common import fetch_games, grading_history, frac_count, norm_name, fetch_season, COL, load_real_ladders, P, prices_pulled, tag_rank, load_holds, price_fields
 
 INV = {"rec_yds": "targets", "receptions": "targets", "pass_yds": "attempts", "pass_cmps": "attempts",
        "pass_att": "attempts", "rush_yds": "carries", "rush_att": "carries"}
@@ -92,9 +92,10 @@ def main():
     for r in lines.itertuples():
         key = norm_name(r.Player); col = COL[r.Market]; inv = INV[r.Market]
         g = w[(w.key == key) & (w[inv].fillna(0) > 0)].sort_values(["season", "week"])
-        v = g[col].fillna(0).to_numpy()
-        if len(v) < 10: continue
         tm = team_now.get(key); opp = OPP.get(tm)
+        g, change_hold, min_games = grading_history(g, a.season, tm, team_prev.get(key), w[w.key == key])   # R6: settled movers
+        v = g[col].fillna(0).to_numpy()
+        if len(v) < min_games: continue
         if opp is None: continue
         ladder = REAL.get((key, r.Market)) or estimate_ladder(r.Market, float(r.Line), int(r.Odds))[0]
         best = None
@@ -110,17 +111,18 @@ def main():
             streak += 1
         cat = "pass" if r.Market in ("pass_yds", "pass_cmps", "pass_att", "rec_yds", "receptions") else "rush"
         rows.append(dict(Player=r.Player, Team=tm, Opp=opp, Market=r.Market, Main=r.Line, MainOdds=r.Odds, Rung=f"{t:g}+",
-                         EstOdds=o, L10=f"{int(round(l10*10))}/10", L15=f"{int(round(l15*15))}/15",
+                         EstOdds=o, L10=f"{int(round(l10 * len(v[-10:])))}/{len(v[-10:])}",
+                         L15=f"{int(round(l15 * len(v[-15:])))}/{len(v[-15:])}",
                          OppD=tag_rank(D[cat + "_yds"], opp, defense=True)[0], OwnVol=tag_rank(O[cat + "_att"], tm)[0], Spread=SPREAD.get(tm), GameTotal=TOT.get(tm, (None, None))[0], TeamTotal=TOT.get(tm, (None, None))[1],
                          OppDRank=tag_rank(D[cat + "_yds"], opp, defense=True)[1], OwnVolRank=tag_rank(O[cat + "_att"], tm)[1],
-                         TeamChange=bool(team_prev.get(key) and team_prev.get(key) != tm), PrevTeam=team_prev.get(key, ""),
+                         TeamChange=change_hold, PrevTeam=team_prev.get(key, ""),
                          Last3=[int(x) for x in v[-3:]],    # plain ints: np.int64 wrote "np.int64(126)" into the CSV
                          Pos=g.position.iloc[-1], Games=int(len(v)), Avg10=round(float(v[-10:].mean()), 1), Streak=streak,
                          Real=(key, r.Market) in REAL,
                          **{k.title().replace("_", ""): val for k, val in price_fields(v, t, o, r.Player, r.Market, HOLDS).items()}))
     df = pd.DataFrame(rows)
     if len(df):
-        df["score"] = df.L10.str.split("/").str[0].astype(int) + (df.OppD == "SOFT") - 2 * (df.OppD == "TOUGH") - (df.OwnVol == "TOUGH")
+        df["score"] = df.L10.map(lambda x: 10 * frac_count(x)[0] / frac_count(x)[1]) + (df.OppD == "SOFT") - 2 * (df.OppD == "TOUGH") - (df.OwnVol == "TOUGH")
         df = df.sort_values(["score", "EstOdds"], ascending=[False, False]).drop(columns="score")
     df.to_csv(out, index=False)
     write_site_json(df, a, out.rsplit(".", 1)[0] + ".json")
@@ -133,7 +135,7 @@ def american(p):
 def write_site_json(df, a, path):
     rows = []
     for r in df.itertuples():
-        l10 = int(r.L10.split("/")[0]) / 10; l15 = int(r.L15.split("/")[0]) / 15
+        (a10, b10), (a15, b15) = frac_count(r.L10), frac_count(r.L15); l10, l15 = a10 / b10, a15 / b15
         clear = 0.6 * l10 + 0.4 * l15                              # same blend grade_legs.py grades on
         o = int(r.EstOdds)
         rows.append(dict(player=r.Player, team=r.Team, opp=r.Opp, pos=r.Pos, market=r.Market, rung=float(r.Rung.rstrip("+")),

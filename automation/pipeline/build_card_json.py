@@ -15,7 +15,9 @@ Rules encoded here (do not relax without changing the newsletter copy too):
   R4  every leg needs edge >= +2 pts: blended probability (common.leg_prob — lower of L10/L15 add-one clear rates,
       blended toward DK's no-vig price as 10 extra games, capped at 0.90) minus DK's implied probability at the price
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
-  R6  team-change and injury holds are hard holds. Injury (availability.py, the same snapshot grade_legs.py wrote): missed
+  R6  team-change and injury holds are hard holds. A team change stops being a hold once the player has 4+ games with
+      his new team; from then on he's graded on new-team games only (4-game minimum) and stops counting as new target
+      competition for his teammates. Injury (availability.py, the same snapshot grade_legs.py wrote): missed
       one of the team's last two games, Out/Doubtful/Questionable, DNP in practice, or held by hand in
       notes/holds_<season>_w<week>.csv. Limited practice with no game status yet is an "injury watch" flag on the leg.
   R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles; a 2-leg ticket
@@ -41,7 +43,7 @@ import argparse, glob, json, os, re, sys
 import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, ".")
 from altline_engine import evaluate, pick_win_rung, parlay, estimate_ladder
-from common import norm_name, P, load_real_ladders, prices_pulled
+from common import norm_name, P, load_real_ladders, prices_pulled, frac_count
 import availability
 
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13/15   # raw clear rates on purpose: consistency, not price
@@ -63,8 +65,8 @@ def load_floors(season, week, slate):
     else:
         raise SystemExit(f"floor scan output not found: run floors.py first ({name})")
     if f.empty: return pd.DataFrame(columns=["Player", "Market", "Rung", "L10", "L15", "l10", "l15"])
-    f["l10"] = f.L10.str.split("/").str[0].astype(int) / 10
-    f["l15"] = f.L15.str.split("/").str[0].astype(int) / 15
+    f["l10"] = f.L10.map(lambda x: frac_count(x)[0] / frac_count(x)[1])      # "9/10", or "4/5" for a settled mover
+    f["l15"] = f.L15.map(lambda x: frac_count(x)[0] / frac_count(x)[1])
     return f
 
 def parse_last3(v):
