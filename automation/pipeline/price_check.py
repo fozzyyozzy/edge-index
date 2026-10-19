@@ -21,6 +21,10 @@ shows a pattern over at least 4 weeks).
    (floors.implied_totals: total_line and spread_line, never the final score): under 20, 20 to 23.5, 24+. Do legs on
    high-total teams beat their prices more often (board one per row, carded, held)? And does the "low own volume" hold
    misfire on high-total teams (held legs there beating their prices)?
+5. Grade x edge (research): cumulative board hit rate by grade (one rung per player/market: the row's best rung), each
+   grade split by edge (>= +2 vs < +2), hit % vs implied %, our %, ROI, and the share of the grade in each split; the
+   same for carded legs (grade and edge as published). Question: does a grade underperform because it's concentrated in
+   high-edge legs, where our probability exceeds the market's?
 """
 import argparse, glob, json, os, sys
 import pandas as pd
@@ -107,6 +111,7 @@ def holds_and_carded(season, through):
                 odds = int(l.get("published_odds") or l.get("odds_real") or l["odds_est"])
                 rows.append(dict(kind="carded", week=wk, slate=c["slate"], player=l["player"], market=l["market"], team=l.get("team"),
                                  rung=float(l["rung"]), odds=odds, cats=["carded"], sole="carded",
+                                 grade=l.get("grade"), edge=l.get("edge_pts"),
                                  actual=actual(l["player"], l["market"], wk), prob=our_prob(l["player"], l["market"], float(l["rung"]), odds, wk, holds)))
     df = pd.DataFrame(rows)
     if df.empty: return [], sources, df
@@ -221,6 +226,35 @@ def by_team_total(held_df, b, tt):
     return out
 
 
+def grade_edge(b, held_df):
+    """section 5 rows: per grade, all legs then edge >= +2 / < +2, for the board (one rung per row) and carded legs"""
+    out = []
+    groups = []
+    if len(b):
+        bb = b[b.result.isin(["hit", "miss", "void"])].copy()
+        bb["gi"] = bb.grade.map({g: i for i, g in enumerate(reversed(GRADE_OK))})
+        bb = bb.sort_values(["gi", "rung"], ascending=False).drop_duplicates(["week", "slate", "player", "market"])
+        groups.append(("board, one rung per row", bb))
+    if len(held_df) and "grade" in held_df:
+        c = held_df[held_df.kind == "carded"]
+        groups.append(("carded legs", c))
+    for label, df in groups:
+        settled = df[df.result.isin(["hit", "miss"])]
+        for g in GRADE_OK:
+            x = df[df.grade == g]
+            if not len(x): continue
+            n_g = int(x.result.isin(["hit", "miss"]).sum())
+            out.append(dict(summarize(x, label), grade=g, split="all", share="100%"))
+            for name, mask in (("edge >= +2", x.edge >= 2), ("edge < +2", x.edge < 2),
+                               ("edge not recorded", x.edge.isna())):        # week 3 cards predate edge on the card
+                y = x[mask.fillna(False)]
+                if not len(y): continue
+                n_y = int(y.result.isin(["hit", "miss"]).sum())
+                out.append(dict(summarize(y, label), grade=g, split=name,
+                                share=f"{round(100 * n_y / n_g)}%" if n_g else "-"))
+    return out
+
+
 def table(rows, cols):
     head = "| " + " | ".join(cols) + " |\n|" + "|".join("---" for _ in cols) + "|\n"
     return head + "".join("| " + " | ".join("" if r.get(c) is None else str(r.get(c)) for c in cols) + " |\n" for r in rows)
@@ -257,6 +291,12 @@ def main():
            "voids excluded. A 'low own volume' hold that keeps beating its price on 24+ teams is the hold misfiring.", "",
            table(by_team_total(held_df, b, tt), ["group", "bucket", "avg_team_total", "n", "record", "hit", "implied",
                                                   "beat_price", "roi", "units"])]
+    md += ["## Grade x edge (research): is a grade underperforming because it's concentrated in high-edge legs?", "",
+           "Board: one rung per player/market (the row's best rung), cumulative. Carded: grade and edge as published. "
+           "Share = this split's part of the grade. If a grade's edge >= +2 legs hit below implied while its edge < +2 legs "
+           "beat implied, the grade is being dragged down by legs where our probability exceeds the market's.", "",
+           table(grade_edge(b, held_df), ["group", "grade", "split", "share", "n", "record", "hit", "implied", "ours",
+                                          "beat_price", "roi", "units"])]
     text = "\n".join(md)
     if a.out: open(a.out, "w", encoding="utf-8").write(text)
     sys.stdout.buffer.write(text.encode("utf-8"))

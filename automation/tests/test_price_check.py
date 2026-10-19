@@ -79,3 +79,18 @@ def test_team_total_buckets_and_held_team_lookup():
     assert rows[("held for low own volume", "team total 20 to 23.5")]["record"] == "1-0"
     assert rows[("held, each leg once", "team total under 20")]["record"] == "0-1"
     assert rows[("carded legs", "team total 24+")]["n"] == 1
+
+
+def test_grade_edge_splits_each_grade_and_counts_shares():
+    from price_check import grade_edge
+    b = pd.DataFrame([dict(week=5, slate="sun", player=f"P{i}", market="receptions", rung=3.0, odds=-300, grade="A",
+                           edge=e, prob=0.8, result=r)
+                      for i, (e, r) in enumerate([(3.0, "miss"), (2.5, "hit"), (1.0, "hit"), (0.5, "hit")])])
+    carded = pd.DataFrame([dict(kind="carded", week=3, slate="sun", player="Q", market="rec_yds", rung=40.0, odds=-250,
+                                grade="A", edge=None, prob=0.8, result="hit")])
+    rows = {(r["group"], r["grade"], r["split"]): r for r in grade_edge(b, carded)}
+    assert rows[("board, one rung per row", "A", "all")]["record"] == "3-1"
+    hi = rows[("board, one rung per row", "A", "edge >= +2")]
+    assert hi["record"] == "1-1" and hi["share"] == "50%"
+    assert rows[("board, one rung per row", "A", "edge < +2")]["record"] == "2-0"
+    assert rows[("carded legs", "A", "edge not recorded")]["n"] == 1        # pre-R4 cards: kept, labelled
