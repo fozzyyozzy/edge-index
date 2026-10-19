@@ -105,7 +105,7 @@ def hold_reasons(r, avail=None):
     if r.EstOdds < MAX_LEG_JUICE: why.append(f"price worse than {MAX_LEG_JUICE}")
     edge = getattr(r, "EdgePts", None)
     if edge is not None and not pd.isna(edge) and edge < MIN_EDGE_PTS:
-        why.append(f"edge {edge:+.1f} pts (< +{MIN_EDGE_PTS:g})")                 # R4
+        why.append(f"edge {edge:+.1f} pts (< {MIN_EDGE_PTS:+g})")                 # R4
     return why
 
 def hold_rank(h):
@@ -193,6 +193,10 @@ def main():
     ap.add_argument("--shadow", default=None, help="research: build a SHADOW card under common.BLEND_VARIANTS[slug] into "
                     "cards/shadow/ (never published; Tuesday grades it next to the live card)")
     a = ap.parse_args()
+    if a.shadow:                      # a shadow variant may relax R4 (research only; the live card never takes this path)
+        global MIN_EDGE_PTS
+        from common import SHADOW_RULES
+        MIN_EDGE_PTS = SHADOW_RULES.get(a.shadow, {}).get("min_edge", MIN_EDGE_PTS)
     fl = load_floors(a.season, a.week, a.slate)
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
@@ -221,7 +225,7 @@ def main():
         if a.shadow:                  # floor-rung edge in the hold reasons follows the alternate blend too
             edge_at = {(norm_name(p["player"]), p["market"], float(r["rung"])): r.get("edge_pts")
                        for p in legs_doc["players"] for r in p["rungs"]}
-            fl["EdgePts"] = [edge_at.get((norm_name(r.Player), r.Market, float(str(r.Rung).rstrip("+"))), r.EdgePts)
+            fl["EdgePts"] = [edge_at.get((norm_name(r.Player), r.Market, float(str(r.Rung).rstrip("+"))), getattr(r, "EdgePts", None))
                              for r in fl.itertuples()]
 
     # candidate legs: floors that are winnable AND not over-priced, sorted by strength
@@ -287,7 +291,7 @@ def main():
     if a.shadow:
         from common import BLEND_VARIANTS
         label, cfg = BLEND_VARIANTS[a.shadow]
-        card["shadow"] = dict(slug=a.shadow, label=label, blend=cfg, live_card=os.path.basename(out),
+        card["shadow"] = dict(slug=a.shadow, label=label, blend=cfg, min_edge=MIN_EDGE_PTS, live_card=os.path.basename(out),
                               note="research only: never published; graded Tuesday next to the live card")
         out = P("cards", "shadow", f"card_{a.season}_w{a.week}_{a.slate}_{a.shadow}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings

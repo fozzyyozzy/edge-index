@@ -40,6 +40,8 @@ jobs:
       - name: price check (report only) - holds, carded legs and the Legs board against their prices
         run: |
           python automation/pipeline/price_check.py --season "$SEASON" --through "$WEEK" --out "automation/receipts/price_check_${SEASON}.md"
+          # research: probability-blend variants and shadow R4 floors, every week's slates rebuilt (in-sample; report only)
+          python automation/pipeline/blend_study.py --season "$SEASON" --weeks "3-${WEEK}" --cards --out "automation/receipts/blend_study_${SEASON}.md" > /dev/null             && { echo; echo "---"; echo; cat "automation/receipts/blend_study_${SEASON}.md"; } >> "automation/receipts/price_check_${SEASON}.md"             || echo "::warning::blend study failed; price check posted without it"
           gh issue create --title "PRICE CHECK: ${SEASON} through week ${WEEK}" --body-file "automation/receipts/price_check_${SEASON}.md"
       - name: publish season record to site (NFL Record tab)
         run: |

@@ -197,7 +197,11 @@ BLEND_VARIANTS = {          # slug -> (label, config); shadow cards and blend_st
     "m40": ("market = 40 games", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
     # cap raised: at 0.90 every big favorite would be clipped, and DK's 90%+ prices tracked hit rates well
     "mkt10": ("market + 10% history", dict(market_games=None, history_weight=0.10, cap=0.97)),
+    # heavier blend paired with a relaxed R4 (every other rule unchanged: -450 cap, C or better, every hold)
+    "m40e0": ("market = 40 games, R4 edge >= 0", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
+    "m40em1": ("market = 40 games, R4 edge >= -1", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
 }
+SHADOW_RULES = {"m40e0": dict(min_edge=0.0), "m40em1": dict(min_edge=-1.0)}   # shadow-only rule overrides
 
 def lower_window(h10, g10, h15, g15):
     """(hits, games) of the window with the lower add-one clear rate (the more cautious one)"""

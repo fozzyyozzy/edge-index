@@ -91,4 +91,19 @@ def test_card_workflow_builds_shadows_without_ever_blocking_or_publishing_them()
     assert "--shadow" in steps[i]["run"] and "::warning::" in steps[i]["run"]          # a failure only warns
     pub = next(s for s in steps if s.get("name") == "publish to site")["run"]
     assert "shadow" not in pub                                                           # never copied to the site
-    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["m20", "m40", "mkt10"]
+    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["m20", "m40", "mkt10", "m40e0", "m40em1"]
+
+
+def test_relaxed_r4_variants_are_shadow_only_and_keep_every_other_rule(slate_root):
+    from common import SHADOW_RULES
+    assert SHADOW_RULES == {"m40e0": {"min_edge": 0.0}, "m40em1": {"min_edge": -1.0}}
+    assert BLEND_VARIANTS["m40e0"][1] == BLEND_VARIANTS["m40em1"][1] == BLEND_VARIANTS["m40"][1]
+    import build_card_json
+    assert build_card_json.MIN_EDGE_PTS == 2.0 and build_card_json.MAX_LEG_JUICE == -450      # live R4 / cap untouched
+    write_slate(slate_root, [row(f"S{i}", GAMES[i % 7], grade="A", odds=-250, edge=8) for i in range(8)])
+    env = dict(os.environ, EDGE_ROOT=str(slate_root), PYTHONIOENCODING="utf-8")
+    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "9",
+                    "--slate", "sun", "--shadow", "m40em1"], env=env, check=True, capture_output=True)
+    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w9_sun_m40em1.json"), encoding="utf-8"))
+    assert sh["shadow"]["min_edge"] == -1.0
+    assert all(c["odds_est"] >= -450 and c["grade"] in ("A+", "A", "A-", "B", "C") for c in sh["candidates"])
