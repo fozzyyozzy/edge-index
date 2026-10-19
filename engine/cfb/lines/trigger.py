@@ -17,6 +17,7 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -51,11 +52,18 @@ def dispatch(inputs: dict) -> int:
         headers={"Authorization": f"Bearer {token()}", "Accept": "application/vnd.github+json",
                  "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "edge-index-cfb-trigger"},
         method="POST")
-    try:
-        status = urllib.request.urlopen(req, timeout=30).status
-    except urllib.error.HTTPError as e:
-        status = e.code
-    log(f"dispatch {inputs} -> HTTP {status}")
+    # Retry for ~5 min: right after a wake-from-sleep the network is often not up yet.
+    for attempt in range(1, 7):
+        try:
+            status = urllib.request.urlopen(req, timeout=30).status
+        except urllib.error.HTTPError as e:
+            status = e.code
+        except (urllib.error.URLError, OSError) as e:
+            status = f"network error ({type(e).__name__})"
+        log(f"dispatch {inputs} attempt {attempt} -> HTTP {status}")
+        if status == 204 or (isinstance(status, int) and status < 500):
+            return status
+        time.sleep(60)
     return status
 
 

@@ -104,6 +104,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.slot }}" ]; then
             read -r TAG LAG ARGS <<< "$(python -m engine.cfb.lines.slots --resolve '${{ github.event.inputs.slot }}')"
+            [ -z "$TAG" ] && echo "slot ${{ github.event.inputs.slot }} already served (a cron got there first); skipping"
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TAG=""; LAG=""; ARGS="${{ github.event.inputs.args }}"
           else

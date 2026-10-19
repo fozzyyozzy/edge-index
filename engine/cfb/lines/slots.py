@@ -1,7 +1,7 @@
 """CFB DK capture schedule (ET) and the slot guard used by .github/workflows/cfb_lines.yml.
 
     python -m engine.cfb.lines.slots --which              # "<tag> <lag_min> <capture args>" or nothing
-    python -m engine.cfb.lines.slots --resolve tue10      # manual recovery of a named slot (any lag)
+    python -m engine.cfb.lines.slots --resolve tue10      # named slot (any lag); nothing if already served
     python -m engine.cfb.lines.slots --mark-served TAG
 
 Cron is UTC and ET shifts with DST, so every slot has EDT and EST crons, plus a BACKUP cron 30
@@ -73,10 +73,15 @@ def which(now: datetime | None = None):
 
 
 def resolve(name: str, now: datetime | None = None):
-    """Manual recovery: tag with the most recent occurrence of `name`, any lag."""
+    """Named slot (Windows trigger or manual recovery): tag with the most recent occurrence of `name`,
+    any lag. None if that occurrence is already served, so a GitHub cron that got there first and the
+    Windows trigger never both make a paid capture."""
     now = (now or datetime.now(ET)).astimezone(ET)
     start = last_occurrence(name, now)
-    return f"{start:%Y-%m-%d}:{name}", round((now - start).total_seconds() / 60), SLOTS[name][2]
+    tag = f"{start:%Y-%m-%d}:{name}"
+    if tag in served():
+        return None
+    return tag, round((now - start).total_seconds() / 60), SLOTS[name][2]
 
 
 def mark(tag: str) -> None:
@@ -96,6 +101,6 @@ if __name__ == "__main__":
         print(f"{w[0]} {w[1]} {w[2]}" if w else "")
     elif a.resolve:
         t = resolve(a.resolve)
-        print(f"{t[0]} {t[1]} {t[2]}")
+        print(f"{t[0]} {t[1]} {t[2]}" if t else "")
     elif a.mark_served:
         mark(a.mark_served)
