@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -71,3 +72,34 @@ def test_pregame_filter():
     df = pd.DataFrame({"kickoff_utc": ["2026-10-17T20:00:00+00:00", "2026-10-17T16:00:00+00:00"]})
     kept = forward.pregame(df, "2026-10-17T17:00:00+00:00")
     assert len(kept) == 1
+
+
+def _snap_rows(ts, label, gid, spread, kick="2026-10-17T20:00:00+00:00"):
+    return {"captured_at_utc": ts, "label": label, "event_id": "e", "game_id": gid, "week": 7,
+            "commence_time": kick, "home_team": "H", "away_team": "A", "cfbd_home": "H",
+            "market": "spreads", "team": "H", "is_home": 1, "point": spread, "price": -110}
+
+
+def test_bet_snapshot_is_never_the_close(tmp_path, monkeypatch):
+    """Week 7 bug: a later 'bet' recovery snapshot was graded as the close (zero moves).
+    Only 'close'-labeled pregame snapshots count; otherwise CFBD's DK close (close_source=cfbd)."""
+    import warnings
+    from engine.cfb import config
+    snap = tmp_path / "snapshots"; snap.mkdir()
+    clean = tmp_path / "clean"; clean.mkdir()
+    pd.DataFrame([
+        _snap_rows("2026-10-13T14:32:23+00:00", "bet", 1, -3.0), _snap_rows("2026-10-13T14:36:58+00:00", "bet", 1, -3.0),
+        _snap_rows("2026-10-13T14:32:23+00:00", "bet", 2, -7.0), _snap_rows("2026-10-17T15:10:00+00:00", "close", 2, -9.0),
+    ]).to_csv(snap / "dk_main_2026_wk07.csv", index=False)
+    pd.DataFrame({"game_id": [1, 2], "provider": ["DraftKings"] * 2, "spread": [-4.5, -8.0]}) \
+        .to_parquet(clean / "lines.parquet", index=False)
+    pd.DataFrame([_proj("2026-10-12T15:00:00+00:00", 1, -3.0, 6.0), _proj("2026-10-12T15:00:00+00:00", 2, -7.0, 9.0)]) \
+        .to_csv(tmp_path / forward.PROJ_LOG, index=False)
+    monkeypatch.setattr(forward, "SNAP", snap)
+    monkeypatch.setattr(config, "CLEAN", clean)
+    g = forward.dk_snapshot_games(tmp_path).set_index("game_id")
+    assert g.loc[1, "close_source"] == "cfbd" and g.loc[1, "close_spread"] == -4.5     # not the 10:36 bet snapshot
+    assert g.loc[2, "close_source"] == "dk_snapshot" and g.loc[2, "close_spread"] == -9.0
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")                                                 # no zero-variance warnings
+        assert np.isnan(forward.safe_corr([1, 2, 3], [0, 0, 0]))

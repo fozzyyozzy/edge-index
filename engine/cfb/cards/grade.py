@@ -89,9 +89,9 @@ def alt_shape_split(d: pd.DataFrame) -> dict:
     out = {}
     for name, grp in (("|spread| <= 14", x[~big]), ("|spread| > 14", x[big])):
         if len(grp):
-            out[name] = {"legs": len(grp), "hit_%": round(100 * grp.result.mean(), 1),
-                         "breakeven_%": round(100 * grp.breakeven.mean(), 1),
-                         "roi_%": round(100 * grp.units.mean(), 1)}
+            out[name] = {"legs": int(len(grp)), "hit_%": round(float(100 * grp.result.mean()), 1),
+                         "breakeven_%": round(float(100 * grp.breakeven.mean()), 1),
+                         "roi_%": round(float(100 * grp.units.mean()), 1)}
     return out
 
 

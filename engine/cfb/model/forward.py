@@ -136,7 +136,15 @@ def clv_stats(g: pd.DataFrame, proj_col: str) -> dict:
             "moves": int(moved.sum()),
             "toward_share_pct": float(100 * toward.sum() / moved.sum()) if moved.any() else np.nan,
             "avg_move_toward_model": float((mv * np.sign(e)).mean()) if len(q) else np.nan,
-            "corr": float(np.corrcoef(edge, move)[0, 1]) if len(x) > 2 else np.nan}
+            "corr": safe_corr(edge, move)}
+
+
+def safe_corr(a, b) -> float:
+    """Pearson r, or NaN (no warning) when n < 3 or either side has zero variance."""
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    if len(a) < 3 or np.nanstd(a) == 0 or np.nanstd(b) == 0:
+        return float("nan")
+    return float(np.corrcoef(a, b)[0, 1])
 
 
 # ------------------------------------------------------------------ DK snapshot path (Phase 4)
@@ -151,7 +159,8 @@ def _bucket_k(week: pd.Series, coef: dict) -> pd.Series:
 def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
     """Per game from Odds API DK snapshots (pregame only by construction):
     bet line = earliest 'bet' snapshot (Tue 10 AM ET), else the first-seen snapshot;
-    close = last snapshot before kickoff (taken after the bet snapshot).
+    close = last pregame snapshot LABELED 'close' after the bet snapshot; if none, CFBD's DraftKings
+    closing spread (close_source = 'cfbd'). A bet-time snapshot is never the close.
     Projection recomputed at each line with the frozen model from the latest projection-log
     row captured at or before the bet snapshot (else the earliest row)."""
     import glob
@@ -176,8 +185,17 @@ def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
     import json as _json
     from engine.cfb.model.run import PARAMS
     coef = _json.loads(PARAMS.read_text())["coef"]
+    # fallback close: CFBD's DraftKings closing spread (home perspective), close_source = 'cfbd'
+    try:
+        L = pd.read_parquet(config.CLEAN / "lines.parquet", columns=["game_id", "provider", "spread"])
+        cfbd_close = L[(L.provider == "DraftKings")].dropna(subset=["spread"])             .drop_duplicates("game_id").set_index("game_id").spread.to_dict()
+    except FileNotFoundError:
+        cfbd_close = {}
     for i, gid in enumerate(first.index):
-        later = m[(m.game_id == gid) & (m.captured_at_utc > bet.loc[gid, "captured_at_utc"])]
+        # CLOSE = last pregame snapshot labeled 'close' after the bet snapshot. A bet/open/late/manual
+        # snapshot is NEVER the close (week 7: a 10:36 'bet' recovery run was graded as the close).
+        later = m[(m.game_id == gid) & (m.label == "close")
+                  & (m.captured_at_utc > bet.loc[gid, "captured_at_utc"])]
         pr = p[p.game_id == gid]
         if pr.empty:
             continue
@@ -187,8 +205,9 @@ def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
                      "kickoff_utc": first.loc[gid, "kick"], "source": bet_src[i],
                      "bet_ts_utc": bet.loc[gid, "captured_at_utc"], "dk_spread": bet.loc[gid, "point"],
                      "first_seen_spread": first.loc[gid, "point"],
-                     "close_spread": later.point.iloc[-1] if len(later) else np.nan,
+                     "close_spread": later.point.iloc[-1] if len(later) else cfbd_close.get(gid, np.nan),
                      "close_ts_utc": later.captured_at_utc.iloc[-1] if len(later) else pd.NaT,
+                     "close_source": "dk_snapshot" if len(later) else ("cfbd" if gid in cfbd_close else "none"),
                      "ratings_margin": row.ratings_margin, "qb_delta": row.qb_delta})
     g = pd.DataFrame(rows)
     if g.empty:
@@ -296,9 +315,12 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
             continue
         wc = x.dropna(subset=["close_spread"])
         prim, ronly = clv_stats(wc, "proj_primary"), clv_stats(wc, "proj_ratings_only")
+        src = wc.close_source.value_counts().to_dict() if "close_source" in wc else {}
+        lines.append(f"- **{label}, close source:** " + (", ".join(f"{k} {v}" for k, v in src.items()) or "n/a")
+                     + (" (no DK close snapshot: CFBD DraftKings closing line)" if src.get("cfbd") else ""))
         gr = wc.dropna(subset=["margin_home"])
         lines.append(
-            f"- **{label}:** {len(x)} games logged, {len(wc)} with a DK close, "
+            f"- **{label}:** {len(x)} games logged, {len(wc)} with a close, "
             f"{prim['games_edge']} at |edge| >= 1.5"
             + (f" ({prim['games_edge']}/{BARS['min_games']} toward the bar)" if label.startswith("To") else "")
             + f". CLV toward model: **{prim['toward_share_pct']:.1f}%** of {prim['moves']} moves, "
@@ -361,7 +383,14 @@ def append_weekly(season: int, week: int, dry_run: bool = False, force: bool = F
     doc = DOC.read_text(encoding="utf-8")
     tag = f"### Week {week} ({season}),"
     if tag in doc and not force:
-        return f"(week {week} already logged; use --force to add another entry)\n"
+        return f"(week {week} already logged; use --force to REPLACE it)\n"
+    if tag in doc and force:                     # replace the existing entry in place (re-grade)
+        i = doc.index(tag)
+        nxt = [j for j in (doc.find("\n### ", i + 1), doc.find("\n## ", i + 1)) if j != -1]
+        end = min(nxt) + 1 if nxt else len(doc)
+        doc = doc[:i] + entry + "\n" + doc[end:]
+        DOC.write_text(doc, encoding="utf-8")
+        return entry
     head, anchor = "## Weekly log", "## Current score"
     if head not in doc:
         doc = doc.replace(anchor, f"{head}\n\nAppended after each week grades by "

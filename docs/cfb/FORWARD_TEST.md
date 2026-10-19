@@ -140,6 +140,20 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
 - **Ticket rule:** at most 2 `ALT-SHAPE` legs per ticket, with the rest from other labels; a
   ticket that can't reach +200 under the rules is labeled "reduced payout, floors held".
 
+## Weekly log
+
+Appended after each week grades by `python -m engine.cfb.model.forward weekly --week N`. Informational; the bars above decide.
+
+### Week 7 (2026), graded 2026-10-19
+- **This week, close source:** cfbd 59 (no DK close snapshot: CFBD DraftKings closing line)
+- **This week:** 59 games logged, 59 with a close, 8 at |edge| >= 1.5. CLV toward model: **33.3%** of 6 moves, avg move +0.06 pts (ratings-only 33.3%, +0.06). ATS vs bet-time line (|edge| >= 1.5): **2-6 (25.0%)**, ratings-only 2-6 (25.0%).
+- **To date (weeks 4+), close source:** cfbd 59 (no DK close snapshot: CFBD DraftKings closing line)
+- **To date (weeks 4+):** 59 games logged, 59 with a close, 8 at |edge| >= 1.5 (8/150 toward the bar). CLV toward model: **33.3%** of 6 moves, avg move +0.06 pts (ratings-only 33.3%, +0.06). ATS vs bet-time line (|edge| >= 1.5): **2-6 (25.0%)**, ratings-only 2-6 (25.0%).
+- **Rung log (shape-bar sample, to date):** 21 graded games / 24 rungs; hit 62.5% vs DK no-vig 73.0% (**lift -10.5 pp**, 95% CI -31.5 to +8.7); break-even at posted prices 78.1%; **EV at posted price: predicted -0.010, realized -0.189 units/rung** (CI -0.456 to +0.057). 21/60 toward the bar.
+- **Floor card (to date):** 11 graded floor legs, hit 81.8% vs mean implied break-even 72.0%, **ROI at posted prices +14.0%** (game-clustered CI -22.6 to +41.7); IN PROGRESS: 11/100 graded floor legs; $0. By market: {'ALT-SHAPE': {'legs': 6, 'hit': 1.0, 'roi': 0.413}, 'ML-SHADED': {'legs': 2, 'hit': 0.5, 'roi': -0.296}, 'TEAM-TOTAL': {'legs': 3, 'hit': 0.667, 'roi': -0.116}}.
+- **ALT-SHAPE split by game spread (diagnostic, not a bar):** {'|spread| <= 14': {'legs': 5, 'hit_%': 100.0, 'breakeven_%': 70.5, 'roi_%': 42.8}, '|spread| > 14': {'legs': 1, 'hit_%': 100.0, 'breakeven_%': 74.9, 'roi_%': 33.6}}.
+- **Edge list, main spreads at the Tuesday line (separate track):** 8 graded, hit 25.0% vs break-even 53.0%, ROI -52.8% (game-clustered CI -100.0 to -5.0).
+
 ## Current score
 
 <!-- AUTO:SCORE:BEGIN -->
