@@ -22,6 +22,9 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo("America/New_York")
 SERVED = Path(__file__).resolve().parents[3] / "data" / "cfb" / "lines" / "served_slots.txt"
 GRACE_MIN = 90
+# Tim, 2026-10-19: CLOSE slots accept any late run (capped at 24 h): capture.py writes only games
+# that haven't kicked off, so every row is still a valid pregame close after the bet snapshot.
+CLOSE_GRACE_MIN = 24 * 60
 
 # name: (weekday 0=Mon, hour ET, capture args)
 SLOTS = {
@@ -63,7 +66,8 @@ def which(now: datetime | None = None):
         start = last_occurrence(name, now)
         lag = (now - start).total_seconds() / 60
         tag = f"{start:%Y-%m-%d}:{name}"
-        if 0 <= lag <= GRACE_MIN and tag not in done and (best is None or lag < best[1]):
+        grace = CLOSE_GRACE_MIN if "--label close" in args else GRACE_MIN
+        if 0 <= lag <= grace and tag not in done and (best is None or lag < best[1]):
             best = (tag, round(lag), args)
     return best
 

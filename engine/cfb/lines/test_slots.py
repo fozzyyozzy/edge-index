@@ -26,3 +26,10 @@ def test_served_slot_is_skipped(monkeypatch):
 def test_manual_recovery_any_lag():
     tag, lag, args = slots.resolve("tue10", at("2026-10-13 14:00"))
     assert tag == "2026-10-13:tue10" and lag == 240 and "--label bet" in args
+
+
+def test_close_slots_accept_late_runs(monkeypatch):
+    monkeypatch.setattr(slots, "served", lambda: set())
+    tag, lag, args = slots.which(at("2026-10-17 13:40"))          # Sat 11 AM close, 2 h 40 m late
+    assert tag == "2026-10-17:sat11" and "--label close" in args
+    assert slots.which(at("2026-10-14 15:30")) is not None and "wed10" not in slots.which(at("2026-10-14 15:30"))[0]
