@@ -1,0 +1,722 @@
+{
+ "season": 2026,
+ "week": 6,
+ "legs_graded": 10,
+ "legs_hit": 4,
+ "hit_rate": 0.4,
+ "avg_model_pct": 74.8,
+ "flat_pnl_1u": -4.24,
+ "by_market": [
+  {
+   "market": "rec_yds",
+   "n": 4,
+   "hit": 0.5
+  },
+  {
+   "market": "receptions",
+   "n": 3,
+   "hit": 0.67
+  },
+  {
+   "market": "rush_att",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "market": "rush_yds",
+   "n": 2,
+   "hit": 0.0
+  }
+ ],
+ "by_bucket": [
+  {
+   "bucket": "<75",
+   "n": 4,
+   "hit": 0.25
+  },
+  {
+   "bucket": "75-85",
+   "n": 6,
+   "hit": 0.5
+  }
+ ],
+ "near_misses": [
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_att",
+   "rung": 8.0,
+   "actual": 7.0,
+   "miss_by": 1.0
+  },
+  {
+   "player": "Davante Adams",
+   "market": "receptions",
+   "rung": 4.0,
+   "actual": 3.0,
+   "miss_by": 1.0
+  }
+ ],
+ "misses": [
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_att",
+   "rung": 8.0,
+   "actual": 7.0,
+   "note": "L10 10/10, L15 15/15; last 3 [15, 9, 14]; opp D TOUGH; floor rung 12+ graded lower",
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Bijan Robinson",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "actual": 61.0,
+   "note": "L10 9/10, L15 13/15; last 3 [194, 145, 86]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Juwan Johnson",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "actual": 0.0,
+   "note": "L10 9/10, L15 14/15; last 3 [53, 59, 16]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "actual": 50.0,
+   "note": "L10 8/10, L15 12/15; last 3 [88, 80, 49]; opp D SOFT",
+   "opp_d": "SOFT",
+   "own_vol": "neutral",
+   "ticket": "SUN-2"
+  },
+  {
+   "player": "Xavier Hutchinson",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "actual": 10.0,
+   "note": "L10 8/10, L15 12/15; last 3 [51, 46, 65]; opp D SOFT",
+   "opp_d": "SOFT",
+   "own_vol": "SOFT",
+   "ticket": "SUN-3"
+  },
+  {
+   "player": "Davante Adams",
+   "market": "receptions",
+   "rung": 4.0,
+   "actual": 3.0,
+   "note": "L10 8/10, L15 13/15; last 3 [7, 4, 5]; opp D SOFT",
+   "opp_d": "SOFT",
+   "own_vol": "SOFT",
+   "ticket": "SUN-3"
+  }
+ ],
+ "est_vs_real": [
+  {
+   "player": "Nico Collins",
+   "market": "rec_yds",
+   "rung": 50.0,
+   "est": -267,
+   "real": -272,
+   "hit": true
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_att",
+   "rung": 8.0,
+   "est": -343,
+   "real": -349,
+   "hit": false
+  },
+  {
+   "player": "Bijan Robinson",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "est": -310,
+   "real": -314,
+   "hit": false
+  },
+  {
+   "player": "Juwan Johnson",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "est": -245,
+   "real": -306,
+   "hit": false
+  },
+  {
+   "player": "Nico Collins",
+   "market": "rec_yds",
+   "rung": 50.0,
+   "est": -267,
+   "real": -272,
+   "hit": true
+  },
+  {
+   "player": "Chris Godwin",
+   "market": "receptions",
+   "rung": 3.0,
+   "est": -226,
+   "real": -202,
+   "hit": true
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "est": -170,
+   "real": -184,
+   "hit": false
+  },
+  {
+   "player": "Xavier Hutchinson",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "est": -111,
+   "real": -111,
+   "hit": false
+  },
+  {
+   "player": "Bucky Irving",
+   "market": "receptions",
+   "rung": 2.0,
+   "est": -208,
+   "real": -188,
+   "hit": true
+  },
+  {
+   "player": "Davante Adams",
+   "market": "receptions",
+   "rung": 4.0,
+   "est": -210,
+   "real": -196,
+   "hit": false
+  }
+ ],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 2,
+   "hits": 2,
+   "avg_prob": 81.2,
+   "avg_implied": 73.1,
+   "expected": 81.2
+  },
+  {
+   "grade": "A",
+   "n": 2,
+   "hits": 0,
+   "avg_prob": 80.9,
+   "avg_implied": 76.8,
+   "expected": 80.9
+  },
+  {
+   "grade": "A-",
+   "n": 2,
+   "hits": 1,
+   "avg_prob": 76.6,
+   "avg_implied": 71.1,
+   "expected": 76.6
+  },
+  {
+   "grade": "B",
+   "n": 4,
+   "hits": 1,
+   "avg_prob": 67.6,
+   "avg_implied": 62.2,
+   "expected": 67.6
+  },
+  {
+   "grade": "C",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "D",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "F",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  }
+ ],
+ "grade_basis": "blended",
+ "tickets": [
+  {
+   "slate": "sun",
+   "name": "SUN-1",
+   "legs": 4,
+   "flag": null,
+   "est_american": 208,
+   "clv_pts": 1.76,
+   "leg_text": [
+    "Nico Collins 50+ rec_yds (-272)",
+    "Omarion Hampton 8+ rush_att (-349)",
+    "Bijan Robinson 70+ rush_yds (-314)",
+    "Juwan Johnson 25+ rec_yds (-306)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Nico Collins",
+     "team": "HOU",
+     "market": "rec_yds",
+     "rung": 50.0,
+     "odds": -272,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 74.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -284,
+     "clv_pts": 0.84,
+     "thursday_odds": -299,
+     "thu_to_pub_pts": -1.82
+    },
+    {
+     "player": "Omarion Hampton",
+     "team": "LAC",
+     "market": "rush_att",
+     "rung": 8.0,
+     "odds": -349,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 7.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -364,
+     "clv_pts": 0.72,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Bijan Robinson",
+     "team": "ATL",
+     "market": "rush_yds",
+     "rung": 70.0,
+     "odds": -314,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 61.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -345,
+     "clv_pts": 1.68,
+     "thursday_odds": -297,
+     "thu_to_pub_pts": 1.03
+    },
+    {
+     "player": "Juwan Johnson",
+     "team": "NO",
+     "market": "rec_yds",
+     "rung": 25.0,
+     "odds": -306,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 0.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -319,
+     "clv_pts": 0.76,
+     "thursday_odds": -302,
+     "thu_to_pub_pts": 0.25
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Omarion Hampton",
+    "Bijan Robinson",
+    "Juwan Johnson"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-2",
+   "legs": 3,
+   "flag": null,
+   "est_american": 216,
+   "clv_pts": -0.89,
+   "leg_text": [
+    "Nico Collins 50+ rec_yds (-272)",
+    "Chris Godwin 3+ receptions (-202)",
+    "Kyren Williams 60+ rush_yds (-184)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Nico Collins",
+     "team": "HOU",
+     "market": "rec_yds",
+     "rung": 50.0,
+     "odds": -272,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 74.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -284,
+     "clv_pts": 0.84,
+     "thursday_odds": -299,
+     "thu_to_pub_pts": -1.82
+    },
+    {
+     "player": "Chris Godwin",
+     "team": "TB",
+     "market": "receptions",
+     "rung": 3.0,
+     "odds": -202,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 4.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -194,
+     "clv_pts": -0.9,
+     "thursday_odds": -200,
+     "thu_to_pub_pts": 0.22
+    },
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "market": "rush_yds",
+     "rung": 60.0,
+     "odds": -184,
+     "price_estimated": false,
+     "grade": "B",
+     "actual": 50.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -171,
+     "clv_pts": -1.69,
+     "thursday_odds": -186,
+     "thu_to_pub_pts": -0.25
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Kyren Williams"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-3",
+   "legs": 3,
+   "flag": null,
+   "est_american": 340,
+   "clv_pts": 0.38,
+   "leg_text": [
+    "Xavier Hutchinson 15+ rec_yds (-111)",
+    "Bucky Irving 2+ receptions (-188)",
+    "Davante Adams 4+ receptions (-196)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Xavier Hutchinson",
+     "team": "HOU",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "odds": -111,
+     "price_estimated": false,
+     "grade": "B",
+     "actual": 10.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -110,
+     "clv_pts": -0.23,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Bucky Irving",
+     "team": "TB",
+     "market": "receptions",
+     "rung": 2.0,
+     "odds": -188,
+     "price_estimated": false,
+     "grade": "B",
+     "actual": 2.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -193,
+     "clv_pts": 0.59,
+     "thursday_odds": -181,
+     "thu_to_pub_pts": 0.86
+    },
+    {
+     "player": "Davante Adams",
+     "team": "LA",
+     "market": "receptions",
+     "rung": 4.0,
+     "odds": -196,
+     "price_estimated": false,
+     "grade": "B",
+     "actual": 3.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -203,
+     "clv_pts": 0.78,
+     "thursday_odds": -231,
+     "thu_to_pub_pts": -3.57
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Xavier Hutchinson",
+    "Davante Adams"
+   ]
+  }
+ ],
+ "held_by_reason": [
+  {
+   "reason": "team change",
+   "n": 16,
+   "hits": 12,
+   "misses": 4,
+   "voids": 0
+  },
+  {
+   "reason": "blowout risk",
+   "n": 5,
+   "hits": 5,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "reason": "tough defense",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "reason": "low own volume",
+   "n": 32,
+   "hits": 27,
+   "misses": 5,
+   "voids": 0
+  },
+  {
+   "reason": "price worse than \u2212450",
+   "n": 28,
+   "hits": 26,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "reason": "edge below +2",
+   "n": 88,
+   "hits": 67,
+   "misses": 20,
+   "voids": 1
+  },
+  {
+   "reason": "grade below C",
+   "n": 49,
+   "hits": 33,
+   "misses": 13,
+   "voids": 3
+  },
+  {
+   "reason": "injury",
+   "n": 8,
+   "hits": 7,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "reason": "held by hand",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  }
+ ],
+ "sunday_price_moves": [
+  {
+   "player": "Nico Collins",
+   "market": "rec_yds",
+   "rung": 50.0,
+   "thursday": -299,
+   "published": -272,
+   "closing": -284,
+   "thu_to_pub_pts": -1.82,
+   "pub_to_close_pts": 0.84
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_att",
+   "rung": 8.0,
+   "thursday": null,
+   "published": -349,
+   "closing": -364,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": 0.72
+  },
+  {
+   "player": "Bijan Robinson",
+   "market": "rush_yds",
+   "rung": 70.0,
+   "thursday": -297,
+   "published": -314,
+   "closing": -345,
+   "thu_to_pub_pts": 1.03,
+   "pub_to_close_pts": 1.68
+  },
+  {
+   "player": "Juwan Johnson",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "thursday": -302,
+   "published": -306,
+   "closing": -319,
+   "thu_to_pub_pts": 0.25,
+   "pub_to_close_pts": 0.76
+  },
+  {
+   "player": "Chris Godwin",
+   "market": "receptions",
+   "rung": 3.0,
+   "thursday": -200,
+   "published": -202,
+   "closing": -194,
+   "thu_to_pub_pts": 0.22,
+   "pub_to_close_pts": -0.9
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 60.0,
+   "thursday": -186,
+   "published": -184,
+   "closing": -171,
+   "thu_to_pub_pts": -0.25,
+   "pub_to_close_pts": -1.69
+  },
+  {
+   "player": "Xavier Hutchinson",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "thursday": null,
+   "published": -111,
+   "closing": -110,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": -0.23
+  },
+  {
+   "player": "Bucky Irving",
+   "market": "receptions",
+   "rung": 2.0,
+   "thursday": -181,
+   "published": -188,
+   "closing": -193,
+   "thu_to_pub_pts": 0.86,
+   "pub_to_close_pts": 0.59
+  },
+  {
+   "player": "Davante Adams",
+   "market": "receptions",
+   "rung": 4.0,
+   "thursday": -231,
+   "published": -196,
+   "closing": -203,
+   "thu_to_pub_pts": -3.57,
+   "pub_to_close_pts": 0.78
+  }
+ ],
+ "board_by_grade": [
+  {
+   "grade": "A+",
+   "n": 1,
+   "hits": 1,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "grade": "A",
+   "n": 17,
+   "hits": 8,
+   "misses": 8,
+   "voids": 1
+  },
+  {
+   "grade": "A-",
+   "n": 63,
+   "hits": 52,
+   "misses": 10,
+   "voids": 1
+  },
+  {
+   "grade": "B",
+   "n": 60,
+   "hits": 50,
+   "misses": 10,
+   "voids": 0
+  },
+  {
+   "grade": "C",
+   "n": 65,
+   "hits": 50,
+   "misses": 14,
+   "voids": 1
+  },
+  {
+   "grade": "D",
+   "n": 11,
+   "hits": 10,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "grade": "F",
+   "n": 195,
+   "hits": 57,
+   "misses": 134,
+   "voids": 4
+  }
+ ],
+ "clv": {
+  "n": 10,
+  "avg_leg_pts": 0.34
+ },
+ "ticket_record": {
+  "WIN": 0,
+  "LOSS": 3,
+  "VOID": 0
+ },
+ "ticket_record_standard": {
+  "WIN": 0,
+  "LOSS": 3,
+  "VOID": 0
+ },
+ "units": -3.0,
+ "units_standard": -3.0,
+ "shadow": null
+}

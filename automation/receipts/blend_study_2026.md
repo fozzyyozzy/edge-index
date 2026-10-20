@@ -225,7 +225,7 @@ Each slate's committed inputs (latest pre-kickoff prices), built offline with bu
 
 | variant | slates | pool | pool_per_slate | tickets | tickets_per_slate | slates_with_no_ticket | record | units |
 |---|---|---|---|---|---|---|---|---|
-| live (market = 10 games) | 12 | 117 | 9.8 | 15 | 1.25 | 4 | 5-10 | 0.13 |
+| live (market = 10 games) | 12 | 116 | 9.7 | 15 | 1.25 | 4 | 5-10 | 0.13 |
 | market = 20 games | 12 | 62 | 5.2 | 12 | 1.0 | 5 | 4-8 | 0.91 |
 | market = 40 games | 12 | 16 | 1.3 | 2 | 0.17 | 10 | 0-2 | -2.0 |
 | market + 10% history | 12 | 0 | 0.0 | 0 | 0.0 | 12 | 0-0 | 0.0 |
