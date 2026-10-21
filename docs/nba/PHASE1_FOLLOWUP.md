@@ -91,7 +91,11 @@ The grader is Phase 3 code, so it's not implemented yet.
 
 ## 5. Commit on `nba-phase1`
 
-See the closing note: gitleaks result, then commit status. The commit holds:
+- **gitleaks 8.30.1:** `gitleaks git --staged` and `gitleaks dir` on the branch content both found no leaks. A literal search for the API key in the staged files found nothing. The commit itself was then scanned (`--log-opts=-1`): no leaks.
+- **Branch tests:** the full suite (239 tests) passes in the branch worktree.
+- **Commit:** `b2ddfb63` on local branch `nba-phase1`, 37 files. **Not pushed.**
+
+The commit holds:
 - Phase 0 and 1 code (`engine/nba/`)
 - tests and fixtures
 - `data/nba/`, except the gitignored `raw/`
