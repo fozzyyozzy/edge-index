@@ -1,0 +1,4042 @@
+{
+ "season": 2025,
+ "week": 15,
+ "slate": "sun",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2025-12-16T01:00+00:00",
+ "published_at": "2025-12-16T01:00+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "aaron jones|rec_yds",
+  "aaron jones|receptions",
+  "adam thielen|rec_yds",
+  "adam thielen|receptions",
+  "adonai mitchell|rec_yds",
+  "adonai mitchell|receptions",
+  "aj barner|rec_yds",
+  "aj barner|receptions",
+  "aj brown|rec_yds",
+  "aj brown|receptions",
+  "alec pierce|rec_yds",
+  "alec pierce|receptions",
+  "amon-ra st. brown|rec_yds",
+  "amon-ra st. brown|receptions",
+  "andre baccellia|rec_yds",
+  "andre baccellia|receptions",
+  "andrei iosivas|rec_yds",
+  "andrei iosivas|receptions",
+  "anthony firkser|rec_yds",
+  "anthony firkser|receptions",
+  "ashton jeanty|rec_yds",
+  "ashton jeanty|receptions",
+  "ben sinnott|rec_yds",
+  "ben sinnott|receptions",
+  "bijan robinson|rec_yds",
+  "bijan robinson|receptions",
+  "breece hall|rec_yds",
+  "breece hall|receptions",
+  "brenton strange|rec_yds",
+  "brenton strange|receptions",
+  "brian thomas|rec_yds",
+  "brian thomas|receptions",
+  "brock bowers|rec_yds",
+  "brock bowers|receptions",
+  "bucky irving|rec_yds",
+  "bucky irving|receptions",
+  "calvin austin|rec_yds",
+  "calvin austin|receptions",
+  "cedric tillman|rec_yds",
+  "cedric tillman|receptions",
+  "ceedee lamb|rec_yds",
+  "ceedee lamb|receptions",
+  "chase brown|rec_yds",
+  "chase brown|receptions",
+  "chigoziem okonkwo|rec_yds",
+  "chigoziem okonkwo|receptions",
+  "chimere dike|rec_yds",
+  "chimere dike|receptions",
+  "chris godwin|rec_yds",
+  "chris godwin|receptions",
+  "chris olave|rec_yds",
+  "chris olave|receptions",
+  "christian kirk|rec_yds",
+  "christian kirk|receptions",
+  "christian mccaffrey|rec_yds",
+  "christian mccaffrey|receptions",
+  "christian watson|rec_yds",
+  "christian watson|receptions",
+  "chuba hubbard|rec_yds",
+  "chuba hubbard|receptions",
+  "colby parkinson|rec_yds",
+  "colby parkinson|receptions",
+  "cole kmet|rec_yds",
+  "cole kmet|receptions",
+  "colston loveland|rec_yds",
+  "colston loveland|receptions",
+  "cooper kupp|rec_yds",
+  "cooper kupp|receptions",
+  "courtland sutton|rec_yds",
+  "courtland sutton|receptions",
+  "d'andre swift|rec_yds",
+  "d'andre swift|receptions",
+  "dallas goedert|rec_yds",
+  "dallas goedert|receptions",
+  "dalton kincaid|rec_yds",
+  "dalton kincaid|receptions",
+  "dalton schultz|rec_yds",
+  "dalton schultz|receptions",
+  "darius slayton|rec_yds",
+  "darius slayton|receptions",
+  "darnell mooney|rec_yds",
+  "darnell mooney|receptions",
+  "darnell washington|rec_yds",
+  "darnell washington|receptions",
+  "darren waller|rec_yds",
+  "darren waller|receptions",
+  "davante adams|rec_yds",
+  "davante adams|receptions",
+  "david montgomery|rec_yds",
+  "david montgomery|receptions",
+  "david sills v|rec_yds",
+  "david sills v|receptions",
+  "davis allen|rec_yds",
+  "davis allen|receptions",
+  "dawson knox|rec_yds",
+  "dawson knox|receptions",
+  "de'von achane|rec_yds",
+  "de'von achane|receptions",
+  "deandre hopkins|rec_yds",
+  "deandre hopkins|receptions",
+  "deebo samuel|rec_yds",
+  "deebo samuel|receptions",
+  "demarcus robinson|rec_yds",
+  "demario douglas|rec_yds",
+  "demario douglas|receptions",
+  "derrick henry|rec_yds",
+  "derrick henry|receptions",
+  "devaughn vele|rec_yds",
+  "devaughn vele|receptions",
+  "devin neal|rec_yds",
+  "devin neal|receptions",
+  "devonta smith|rec_yds",
+  "devonta smith|receptions",
+  "dj moore|rec_yds",
+  "dj moore|receptions",
+  "dk metcalf|rec_yds",
+  "dk metcalf|receptions",
+  "dontayvion wicks|rec_yds",
+  "dontayvion wicks|receptions",
+  "dylan drummond|rec_yds",
+  "dylan drummond|receptions",
+  "elic ayomanor|rec_yds",
+  "elic ayomanor|receptions",
+  "emari demercado|rec_yds",
+  "emari demercado|receptions",
+  "emeka egbuka|rec_yds",
+  "emeka egbuka|receptions",
+  "evan engram|rec_yds",
+  "evan engram|receptions",
+  "george kittle|rec_yds",
+  "george kittle|receptions",
+  "george pickens|rec_yds",
+  "george pickens|receptions",
+  "greg dulcich|rec_yds",
+  "greg dulcich|receptions",
+  "gunnar helm|rec_yds",
+  "gunnar helm|receptions",
+  "harold fannin|rec_yds",
+  "harold fannin|receptions",
+  "hunter henry|rec_yds",
+  "hunter henry|receptions",
+  "isaac teslaa|rec_yds",
+  "isaac teslaa|receptions",
+  "isaiah bond|rec_yds",
+  "isaiah bond|receptions",
+  "isaiah hodgins|rec_yds",
+  "isaiah hodgins|receptions",
+  "isaiah likely|rec_yds",
+  "isaiah likely|receptions",
+  "isaiah williams|rec_yds",
+  "isaiah williams|receptions",
+  "ja'marr chase|rec_yds",
+  "ja'marr chase|receptions",
+  "ja'tavion sanders|rec_yds",
+  "ja'tavion sanders|receptions",
+  "jack bech|rec_yds",
+  "jack bech|receptions",
+  "jahan dotson|rec_yds",
+  "jahan dotson|receptions",
+  "jahmyr gibbs|rec_yds",
+  "jahmyr gibbs|receptions",
+  "jake ferguson|rec_yds",
+  "jake ferguson|receptions",
+  "jakobi meyers|rec_yds",
+  "jakobi meyers|receptions",
+  "jalen coker|rec_yds",
+  "jalen coker|receptions",
+  "jalen mcmillan|rec_yds",
+  "jalen mcmillan|receptions",
+  "jalen nailor|rec_yds",
+  "jalen nailor|receptions",
+  "james cook|rec_yds",
+  "james cook|receptions",
+  "jameson williams|rec_yds",
+  "jameson williams|receptions",
+  "jauan jennings|rec_yds",
+  "jauan jennings|receptions",
+  "javonte williams|rec_yds",
+  "javonte williams|receptions",
+  "jaxon smith-njigba|rec_yds",
+  "jaxon smith-njigba|receptions",
+  "jayden higgins|rec_yds",
+  "jayden higgins|receptions",
+  "jayden reed|rec_yds",
+  "jayden reed|receptions",
+  "jaylen waddle|rec_yds",
+  "jaylen waddle|receptions",
+  "jaylen warren|rec_yds",
+  "jaylen warren|receptions",
+  "jeremy mcnichols|rec_yds",
+  "jeremy mcnichols|receptions",
+  "jeremy ruckert|rec_yds",
+  "jeremy ruckert|receptions",
+  "jerry jeudy|rec_yds",
+  "jerry jeudy|receptions",
+  "john metchie|rec_yds",
+  "john metchie|receptions",
+  "jonathan taylor|rec_yds",
+  "jonathan taylor|receptions",
+  "jonnu smith|rec_yds",
+  "jonnu smith|receptions",
+  "jordan addison|rec_yds",
+  "jordan addison|receptions",
+  "josh downs|rec_yds",
+  "josh downs|receptions",
+  "josh jacobs|rec_yds",
+  "josh jacobs|receptions",
+  "josh oliver|rec_yds",
+  "joshua palmer|rec_yds",
+  "juju smith-schuster|rec_yds",
+  "juju smith-schuster|receptions",
+  "justin jefferson|rec_yds",
+  "justin jefferson|receptions",
+  "juwan johnson|rec_yds",
+  "juwan johnson|receptions",
+  "kareem hunt|rec_yds",
+  "kareem hunt|receptions",
+  "kavontae turpin|rec_yds",
+  "kavontae turpin|receptions",
+  "kayshon boutte|rec_yds",
+  "kayshon boutte|receptions",
+  "keenan allen|rec_yds",
+  "keenan allen|receptions",
+  "kenneth gainwell|rec_yds",
+  "kenneth gainwell|receptions",
+  "kenneth walker|rec_yds",
+  "kenneth walker|receptions",
+  "keon coleman|rec_yds",
+  "keon coleman|receptions",
+  "khalil shakir|rec_yds",
+  "khalil shakir|receptions",
+  "kyle pitts|rec_yds",
+  "kyle pitts|receptions",
+  "kyren williams|rec_yds",
+  "kyren williams|receptions",
+  "ladd mcconkey|rec_yds",
+  "ladd mcconkey|receptions",
+  "lil'jordan humphrey|rec_yds",
+  "luke musgrave|rec_yds",
+  "luke musgrave|receptions",
+  "luther burden|rec_yds",
+  "luther burden|receptions",
+  "mack hollins|rec_yds",
+  "mack hollins|receptions",
+  "malik washington|rec_yds",
+  "malik washington|receptions",
+  "mark andrews|rec_yds",
+  "mark andrews|receptions",
+  "marvin mims|rec_yds",
+  "marvin mims|receptions",
+  "mason tipton|rec_yds",
+  "mason tipton|receptions",
+  "matthew golden|rec_yds",
+  "matthew golden|receptions",
+  "michael mayer|rec_yds",
+  "michael mayer|receptions",
+  "michael pittman|rec_yds",
+  "michael pittman|receptions",
+  "michael wilson|rec_yds",
+  "michael wilson|receptions",
+  "mike evans|rec_yds",
+  "mike evans|receptions",
+  "mike gesicki|rec_yds",
+  "mike gesicki|receptions",
+  "mitchell tinsley|rec_yds",
+  "mitchell tinsley|receptions",
+  "nico collins|rec_yds",
+  "nico collins|receptions",
+  "noah brown|rec_yds",
+  "noah brown|receptions",
+  "noah fant|rec_yds",
+  "noah gray|rec_yds",
+  "noah gray|receptions",
+  "olamide zaccheaus|rec_yds",
+  "omarion hampton|rec_yds",
+  "omarion hampton|receptions",
+  "oronde gadsden|rec_yds",
+  "oronde gadsden|receptions",
+  "parker washington|rec_yds",
+  "parker washington|receptions",
+  "pat freiermuth|rec_yds",
+  "pat freiermuth|receptions",
+  "payne durham|rec_yds",
+  "payne durham|receptions",
+  "puka nacua|rec_yds",
+  "puka nacua|receptions",
+  "quinshon judkins|rec_yds",
+  "quinshon judkins|receptions",
+  "rachaad white|rec_yds",
+  "rachaad white|receptions",
+  "rashee rice|rec_yds",
+  "rashee rice|receptions",
+  "rasheen ali|rec_yds",
+  "rasheen ali|receptions",
+  "rashid shaheed|rec_yds",
+  "rashid shaheed|receptions",
+  "rhamondre stevenson|rec_yds",
+  "rhamondre stevenson|receptions",
+  "ricky pearsall|rec_yds",
+  "ricky pearsall|receptions",
+  "rico dowdle|rec_yds",
+  "rico dowdle|receptions",
+  "rj harvey|rec_yds",
+  "rj harvey|receptions",
+  "rome odunze|rec_yds",
+  "rome odunze|receptions",
+  "romeo doubs|rec_yds",
+  "romeo doubs|receptions",
+  "ryan flournoy|rec_yds",
+  "ryan flournoy|receptions",
+  "saquon barkley|rec_yds",
+  "saquon barkley|receptions",
+  "stefon diggs|rec_yds",
+  "stefon diggs|receptions",
+  "t.j. hockenson|rec_yds",
+  "t.j. hockenson|receptions",
+  "terry mclaurin|rec_yds",
+  "terry mclaurin|receptions",
+  "tetairoa mcmillan|rec_yds",
+  "tetairoa mcmillan|receptions",
+  "theo johnson|rec_yds",
+  "theo johnson|receptions",
+  "tony pollard|rec_yds",
+  "tony pollard|receptions",
+  "travis etienne|rec_yds",
+  "travis etienne|receptions",
+  "travis kelce|rec_yds",
+  "travis kelce|receptions",
+  "tre harris|rec_yds",
+  "tre harris|receptions",
+  "tre tucker|rec_yds",
+  "tre tucker|receptions",
+  "treveyon henderson|rec_yds",
+  "treveyon henderson|receptions",
+  "trey mcbride|rec_yds",
+  "trey mcbride|receptions",
+  "troy franklin|rec_yds",
+  "troy franklin|receptions",
+  "tutu atwell|rec_yds",
+  "tutu atwell|receptions",
+  "ty johnson|rec_yds",
+  "ty johnson|receptions",
+  "tyjae spears|rec_yds",
+  "tyjae spears|receptions",
+  "tyler allgeier|rec_yds",
+  "tyler allgeier|receptions",
+  "tyler warren|rec_yds",
+  "tyler warren|receptions",
+  "tyquan thornton|rec_yds",
+  "tyrone tracy|rec_yds",
+  "tyrone tracy|receptions",
+  "van jefferson|rec_yds",
+  "van jefferson|receptions",
+  "wan'dale robinson|rec_yds",
+  "wan'dale robinson|receptions",
+  "woody marks|rec_yds",
+  "woody marks|receptions",
+  "xavier hutchinson|rec_yds",
+  "xavier legette|rec_yds",
+  "xavier legette|receptions",
+  "xavier worthy|rec_yds",
+  "xavier worthy|receptions",
+  "zay flowers|rec_yds",
+  "zay flowers|receptions",
+  "zonovan knight|rec_yds",
+  "zonovan knight|receptions"
+ ],
+ "availability": {
+  "fetched_at": null,
+  "sources": {
+   "replay": "WITHOUT: no injury information"
+  }
+ },
+ "tickets": [
+  {
+   "name": "SUN-1",
+   "legs": [
+    {
+     "player": "Alec Pierce",
+     "team": "IND",
+     "opp": "SEA",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "floor_rung": 40.0,
+     "odds_est": -309,
+     "odds_real": -309,
+     "odds_model_est": -300,
+     "l10": 1.0,
+     "l15": 0.9333333333333333,
+     "last3": [
+      26,
+      78,
+      80
+     ],
+     "opp_d": "neutral",
+     "own_vol": "neutral",
+     "star": true,
+     "opp_d_rank": 15,
+     "own_vol_rank": 20,
+     "model_pct": 82.0,
+     "prob": 0.8204,
+     "fair_odds": -457,
+     "edge_pts": 6.5,
+     "novig_pct": 71.5,
+     "grade": "A+",
+     "clear_pct": 97.3,
+     "injury_watch": null,
+     "note": "L10 10/10, L15 14/15; last 3 [26, 78, 80]; opp D neutral; floor rung 40+ graded lower",
+     "published_odds": -309,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -309,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -309
+      }
+     ]
+    },
+    {
+     "player": "CeeDee Lamb",
+     "team": "DAL",
+     "opp": "MIN",
+     "market": "rec_yds",
+     "rung": 60.0,
+     "floor_rung": 70.0,
+     "odds_est": -273,
+     "odds_real": -273,
+     "odds_model_est": -267,
+     "l10": 1.0,
+     "l15": 0.9333333333333333,
+     "last3": [
+      75,
+      112,
+      121
+     ],
+     "opp_d": "TOUGH",
+     "own_vol": "SOFT",
+     "star": true,
+     "opp_d_rank": 8,
+     "own_vol_rank": 2,
+     "model_pct": 81.2,
+     "prob": 0.8121,
+     "fair_odds": -432,
+     "edge_pts": 8.0,
+     "novig_pct": 69.3,
+     "grade": "A",
+     "clear_pct": 97.3,
+     "injury_watch": null,
+     "note": "L10 10/10, L15 14/15; last 3 [75, 112, 121]; opp D TOUGH; floor rung 70+ graded lower",
+     "published_odds": -273,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -273,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -273
+      }
+     ]
+    },
+    {
+     "player": "Trey McBride",
+     "team": "ARI",
+     "opp": "HOU",
+     "market": "rec_yds",
+     "rung": 40.0,
+     "floor_rung": 50.0,
+     "odds_est": -378,
+     "odds_real": -378,
+     "odds_model_est": -303,
+     "l10": 1.0,
+     "l15": 1.0,
+     "last3": [
+      79,
+      82,
+      58
+     ],
+     "opp_d": "TOUGH",
+     "own_vol": "SOFT",
+     "star": true,
+     "opp_d_rank": 3,
+     "own_vol_rank": 3,
+     "model_pct": 84.0,
+     "prob": 0.8402,
+     "fair_odds": -526,
+     "edge_pts": 4.9,
+     "novig_pct": 74.8,
+     "grade": "A",
+     "clear_pct": 100.0,
+     "injury_watch": null,
+     "note": "L10 10/10, L15 15/15; last 3 [79, 82, 58]; opp D TOUGH; floor rung 50+ graded lower",
+     "published_odds": -378,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -378,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -378
+      }
+     ]
+    },
+    {
+     "player": "Tre Tucker",
+     "team": "LV",
+     "opp": "PHI",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "floor_rung": 15.0,
+     "odds_est": -321,
+     "odds_real": -321,
+     "odds_model_est": -219,
+     "l10": 0.9,
+     "l15": 0.8666666666666667,
+     "last3": [
+      28,
+      20,
+      24
+     ],
+     "opp_d": "TOUGH",
+     "own_vol": "SOFT",
+     "star": true,
+     "opp_d_rank": 6,
+     "own_vol_rank": 8,
+     "model_pct": 78.6,
+     "prob": 0.7858,
+     "fair_odds": -367,
+     "edge_pts": 2.3,
+     "novig_pct": 72.2,
+     "grade": "A-",
+     "clear_pct": 88.7,
+     "injury_watch": null,
+     "note": "L10 9/10, L15 13/15; last 3 [28, 20, 24]; opp D TOUGH",
+     "published_odds": -321,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -321,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -321
+      }
+     ]
+    }
+   ],
+   "model_hit": 0.44,
+   "est_payout": 3.0,
+   "est_american": 200,
+   "reduced": true,
+   "correlated": false,
+   "label": "Reduced payout: floors held, not stretched \u2014 still recommended"
+  },
+  {
+   "name": "SUN-2",
+   "legs": [
+    {
+     "player": "Alec Pierce",
+     "team": "IND",
+     "opp": "SEA",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "floor_rung": 40.0,
+     "odds_est": -309,
+     "odds_real": -309,
+     "odds_model_est": -300,
+     "l10": 1.0,
+     "l15": 0.9333333333333333,
+     "last3": [
+      26,
+      78,
+      80
+     ],
+     "opp_d": "neutral",
+     "own_vol": "neutral",
+     "star": true,
+     "opp_d_rank": 15,
+     "own_vol_rank": 20,
+     "model_pct": 82.0,
+     "prob": 0.8204,
+     "fair_odds": -457,
+     "edge_pts": 6.5,
+     "novig_pct": 71.5,
+     "grade": "A+",
+     "clear_pct": 97.3,
+     "injury_watch": null,
+     "note": "L10 10/10, L15 14/15; last 3 [26, 78, 80]; opp D neutral; floor rung 40+ graded lower",
+     "published_odds": -309,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -309,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -309
+      }
+     ]
+    },
+    {
+     "player": "Parker Washington",
+     "team": "JAX",
+     "opp": "NYJ",
+     "market": "rec_yds",
+     "rung": 15.0,
+     "floor_rung": 15.0,
+     "odds_est": -269,
+     "odds_real": -269,
+     "odds_model_est": -213,
+     "l10": 0.9,
+     "l15": 0.9333333333333333,
+     "last3": [
+      20,
+      71,
+      26
+     ],
+     "opp_d": "TOUGH",
+     "own_vol": "neutral",
+     "star": true,
+     "opp_d_rank": 4,
+     "own_vol_rank": 16,
+     "model_pct": 76.8,
+     "prob": 0.7682,
+     "fair_odds": -331,
+     "edge_pts": 3.9,
+     "novig_pct": 69.0,
+     "grade": "A-",
+     "clear_pct": 91.3,
+     "injury_watch": null,
+     "note": "L10 9/10, L15 14/15; last 3 [20, 71, 26]; opp D TOUGH",
+     "published_odds": -269,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -269,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -269
+      }
+     ]
+    },
+    {
+     "player": "Tyrone Tracy Jr.",
+     "team": "NYG",
+     "opp": "WAS",
+     "market": "receptions",
+     "rung": 2.0,
+     "floor_rung": 2.0,
+     "odds_est": -203,
+     "odds_real": -203,
+     "odds_model_est": -231,
+     "l10": 0.8,
+     "l15": 0.8,
+     "last3": [
+      4,
+      3,
+      1
+     ],
+     "opp_d": "neutral",
+     "own_vol": "neutral",
+     "star": false,
+     "opp_d_rank": 23,
+     "own_vol_rank": 14,
+     "model_pct": 69.7,
+     "prob": 0.6967,
+     "fair_odds": -230,
+     "edge_pts": 2.7,
+     "novig_pct": 63.3,
+     "grade": "B",
+     "clear_pct": 80.0,
+     "injury_watch": null,
+     "note": "L10 8/10, L15 12/15; last 3 [4, 3, 1]; opp D neutral",
+     "published_odds": -203,
+     "published_at": "2025-12-16T01:00+00:00",
+     "current_odds": -203,
+     "current_at": "2025-12-16T01:00+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2025-12-16T01:00+00:00",
+       "odds": -203
+      }
+     ]
+    }
+   ],
+   "model_hit": 0.439,
+   "est_payout": 2.71,
+   "est_american": 171,
+   "reduced": true,
+   "correlated": false,
+   "label": "Reduced payout: floors held, not stretched \u2014 still recommended"
+  }
+ ],
+ "floors_singles": [
+  {
+   "player": "Alec Pierce",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 40.0,
+   "odds_est": -309,
+   "odds_real": -309,
+   "odds_model_est": -300,
+   "l10": 1.0,
+   "l15": 0.9333333333333333,
+   "last3": [
+    26,
+    78,
+    80
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 82.0,
+   "prob": 0.8204,
+   "fair_odds": -457,
+   "edge_pts": 6.5,
+   "novig_pct": 71.5,
+   "grade": "A+",
+   "clear_pct": 97.3,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 14/15; last 3 [26, 78, 80]; opp D neutral; floor rung 40+ graded lower",
+   "published_odds": -309,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -309,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -309
+    }
+   ]
+  },
+  {
+   "player": "CeeDee Lamb",
+   "team": "DAL",
+   "opp": "MIN",
+   "market": "rec_yds",
+   "rung": 60.0,
+   "floor_rung": 70.0,
+   "odds_est": -273,
+   "odds_real": -273,
+   "odds_model_est": -267,
+   "l10": 1.0,
+   "l15": 0.9333333333333333,
+   "last3": [
+    75,
+    112,
+    121
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 8,
+   "own_vol_rank": 2,
+   "model_pct": 81.2,
+   "prob": 0.8121,
+   "fair_odds": -432,
+   "edge_pts": 8.0,
+   "novig_pct": 69.3,
+   "grade": "A",
+   "clear_pct": 97.3,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 14/15; last 3 [75, 112, 121]; opp D TOUGH; floor rung 70+ graded lower",
+   "published_odds": -273,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -273,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -273
+    }
+   ]
+  },
+  {
+   "player": "Trey McBride",
+   "team": "ARI",
+   "opp": "HOU",
+   "market": "rec_yds",
+   "rung": 40.0,
+   "floor_rung": 50.0,
+   "odds_est": -378,
+   "odds_real": -378,
+   "odds_model_est": -303,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    79,
+    82,
+    58
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 3,
+   "own_vol_rank": 3,
+   "model_pct": 84.0,
+   "prob": 0.8402,
+   "fair_odds": -526,
+   "edge_pts": 4.9,
+   "novig_pct": 74.8,
+   "grade": "A",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 15/15; last 3 [79, 82, 58]; opp D TOUGH; floor rung 50+ graded lower",
+   "published_odds": -378,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -378,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -378
+    }
+   ]
+  },
+  {
+   "player": "Tre Tucker",
+   "team": "LV",
+   "opp": "PHI",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -354,
+   "odds_real": -354,
+   "odds_model_est": -427,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    3,
+    3,
+    2
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 6,
+   "own_vol_rank": 8,
+   "model_pct": 83.5,
+   "prob": 0.8345,
+   "fair_odds": -504,
+   "edge_pts": 5.5,
+   "novig_pct": 73.6,
+   "grade": "A-",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 15/15; last 3 [3, 3, 2]; opp D TOUGH",
+   "published_odds": -354,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -354,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -354
+    }
+   ]
+  },
+  {
+   "player": "Parker Washington",
+   "team": "JAX",
+   "opp": "NYJ",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -269,
+   "odds_real": -269,
+   "odds_model_est": -213,
+   "l10": 0.9,
+   "l15": 0.9333333333333333,
+   "last3": [
+    20,
+    71,
+    26
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 4,
+   "own_vol_rank": 16,
+   "model_pct": 76.8,
+   "prob": 0.7682,
+   "fair_odds": -331,
+   "edge_pts": 3.9,
+   "novig_pct": 69.0,
+   "grade": "A-",
+   "clear_pct": 91.3,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 14/15; last 3 [20, 71, 26]; opp D TOUGH",
+   "published_odds": -269,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -269,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -269
+    }
+   ]
+  },
+  {
+   "player": "Brian Thomas Jr",
+   "team": "JAX",
+   "opp": "NYJ",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "floor_rung": 25.0,
+   "odds_est": -299,
+   "odds_real": -299,
+   "odds_model_est": -285,
+   "l10": 0.9,
+   "l15": 0.9333333333333333,
+   "last3": [
+    55,
+    28,
+    87
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 4,
+   "own_vol_rank": 16,
+   "model_pct": 77.7,
+   "prob": 0.7769,
+   "fair_odds": -348,
+   "edge_pts": 2.8,
+   "novig_pct": 70.9,
+   "grade": "A-",
+   "clear_pct": 91.3,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 14/15; last 3 [55, 28, 87]; opp D TOUGH",
+   "published_odds": -299,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -299,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -299
+    }
+   ]
+  },
+  {
+   "player": "Tre Tucker",
+   "team": "LV",
+   "opp": "PHI",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -321,
+   "odds_real": -321,
+   "odds_model_est": -219,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    28,
+    20,
+    24
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 6,
+   "own_vol_rank": 8,
+   "model_pct": 78.6,
+   "prob": 0.7858,
+   "fair_odds": -367,
+   "edge_pts": 2.3,
+   "novig_pct": 72.2,
+   "grade": "A-",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [28, 20, 24]; opp D TOUGH",
+   "published_odds": -321,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -321,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -321
+    }
+   ]
+  },
+  {
+   "player": "Josh Downs",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -172,
+   "odds_real": -172,
+   "odds_model_est": -122,
+   "l10": 0.8,
+   "l15": 0.8,
+   "last3": [
+    10,
+    44,
+    23
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 68.1,
+   "prob": 0.6812,
+   "fair_odds": -214,
+   "edge_pts": 4.9,
+   "novig_pct": 59.9,
+   "grade": "B",
+   "clear_pct": 80.0,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 12/15; last 3 [10, 44, 23]; opp D neutral",
+   "published_odds": -172,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -172,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -172
+    }
+   ]
+  },
+  {
+   "player": "Tyler Warren",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "receptions",
+   "rung": 4.0,
+   "floor_rung": 4.0,
+   "odds_est": -176,
+   "odds_real": -176,
+   "odds_model_est": -200,
+   "l10": 0.8,
+   "l15": 0.7692307692307693,
+   "last3": [
+    5,
+    3,
+    2
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 68.1,
+   "prob": 0.6809,
+   "fair_odds": -213,
+   "edge_pts": 4.3,
+   "novig_pct": 60.2,
+   "grade": "B",
+   "clear_pct": 78.8,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 10/13; last 3 [5, 3, 2]; opp D neutral",
+   "published_odds": -176,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -176,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -176
+    }
+   ]
+  },
+  {
+   "player": "Tyrone Tracy Jr.",
+   "team": "NYG",
+   "opp": "WAS",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -203,
+   "odds_real": -203,
+   "odds_model_est": -231,
+   "l10": 0.8,
+   "l15": 0.8,
+   "last3": [
+    4,
+    3,
+    1
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 23,
+   "own_vol_rank": 14,
+   "model_pct": 69.7,
+   "prob": 0.6967,
+   "fair_odds": -230,
+   "edge_pts": 2.7,
+   "novig_pct": 63.3,
+   "grade": "B",
+   "clear_pct": 80.0,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 12/15; last 3 [4, 3, 1]; opp D neutral",
+   "published_odds": -203,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -203,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -203
+    }
+   ]
+  },
+  {
+   "player": "Christian McCaffrey",
+   "team": "SF",
+   "opp": "TEN",
+   "market": "rec_yds",
+   "rung": 40.0,
+   "floor_rung": 40.0,
+   "odds_est": -134,
+   "odds_real": -134,
+   "odds_model_est": -134,
+   "l10": 0.9,
+   "l15": 0.8,
+   "last3": [
+    40,
+    53,
+    21
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 14,
+   "own_vol_rank": 12,
+   "model_pct": 68.2,
+   "prob": 0.6822,
+   "fair_odds": -215,
+   "edge_pts": 11.0,
+   "novig_pct": 54.2,
+   "grade": "C",
+   "clear_pct": 86.0,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 12/15; last 3 [40, 53, 21]; opp D neutral",
+   "published_odds": -134,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -134,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -134
+    }
+   ]
+  },
+  {
+   "player": "Xavier Worthy",
+   "team": "KC",
+   "opp": "LAC",
+   "market": "receptions",
+   "rung": 3.0,
+   "floor_rung": 3.0,
+   "odds_est": -196,
+   "odds_real": -196,
+   "odds_model_est": -222,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    4,
+    4,
+    3
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 1,
+   "own_vol_rank": 5,
+   "model_pct": 75.0,
+   "prob": 0.7497,
+   "fair_odds": -300,
+   "edge_pts": 8.8,
+   "novig_pct": 62.4,
+   "grade": "C",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [4, 4, 3]; opp D TOUGH",
+   "published_odds": -196,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -196,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -196
+    }
+   ]
+  }
+ ],
+ "candidates": [
+  {
+   "player": "Alec Pierce",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 40.0,
+   "odds_est": -309,
+   "odds_real": -309,
+   "odds_model_est": -300,
+   "l10": 1.0,
+   "l15": 0.9333333333333333,
+   "last3": [
+    26,
+    78,
+    80
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 82.0,
+   "prob": 0.8204,
+   "fair_odds": -457,
+   "edge_pts": 6.5,
+   "novig_pct": 71.5,
+   "grade": "A+",
+   "clear_pct": 97.3,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 14/15; last 3 [26, 78, 80]; opp D neutral; floor rung 40+ graded lower",
+   "published_odds": -309,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -309,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -309
+    }
+   ]
+  },
+  {
+   "player": "CeeDee Lamb",
+   "team": "DAL",
+   "opp": "MIN",
+   "market": "rec_yds",
+   "rung": 60.0,
+   "floor_rung": 70.0,
+   "odds_est": -273,
+   "odds_real": -273,
+   "odds_model_est": -267,
+   "l10": 1.0,
+   "l15": 0.9333333333333333,
+   "last3": [
+    75,
+    112,
+    121
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 8,
+   "own_vol_rank": 2,
+   "model_pct": 81.2,
+   "prob": 0.8121,
+   "fair_odds": -432,
+   "edge_pts": 8.0,
+   "novig_pct": 69.3,
+   "grade": "A",
+   "clear_pct": 97.3,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 14/15; last 3 [75, 112, 121]; opp D TOUGH; floor rung 70+ graded lower",
+   "published_odds": -273,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -273,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -273
+    }
+   ]
+  },
+  {
+   "player": "Trey McBride",
+   "team": "ARI",
+   "opp": "HOU",
+   "market": "rec_yds",
+   "rung": 40.0,
+   "floor_rung": 50.0,
+   "odds_est": -378,
+   "odds_real": -378,
+   "odds_model_est": -303,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    79,
+    82,
+    58
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 3,
+   "own_vol_rank": 3,
+   "model_pct": 84.0,
+   "prob": 0.8402,
+   "fair_odds": -526,
+   "edge_pts": 4.9,
+   "novig_pct": 74.8,
+   "grade": "A",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 15/15; last 3 [79, 82, 58]; opp D TOUGH; floor rung 50+ graded lower",
+   "published_odds": -378,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -378,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -378
+    }
+   ]
+  },
+  {
+   "player": "Tre Tucker",
+   "team": "LV",
+   "opp": "PHI",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -354,
+   "odds_real": -354,
+   "odds_model_est": -427,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    3,
+    3,
+    2
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 6,
+   "own_vol_rank": 8,
+   "model_pct": 83.5,
+   "prob": 0.8345,
+   "fair_odds": -504,
+   "edge_pts": 5.5,
+   "novig_pct": 73.6,
+   "grade": "A-",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 10/10, L15 15/15; last 3 [3, 3, 2]; opp D TOUGH",
+   "published_odds": -354,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -354,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -354
+    }
+   ]
+  },
+  {
+   "player": "Parker Washington",
+   "team": "JAX",
+   "opp": "NYJ",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -269,
+   "odds_real": -269,
+   "odds_model_est": -213,
+   "l10": 0.9,
+   "l15": 0.9333333333333333,
+   "last3": [
+    20,
+    71,
+    26
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 4,
+   "own_vol_rank": 16,
+   "model_pct": 76.8,
+   "prob": 0.7682,
+   "fair_odds": -331,
+   "edge_pts": 3.9,
+   "novig_pct": 69.0,
+   "grade": "A-",
+   "clear_pct": 91.3,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 14/15; last 3 [20, 71, 26]; opp D TOUGH",
+   "published_odds": -269,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -269,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -269
+    }
+   ]
+  },
+  {
+   "player": "Brian Thomas Jr",
+   "team": "JAX",
+   "opp": "NYJ",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "floor_rung": 25.0,
+   "odds_est": -299,
+   "odds_real": -299,
+   "odds_model_est": -285,
+   "l10": 0.9,
+   "l15": 0.9333333333333333,
+   "last3": [
+    55,
+    28,
+    87
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "neutral",
+   "star": true,
+   "opp_d_rank": 4,
+   "own_vol_rank": 16,
+   "model_pct": 77.7,
+   "prob": 0.7769,
+   "fair_odds": -348,
+   "edge_pts": 2.8,
+   "novig_pct": 70.9,
+   "grade": "A-",
+   "clear_pct": 91.3,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 14/15; last 3 [55, 28, 87]; opp D TOUGH",
+   "published_odds": -299,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -299,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -299
+    }
+   ]
+  },
+  {
+   "player": "Tre Tucker",
+   "team": "LV",
+   "opp": "PHI",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -321,
+   "odds_real": -321,
+   "odds_model_est": -219,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    28,
+    20,
+    24
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 6,
+   "own_vol_rank": 8,
+   "model_pct": 78.6,
+   "prob": 0.7858,
+   "fair_odds": -367,
+   "edge_pts": 2.3,
+   "novig_pct": 72.2,
+   "grade": "A-",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [28, 20, 24]; opp D TOUGH",
+   "published_odds": -321,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -321,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -321
+    }
+   ]
+  },
+  {
+   "player": "Josh Downs",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "rec_yds",
+   "rung": 15.0,
+   "floor_rung": 15.0,
+   "odds_est": -172,
+   "odds_real": -172,
+   "odds_model_est": -122,
+   "l10": 0.8,
+   "l15": 0.8,
+   "last3": [
+    10,
+    44,
+    23
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 68.1,
+   "prob": 0.6812,
+   "fair_odds": -214,
+   "edge_pts": 4.9,
+   "novig_pct": 59.9,
+   "grade": "B",
+   "clear_pct": 80.0,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 12/15; last 3 [10, 44, 23]; opp D neutral",
+   "published_odds": -172,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -172,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -172
+    }
+   ]
+  },
+  {
+   "player": "Tyler Warren",
+   "team": "IND",
+   "opp": "SEA",
+   "market": "receptions",
+   "rung": 4.0,
+   "floor_rung": 4.0,
+   "odds_est": -176,
+   "odds_real": -176,
+   "odds_model_est": -200,
+   "l10": 0.8,
+   "l15": 0.7692307692307693,
+   "last3": [
+    5,
+    3,
+    2
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 15,
+   "own_vol_rank": 20,
+   "model_pct": 68.1,
+   "prob": 0.6809,
+   "fair_odds": -213,
+   "edge_pts": 4.3,
+   "novig_pct": 60.2,
+   "grade": "B",
+   "clear_pct": 78.8,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 10/13; last 3 [5, 3, 2]; opp D neutral",
+   "published_odds": -176,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -176,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -176
+    }
+   ]
+  },
+  {
+   "player": "Tyrone Tracy Jr.",
+   "team": "NYG",
+   "opp": "WAS",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -203,
+   "odds_real": -203,
+   "odds_model_est": -231,
+   "l10": 0.8,
+   "l15": 0.8,
+   "last3": [
+    4,
+    3,
+    1
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 23,
+   "own_vol_rank": 14,
+   "model_pct": 69.7,
+   "prob": 0.6967,
+   "fair_odds": -230,
+   "edge_pts": 2.7,
+   "novig_pct": 63.3,
+   "grade": "B",
+   "clear_pct": 80.0,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 12/15; last 3 [4, 3, 1]; opp D neutral",
+   "published_odds": -203,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -203,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -203
+    }
+   ]
+  },
+  {
+   "player": "Christian McCaffrey",
+   "team": "SF",
+   "opp": "TEN",
+   "market": "rec_yds",
+   "rung": 40.0,
+   "floor_rung": 40.0,
+   "odds_est": -134,
+   "odds_real": -134,
+   "odds_model_est": -134,
+   "l10": 0.9,
+   "l15": 0.8,
+   "last3": [
+    40,
+    53,
+    21
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 14,
+   "own_vol_rank": 12,
+   "model_pct": 68.2,
+   "prob": 0.6822,
+   "fair_odds": -215,
+   "edge_pts": 11.0,
+   "novig_pct": 54.2,
+   "grade": "C",
+   "clear_pct": 86.0,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 12/15; last 3 [40, 53, 21]; opp D neutral",
+   "published_odds": -134,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -134,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -134
+    }
+   ]
+  },
+  {
+   "player": "Xavier Worthy",
+   "team": "KC",
+   "opp": "LAC",
+   "market": "receptions",
+   "rung": 3.0,
+   "floor_rung": 3.0,
+   "odds_est": -196,
+   "odds_real": -196,
+   "odds_model_est": -222,
+   "l10": 0.9,
+   "l15": 0.8666666666666667,
+   "last3": [
+    4,
+    4,
+    3
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 1,
+   "own_vol_rank": 5,
+   "model_pct": 75.0,
+   "prob": 0.7497,
+   "fair_odds": -300,
+   "edge_pts": 8.8,
+   "novig_pct": 62.4,
+   "grade": "C",
+   "clear_pct": 88.7,
+   "injury_watch": null,
+   "note": "L10 9/10, L15 13/15; last 3 [4, 4, 3]; opp D TOUGH",
+   "published_odds": -196,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -196,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -196
+    }
+   ]
+  },
+  {
+   "player": "Keenan Allen",
+   "team": "LAC",
+   "opp": "KC",
+   "market": "rec_yds",
+   "rung": 25.0,
+   "floor_rung": 25.0,
+   "odds_est": -197,
+   "odds_real": -197,
+   "odds_model_est": -115,
+   "l10": 0.8,
+   "l15": 0.8461538461538461,
+   "last3": [
+    53,
+    30,
+    22
+   ],
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "star": false,
+   "opp_d_rank": 12,
+   "own_vol_rank": 19,
+   "model_pct": 69.5,
+   "prob": 0.6945,
+   "fair_odds": -227,
+   "edge_pts": 3.1,
+   "novig_pct": 62.8,
+   "grade": "C",
+   "clear_pct": 81.8,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 11/13; last 3 [53, 30, 22]; opp D neutral",
+   "published_odds": -197,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -197,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -197
+    }
+   ]
+  },
+  {
+   "player": "George Pickens",
+   "team": "DAL",
+   "opp": "MIN",
+   "market": "rec_yds",
+   "rung": 60.0,
+   "floor_rung": 60.0,
+   "odds_est": -199,
+   "odds_real": -199,
+   "odds_model_est": -172,
+   "l10": 0.8,
+   "l15": 0.7692307692307693,
+   "last3": [
+    146,
+    88,
+    37
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": false,
+   "opp_d_rank": 8,
+   "own_vol_rank": 2,
+   "model_pct": 69.2,
+   "prob": 0.692,
+   "fair_odds": -225,
+   "edge_pts": 2.6,
+   "novig_pct": 63.0,
+   "grade": "C",
+   "clear_pct": 78.8,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 10/13; last 3 [146, 88, 37]; opp D TOUGH",
+   "published_odds": -199,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -199,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -199
+    }
+   ]
+  },
+  {
+   "player": "George Pickens",
+   "team": "DAL",
+   "opp": "MIN",
+   "market": "receptions",
+   "rung": 5.0,
+   "floor_rung": 5.0,
+   "odds_est": -200,
+   "odds_real": -200,
+   "odds_model_est": -227,
+   "l10": 0.8,
+   "l15": 0.7692307692307693,
+   "last3": [
+    9,
+    6,
+    5
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": false,
+   "opp_d_rank": 8,
+   "own_vol_rank": 2,
+   "model_pct": 69.2,
+   "prob": 0.6916,
+   "fair_odds": -224,
+   "edge_pts": 2.5,
+   "novig_pct": 62.9,
+   "grade": "C",
+   "clear_pct": 78.8,
+   "injury_watch": null,
+   "note": "L10 8/10, L15 10/13; last 3 [9, 6, 5]; opp D TOUGH",
+   "published_odds": -200,
+   "published_at": "2025-12-16T01:00+00:00",
+   "current_odds": -200,
+   "current_at": "2025-12-16T01:00+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2025-12-16T01:00+00:00",
+     "odds": -200
+    }
+   ]
+  }
+ ],
+ "held": [
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -373,
+   "L10": "10/10",
+   "L15": "12/12",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    24,
+    24,
+    35
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Noah Fant",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": 120,
+   "L10": "8/10",
+   "L15": "9/11",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    3,
+    15
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Keon Coleman",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -127,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    2,
+    2
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Zay Flowers",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -345,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    58,
+    6,
+    124
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -5.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "AJ Barner",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -406,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    18,
+    35,
+    27
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -7.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -428,
+   "L10": "9/10",
+   "L15": "11/12",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    2
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -0.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dallas Goedert",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -475,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    20,
+    27,
+    78
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Dawson Knox",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -125,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    17,
+    28,
+    93
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "90+",
+   "EstOdds": -148,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    167,
+    23,
+    92
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Christian McCaffrey",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -178,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    7,
+    4
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -511,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    2,
+    7
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -10.0 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "DeVonta Smith",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -561,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    89,
+    48,
+    37
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -3.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Isaiah Likely",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -590,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    5,
+    4
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -8.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dontayvion Wicks",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": 103,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    32,
+    94
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Dontayvion Wicks",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -105,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    2,
+    6
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -373,
+   "L10": "10/10",
+   "L15": "12/12",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    24,
+    24,
+    35
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Noah Fant",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": 120,
+   "L10": "8/10",
+   "L15": "9/11",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    3,
+    15
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Keon Coleman",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -127,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    2,
+    2
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Zay Flowers",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -345,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    58,
+    6,
+    124
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -5.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "AJ Barner",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -406,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    18,
+    35,
+    27
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -7.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -428,
+   "L10": "9/10",
+   "L15": "11/12",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    2
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -0.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dallas Goedert",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -475,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    20,
+    27,
+    78
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Dawson Knox",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -125,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    17,
+    28,
+    93
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "90+",
+   "EstOdds": -148,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    167,
+    23,
+    92
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Christian McCaffrey",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -178,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    7,
+    4
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -511,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    2,
+    7
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -10.0 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "DeVonta Smith",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -561,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    89,
+    48,
+    37
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -3.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Isaiah Likely",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -590,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    5,
+    4
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -8.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dontayvion Wicks",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": 103,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    32,
+    94
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Dontayvion Wicks",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -105,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    2,
+    6
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Travis Kelce",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -126,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    43,
+    45,
+    8
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Keon Coleman",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -150,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    9,
+    16
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Noah Brown",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -207,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    27,
+    9,
+    19
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Christian Watson",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -211,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    49,
+    80,
+    89
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Deebo Samuel Sr.",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -233,
+   "L10": "8/10",
+   "L15": "10/12",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    7,
+    5,
+    4
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +1.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "DeVonta Smith",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -240,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    5,
+    4
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +0.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Terry McLaurin",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -263,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    54,
+    96,
+    41
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Kincaid",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -310,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    101,
+    37,
+    41
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -4.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Romeo Doubs",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -373,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    23,
+    20,
+    0
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -4.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Terry McLaurin",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -421,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    7,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -8.1 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jayden Reed",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -427,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    48,
+    45,
+    31
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -5.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Romeo Doubs",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -515,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    4,
+    0
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -6.9 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jayden Reed",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -528,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    4
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -7.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "DeMario Douglas",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -132,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    36,
+    37,
+    33
+   ],
+   "Reasons": [
+    "own volume low"
+   ]
+  },
+  {
+   "Player": "Travis Kelce",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -200,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    5,
+    1
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Mack Hollins",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -313,
+   "L10": "9/10",
+   "L15": "9/12",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    2,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -4.3 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Kayshon Boutte",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -343,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    0,
+    15,
+    35
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +1.3 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "DeMario Douglas",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": 117,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    1,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Hunter Henry",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -288,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    45,
+    115,
+    73
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -3.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -354,
+   "L10": "8/10",
+   "L15": "9/11",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    3,
+    3
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -3.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Stefon Diggs",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -583,
+   "L10": "8/10",
+   "L15": "10/13",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    105,
+    20,
+    26
+   ],
+   "Reasons": [
+    "own volume low",
+    "price worse than -450",
+    "edge -9.0 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "T.J. Hockenson",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -594,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    6,
+    2
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -0.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Davante Adams",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -361,
+   "L10": "9/10",
+   "L15": "11/13",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    4,
+    4
+   ],
+   "Reasons": [
+    "edge -0.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jonathan Taylor",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -460,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    2,
+    3
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -1.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tyjae Spears",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -239,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    6,
+    2
+   ],
+   "Reasons": [
+    "edge -1.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Breece Hall",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -279,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    2,
+    0
+   ],
+   "Reasons": [
+    "edge -1.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Alec Pierce",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -286,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    4,
+    5
+   ],
+   "Reasons": [
+    "edge -0.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Nico Collins",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -310,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    55,
+    98,
+    121
+   ],
+   "Reasons": [
+    "edge -1.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Puka Nacua",
+   "Market": "rec_yds",
+   "Rung": "70+",
+   "EstOdds": -323,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    97,
+    72,
+    167
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Theo Johnson",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -356,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    3,
+    3
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "John Metchie III",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -358,
+   "L10": "4/5",
+   "L15": "4/5",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    4,
+    4
+   ],
+   "Reasons": [
+    "edge -5.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Josh Downs",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -377,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    2,
+    4
+   ],
+   "Reasons": [
+    "edge +0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jordan Addison",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -378,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    0,
+    36,
+    62
+   ],
+   "Reasons": [
+    "edge -4.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Darius Slayton",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -384,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    89,
+    23,
+    41
+   ],
+   "Reasons": [
+    "edge +0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Michael Pittman Jr.",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -385,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    27,
+    13,
+    79
+   ],
+   "Reasons": [
+    "edge +0.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Nico Collins",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -387,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    5,
+    4
+   ],
+   "Reasons": [
+    "edge -7.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Justin Jefferson",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -393,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    2,
+    2
+   ],
+   "Reasons": [
+    "edge -7.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Aaron Jones",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -432,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    4,
+    0
+   ],
+   "Reasons": [
+    "edge -5.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Puka Nacua",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -456,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    7,
+    6,
+    7
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -5.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -557,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    39,
+    26,
+    76
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -2.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jauan Jennings",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -194,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    5,
+    4
+   ],
+   "Reasons": [
+    "edge +1.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Juwan Johnson",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -241,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    46,
+    39,
+    38
+   ],
+   "Reasons": [
+    "edge +0.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tyler Warren",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -246,
+   "L10": "8/10",
+   "L15": "11/13",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    45,
+    22,
+    15
+   ],
+   "Reasons": [
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Gunnar Helm",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -258,
+   "L10": "8/10",
+   "L15": "10/13",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    51,
+    23,
+    8
+   ],
+   "Reasons": [
+    "edge -0.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Theo Johnson",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -264,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    36,
+    77,
+    29
+   ],
+   "Reasons": [
+    "edge -2.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Keenan Allen",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -318,
+   "L10": "8/10",
+   "L15": "11/13",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    4,
+    3
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Juwan Johnson",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -320,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    5,
+    4
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Chris Olave",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -358,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    70,
+    47,
+    30
+   ],
+   "Reasons": [
+    "edge -3.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Schultz",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -386,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    7,
+    3
+   ],
+   "Reasons": [
+    "edge -4.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "George Kittle",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -388,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    6,
+    4
+   ],
+   "Reasons": [
+    "edge -4.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Elic Ayomanor",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -434,
+   "L10": "8/10",
+   "L15": "10/12",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    1,
+    1
+   ],
+   "Reasons": [
+    "edge -5.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Harold Fannin Jr.",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -446,
+   "L10": "8/10",
+   "L15": "11/13",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    43,
+    114
+   ],
+   "Reasons": [
+    "edge -5.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Ladd McConkey",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -463,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    4,
+    1
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Wan'Dale Robinson",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -466,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    9,
+    7
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jauan Jennings",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -471,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    54,
+    41,
+    39
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jayden Higgins",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -471,
+   "L10": "8/10",
+   "L15": "10/13",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    38,
+    65,
+    34
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Trey McBride",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -484,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    8,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Jerry Jeudy",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -519,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    3,
+    3
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Amon-Ra St. Brown",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -544,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    0,
+    6
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jalen Coker",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -551,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    3,
+    4
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Brock Bowers",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -561,
+   "L10": "10/10",
+   "L15": "15/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    55,
+    63,
+    46
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge +1.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Troy Franklin",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -195,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    2,
+    3
+   ],
+   "Reasons": [
+    "edge +1.4 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Brock Bowers",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -279,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    6,
+    4,
+    4
+   ],
+   "Reasons": [
+    "edge +0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Colston Loveland",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -322,
+   "L10": "9/10",
+   "L15": "9/12",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    49,
+    28,
+    29
+   ],
+   "Reasons": [
+    "edge -4.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "CeeDee Lamb",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -358,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    7,
+    6
+   ],
+   "Reasons": [
+    "edge +1.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Colston Loveland",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -446,
+   "L10": "9/10",
+   "L15": "10/12",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    3,
+    4
+   ],
+   "Reasons": [
+    "edge -3.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Troy Franklin",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -478,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    84,
+    21,
+    11
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -9.3 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jake Ferguson",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -534,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    60,
+    36,
+    58
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -2.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rome Odunze",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -549,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    2
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -3.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jake Ferguson",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -202,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    5
+   ],
+   "Reasons": [
+    "edge +1.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jakobi Meyers",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -203,
+   "L10": "4/5",
+   "L15": "4/5",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    50,
+    90,
+    39
+   ],
+   "Reasons": [
+    "edge -0.3 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Rome Odunze",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -232,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    41,
+    53,
+    8
+   ],
+   "Reasons": [
+    "edge -0.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jakobi Meyers",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -255,
+   "L10": "4/5",
+   "L15": "4/5",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    6,
+    4
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "DJ Moore",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -256,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    64,
+    17,
+    -4
+   ],
+   "Reasons": [
+    "edge -0.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Xavier Worthy",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -272,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    59,
+    61,
+    55
+   ],
+   "Reasons": [
+    "edge -0.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Parker Washington",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -327,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    5,
+    1
+   ],
+   "Reasons": [
+    "edge -2.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Rashee Rice",
+   "Market": "receptions",
+   "Rung": "5+",
+   "EstOdds": -364,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    8,
+    4
+   ],
+   "Reasons": [
+    "edge -3.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Courtland Sutton",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -435,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    5,
+    6
+   ],
+   "Reasons": [
+    "edge -5.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rashee Rice",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -478,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    141,
+    92,
+    34
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Courtland Sutton",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -517,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    59,
+    62,
+    62
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.8 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": ""
+}

@@ -1,0 +1,906 @@
+{
+ "season": 2025,
+ "week": 7,
+ "slate": "mnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2025-10-21T01:45+00:00",
+ "published_at": "2025-10-21T01:45+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "adonai mitchell|rec_yds",
+  "adonai mitchell|receptions",
+  "aj barner|rec_yds",
+  "aj barner|receptions",
+  "aj brown|rec_yds",
+  "aj brown|receptions",
+  "alec pierce|rec_yds",
+  "alec pierce|receptions",
+  "allen lazard|rec_yds",
+  "allen lazard|receptions",
+  "alvin kamara|rec_yds",
+  "alvin kamara|receptions",
+  "amon-ra st. brown|rec_yds",
+  "amon-ra st. brown|receptions",
+  "andrei iosivas|rec_yds",
+  "andrei iosivas|receptions",
+  "arian smith|rec_yds",
+  "arian smith|receptions",
+  "ashton jeanty|rec_yds",
+  "ashton jeanty|receptions",
+  "bijan robinson|rec_yds",
+  "bijan robinson|receptions",
+  "brandin cooks|rec_yds",
+  "brandin cooks|receptions",
+  "brashard smith|rec_yds",
+  "brashard smith|receptions",
+  "breece hall|rec_yds",
+  "breece hall|receptions",
+  "brian thomas|rec_yds",
+  "brian thomas|receptions",
+  "cade otton|rec_yds",
+  "cade otton|receptions",
+  "cam skattebo|rec_yds",
+  "cam skattebo|receptions",
+  "ceedee lamb|rec_yds",
+  "ceedee lamb|receptions",
+  "chase brown|rec_yds",
+  "chase brown|receptions",
+  "chigoziem okonkwo|rec_yds",
+  "chigoziem okonkwo|receptions",
+  "chimere dike|rec_yds",
+  "chimere dike|receptions",
+  "chris moore|rec_yds",
+  "chris moore|receptions",
+  "chris olave|rec_yds",
+  "chris olave|receptions",
+  "christian mccaffrey|rec_yds",
+  "christian mccaffrey|receptions",
+  "cole kmet|rec_yds",
+  "cole kmet|receptions",
+  "colston loveland|rec_yds",
+  "colston loveland|receptions",
+  "cooper kupp|rec_yds",
+  "cooper kupp|receptions",
+  "courtland sutton|rec_yds",
+  "courtland sutton|receptions",
+  "d'andre swift|rec_yds",
+  "d'andre swift|receptions",
+  "dallas goedert|rec_yds",
+  "dallas goedert|receptions",
+  "dalton schultz|rec_yds",
+  "dalton schultz|receptions",
+  "darnell mooney|rec_yds",
+  "darnell mooney|receptions",
+  "darnell washington|rec_yds",
+  "darnell washington|receptions",
+  "darren waller|rec_yds",
+  "darren waller|receptions",
+  "davante adams|rec_yds",
+  "davante adams|receptions",
+  "david montgomery|rec_yds",
+  "david montgomery|receptions",
+  "de'von achane|rec_yds",
+  "de'von achane|receptions",
+  "demarcus robinson|rec_yds",
+  "demarcus robinson|receptions",
+  "demario douglas|rec_yds",
+  "demario douglas|receptions",
+  "devonta smith|rec_yds",
+  "devonta smith|receptions",
+  "dj moore|rec_yds",
+  "dj moore|receptions",
+  "dk metcalf|rec_yds",
+  "dk metcalf|receptions",
+  "drake london|rec_yds",
+  "drake london|receptions",
+  "drew sample|rec_yds",
+  "drew sample|receptions",
+  "dyami brown|rec_yds",
+  "dyami brown|receptions",
+  "elic ayomanor|rec_yds",
+  "elic ayomanor|receptions",
+  "elijah arroyo|rec_yds",
+  "elijah arroyo|receptions",
+  "emeka egbuka|rec_yds",
+  "emeka egbuka|receptions",
+  "evan engram|rec_yds",
+  "evan engram|receptions",
+  "george kittle|rec_yds",
+  "george kittle|receptions",
+  "george pickens|rec_yds",
+  "george pickens|receptions",
+  "gunnar helm|rec_yds",
+  "gunnar helm|receptions",
+  "harold fannin|rec_yds",
+  "harold fannin|receptions",
+  "hunter henry|rec_yds",
+  "hunter henry|receptions",
+  "hunter long|rec_yds",
+  "hunter long|receptions",
+  "isaac teslaa|rec_yds",
+  "isaiah bond|rec_yds",
+  "isaiah bond|receptions",
+  "isiah pacheco|rec_yds",
+  "isiah pacheco|receptions",
+  "j.k. dobbins|rec_yds",
+  "j.k. dobbins|receptions",
+  "ja'marr chase|rec_yds",
+  "ja'marr chase|receptions",
+  "ja'tavion sanders|rec_yds",
+  "ja'tavion sanders|receptions",
+  "jack bech|rec_yds",
+  "jack bech|receptions",
+  "jacory croskey-merritt|rec_yds",
+  "jacory croskey-merritt|receptions",
+  "jahan dotson|rec_yds",
+  "jahan dotson|receptions",
+  "jahmyr gibbs|rec_yds",
+  "jahmyr gibbs|receptions",
+  "jake ferguson|rec_yds",
+  "jake ferguson|receptions",
+  "jake tonges|rec_yds",
+  "jalen coker|rec_yds",
+  "jalen coker|receptions",
+  "jalen nailor|rec_yds",
+  "jalen nailor|receptions",
+  "jalen tolbert|rec_yds",
+  "jalen tolbert|receptions",
+  "jalin hyatt|rec_yds",
+  "jalin hyatt|receptions",
+  "jameson williams|rec_yds",
+  "jameson williams|receptions",
+  "jauan jennings|rec_yds",
+  "jauan jennings|receptions",
+  "javonte williams|rec_yds",
+  "javonte williams|receptions",
+  "jaxon smith-njigba|rec_yds",
+  "jaxon smith-njigba|receptions",
+  "jayden higgins|rec_yds",
+  "jayden higgins|receptions",
+  "jaylen waddle|rec_yds",
+  "jaylen waddle|receptions",
+  "jaylen warren|rec_yds",
+  "jaylen warren|receptions",
+  "jaylin lane|rec_yds",
+  "jaylin lane|receptions",
+  "jaylin noel|rec_yds",
+  "jerry jeudy|rec_yds",
+  "jerry jeudy|receptions",
+  "jonathan taylor|rec_yds",
+  "jonathan taylor|receptions",
+  "jonnu smith|rec_yds",
+  "jonnu smith|receptions",
+  "jordan addison|rec_yds",
+  "jordan addison|receptions",
+  "jordan mason|rec_yds",
+  "jordan mason|receptions",
+  "jordan whittington|rec_yds",
+  "jordan whittington|receptions",
+  "josh jacobs|rec_yds",
+  "josh reynolds|rec_yds",
+  "josh reynolds|receptions",
+  "julian hill|rec_yds",
+  "julian hill|receptions",
+  "justin jefferson|rec_yds",
+  "justin jefferson|receptions",
+  "juwan johnson|rec_yds",
+  "juwan johnson|receptions",
+  "kavontae turpin|rec_yds",
+  "kavontae turpin|receptions",
+  "kayshon boutte|rec_yds",
+  "kayshon boutte|receptions",
+  "keenan allen|rec_yds",
+  "keenan allen|receptions",
+  "kendrick bourne|rec_yds",
+  "kendrick bourne|receptions",
+  "kenneth gainwell|rec_yds",
+  "kenneth gainwell|receptions",
+  "kenneth walker|rec_yds",
+  "kimani vidal|rec_yds",
+  "kimani vidal|receptions",
+  "kyle juszczyk|rec_yds",
+  "kyle juszczyk|receptions",
+  "kyle pitts|rec_yds",
+  "kyle pitts|receptions",
+  "kyren williams|rec_yds",
+  "kyren williams|receptions",
+  "ladd mcconkey|rec_yds",
+  "ladd mcconkey|receptions",
+  "lil'jordan humphrey|rec_yds",
+  "lil'jordan humphrey|receptions",
+  "luke mccaffrey|rec_yds",
+  "luke mccaffrey|receptions",
+  "luther burden|rec_yds",
+  "luther burden|receptions",
+  "malik washington|rec_yds",
+  "malik washington|receptions",
+  "marquise brown|rec_yds",
+  "marquise brown|receptions",
+  "marvin harrison|rec_yds",
+  "marvin harrison|receptions",
+  "marvin mims|rec_yds",
+  "marvin mims|receptions",
+  "mason taylor|rec_yds",
+  "mason taylor|receptions",
+  "matthew golden|rec_yds",
+  "matthew golden|receptions",
+  "michael mayer|rec_yds",
+  "michael mayer|receptions",
+  "michael pittman|rec_yds",
+  "michael pittman|receptions",
+  "michael wilson|rec_yds",
+  "michael wilson|receptions",
+  "mike evans|rec_yds",
+  "mike evans|receptions",
+  "nick chubb|rec_yds",
+  "nick chubb|receptions",
+  "nico collins|rec_yds",
+  "nico collins|receptions",
+  "noah fant|rec_yds",
+  "noah fant|receptions",
+  "noah gray|rec_yds",
+  "olamide zaccheaus|rec_yds",
+  "olamide zaccheaus|receptions",
+  "oronde gadsden|rec_yds",
+  "oronde gadsden|receptions",
+  "parker washington|rec_yds",
+  "parker washington|receptions",
+  "pat freiermuth|rec_yds",
+  "quentin johnston|rec_yds",
+  "quentin johnston|receptions",
+  "quinshon judkins|rec_yds",
+  "quinshon judkins|receptions",
+  "rachaad white|rec_yds",
+  "rachaad white|receptions",
+  "rashee rice|rec_yds",
+  "rashee rice|receptions",
+  "rashid shaheed|rec_yds",
+  "rashid shaheed|receptions",
+  "rhamondre stevenson|rec_yds",
+  "rhamondre stevenson|receptions",
+  "rico dowdle|rec_yds",
+  "rico dowdle|receptions",
+  "rj harvey|rec_yds",
+  "rj harvey|receptions",
+  "roman wilson|rec_yds",
+  "rome odunze|rec_yds",
+  "rome odunze|receptions",
+  "romeo doubs|rec_yds",
+  "romeo doubs|receptions",
+  "sam laporta|rec_yds",
+  "sam laporta|receptions",
+  "samaje perine|rec_yds",
+  "samaje perine|receptions",
+  "saquon barkley|rec_yds",
+  "saquon barkley|receptions",
+  "scott miller|rec_yds",
+  "stefon diggs|rec_yds",
+  "stefon diggs|receptions",
+  "sterling shepard|rec_yds",
+  "sterling shepard|receptions",
+  "t.j. hockenson|rec_yds",
+  "t.j. hockenson|receptions",
+  "tee higgins|rec_yds",
+  "tee higgins|receptions",
+  "tetairoa mcmillan|rec_yds",
+  "tetairoa mcmillan|receptions",
+  "tez johnson|rec_yds",
+  "tez johnson|receptions",
+  "theo johnson|rec_yds",
+  "theo johnson|receptions",
+  "tommy tremble|rec_yds",
+  "tommy tremble|receptions",
+  "tory horton|rec_yds",
+  "tory horton|receptions",
+  "travis etienne|rec_yds",
+  "travis etienne|receptions",
+  "travis hunter|rec_yds",
+  "travis hunter|receptions",
+  "travis kelce|rec_yds",
+  "travis kelce|receptions",
+  "tre tucker|rec_yds",
+  "tre tucker|receptions",
+  "treveyon henderson|rec_yds",
+  "treveyon henderson|receptions",
+  "trey mcbride|rec_yds",
+  "trey mcbride|receptions",
+  "troy franklin|rec_yds",
+  "troy franklin|receptions",
+  "tucker kraft|rec_yds",
+  "tucker kraft|receptions",
+  "tutu atwell|rec_yds",
+  "tutu atwell|receptions",
+  "tyjae spears|rec_yds",
+  "tyjae spears|receptions",
+  "tyler higbee|rec_yds",
+  "tyler higbee|receptions",
+  "tyler warren|rec_yds",
+  "tyler warren|receptions",
+  "van jefferson|rec_yds",
+  "van jefferson|receptions",
+  "wan'dale robinson|rec_yds",
+  "wan'dale robinson|receptions",
+  "woody marks|rec_yds",
+  "woody marks|receptions",
+  "xavier hutchinson|rec_yds",
+  "xavier hutchinson|receptions",
+  "xavier legette|rec_yds",
+  "xavier legette|receptions",
+  "xavier worthy|rec_yds",
+  "xavier worthy|receptions",
+  "zach charbonnet|rec_yds",
+  "zach ertz|rec_yds",
+  "zach ertz|receptions"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-21T14:34+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-22",
+   "weekly_stats": "weeks 1-6",
+   "qb_change": "2 team(s): ARI, BAL",
+   "injuries": "week 7: 323 report rows"
+  }
+ },
+ "tickets": [],
+ "floors_singles": [],
+ "candidates": [],
+ "held": [
+  {
+   "Player": "Mike Evans",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -272,
+   "L10": "10/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "injury: no offensive snaps in wk 5, 6 (the team's last two games)",
+    "injury: questionable (hamstring)",
+    "edge +0.6 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Mike Evans",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -193,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    51,
+    56,
+    33
+   ],
+   "Reasons": [
+    "injury: no offensive snaps in wk 5, 6 (the team's last two games)",
+    "injury: questionable (hamstring)",
+    "edge +1.7 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -277,
+   "L10": "5/6",
+   "L15": "5/6",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    26,
+    59,
+    40
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -1.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "70+",
+   "EstOdds": -245,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    79,
+    132,
+    162
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam LaPorta",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -432,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    39,
+    92,
+    55
+   ],
+   "Reasons": [
+    "edge -0.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam LaPorta",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -560,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    5,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge +0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Amon-Ra St. Brown",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -312,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    7,
+    8,
+    9
+   ],
+   "Reasons": [
+    "edge -1.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Amon-Ra St. Brown",
+   "Market": "rec_yds",
+   "Rung": "60+",
+   "EstOdds": -226,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    70,
+    100,
+    45
+   ],
+   "Reasons": [
+    "edge +1.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Schultz",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -352,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    39,
+    30,
+    60
+   ],
+   "Reasons": [
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jameson Williams",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -412,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    9,
+    66
+   ],
+   "Reasons": [
+    "edge -4.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Schultz",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -512,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cade Otton",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -314,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    81,
+    51
+   ],
+   "Reasons": [
+    "edge -2.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sterling Shepard",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -324,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    14,
+    24,
+    51
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cade Otton",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -523,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    4,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.0 pts (< +2)"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Mike Evans",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -272,
+   "L10": "10/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "injury: no offensive snaps in wk 5, 6 (the team's last two games)",
+    "injury: questionable (hamstring)",
+    "edge +0.6 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Mike Evans",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -193,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    51,
+    56,
+    33
+   ],
+   "Reasons": [
+    "injury: no offensive snaps in wk 5, 6 (the team's last two games)",
+    "injury: questionable (hamstring)",
+    "edge +1.7 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Cooper Kupp",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -277,
+   "L10": "5/6",
+   "L15": "5/6",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    26,
+    59,
+    40
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge -1.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jaxon Smith-Njigba",
+   "Market": "rec_yds",
+   "Rung": "70+",
+   "EstOdds": -245,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    79,
+    132,
+    162
+   ],
+   "Reasons": [
+    "own volume low",
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam LaPorta",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -432,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    39,
+    92,
+    55
+   ],
+   "Reasons": [
+    "edge -0.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sam LaPorta",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -560,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    5,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge +0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Amon-Ra St. Brown",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -312,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    7,
+    8,
+    9
+   ],
+   "Reasons": [
+    "edge -1.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Amon-Ra St. Brown",
+   "Market": "rec_yds",
+   "Rung": "60+",
+   "EstOdds": -226,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    70,
+    100,
+    45
+   ],
+   "Reasons": [
+    "edge +1.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Schultz",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -352,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    39,
+    30,
+    60
+   ],
+   "Reasons": [
+    "edge -6.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Jameson Williams",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -412,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    9,
+    66
+   ],
+   "Reasons": [
+    "edge -4.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Dalton Schultz",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -512,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -6.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cade Otton",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -314,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    9,
+    81,
+    51
+   ],
+   "Reasons": [
+    "edge -2.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Sterling Shepard",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -324,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    14,
+    24,
+    51
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Cade Otton",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -523,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    4,
+    5
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.0 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": ""
+}

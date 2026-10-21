@@ -429,10 +429,13 @@ def q3(cards: list, w, played, known, mo_lookup) -> dict:
     gid = {}
     for c in cards:
         wk, card = c["week"], c["card"]
-        for x in card["candidates"]:
+        # cards built before 2026-10-01 have no `candidates`: their `floors_singles` (the top 12) is what exists
+        for x in card.get("candidates", card.get("floors_singles", [])):
+            price = next(v for v in (x.get("published_odds"), x.get("odds_real"), x.get("odds_est")) if v is not None)
             cand.append(dict(week=wk, slate=c["slate"], player=x["player"], market=x["market"], rung=x["rung"],
-                             price=x["odds_real"] if x["odds_real"] is not None else x["odds_est"], team=x["team"],
-                             opp=x["opp"], teams=(x["team"], x["opp"]), LB=x["prob"], novig=(x.get("novig_pct") or 0) / 100,
+                             price=price, team=x["team"], opp=x["opp"], teams=(x["team"], x["opp"]),
+                             LB=x.get("prob", x["model_pct"] / 100),
+                             novig=x["novig_pct"] / 100 if x.get("novig_pct") is not None else np.nan,
                              grade=x["grade"], injury_watch=bool(x.get("injury_watch"))))
         for t in card["tickets"]:
             tickets.append(dict(week=wk, slate=c["slate"], name=t["name"],
