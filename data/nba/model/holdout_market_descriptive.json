@@ -1,0 +1,114 @@
+{
+  "note": "NOT registered. Descriptive only: every DK alt Over rung priced at raw implied 60-95% for players who played; no model, no selection.",
+  "by_market": {
+    "ast": {
+      "n": 17096,
+      "avg_implied": 75.18,
+      "hit": 71.05,
+      "flat_roi_pct": -5.75
+    },
+    "blk": {
+      "n": 2894,
+      "avg_implied": 72.47,
+      "hit": 62.89,
+      "flat_roi_pct": -13.63
+    },
+    "fg3m": {
+      "n": 18667,
+      "avg_implied": 77.94,
+      "hit": 72.19,
+      "flat_roi_pct": -7.61
+    },
+    "pa": {
+      "n": 23192,
+      "avg_implied": 79.9,
+      "hit": 75.46,
+      "flat_roi_pct": -5.69
+    },
+    "pr": {
+      "n": 26278,
+      "avg_implied": 79.91,
+      "hit": 74.95,
+      "flat_roi_pct": -6.3
+    },
+    "pra": {
+      "n": 26975,
+      "avg_implied": 79.86,
+      "hit": 74.95,
+      "flat_roi_pct": -6.31
+    },
+    "pts": {
+      "n": 42804,
+      "avg_implied": 79.07,
+      "hit": 75.19,
+      "flat_roi_pct": -5.02
+    },
+    "reb": {
+      "n": 34343,
+      "avg_implied": 77.47,
+      "hit": 72.58,
+      "flat_roi_pct": -6.51
+    },
+    "stl": {
+      "n": 8329,
+      "avg_implied": 71.8,
+      "hit": 64.58,
+      "flat_roi_pct": -10.34
+    }
+  },
+  "card_markets_by_implied_bin": [
+    {
+      "implied_bin": "60-65",
+      "n": 25434,
+      "avg_implied": 62.45,
+      "hit": 57.51,
+      "flat_roi_pct": -7.9
+    },
+    {
+      "implied_bin": "65-70",
+      "n": 23805,
+      "avg_implied": 67.46,
+      "hit": 62.34,
+      "flat_roi_pct": -7.61
+    },
+    {
+      "implied_bin": "70-75",
+      "n": 24283,
+      "avg_implied": 72.54,
+      "hit": 67.83,
+      "flat_roi_pct": -6.51
+    },
+    {
+      "implied_bin": "75-80",
+      "n": 25102,
+      "avg_implied": 77.55,
+      "hit": 72.58,
+      "flat_roi_pct": -6.42
+    },
+    {
+      "implied_bin": "80-85",
+      "n": 26335,
+      "avg_implied": 82.54,
+      "hit": 78.16,
+      "flat_roi_pct": -5.31
+    },
+    {
+      "implied_bin": "85-90",
+      "n": 29556,
+      "avg_implied": 87.6,
+      "hit": 83.32,
+      "flat_roi_pct": -4.88
+    },
+    {
+      "implied_bin": "90-95",
+      "n": 34840,
+      "avg_implied": 92.63,
+      "hit": 88.34,
+      "flat_roi_pct": -4.62
+    }
+  ],
+  "card_pooled": {
+    "n": 189355,
+    "flat_roi_pct": -6.05
+  }
+}
