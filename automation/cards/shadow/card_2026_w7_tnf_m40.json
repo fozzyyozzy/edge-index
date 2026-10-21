@@ -1,0 +1,697 @@
+{
+ "season": 2026,
+ "week": 7,
+ "slate": "tnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2026-10-21T17:59+00:00",
+ "published_at": "2026-10-21T17:59+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "a.j. brown|rec_yds",
+  "a.j. brown|receptions",
+  "caleb williams|pass_att",
+  "caleb williams|pass_cmps",
+  "caleb williams|pass_yds",
+  "caleb williams|rush_att",
+  "caleb williams|rush_yds",
+  "cole kmet|rec_yds",
+  "cole kmet|receptions",
+  "colston loveland|rec_yds",
+  "colston loveland|receptions",
+  "d'andre swift|rec_yds",
+  "d'andre swift|receptions",
+  "d'andre swift|rush_att",
+  "d'andre swift|rush_yds",
+  "demario douglas|rec_yds",
+  "demario douglas|receptions",
+  "drake maye|pass_att",
+  "drake maye|pass_cmps",
+  "drake maye|pass_yds",
+  "drake maye|rush_att",
+  "drake maye|rush_yds",
+  "efton chism|rec_yds",
+  "efton chism|receptions",
+  "eli raridon|rec_yds",
+  "eli raridon|receptions",
+  "hunter henry|rec_yds",
+  "hunter henry|receptions",
+  "kalif raymond|rec_yds",
+  "kalif raymond|receptions",
+  "kyle williams|rec_yds",
+  "kyle williams|receptions",
+  "luther burden|rec_yds",
+  "luther burden|receptions",
+  "rhamondre stevenson|rec_yds",
+  "rhamondre stevenson|receptions",
+  "rhamondre stevenson|rush_att",
+  "rhamondre stevenson|rush_yds",
+  "rome odunze|rec_yds",
+  "rome odunze|receptions",
+  "treveyon henderson|rec_yds",
+  "treveyon henderson|receptions",
+  "treveyon henderson|rush_att",
+  "treveyon henderson|rush_yds"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-21T17:59+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-6",
+   "weekly_stats": "weeks 1-6",
+   "qb_change": "3 team(s): BAL, PHI, TB",
+   "injuries": "week 7: 23 report rows"
+  }
+ },
+ "tickets": [],
+ "floors_singles": [],
+ "candidates": [],
+ "held": [
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rush_att",
+   "Rung": "7+",
+   "EstOdds": 109,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    14,
+    4,
+    7
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rec_yds",
+   "Rung": "4+",
+   "EstOdds": -114,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    0,
+    16,
+    9
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Kalif Raymond",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -396,
+   "L10": "6/6",
+   "L15": "6/6",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    2
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -425,
+   "L10": "10/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    54,
+    25,
+    24
+   ],
+   "Reasons": [
+    "edge -4.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Luther Burden III",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -435,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    63,
+    47,
+    95
+   ],
+   "Reasons": [
+    "edge -2.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rush_yds",
+   "Rung": "20+",
+   "EstOdds": -194,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    42,
+    22,
+    31
+   ],
+   "Reasons": [
+    "edge +1.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rome Odunze",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -255,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    94,
+    40,
+    39
+   ],
+   "Reasons": [
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "rush_yds",
+   "Rung": "30+",
+   "EstOdds": -275,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    47,
+    64,
+    36
+   ],
+   "Reasons": [
+    "edge -1.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "rec_yds",
+   "Rung": "10+",
+   "EstOdds": -333,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    16,
+    27,
+    21
+   ],
+   "Reasons": [
+    "edge -4.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -347,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    3,
+    3
+   ],
+   "Reasons": [
+    "edge -5.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "rush_att",
+   "Rung": "4+",
+   "EstOdds": -446,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    7,
+    4
+   ],
+   "Reasons": [
+    "edge -3.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Caleb Williams",
+   "Market": "pass_att",
+   "Rung": "28+",
+   "EstOdds": -485,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    29,
+    26,
+    36
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -3.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Hunter Henry",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -207,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    3,
+    4
+   ],
+   "Reasons": [
+    "edge -1.2 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Hunter Henry",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -218,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    62,
+    44,
+    48
+   ],
+   "Reasons": [
+    "edge -1.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "D'Andre Swift",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -382,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    58,
+    43,
+    44
+   ],
+   "Reasons": [
+    "edge -0.3 pts (< +2)"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rush_att",
+   "Rung": "7+",
+   "EstOdds": 109,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    14,
+    4,
+    7
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rec_yds",
+   "Rung": "4+",
+   "EstOdds": -114,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    0,
+    16,
+    9
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Kalif Raymond",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -396,
+   "L10": "6/6",
+   "L15": "6/6",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    2,
+    3,
+    2
+   ],
+   "Reasons": [
+    "edge -2.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -425,
+   "L10": "10/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    54,
+    25,
+    24
+   ],
+   "Reasons": [
+    "edge -4.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Luther Burden III",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -435,
+   "L10": "10/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    63,
+    47,
+    95
+   ],
+   "Reasons": [
+    "edge -2.7 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "TreVeyon Henderson",
+   "Market": "rush_yds",
+   "Rung": "20+",
+   "EstOdds": -194,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    42,
+    22,
+    31
+   ],
+   "Reasons": [
+    "edge +1.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rome Odunze",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -255,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    94,
+    40,
+    39
+   ],
+   "Reasons": [
+    "edge +0.4 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "rush_yds",
+   "Rung": "30+",
+   "EstOdds": -275,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    47,
+    64,
+    36
+   ],
+   "Reasons": [
+    "edge -1.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "rec_yds",
+   "Rung": "10+",
+   "EstOdds": -333,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    16,
+    27,
+    21
+   ],
+   "Reasons": [
+    "edge -4.8 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Rhamondre Stevenson",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -347,
+   "L10": "9/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    3,
+    3
+   ],
+   "Reasons": [
+    "edge -5.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "rush_att",
+   "Rung": "4+",
+   "EstOdds": -446,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    7,
+    4
+   ],
+   "Reasons": [
+    "edge -3.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Caleb Williams",
+   "Market": "pass_att",
+   "Rung": "28+",
+   "EstOdds": -485,
+   "L10": "9/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    29,
+    26,
+    36
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -3.5 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Hunter Henry",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -207,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    3,
+    4
+   ],
+   "Reasons": [
+    "edge -1.2 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Hunter Henry",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -218,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    62,
+    44,
+    48
+   ],
+   "Reasons": [
+    "edge -1.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "D'Andre Swift",
+   "Market": "rush_yds",
+   "Rung": "40+",
+   "EstOdds": -382,
+   "L10": "10/10",
+   "L15": "14/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    58,
+    43,
+    44
+   ],
+   "Reasons": [
+    "edge -0.3 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "pass_yds",
+   "Rung": "190+",
+   "EstOdds": -576,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    269,
+    374,
+    235
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -5.9 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Caleb Williams",
+   "Market": "rush_yds",
+   "Rung": "10+",
+   "EstOdds": -388,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    65,
+    42,
+    3
+   ],
+   "Reasons": [
+    "edge -4.3 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": "",
+ "shadow": {
+  "slug": "m40",
+  "label": "market = 40 games",
+  "blend": {
+   "market_games": 40,
+   "history_weight": null,
+   "cap": 0.9
+  },
+  "min_edge": 2.0,
+  "live_card": "card_2026_w7_tnf.json",
+  "note": "research only: never published; graded Tuesday next to the live card"
+ }
+}
