@@ -232,7 +232,8 @@ W = [0.1, 0.2, 0.4, 0.6]
 
 def implied(o):
     o = np.asarray(o, float)
-    return np.where(o < 0, -o / (-o + 100), 100 / (o + 100))
+    with np.errstate(divide="ignore", invalid="ignore"):          # np.where evaluates both branches
+        return np.where(o < 0, -o / (-o + 100), 100 / (o + 100))
 
 
 def market_probs() -> pd.DataFrame:
