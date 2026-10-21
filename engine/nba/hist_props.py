@@ -2,15 +2,19 @@
 
     python -m engine.nba.hist_props --season 2025-26      # plan + credit estimate; makes no paid call
     python -m engine.nba.hist_props --sample --approved-credits 1400   # coverage sample (approved 2026-10-21)
+    python -m engine.nba.hist_props --full --approved-credits 240000   # full season (approved 2026-10-21, after
+                                                                       # PREREG amendment 1); resumable
 
 Plan: one /v4/historical/sports/basketball_nba/events/{id}/odds call per game, at tip - LEAD, DK only (1 region),
 all in-scope markets. Event ids come from the cached spread/total snapshots (data/nba/raw/odds_hist/), so no
 paid /historical/events lookups are needed.
 Cost (Odds API docs, read 2026-10-21): 10 x [unique markets RETURNED] x [regions]; empty responses are free.
 So the true cost depends on which markets DK actually posted per game, which can't be known without paying.
-Spend rule (2026-10-21): anything over 2,000 credits needs Tim's approval of the estimate first. The only pull
-path is --sample: one game per month (the first tip on or after the 15th), capped by --approved-credits; it records
-which markets DK carried and how deep the ladders are, never prices (PREREG §6.6: not a modelling input).
+Spend rule (2026-10-21): anything over 2,000 credits needs Tim's approval of the estimate first. Both pull paths are
+capped by --approved-credits and stop before x-requests-remaining would fall under the 100,000 reserve:
+  --sample  one game per month (first tip on or after the 15th): market availability + ladder depth only
+  --full    every game; responses cached in data/nba/raw/odds_hist_props/ (the sample's files are reused), then
+            parsed to data/nba/lines/hist_props_<season>.parquet (one row per outcome, with snapshot time)
 """
 from __future__ import annotations
 import argparse
@@ -23,7 +27,7 @@ from pathlib import Path
 import pandas as pd
 
 from engine.nba import http
-from engine.nba.hist_lines import DATA, RAW as SNAPSHOTS, log_usage
+from engine.nba.hist_lines import DATA, RAW as SNAPSHOTS, RESERVE, log_usage
 from engine.nba.teams import from_name
 
 STATS = ["points", "rebounds", "assists", "threes", "points_rebounds", "points_assists", "rebounds_assists",
@@ -84,6 +88,61 @@ def coverage(d: dict) -> dict:
     return out
 
 
+def fetch(g, key: str) -> tuple[dict, int, int | None]:
+    """one game's historical props snapshot: (response, credits charged, remaining); cached responses cost 0"""
+    path = SAMPLE_RAW / f"{g.event_id}_{g.snapshot_at:%Y%m%dT%H%M}.json"
+    if path.exists():
+        return json.loads(path.read_text()), 0, None
+    r = http.get(URL.format(eid=g.event_id), {"apiKey": key, "regions": "us", "bookmakers": "draftkings",
+                                              "markets": ",".join(MAIN + ALT), "oddsFormat": "american",
+                                              "date": g.snapshot_at.strftime("%Y-%m-%dT%H:%M:%SZ")}, timeout=60)
+    h = r.headers
+    log_usage("historical props", 1, h.get("x-requests-used"), h.get("x-requests-remaining"), h.get("x-requests-last"))
+    d = r.json()
+    path.write_text(json.dumps(d))
+    rem = h.get("x-requests-remaining")
+    return d, int(h.get("x-requests-last") or 0), int(float(rem)) if rem else None
+
+
+def parse_props(d: dict, g) -> list[dict]:
+    """one row per DK outcome; PREGAME ONLY: refuses a snapshot taken at or after the tip"""
+    snap = d.get("timestamp")
+    if snap and pd.Timestamp(snap) >= pd.Timestamp(g.commence):
+        raise ValueError(f"{g.game_id}: snapshot {snap} is not before tip {g.commence}")
+    rows = []
+    for b in d.get("data", {}).get("bookmakers", []):
+        for m in b["markets"]:
+            for o in m["outcomes"]:
+                rows.append({"game_id": g.game_id, "event_id": g.event_id, "snapshot": snap, "commence": g.commence,
+                             "market": m["key"], "player": o.get("description"), "side": o["name"],
+                             "point": o.get("point"), "price": o.get("price"), "market_update": m.get("last_update")})
+    return rows
+
+
+def run_full(season: str, approved: int):
+    key = os.environ["ODDS_API_KEY"]
+    games = plan(season)
+    per_call = PER_MARKET * (len(MAIN) + len(ALT))
+    SAMPLE_RAW.mkdir(parents=True, exist_ok=True)
+    spent, rows = 0, []
+    for i, g in enumerate(games.itertuples()):
+        cached = (SAMPLE_RAW / f"{g.event_id}_{g.snapshot_at:%Y%m%dT%H%M}.json").exists()
+        if not cached and spent + per_call > approved:
+            raise SystemExit(f"stopping at game {i}: next call could pass the approved {approved:,} (spent {spent:,})")
+        d, cost, rem = fetch(g, key)
+        spent += cost
+        if rem is not None and rem - per_call < RESERVE:
+            raise SystemExit(f"stopping at game {i}: remaining {rem:,} is near the {RESERVE:,} reserve")
+        rows += parse_props(d, g)
+        if i % 100 == 0:
+            print(f"  {i}/{len(games)} games, {spent:,} credits", flush=True)
+    df = pd.DataFrame(rows)
+    out = DATA / "lines" / f"hist_props_{season}.parquet"
+    df.to_parquet(out, index=False, compression="zstd")
+    print(f"wrote {out.relative_to(DATA.parents[1])}: {len(df):,} outcomes from {df.game_id.nunique()} games; "
+          f"{spent:,} credits this run")
+
+
 def run_sample(season: str, approved: int):
     key = os.environ["ODDS_API_KEY"]
     games = sample_games(plan(season))
@@ -123,8 +182,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", default="2025-26")
     ap.add_argument("--sample", action="store_true", help="pull the approved one-game-per-month coverage sample")
+    ap.add_argument("--full", action="store_true", help="pull every game of the season (approved)")
     ap.add_argument("--approved-credits", type=int, default=0)
     a = ap.parse_args()
+    if a.full:
+        return run_full(a.season, a.approved_credits)
     if a.sample:
         return run_sample(a.season, a.approved_credits)
     p = plan(a.season)

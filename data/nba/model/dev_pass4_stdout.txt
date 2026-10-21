@@ -1,0 +1,74 @@
+minutes h_m=5.0: valid MAE 4.471
+minutes h_m=10.0: valid MAE 4.545
+minutes h_m=15.0: valid MAE 4.586
+h_r=10.0 kappa=100.0: done
+h_r=10.0 kappa=300.0: done
+h_r=10.0 kappa=900.0: done
+h_r=20.0 kappa=100.0: done
+h_r=20.0 kappa=300.0: done
+h_r=20.0 kappa=900.0: done
+h_r=40.0 kappa=100.0: done
+h_r=40.0 kappa=300.0: done
+h_r=40.0 kappa=900.0: done
+{
+ "pts": {
+  "slope": 1.0134656453113238,
+  "brier_model": 0.1466627570541037,
+  "brier_naive": 0.15663252555473012,
+  "passes": true
+ },
+ "reb": {
+  "slope": 0.9965511556535802,
+  "brier_model": 0.14780343243874802,
+  "brier_naive": 0.15883289865158975,
+  "passes": true
+ },
+ "ast": {
+  "slope": 0.9723701636254498,
+  "brier_model": 0.15926016299825652,
+  "brier_naive": 0.1723209255364568,
+  "passes": true
+ },
+ "fg3m": {
+  "slope": 0.9648203858020201,
+  "brier_model": 0.16493546690775254,
+  "brier_naive": 0.17736955408909091,
+  "passes": true
+ },
+ "pr": {
+  "slope": 1.0203794108752668,
+  "brier_model": 0.14410714506090505,
+  "brier_naive": 0.15385079552328002,
+  "passes": true
+ },
+ "pa": {
+  "slope": 1.0292354045619523,
+  "brier_model": 0.14170669212048437,
+  "brier_naive": 0.15125975239399383,
+  "passes": true
+ },
+ "ra": {
+  "slope": 1.0418923409378853,
+  "brier_model": 0.14561050756263044,
+  "brier_naive": 0.15637256940740402,
+  "passes": true
+ },
+ "pra": {
+  "slope": 1.0271478637925393,
+  "brier_model": 0.14010427762726896,
+  "brier_naive": 0.1494366390017116,
+  "passes": true
+ },
+ "stl": {
+  "slope": 0.9106224133349027,
+  "brier_model": 0.20997755849973251,
+  "brier_naive": 0.22618039739963677,
+  "passes": true
+ },
+ "blk": {
+  "slope": 1.028833750766762,
+  "brier_model": 0.2080938078715697,
+  "brier_naive": 0.2264207276349837,
+  "passes": false
+ }
+}
