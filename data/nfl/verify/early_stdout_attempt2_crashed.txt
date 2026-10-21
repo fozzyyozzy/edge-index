@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\tyose\AppData\Local\Temp\claude\C--Users-tyose-edge-index\e5739640-b454-40be-b132-5b1a56b521db\scratchpad\nfl\engine\nfl\early_tests.py", line 420, in <module>
+    main()
+  File "C:\Users\tyose\AppData\Local\Temp\claude\C--Users-tyose-edge-index\e5739640-b454-40be-b132-5b1a56b521db\scratchpad\nfl\engine\nfl\early_tests.py", line 414, in main
+    (OUT / "early_results.json").write_text(json.dumps(res, indent=1, default=float))
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 377, in _iterencode_dict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+TypeError: keys must be str, int, float, bool or None, not tuple

@@ -304,6 +304,21 @@ def cross_book(allp, outcomes_settle):
     return out
 
 
+def clean(o):
+    """JSON-safe copy: tuple/numpy keys -> strings, numpy scalars -> Python, NaN kept as null"""
+    if isinstance(o, dict):
+        return {(":".join(map(str, k)) if isinstance(k, tuple) else str(k)): clean(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [clean(v) for v in o]
+    if isinstance(o, (np.integer,)):
+        return int(o)
+    if isinstance(o, (np.floating, float)):
+        return None if np.isnan(o) else float(o)
+    if isinstance(o, np.bool_):
+        return bool(o)
+    return o
+
+
 def main():
     marker = OUT / "early_run.json"
     if marker.exists():
@@ -355,7 +370,7 @@ def main():
     rows = rows.merge(tvl, on=["game_id", "team", "S"], how="left")
     res = {"code_commit": commit, "rows_A": rows.groupby("S").size().to_dict(),
            "rows_A_by_week_half": rows.assign(h=np.where(rows.week <= 9, "fit", "test")).groupby(["S", "h"]).size()
-           .rename(lambda x: f"{x[0]}:{x[1]}").to_dict(), "A": {}, "B": {}, "C": {}}
+           .to_dict(), "A": {}, "B": {}, "C": {}}
     passing = []
     model_preds = {}
     for f, fs in FACTORS.items():
@@ -411,7 +426,7 @@ def main():
                        "dk_rec_alt_players_per_game_by_snap": early[(early.book == "draftkings") &
                                                                     (early.market == "player_receptions_alternate")]
                        .groupby(["snap", "game_id"]).player.nunique().groupby("snap").median().to_dict()}
-    (OUT / "early_results.json").write_text(json.dumps(res, indent=1, default=float))
+    (OUT / "early_results.json").write_text(json.dumps(clean(res), indent=1))
     print(json.dumps({k: v for k, v in res.items() if k in ("rows_A", "rows_A_by_week_half", "A_passing_features",
                                                             "coverage")}, indent=1, default=float))
 
