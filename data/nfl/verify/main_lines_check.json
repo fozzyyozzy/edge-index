@@ -1,0 +1,318 @@
+{
+ "rows": 5726,
+ "games": 269,
+ "integer_lines": 0,
+ "books_per_line_median": {
+  "Over": 5.0,
+  "Under": 5.0
+ },
+ "flat_returns": {
+  "all": {
+   "dk_price": {
+    "n": 11452,
+    "games": 269,
+    "hit": 50.0,
+    "roi_pct": -5.72,
+    "ci95_pct": [
+     -5.93,
+     -5.51
+    ]
+   },
+   "best_price": {
+    "n": 11452,
+    "games": 269,
+    "hit": 50.0,
+    "roi_pct": -3.96,
+    "ci95_pct": [
+     -4.19,
+     -3.74
+    ]
+   }
+  },
+  "rec_yds:Over": {
+   "dk_price": {
+    "n": 2934,
+    "games": 269,
+    "hit": 45.43,
+    "roi_pct": -14.0,
+    "ci95_pct": [
+     -17.6,
+     -10.38
+    ]
+   },
+   "best_price": {
+    "n": 2934,
+    "games": 269,
+    "hit": 45.43,
+    "roi_pct": -13.48,
+    "ci95_pct": [
+     -17.1,
+     -9.84
+    ]
+   }
+  },
+  "rec_yds:Under": {
+   "dk_price": {
+    "n": 2934,
+    "games": 269,
+    "hit": 54.57,
+    "roi_pct": 3.29,
+    "ci95_pct": [
+     -0.33,
+     6.88
+    ]
+   },
+   "best_price": {
+    "n": 2934,
+    "games": 269,
+    "hit": 54.57,
+    "roi_pct": 4.02,
+    "ci95_pct": [
+     0.37,
+     7.64
+    ]
+   }
+  },
+  "receptions:Over": {
+   "dk_price": {
+    "n": 2792,
+    "games": 268,
+    "hit": 44.05,
+    "roi_pct": -15.76,
+    "ci95_pct": [
+     -19.55,
+     -12.12
+    ]
+   },
+   "best_price": {
+    "n": 2792,
+    "games": 268,
+    "hit": 44.05,
+    "roi_pct": -12.91,
+    "ci95_pct": [
+     -16.82,
+     -9.12
+    ]
+   }
+  },
+  "receptions:Under": {
+   "dk_price": {
+    "n": 2792,
+    "games": 268,
+    "hit": 55.95,
+    "roi_pct": 3.57,
+    "ci95_pct": [
+     -0.06,
+     7.24
+    ]
+   },
+   "best_price": {
+    "n": 2792,
+    "games": 268,
+    "hit": 55.95,
+    "roi_pct": 6.6,
+    "ci95_pct": [
+     2.85,
+     10.37
+    ]
+   }
+  },
+  "rec_yds": {
+   "dk_price": {
+    "n": 5868,
+    "games": 269,
+    "hit": 50.0,
+    "roi_pct": -5.35,
+    "ci95_pct": [
+     -5.39,
+     -5.32
+    ]
+   },
+   "best_price": {
+    "n": 5868,
+    "games": 269,
+    "hit": 50.0,
+    "roi_pct": -4.73,
+    "ci95_pct": [
+     -4.78,
+     -4.68
+    ]
+   }
+  },
+  "receptions": {
+   "dk_price": {
+    "n": 5584,
+    "games": 268,
+    "hit": 50.0,
+    "roi_pct": -6.1,
+    "ci95_pct": [
+     -6.52,
+     -5.66
+    ]
+   },
+   "best_price": {
+    "n": 5584,
+    "games": 268,
+    "hit": 50.0,
+    "roi_pct": -3.15,
+    "ci95_pct": [
+     -3.62,
+     -2.69
+    ]
+   }
+  }
+ },
+ "vig": {
+  "rec_yds": {
+   "dk_hold_mean_pct": 5.66,
+   "best_price_hold_mean_pct": 4.94,
+   "share_lines_best_hold_negative": 0.0
+  },
+  "receptions": {
+   "dk_hold_mean_pct": 6.01,
+   "best_price_hold_mean_pct": 2.78,
+   "share_lines_best_hold_negative": 3.47
+  },
+  "all": {
+   "dk_hold_mean_pct": 5.83,
+   "best_price_hold_mean_pct": 3.89,
+   "share_lines_best_hold_negative": 1.69
+  }
+ },
+ "combined_factor_model_weeks_10_18": {
+  "ev_positive_at_dk_price": {
+   "legs": {
+    "n": 1486,
+    "games": 127,
+    "hit": 52.02,
+    "roi_pct": -1.17,
+    "ci95_pct": [
+     -7.41,
+     4.78
+    ]
+   },
+   "also_at_dk_price": {
+    "n": 1486,
+    "games": 127,
+    "hit": 52.02,
+    "roi_pct": -1.17,
+    "ci95_pct": [
+     -7.41,
+     4.78
+    ]
+   },
+   "sides": {
+    "Under": 799,
+    "Over": 687
+   },
+   "by_market": {
+    "rec_yds": {
+     "n": 797,
+     "games": 115,
+     "hit": 50.94,
+     "roi_pct": -3.56,
+     "ci95_pct": [
+      -10.55,
+      3.42
+     ]
+    },
+    "receptions": {
+     "n": 689,
+     "games": 103,
+     "hit": 53.27,
+     "roi_pct": 1.6,
+     "ci95_pct": [
+      -6.38,
+      9.46
+     ]
+    }
+   },
+   "mean_model_p_pct": 55.46
+  },
+  "ev_positive_at_best_price": {
+   "legs": {
+    "n": 1921,
+    "games": 134,
+    "hit": 51.43,
+    "roi_pct": -0.32,
+    "ci95_pct": [
+     -5.96,
+     5.23
+    ]
+   },
+   "also_at_dk_price": {
+    "n": 1921,
+    "games": 134,
+    "hit": 51.43,
+    "roi_pct": -2.84,
+    "ci95_pct": [
+     -8.33,
+     2.57
+    ]
+   },
+   "sides": {
+    "Under": 996,
+    "Over": 925
+   },
+   "by_market": {
+    "rec_yds": {
+     "n": 874,
+     "games": 131,
+     "hit": 51.03,
+     "roi_pct": -2.52,
+     "ci95_pct": [
+      -9.19,
+      4.22
+     ]
+    },
+    "receptions": {
+     "n": 1047,
+     "games": 131,
+     "hit": 51.77,
+     "roi_pct": 1.51,
+     "ci95_pct": [
+      -5.34,
+      8.27
+     ]
+    }
+   },
+   "mean_model_p_pct": 54.74
+  },
+  "test_weeks_all_legs": {
+   "dk_price": {
+    "n": 5674,
+    "games": 134,
+    "hit": 50.0,
+    "roi_pct": -5.7,
+    "ci95_pct": [
+     -6.01,
+     -5.39
+    ]
+   },
+   "best_price": {
+    "n": 5674,
+    "games": 134,
+    "hit": 50.0,
+    "roi_pct": -3.98,
+    "ci95_pct": [
+     -4.31,
+     -3.64
+    ]
+   }
+  },
+  "coefficients_per_sd": {
+   "rec_yds": {
+    "implied_total": -0.04126701938407898,
+    "team_spread": -0.10645599987490119,
+    "wind": -0.13966278835045384,
+    "precip": -0.011398024635428102
+   },
+   "receptions": {
+    "implied_total": 0.1054272656082808,
+    "team_spread": 0.045026737609136315,
+    "wind": -0.1288755188236456,
+    "precip": 0.04390167768113487
+   }
+  }
+ }
+}
