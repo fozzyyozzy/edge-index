@@ -1,6 +1,7 @@
 # NBA Floor Lines — Phase 2 Pre-Registration
 
 > **Status: approved by Tim 2026-10-21 and registered by the commit that adds this file to `nba-phase1`.**
+> **Amended once, 2026-10-21, before any result or price was seen:** see §9. Where §9 and §1–§8 conflict, §9 wins.
 > - The commit hash is recorded in `PHASE2_RESULTS.md`.
 > - The holdout runs **once**, after this commit.
 > - No 2025-26 outcome or price has been used for any modelling choice before this commit.
@@ -134,3 +135,46 @@ The 7-game coverage sample (one game per month of 2025-26) is used only to see *
 - **One holdout run.** If code is fixed after it, both runs are reported and the first one stands for pass/fail and for the §6.5 weight.
 - **Slices found after looking** are reported as hypotheses only (CLAUDE.md rule 5).
 - **Real data only:** every scored row traces to an ESPN `game_id` + `espn_id`, and every price to a stored Odds API snapshot.
+
+## 9. Amendment 1 (2026-10-21), made BEFORE any holdout result or price was seen
+
+**Timing:** written and committed before:
+- any 2025-26 model prediction was scored
+- any historical prop price was recorded (the full pull starts only after this commit)
+- any price was read
+
+The coverage sample (§6.6) recorded market availability and ladder depth only. Source: Tim's instructions of 2026-10-21.
+
+### 9.1 Second de-vig method: ladder-anchored (sensitivity)
+§6.2's hold-based method stays the **primary** method. Its p_market is called `p_hold`. The ladder-anchored method gives `p_anchor`:
+1. **Anchor rung:** take the player's two-way main line, line L (a half-point) with Over price O and Under price U. Its no-vig Over probability is `q = implied(O) / (implied(O) + implied(U))`. The anchor is the alt-ladder rung **k\* = L + 0.5**, the alt outcome at point L (e.g. "25+" vs "Over 24.5"), with price `A*`.
+2. **Markup:** `r = implied(A*) / q`. This is DK's alt markup relative to the fair main-line Over.
+3. **Every rung k on that ladder:** `p_anchor(k) = min(implied(A_k) / r, 0.999)`.
+4. **No anchor rung, or no usable main line** (hold outside [−0.01, 0.25] as in §6.2): use the median `r` of that market's anchored ladders in the same game. If there are none, use that market's median `r` over all 2025-26 games. The source (`anchored` / `game median` / `season median`) is recorded on every row.
+
+### 9.2 Blend rows (replaces §6.4's row filter)
+The rows are eligible player-games (§2) and priced alt rungs where **both** `p_hold` and `p_anchor` exist and **`p_hold` ∈ [0.50, 0.97]**. The same rows are used for every variant under both methods. They're pooled across card-eligible markets that have alt prices.
+
+### 9.3 Weight rule (replaces §6.5 steps 2–4)
+1. For each method m ∈ {hold, anchor}, compute the Brier of market-only (`p_m`) and of each blend `w·p_model + (1−w)·p_m` for w ∈ {0.1, 0.2, 0.4, 0.6}.
+2. A blend **qualifies** only if its Brier is strictly lower than market-only's under **both** methods.
+3. **If any qualify:** the pooled card weight is the qualifying w with the lowest Brier under the **hold** method (the primary method). On an exact tie, use the smaller w.
+4. **If none qualify:** the pooled weight is **w = 0.1**.
+
+Model-only is still reported, never selected.
+
+### 9.4 Per-market valve (new)
+For each card-eligible market with blend rows, compare the pooled weight's Brier with market-only's on that market's rows. If the pooled weight is strictly worse under **either** method, that market uses **w = 0.1**. Otherwise it uses the pooled weight. The result is reported per market.
+
+### 9.5 Diagnostic (new, non-gating)
+- Market-only's own reliability table (5-point bins) on alt rungs in the floor band, `p_m` ∈ [0.60, 0.95).
+- One table per method, per market and pooled.
+
+### 9.6 Market roles (amends §4)
+- **R+A: calibration-only.** Bars B0–B4 are computed and reported, but R+A is **not card-eligible** whatever the result. DK offered no R+A alternate ladder in any sampled game (0/7).
+- **Steals and blocks:** most rungs have no two-way main line to de-vig against, so their shadow evaluation is **model-only**: bars B0–B4, no blend. Where a main line exists, market-only diagnostics may be reported. They never set or receive a blend weight.
+
+### 9.7 Price source
+- **Pull:** DraftKings, one historical snapshot per game at tip − 10 minutes, every 2025-26 regular-season game, cap 240,000 credits (approved by Tim 2026-10-21), with the 100,000-credit reserve guard.
+- **Coverage-sample games:** the 7 sample games are part of this set like any other. Their cached responses are byte-identical requests, so they're reused instead of re-bought. No price was read from them before this commit.
+- **This supersedes §6.6's exclusion,** which existed only to keep the sample from shaping any modelling choice.
