@@ -54,6 +54,10 @@ matchup-gated, graded publicly with CLV. Sell transparency, never win%.
 ## Validated findings (real 2023-25 data; regenerate via the study scripts)
 - Receptions alt floors at 0.6x expectation: 88.4% true (fair -762); books
   hang -175/-300 -> THE core edge. At 0.5x: 92.3% (fair -1195).
+  UNVERIFIED HYPOTHESIS (2026-10-21): the -175/-300 book price has no price source
+  (no script or data produced it). Being tested against real 2025 DK prices under
+  docs/nfl/PREREG_NFL.md; results in docs/nfl/NFL_VERIFY_RESULTS.md. The clear
+  rates are measured; the "books hang" part and so the edge are not, until then.
 - Yardage alt floors are efficiently priced (0.6x rec_yds: 67%, fair -203).
   Only playable with a matchup case.
 - Streaks add ~nothing beyond trailing average. Card copy only, never selection.
