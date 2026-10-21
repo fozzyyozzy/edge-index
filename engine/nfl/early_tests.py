@@ -189,7 +189,8 @@ def test_C(mains_S, close_alt, close_main, tv, trig, kind="itt"):
         t = tv.assign(d_itt=tv[f"itt_{S}"] - tv[f"itt_{prev}"], d_spread=tv[f"spread_{S}"] - tv[f"spread_{prev}"])
         m = mains_S[mains_S.S == S].merge(t[["game_id", "team", "d_itt", "d_spread"]], on=["game_id", "team"])
         if kind == "itt":
-            m = m[m.d_itt.abs() >= trig].assign(side=np.where(m.d_itt >= trig, "Over", "Under"))
+            m = m[m.d_itt.abs() >= trig]
+            m = m.assign(side=np.where(m.d_itt >= trig, "Over", "Under"))
         else:
             m = m[m.d_spread >= trig].assign(side="Over")
         bets.append(m.assign(S=S))

@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\tyose\AppData\Local\Temp\claude\C--Users-tyose-edge-index\e5739640-b454-40be-b132-5b1a56b521db\scratchpad\nfl\engine\nfl\early_tests.py", line 419, in <module>
+    main()
+  File "C:\Users\tyose\AppData\Local\Temp\claude\C--Users-tyose-edge-index\e5739640-b454-40be-b132-5b1a56b521db\scratchpad\nfl\engine\nfl\early_tests.py", line 393, in main
+    allw, b = test_C(mains, close_alt, cm, tv, trig, kind)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Temp\claude\C--Users-tyose-edge-index\e5739640-b454-40be-b132-5b1a56b521db\scratchpad\nfl\engine\nfl\early_tests.py", line 192, in test_C
+    m = m[m.d_itt.abs() >= trig].assign(side=np.where(m.d_itt >= trig, "Over", "Under"))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 5715, in assign
+    data[k] = com.apply_if_callable(v, data)
+    ~~~~^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 4672, in __setitem__
+    self._set_item(key, value)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 4872, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 5742, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "C:\Users\tyose\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\common.py", line 601, in require_length_match
+    raise ValueError(
+ValueError: Length of values (2217) does not match length of index (208)
