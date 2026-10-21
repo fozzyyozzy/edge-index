@@ -1,23 +1,29 @@
 """Historical DraftKings player-prop prices (main + alternate ladders): DRY-RUN ESTIMATE ONLY.
 
     python -m engine.nba.hist_props --season 2025-26      # plan + credit estimate; makes no paid call
+    python -m engine.nba.hist_props --sample --approved-credits 1400   # coverage sample (approved 2026-10-21)
 
 Plan: one /v4/historical/sports/basketball_nba/events/{id}/odds call per game, at tip - LEAD, DK only (1 region),
 all in-scope markets. Event ids come from the cached spread/total snapshots (data/nba/raw/odds_hist/), so no
 paid /historical/events lookups are needed.
 Cost (Odds API docs, read 2026-10-21): 10 x [unique markets RETURNED] x [regions]; empty responses are free.
 So the true cost depends on which markets DK actually posted per game, which can't be known without paying.
-There is deliberately no pull path here: spend rule (2026-10-21) = anything over 2,000 credits needs Tim's
-approval of this estimate first.
+Spend rule (2026-10-21): anything over 2,000 credits needs Tim's approval of the estimate first. The only pull
+path is --sample: one game per month (the first tip on or after the 15th), capped by --approved-credits; it records
+which markets DK carried and how deep the ladders are, never prices (PREREG §6.6: not a modelling input).
 """
 from __future__ import annotations
 import argparse
 import json
+import os
 from datetime import timedelta
+
+from pathlib import Path
 
 import pandas as pd
 
-from engine.nba.hist_lines import DATA, RAW as SNAPSHOTS
+from engine.nba import http
+from engine.nba.hist_lines import DATA, RAW as SNAPSHOTS, log_usage
 from engine.nba.teams import from_name
 
 STATS = ["points", "rebounds", "assists", "threes", "points_rebounds", "points_assists", "rebounds_assists",
@@ -52,10 +58,75 @@ def plan(season: str) -> pd.DataFrame:
     return p
 
 
+URL = "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events/{eid}/odds"
+SAMPLE_RAW = DATA / "raw" / "odds_hist_props"
+SAMPLE_OUT = DATA / "lines" / "props_coverage_sample_{season}.json"
+
+
+def sample_games(p: pd.DataFrame) -> pd.DataFrame:
+    """one game per month, fixed before looking: the earliest tip on the first date >= the 15th that has games"""
+    p = p.assign(month=p.date.str[:7]).sort_values(["date", "commence"])
+    pick = [g[g.date >= f"{m}-15"].head(1) if (g.date >= f"{m}-15").any() else g.head(1) for m, g in p.groupby("month")]
+    return pd.concat(pick)
+
+
+def coverage(d: dict) -> dict:
+    """markets returned, players, ladder depth; prices are deliberately not read"""
+    out = {}
+    for b in d.get("data", {}).get("bookmakers", []):
+        for m in b["markets"]:
+            players = {}
+            for o in m["outcomes"]:
+                players.setdefault(o.get("description"), set()).add((o["name"], o.get("point")))
+            out[m["key"]] = {"players": len(players), "outcomes": len(m["outcomes"]),
+                             "max_rungs": max(len(v) for v in players.values()),
+                             "sides": sorted({n for v in players.values() for n, _ in v})}
+    return out
+
+
+def run_sample(season: str, approved: int):
+    key = os.environ["ODDS_API_KEY"]
+    games = sample_games(plan(season))
+    planned = len(games) * PER_MARKET * (len(MAIN) + len(ALT))
+    if planned > approved:
+        raise SystemExit(f"refusing: worst case {planned:,} credits > approved {approved:,}")
+    SAMPLE_RAW.mkdir(parents=True, exist_ok=True)
+    spent, rows = 0, []
+    for g in games.itertuples():
+        if spent + PER_MARKET * (len(MAIN) + len(ALT)) > approved:
+            raise SystemExit(f"stopping: next call could pass the approved {approved:,} (spent {spent})")
+        ts = g.snapshot_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+        r = http.get(URL.format(eid=g.event_id), {"apiKey": key, "regions": "us", "bookmakers": "draftkings",
+                                                  "markets": ",".join(MAIN + ALT), "oddsFormat": "american",
+                                                  "date": ts}, timeout=60)
+        h = r.headers
+        log_usage("historical props coverage sample", 1, h.get("x-requests-used"), h.get("x-requests-remaining"),
+                  h.get("x-requests-last"))
+        spent += int(h.get("x-requests-last") or 0)
+        d = r.json()
+        (SAMPLE_RAW / f"{g.event_id}_{g.snapshot_at:%Y%m%dT%H%M}.json").write_text(json.dumps(d))
+        cov = coverage(d)
+        rows.append({"date": g.date, "game": f"{g.away}@{g.home}", "game_id": g.game_id, "snapshot_requested": ts,
+                     "snapshot_returned": d.get("timestamp"), "credits": int(h.get("x-requests-last") or 0),
+                     "markets_returned": sorted(cov), "detail": cov})
+        print(f"{g.date} {g.away}@{g.home}: {len(cov)} markets, {h.get('x-requests-last')} credits", flush=True)
+    keys = MAIN + ALT
+    summary = {"season": season, "games": len(rows), "credits_spent": spent, "approved": approved,
+               "market_games_returned": {k: sum(k in r["markets_returned"] for r in rows) for k in keys},
+               "games": rows}
+    out = Path(str(SAMPLE_OUT).format(season=season))
+    out.write_text(json.dumps(summary, indent=2))
+    print(f"wrote {out}: {spent} credits")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", default="2025-26")
+    ap.add_argument("--sample", action="store_true", help="pull the approved one-game-per-month coverage sample")
+    ap.add_argument("--approved-credits", type=int, default=0)
     a = ap.parse_args()
+    if a.sample:
+        return run_sample(a.season, a.approved_credits)
     p = plan(a.season)
     n, missing = len(p), int(p.event_id.isna().sum())
     seen_main = [m for m in MAIN if m in SEEN_PHASE0]

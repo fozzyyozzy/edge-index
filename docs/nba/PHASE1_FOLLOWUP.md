@@ -117,3 +117,50 @@ These are my choices for you to confirm or change. They're marked **[TIM]** in t
 4. **Threes role:** the brief's default was shadow-only, but your list didn't mark it. It's drafted as a v1 candidate. Confirm which.
 
 **Stopping here for Tim.**
+
+---
+
+## Addendum (2026-10-21, second round): approved items
+
+### PREREG registered
+`docs/nba/PREREG.md` was committed to `nba-phase1` as **`56619549`** (unpushed) with Tim's decisions:
+- **Eligibility:** approved, and proven strict-before in code. It's in `engine/nba/eligibility.py`, and 8 tests check that the scored game and anything later can't change eligibility.
+- **Slope:** 0.50–0.97 gating, plus a 0.60–0.90 non-gating diagnostic.
+- **Minimum sample:** B0 approved.
+- **Threes:** card-eligible.
+- **Steals/blocks:** shadow-only for the first forward month.
+- **§6 market blend:** compares model-only, market-only (de-vigged like NFL `novig`) and w ∈ {0.1, 0.2, 0.4, 0.6}.
+  - It runs on the same rows for every variant: priced alt rungs with p_market in [0.50, 0.97].
+  - The rule is written now: the lowest-Brier blend that strictly beats market-only, else **w = 0.1**.
+  - The weight is pooled across card-eligible markets; per-market results are a diagnostic only.
+
+### Coverage sample: 7 games, 1,320 credits (approved max 1,400)
+- **Picks:** one game per month, fixed by rule before any data was seen: the first tip on or after the 15th. The snapshot is tip − 10 min.
+- **What's recorded:** availability and ladder depth only; prices were not read (PREREG §6.6).
+- **Output:** `data/nba/lines/props_coverage_sample_2025-26.json`. Calls are logged in `odds_usage_nba.csv`.
+
+| Market | Main (games of 7) | Alt (games of 7) | Players/game (alt) | Max alt rungs |
+|---|---|---|---|---|
+| Points | 7 | 7 | 13–18 | 10 |
+| Rebounds | 7 | 7 | 13–16 | 14 |
+| Assists | 7 | 7 | 12–16 | 12 |
+| Threes | 7 | 7 | 11–16 | 9 |
+| P+R | 7 | 7 | 13–16 | 8 |
+| P+A | 7 | 7 | 12–16 | 8 |
+| **R+A** | 7 | **0** | — | — |
+| PRA | 7 | 7 | 12–16 | 9 |
+| Steals | 7 | 7 | 4–12 | 4 |
+| Blocks | **6** | 7 | 3–12 | 4 |
+
+- **Every month Oct–Apr returned data.** Snapshots came back about 4–5 minutes before the requested time (the 5-minute grid), so all were pregame.
+- **R+A alternate was never offered.** R+A can be calibration-scored, but it has no historical floor ladder and no blend rows. Whether DK offers it this season is unchecked.
+- **Steals/blocks main lines** are posted for only 1–9 players a game.
+- **Full 2025-26 pull, re-estimated:** the sample averaged 189 credits/game, so 1,230 games ≈ **232,000 credits**. Not pulled. It needs Tim's approval.
+
+### Does the ~5M quota reset monthly?
+**Yes, monthly. The exact day for the 5M plan isn't confirmed.**
+- **Docs:** `x-requests-remaining` = "usage credits remaining until the quota resets". The pricing page sells the 5M plan ($119/mo) as "5M credits per month". Neither names a reset day.
+- **This repo's own ledger** (`automation/lines/odds_usage.csv`): remaining went 11,402 (Sep 30) → 19,817 (Oct 1), a reset at the **start of October** on the old 20K plan. It then jumped to ~5,000,000 on Oct 2, when the plan was upgraded.
+- **So the next reset should be on or about Nov 1–2.** Whether it falls on the calendar month or the Oct 2 subscription anniversary is only visible on the account dashboard.
+- **Rollover:** the docs say nothing about unused credits rolling over, so assume they don't.
+- **Usage after today:** used 13,833, remaining 4,986,167. A ~232k historical pull would fit inside this month's remaining quota.
