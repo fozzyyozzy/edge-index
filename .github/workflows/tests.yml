@@ -18,5 +18,5 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: pip install -r automation/requirements.txt pytest pyyaml pytest-github-actions-annotate-failures
+      - run: pip install -r automation/requirements.txt -r engine/nba/requirements.txt pytest pyyaml pytest-github-actions-annotate-failures
       - run: python -m pytest automation/tests -q -rf   # failures also post as run annotations (readable without signing in)

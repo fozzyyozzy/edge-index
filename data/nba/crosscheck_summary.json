@@ -1,0 +1,236 @@
+{
+  "espn_played_rows": 79511,
+  "nba_api_rows": 79358,
+  "matched_rows": 79336,
+  "espn_only": 175,
+  "nba_api_only": 22,
+  "espn_rows_without_nba_id": 23,
+  "team_mismatch": 0,
+  "by_stat": {
+    "minutes": {
+      "exact": 0.99781,
+      "within_1": 1.0,
+      "mismatches": 174,
+      "mean_diff": 0.0021
+    },
+    "pts": {
+      "exact": 1.0,
+      "within_1": 1.0,
+      "mismatches": 0,
+      "mean_diff": 0.0
+    },
+    "reb": {
+      "exact": 0.9999,
+      "within_1": 1.0,
+      "mismatches": 8,
+      "mean_diff": -0.0
+    },
+    "ast": {
+      "exact": 0.99995,
+      "within_1": 1.0,
+      "mismatches": 4,
+      "mean_diff": 0.0
+    },
+    "fg3m": {
+      "exact": 1.0,
+      "within_1": 1.0,
+      "mismatches": 0,
+      "mean_diff": 0.0
+    },
+    "stl": {
+      "exact": 0.99986,
+      "within_1": 1.0,
+      "mismatches": 11,
+      "mean_diff": -0.0
+    },
+    "blk": {
+      "exact": 0.99995,
+      "within_1": 1.0,
+      "mismatches": 4,
+      "mean_diff": 0.0
+    }
+  },
+  "by_season": {
+    "2023-24": {
+      "minutes": 0.99826,
+      "pts": 1.0,
+      "reb": 0.99989,
+      "ast": 0.99992,
+      "fg3m": 1.0,
+      "stl": 0.99962,
+      "blk": 0.99996
+    },
+    "2024-25": {
+      "minutes": 0.99761,
+      "pts": 1.0,
+      "reb": 1.0,
+      "ast": 0.99992,
+      "fg3m": 1.0,
+      "stl": 0.99996,
+      "blk": 0.99992
+    },
+    "2025-26": {
+      "minutes": 0.99756,
+      "pts": 1.0,
+      "reb": 0.99981,
+      "ast": 1.0,
+      "fg3m": 1.0,
+      "stl": 1.0,
+      "blk": 0.99996
+    }
+  },
+  "espn_only_examples": [
+    {
+      "date": "2023-10-31",
+      "team": "LAC",
+      "player": "P.J. Tucker",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2024-02-14",
+      "team": "PHX",
+      "player": "Thaddeus Young",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2023-10-31",
+      "team": "LAC",
+      "player": "James Harden",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2024-02-09",
+      "team": "CHA",
+      "player": "Ish Smith",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2026-02-04",
+      "team": "BOS",
+      "player": "Nikola Vucevic",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2025-02-23",
+      "team": "IND",
+      "player": "Jahlil Okafor",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2024-10-28",
+      "team": "SAC",
+      "player": "Skal Labissiere",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2024-10-29",
+      "team": "SAC",
+      "player": "Skal Labissiere",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2024-11-01",
+      "team": "SAC",
+      "player": "Skal Labissiere",
+      "minutes": 0.0,
+      "pts": 0.0
+    },
+    {
+      "date": "2025-03-14",
+      "team": "SAC",
+      "player": "Skal Labissiere",
+      "minutes": 0.0,
+      "pts": 0.0
+    }
+  ],
+  "nba_api_only_examples": [
+    {
+      "date": "2025-11-29",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 11.0,
+      "PTS": 2.0
+    },
+    {
+      "date": "2025-12-01",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 12.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2025-12-03",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 7.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2025-12-05",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 1.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2025-12-07",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 5.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2026-01-05",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 12.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2026-01-07",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 16.0,
+      "PTS": 2.0
+    },
+    {
+      "date": "2026-01-10",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 3.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2026-01-18",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 3.0,
+      "PTS": 0.0
+    },
+    {
+      "date": "2026-01-20",
+      "TEAM_ABBREVIATION": "CHI",
+      "PLAYER_NAME": "Lachlan Olbrich",
+      "MIN": 4.0,
+      "PTS": 0.0
+    }
+  ],
+  "nba_api_only_min_dist": {
+    "count": 22.0,
+    "mean": 6.68,
+    "std": 5.31,
+    "min": 1.0,
+    "25%": 3.0,
+    "50%": 4.5,
+    "75%": 11.0,
+    "max": 17.0
+  }
+}
