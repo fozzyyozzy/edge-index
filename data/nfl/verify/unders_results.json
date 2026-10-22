@@ -1,0 +1,441 @@
+{
+ "code_commit": "bd65f7b4535cd8cfb2ce945a8c73b247e3d59275",
+ "registered_2024": {
+  "verdict": "FAIL",
+  "result_counts": {
+   "LOSS": 3416,
+   "WIN": 2979,
+   "UNGRADEABLE": 56,
+   "VOID": 7
+  },
+  "pooled": {
+   "n": 6395,
+   "games": 272,
+   "hit_pct": 53.42,
+   "push": 0,
+   "avg_price_dec": 1.9201,
+   "avg_implied_pct": 52.61,
+   "roi_pct": 1.46,
+   "ci95_pct": [
+    -1.42,
+    4.32
+   ]
+  },
+  "by_market": {
+   "rec_yds": {
+    "n": 3324,
+    "games": 272,
+    "hit_pct": 53.04,
+    "push": 0,
+    "avg_price_dec": 1.903,
+    "avg_implied_pct": 52.58,
+    "roi_pct": 0.85,
+    "ci95_pct": [
+     -2.33,
+     4.04
+    ]
+   },
+   "receptions": {
+    "n": 3071,
+    "games": 272,
+    "hit_pct": 53.83,
+    "push": 0,
+    "avg_price_dec": 1.9386,
+    "avg_implied_pct": 52.64,
+    "roi_pct": 2.12,
+    "ci95_pct": [
+     -1.21,
+     5.38
+    ]
+   }
+  },
+  "halves": {
+   "wk1-9": {
+    "n": 3363,
+    "games": 138,
+    "hit_pct": 54.21,
+    "push": 0,
+    "avg_price_dec": 1.9215,
+    "avg_implied_pct": 52.57,
+    "roi_pct": 3.07,
+    "ci95_pct": [
+     -0.79,
+     7.1
+    ]
+   },
+   "wk10-18": {
+    "n": 3032,
+    "games": 134,
+    "hit_pct": 52.54,
+    "push": 0,
+    "avg_price_dec": 1.9185,
+    "avg_implied_pct": 52.65,
+    "roi_pct": -0.33,
+    "ci95_pct": [
+     -4.48,
+     3.71
+    ]
+   }
+  },
+  "best_book_counts": {
+   "draftkings": 2325,
+   "betmgm": 1105,
+   "fanduel": 1032,
+   "betrivers": 1011,
+   "williamhill_us": 922
+  },
+  "books_at_line_median": 4.0,
+  "dk_only": {
+   "result_counts": {
+    "LOSS": 3169,
+    "WIN": 2824,
+    "UNGRADEABLE": 56,
+    "VOID": 6
+   },
+   "pooled": {
+    "n": 5993,
+    "games": 272,
+    "hit_pct": 52.88,
+    "push": 0,
+    "avg_price_dec": 1.884,
+    "avg_implied_pct": 53.57,
+    "roi_pct": -1.36,
+    "ci95_pct": [
+     -4.29,
+     1.56
+    ]
+   },
+   "by_market": {
+    "rec_yds": {
+     "n": 3124,
+     "games": 272,
+     "hit_pct": 52.37,
+     "push": 0,
+     "avg_price_dec": 1.8793,
+     "avg_implied_pct": 53.24,
+     "roi_pct": -1.64,
+     "ci95_pct": [
+      -4.88,
+      1.64
+     ]
+    },
+    "receptions": {
+     "n": 2869,
+     "games": 271,
+     "hit_pct": 53.43,
+     "push": 0,
+     "avg_price_dec": 1.889,
+     "avg_implied_pct": 53.93,
+     "roi_pct": -1.06,
+     "ci95_pct": [
+      -4.37,
+      2.38
+     ]
+    }
+   },
+   "halves": {
+    "wk1-9": {
+     "n": 3188,
+     "games": 138,
+     "hit_pct": 53.73,
+     "push": 0,
+     "avg_price_dec": 1.8834,
+     "avg_implied_pct": 53.59,
+     "roi_pct": 0.2,
+     "ci95_pct": [
+      -3.72,
+      4.22
+     ]
+    },
+    "wk10-18": {
+     "n": 2805,
+     "games": 134,
+     "hit_pct": 51.91,
+     "push": 0,
+     "avg_price_dec": 1.8846,
+     "avg_implied_pct": 53.55,
+     "roi_pct": -3.13,
+     "ci95_pct": [
+      -7.38,
+      1.02
+     ]
+    }
+   },
+   "best_book_counts": {
+    "draftkings": 5993
+   },
+   "books_at_line_median": 1.0
+  }
+ },
+ "descriptive_2025": {
+  "result_counts": {
+   "LOSS": 3790,
+   "WIN": 3114,
+   "UNGRADEABLE": 52,
+   "VOID": 5
+  },
+  "pooled": {
+   "n": 6904,
+   "games": 272,
+   "hit_pct": 54.9,
+   "push": 0,
+   "avg_price_dec": 1.9119,
+   "avg_implied_pct": 52.85,
+   "roi_pct": 3.98,
+   "ci95_pct": [
+    1.08,
+    6.93
+   ]
+  },
+  "by_market": {
+   "rec_yds": {
+    "n": 3512,
+    "games": 272,
+    "hit_pct": 54.53,
+    "push": 0,
+    "avg_price_dec": 1.8946,
+    "avg_implied_pct": 52.81,
+    "roi_pct": 3.26,
+    "ci95_pct": [
+     0.04,
+     6.45
+    ]
+   },
+   "receptions": {
+    "n": 3392,
+    "games": 271,
+    "hit_pct": 55.28,
+    "push": 0,
+    "avg_price_dec": 1.9298,
+    "avg_implied_pct": 52.89,
+    "roi_pct": 4.73,
+    "ci95_pct": [
+     1.45,
+     7.98
+    ]
+   }
+  },
+  "halves": {
+   "wk1-9": {
+    "n": 3392,
+    "games": 135,
+    "hit_pct": 53.74,
+    "push": 0,
+    "avg_price_dec": 1.9112,
+    "avg_implied_pct": 52.84,
+    "roi_pct": 1.85,
+    "ci95_pct": [
+     -2.67,
+     6.19
+    ]
+   },
+   "wk10-18": {
+    "n": 3512,
+    "games": 137,
+    "hit_pct": 56.01,
+    "push": 0,
+    "avg_price_dec": 1.9125,
+    "avg_implied_pct": 52.86,
+    "roi_pct": 6.05,
+    "ci95_pct": [
+     2.19,
+     9.82
+    ]
+   }
+  },
+  "best_book_counts": {
+   "draftkings": 3069,
+   "betmgm": 1797,
+   "fanduel": 878,
+   "williamhill_us": 525,
+   "betrivers": 368,
+   "fanatics": 267
+  },
+  "books_at_line_median": 3.0,
+  "dk_only": {
+   "pooled": {
+    "n": 5726,
+    "games": 269,
+    "hit_pct": 55.24,
+    "push": 0,
+    "avg_price_dec": 1.8876,
+    "avg_implied_pct": 53.38,
+    "roi_pct": 3.43,
+    "ci95_pct": [
+     0.19,
+     6.65
+    ]
+   },
+   "by_market": {
+    "rec_yds": {
+     "n": 2934,
+     "games": 269,
+     "hit_pct": 54.57,
+     "push": 0,
+     "avg_price_dec": 1.893,
+     "avg_implied_pct": 52.83,
+     "roi_pct": 3.29,
+     "ci95_pct": [
+      -0.33,
+      6.88
+     ]
+    },
+    "receptions": {
+     "n": 2792,
+     "games": 268,
+     "hit_pct": 55.95,
+     "push": 0,
+     "avg_price_dec": 1.8819,
+     "avg_implied_pct": 53.95,
+     "roi_pct": 3.57,
+     "ci95_pct": [
+      -0.06,
+      7.24
+     ]
+    }
+   },
+   "halves": {
+    "wk1-9": {
+     "n": 2889,
+     "games": 135,
+     "hit_pct": 54.27,
+     "push": 0,
+     "avg_price_dec": 1.8906,
+     "avg_implied_pct": 53.28,
+     "roi_pct": 1.77,
+     "ci95_pct": [
+      -2.87,
+      6.25
+     ]
+    },
+    "wk10-18": {
+     "n": 2837,
+     "games": 134,
+     "hit_pct": 56.22,
+     "push": 0,
+     "avg_price_dec": 1.8845,
+     "avg_implied_pct": 53.48,
+     "roi_pct": 5.12,
+     "ci95_pct": [
+      0.45,
+      9.65
+     ]
+    }
+   },
+   "best_book_counts": {
+    "draftkings": 5726
+   },
+   "books_at_line_median": 1.0
+  }
+ },
+ "descriptive_2026_wk3_6_dk_only": {
+  "result_counts": {
+   "LOSS": 697,
+   "WIN": 666,
+   "VOID": 14,
+   "UNGRADEABLE": 6
+  },
+  "pooled": {
+   "n": 1363,
+   "games": 60,
+   "hit_pct": 51.14,
+   "push": 0,
+   "avg_price_dec": 1.8958,
+   "avg_implied_pct": 53.28,
+   "roi_pct": -3.82,
+   "ci95_pct": [
+    -9.62,
+    2.0
+   ]
+  },
+  "by_market": {
+   "rec_yds": {
+    "n": 684,
+    "games": 60,
+    "hit_pct": 51.17,
+    "push": 0,
+    "avg_price_dec": 1.8921,
+    "avg_implied_pct": 52.86,
+    "roi_pct": -3.26,
+    "ci95_pct": [
+     -10.05,
+     3.66
+    ]
+   },
+   "receptions": {
+    "n": 679,
+    "games": 60,
+    "hit_pct": 51.1,
+    "push": 0,
+    "avg_price_dec": 1.8995,
+    "avg_implied_pct": 53.69,
+    "roi_pct": -4.38,
+    "ci95_pct": [
+     -10.85,
+     2.1
+    ]
+   }
+  },
+  "halves": {
+   "wk1-9": {
+    "n": 1363,
+    "games": 60,
+    "hit_pct": 51.14,
+    "push": 0,
+    "avg_price_dec": 1.8958,
+    "avg_implied_pct": 53.28,
+    "roi_pct": -3.82,
+    "ci95_pct": [
+     -9.62,
+     2.0
+    ]
+   }
+  },
+  "best_book_counts": {
+   "draftkings": 1363
+  },
+  "books_at_line_median": 1.0,
+  "weeks": [
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "parlays_2leg_same_book": {
+  "2024": {
+   "pairs": 1046257,
+   "weeks": 18,
+   "avg_parlay_dec": 3.612,
+   "both_win_pct": 28.6,
+   "leg_hit_squared_pct": 28.53,
+   "parlay_roi_pct": 1.15,
+   "parlay_roi_ci95_week_bootstrap": [
+    -5.81,
+    8.67
+   ],
+   "same_legs_straight_roi_pct": 1.5,
+   "same_legs_straight_ci95_week_bootstrap": [
+    -1.96,
+    5.15
+   ]
+  },
+  "2025": {
+   "pairs": 1079015,
+   "weeks": 18,
+   "avg_parlay_dec": 3.594,
+   "both_win_pct": 30.1,
+   "leg_hit_squared_pct": 30.14,
+   "parlay_roi_pct": 6.2,
+   "parlay_roi_ci95_week_bootstrap": [
+    0.72,
+    11.12
+   ],
+   "same_legs_straight_roi_pct": 3.98,
+   "same_legs_straight_ci95_week_bootstrap": [
+    1.11,
+    6.47
+   ]
+  }
+ }
+}
