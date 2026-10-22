@@ -119,6 +119,10 @@ jobs:
           git commit -m "week $WEEK $SLATE odds usage (card failed QA, not published)" || true
           git push || { git pull --rebase && git push; }
           exit 1
+      - name: six-book price capture at publish time (research; never blocks or changes the card)
+        if: env.SKIP != '1' && env.QA == 'pass'
+        continue-on-error: true
+        run: python automation/pipeline/capture_books.py --season "$SEASON" --week "$WEEK" --slate "$SLATE"
       - name: publish to site
         if: env.SKIP != '1' && env.QA == 'pass'
         run: |
