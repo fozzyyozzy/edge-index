@@ -5,6 +5,9 @@
 # replaces the tasks. Remove them all with:  Get-ScheduledTask -TaskPath "\EdgeIndex\" | Unregister-ScheduledTask -Confirm:$false
 # Requires: the token file %USERPROFILE%\.edge-index\gh_actions_token.txt (see engine/cfb/lines/trigger.py)
 # and, for wake-to-run, "Allow wake timers" enabled in the active power plan.
+# Runs "whether user is logged on or not" (S4U: no stored password, no network-share access, which the
+# trigger doesn't need), so it must be run from an ELEVATED PowerShell. Wake timers wake the PC from
+# sleep only: a shut-down PC (Fast Startup) is not woken, and the task runs at the next boot instead.
 
 $ErrorActionPreference = "Stop"
 $Repo   = Split-Path -Parent $PSScriptRoot
@@ -26,10 +29,11 @@ $Slots  = @(
 )
 $Settings = New-ScheduledTaskSettingsSet -WakeToRun -StartWhenAvailable -AllowStartIfOnBatteries `
             -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 10)
+$Principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -LogonType S4U -RunLevel Limited
 foreach ($s in $Slots) {
     $Action  = New-ScheduledTaskAction -Execute $Python -Argument "-m engine.cfb.lines.trigger --slot $($s.Name)" -WorkingDirectory $Repo
     $Trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek $s.Day -At $s.Time
     Register-ScheduledTask -TaskName "CFB lines $($s.Name)" -TaskPath "\EdgeIndex\" -Action $Action `
-        -Trigger $Trigger -Settings $Settings -Description "Dispatch cfb-lines slot $($s.Name)" -Force | Out-Null
+        -Trigger $Trigger -Settings $Settings -Principal $Principal -Description "Dispatch cfb-lines slot $($s.Name)" -Force | Out-Null
     Write-Output "registered CFB lines $($s.Name): $($s.Day) $($s.Time) ET"
 }

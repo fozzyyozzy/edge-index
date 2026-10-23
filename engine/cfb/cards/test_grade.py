@@ -114,3 +114,32 @@ def test_hook_key_next_rung():
     assert hook_key(-3.5) == (3, -2.5) and hook_key(2.5) == (3, 3.5)
     assert hook_key(-14.0) == (14, -13.5) and hook_key(7.0) == (7, 7.5)     # whole lines push on the key
     assert hook_key(3.5) is None and hook_key(7.5) is None and hook_key(23.5) is None
+
+
+def test_late_publish_drops_started_games_only():
+    import pandas as pd
+    from engine.cfb.cards import card as C
+    L = pd.DataFrame({"game_id": [1, 1, 2, 3], "game": ["A @ B", "A @ B", "C @ D", "E @ F"],
+                      "kickoff_utc": ["2026-10-23T23:00:00Z", "2026-10-23T23:00:00Z",
+                                      "2026-10-24T16:00:00Z", "2026-10-24T23:30:00Z"]})
+    keep, gone, label = C.late_filter(L, pd.Timestamp("2026-10-24T01:00:00Z"))      # Fri 9 PM ET
+    assert set(keep.game_id) == {2, 3} and [g["game_id"] for g in gone] == [1]
+    assert label == C.LATE_LABEL
+    keep, gone, label = C.late_filter(L, pd.Timestamp("2026-10-23T19:00:00Z"))      # Fri 3 PM ET
+    assert len(keep) == 4 and gone == [] and label == ""
+
+
+def test_missing_targets_are_built(tmp_path, monkeypatch):
+    from engine.cfb.cards import card as C
+    from engine.cfb.model import project_week
+    monkeypatch.setattr(C, "TARGETS", tmp_path)
+    calls = []
+
+    def fake(argv):
+        calls.append(argv)
+        (tmp_path / "targets_2026_wk08.csv").write_text("game_id\n1\n")
+        return 0
+    monkeypatch.setattr(project_week, "main", fake)
+    assert C.ensure_targets(2026, 8).exists() and "--no-log" in calls[0]
+    C.ensure_targets(2026, 8)
+    assert len(calls) == 1                                     # existing file is not rebuilt

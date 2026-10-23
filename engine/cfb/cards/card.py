@@ -3,6 +3,15 @@
     python -m engine.cfb.cards.card --week 7                 # Tue 10 AM ET 'bet' snapshot -> DRAFT
     python -m engine.cfb.cards.card --week 7 --snapshot latest   # testing on another snapshot (DRAFT)
     python -m engine.cfb.cards.card --week 7 --publish       # after Tim's OK: data/cfb/cards/ (logged)
+    python -m engine.cfb.weekly --week 8                     # update_week -> project_week -> this draft
+
+Missing targets_<season>_wk<NN>.csv (project_week never ran) are built here from the as-of ratings
+for week N (cutoff = the week's first kickoff, so week-N games already played are never used); that
+build does NOT write the forward-test log (use engine.cfb.weekly for the full chain).
+Late publish (Tim, 2026-10-23): legs and tickets only use games that kick off after the publish time
+(--publish-at, default now); excluded games are listed and the card is labeled "published late:
+Tuesday prices, Saturday-only games". Prices stay the Tuesday bet snapshot. The edge list keeps every
+game at the Tuesday line, as pre-registered.
 
 Drafts go to data/cfb/derived/ (gitignored). Only --publish writes data/cfb/cards/card_<season>_wk<NN>
 .json/.md (committed, graded by `forward weekly`). Not on the site or in the newsletter.
@@ -103,6 +112,19 @@ LADDER_TS = {"ts": None}
 
 
 # ------------------------------------------------------------------ pricing
+def ensure_targets(season: int, week: int) -> Path:
+    """targets_<season>_wk<NN>.csv, built from the week-N as-of ratings if project_week never ran."""
+    path = TARGETS / f"targets_{season}_wk{week:02d}.csv"
+    if not path.exists():
+        from engine.cfb.model import project_week
+        print(f"{path.name} missing: building it with project_week (as-of week {week} ratings; "
+              "forward log NOT written: run engine.cfb.weekly for that)")
+        project_week.main(["--season", str(season), "--week", str(week), "--no-log"])
+        if not path.exists():
+            raise SystemExit(f"project_week did not write {path}")
+    return path
+
+
 def game_table(main: pd.DataFrame, season: int, week: int) -> pd.DataFrame:
     m = main.dropna(subset=["game_id"]).copy()
     m["game_id"] = m.game_id.astype(int)
@@ -117,7 +139,7 @@ def game_table(main: pd.DataFrame, season: int, week: int) -> pd.DataFrame:
     g = g.merge(tot[tot.team == "Under"][["game_id", "price"]].rename(columns={"price": "under_price"}), on="game_id", how="left")
     g = g.merge(h2h[h2h.is_home == 1][["game_id", "price"]].rename(columns={"price": "home_ml"}), on="game_id", how="left")
     g = g.merge(h2h[h2h.is_home == 0][["game_id", "price"]].rename(columns={"price": "away_ml"}), on="game_id", how="left")
-    t = pd.read_csv(TARGETS / f"targets_{season}_wk{week:02d}.csv")
+    t = pd.read_csv(ensure_targets(season, week))
     g = g.merge(t[["game_id", "ratings_margin", "qb_delta", "k", "b_qb", "both_fbs"]], on="game_id", how="left")
     L = -g.home_spread
     g["proj"] = L + g.k * (g.ratings_margin - L) + g.b_qb * g.qb_delta.fillna(0)
@@ -240,6 +262,25 @@ def add_hooks(rows: pd.DataFrame, L: pd.DataFrame) -> pd.DataFrame:
     return rows
 
 
+# ------------------------------------------------------------------ late publish
+LATE_LABEL = "published late: Tuesday prices, Saturday-only games"
+
+
+def late_filter(L: pd.DataFrame, publish_at: pd.Timestamp):
+    """(legs for the floor card/tickets, excluded games, label). Only games kicking off after the
+    publish time; the label is Tim's when every remaining game is a Saturday (ET) game, else it names
+    the days actually left."""
+    ko = pd.to_datetime(L.kickoff_utc, utc=True)
+    keep = ko > publish_at
+    gone = (L[~keep].drop_duplicates("game_id")[["game_id", "game", "kickoff_utc"]]
+            .sort_values("kickoff_utc").to_dict("records"))
+    if not gone:
+        return L, [], ""
+    days = sorted(set(ko[keep].dt.tz_convert(ET).dt.strftime("%a")))
+    label = LATE_LABEL if days == ["Sat"] else f"published late: Tuesday prices, games not yet started ({'/'.join(days)})"
+    return L[keep], gone, label
+
+
 # ------------------------------------------------------------------ card + tickets
 def floor_legs(L: pd.DataFrame) -> pd.DataFrame:
     e = L[L.eligible].sort_values(["p_used", "ev"], ascending=False)
@@ -315,11 +356,20 @@ def hook_text(h) -> str:
 
 def readout(card: dict) -> str:
     lad = card.get("ladder_snapshot_utc")
-    lines = [f"# CFB floor card: {card['season']} week {card['week']} ({card['status']})",
-             f"Main lines: {card['snapshot_utc']} ({card['snapshot_et']} ET, label {card['snapshot_label']}). "
+    lines = [f"# CFB floor card: {card['season']} week {card['week']} ({card['status']})"
+             + (f": {card['late_label']}" if card.get("late_label") else ""),
+             f"Main lines: {card['snapshot_utc']} ({card['snapshot_et']} ET, label {card['snapshot_label']}"
+             + (f", slot {card['snapshot_slot']}, {card['snapshot_lag_min']:.0f} min after the slot time"
+                if card.get("snapshot_slot") and card.get("snapshot_lag_min") is not None else "") + "). "
              + (f"Ladders (alt spreads/totals/team totals): {lad}. " if lad and lad != card['snapshot_utc'] else "")
              + f"Generated {card['generated_at_utc']}. PAPER ONLY.",
              (f"Note: {card['snapshot_note']}" if card.get("snapshot_note") else ""), ""]
+    if card.get("excluded_started_games"):
+        ex = card["excluded_started_games"]
+        lines += [f"**{card['late_label']}.** Published {card['published_at_utc']}; {len(ex)} games that kicked "
+                  "off before then are left off the floor legs and tickets: "
+                  + "; ".join(x["game"] for x in ex) + ". The edge list below still covers every game at "
+                  "the Tuesday line (pre-registered).", ""]
     lines.append("## Floor legs (per game: highest-probability eligible leg; + second leg, other market)")
     lines.append("| role | game | pick | market | price | p | EV | hook: next rung across the key |\n"
                  "|---|---|---|---|---|---|---|---|")
@@ -349,13 +399,18 @@ def main(argv=None) -> int:
     ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--snapshot", default="tue10", help="tue10 (default) | latest | <ISO timestamp>")
     ap.add_argument("--publish", action="store_true", help="write data/cfb/cards (only after Tim's OK)")
+    ap.add_argument("--publish-at", help="publish time (ISO; ET if no zone; default now): games kicked "
+                                         "off before it are left off the floor card and tickets")
     a = ap.parse_args(argv)
     ts, main_, lad, alt = load_snapshot(a.season, a.week, a.snapshot)
     g = game_table(main_, a.season, a.week)
     L = build_legs(g, lad, alt)
-    fl = floor_legs(L)
+    pub = pd.Timestamp(a.publish_at) if a.publish_at else pd.Timestamp.now(tz="UTC")
+    pub = (pub.tz_localize(ET) if pub.tzinfo is None else pub).tz_convert("UTC")
+    Lc, excluded, late_label = late_filter(L, pub)
+    fl = floor_legs(Lc)
     tk = tickets(fl)
-    ed = spread_edges(g, L)
+    ed = spread_edges(g, L)                     # edge list: every game at the Tuesday line (pre-registered)
     fl = add_hooks(fl, L)                       # display only: selection above is unchanged
     ed = add_hooks(ed.assign(market="SPREAD-CLV", family="spread"), L)
     label = main_.label.iloc[0]
@@ -366,6 +421,10 @@ def main(argv=None) -> int:
             "snapshot_label": label, "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "ladder_snapshot_utc": LADDER_TS["ts"].isoformat() if LADDER_TS["ts"] is not None else None,
             "snapshot_note": (main_.retag_note.dropna().iloc[0] if "retag_note" in main_ and main_.retag_note.notna().any() else ""),
+            "snapshot_slot": str(main_.slot.iloc[0]) if "slot" in main_ and main_.slot.notna().any() else "",
+            "snapshot_lag_min": float(main_.slot_lag_min.iloc[0]) if "slot_lag_min" in main_ and main_.slot_lag_min.notna().any() else None,
+            "published_at_utc": pub.isoformat(timespec="seconds"),
+            "late_label": late_label, "excluded_started_games": excluded,
             "params": {"phase3": sha(mrun.PARAMS), "totals": sha(anchored.PARAMS)},
             "rules": {"price": [PRICE_LO, PRICE_HI], "p_min": P_MIN, "ev_min": EV_MIN,
                       "spread_rungs": "getting points only", "ml_shading": "|spread| > 14 -> (p_model + p_novig)/2",
