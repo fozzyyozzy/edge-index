@@ -156,9 +156,15 @@ def _bucket_k(week: pd.Series, coef: dict) -> pd.Series:
     return pd.Series([coef[f"k_{x}"] for x in b], index=week.index)
 
 
+BET_CUTOFF_HOUR = 18      # Tim, 2026-10-23: a 'bet' snapshot counts if taken the week's Tuesday before 18:00 ET
+LATE_BET_MIN = 90         # lag behind Tue 10:00 ET beyond which a week is a "late-bet week" (slot grace)
+
+
 def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
     """Per game from Odds API DK snapshots (pregame only by construction):
-    bet line = earliest 'bet' snapshot (Tue 10 AM ET), else the first-seen snapshot;
+    bet line = first 'bet' snapshot taken on the week's Tuesday before 18:00 ET (source dk_tue_bet);
+    else the first snapshot captured on or after that Tuesday (source bet_late; Tim, 2026-10-23);
+    else the first-seen snapshot. bet_lag_min = minutes after Tue 10:00 ET;
     close = last pregame snapshot LABELED 'close' after the bet snapshot; if none, CFBD's DraftKings
     closing spread (close_source = 'cfbd'). A bet-time snapshot is never the close.
     Projection recomputed at each line with the frozen model from the latest projection-log
@@ -174,11 +180,18 @@ def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
     m["captured_at_utc"] = pd.to_datetime(m.captured_at_utc, utc=True)
     m["kick"] = pd.to_datetime(m.commence_time, utc=True)
     m = m[m.captured_at_utc < m.kick].sort_values("captured_at_utc")
+    kick_et = m.kick.dt.tz_convert("America/New_York")
+    m["tue0"] = (kick_et.dt.normalize()
+                 - pd.to_timedelta((kick_et.dt.weekday - 1) % 7, unit="D")).dt.tz_convert("UTC")
     first = m.drop_duplicates("game_id", keep="first").set_index("game_id")
-    bet = m[m.label == "bet"].drop_duplicates("game_id", keep="first").set_index("game_id")
-    bet = bet.reindex(first.index)
-    bet_src = np.where(bet.point.notna(), "dk_tue_bet", "dk_first_seen")
-    bet = bet.combine_first(first)
+    on_tue = ((m.label == "bet") & (m.captured_at_utc >= m.tue0)
+              & (m.captured_at_utc < m.tue0 + pd.Timedelta(hours=BET_CUTOFF_HOUR)))
+    bet = m[on_tue].drop_duplicates("game_id", keep="first").set_index("game_id").reindex(first.index)
+    late = (m[m.captured_at_utc >= m.tue0].drop_duplicates("game_id", keep="first")
+            .set_index("game_id").reindex(first.index))
+    bet_src = np.where(bet.point.notna(), "dk_tue_bet", np.where(late.point.notna(), "bet_late", "dk_first_seen"))
+    bet = bet.combine_first(late).combine_first(first)
+    bet_lag = ((bet.captured_at_utc - (first.tue0 + pd.Timedelta(hours=10))).dt.total_seconds() / 60)
     rows = []
     p = p.copy()
     p["capture_ts_utc"] = pd.to_datetime(p.capture_ts_utc, utc=True)
@@ -204,6 +217,8 @@ def dk_snapshot_games(log_dir: Path = FORWARD) -> pd.DataFrame:
         rows.append({"game_id": gid, "season": row.season, "week": row.week,
                      "kickoff_utc": first.loc[gid, "kick"], "source": bet_src[i],
                      "bet_ts_utc": bet.loc[gid, "captured_at_utc"], "dk_spread": bet.loc[gid, "point"],
+                     "bet_lag_min": float(bet_lag.loc[gid]),
+                     "late_bet": bool(bet_src[i] == "bet_late" or bet_lag.loc[gid] > LATE_BET_MIN),
                      "first_seen_spread": first.loc[gid, "point"],
                      "close_spread": later.point.iloc[-1] if len(later) else cfbd_close.get(gid, np.nan),
                      "close_ts_utc": later.captured_at_utc.iloc[-1] if len(later) else pd.NaT,
@@ -309,7 +324,22 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
     wk = g[(g.week == week)] if len(g) else g
     todate = g[(g.week >= BARS["first_week"]) & (g.week <= week)] if len(g) else g
     lines = [f"### Week {week} ({season}), graded {datetime.now(timezone.utc):%Y-%m-%d}"]
-    for label, x in (("This week", wk), ("To date (weeks 4+)", todate)):
+    if len(wk) and "bet_lag_min" in wk:
+        b = wk.dropna(subset=["bet_lag_min"])
+        src = wk.source.value_counts().to_dict()
+        lines.append(f"- **Bet snapshot:** " + ", ".join(f"{k} {v}" for k, v in src.items())
+                     + (f"; lag behind Tue 10:00 ET {b.bet_lag_min.min():.0f}"
+                        + (f"-{b.bet_lag_min.max():.0f}" if b.bet_lag_min.max() - b.bet_lag_min.min() >= 1 else "")
+                        + " min" if len(b) else "")
+                     + (" (**late-bet week**: CLV/ATS also reported without late-bet weeks)"
+                        if wk.late_bet.fillna(False).astype(bool).any() else ""))
+    late_weeks = (sorted(int(w) for w in todate[todate.late_bet.fillna(False).astype(bool)].week.unique())
+                  if len(todate) and "late_bet" in todate else [])
+    views = [("This week", wk), ("To date (weeks 4+)", todate)]
+    if late_weeks:
+        views.append((f"To date without late-bet weeks (excl. week {', '.join(map(str, late_weeks))})",
+                      todate[~todate.week.isin(late_weeks)]))
+    for label, x in views:
         if x is None or x.empty:
             lines.append(f"- **{label}:** no logged games.")
             continue
@@ -322,7 +352,7 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
         lines.append(
             f"- **{label}:** {len(x)} games logged, {len(wc)} with a close, "
             f"{prim['games_edge']} at |edge| >= 1.5"
-            + (f" ({prim['games_edge']}/{BARS['min_games']} toward the bar)" if label.startswith("To") else "")
+            + (f" ({prim['games_edge']}/{BARS['min_games']} toward the bar)" if label.startswith("To date (") else "")
             + f". CLV toward model: **{prim['toward_share_pct']:.1f}%** of {prim['moves']} moves, "
             f"avg move {prim['avg_move_toward_model']:+.2f} pts (ratings-only {ronly['toward_share_pct']:.1f}%, "
             f"{ronly['avg_move_toward_model']:+.2f}). ATS vs bet-time line (|edge| >= 1.5): "

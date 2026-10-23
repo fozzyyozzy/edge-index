@@ -86,9 +86,9 @@ def load_snapshot(season: int, week: int, which: str):
     main["ts"] = pd.to_datetime(main.captured_at_utc, utc=True)
     if which == "tue10":
         et = main.ts.dt.tz_convert(ET)
-        bet = main[(main.label == "bet") & (et.dt.weekday == 1)]
+        bet = main[(main.label == "bet") & (et.dt.weekday == 1) & (et.dt.hour < 18)]   # late-bet rule
         if bet.empty:
-            raise SystemExit("no Tuesday 10 AM 'bet' snapshot yet for this week "
+            raise SystemExit("no Tuesday 'bet' snapshot before 18:00 ET for this week "
                              "(use --snapshot latest to test on another snapshot)")
         ts = bet.ts.min()
     elif which == "latest":

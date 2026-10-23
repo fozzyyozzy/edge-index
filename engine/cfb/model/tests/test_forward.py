@@ -103,3 +103,29 @@ def test_bet_snapshot_is_never_the_close(tmp_path, monkeypatch):
     with warnings.catch_warnings():
         warnings.simplefilter("error")                                                 # no zero-variance warnings
         assert np.isnan(forward.safe_corr([1, 2, 3], [0, 0, 0]))
+
+
+def test_late_bet_rule(tmp_path, monkeypatch):
+    """Tim, 2026-10-23: a 'bet' snapshot counts if taken the week's Tuesday before 18:00 ET (lag shown);
+    later, the first snapshot on/after that Tuesday is the line, source bet_late."""
+    from engine.cfb import config
+    snap = tmp_path / "snapshots"; snap.mkdir()
+    clean = tmp_path / "clean"; clean.mkdir()
+    pd.DataFrame([
+        _snap_rows("2026-10-12T21:00:00+00:00", "open_watch", 1, -2.0),   # Monday: before the Tuesday
+        _snap_rows("2026-10-13T17:03:00+00:00", "bet", 1, -3.0),          # Tue 13:03 ET: counts, 183 min late
+        _snap_rows("2026-10-13T22:02:00+00:00", "close", 2, -6.5),        # Tue 18:02 ET close: first on/after Tue
+        _snap_rows("2026-10-14T14:02:00+00:00", "bet", 2, -7.0),          # Wed 10 AM bet: after Tue 18:00
+        _snap_rows("2026-10-17T15:00:00+00:00", "close", 2, -9.0),
+    ]).to_csv(snap / "dk_main_2026_wk07.csv", index=False)
+    pd.DataFrame({"game_id": [1, 2], "provider": ["DraftKings"] * 2, "spread": [-4.5, -8.0]}) \
+        .to_parquet(clean / "lines.parquet", index=False)
+    pd.DataFrame([_proj("2026-10-12T15:00:00+00:00", 1, -3.0, 6.0), _proj("2026-10-12T15:00:00+00:00", 2, -7.0, 9.0)]) \
+        .to_csv(tmp_path / forward.PROJ_LOG, index=False)
+    monkeypatch.setattr(forward, "SNAP", snap)
+    monkeypatch.setattr(config, "CLEAN", clean)
+    g = forward.dk_snapshot_games(tmp_path).set_index("game_id")
+    assert g.loc[1, "source"] == "dk_tue_bet" and g.loc[1, "dk_spread"] == -3.0
+    assert round(g.loc[1, "bet_lag_min"]) == 183 and bool(g.loc[1, "late_bet"])
+    assert g.loc[2, "source"] == "bet_late" and g.loc[2, "dk_spread"] == -6.5 and bool(g.loc[2, "late_bet"])
+    assert g.loc[2, "close_spread"] == -9.0                       # the bet_late snapshot is never the close

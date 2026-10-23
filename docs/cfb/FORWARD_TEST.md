@@ -140,6 +140,24 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
 - **Ticket rule:** at most 2 `ALT-SHAPE` legs per ticket, with the rest from other labels; a
   ticket that can't reach +200 under the rules is labeled "reduced payout, floors held".
 
+## Clarification (2026-10-23): late bet-time snapshot. Not a bar change
+
+The week-8 Tue 10 AM capture ran at 13:03 ET (PC shut down overnight; 183 min late). Rule, Tim's:
+- **Counts as the bet line:** a `bet`-labeled DK snapshot taken on the game week's Tuesday
+  **before 18:00 ET** (`source = dk_tue_bet`). An afternoon Tuesday price is still a real early-week
+  price, and some of the move has already happened, so the lag can only make CLV look worse.
+- **Later than that:** the bet line is the first DK snapshot captured on or after that Tuesday
+  (`source = bet_late`). It is never the close (the close stays the last `close`-labeled pregame
+  snapshot strictly after the bet snapshot, else CFBD's DK close).
+- **Always shown:** each weekly entry gives the bet snapshot's lag behind Tue 10:00 ET. A week with any
+  game at `bet_late` or lag > 90 min is a **late-bet week**; CLV/ATS to date are reported both with and
+  without late-bet weeks. The pass bars, the sample definition and the frozen model are unchanged.
+- **Week 8 rows logged Friday:** `project_week` first ran for week 8 on Fri 2026-10-23 (14:02 UTC prices),
+  so the 49 log rows carry Friday lines. The scorer re-derives the bet line from the DK snapshots and takes
+  only `ratings_margin` / `qb_delta` from the log (as-of week-8 ratings, cutoff = the week's first kickoff),
+  so all 49 are scored at the Tuesday 13:03 ET line; the rows are kept as logged. The 7 week-8 games that
+  kicked off before Friday were never logged pregame and are not scored.
+
 ## Weekly log
 
 Appended after each week grades by `python -m engine.cfb.model.forward weekly --week N`. Informational; the bars above decide.
