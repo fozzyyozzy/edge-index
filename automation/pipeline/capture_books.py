@@ -5,8 +5,11 @@ bet (DraftKings, FanDuel, BetMGM, Caesars, Fanatics, BetRivers), stores every bo
 leg in those markets, records the best available price and book next to DK's.
   python pipeline/capture_books.py --season 2026 --week 7 --slate sun
 Writes:
-  lines/books/books_<season>_w<week>_<slate>_<UTC stamp>.csv   PulledAt,Game,Commence,Book,Player,Market,Kind,Side,Point,Price
-                                                               (Kind = main | alt; never overwritten)
+  lines/books/books_<season>_w<week>_<slate>_<UTC stamp>.json.gz   gzip JSON records: PulledAt,Game,Commence,Book,Player,
+                                                               Market,Kind,Side,Point,Price (Kind = main | alt; never
+                                                               overwritten). ~5.6 KB per game (vs ~91 KB as CSV): about
+                                                               1.5 MB per season at one capture per game. Read with
+                                                               read_capture().
   cards/bestprice_<season>_w<week>_<slate>.json                 per card leg (receptions / rec_yds): DK odds, best odds + book,
                                                                every book's odds at that rung; other markets listed as
                                                                not captured. The card JSON itself is not touched.
@@ -85,6 +88,15 @@ def best_for_legs(card, rows):
     return out
 
 
+def write_capture(rows, path):
+    """rows -> gzip JSON records (pandas infers gzip from .gz)"""
+    pd.DataFrame(rows, columns=COLS).to_json(path, orient="records", compression="gzip")
+
+
+def read_capture(path):
+    return pd.read_json(path, orient="records", compression="gzip", dtype={"Price": "int64", "Point": "float64"})
+
+
 def _dec(o):
     return 1 + (100 / -o if o < 0 else o / 100)
 
@@ -130,8 +142,8 @@ def main():
         rows += parse_event(d, f"{e['away_team']} @ {e['home_team']}", e["commence_time"], pulled_at)
 
     stamp = now.strftime("%Y-%m-%dT%H%MZ")
-    out = P("lines", "books", f"books_{a.season}_w{a.week}_{a.slate}_{stamp}.csv")
-    pd.DataFrame(rows, columns=COLS).to_csv(out, index=False)
+    out = P("lines", "books", f"books_{a.season}_w{a.week}_{a.slate}_{stamp}.json.gz")
+    write_capture(rows, out)
     log_usage(dict(pulled_at=pulled_at, season=a.season, week=a.week, slate=a.slate, events=len(events), cost=cost,
                    remaining=rem))
     card_path = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")

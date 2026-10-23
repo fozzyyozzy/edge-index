@@ -79,3 +79,13 @@ def test_guards():
 
 def test_cost_per_game_is_one_credit_per_market():
     assert cb.PER_GAME == 4
+
+
+def test_capture_file_round_trip(tmp_path):
+    path = tmp_path / "books_2026_w7_sun_2026-10-23T1307Z.json.gz"
+    cb.write_capture(rows(), path)
+    assert path.read_bytes()[:2] == bytes([0x1F, 0x8B])                          # gzip magic
+    back = cb.read_capture(path)
+    assert list(back.columns) == cb.COLS and len(back) == len(rows())
+    assert back.Price.dtype.kind == "i" and back.Point.dtype.kind == "f"
+    assert sorted(back.Book.unique()) == ["betmgm", "draftkings", "fanduel"]
