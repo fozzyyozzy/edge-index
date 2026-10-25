@@ -65,3 +65,29 @@ def test_rung_log_uses_bet_time_ladder_once_per_week(tmp_path, monkeypatch):
                          row("2026-10-29T22:00:00Z", "close", week=9, gid=2) | {"commence_time": "2026-10-31T19:00:00Z"}])
     le.update_paper_log(late, 2026)                                     # no Tue bet: first on/after Tue
     assert pd.read_csv(tmp_path / "paper_rungs_2026.csv").captured_at_utc.iloc[-1] == "2026-10-28T14:00:00Z"
+
+
+def test_shape_bar_verdict_recorded_once_at_60_graded(tmp_path, monkeypatch):
+    """Evaluated once as registered: first 60 games by kickoff WITH a graded unit; written once."""
+    import numpy as np
+    import pandas as pd
+    from engine.cfb.lines import ladder_edge as le
+    rows = []
+    for g in range(62):
+        rows.append({"captured_at_utc": "2026-10-20T15:00:00Z", "label": "bet", "game_id": g, "week": 8,
+                     "commence_time": f"2026-10-24T{10 + g // 6:02d}:{g % 6 * 10:02d}:00Z", "side": "away",
+                     "kind": "getting", "rung": 7.5, "price": -300, "shape_edge_pp": 4.0, "p_dk": 0.74,
+                     "ev_shape": 0.01, "result": np.nan if g == 0 else float(g % 4 != 0)})
+    p = pd.DataFrame(rows)
+    p["units"] = np.where(p.result == 1, 1 / 3, np.where(p.result == 0, -1.0, np.nan))
+    monkeypatch.setattr(le, "grade", lambda season: p)
+    s = le.bar_sample(p)
+    assert 0 not in set(s.game_id) and s.game_id.nunique() == 60          # ungraded game 0 skipped
+    doc = tmp_path / "FORWARD_TEST.md"
+    doc.write_text("## Ladder-shape bar\n\n## Floor-card bar\n", encoding="utf-8")
+    v = le.record_verdict(2026, doc)
+    assert v in ("PASSED", "FAILED") and doc.read_text().count(le.VERDICT_HEAD) == 1
+    assert le.record_verdict(2026, doc) is None and doc.read_text().count(le.VERDICT_HEAD) == 1
+    monkeypatch.setattr(le, "grade", lambda season: p[p.game_id < 30])  # < 60 graded: no verdict
+    doc2 = tmp_path / "b.md"; doc2.write_text("x", encoding="utf-8")
+    assert le.record_verdict(2026, doc2) is None

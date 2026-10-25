@@ -114,6 +114,11 @@ Tests whether DK's alt-spread **pricing** is off, independent of our projection.
   (game-clustered bootstrap, 2,000 draws) **excluding 0**.
 - **$0 until passed.** Grading uses `games.parquet` final margins only.
 - **Status** is written to `docs/cfb/PHASE4_REPORT.md` by `python -m engine.cfb.lines.ladder_edge`.
+- **Evaluation (Tim, 2026-10-25):** evaluated exactly once, as registered above, when the sample reaches
+  60 graded games (expected week 9); the verdict, pass or fail, is written by `forward weekly` under
+  "Ladder-shape bar: verdict". Not extended or re-defined. Week 7's units stay as reported (from the
+  Mon 2026-10-12 manual ladder, the game's first captured ladder, since no week-7 `bet` ladder was
+  logged). Any further shape study is declared afterward as a new, separate test.
 
 ## Floor-card bar (pre-registered 2026-10-12, Phase 5 brief §5E, before any card is published or graded)
 

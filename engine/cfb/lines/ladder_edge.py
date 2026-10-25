@@ -167,7 +167,8 @@ def grade(season: int) -> pd.DataFrame:
 def bar_sample(p: pd.DataFrame) -> pd.DataFrame:
     """Pre-registered unit: per game and side, the bet-time ladder (first 'bet' snapshot, else
     the game's first ladder), getting-points rungs that qualified on SHAPE edge, the one with the
-    largest shape edge. First BAR['min_games'] games by kickoff."""
+    largest shape edge. First BAR['min_games'] games by kickoff WITH A GRADED UNIT (as registered:
+    an ungraded game, e.g. postponed, is skipped, not held in the sample)."""
     x = p[(p.kind == "getting") & (p.shape_edge_pp >= EDGE_PP)].copy()
     if x.empty:
         return x
@@ -177,8 +178,45 @@ def bar_sample(p: pd.DataFrame) -> pd.DataFrame:
     snap = first_bet.reindex(first_any.index).fillna(first_any)
     x = x[x.captured_at_utc == x.game_id.map(snap)]
     x = x.sort_values("shape_edge_pp", ascending=False).drop_duplicates(["game_id", "side"])
-    order = x.groupby("game_id").commence_time.first().sort_values().index[:BAR["min_games"]]
+    graded = x[x.result.notna()] if "result" in x else x
+    order = graded.groupby("game_id").commence_time.first().sort_values().index[:BAR["min_games"]]
     return x[x.game_id.isin(order)]
+
+
+VERDICT_HEAD = "## Ladder-shape bar: verdict"
+
+
+def record_verdict(season: int, doc: Path) -> str | None:
+    """Tim, 2026-10-25: when the registered sample reaches BAR['min_games'] graded games, evaluate the
+    bar EXACTLY as registered (lift >= +3.0 pp and the 95% game-clustered bootstrap CI, 2,000 draws,
+    excluding 0) and write the verdict to FORWARD_TEST.md ONCE. Never re-evaluated, extended or
+    re-defined; any further shape study is a new, separately declared test."""
+    if not doc.exists():
+        return None
+    text = doc.read_text(encoding="utf-8")
+    if VERDICT_HEAD in text:
+        return None
+    s_ = bar_sample(grade(season))
+    lift = clustered_lift(s_) if len(s_) else None
+    if not lift or lift["games"] < BAR["min_games"]:
+        return None
+    ok = lift["lift_pp"] >= BAR["lift_pp"] and (lift["ci95_lo"] > 0 or lift["ci95_hi"] < 0)
+    verdict = "PASSED" if ok else "FAILED"
+    first, last = s_.commence_time.min(), s_.commence_time.max()
+    from datetime import datetime, timezone
+    block = (f"{VERDICT_HEAD} (recorded {datetime.now(timezone.utc):%Y-%m-%d}, evaluated once, as registered)\n\n"
+             f"**{verdict}.** Sample: the first {lift['games']} games by kickoff with a graded unit "
+             f"({lift['rungs']} rungs; kickoffs {first[:10]} to {last[:10]}). Hit rate {lift['hit_%']:.1f}% vs "
+             f"mean DK no-vig {lift['dk_novig_%']:.1f}%: **lift {lift['lift_pp']:+.1f} pp** (bar: >= +3.0), "
+             f"95% game-clustered bootstrap CI {lift['ci95_lo']:+.1f} to {lift['ci95_hi']:+.1f} "
+             f"(bar: excludes 0). Informational: break-even at posted prices {lift['breakeven_at_price_%']:.1f}%, "
+             f"realized {lift['realized_units_per_rung']:+.3f} units/rung (CI {lift['units_ci95_lo']:+.3f} to "
+             f"{lift['units_ci95_hi']:+.3f}).\n\nThis bar is closed: not extended, re-run or re-defined. Any further "
+             f"shape study is declared below as a new, separate test before its data is graded.\n\n")
+    anchor = "## Floor-card bar"
+    text = text.replace(anchor, block + anchor, 1) if anchor in text else text + "\n" + block
+    doc.write_text(text, encoding="utf-8")
+    return verdict
 
 
 def clustered_lift(x: pd.DataFrame, n_boot=2000, seed=0):

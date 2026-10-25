@@ -377,7 +377,8 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
             f"**EV at posted price: predicted {lift['pred_ev_shape_per_unit']:+.3f}, realized "
             f"{lift['realized_units_per_rung']:+.3f} units/rung** "
             f"(CI {lift['units_ci95_lo']:+.3f} to {lift['units_ci95_hi']:+.3f}). "
-            f"{lift['games']}/{le.BAR['min_games']} toward the bar.")
+            + (f"{lift['games']}/{le.BAR['min_games']} toward the bar." if lift["games"] < le.BAR["min_games"]
+               else "Bar sample complete: verdict recorded once under 'Ladder-shape bar: verdict'."))
     else:
         lines.append("- **Rung log:** no graded bar-sample rungs yet.")
     # floor card (Phase 5E): published cards only
@@ -422,6 +423,10 @@ def append_weekly(season: int, week: int, dry_run: bool = False, force: bool = F
     entry = weekly_entry(season, week)
     if dry_run or not DOC.exists():
         return entry
+    from engine.cfb.lines import ladder_edge as le
+    v = le.record_verdict(season, DOC)          # once, when the registered sample reaches 60 graded games
+    if v:
+        print(f"LADDER-SHAPE BAR {v}: verdict recorded in {DOC.name}")
     doc = DOC.read_text(encoding="utf-8")
     tag = f"### Week {week} ({season}),"
     if tag in doc and not force:
