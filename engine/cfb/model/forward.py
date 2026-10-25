@@ -360,6 +360,11 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
             .replace("nan%", "n/a").replace("+nan", "n/a"))
     # rung log (shape bar sample), to date
     from engine.cfb.lines import ladder_edge as le
+    e = le.edges(season)
+    if len(e):
+        n_new, _ = le.update_paper_log(e, season)           # weeks not yet logged, bet-time ladder only
+        if n_new:
+            print(f"rung log: {n_new} new bet-time rows")
     p = le.grade(season)
     s = le.bar_sample(p) if len(p) else p
     lift = le.clustered_lift(s) if len(s) else None

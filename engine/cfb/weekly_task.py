@@ -13,7 +13,8 @@ agent/register_cfb_weekly_task.ps1 (runs whether signed in or not).
 2. python -m engine.cfb.weekly --week <current>: update_week, project_week (forward log), DRAFT card.
    Current week = the earliest regular-season week of this season with a game not yet kicked off.
    Publishing stays manual (card --publish).
-3. Commit ONLY targets_<season>_wk<NN>.csv and data/cfb/forward/projections_log.csv, then push with
+3. Commit ONLY targets_<season>_wk<NN>.csv, data/cfb/forward/projections_log.csv and the rung log
+   data/cfb/lines/paper_rungs_<season>.csv, then push with
    the same stash / pull --rebase / pop (same safety check; on a skip the commit stays local).
 Everything is appended to %USERPROFILE%\\.edge-index\\weekly.log.
 """
@@ -128,7 +129,8 @@ def current_week(season: int) -> int:
 
 def commit_and_push(season: int, week: int) -> None:
     targets = f"data/cfb/lines/targets/targets_{season}_wk{week:02d}.csv"
-    paths = [p for p in (targets, FWD_LOG) if (ROOT / p).exists()]
+    rungs = f"data/cfb/lines/paper_rungs_{season}.csv"
+    paths = [p for p in (targets, FWD_LOG, rungs) if (ROOT / p).exists()]
     git("add", "--", *paths)
     if not git("diff", "--cached", "--name-only", "--", *paths):
         say("nothing new to commit (targets / forward log unchanged)")

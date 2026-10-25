@@ -1,6 +1,6 @@
 """Shape edge vs full edge on every captured DK rung; the paper rung log (Phase 4 brief §5).
 
-    python -m engine.cfb.lines.ladder_edge          # log new snapshots, grade finished games, report
+    python -m engine.cfb.lines.ladder_edge          # log new weeks' bet ladders, grade, report
 
 For each captured rung and side (team perspective, rung L > 0 = getting points):
   shape edge = P_ours(team covers | centered at DK's own main line) - DK no-vig P
@@ -11,8 +11,14 @@ preserved). Our projection = frozen margin model at DK's main line in the same s
   proj = L + k[bucket] * (ratings_margin - L) + b_qb * qb_delta   (targets file)
 
 Paper log (append-only, committed): data/cfb/lines/paper_rungs_<season>.csv gets every
-GETTING-points rung (Phase 3 operating rule) priced -500..-150 with shape or full edge >= 3 pp,
-once per snapshot. Laying rungs meeting the same test go in with kind=laying (diagnostic only).
+GETTING-points rung (Phase 3 operating rule) priced -500..-150 with shape or full edge >= 3 pp.
+Laying rungs meeting the same test go in with kind=laying (diagnostic only).
+Tim, 2026-10-25 (rung log stalled at week 7: this logger had only ever been run once, by hand, on a
+Monday manual snapshot): each week is logged ONCE, from its bet-time ladder only, the same rule as
+the forward test: per game, the first 'bet' ladder snapshot taken on the week's Tuesday before
+18:00 ET, else the first ladder snapshot on or after that Tuesday. No later price is ever logged.
+A week already in the log is never re-logged (week 7 keeps its original rows). Run automatically by
+`forward weekly` and the Tuesday weekly task; safe to re-run.
 Grades are written to paper_rungs_graded_<season>.csv (rebuilt each run from games.parquet).
 """
 from __future__ import annotations
@@ -105,10 +111,32 @@ def edges(season: int = config.CURRENT_SEASON) -> pd.DataFrame:
     return out
 
 
+BET_CUTOFF_HOUR = 18
+
+
+def bet_snapshot(e: pd.DataFrame) -> pd.DataFrame:
+    """Rows of each game's bet-time ladder snapshot (Tue 'bet' before 18:00 ET, else first on/after Tue)."""
+    if e.empty:
+        return e
+    ts = pd.to_datetime(e.captured_at_utc, utc=True)
+    kick = pd.to_datetime(e.commence_time, utc=True).dt.tz_convert("America/New_York")
+    tue0 = (kick.dt.normalize() - pd.to_timedelta((kick.dt.weekday - 1) % 7, unit="D")).dt.tz_convert("UTC")
+    pre = ts < pd.to_datetime(e.commence_time, utc=True)
+    on_tue = pre & (e.label == "bet") & (ts >= tue0) & (ts < tue0 + pd.Timedelta(hours=BET_CUTOFF_HOUR))
+    late = pre & (ts >= tue0)
+    pick = ts[on_tue].groupby(e.game_id[on_tue]).min()
+    pick = pick.combine_first(ts[late].groupby(e.game_id[late]).min())
+    return e[ts == e.game_id.map(pick)]
+
+
 def update_paper_log(e: pd.DataFrame, season: int) -> tuple[int, str]:
+    """Append the bet-time rows of weeks not yet in the log (see module docstring)."""
+    path = LINES / f"paper_rungs_{season}.csv"
+    if path.exists():
+        e = e[~e.week.isin(pd.read_csv(path, usecols=["week"]).week.unique())]
+    e = bet_snapshot(e)
     q = e[e.price.between(PRICE_LO, PRICE_HI)
           & ((e.shape_edge_pp >= EDGE_PP) | (e.full_edge_pp >= EDGE_PP))]
-    path = LINES / f"paper_rungs_{season}.csv"
     key = ["captured_at_utc", "game_id", "side", "rung"]
     if path.exists():
         old = pd.read_csv(path)[key]

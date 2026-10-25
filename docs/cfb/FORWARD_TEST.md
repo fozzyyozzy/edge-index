@@ -158,6 +158,23 @@ The week-8 Tue 10 AM capture ran at 13:03 ET (PC shut down overnight; 183 min la
   so all 49 are scored at the Tuesday 13:03 ET line; the rows are kept as logged. The 7 week-8 games that
   kicked off before Friday were never logged pregame and are not scored.
 
+## Audits (2026-10-25, after week 8). No model or bar change
+
+- **Edge-list grading checked by hand: no bug.** All 16 bets (weeks 7-8) have the same home/away
+  orientation in DK and CFBD; the line is from the picked team's side and a bet wins when
+  picked-team margin + line > 0. The card's edge-list track and the forward-test ATS agree game by game
+  (same edge, side and result) on the 15 games both score; the 16th (New Mexico State @ Sam Houston, Wed
+  week 8) is on the card but not in the forward test (never logged pregame). 3-13 is the real record;
+  this week's 100% CLV is 5 moves averaging +1.29 pts, so the line moved toward the model but not far
+  enough to cover.
+- **Rung log was not being written.** `ladder_edge` (which appends the paper rung log) was never
+  automated: it had run once, by hand, on the Monday 2026-10-12 manual snapshot (all week-7 rows), and
+  `forward weekly` only re-graded those rows. Fix: each week is logged once from its bet-time ladder
+  only (same rule as the bet line: Tue `bet` before 18:00 ET, else the first ladder snapshot on or after
+  Tuesday), by `forward weekly` and the Tuesday weekly task. Week 8 backfilled from the Tue 2026-10-20
+  13:03 ET bet ladder only (383 rows; no later price). Week 7 keeps its original Monday-manual rows; it is
+  not re-logged from its Tuesday ladder, so the reported week-7 sample does not change.
+
 ## Weekly log
 
 Appended after each week grades by `python -m engine.cfb.model.forward weekly --week N`. Informational; the bars above decide.
@@ -172,6 +189,20 @@ Appended after each week grades by `python -m engine.cfb.model.forward weekly --
 - **ALT-SHAPE split by game spread (diagnostic, not a bar):** {'|spread| <= 14': {'legs': 5, 'hit_%': 100.0, 'breakeven_%': 70.5, 'roi_%': 42.8}, '|spread| > 14': {'legs': 1, 'hit_%': 100.0, 'breakeven_%': 74.9, 'roi_%': 33.6}}.
 - **Hook losses (diagnostic):** 1 this week (UMass Minutemen +6.5 [edge] loss on 7); 1 to date. Legs that lost/pushed landing exactly on the key they stopped short of (the next rung across it would have won).
 - **Edge list, main spreads at the Tuesday line (separate track):** 8 graded, hit 25.0% vs break-even 53.0%, ROI -52.8% (game-clustered CI -100.0 to -5.0).
+
+### Week 8 (2026), graded 2026-10-25
+- **Bet snapshot:** dk_tue_bet 49; lag behind Tue 10:00 ET 183 min (**late-bet week**: CLV/ATS also reported without late-bet weeks)
+- **This week, close source:** dk_snapshot 49
+- **This week:** 49 games logged, 49 with a close, 7 at |edge| >= 1.5. CLV toward model: **100.0%** of 5 moves, avg move +1.29 pts (ratings-only 100.0%, +1.29). ATS vs bet-time line (|edge| >= 1.5): **1-6 (14.3%)**, ratings-only 1-6 (14.3%).
+- **To date (weeks 4+), close source:** cfbd 59, dk_snapshot 49 (no DK close snapshot: CFBD DraftKings closing line)
+- **To date (weeks 4+):** 108 games logged, 108 with a close, 15 at |edge| >= 1.5 (15/150 toward the bar). CLV toward model: **63.6%** of 11 moves, avg move +0.63 pts (ratings-only 63.6%, +0.63). ATS vs bet-time line (|edge| >= 1.5): **3-12 (20.0%)**, ratings-only 3-12 (20.0%).
+- **To date without late-bet weeks (excl. week 8), close source:** cfbd 59 (no DK close snapshot: CFBD DraftKings closing line)
+- **To date without late-bet weeks (excl. week 8):** 59 games logged, 59 with a close, 8 at |edge| >= 1.5. CLV toward model: **33.3%** of 6 moves, avg move +0.06 pts (ratings-only 33.3%, +0.06). ATS vs bet-time line (|edge| >= 1.5): **2-6 (25.0%)**, ratings-only 2-6 (25.0%).
+- **Rung log (shape-bar sample, to date):** 58 graded games / 64 rungs; hit 75.0% vs DK no-vig 73.7% (**lift +1.3 pp**, 95% CI -9.5 to +11.4); break-even at posted prices 78.8%; **EV at posted price: predicted -0.009, realized -0.050 units/rung** (CI -0.188 to +0.079). 58/60 toward the bar.
+- **Floor card (to date):** 22 graded floor legs, hit 81.8% vs mean implied break-even 74.1%, **ROI at posted prices +11.8%** (game-clustered CI -12.4 to +33.1); IN PROGRESS: 22/100 graded floor legs; $0. By market: {'ALT-SHAPE': {'legs': 14, 'hit': 0.929, 'roi': 0.253}, 'ML-SHADED': {'legs': 3, 'hit': 0.333, 'roi': -0.531}, 'TEAM-TOTAL': {'legs': 5, 'hit': 0.8, 'roi': 0.13}}.
+- **ALT-SHAPE split by game spread (diagnostic, not a bar):** {'|spread| <= 14': {'legs': 11, 'hit_%': 90.9, 'breakeven_%': 75.4, 'roi_%': 22.9}, '|spread| > 14': {'legs': 3, 'hit_%': 100.0, 'breakeven_%': 74.7, 'roi_%': 33.8}}.
+- **Hook losses (diagnostic):** 1 this week (Tennessee Volunteers +2.5 [edge] loss on 3); 2 to date. Legs that lost/pushed landing exactly on the key they stopped short of (the next rung across it would have won).
+- **Edge list, main spreads at the Tuesday line (separate track):** 16 graded, hit 18.8% vs break-even 52.8%, ROI -64.6% (game-clustered CI -100.0 to -29.0).
 
 ## Current score
 
