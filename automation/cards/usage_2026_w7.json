@@ -2,7 +2,7 @@
  "meta": {
   "season": 2026,
   "week": 7,
-  "generated": "2026-10-23T17:52+00:00",
+  "generated": "2026-10-26T19:10+00:00",
   "windows": {
    "cur": "2026 wks 1-6",
    "prev": "2025"
@@ -226,6 +226,25 @@
     "tgt_share": 31.3,
     "car_share": 0.7
    }
+  },
+  {
+   "player": "Andrew Armstrong",
+   "team": "KC",
+   "pos": "WR",
+   "cur": {
+    "games": 1,
+    "team": "KC",
+    "tgt": 2.0,
+    "rec": 1.0,
+    "recyd": 13.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.9,
+    "car_share": 0.0
+   },
+   "prev": null
   },
   {
    "player": "Ashton Jeanty",
@@ -800,6 +819,37 @@
    "prev": null
   },
   {
+   "player": "CeeDee Lamb",
+   "team": "DAL",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 11.5,
+    "rec": 8.0,
+    "recyd": 96.2,
+    "car": 0.3,
+    "rushyd": -1.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 28.8,
+    "car_share": 1.6
+   },
+   "prev": {
+    "games": 13,
+    "team": "DAL",
+    "tgt": 9.0,
+    "rec": 5.8,
+    "recyd": 82.8,
+    "car": 0.1,
+    "rushyd": 0.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 25.3,
+    "car_share": 0.3
+   }
+  },
+  {
    "player": "Chase Brown",
    "team": "CIN",
    "pos": "RB",
@@ -974,6 +1024,37 @@
    }
   },
   {
+   "player": "Colby Parkinson",
+   "team": "LA",
+   "pos": "TE",
+   "cur": {
+    "games": 5,
+    "team": "LA",
+    "tgt": 2.6,
+    "rec": 1.8,
+    "recyd": 11.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.8,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 14,
+    "team": "LA",
+    "tgt": 4.0,
+    "rec": 3.1,
+    "recyd": 29.1,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 11.4,
+    "car_share": 0.0
+   }
+  },
+  {
    "player": "Colston Loveland",
    "team": "CHI",
    "pos": "TE",
@@ -1098,6 +1179,25 @@
    }
   },
   {
+   "player": "Cyrus Allen",
+   "team": "KC",
+   "pos": "WR",
+   "cur": {
+    "games": 3,
+    "team": "KC",
+    "tgt": 1.3,
+    "rec": 0.7,
+    "recyd": 9.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 4.9,
+    "car_share": 0.0
+   },
+   "prev": null
+  },
+  {
    "player": "D'Andre Swift",
    "team": "CHI",
    "pos": "RB",
@@ -1160,6 +1260,68 @@
    }
   },
   {
+   "player": "Dak Prescott",
+   "team": "DAL",
+   "pos": "QB",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 2.3,
+    "rushyd": 12.2,
+    "att": 41.0,
+    "passyd": 273.2,
+    "tgt_share": 0.0,
+    "car_share": 11.5
+   },
+   "prev": {
+    "games": 17,
+    "team": "DAL",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 3.1,
+    "rushyd": 10.4,
+    "att": 35.3,
+    "passyd": 267.8,
+    "tgt_share": 0.0,
+    "car_share": 11.4
+   }
+  },
+  {
+   "player": "Dallas Goedert",
+   "team": "PHI",
+   "pos": "TE",
+   "cur": {
+    "games": 4,
+    "team": "PHI",
+    "tgt": 6.0,
+    "rec": 4.2,
+    "recyd": 45.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 17.5,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 15,
+    "team": "PHI",
+    "tgt": 5.5,
+    "rec": 4.0,
+    "recyd": 39.4,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 20.0,
+    "car_share": 0.0
+   }
+  },
+  {
    "player": "Dalton Schultz",
    "team": "HOU",
    "pos": "TE",
@@ -1191,6 +1353,37 @@
    }
   },
   {
+   "player": "Dameon Pierce",
+   "team": "PHI",
+   "pos": "RB",
+   "cur": {
+    "games": 2,
+    "team": "PHI",
+    "tgt": 5.0,
+    "rec": 3.0,
+    "recyd": 6.5,
+    "car": 11.5,
+    "rushyd": 24.5,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 12.3,
+    "car_share": 74.2
+   },
+   "prev": {
+    "games": 5,
+    "team": "KC",
+    "tgt": 0.2,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 2.8,
+    "rushyd": 7.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 0.6,
+    "car_share": 9.9
+   }
+  },
+  {
    "player": "Daniel Jones",
    "team": "IND",
    "pos": "QB",
@@ -1219,6 +1412,68 @@
     "passyd": 238.5,
     "tgt_share": 0.0,
     "car_share": 13.2
+   }
+  },
+  {
+   "player": "Darius Cooper",
+   "team": "PHI",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "PHI",
+    "tgt": 2.5,
+    "rec": 1.3,
+    "recyd": 23.2,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 8.0,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 6,
+    "team": "PHI",
+    "tgt": 1.8,
+    "rec": 1.5,
+    "recyd": 15.3,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.3,
+    "car_share": 0.0
+   }
+  },
+  {
+   "player": "Darnell Mooney",
+   "team": "NYG",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "NYG",
+    "tgt": 3.2,
+    "rec": 1.3,
+    "recyd": 18.2,
+    "car": 0.3,
+    "rushyd": 4.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 9.2,
+    "car_share": 1.2
+   },
+   "prev": {
+    "games": 15,
+    "team": "ATL",
+    "tgt": 4.8,
+    "rec": 2.1,
+    "recyd": 29.5,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 16.1,
+    "car_share": 0.0
    }
   },
   {
@@ -1496,6 +1751,37 @@
    }
   },
   {
+   "player": "Dylan Sampson",
+   "team": "CLE",
+   "pos": "RB",
+   "cur": {
+    "games": 1,
+    "team": "CLE",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 0.0,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 15,
+    "team": "CLE",
+    "tgt": 2.7,
+    "rec": 2.2,
+    "recyd": 18.1,
+    "car": 4.3,
+    "rushyd": 11.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 8.6,
+    "car_share": 17.4
+   }
+  },
+  {
    "player": "Efton Chism III",
    "team": "NE",
    "pos": "WR",
@@ -1605,6 +1891,37 @@
     "passyd": 0.0,
     "tgt_share": 6.0,
     "car_share": 0.0
+   }
+  },
+  {
+   "player": "Emanuel Wilson",
+   "team": "SEA",
+   "pos": "RB",
+   "cur": {
+    "games": 6,
+    "team": "SEA",
+    "tgt": 1.3,
+    "rec": 0.8,
+    "recyd": 8.3,
+    "car": 14.5,
+    "rushyd": 50.5,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 4.3,
+    "car_share": 52.7
+   },
+   "prev": {
+    "games": 17,
+    "team": "GB",
+    "tgt": 1.0,
+    "rec": 0.9,
+    "recyd": 5.8,
+    "car": 7.4,
+    "rushyd": 29.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 3.7,
+    "car_share": 25.4
    }
   },
   {
@@ -1720,6 +2037,37 @@
    }
   },
   {
+   "player": "George Holani",
+   "team": "SEA",
+   "pos": "RB",
+   "cur": {
+    "games": 6,
+    "team": "SEA",
+    "tgt": 2.0,
+    "rec": 1.8,
+    "recyd": 12.7,
+    "car": 5.2,
+    "rushyd": 16.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.4,
+    "car_share": 18.8
+   },
+   "prev": {
+    "games": 10,
+    "team": "SEA",
+    "tgt": 0.2,
+    "rec": 0.2,
+    "recyd": 1.5,
+    "car": 2.2,
+    "rushyd": 7.3,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 0.8,
+    "car_share": 7.2
+   }
+  },
+  {
    "player": "George Kittle",
    "team": "SF",
    "pos": "TE",
@@ -1748,6 +2096,37 @@
     "passyd": 0.0,
     "tgt_share": 21.6,
     "car_share": 0.3
+   }
+  },
+  {
+   "player": "George Pickens",
+   "team": "DAL",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 8.7,
+    "rec": 5.5,
+    "recyd": 71.3,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 21.7,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 17,
+    "team": "DAL",
+    "tgt": 8.1,
+    "rec": 5.5,
+    "recyd": 84.1,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 22.6,
+    "car_share": 0.0
    }
   },
   {
@@ -1956,6 +2335,25 @@
    }
   },
   {
+   "player": "Ja'Kobi Lane",
+   "team": "BAL",
+   "pos": "WR",
+   "cur": {
+    "games": 2,
+    "team": "BAL",
+    "tgt": 4.0,
+    "rec": 2.5,
+    "recyd": 25.5,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 14.5,
+    "car_share": 0.0
+   },
+   "prev": null
+  },
+  {
    "player": "Ja'Marr Chase",
    "team": "CIN",
    "pos": "WR",
@@ -2080,6 +2478,37 @@
    }
   },
   {
+   "player": "Jake Ferguson",
+   "team": "DAL",
+   "pos": "TE",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 4.0,
+    "rec": 2.8,
+    "recyd": 19.2,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 10.0,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 17,
+    "team": "DAL",
+    "tgt": 6.0,
+    "rec": 4.8,
+    "recyd": 35.3,
+    "car": 0.1,
+    "rushyd": 0.1,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 16.8,
+    "car_share": 0.2
+   }
+  },
+  {
    "player": "Jalen Brooks",
    "team": "ARI",
    "pos": "WR",
@@ -2138,6 +2567,37 @@
     "att": 0.0,
     "passyd": 0.0,
     "tgt_share": 14.9,
+    "car_share": 0.0
+   }
+  },
+  {
+   "player": "Jalen Royals",
+   "team": "KC",
+   "pos": "WR",
+   "cur": {
+    "games": 5,
+    "team": "KC",
+    "tgt": 1.8,
+    "rec": 1.0,
+    "recyd": 8.2,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.1,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 2,
+    "team": "KC",
+    "tgt": 1.5,
+    "rec": 1.0,
+    "recyd": 2.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 4.6,
     "car_share": 0.0
    }
   },
@@ -2201,6 +2661,37 @@
     "passyd": 268.5,
     "tgt_share": 0.0,
     "car_share": 4.3
+   }
+  },
+  {
+   "player": "Javonte Williams",
+   "team": "DAL",
+   "pos": "RB",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 3.7,
+    "rec": 3.2,
+    "recyd": 17.2,
+    "car": 14.2,
+    "rushyd": 52.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 9.2,
+    "car_share": 69.7
+   },
+   "prev": {
+    "games": 16,
+    "team": "DAL",
+    "tgt": 3.2,
+    "rec": 2.2,
+    "recyd": 8.6,
+    "car": 15.8,
+    "rushyd": 75.1,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 8.7,
+    "car_share": 57.9
    }
   },
   {
@@ -2562,6 +3053,56 @@
     "tgt_share": 3.5,
     "car_share": 41.6
    }
+  },
+  {
+   "player": "Jordan Watkins",
+   "team": "SF",
+   "pos": "WR",
+   "cur": {
+    "games": 2,
+    "team": "SF",
+    "tgt": 1.5,
+    "rec": 1.5,
+    "recyd": 41.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 5.5,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 2,
+    "team": "SF",
+    "tgt": 1.5,
+    "rec": 1.0,
+    "recyd": 13.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 5.6,
+    "car_share": 0.0
+   }
+  },
+  {
+   "player": "Josh Cuevas",
+   "team": "BAL",
+   "pos": "TE",
+   "cur": {
+    "games": 4,
+    "team": "BAL",
+    "tgt": 2.0,
+    "rec": 1.8,
+    "recyd": 21.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 7.2,
+    "car_share": 0.0
+   },
+   "prev": null
   },
   {
    "player": "Josh Downs",
@@ -3055,6 +3596,25 @@
    }
   },
   {
+   "player": "Makai Lemon",
+   "team": "PHI",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "PHI",
+    "tgt": 4.7,
+    "rec": 3.0,
+    "recyd": 21.2,
+    "car": 0.2,
+    "rushyd": -0.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 15.0,
+    "car_share": 0.7
+   },
+   "prev": null
+  },
+  {
    "player": "Malachi Fields",
    "team": "NYG",
    "pos": "WR",
@@ -3184,6 +3744,37 @@
     "car_share": 38.4
    },
    "prev": null
+  },
+  {
+   "player": "Mark Andrews",
+   "team": "BAL",
+   "pos": "TE",
+   "cur": {
+    "games": 6,
+    "team": "BAL",
+    "tgt": 5.5,
+    "rec": 3.8,
+    "recyd": 30.2,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 20.1,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 17,
+    "team": "BAL",
+    "tgt": 4.1,
+    "rec": 2.8,
+    "recyd": 24.8,
+    "car": 0.6,
+    "rushyd": 2.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 17.2,
+    "car_share": 2.0
+   }
   },
   {
    "player": "Marvin Harrison Jr.",
@@ -3627,6 +4218,37 @@
    "prev": null
   },
   {
+   "player": "Puka Nacua",
+   "team": "LA",
+   "pos": "WR",
+   "cur": {
+    "games": 4,
+    "team": "LA",
+    "tgt": 13.0,
+    "rec": 9.2,
+    "recyd": 104.2,
+    "car": 0.8,
+    "rushyd": 2.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 31.9,
+    "car_share": 3.1
+   },
+   "prev": {
+    "games": 16,
+    "team": "LA",
+    "tgt": 10.4,
+    "rec": 8.1,
+    "recyd": 107.2,
+    "car": 0.6,
+    "rushyd": 6.6,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 30.3,
+    "car_share": 2.3
+   }
+  },
+  {
    "player": "Quinshon Judkins",
    "team": "CLE",
    "pos": "RB",
@@ -3844,6 +4466,37 @@
    }
   },
   {
+   "player": "Ryan Flournoy",
+   "team": "DAL",
+   "pos": "WR",
+   "cur": {
+    "games": 6,
+    "team": "DAL",
+    "tgt": 6.0,
+    "rec": 3.8,
+    "recyd": 39.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 15.0,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 15,
+    "team": "DAL",
+    "tgt": 3.7,
+    "rec": 2.7,
+    "recyd": 31.7,
+    "car": 0.3,
+    "rushyd": 1.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 10.4,
+    "car_share": 1.0
+   }
+  },
+  {
    "player": "Sam Darnold",
    "team": "SEA",
    "pos": "QB",
@@ -3903,6 +4556,37 @@
     "passyd": 0.0,
     "tgt_share": 18.6,
     "car_share": 0.0
+   }
+  },
+  {
+   "player": "Saquon Barkley",
+   "team": "PHI",
+   "pos": "RB",
+   "cur": {
+    "games": 4,
+    "team": "PHI",
+    "tgt": 1.8,
+    "rec": 1.0,
+    "recyd": 2.0,
+    "car": 9.0,
+    "rushyd": 45.5,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.6,
+    "car_share": 35.0
+   },
+   "prev": {
+    "games": 16,
+    "team": "PHI",
+    "tgt": 3.1,
+    "rec": 2.3,
+    "recyd": 17.1,
+    "car": 17.5,
+    "rushyd": 71.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 11.6,
+    "car_share": 61.0
    }
   },
   {
@@ -3968,6 +4652,25 @@
    }
   },
   {
+   "player": "Seth McGowan",
+   "team": "IND",
+   "pos": "RB",
+   "cur": {
+    "games": 6,
+    "team": "IND",
+    "tgt": 0.7,
+    "rec": 0.5,
+    "recyd": 1.7,
+    "car": 3.5,
+    "rushyd": 14.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 2.0,
+    "car_share": 12.6
+   },
+   "prev": null
+  },
+  {
    "player": "Sione Vaki",
    "team": "DET",
    "pos": "RB",
@@ -3996,6 +4699,37 @@
     "passyd": 0.0,
     "tgt_share": 0.0,
     "car_share": 0.5
+   }
+  },
+  {
+   "player": "Tanner McKee",
+   "team": "PHI",
+   "pos": "QB",
+   "cur": {
+    "games": 1,
+    "team": "PHI",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 1.0,
+    "rushyd": 0.0,
+    "att": 45.0,
+    "passyd": 215.0,
+    "tgt_share": 0.0,
+    "car_share": 7.7
+   },
+   "prev": {
+    "games": 4,
+    "team": "PHI",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 2.0,
+    "rushyd": 2.0,
+    "att": 10.8,
+    "passyd": 68.5,
+    "tgt_share": 0.0,
+    "car_share": 6.0
    }
   },
   {
@@ -4359,34 +5093,158 @@
    }
   },
   {
-   "player": "Tyjae Spears",
-   "team": "TEN",
+   "player": "Tutu Atwell",
+   "team": "LA",
+   "pos": "WR",
+   "cur": {
+    "games": 3,
+    "team": "LA",
+    "tgt": 1.3,
+    "rec": 1.0,
+    "recyd": 10.3,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 3.0,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 8,
+    "team": "LA",
+    "tgt": 1.9,
+    "rec": 0.8,
+    "recyd": 24.0,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 5.2,
+    "car_share": 0.0
+   }
+  },
+  {
+   "player": "Tyler Allgeier",
+   "team": "ARI",
    "pos": "RB",
    "cur": {
     "games": 6,
-    "team": "TEN",
-    "tgt": 2.8,
-    "rec": 2.5,
-    "recyd": 12.5,
-    "car": 3.0,
-    "rushyd": 11.0,
+    "team": "ARI",
+    "tgt": 2.3,
+    "rec": 2.2,
+    "recyd": 9.0,
+    "car": 8.8,
+    "rushyd": 26.2,
     "att": 0.0,
     "passyd": 0.0,
-    "tgt_share": 10.3,
-    "car_share": 13.7
+    "tgt_share": 6.1,
+    "car_share": 33.8
    },
    "prev": {
-    "games": 13,
-    "team": "TEN",
-    "tgt": 3.8,
-    "rec": 3.5,
-    "recyd": 20.3,
-    "car": 5.5,
-    "rushyd": 21.8,
+    "games": 17,
+    "team": "ATL",
+    "tgt": 0.9,
+    "rec": 0.8,
+    "recyd": 5.6,
+    "car": 8.4,
+    "rushyd": 30.2,
     "att": 0.0,
     "passyd": 0.0,
-    "tgt_share": 12.0,
-    "car_share": 24.8
+    "tgt_share": 3.1,
+    "car_share": 30.0
+   }
+  },
+  {
+   "player": "Tyler Goodson",
+   "team": "DAL",
+   "pos": "RB",
+   "cur": {
+    "games": 3,
+    "team": "DAL",
+    "tgt": 1.7,
+    "rec": 0.7,
+    "recyd": 1.3,
+    "car": 3.7,
+    "rushyd": 11.3,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 3.6,
+    "car_share": 15.7
+   },
+   "prev": {
+    "games": 10,
+    "team": "IND",
+    "tgt": 0.3,
+    "rec": 0.2,
+    "recyd": 0.8,
+    "car": 0.9,
+    "rushyd": 2.4,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 1.0,
+    "car_share": 3.6
+   }
+  },
+  {
+   "player": "Tyler Higbee",
+   "team": "LA",
+   "pos": "TE",
+   "cur": {
+    "games": 5,
+    "team": "LA",
+    "tgt": 5.8,
+    "rec": 4.8,
+    "recyd": 49.2,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 13.7,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 10,
+    "team": "LA",
+    "tgt": 3.6,
+    "rec": 2.5,
+    "recyd": 28.1,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 11.2,
+    "car_share": 0.0
+   }
+  },
+  {
+   "player": "Tyler Huntley",
+   "team": "BAL",
+   "pos": "QB",
+   "cur": {
+    "games": 3,
+    "team": "BAL",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 5.0,
+    "rushyd": 21.3,
+    "att": 24.0,
+    "passyd": 143.0,
+    "tgt_share": 0.0,
+    "car_share": 17.0
+   },
+   "prev": {
+    "games": 5,
+    "team": "BAL",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 4.8,
+    "rushyd": 30.2,
+    "att": 13.4,
+    "passyd": 85.2,
+    "tgt_share": 0.0,
+    "car_share": 13.2
    }
   },
   {
@@ -4449,6 +5307,37 @@
     "passyd": 0.0,
     "tgt_share": 10.8,
     "car_share": 40.0
+   }
+  },
+  {
+   "player": "Velus Jones Jr.",
+   "team": "SEA",
+   "pos": "RB",
+   "cur": {
+    "games": 2,
+    "team": "SEA",
+    "tgt": 0.5,
+    "rec": 0.5,
+    "recyd": -0.5,
+    "car": 2.0,
+    "rushyd": 10.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 1.4,
+    "car_share": 7.7
+   },
+   "prev": {
+    "games": 5,
+    "team": "SEA",
+    "tgt": 0.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 0.8,
+    "rushyd": 6.4,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 0.0,
+    "car_share": 2.9
    }
   },
   {
@@ -4624,6 +5513,37 @@
     "car_share": 0.0
    },
    "prev": null
+  },
+  {
+   "player": "Zay Flowers",
+   "team": "BAL",
+   "pos": "WR",
+   "cur": {
+    "games": 5,
+    "team": "BAL",
+    "tgt": 8.4,
+    "rec": 6.4,
+    "recyd": 94.2,
+    "car": 0.6,
+    "rushyd": 6.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 31.1,
+    "car_share": 1.8
+   },
+   "prev": {
+    "games": 17,
+    "team": "BAL",
+    "tgt": 6.9,
+    "rec": 5.1,
+    "recyd": 71.2,
+    "car": 0.6,
+    "rushyd": 3.6,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 29.0,
+    "car_share": 2.0
+   }
   }
  ]
 }
