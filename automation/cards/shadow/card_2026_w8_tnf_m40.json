@@ -1,0 +1,308 @@
+{
+ "season": 2026,
+ "week": 8,
+ "slate": "tnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2026-10-28T16:38+00:00",
+ "published_at": "2026-10-28T16:38+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "bryce young|pass_att",
+  "bryce young|pass_cmps",
+  "bryce young|pass_yds",
+  "bryce young|rush_yds",
+  "christian watson|rec_yds",
+  "christian watson|receptions",
+  "chuba hubbard|rec_yds",
+  "chuba hubbard|receptions",
+  "chuba hubbard|rush_att",
+  "chuba hubbard|rush_yds",
+  "darren waller|rec_yds",
+  "darren waller|receptions",
+  "jalen coker|rec_yds",
+  "jalen coker|receptions",
+  "john metchie|rec_yds",
+  "john metchie|receptions",
+  "jordan love|pass_att",
+  "jordan love|pass_cmps",
+  "jordan love|pass_yds",
+  "jordan love|rush_yds",
+  "josh jacobs|rec_yds",
+  "josh jacobs|receptions",
+  "josh jacobs|rush_att",
+  "josh jacobs|rush_yds",
+  "marshawn lloyd|rec_yds",
+  "marshawn lloyd|receptions",
+  "marshawn lloyd|rush_att",
+  "marshawn lloyd|rush_yds",
+  "matthew golden|rec_yds",
+  "matthew golden|receptions",
+  "tetairoa mcmillan|rec_yds",
+  "tetairoa mcmillan|receptions",
+  "tommy tremble|rec_yds",
+  "tommy tremble|receptions",
+  "tucker kraft|rec_yds",
+  "tucker kraft|receptions"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-28T16:38+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-7",
+   "weekly_stats": "weeks 1-7",
+   "qb_change": "2 team(s): BAL, PHI",
+   "injuries": "week 8: 16 report rows"
+  }
+ },
+ "tickets": [],
+ "floors_singles": [],
+ "candidates": [],
+ "held": [
+  {
+   "Player": "Darren Waller",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": 134,
+   "L10": "5/6",
+   "L15": "5/6",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    36,
+    0,
+    50
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "John Metchie III",
+   "Market": "rec_yds",
+   "Rung": "16+",
+   "EstOdds": -111,
+   "L10": "4/4",
+   "L15": "4/4",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    37,
+    24,
+    20
+   ],
+   "Reasons": [
+    "edge +1.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "John Metchie III",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -128,
+   "L10": "4/4",
+   "L15": "4/4",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    2,
+    2
+   ],
+   "Reasons": [
+    "edge +0.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Christian Watson",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -377,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    143,
+    64,
+    57
+   ],
+   "Reasons": [
+    "edge -4.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -414,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    64,
+    37,
+    48
+   ],
+   "Reasons": [
+    "edge -4.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -561,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.7 pts (< +2)"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Darren Waller",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": 134,
+   "L10": "5/6",
+   "L15": "5/6",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    36,
+    0,
+    50
+   ],
+   "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "John Metchie III",
+   "Market": "rec_yds",
+   "Rung": "16+",
+   "EstOdds": -111,
+   "L10": "4/4",
+   "L15": "4/4",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    37,
+    24,
+    20
+   ],
+   "Reasons": [
+    "edge +1.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "John Metchie III",
+   "Market": "receptions",
+   "Rung": "2+",
+   "EstOdds": -128,
+   "L10": "4/4",
+   "L15": "4/4",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    3,
+    2,
+    2
+   ],
+   "Reasons": [
+    "edge +0.8 pts (< +2)",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Christian Watson",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -377,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    143,
+    64,
+    57
+   ],
+   "Reasons": [
+    "edge -4.2 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -414,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    64,
+    37,
+    48
+   ],
+   "Reasons": [
+    "edge -4.6 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -561,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -7.7 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": "",
+ "shadow": {
+  "slug": "m40",
+  "label": "market = 40 games",
+  "blend": {
+   "market_games": 40,
+   "history_weight": null,
+   "cap": 0.9
+  },
+  "min_edge": 2.0,
+  "live_card": "card_2026_w8_tnf.json",
+  "note": "research only: never published; graded Tuesday next to the live card"
+ }
+}

@@ -1,0 +1,538 @@
+{
+ "season": 2026,
+ "week": 8,
+ "slate": "tnf",
+ "rules": "R1-R11 (see build_card_json.py)",
+ "prices_pulled": "2026-10-28T16:38+00:00",
+ "published_at": "2026-10-28T16:38+00:00",
+ "thursday_pulled": null,
+ "markets_at_publish": [
+  "bryce young|pass_att",
+  "bryce young|pass_cmps",
+  "bryce young|pass_yds",
+  "bryce young|rush_yds",
+  "christian watson|rec_yds",
+  "christian watson|receptions",
+  "chuba hubbard|rec_yds",
+  "chuba hubbard|receptions",
+  "chuba hubbard|rush_att",
+  "chuba hubbard|rush_yds",
+  "darren waller|rec_yds",
+  "darren waller|receptions",
+  "jalen coker|rec_yds",
+  "jalen coker|receptions",
+  "john metchie|rec_yds",
+  "john metchie|receptions",
+  "jordan love|pass_att",
+  "jordan love|pass_cmps",
+  "jordan love|pass_yds",
+  "jordan love|rush_yds",
+  "josh jacobs|rec_yds",
+  "josh jacobs|receptions",
+  "josh jacobs|rush_att",
+  "josh jacobs|rush_yds",
+  "marshawn lloyd|rec_yds",
+  "marshawn lloyd|receptions",
+  "marshawn lloyd|rush_att",
+  "marshawn lloyd|rush_yds",
+  "matthew golden|rec_yds",
+  "matthew golden|receptions",
+  "tetairoa mcmillan|rec_yds",
+  "tetairoa mcmillan|receptions",
+  "tommy tremble|rec_yds",
+  "tommy tremble|receptions",
+  "tucker kraft|rec_yds",
+  "tucker kraft|receptions"
+ ],
+ "availability": {
+  "fetched_at": "2026-10-28T16:38+00:00",
+  "sources": {
+   "snap_counts": "weeks 1-7",
+   "weekly_stats": "weeks 1-7",
+   "qb_change": "2 team(s): BAL, PHI",
+   "injuries": "week 8: 16 report rows"
+  }
+ },
+ "tickets": [
+  {
+   "name": "TNF-1",
+   "legs": [
+    {
+     "player": "John Metchie III",
+     "team": "CAR",
+     "opp": "GB",
+     "market": "rec_yds",
+     "rung": 10.0,
+     "floor_rung": 16.0,
+     "odds_est": -193,
+     "odds_real": -193,
+     "odds_model_est": null,
+     "l10": 1.0,
+     "l15": 1.0,
+     "last3": [
+      37,
+      24,
+      20
+     ],
+     "opp_d": "neutral",
+     "own_vol": "SOFT",
+     "star": true,
+     "opp_d_rank": 9,
+     "own_vol_rank": 8,
+     "model_pct": 70.2,
+     "prob": 0.7021,
+     "fair_odds": -236,
+     "edge_pts": 4.3,
+     "novig_pct": 62.3,
+     "grade": "A-",
+     "clear_pct": 100.0,
+     "injury_watch": null,
+     "note": "L10 4/4, L15 4/4; last 3 [37, 24, 20]; opp D neutral; floor rung 16+ graded lower",
+     "published_odds": -193,
+     "published_at": "2026-10-28T16:38+00:00",
+     "current_odds": -193,
+     "current_at": "2026-10-28T16:38+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2026-10-28T16:38+00:00",
+       "odds": -193
+      }
+     ]
+    },
+    {
+     "player": "Darren Waller",
+     "team": "CAR",
+     "opp": "GB",
+     "market": "rec_yds",
+     "rung": 20.0,
+     "floor_rung": 25.0,
+     "odds_est": -108,
+     "odds_real": -108,
+     "odds_model_est": -108,
+     "l10": 0.8333333333333334,
+     "l15": 0.8333333333333334,
+     "last3": [
+      36,
+      0,
+      50
+     ],
+     "opp_d": "neutral",
+     "own_vol": "SOFT",
+     "star": false,
+     "opp_d_rank": 9,
+     "own_vol_rank": 8,
+     "model_pct": 60.6,
+     "prob": 0.6064,
+     "fair_odds": -154,
+     "edge_pts": 8.7,
+     "novig_pct": 49.2,
+     "grade": "C",
+     "clear_pct": 83.3,
+     "injury_watch": null,
+     "note": "L10 5/6, L15 5/6; last 3 [36, 0, 50]; opp D neutral; floor rung 25+ graded lower",
+     "published_odds": -108,
+     "published_at": "2026-10-28T16:38+00:00",
+     "current_odds": -108,
+     "current_at": "2026-10-28T16:38+00:00",
+     "thursday_odds": null,
+     "price_history": [
+      {
+       "at": "2026-10-28T16:38+00:00",
+       "odds": -108
+      }
+     ]
+    }
+   ],
+   "model_hit": 0.425,
+   "est_payout": 2.92,
+   "est_american": 192,
+   "reduced": true,
+   "correlated": true,
+   "label": "Reduced payout: floors held, not stretched \u2014 still recommended"
+  }
+ ],
+ "floors_singles": [
+  {
+   "player": "John Metchie III",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "rec_yds",
+   "rung": 10.0,
+   "floor_rung": 16.0,
+   "odds_est": -193,
+   "odds_real": -193,
+   "odds_model_est": null,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    37,
+    24,
+    20
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 70.2,
+   "prob": 0.7021,
+   "fair_odds": -236,
+   "edge_pts": 4.3,
+   "novig_pct": 62.3,
+   "grade": "A-",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 4/4, L15 4/4; last 3 [37, 24, 20]; opp D neutral; floor rung 16+ graded lower",
+   "published_odds": -193,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -193,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -193
+    }
+   ]
+  },
+  {
+   "player": "Darren Waller",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "floor_rung": 25.0,
+   "odds_est": -108,
+   "odds_real": -108,
+   "odds_model_est": -108,
+   "l10": 0.8333333333333334,
+   "l15": 0.8333333333333334,
+   "last3": [
+    36,
+    0,
+    50
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": false,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 60.6,
+   "prob": 0.6064,
+   "fair_odds": -154,
+   "edge_pts": 8.7,
+   "novig_pct": 49.2,
+   "grade": "C",
+   "clear_pct": 83.3,
+   "injury_watch": null,
+   "note": "L10 5/6, L15 5/6; last 3 [36, 0, 50]; opp D neutral; floor rung 25+ graded lower",
+   "published_odds": -108,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -108,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -108
+    }
+   ]
+  },
+  {
+   "player": "John Metchie III",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -128,
+   "odds_real": -128,
+   "odds_model_est": -128,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    3,
+    2,
+    2
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 64.4,
+   "prob": 0.6439,
+   "fair_odds": -181,
+   "edge_pts": 8.2,
+   "novig_pct": 53.0,
+   "grade": "C",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 4/4, L15 4/4; last 3 [3, 2, 2]; opp D neutral",
+   "published_odds": -128,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -128,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -128
+    }
+   ]
+  }
+ ],
+ "candidates": [
+  {
+   "player": "John Metchie III",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "rec_yds",
+   "rung": 10.0,
+   "floor_rung": 16.0,
+   "odds_est": -193,
+   "odds_real": -193,
+   "odds_model_est": null,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    37,
+    24,
+    20
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 70.2,
+   "prob": 0.7021,
+   "fair_odds": -236,
+   "edge_pts": 4.3,
+   "novig_pct": 62.3,
+   "grade": "A-",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 4/4, L15 4/4; last 3 [37, 24, 20]; opp D neutral; floor rung 16+ graded lower",
+   "published_odds": -193,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -193,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -193
+    }
+   ]
+  },
+  {
+   "player": "Darren Waller",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "floor_rung": 25.0,
+   "odds_est": -108,
+   "odds_real": -108,
+   "odds_model_est": -108,
+   "l10": 0.8333333333333334,
+   "l15": 0.8333333333333334,
+   "last3": [
+    36,
+    0,
+    50
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": false,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 60.6,
+   "prob": 0.6064,
+   "fair_odds": -154,
+   "edge_pts": 8.7,
+   "novig_pct": 49.2,
+   "grade": "C",
+   "clear_pct": 83.3,
+   "injury_watch": null,
+   "note": "L10 5/6, L15 5/6; last 3 [36, 0, 50]; opp D neutral; floor rung 25+ graded lower",
+   "published_odds": -108,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -108,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -108
+    }
+   ]
+  },
+  {
+   "player": "John Metchie III",
+   "team": "CAR",
+   "opp": "GB",
+   "market": "receptions",
+   "rung": 2.0,
+   "floor_rung": 2.0,
+   "odds_est": -128,
+   "odds_real": -128,
+   "odds_model_est": -128,
+   "l10": 1.0,
+   "l15": 1.0,
+   "last3": [
+    3,
+    2,
+    2
+   ],
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "star": true,
+   "opp_d_rank": 9,
+   "own_vol_rank": 8,
+   "model_pct": 64.4,
+   "prob": 0.6439,
+   "fair_odds": -181,
+   "edge_pts": 8.2,
+   "novig_pct": 53.0,
+   "grade": "C",
+   "clear_pct": 100.0,
+   "injury_watch": null,
+   "note": "L10 4/4, L15 4/4; last 3 [3, 2, 2]; opp D neutral",
+   "published_odds": -128,
+   "published_at": "2026-10-28T16:38+00:00",
+   "current_odds": -128,
+   "current_at": "2026-10-28T16:38+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-28T16:38+00:00",
+     "odds": -128
+    }
+   ]
+  }
+ ],
+ "held": [
+  {
+   "Player": "Christian Watson",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -377,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    143,
+    64,
+    57
+   ],
+   "Reasons": [
+    "edge -4.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -414,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    64,
+    37,
+    48
+   ],
+   "Reasons": [
+    "edge -5.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -561,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -10.8 pts (< +2)"
+   ]
+  }
+ ],
+ "held_all": [
+  {
+   "Player": "Christian Watson",
+   "Market": "rec_yds",
+   "Rung": "40+",
+   "EstOdds": -377,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    143,
+    64,
+    57
+   ],
+   "Reasons": [
+    "edge -4.1 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "rec_yds",
+   "Rung": "25+",
+   "EstOdds": -414,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    64,
+    37,
+    48
+   ],
+   "Reasons": [
+    "edge -5.0 pts (< +2)"
+   ]
+  },
+  {
+   "Player": "Tucker Kraft",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -561,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    5,
+    5,
+    4
+   ],
+   "Reasons": [
+    "price worse than -450",
+    "edge -10.8 pts (< +2)"
+   ]
+  }
+ ],
+ "notes": ""
+}
