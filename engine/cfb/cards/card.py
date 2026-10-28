@@ -276,7 +276,8 @@ def late_filter(L: pd.DataFrame, publish_at: pd.Timestamp):
             .sort_values("kickoff_utc").to_dict("records"))
     if not gone:
         return L, [], ""
-    days = sorted(set(ko[keep].dt.tz_convert(ET).dt.strftime("%a")))
+    kept = ko[keep].dt.tz_convert(ET)
+    days = [d for _, d in sorted(set(zip(kept.dt.date, kept.dt.strftime("%a"))))]   # in calendar order
     label = LATE_LABEL if days == ["Sat"] else f"published late: Tuesday prices, games not yet started ({'/'.join(days)})"
     return L[keep], gone, label
 
@@ -297,13 +298,21 @@ def floor_legs(L: pd.DataFrame) -> pd.DataFrame:
 MAX_ALT_SHAPE = 2       # Tim, 2026-10-12: at most 2 ALT-SHAPE legs per ticket
 
 
-def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n=16):
+FOURTH_LEG_MARKETS = ("TEAM-TOTAL", "ML-SHADED")
+
+
+def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n=16, extra=None):
     """Pool = floor legs + second legs. Rules (Tim, 2026-10-12/13):
       * each GAME appears on at most ONE ticket per slate (any market, any leg); this supersedes the
         earlier floor-star exception, so no leg or game repeats across tickets
       * cross-game only within a ticket; at most MAX_ALT_SHAPE ALT-SHAPE legs per ticket
-      * pick the highest joint probability at >= +200; if no combination reaches +200 under the
-        rules, take the best one and label it "reduced payout, floors held"."""
+      * pick the highest joint probability at >= +200
+      * Tim, 2026-10-28: if no pool ticket reaches +200, try every rule-legal 3-leg pool base plus a
+        4th ELIGIBLE leg from `extra` (any eligible TEAM-TOTAL or ML-SHADED leg, not only the
+        floor/second pool) on a game no ticket uses yet; among those reaching +200, the highest joint
+        probability. Tickets that already reach +200 from the pool are unchanged. The ALT-SHAPE cap
+        is unaffected (the 4th leg is never ALT-SHAPE).
+      * only if no rule-legal 4th leg reaches +200: the best ticket, labeled "reduced payout, floors held"."""
     f = floor.sort_values("p_used", ascending=False).head(pool_n).reset_index(drop=True)
     used_games, out = set(), []
     for t in range(n_tickets):
@@ -325,11 +334,29 @@ def tickets(floor: pd.DataFrame, n_tickets=3, sizes=(3, 4), target=200.0, pool_n
         if best is None:
             break
         _, combo, dec, pj, price = best
-        used_games |= set(f.loc[list(combo)].game_id)
+        legs = f.loc[list(combo)]
+        fourth = None
+        if price < target and extra is not None and len(extra):
+            # no pool ticket reaches +200: any rule-legal 3-leg pool base + a 4th eligible leg
+            x = extra[extra.market.isin(FOURTH_LEG_MARKETS) & ~extra.game_id.isin(used_games)]
+            for base in itertools.combinations(avail.index, 3):
+                b = f.loc[list(base)]
+                if b.game_id.nunique() < 3 or (b.market == "ALT-SHAPE").sum() > MAX_ALT_SHAPE:
+                    continue
+                db, pb = float(np.prod(1 + payout(b.price))), float(np.prod(b.p_used))
+                for r in x[~x.game_id.isin(b.game_id)].itertuples():
+                    d4, p4 = db * (1 + float(payout(r.price))), pb * float(r.p_used)
+                    if float(american(d4)) >= target and (fourth is None or p4 > fourth[3]):
+                        fourth = (base, r.Index, d4, p4)
+        if fourth is not None:
+            base, idx, dec, pj = fourth
+            legs = pd.concat([f.loc[list(base)], extra.loc[[idx]].assign(role="4th leg")], ignore_index=True)
+            price = float(american(dec))
+        used_games |= set(legs.game_id)
         out.append({"ticket": t + 1,
-                    "legs": f.loc[list(combo)][["game_id", "game", "pick", "market", "role", "price", "p_used"]].to_dict("records"),
+                    "legs": legs[["game_id", "game", "pick", "market", "role", "price", "p_used"]].to_dict("records"),
                     "price_american": round(price), "p_joint": pj, "ev": pj * dec - 1,
-                    "alt_shape_legs": int((f.loc[list(combo)].market == "ALT-SHAPE").sum()),
+                    "alt_shape_legs": int((legs.market == "ALT-SHAPE").sum()),
                     "label": "Bloom (>= +200)" if price >= target else "reduced payout, floors held"})
     return out
 
@@ -409,7 +436,7 @@ def main(argv=None) -> int:
     pub = (pub.tz_localize(ET) if pub.tzinfo is None else pub).tz_convert("UTC")
     Lc, excluded, late_label = late_filter(L, pub)
     fl = floor_legs(Lc)
-    tk = tickets(fl)
+    tk = tickets(fl, extra=Lc[Lc.eligible])
     ed = spread_edges(g, L)                     # edge list: every game at the Tuesday line (pre-registered)
     fl = add_hooks(fl, L)                       # display only: selection above is unchanged
     ed = add_hooks(ed.assign(market="SPREAD-CLV", family="spread"), L)

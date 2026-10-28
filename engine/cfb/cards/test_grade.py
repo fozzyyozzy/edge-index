@@ -143,3 +143,38 @@ def test_missing_targets_are_built(tmp_path, monkeypatch):
     assert C.ensure_targets(2026, 8).exists() and "--no-log" in calls[0]
     C.ensure_targets(2026, 8)
     assert len(calls) == 1                                     # existing file is not rebuilt
+
+
+def test_fourth_leg_reaches_plus_200_else_reduced_payout():
+    """Tim, 2026-10-28: a 3-leg ticket short of +200 adds a 4th eligible TEAM-TOTAL/ML-SHADED leg on an
+    unused game when that reaches +200; 'reduced payout' only if no rule-legal 4th leg exists."""
+    import pandas as pd
+    from engine.cfb.cards import card as C
+    def leg(gid, market, price, p, role="floor"):
+        return {"game_id": gid, "game": f"A{gid} @ H{gid}", "pick": f"pick{gid}{market[:2]}", "market": market,
+                "role": role, "price": price, "p_used": p}
+    pool = pd.DataFrame([leg(1, "ALT-SHAPE", -300, .80), leg(2, "ALT-SHAPE", -300, .80), leg(3, "TEAM-TOTAL", -300, .80)])
+    extra = pd.DataFrame([leg(1, "TEAM-TOTAL", -110, .70),            # game already on the ticket: illegal
+                          leg(4, "ALT-SHAPE", -110, .70),             # ALT-SHAPE: not a 4th-leg label
+                          leg(5, "ML-SHADED", -400, .70),             # 3 x -300 = +137; x -400 = +196: short of +200
+                          leg(6, "TEAM-TOTAL", +150, .66),            # reaches +245: yes
+                          leg(7, "ML-SHADED", +140, .68)])            # reaches +231: yes, higher p -> chosen
+    t = C.tickets(pool, n_tickets=1, extra=extra)[0]
+    assert len(t["legs"]) == 4 and t["legs"][-1]["game_id"] == 7 and t["legs"][-1]["role"] == "4th leg"
+    assert t["price_american"] >= 200 and t["label"].startswith("Bloom") and t["alt_shape_legs"] == 2
+    t = C.tickets(pool, n_tickets=1, extra=extra[extra.game_id.isin([1, 4, 5])])[0]
+    assert len(t["legs"]) == 3 and t["label"] == "reduced payout, floors held"
+
+
+def test_fourth_leg_may_use_a_different_three_leg_base():
+    """If the highest-p 3-leg base can't reach +200 with any 4th leg but another legal base can, use it."""
+    import pandas as pd
+    from engine.cfb.cards import card as C
+    def leg(gid, market, price, p, role="floor"):
+        return {"game_id": gid, "game": f"A{gid} @ H{gid}", "pick": f"pick{gid}", "market": market,
+                "role": role, "price": price, "p_used": p}
+    pool = pd.DataFrame([leg(1, "ALT-SHAPE", -500, .87), leg(2, "ALT-SHAPE", -500, .86),
+                         leg(3, "TEAM-TOTAL", -500, .85), leg(4, "ML-SHADED", -300, .77)])
+    extra = pd.DataFrame([leg(5, "ML-SHADED", -175, .675)])
+    t = C.tickets(pool, n_tickets=1, extra=extra)[0]
+    assert t["price_american"] >= 200 and {l["game_id"] for l in t["legs"]} == {1, 2, 4, 5}
