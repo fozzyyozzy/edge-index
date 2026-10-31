@@ -2,7 +2,7 @@
  "meta": {
   "season": 2026,
   "week": 8,
-  "generated": "2026-10-30T18:34+00:00",
+  "generated": "2026-10-31T04:57+00:00",
   "windows": {
    "cur": "2026 wks 1-7",
    "prev": "2025"
@@ -10,6 +10,37 @@
   "note": "per game played; shares = player's targets/carries over his team's, in the games he played"
  },
  "players": [
+  {
+   "player": "Aaron Jones",
+   "team": "MIN",
+   "pos": "RB",
+   "cur": {
+    "games": 6,
+    "team": "MIN",
+    "tgt": 3.2,
+    "rec": 2.2,
+    "recyd": 12.0,
+    "car": 17.5,
+    "rushyd": 72.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 12.4,
+    "car_share": 58.0
+   },
+   "prev": {
+    "games": 12,
+    "team": "MIN",
+    "tgt": 3.4,
+    "rec": 2.3,
+    "recyd": 16.6,
+    "car": 11.0,
+    "rushyd": 45.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 13.8,
+    "car_share": 46.8
+   }
+  },
   {
    "player": "Aaron Rodgers",
    "team": "PIT",
@@ -874,6 +905,37 @@
    }
   },
   {
+   "player": "Dallas Goedert",
+   "team": "PHI",
+   "pos": "TE",
+   "cur": {
+    "games": 5,
+    "team": "PHI",
+    "tgt": 6.2,
+    "rec": 4.4,
+    "recyd": 45.6,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 18.2,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 15,
+    "team": "PHI",
+    "tgt": 5.5,
+    "rec": 4.0,
+    "recyd": 39.4,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 20.0,
+    "car_share": 0.0
+   }
+  },
+  {
    "player": "Dalton Kincaid",
    "team": "BUF",
    "pos": "TE",
@@ -933,6 +995,37 @@
     "passyd": 238.5,
     "tgt_share": 0.0,
     "car_share": 13.2
+   }
+  },
+  {
+   "player": "Darius Cooper",
+   "team": "PHI",
+   "pos": "WR",
+   "cur": {
+    "games": 7,
+    "team": "PHI",
+    "tgt": 2.6,
+    "rec": 1.3,
+    "recyd": 22.3,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 8.2,
+    "car_share": 0.0
+   },
+   "prev": {
+    "games": 6,
+    "team": "PHI",
+    "tgt": 1.8,
+    "rec": 1.5,
+    "recyd": 15.3,
+    "car": 0.0,
+    "rushyd": 0.0,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.3,
+    "car_share": 0.0
    }
   },
   {
@@ -1782,34 +1875,34 @@
    }
   },
   {
-   "player": "Jakobi Meyers",
-   "team": "JAX",
-   "pos": "WR",
+   "player": "Jake Ferguson",
+   "team": "DAL",
+   "pos": "TE",
    "cur": {
-    "games": 6,
-    "team": "JAX",
-    "tgt": 4.7,
-    "rec": 3.3,
-    "recyd": 47.5,
-    "car": 0.2,
-    "rushyd": 0.3,
+    "games": 7,
+    "team": "DAL",
+    "tgt": 3.6,
+    "rec": 2.4,
+    "recyd": 16.4,
+    "car": 0.0,
+    "rushyd": 0.0,
     "att": 0.0,
     "passyd": 0.0,
-    "tgt_share": 15.7,
-    "car_share": 0.6
+    "tgt_share": 9.4,
+    "car_share": 0.0
    },
    "prev": {
-    "games": 16,
-    "team": "JAX",
-    "tgt": 6.9,
-    "rec": 4.7,
-    "recyd": 52.2,
-    "car": 0.3,
-    "rushyd": 0.8,
+    "games": 17,
+    "team": "DAL",
+    "tgt": 6.0,
+    "rec": 4.8,
+    "recyd": 35.3,
+    "car": 0.1,
+    "rushyd": 0.1,
     "att": 0.0,
     "passyd": 0.0,
-    "tgt_share": 22.8,
-    "car_share": 1.1
+    "tgt_share": 16.8,
+    "car_share": 0.2
    }
   },
   {
@@ -2282,6 +2375,37 @@
     "passyd": 225.4,
     "tgt_share": 0.0,
     "car_share": 10.7
+   }
+  },
+  {
+   "player": "Jordan Mason",
+   "team": "MIN",
+   "pos": "RB",
+   "cur": {
+    "games": 2,
+    "team": "MIN",
+    "tgt": 1.0,
+    "rec": 0.0,
+    "recyd": 0.0,
+    "car": 15.0,
+    "rushyd": 63.5,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 4.3,
+    "car_share": 47.6
+   },
+   "prev": {
+    "games": 16,
+    "team": "MIN",
+    "tgt": 1.0,
+    "rec": 0.9,
+    "recyd": 3.2,
+    "car": 9.9,
+    "rushyd": 47.4,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 3.5,
+    "car_share": 41.6
    }
   },
   {
@@ -2981,6 +3105,25 @@
    }
   },
   {
+   "player": "Makai Lemon",
+   "team": "PHI",
+   "pos": "WR",
+   "cur": {
+    "games": 7,
+    "team": "PHI",
+    "tgt": 5.1,
+    "rec": 3.6,
+    "recyd": 27.7,
+    "car": 0.1,
+    "rushyd": -0.7,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 16.4,
+    "car_share": 0.6
+   },
+   "prev": null
+  },
+  {
    "player": "Malik Washington",
    "team": "MIA",
    "pos": "WR",
@@ -3634,37 +3777,6 @@
    }
   },
   {
-   "player": "RJ Harvey",
-   "team": "DEN",
-   "pos": "RB",
-   "cur": {
-    "games": 6,
-    "team": "DEN",
-    "tgt": 4.7,
-    "rec": 4.2,
-    "recyd": 36.2,
-    "car": 4.0,
-    "rushyd": 14.5,
-    "att": 0.0,
-    "passyd": 0.0,
-    "tgt_share": 16.8,
-    "car_share": 16.6
-   },
-   "prev": {
-    "games": 17,
-    "team": "DEN",
-    "tgt": 3.4,
-    "rec": 2.8,
-    "recyd": 20.9,
-    "car": 8.6,
-    "rushyd": 31.8,
-    "att": 0.1,
-    "passyd": 0.0,
-    "tgt_share": 9.9,
-    "car_share": 32.0
-   }
-  },
-  {
    "player": "Rachaad White",
    "team": "WAS",
    "pos": "RB",
@@ -3879,6 +3991,37 @@
     "passyd": 0.0,
     "tgt_share": 18.6,
     "car_share": 0.0
+   }
+  },
+  {
+   "player": "Saquon Barkley",
+   "team": "PHI",
+   "pos": "RB",
+   "cur": {
+    "games": 5,
+    "team": "PHI",
+    "tgt": 1.8,
+    "rec": 1.2,
+    "recyd": 3.4,
+    "car": 8.6,
+    "rushyd": 48.8,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 6.5,
+    "car_share": 33.6
+   },
+   "prev": {
+    "games": 16,
+    "team": "PHI",
+    "tgt": 3.1,
+    "rec": 2.3,
+    "recyd": 17.1,
+    "car": 17.5,
+    "rushyd": 71.2,
+    "att": 0.0,
+    "passyd": 0.0,
+    "tgt_share": 11.6,
+    "car_share": 61.0
    }
   },
   {
