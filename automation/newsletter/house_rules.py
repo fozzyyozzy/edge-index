@@ -52,7 +52,8 @@ def prompt_block():
 
 
 def changelog_entries(since, until, path=CHANGELOG):
-    """[{date, title, text}] for changelog entries dated since < date <= until (dates are the '## YYYY-MM-DD' headers)"""
+    """[{date, title, text}] for changelog entries dated since < date <= until (dates are the '## YYYY-MM-DD' headers).
+    Entries titled "shadow only" (research that changes no card) are skipped: the newsletter only reports live changes."""
     text = open(path, encoding="utf-8").read()
     parts = re.split(r"(?m)^## ", text)[1:]
     out = []
@@ -60,7 +61,7 @@ def changelog_entries(since, until, path=CHANGELOG):
         m = re.match(r"(\d{4}-\d{2}-\d{2}) — (.*)", p.splitlines()[0])
         if not m: continue
         d = date.fromisoformat(m.group(1))
-        if since < d <= until:
+        if since < d <= until and "shadow only" not in m.group(2).lower():
             out.append(dict(date=m.group(1), title=m.group(2).strip(), text=("## " + p).strip()))
     return out
 

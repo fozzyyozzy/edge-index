@@ -33,6 +33,10 @@ Rules encoded here (do not relax without changing the newsletter copy too):
       A third ticket that would need a C leg is not built (two tickets beat a weaker third).
   R11 a player with a watch flag (injury watch, or QB change) goes on one ticket at most (no star repeat).
 
+SHADOW ONLY (--shadow pfirst | calib; never the live card): probability-first selection. No R4; each player/market
+offers its best qualifying rung priced -450..-200 by (grade, probability); tickets from build_tickets_pfirst. calib
+re-grades the board with calib.py's calibrated model first and adds its "role down" hold (can't anchor a ticket).
+
 Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
          projections.csv (from make_projections.py), floors_<...>.csv (from floors.py)
          notes/notes_<season>_w<week>.md          your scheme/injury reads (optional, passed to the draft verbatim)
@@ -54,6 +58,9 @@ GRADE_RANK = {"A+": 5, "A": 4, "A-": 3, "B": 2, "C": 1}   # R10
 TARGET_DEC = 3.0          # +200
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 SINGLE_GAME = {"tnf", "mnf", "snf"}
+PF_PRICE = (-450, -200)             # shadow pfirst/calib: leg price window (inclusive)
+PF_WINDOW = (2.5, 3.5)              # shadow pfirst/calib: ticket payout window, +150..+250 (3-4 legs)
+PF_POOL = 30                        # combo search over the best this-many candidates
 
 def load_floors(season, week, slate):
     name = f"floors_{season}_w{week}_{slate}.csv"
@@ -104,7 +111,7 @@ def hold_reasons(r, avail=None):
     if r.OwnVol == "TOUGH": why.append("own volume low")
     if r.EstOdds < MAX_LEG_JUICE: why.append(f"price worse than {MAX_LEG_JUICE}")
     edge = getattr(r, "EdgePts", None)
-    if edge is not None and not pd.isna(edge) and edge < MIN_EDGE_PTS:
+    if MIN_EDGE_PTS is not None and edge is not None and not pd.isna(edge) and edge < MIN_EDGE_PTS:
         why.append(f"edge {edge:+.1f} pts (< {MIN_EDGE_PTS:+g})")                 # R4
     return why
 
@@ -186,6 +193,57 @@ def build_tickets(cands, slate, n_tickets):
                             label="Reduced payout: floors held, not stretched — still recommended" if reduced else "Bloom: +200 target met"))
     return tickets
 
+def build_tickets_pfirst(cands, slate, n_tickets):
+    """SHADOW ONLY (pfirst / calib). Pure, like build_tickets. Ticket by ticket, every combination of the best PF_POOL
+    candidates (3 or 4 legs; 2 also allowed on a single-game slate) that obeys the card's sharing rules is scored:
+      - R2/R11 as live: a player on one ticket, a floor star (no watch flag) on two at most, and a ticket shares at most
+        one player with the other tickets (counted on both sides); one leg per game on multi-game slates
+      - R10 as live: a C leg only when no C-free ticket can be made, never as a 4th leg, and no third ticket needing a C
+      - a "role down" leg (calib) can't anchor a ticket: it can't be the ticket's top leg by (grade, probability)
+    Grade first: a C-free ticket beats any ticket with a C. Then, among tickets whose payout lands in PF_WINDOW
+    (+150..+250), the highest combined probability; none in the window -> the highest-probability ticket under it,
+    labelled reduced (never stretched past +250). 2 legs (single-game only) are always reduced."""
+    from itertools import combinations
+    tickets, used, owner, shared = [], {}, {}, []
+    lo, hi = PF_WINDOW
+    for i in range(n_tickets):
+        def can_take(c):
+            k = c["player"]
+            if used.get(k, 0) >= (2 if c["star"] and not c["injury_watch"] else 1): return False      # R2, R11
+            if used.get(k, 0) == 1 and shared[owner[k]] >= 1: return False
+            return True
+        pool = sorted([c for c in cands if can_take(c)], key=lambda c: (c["grade"] == "C", -c["prob"]))[:PF_POOL]
+        best = None
+        for n in ((2, 3, 4) if slate in SINGLE_GAME else (3, 4)):
+            for combo in combinations(pool, n):
+                if len({c["player"] for c in combo}) < n: continue
+                if slate not in SINGLE_GAME and len({frozenset([c["team"], c["opp"]]) for c in combo}) < n: continue
+                if sum(used.get(c["player"], 0) == 1 for c in combo) > 1: continue          # R2: one shared player
+                n_c = sum(c["grade"] == "C" for c in combo)
+                if n_c and n == 4: continue                                              # R10: never a C 4th leg
+                top = max(combo, key=lambda c: (GRADE_RANK[c["grade"]], c["prob"]))
+                if top.get("role_down"): continue                                        # calib: can't anchor
+                payout, p = 1.0, 1.0
+                for c in combo: payout *= dec(c["odds_est"]); p *= c["prob"]
+                if payout > hi: continue                                                 # never stretched
+                key = (n_c == 0, n >= 3 and payout >= lo, p)
+                if best is None or key > best[0]: best = (key, combo, payout)
+        if best is None: break
+        (no_c, inwin, p), legs, payout = best
+        if i >= 2 and not no_c: break                                                    # R10: no third ticket needing a C
+        legs = sorted(legs, key=lambda c: (-GRADE_RANK[c["grade"]], -c["prob"]))
+        shared.append(0)
+        for l in legs:
+            k = l["player"]
+            if used.get(k, 0) == 1: shared[owner[k]] += 1; shared[i] += 1
+            else: owner[k] = i
+            used[k] = used.get(k, 0) + 1
+        tickets.append(dict(name=f"{slate.upper()}-{i+1}", legs=list(legs), model_hit=round(p, 3), est_payout=round(payout, 2),
+                            est_american=int(round((payout - 1) * 100)) if payout >= 2 else int(round(-100 / (payout - 1))),
+                            reduced=not inwin, correlated=slate in SINGLE_GAME,
+                            label="Reduced payout (shadow: under +150)" if not inwin else "shadow: +150..+250 window met"))
+    return tickets
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, required=True); ap.add_argument("--week", type=int, required=True)
@@ -197,6 +255,9 @@ def main():
         global MIN_EDGE_PTS
         from common import SHADOW_RULES
         MIN_EDGE_PTS = SHADOW_RULES.get(a.shadow, {}).get("min_edge", MIN_EDGE_PTS)
+    from common import SHADOW_RULES as _SR
+    RULE = _SR.get(a.shadow, {}) if a.shadow else {}
+    PROB_SELECT = RULE.get("select") == "prob"; MODEL = None
     fl = load_floors(a.season, a.week, a.slate)
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
@@ -211,17 +272,22 @@ def main():
         at_publish = []
     # grade letter + clear % per rung from grade_legs.py (runs first in card.yml) — the Record tab grades by letter
     legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
-    GRADED, RUNGS = {}, {}
+    GRADED, RUNGS, ROLE_DOWN = {}, {}, {}
     if os.path.exists(legs_path):
         legs_doc = json.load(open(legs_path, encoding="utf-8"))
         if a.shadow:                  # shadow card: the live board re-graded under the alternate blend
             from grade_legs import reblend
             from common import BLEND_VARIANTS
             legs_doc = reblend(legs_doc, BLEND_VARIANTS[a.shadow][1])
+            if RULE.get("calib"):     # calib: every priced rung re-graded by the calibrated model (no model -> no card)
+                import calib
+                MODEL = json.load(open(calib.model_path(a.season, a.week), encoding="utf-8"))
+                legs_doc = calib.score_board(legs_doc, a.season, a.week, MODEL)
         for p in legs_doc["players"]:
             for r in p["rungs"]:
                 GRADED[(norm_name(p["player"]), p["market"], float(r["rung"]))] = (r["grade"], r.get("clear_pct"))
             RUNGS[(norm_name(p["player"]), p["market"])] = p["rungs"]
+            ROLE_DOWN[(norm_name(p["player"]), p["market"])] = bool(p.get("role_down"))
         if a.shadow:                  # floor-rung edge in the hold reasons follows the alternate blend too
             edge_at = {(norm_name(p["player"]), p["market"], float(r["rung"])): r.get("edge_pts")
                        for p in legs_doc["players"] for r in p["rungs"]}
@@ -238,7 +304,9 @@ def main():
             for x in RUNGS.get((norm_name(r.Player), r.Market), []):
                 if x["rung"] > floor or x.get("grade") not in GRADE_OK or "l10" not in x: continue
                 if frac(x["l10"]) < 0.8 or frac(x["l15"]) < 0.73: continue
-                if x["est_odds"] < MAX_LEG_JUICE or x.get("edge_pts") is None or x["edge_pts"] < MIN_EDGE_PTS: continue
+                if PROB_SELECT:                                       # shadow pfirst/calib: price window, no R4
+                    if not (PF_PRICE[0] <= x["est_odds"] <= PF_PRICE[1]) or x.get("prob") is None: continue
+                elif x["est_odds"] < MAX_LEG_JUICE or x.get("edge_pts") is None or x["edge_pts"] < MIN_EDGE_PTS: continue
                 opts.append(x)
         if not opts:                                                  # held: the floor rung's reasons, as before
             why = hold_reasons(r, AVAIL)
@@ -249,7 +317,8 @@ def main():
                              OppD=r.OppD, OwnVol=r.OwnVol, TeamChange=bool(getattr(r, "TeamChange", False) == True),
                              Last3=parse_last3(r.Last3), Reasons=why or ["no qualifying rung"]))
             continue
-        x = max(opts, key=lambda x: (GRADE_RANK[x["grade"]], x["edge_pts"], x["rung"]))
+        x = max(opts, key=(lambda x: (GRADE_RANK[x["grade"]], x["prob"], x["rung"])) if PROB_SELECT else
+                (lambda x: (GRADE_RANK[x["grade"]], x["edge_pts"], x["rung"])))
         rung = float(x["rung"]); last3 = parse_last3(r.Last3); l10, l15 = frac(x["l10"]), frac(x["l15"])
         real = dict(REAL.get((norm_name(r.Player), r.Market), [])).get(rung)
         # what the estimator would have priced this rung from the main line alone — the Record tab's est-vs-real table
@@ -261,9 +330,10 @@ def main():
                           opp_d_rank=rank_or_none(r, "OppDRank"), own_vol_rank=rank_or_none(r, "OwnVolRank"),
                           # blended probability from grade_legs.py (common.leg_prob) for the chosen rung
                           model_pct=round(100 * float(x["prob"]), 1), prob=float(x["prob"]), fair_odds=x.get("fair_odds"),
-                          edge_pts=float(x["edge_pts"]), novig_pct=x.get("novig_pct"),
+                          edge_pts=float(x["edge_pts"]) if x.get("edge_pts") is not None else None, novig_pct=x.get("novig_pct"),
                           grade=x["grade"], clear_pct=x.get("clear_pct"),
                           injury_watch=availability.reasons(AVAIL, r.Player, r.Market, r.Team)[1] or None,
+                          **({"role_down": ROLE_DOWN.get((norm_name(r.Player), r.Market), False)} if MODEL else {}),
                           note=f"L10 {x['l10']}, L15 {x['l15']}; last 3 {last3}; opp D {r.OppD}"
                                + (f"; floor rung {floor:g}+ graded lower" if rung < floor else "")))
         # locked at publish, never changed: the price the card was built on and when. refresh_odds.py appends to
@@ -275,9 +345,12 @@ def main():
             hist.insert(0, dict(at=THU_AT, odds=thu, source="thursday snapshot"))
         c.update(published_odds=pub, published_at=pulled, current_odds=pub, current_at=pulled,
                  thursday_odds=thu, price_history=hist)
-    cands.sort(key=lambda c: (-GRADE_RANK[c["grade"]], -c["edge_pts"], c["odds_est"]))      # R10: grade, then edge
-
-    tickets = build_tickets(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
+    if PROB_SELECT:                                                   # shadow pfirst/calib: grade, then probability
+        cands.sort(key=lambda c: (-GRADE_RANK[c["grade"]], -c["prob"], c["odds_est"]))
+        tickets = build_tickets_pfirst(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
+    else:
+        cands.sort(key=lambda c: (-GRADE_RANK[c["grade"]], -c["edge_pts"], c["odds_est"]))  # R10: grade, then edge
+        tickets = build_tickets(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
 
     notes_path = P("notes", f"notes_{a.season}_w{a.week}.md")
     notes = open(notes_path, encoding="utf-8").read() if os.path.exists(notes_path) else ""   # utf-8: Windows would read cp1252
@@ -293,6 +366,9 @@ def main():
         label, cfg = BLEND_VARIANTS[a.shadow]
         card["shadow"] = dict(slug=a.shadow, label=label, blend=cfg, min_edge=MIN_EDGE_PTS, live_card=os.path.basename(out),
                               note="research only: never published; graded Tuesday next to the live card")
+        if PROB_SELECT: card["shadow"].update(select="probability-first", price=list(PF_PRICE), payout_window=list(PF_WINDOW))
+        if MODEL: card["shadow"].update(model=dict(trained_on=MODEL.get("trained_on"), n=MODEL.get("n"),
+                                                   role_down=MODEL.get("role_down"), file=os.path.basename(calib.model_path(a.season, a.week))))
         out = P("cards", "shadow", f"card_{a.season}_w{a.week}_{a.slate}_{a.shadow}.json")
     json.dump(card, open(out, "w"), indent=1, allow_nan=False)   # no default=str: it hid numpy values as repr strings
     print(f"wrote {out}: {len(tickets)} tickets, {len(cands)} candidate floors")

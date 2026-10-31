@@ -26,6 +26,8 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0             # calib.py reads each Legs board's last pre-kickoff version from git history
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -43,6 +45,9 @@ jobs:
           # research: probability-blend variants and shadow R4 floors, every week's slates rebuilt (in-sample; report only)
           python automation/pipeline/blend_study.py --season "$SEASON" --weeks "3-${WEEK}" --cards --out "automation/receipts/blend_study_${SEASON}.md" > /dev/null             && { echo; echo "---"; echo; cat "automation/receipts/blend_study_${SEASON}.md"; } >> "automation/receipts/price_check_${SEASON}.md"             || echo "::warning::blend study failed; price check posted without it"
           gh issue create --title "PRICE CHECK: ${SEASON} through week ${WEEK}" --body-file "automation/receipts/price_check_${SEASON}.md"
+      - name: calib model for next week's shadow card (SHADOW ONLY, never the live card; a failure only warns)
+        run: |
+          python automation/pipeline/calib.py --fit --season "$SEASON" --week "$((WEEK + 1))"             || echo "::warning::calib fit failed; next week's calib shadow card will be skipped (the live card is unaffected)"
       - name: publish season record to site (NFL Record tab)
         run: |
           mkdir -p cfb-app/public/data
@@ -58,6 +63,6 @@ jobs:
         run: |
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com
-          git add automation/receipts automation/newsletter/drafts cfb-app/public/data
+          git add automation/receipts automation/newsletter/drafts cfb-app/public/data automation/models
           git commit -m "week $WEEK receipts" || true
           git push

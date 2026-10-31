@@ -3,6 +3,27 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-31 — research: probability-first shadow cards (pfirst, calib) and a calibration study (shadow only, not live)
+
+- **What:** two shadow card variants, built next to the live card by card.yml and graded Tuesday in the receipts
+  shadow section. Neither is published, and neither reaches the newsletter.
+  - **pfirst:** the live blend and holds, but no R4. Legs are graded C or better and priced −450..−200; each
+    player/market takes its best rung by grade, then probability. A ticket is the most likely 3–4 leg combination
+    paying +150..+250 (2 legs, reduced, on TNF/MNF). R2/R10/R11 apply as on the live card.
+  - **calib:** the same selection, with every rung's probability and grade from `pipeline/calib.py`. That is an
+    L2 logistic model on DK no-vig, L10/L15, market, position, matchup ranks, spread and totals, role trend, and
+    injury/QB flags. The model is refit each Tuesday on earlier weeks' pregame boards
+    (`automation/models/calib_<season>_w<week>.json`). Grades: A+ ≥ .85, A ≥ .80, A− ≥ .75, B ≥ .68, C ≥ .60. A calib
+    "role down" leg can't anchor a ticket: snap share, targets or carries more than 25% below the prior-games average
+    in each of the last two games.
+- **Why:** to test whether ranking by probability, or by a calibrated probability, does better than grade-and-edge
+  selection.
+- **Result:** the calibrated model does **not** beat DK's no-vig price. Pooled leave-one-week-out log loss is 0.509 for
+  the model vs 0.487 for DK refit (0.485 raw), and DK is better in every week. The model is overconfident at the top:
+  it predicts 92.9% where 88.5% hit. Retro cards for weeks 4–8 are in-sample and tiny (13 slates): pfirst went 7-13,
+  −3.75u; calib 5-15, −8.82u; live 2-12, −9.17u. Full numbers are in `receipts/calibration_study_2026.md`.
+- **Effect:** none on the live card, the Legs board, the record or the newsletter.
+
 ## 2026-10-19 — rule change: a team change stops being a hold after 4 games with the new team (R6)
 
 - **What:** a player whose team changed since last season is "settled" once he has 4+ games for his new team this

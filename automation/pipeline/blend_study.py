@@ -16,7 +16,8 @@ Each settled Legs board (weeks given) is re-graded under each config in common.B
 import argparse, glob, json, os, shutil, subprocess, sys, tempfile
 import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import P, BLEND_VARIANTS, SHADOW_RULES, fetch_week, COL, norm_name
+from common import P, BLEND_VARIANTS as ALL_VARIANTS, SHADOW_RULES, PROB_FIRST, fetch_week, COL, norm_name
+BLEND_VARIANTS = {k: v for k, v in ALL_VARIANTS.items() if k not in PROB_FIRST}   # pfirst/calib: calib_study.py
 from grade_legs import reblend
 from price_check import calibration, grade_edge, table, GRADE_OK
 

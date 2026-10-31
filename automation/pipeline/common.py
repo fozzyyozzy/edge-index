@@ -200,8 +200,14 @@ BLEND_VARIANTS = {          # slug -> (label, config); shadow cards and blend_st
     # heavier blend paired with a relaxed R4 (every other rule unchanged: -450 cap, C or better, every hold)
     "m40e0": ("market = 40 games, R4 edge >= 0", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
     "m40em1": ("market = 40 games, R4 edge >= -1", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
+    # probability-first selection (build_card_json.build_tickets_pfirst): no R4, legs -450..-200, max combined probability
+    # in the +150..+250 window. pfirst keeps the live blend; calib replaces it with calib.py's calibrated logistic model
+    "pfirst": ("probability-first, live blend", LIVE_BLEND),
+    "calib": ("probability-first, calibrated model", LIVE_BLEND),
 }
-SHADOW_RULES = {"m40e0": dict(min_edge=0.0), "m40em1": dict(min_edge=-1.0)}   # shadow-only rule overrides
+SHADOW_RULES = {"m40e0": dict(min_edge=0.0), "m40em1": dict(min_edge=-1.0),     # shadow-only rule overrides
+                "pfirst": dict(min_edge=None, select="prob"), "calib": dict(min_edge=None, select="prob", calib=True)}
+PROB_FIRST = {k for k, v in SHADOW_RULES.items() if v.get("select") == "prob"}
 
 def lower_window(h10, g10, h15, g15):
     """(hits, games) of the window with the lower add-one clear rate (the more cautious one)"""

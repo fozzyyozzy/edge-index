@@ -91,12 +91,13 @@ def test_card_workflow_builds_shadows_without_ever_blocking_or_publishing_them()
     assert "--shadow" in steps[i]["run"] and "::warning::" in steps[i]["run"]          # a failure only warns
     pub = next(s for s in steps if s.get("name") == "publish to site")["run"]
     assert "shadow" not in pub                                                           # never copied to the site
-    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["m20", "m40", "mkt10", "m40e0", "m40em1"]
+    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["m20", "m40", "mkt10", "m40e0", "m40em1",
+                                                                                           "pfirst", "calib"]
 
 
 def test_relaxed_r4_variants_are_shadow_only_and_keep_every_other_rule(slate_root):
     from common import SHADOW_RULES
-    assert SHADOW_RULES == {"m40e0": {"min_edge": 0.0}, "m40em1": {"min_edge": -1.0}}
+    assert SHADOW_RULES["m40e0"] == {"min_edge": 0.0} and SHADOW_RULES["m40em1"] == {"min_edge": -1.0}
     assert BLEND_VARIANTS["m40e0"][1] == BLEND_VARIANTS["m40em1"][1] == BLEND_VARIANTS["m40"][1]
     import build_card_json
     assert build_card_json.MIN_EDGE_PTS == 2.0 and build_card_json.MAX_LEG_JUICE == -450      # live R4 / cap untouched
