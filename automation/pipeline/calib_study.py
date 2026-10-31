@@ -23,7 +23,7 @@ from calib import FEATS, Data, fit, predict, matrix, training_items, grade_of, r
 from common import P, COL, norm_name
 from price_check import table
 
-RETRO_SLUGS = ["m20", "m40e0", "m40em1", "pfirst", "calib"]
+RETRO_SLUGS = ["legacy", "m20", "m40e0", "m40em1", "pfirst_norole", "pfirst", "pfirst_dog", "calib"]
 INPUTS = ["floors/floors_{s}_w{w}_{sl}.csv", "cards/legs_{s}_w{w}_{sl}.json", "cards/availability_{s}_w{w}_{sl}.json",
           "lines/ladders_{s}_w{w}.csv", "lines/dk_{s}_w{w}_{sl}.csv", "lines/pulled_{s}_w{w}_{sl}.txt",
           "lines/pulled_{s}_w{w}.txt", "notes/notes_{s}_w{w}.md", "lines/twoway_{s}_w{w}.csv", "cards/card_{s}_w{w}_{sl}.json"]
@@ -164,7 +164,7 @@ def score_card(card, act):
     return out
 
 
-def retro_slate(season, week, slate, models, act):
+def retro_slate(season, week, slate, models, act, data=None):
     """{slug: card} rebuilt from the publish commit's files (live = the committed card itself)"""
     pc = publish_commit(season, week, slate)
     if pc is None: return None, None
@@ -176,6 +176,11 @@ def retro_slate(season, week, slate, models, act):
             if raw is None: continue
             dst = os.path.join(tmp, x.format(**fmt)); os.makedirs(os.path.dirname(dst), exist_ok=True)
             open(dst, "wb").write(raw)
+        legs = os.path.join(tmp, "cards", f"legs_{season}_w{week}_{slate}.json")
+        if data is not None and os.path.exists(legs):   # role-down flags (R13) the board would have carried: weeks < N
+            d = json.load(open(legs, encoding="utf-8"))
+            calib.annotate_roles(d["players"], data, week)
+            json.dump(d, open(legs, "w", encoding="utf-8"))
         os.makedirs(os.path.join(tmp, "models"), exist_ok=True)
         json.dump(models[week], open(os.path.join(tmp, "models", f"calib_{season}_w{week}.json"), "w"))
         cards = {}
@@ -211,7 +216,7 @@ def retro(season, weeks, items, data):
             legs = P("cards", f"legs_{season}_w{w}_{sl}.json")
             if not (os.path.exists(legs) and any(p.get("settled") for p in json.load(open(legs, encoding="utf-8"))["players"])):
                 continue                                  # not played yet: nothing to grade
-            pc, cards = retro_slate(season, w, sl, models, act)
+            pc, cards = retro_slate(season, w, sl, models, act, data)
             if not cards: continue
             for slug in ["live"] + RETRO_SLUGS:
                 c = cards.get(slug)

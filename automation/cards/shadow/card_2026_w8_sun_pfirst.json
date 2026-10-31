@@ -2,10 +2,10 @@
  "season": 2026,
  "week": 8,
  "slate": "sun",
- "rules": "R1-R11 (see build_card_json.py)",
+ "rules": "R1-R13 (see build_card_json.py)",
  "prices_pulled": "2026-10-31T04:56+00:00",
  "published_at": "2026-10-31T04:56+00:00",
- "thursday_pulled": "2026-10-29T18:54+00:00",
+ "thursday_pulled": null,
  "markets_at_publish": [
   "aaron jones|rec_yds",
   "aaron jones|receptions",
@@ -543,7 +543,7 @@
      "opp_d_rank": 11,
      "own_vol_rank": 12,
      "model_pct": 83.1,
-     "prob": 0.8309,
+     "prob": 0.8308,
      "fair_odds": -491,
      "edge_pts": 5.9,
      "novig_pct": 72.8,
@@ -552,6 +552,7 @@
      "injury_watch": [
       "injury watch: limited in practice (knee), no game status yet"
      ],
+     "team_total": 21.75,
      "note": "L10 10/10, L15 15/15; last 3 [20, 25, 8]; opp D neutral; floor rung 8+ graded lower",
      "published_odds": -339,
      "published_at": "2026-10-31T04:56+00:00",
@@ -588,25 +589,21 @@
      "opp_d_rank": 9,
      "own_vol_rank": 21,
      "model_pct": 80.9,
-     "prob": 0.8086,
+     "prob": 0.8088,
      "fair_odds": -423,
      "edge_pts": 9.0,
      "novig_pct": 67.9,
      "grade": "A+",
      "clear_pct": 100.0,
      "injury_watch": null,
+     "team_total": 19.5,
      "note": "L10 10/10, L15 15/15; last 3 [68, 41, 23]; opp D neutral; floor rung 30+ graded lower",
      "published_odds": -256,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -256,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -137,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -137,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -256
@@ -636,25 +633,21 @@
      "opp_d_rank": 1,
      "own_vol_rank": 14,
      "model_pct": 80.2,
-     "prob": 0.8023,
+     "prob": 0.8025,
      "fair_odds": -406,
      "edge_pts": 9.6,
      "novig_pct": 66.5,
      "grade": "A",
      "clear_pct": 100.0,
      "injury_watch": null,
+     "team_total": 18.25,
      "note": "L10 10/10, L15 15/15; last 3 [15, 21, 18]; opp D TOUGH; floor rung 16+ graded lower",
      "published_odds": -241,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -241,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -258,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -258,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -241
@@ -667,7 +660,7 @@
    "est_american": 155,
    "reduced": false,
    "correlated": false,
-   "label": "shadow: +150..+250 window met"
+   "label": "Target met: +150 to +250"
   },
   {
    "name": "SUN-2",
@@ -695,25 +688,21 @@
      "opp_d_rank": 20,
      "own_vol_rank": 16,
      "model_pct": 84.8,
-     "prob": 0.8482,
+     "prob": 0.8483,
      "fair_odds": -559,
      "edge_pts": 3.9,
      "novig_pct": 76.6,
      "grade": "A",
      "clear_pct": 100.0,
      "injury_watch": null,
+     "team_total": 26.0,
      "note": "L10 10/10, L15 15/15; last 3 [49, 50, 99]; opp D neutral; floor rung 50+ graded lower",
      "published_odds": -425,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -425,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -429,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -429,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -425
@@ -743,25 +732,21 @@
      "opp_d_rank": 1,
      "own_vol_rank": 14,
      "model_pct": 80.2,
-     "prob": 0.8023,
+     "prob": 0.8025,
      "fair_odds": -406,
      "edge_pts": 9.6,
      "novig_pct": 66.5,
      "grade": "A",
      "clear_pct": 100.0,
      "injury_watch": null,
+     "team_total": 18.25,
      "note": "L10 10/10, L15 15/15; last 3 [15, 21, 18]; opp D TOUGH; floor rung 16+ graded lower",
      "published_odds": -241,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -241,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -258,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -258,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -241
@@ -791,25 +776,21 @@
      "opp_d_rank": 22,
      "own_vol_rank": 23,
      "model_pct": 76.0,
-     "prob": 0.76,
+     "prob": 0.7599,
      "fair_odds": -317,
      "edge_pts": 7.0,
      "novig_pct": 65.2,
      "grade": "A",
      "clear_pct": 88.7,
      "injury_watch": null,
+     "team_total": 18.0,
      "note": "L10 9/10, L15 13/15; last 3 [3, 4, 4]; opp D neutral",
      "published_odds": -223,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -223,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -212,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -212,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -223
@@ -822,7 +803,7 @@
    "est_american": 153,
    "reduced": false,
    "correlated": false,
-   "label": "shadow: +150..+250 window met"
+   "label": "Target met: +150 to +250"
   },
   {
    "name": "SUN-3",
@@ -857,18 +838,14 @@
      "grade": "A",
      "clear_pct": 97.3,
      "injury_watch": null,
+     "team_total": 24.75,
      "note": "L10 10/10, L15 14/15; last 3 [31, 56, 27]; opp D TOUGH; floor rung 25+ graded lower",
      "published_odds": -253,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -253,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -356,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -356,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -253
@@ -897,26 +874,22 @@
      "star": true,
      "opp_d_rank": 7,
      "own_vol_rank": 10,
-     "model_pct": 82.0,
-     "prob": 0.8195,
-     "fair_odds": -454,
+     "model_pct": 81.9,
+     "prob": 0.8193,
+     "fair_odds": -453,
      "edge_pts": 1.6,
      "novig_pct": 75.7,
      "grade": "A-",
      "clear_pct": 100.0,
      "injury_watch": null,
+     "team_total": 22.0,
      "note": "L10 7/7, L15 7/7; last 3 [19, 23, 26]; opp D TOUGH",
      "published_odds": -408,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -408,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -408,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -408,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -408
@@ -953,18 +926,14 @@
      "grade": "A-",
      "clear_pct": 88.7,
      "injury_watch": null,
+     "team_total": 19.5,
      "note": "L10 9/10, L15 13/15; last 3 [45, 33, 18]; opp D neutral; floor rung 33+ graded lower",
      "published_odds": -217,
      "published_at": "2026-10-31T04:56+00:00",
      "current_odds": -217,
      "current_at": "2026-10-31T04:56+00:00",
-     "thursday_odds": -222,
+     "thursday_odds": null,
      "price_history": [
-      {
-       "at": "2026-10-29T18:54+00:00",
-       "odds": -222,
-       "source": "thursday snapshot"
-      },
       {
        "at": "2026-10-31T04:56+00:00",
        "odds": -217
@@ -977,7 +946,7 @@
    "est_american": 154,
    "reduced": false,
    "correlated": false,
-   "label": "shadow: +150..+250 window met"
+   "label": "Target met: +150 to +250"
   }
  ],
  "floors_singles": [
@@ -1004,7 +973,7 @@
    "opp_d_rank": 11,
    "own_vol_rank": 12,
    "model_pct": 83.1,
-   "prob": 0.8309,
+   "prob": 0.8308,
    "fair_odds": -491,
    "edge_pts": 5.9,
    "novig_pct": 72.8,
@@ -1013,6 +982,7 @@
    "injury_watch": [
     "injury watch: limited in practice (knee), no game status yet"
    ],
+   "team_total": 21.75,
    "note": "L10 10/10, L15 15/15; last 3 [20, 25, 8]; opp D neutral; floor rung 8+ graded lower",
    "published_odds": -339,
    "published_at": "2026-10-31T04:56+00:00",
@@ -1058,6 +1028,7 @@
    "injury_watch": [
     "injury watch: limited in practice (knee), no game status yet"
    ],
+   "team_total": 21.75,
    "note": "L10 10/10, L15 14/15; last 3 [94, 113, 26]; opp D neutral; floor rung 40+ graded lower",
    "published_odds": -282,
    "published_at": "2026-10-31T04:56+00:00",
@@ -1094,25 +1065,21 @@
    "opp_d_rank": 9,
    "own_vol_rank": 21,
    "model_pct": 80.9,
-   "prob": 0.8086,
+   "prob": 0.8088,
    "fair_odds": -423,
    "edge_pts": 9.0,
    "novig_pct": 67.9,
    "grade": "A+",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 10/10, L15 15/15; last 3 [68, 41, 23]; opp D neutral; floor rung 30+ graded lower",
    "published_odds": -256,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -256,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -137,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -137,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -256
@@ -1142,25 +1109,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 16,
    "model_pct": 84.8,
-   "prob": 0.8482,
+   "prob": 0.8483,
    "fair_odds": -559,
    "edge_pts": 3.9,
    "novig_pct": 76.6,
    "grade": "A",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 26.0,
    "note": "L10 10/10, L15 15/15; last 3 [49, 50, 99]; opp D neutral; floor rung 50+ graded lower",
    "published_odds": -425,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -425,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -429,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -429,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -425
@@ -1197,18 +1160,14 @@
    "grade": "A",
    "clear_pct": 97.3,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 10/10, L15 14/15; last 3 [102, 47, 91]; opp D TOUGH; floor rung 40+ graded lower",
    "published_odds": -343,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -343,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -328,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -328,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -343
@@ -1245,18 +1204,14 @@
    "grade": "A",
    "clear_pct": 97.3,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 10/10, L15 14/15; last 3 [31, 56, 27]; opp D TOUGH; floor rung 25+ graded lower",
    "published_odds": -253,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -253,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -356,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -356,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -253
@@ -1286,25 +1241,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 18,
    "model_pct": 80.3,
-   "prob": 0.8032,
+   "prob": 0.803,
    "fair_odds": -408,
    "edge_pts": -0.7,
    "novig_pct": 76.7,
    "grade": "A",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 28.25,
    "note": "L10 9/10, L15 14/15; last 3 [95, 68, 44]; opp D neutral; floor rung 25+ graded lower",
    "published_odds": -426,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -426,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -385,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -385,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -426
@@ -1334,25 +1285,21 @@
    "opp_d_rank": 1,
    "own_vol_rank": 14,
    "model_pct": 80.2,
-   "prob": 0.8023,
+   "prob": 0.8025,
    "fair_odds": -406,
    "edge_pts": 9.6,
    "novig_pct": 66.5,
    "grade": "A",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 10/10, L15 15/15; last 3 [15, 21, 18]; opp D TOUGH; floor rung 16+ graded lower",
    "published_odds": -241,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -241,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -258,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -258,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -241
@@ -1382,25 +1329,21 @@
    "opp_d_rank": 22,
    "own_vol_rank": 23,
    "model_pct": 79.4,
-   "prob": 0.7941,
-   "fair_odds": -386,
+   "prob": 0.794,
+   "fair_odds": -385,
    "edge_pts": 0.5,
    "novig_pct": 74.7,
    "grade": "A",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 9/10, L15 14/15; last 3 [19, 69, 21]; opp D neutral; floor rung 15+ graded lower",
    "published_odds": -374,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -374,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -327,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -327,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -374
@@ -1430,8 +1373,8 @@
    "opp_d_rank": 14,
    "own_vol_rank": 22,
    "model_pct": 78.2,
-   "prob": 0.7818,
-   "fair_odds": -358,
+   "prob": 0.782,
+   "fair_odds": -359,
    "edge_pts": 1.1,
    "novig_pct": 72.9,
    "grade": "A",
@@ -1439,18 +1382,14 @@
    "injury_watch": [
     "injury watch: no offensive snaps in wk 5, played wk 6"
    ],
+   "team_total": 23.0,
    "note": "L10 5/5, L15 5/5; last 3 [33, 35, 44]; opp D neutral; floor rung 30+ graded lower",
    "published_odds": -336,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -336,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -347,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -347,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -336
@@ -1480,25 +1419,21 @@
    "opp_d_rank": 16,
    "own_vol_rank": 3,
    "model_pct": 78.1,
-   "prob": 0.7807,
+   "prob": 0.7806,
    "fair_odds": -356,
    "edge_pts": 3.1,
    "novig_pct": 70.8,
    "grade": "A",
    "clear_pct": 94.7,
    "injury_watch": null,
+   "team_total": 25.75,
    "note": "L10 10/10, L15 13/15; last 3 [24, 17, 17]; opp D neutral",
    "published_odds": -300,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -300,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -278,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -278,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -300
@@ -1528,25 +1463,21 @@
    "opp_d_rank": 22,
    "own_vol_rank": 23,
    "model_pct": 76.0,
-   "prob": 0.76,
+   "prob": 0.7599,
    "fair_odds": -317,
    "edge_pts": 7.0,
    "novig_pct": 65.2,
    "grade": "A",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 9/10, L15 13/15; last 3 [3, 4, 4]; opp D neutral",
    "published_odds": -223,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -223,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -212,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -212,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -223
@@ -1578,7 +1509,7 @@
    "opp_d_rank": 11,
    "own_vol_rank": 12,
    "model_pct": 83.1,
-   "prob": 0.8309,
+   "prob": 0.8308,
    "fair_odds": -491,
    "edge_pts": 5.9,
    "novig_pct": 72.8,
@@ -1587,6 +1518,7 @@
    "injury_watch": [
     "injury watch: limited in practice (knee), no game status yet"
    ],
+   "team_total": 21.75,
    "note": "L10 10/10, L15 15/15; last 3 [20, 25, 8]; opp D neutral; floor rung 8+ graded lower",
    "published_odds": -339,
    "published_at": "2026-10-31T04:56+00:00",
@@ -1632,6 +1564,7 @@
    "injury_watch": [
     "injury watch: limited in practice (knee), no game status yet"
    ],
+   "team_total": 21.75,
    "note": "L10 10/10, L15 14/15; last 3 [94, 113, 26]; opp D neutral; floor rung 40+ graded lower",
    "published_odds": -282,
    "published_at": "2026-10-31T04:56+00:00",
@@ -1668,25 +1601,21 @@
    "opp_d_rank": 9,
    "own_vol_rank": 21,
    "model_pct": 80.9,
-   "prob": 0.8086,
+   "prob": 0.8088,
    "fair_odds": -423,
    "edge_pts": 9.0,
    "novig_pct": 67.9,
    "grade": "A+",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 10/10, L15 15/15; last 3 [68, 41, 23]; opp D neutral; floor rung 30+ graded lower",
    "published_odds": -256,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -256,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -137,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -137,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -256
@@ -1716,25 +1645,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 16,
    "model_pct": 84.8,
-   "prob": 0.8482,
+   "prob": 0.8483,
    "fair_odds": -559,
    "edge_pts": 3.9,
    "novig_pct": 76.6,
    "grade": "A",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 26.0,
    "note": "L10 10/10, L15 15/15; last 3 [49, 50, 99]; opp D neutral; floor rung 50+ graded lower",
    "published_odds": -425,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -425,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -429,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -429,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -425
@@ -1771,18 +1696,14 @@
    "grade": "A",
    "clear_pct": 97.3,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 10/10, L15 14/15; last 3 [102, 47, 91]; opp D TOUGH; floor rung 40+ graded lower",
    "published_odds": -343,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -343,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -328,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -328,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -343
@@ -1819,18 +1740,14 @@
    "grade": "A",
    "clear_pct": 97.3,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 10/10, L15 14/15; last 3 [31, 56, 27]; opp D TOUGH; floor rung 25+ graded lower",
    "published_odds": -253,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -253,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -356,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -356,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -253
@@ -1860,25 +1777,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 18,
    "model_pct": 80.3,
-   "prob": 0.8032,
+   "prob": 0.803,
    "fair_odds": -408,
    "edge_pts": -0.7,
    "novig_pct": 76.7,
    "grade": "A",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 28.25,
    "note": "L10 9/10, L15 14/15; last 3 [95, 68, 44]; opp D neutral; floor rung 25+ graded lower",
    "published_odds": -426,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -426,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -385,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -385,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -426
@@ -1908,25 +1821,21 @@
    "opp_d_rank": 1,
    "own_vol_rank": 14,
    "model_pct": 80.2,
-   "prob": 0.8023,
+   "prob": 0.8025,
    "fair_odds": -406,
    "edge_pts": 9.6,
    "novig_pct": 66.5,
    "grade": "A",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 10/10, L15 15/15; last 3 [15, 21, 18]; opp D TOUGH; floor rung 16+ graded lower",
    "published_odds": -241,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -241,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -258,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -258,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -241
@@ -1956,25 +1865,21 @@
    "opp_d_rank": 22,
    "own_vol_rank": 23,
    "model_pct": 79.4,
-   "prob": 0.7941,
-   "fair_odds": -386,
+   "prob": 0.794,
+   "fair_odds": -385,
    "edge_pts": 0.5,
    "novig_pct": 74.7,
    "grade": "A",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 9/10, L15 14/15; last 3 [19, 69, 21]; opp D neutral; floor rung 15+ graded lower",
    "published_odds": -374,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -374,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -327,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -327,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -374
@@ -2004,8 +1909,8 @@
    "opp_d_rank": 14,
    "own_vol_rank": 22,
    "model_pct": 78.2,
-   "prob": 0.7818,
-   "fair_odds": -358,
+   "prob": 0.782,
+   "fair_odds": -359,
    "edge_pts": 1.1,
    "novig_pct": 72.9,
    "grade": "A",
@@ -2013,18 +1918,14 @@
    "injury_watch": [
     "injury watch: no offensive snaps in wk 5, played wk 6"
    ],
+   "team_total": 23.0,
    "note": "L10 5/5, L15 5/5; last 3 [33, 35, 44]; opp D neutral; floor rung 30+ graded lower",
    "published_odds": -336,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -336,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -347,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -347,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -336
@@ -2054,25 +1955,21 @@
    "opp_d_rank": 16,
    "own_vol_rank": 3,
    "model_pct": 78.1,
-   "prob": 0.7807,
+   "prob": 0.7806,
    "fair_odds": -356,
    "edge_pts": 3.1,
    "novig_pct": 70.8,
    "grade": "A",
    "clear_pct": 94.7,
    "injury_watch": null,
+   "team_total": 25.75,
    "note": "L10 10/10, L15 13/15; last 3 [24, 17, 17]; opp D neutral",
    "published_odds": -300,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -300,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -278,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -278,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -300
@@ -2102,25 +1999,21 @@
    "opp_d_rank": 22,
    "own_vol_rank": 23,
    "model_pct": 76.0,
-   "prob": 0.76,
+   "prob": 0.7599,
    "fair_odds": -317,
    "edge_pts": 7.0,
    "novig_pct": 65.2,
    "grade": "A",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 9/10, L15 13/15; last 3 [3, 4, 4]; opp D neutral",
    "published_odds": -223,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -223,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -212,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -212,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -223
@@ -2150,13 +2043,14 @@
    "opp_d_rank": 30,
    "own_vol_rank": 13,
    "model_pct": 75.4,
-   "prob": 0.7539,
+   "prob": 0.754,
    "fair_odds": -306,
    "edge_pts": -4.6,
    "novig_pct": 75.7,
    "grade": "A",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 5/6, L15 5/6; last 3 [45, 82, 31]; opp D SOFT; floor rung 30+ graded lower",
    "published_odds": -400,
    "published_at": "2026-10-31T04:56+00:00",
@@ -2193,25 +2087,21 @@
    "opp_d_rank": 29,
    "own_vol_rank": 24,
    "model_pct": 75.1,
-   "prob": 0.7507,
+   "prob": 0.7509,
    "fair_odds": -301,
    "edge_pts": -1.8,
    "novig_pct": 72.7,
    "grade": "A",
    "clear_pct": 86.0,
    "injury_watch": null,
+   "team_total": 23.0,
    "note": "L10 9/10, L15 12/15; last 3 [37, 37, 27]; opp D SOFT",
    "published_odds": -332,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -332,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -168,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -168,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -332
@@ -2240,26 +2130,22 @@
    "star": true,
    "opp_d_rank": 7,
    "own_vol_rank": 10,
-   "model_pct": 82.0,
-   "prob": 0.8195,
-   "fair_odds": -454,
+   "model_pct": 81.9,
+   "prob": 0.8193,
+   "fair_odds": -453,
    "edge_pts": 1.6,
    "novig_pct": 75.7,
    "grade": "A-",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 7/7, L15 7/7; last 3 [19, 23, 26]; opp D TOUGH",
    "published_odds": -408,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -408,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -408,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -408,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -408
@@ -2288,77 +2174,25 @@
    "star": true,
    "opp_d_rank": 1,
    "own_vol_rank": 6,
-   "model_pct": 80.5,
-   "prob": 0.8045,
-   "fair_odds": -412,
+   "model_pct": 80.4,
+   "prob": 0.8044,
+   "fair_odds": -411,
    "edge_pts": -1.1,
    "novig_pct": 77.0,
    "grade": "A-",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 9/10, L15 14/15; last 3 [4, 5, 5]; opp D TOUGH; floor rung 4+ graded lower",
    "published_odds": -443,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -443,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -547,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -547,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -443
-    }
-   ]
-  },
-  {
-   "player": "Puka Nacua",
-   "team": "LA",
-   "opp": "LAC",
-   "market": "rec_yds",
-   "rung": 60.0,
-   "floor_rung": 70.0,
-   "odds_est": -428,
-   "odds_real": -428,
-   "odds_model_est": -434,
-   "l10": 0.9,
-   "l15": 0.9333333333333333,
-   "last3": [
-    138,
-    80,
-    68
-   ],
-   "opp_d": "TOUGH",
-   "own_vol": "SOFT",
-   "star": true,
-   "opp_d_rank": 4,
-   "own_vol_rank": 2,
-   "model_pct": 80.3,
-   "prob": 0.8032,
-   "fair_odds": -408,
-   "edge_pts": -0.7,
-   "novig_pct": 76.7,
-   "grade": "A-",
-   "clear_pct": 91.3,
-   "injury_watch": null,
-   "note": "L10 9/10, L15 14/15; last 3 [138, 80, 68]; opp D TOUGH; floor rung 70+ graded lower",
-   "published_odds": -428,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -428,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -418,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -418,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -428
     }
    ]
   },
@@ -2385,76 +2219,24 @@
    "opp_d_rank": 1,
    "own_vol_rank": 14,
    "model_pct": 78.4,
-   "prob": 0.7841,
-   "fair_odds": -363,
+   "prob": 0.7843,
+   "fair_odds": -364,
    "edge_pts": 1.8,
    "novig_pct": 72.5,
    "grade": "A-",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 9/10, L15 14/15; last 3 [45, 94, 95]; opp D TOUGH",
    "published_odds": -328,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -328,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -393,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -393,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -328
-    }
-   ]
-  },
-  {
-   "player": "Drake Maye",
-   "team": "NE",
-   "opp": "MIA",
-   "market": "rush_att",
-   "rung": 4.0,
-   "floor_rung": 4.0,
-   "odds_est": -310,
-   "odds_real": -310,
-   "odds_model_est": -183,
-   "l10": 0.9,
-   "l15": 0.9333333333333333,
-   "last3": [
-    7,
-    4,
-    4
-   ],
-   "opp_d": "neutral",
-   "own_vol": "SOFT",
-   "star": true,
-   "opp_d_rank": 22,
-   "own_vol_rank": 6,
-   "model_pct": 77.9,
-   "prob": 0.7786,
-   "fair_odds": -352,
-   "edge_pts": 2.3,
-   "novig_pct": 71.3,
-   "grade": "A-",
-   "clear_pct": 91.3,
-   "injury_watch": null,
-   "note": "L10 9/10, L15 14/15; last 3 [7, 4, 4]; opp D neutral",
-   "published_odds": -310,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -310,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -220,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -220,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -310
     }
    ]
   },
@@ -2481,8 +2263,8 @@
    "opp_d_rank": 7,
    "own_vol_rank": 20,
    "model_pct": 77.8,
-   "prob": 0.7785,
-   "fair_odds": -352,
+   "prob": 0.7784,
+   "fair_odds": -351,
    "edge_pts": 3.4,
    "novig_pct": 70.2,
    "grade": "A-",
@@ -2490,6 +2272,7 @@
    "injury_watch": [
     "injury watch: no offensive snaps in wk 6, played wk 7"
    ],
+   "team_total": 18.0,
    "note": "L10 9/10, L15 13/15; last 3 [17, 14, 17]; opp D TOUGH",
    "published_odds": -292,
    "published_at": "2026-10-31T04:56+00:00",
@@ -2526,25 +2309,21 @@
    "opp_d_rank": 2,
    "own_vol_rank": 8,
    "model_pct": 77.7,
-   "prob": 0.7773,
+   "prob": 0.7772,
    "fair_odds": -349,
    "edge_pts": 2.7,
    "novig_pct": 71.0,
    "grade": "A-",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 20.5,
    "note": "L10 9/10, L15 14/15; last 3 [86, 61, 63]; opp D TOUGH",
    "published_odds": -300,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -300,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -292,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -292,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -300
@@ -2574,25 +2353,21 @@
    "opp_d_rank": 30,
    "own_vol_rank": 13,
    "model_pct": 77.6,
-   "prob": 0.7764,
+   "prob": 0.7762,
    "fair_odds": -347,
    "edge_pts": 2.6,
    "novig_pct": 70.8,
    "grade": "A-",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 9/10, L15 14/15; last 3 [3, 2, 2]; opp D SOFT",
    "published_odds": -300,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -300,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -299,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -299,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -300
@@ -2623,24 +2398,20 @@
    "own_vol_rank": 5,
    "model_pct": 77.3,
    "prob": 0.773,
-   "fair_odds": -340,
+   "fair_odds": -341,
    "edge_pts": 4.4,
    "novig_pct": 68.7,
    "grade": "A-",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 29.5,
    "note": "L10 9/10, L15 13/15; last 3 [11, 3, 4]; opp D SOFT",
    "published_odds": -269,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -269,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -278,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -278,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -269
@@ -2670,25 +2441,21 @@
    "opp_d_rank": 27,
    "own_vol_rank": 1,
    "model_pct": 76.7,
-   "prob": 0.767,
-   "fair_odds": -329,
+   "prob": 0.7672,
+   "fair_odds": -330,
    "edge_pts": 5.5,
    "novig_pct": 67.1,
    "grade": "A-",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 23.75,
    "note": "L10 9/10, L15 13/15; last 3 [9, 7, 10]; opp D SOFT",
    "published_odds": -247,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -247,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -188,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -188,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -247
@@ -2718,13 +2485,14 @@
    "opp_d_rank": 30,
    "own_vol_rank": 13,
    "model_pct": 76.4,
-   "prob": 0.7641,
+   "prob": 0.764,
    "fair_odds": -324,
    "edge_pts": -4.2,
    "novig_pct": 76.3,
    "grade": "A-",
    "clear_pct": 92.0,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 10/10, L15 12/15; last 3 [47, 40, 18]; opp D SOFT",
    "published_odds": -415,
    "published_at": "2026-10-31T04:56+00:00",
@@ -2761,25 +2529,21 @@
    "opp_d_rank": 7,
    "own_vol_rank": 10,
    "model_pct": 76.1,
-   "prob": 0.7611,
+   "prob": 0.7612,
    "fair_odds": -319,
    "edge_pts": -3.8,
    "novig_pct": 75.5,
    "grade": "A-",
    "clear_pct": 92.0,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 10/10, L15 12/15; last 3 [41, 97, 103]; opp D TOUGH",
    "published_odds": -399,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -399,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -402,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -402,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -399
@@ -2816,18 +2580,14 @@
    "grade": "A-",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 9/10, L15 13/15; last 3 [45, 33, 18]; opp D neutral; floor rung 33+ graded lower",
    "published_odds": -217,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -217,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -222,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -222,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -217
@@ -2858,24 +2618,20 @@
    "own_vol_rank": 5,
    "model_pct": 75.6,
    "prob": 0.7564,
-   "fair_odds": -310,
+   "fair_odds": -311,
    "edge_pts": -5.1,
    "novig_pct": 76.4,
    "grade": "A-",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 29.5,
    "note": "L10 8/10, L15 13/15; last 3 [71, 21, 19]; opp D SOFT; floor rung 15+ graded lower",
    "published_odds": -418,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -418,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -412,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -412,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -418
@@ -2912,18 +2668,14 @@
    "grade": "A-",
    "clear_pct": 86.0,
    "injury_watch": null,
+   "team_total": 26.0,
    "note": "L10 9/10, L15 12/15; last 3 [40, 25, 23]; opp D TOUGH; floor rung 22+ graded lower",
    "published_odds": -348,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -348,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -334,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -334,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -348
@@ -2953,13 +2705,14 @@
    "opp_d_rank": 12,
    "own_vol_rank": 16,
    "model_pct": 75.1,
-   "prob": 0.7514,
+   "prob": 0.7515,
    "fair_odds": -302,
-   "edge_pts": -4.5,
+   "edge_pts": -4.4,
    "novig_pct": 75.3,
    "grade": "A-",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 21.0,
    "note": "L10 8/10, L15 13/15; last 3 [70, 73, 11]; opp D neutral",
    "published_odds": -390,
    "published_at": "2026-10-31T04:56+00:00",
@@ -2996,25 +2749,21 @@
    "opp_d_rank": 7,
    "own_vol_rank": 10,
    "model_pct": 75.1,
-   "prob": 0.7511,
+   "prob": 0.7512,
    "fair_odds": -302,
    "edge_pts": -1.7,
    "novig_pct": 72.7,
    "grade": "A-",
    "clear_pct": 85.7,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 6/7, L15 6/7; last 3 [243, 313, 295]; opp D TOUGH; floor rung 241+ graded lower",
    "published_odds": -332,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -332,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -331,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -331,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -332
@@ -3044,76 +2793,24 @@
    "opp_d_rank": 10,
    "own_vol_rank": 7,
    "model_pct": 74.2,
-   "prob": 0.7423,
+   "prob": 0.7421,
    "fair_odds": -288,
    "edge_pts": -3.5,
    "novig_pct": 73.3,
    "grade": "A-",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 23.0,
    "note": "L10 8/10, L15 13/15; last 3 [21, 19, 24]; opp D neutral",
    "published_odds": -349,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -349,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -340,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -340,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -349
-    }
-   ]
-  },
-  {
-   "player": "Drake Maye",
-   "team": "NE",
-   "opp": "MIA",
-   "market": "rush_yds",
-   "rung": 15.0,
-   "floor_rung": 15.0,
-   "odds_est": -261,
-   "odds_real": -261,
-   "odds_model_est": -187,
-   "l10": 1.0,
-   "l15": 0.8,
-   "last3": [
-    25,
-    24,
-    26
-   ],
-   "opp_d": "neutral",
-   "own_vol": "SOFT",
-   "star": false,
-   "opp_d_rank": 22,
-   "own_vol_rank": 6,
-   "model_pct": 73.5,
-   "prob": 0.7348,
-   "fair_odds": -277,
-   "edge_pts": 1.2,
-   "novig_pct": 68.4,
-   "grade": "A-",
-   "clear_pct": 92.0,
-   "injury_watch": null,
-   "note": "L10 10/10, L15 12/15; last 3 [25, 24, 26]; opp D neutral",
-   "published_odds": -261,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -261,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -225,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -225,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -261
     }
    ]
   },
@@ -3147,18 +2844,14 @@
    "grade": "A-",
    "clear_pct": 80.0,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 8/10, L15 12/15; last 3 [40, 54, 26]; opp D neutral",
    "published_odds": -281,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -281,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -258,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -258,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -281
@@ -3188,25 +2881,21 @@
    "opp_d_rank": 23,
    "own_vol_rank": 3,
    "model_pct": 72.3,
-   "prob": 0.7233,
-   "fair_odds": -261,
-   "edge_pts": -7.3,
+   "prob": 0.7234,
+   "fair_odds": -262,
+   "edge_pts": -7.2,
    "novig_pct": 75.3,
    "grade": "A-",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 30.75,
    "note": "L10 9/10, L15 11/15; last 3 [90, 40, 70]; opp D neutral",
    "published_odds": -390,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -390,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -310,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -310,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -390
@@ -3235,8 +2924,8 @@
    "star": false,
    "opp_d_rank": 23,
    "own_vol_rank": 3,
-   "model_pct": 71.3,
-   "prob": 0.7133,
+   "model_pct": 71.4,
+   "prob": 0.7135,
    "fair_odds": -249,
    "edge_pts": -5.4,
    "novig_pct": 72.6,
@@ -3245,18 +2934,14 @@
    "injury_watch": [
     "injury watch: limited in practice (shoulder), no game status yet"
    ],
+   "team_total": 30.75,
    "note": "L10 8/10, L15 11/15; last 3 [130, 73, 57]; opp D neutral",
    "published_odds": -330,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -330,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -371,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -371,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -330
@@ -3286,25 +2971,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 18,
    "model_pct": 71.3,
-   "prob": 0.713,
+   "prob": 0.7129,
    "fair_odds": -248,
    "edge_pts": -5.3,
    "novig_pct": 72.5,
    "grade": "A-",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 28.25,
    "note": "L10 8/10, L15 11/15; last 3 [227, 331, 306]; opp D neutral; floor rung 220+ graded lower",
    "published_odds": -327,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -327,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -338,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -338,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -327
@@ -3334,13 +3015,14 @@
    "opp_d_rank": 11,
    "own_vol_rank": 12,
    "model_pct": 71.0,
-   "prob": 0.71,
+   "prob": 0.7103,
    "fair_odds": -245,
    "edge_pts": -3.7,
    "novig_pct": 70.7,
    "grade": "A-",
    "clear_pct": 80.0,
    "injury_watch": null,
+   "team_total": 21.75,
    "note": "L10 4/5, L15 4/5; last 3 [16, 51, 39]; opp D neutral",
    "published_odds": -296,
    "published_at": "2026-10-31T04:56+00:00",
@@ -3377,25 +3059,21 @@
    "opp_d_rank": 30,
    "own_vol_rank": 13,
    "model_pct": 70.7,
-   "prob": 0.7068,
+   "prob": 0.7066,
    "fair_odds": -241,
    "edge_pts": 1.5,
    "novig_pct": 65.5,
    "grade": "A-",
    "clear_pct": 80.0,
    "injury_watch": null,
+   "team_total": 18.25,
    "note": "L10 8/10, L15 12/15; last 3 [37, 57, 15]; opp D SOFT",
    "published_odds": -224,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -224,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -211,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -211,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -224
@@ -3425,13 +3103,14 @@
    "opp_d_rank": 15,
    "own_vol_rank": 11,
    "model_pct": 69.0,
-   "prob": 0.69,
-   "fair_odds": -223,
-   "edge_pts": -1.1,
+   "prob": 0.6898,
+   "fair_odds": -222,
+   "edge_pts": -1.2,
    "novig_pct": 66.3,
    "grade": "A-",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 8/10, L15 11/15; last 3 [6, 6, 5]; opp D neutral",
    "published_odds": -235,
    "published_at": "2026-10-31T04:56+00:00",
@@ -3442,54 +3121,6 @@
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -235
-    }
-   ]
-  },
-  {
-   "player": "Tee Higgins",
-   "team": "CIN",
-   "opp": "TEN",
-   "market": "rec_yds",
-   "rung": 40.0,
-   "floor_rung": 50.0,
-   "odds_est": -403,
-   "odds_real": -403,
-   "odds_model_est": -398,
-   "l10": 0.9,
-   "l15": 0.8666666666666667,
-   "last3": [
-    157,
-    22,
-    148
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "SOFT",
-   "star": true,
-   "opp_d_rank": 25,
-   "own_vol_rank": 5,
-   "model_pct": 79.9,
-   "prob": 0.7993,
-   "fair_odds": -398,
-   "edge_pts": -0.2,
-   "novig_pct": 75.8,
-   "grade": "B",
-   "clear_pct": 88.7,
-   "injury_watch": null,
-   "note": "L10 9/10, L15 13/15; last 3 [157, 22, 148]; opp D SOFT; floor rung 50+ graded lower",
-   "published_odds": -403,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -403,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -394,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -394,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -403
     }
    ]
   },
@@ -3515,26 +3146,22 @@
    "star": true,
    "opp_d_rank": 1,
    "own_vol_rank": 6,
-   "model_pct": 78.8,
-   "prob": 0.7885,
+   "model_pct": 78.9,
+   "prob": 0.7887,
    "fair_odds": -373,
    "edge_pts": 1.5,
    "novig_pct": 72.9,
    "grade": "B",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 9/10, L15 13/15; last 3 [52, 30, 32]; opp D TOUGH; floor rung 32+ graded lower",
    "published_odds": -341,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -341,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -390,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -390,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -341
@@ -3571,6 +3198,7 @@
    "grade": "B",
    "clear_pct": 100.0,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 4/4, L15 4/4; last 3 [2, 3, 6]; opp D TOUGH",
    "published_odds": -366,
    "published_at": "2026-10-31T04:56+00:00",
@@ -3607,25 +3235,21 @@
    "opp_d_rank": 5,
    "own_vol_rank": 7,
    "model_pct": 77.2,
-   "prob": 0.7722,
+   "prob": 0.7723,
    "fair_odds": -339,
-   "edge_pts": 4.8,
+   "edge_pts": 4.9,
    "novig_pct": 68.5,
    "grade": "B",
    "clear_pct": 88.7,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 9/10, L15 13/15; last 3 [44, 11, 20]; opp D TOUGH",
    "published_odds": -262,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -262,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -259,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -259,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -262
@@ -3655,13 +3279,14 @@
    "opp_d_rank": 15,
    "own_vol_rank": 11,
    "model_pct": 77.0,
-   "prob": 0.7695,
+   "prob": 0.7696,
    "fair_odds": -334,
    "edge_pts": 3.4,
    "novig_pct": 69.3,
    "grade": "B",
    "clear_pct": 91.3,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 9/10, L15 14/15; last 3 [9, 14, 7]; opp D neutral; floor rung 12+ graded lower",
    "published_odds": -278,
    "published_at": "2026-10-31T04:56+00:00",
@@ -3705,18 +3330,14 @@
    "grade": "B",
    "clear_pct": 92.0,
    "injury_watch": null,
+   "team_total": 26.0,
    "note": "L10 10/10, L15 12/15; last 3 [27, 17, 22]; opp D TOUGH",
    "published_odds": -430,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -430,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -412,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -412,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -430
@@ -3753,18 +3374,14 @@
    "grade": "B",
    "clear_pct": 92.0,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 10/10, L15 12/15; last 3 [22, 33, 19]; opp D TOUGH",
    "published_odds": -403,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -403,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -427,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -427,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -403
@@ -3801,18 +3418,14 @@
    "grade": "B",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 24.75,
    "note": "L10 8/10, L15 13/15; last 3 [412, 271, 303]; opp D TOUGH; floor rung 261+ graded lower",
    "published_odds": -449,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -449,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -430,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -430,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -449
@@ -3842,25 +3455,21 @@
    "opp_d_rank": 7,
    "own_vol_rank": 20,
    "model_pct": 75.8,
-   "prob": 0.7582,
-   "fair_odds": -314,
+   "prob": 0.758,
+   "fair_odds": -313,
    "edge_pts": -5.3,
    "novig_pct": 76.8,
    "grade": "B",
    "clear_pct": 82.3,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 8/10, L15 12/14; last 3 [40, 29, 19]; opp D TOUGH",
    "published_odds": -429,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -429,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -368,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -368,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -429
@@ -3890,25 +3499,21 @@
    "opp_d_rank": 12,
    "own_vol_rank": 16,
    "model_pct": 74.6,
-   "prob": 0.7455,
+   "prob": 0.7456,
    "fair_odds": -293,
    "edge_pts": -3.7,
    "novig_pct": 74.0,
    "grade": "B",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 21.0,
    "note": "L10 8/10, L15 13/15; last 3 [225, 272, 165]; opp D neutral",
    "published_odds": -359,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -359,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -361,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -361,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -359
@@ -3938,25 +3543,21 @@
    "opp_d_rank": 22,
    "own_vol_rank": 23,
    "model_pct": 74.2,
-   "prob": 0.7423,
+   "prob": 0.7425,
    "fair_odds": -288,
-   "edge_pts": -3.3,
+   "edge_pts": -3.2,
    "novig_pct": 73.3,
    "grade": "B",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 18.0,
    "note": "L10 8/10, L15 13/15; last 3 [4, 9, 91]; opp D neutral",
    "published_odds": -344,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -344,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -308,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -308,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -344
@@ -3986,78 +3587,24 @@
    "opp_d_rank": 18,
    "own_vol_rank": 18,
    "model_pct": 74.0,
-   "prob": 0.74,
-   "fair_odds": -285,
+   "prob": 0.7399,
+   "fair_odds": -284,
    "edge_pts": -3.5,
    "novig_pct": 73.2,
    "grade": "B",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 21.0,
    "note": "L10 5/6, L15 5/6; last 3 [22, 19, 14]; opp D neutral; floor rung 18+ graded lower",
    "published_odds": -344,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -344,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -348,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -348,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -344
-    }
-   ]
-  },
-  {
-   "player": "Michael Wilson",
-   "team": "ARI",
-   "opp": "DAL",
-   "market": "receptions",
-   "rung": 4.0,
-   "floor_rung": 4.0,
-   "odds_est": -285,
-   "odds_real": -285,
-   "odds_model_est": -317,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    4,
-    4,
-    4
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "SOFT",
-   "star": false,
-   "opp_d_rank": 27,
-   "own_vol_rank": 1,
-   "model_pct": 72.7,
-   "prob": 0.7268,
-   "fair_odds": -266,
-   "edge_pts": -1.3,
-   "novig_pct": 69.9,
-   "grade": "B",
-   "clear_pct": 80.0,
-   "injury_watch": [
-    "injury watch: limited in practice (ribs), no game status yet"
-   ],
-   "note": "L10 8/10, L15 12/15; last 3 [4, 4, 4]; opp D SOFT",
-   "published_odds": -285,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -285,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -232,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -232,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -285
     }
    ]
   },
@@ -4084,25 +3631,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 16,
    "model_pct": 72.5,
-   "prob": 0.725,
-   "fair_odds": -264,
-   "edge_pts": -1.0,
+   "prob": 0.7248,
+   "fair_odds": -263,
+   "edge_pts": -1.1,
    "novig_pct": 69.5,
    "grade": "B",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 26.0,
    "note": "L10 8/10, L15 13/15; last 3 [16, 10, 16]; opp D neutral",
    "published_odds": -278,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -278,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -293,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -293,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -278
@@ -4132,25 +3675,21 @@
    "opp_d_rank": 7,
    "own_vol_rank": 10,
    "model_pct": 71.9,
-   "prob": 0.7189,
+   "prob": 0.719,
    "fair_odds": -256,
    "edge_pts": -6.4,
    "novig_pct": 74.1,
    "grade": "B",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 8/10, L15 11/15; last 3 [50, 36, 61]; opp D TOUGH",
    "published_odds": -361,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -361,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -347,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -347,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -361
@@ -4180,25 +3719,21 @@
    "opp_d_rank": 18,
    "own_vol_rank": 18,
    "model_pct": 71.8,
-   "prob": 0.7183,
+   "prob": 0.7182,
    "fair_odds": -255,
    "edge_pts": -1.4,
    "novig_pct": 69.3,
    "grade": "B",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 21.0,
    "note": "L10 5/6, L15 5/6; last 3 [177, 128, 36]; opp D neutral",
    "published_odds": -273,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -273,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -268,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -268,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -273
@@ -4235,18 +3770,14 @@
    "grade": "B",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 9/10, L15 11/15; last 3 [235, 253, 212]; opp D TOUGH",
    "published_odds": -348,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -348,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -334,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -334,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -348
@@ -4276,25 +3807,21 @@
    "opp_d_rank": 20,
    "own_vol_rank": 18,
    "model_pct": 71.5,
-   "prob": 0.7152,
+   "prob": 0.7153,
    "fair_odds": -251,
-   "edge_pts": -5.8,
+   "edge_pts": -5.7,
    "novig_pct": 73.1,
    "grade": "B",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 28.25,
    "note": "L10 9/10, L15 11/15; last 3 [7, 124, 64]; opp D neutral",
    "published_odds": -340,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -340,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -411,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -411,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -340
@@ -4323,26 +3850,22 @@
    "star": false,
    "opp_d_rank": 8,
    "own_vol_rank": 2,
-   "model_pct": 71.3,
-   "prob": 0.7133,
+   "model_pct": 71.4,
+   "prob": 0.7135,
    "fair_odds": -249,
    "edge_pts": -5.4,
    "novig_pct": 72.6,
    "grade": "B",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 28.75,
    "note": "L10 8/10, L15 11/15; last 3 [75, 111, 95]; opp D TOUGH; floor rung 70+ graded lower",
    "published_odds": -330,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -330,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -354,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -354,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -330
@@ -4372,25 +3895,21 @@
    "opp_d_rank": 7,
    "own_vol_rank": 10,
    "model_pct": 70.7,
-   "prob": 0.7067,
+   "prob": 0.7066,
    "fair_odds": -241,
    "edge_pts": -4.4,
    "novig_pct": 70.8,
    "grade": "B",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 8/10, L15 11/15; last 3 [4, 5, 5]; opp D TOUGH",
    "published_odds": -301,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -301,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -300,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -300,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -301
@@ -4420,25 +3939,21 @@
    "opp_d_rank": 25,
    "own_vol_rank": 5,
    "model_pct": 69.6,
-   "prob": 0.6956,
-   "fair_odds": -228,
+   "prob": 0.6957,
+   "fair_odds": -229,
    "edge_pts": -2.1,
    "novig_pct": 67.8,
    "grade": "B",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 29.5,
    "note": "L10 8/10, L15 11/15; last 3 [27, 77, 62]; opp D SOFT",
    "published_odds": -253,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -253,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -251,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -251,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -253
@@ -4475,18 +3990,14 @@
    "grade": "B",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 9/10, L15 11/15; last 3 [87, 28, 36]; opp D TOUGH",
    "published_odds": -253,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -253,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -243,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -243,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -253
@@ -4516,25 +4027,21 @@
    "opp_d_rank": 5,
    "own_vol_rank": 7,
    "model_pct": 76.8,
-   "prob": 0.7678,
-   "fair_odds": -331,
-   "edge_pts": -4.8,
+   "prob": 0.7676,
+   "fair_odds": -330,
+   "edge_pts": -4.9,
    "novig_pct": 77.3,
    "grade": "C",
    "clear_pct": 86.0,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 9/10, L15 12/15; last 3 [12, 93, 56]; opp D TOUGH; floor rung 30+ graded lower",
    "published_odds": -444,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -444,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -521,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -521,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -444
@@ -4564,25 +4071,21 @@
    "opp_d_rank": 17,
    "own_vol_rank": 9,
    "model_pct": 74.3,
-   "prob": 0.7428,
+   "prob": 0.743,
    "fair_odds": -289,
    "edge_pts": -3.8,
    "novig_pct": 73.7,
    "grade": "C",
    "clear_pct": 83.3,
    "injury_watch": null,
+   "team_total": 28.25,
    "note": "L10 5/6, L15 5/6; last 3 [6, 2, 11]; opp D neutral",
    "published_odds": -356,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -356,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -262,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -262,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -356
@@ -4612,25 +4115,21 @@
    "opp_d_rank": 2,
    "own_vol_rank": 8,
    "model_pct": 74.2,
-   "prob": 0.7423,
+   "prob": 0.7424,
    "fair_odds": -288,
-   "edge_pts": -3.6,
+   "edge_pts": -3.5,
    "novig_pct": 73.3,
    "grade": "C",
    "clear_pct": 80.0,
    "injury_watch": null,
+   "team_total": 20.5,
    "note": "L10 8/10, L15 12/15; last 3 [17, 9, 20]; opp D TOUGH",
    "published_odds": -350,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -350,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -272,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -272,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -350
@@ -4660,76 +4159,24 @@
    "opp_d_rank": 5,
    "own_vol_rank": 7,
    "model_pct": 74.1,
-   "prob": 0.7414,
-   "fair_odds": -287,
-   "edge_pts": -3.0,
+   "prob": 0.7412,
+   "fair_odds": -286,
+   "edge_pts": -3.1,
    "novig_pct": 73.1,
    "grade": "C",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 8/10, L15 13/15; last 3 [12, 25, 4]; opp D TOUGH",
    "published_odds": -338,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -338,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -323,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -323,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -338
-    }
-   ]
-  },
-  {
-   "player": "Sam LaPorta",
-   "team": "DET",
-   "opp": "MIN",
-   "market": "rec_yds",
-   "rung": 30.0,
-   "floor_rung": 30.0,
-   "odds_est": -317,
-   "odds_real": -317,
-   "odds_model_est": null,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    84,
-    88,
-    18
-   ],
-   "opp_d": "TOUGH",
-   "own_vol": "SOFT",
-   "star": false,
-   "opp_d_rank": 1,
-   "own_vol_rank": 6,
-   "model_pct": 73.6,
-   "prob": 0.7364,
-   "fair_odds": -279,
-   "edge_pts": -2.4,
-   "novig_pct": 72.0,
-   "grade": "C",
-   "clear_pct": 80.0,
-   "injury_watch": null,
-   "note": "L10 8/10, L15 12/15; last 3 [84, 88, 18]; opp D TOUGH",
-   "published_odds": -317,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -317,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -375,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -375,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -317
     }
    ]
   },
@@ -4756,25 +4203,21 @@
    "opp_d_rank": 5,
    "own_vol_rank": 7,
    "model_pct": 73.6,
-   "prob": 0.7359,
+   "prob": 0.736,
    "fair_odds": -279,
    "edge_pts": 0.8,
    "novig_pct": 68.7,
    "grade": "C",
    "clear_pct": 92.0,
    "injury_watch": null,
+   "team_total": 21.5,
    "note": "L10 10/10, L15 12/15; last 3 [31, 49, 30]; opp D TOUGH",
    "published_odds": -268,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -268,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -327,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -327,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -268
@@ -4811,21 +4254,61 @@
    "grade": "C",
    "clear_pct": 82.7,
    "injury_watch": null,
+   "team_total": 25.75,
    "note": "L10 8/10, L15 13/15; last 3 [102, 58, 45]; opp D neutral",
    "published_odds": -302,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -302,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -288,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -288,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -302
+    }
+   ]
+  },
+  {
+   "player": "Matthew Stafford",
+   "team": "LA",
+   "opp": "LAC",
+   "market": "pass_yds",
+   "rung": 210.0,
+   "floor_rung": 220.0,
+   "odds_est": -299,
+   "odds_real": -299,
+   "odds_model_est": -345,
+   "l10": 0.8,
+   "l15": 0.8,
+   "last3": [
+    383,
+    222,
+    195
+   ],
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "star": false,
+   "opp_d_rank": 4,
+   "own_vol_rank": 2,
+   "model_pct": 73.2,
+   "prob": 0.7315,
+   "fair_odds": -272,
+   "edge_pts": -1.8,
+   "novig_pct": 70.9,
+   "grade": "C",
+   "clear_pct": 80.0,
+   "injury_watch": null,
+   "team_total": 26.0,
+   "note": "L10 8/10, L15 12/15; last 3 [383, 222, 195]; opp D TOUGH; floor rung 220+ graded lower",
+   "published_odds": -299,
+   "published_at": "2026-10-31T04:56+00:00",
+   "current_odds": -299,
+   "current_at": "2026-10-31T04:56+00:00",
+   "thursday_odds": null,
+   "price_history": [
+    {
+     "at": "2026-10-31T04:56+00:00",
+     "odds": -299
     }
    ]
   },
@@ -4859,69 +4342,17 @@
    "grade": "C",
    "clear_pct": 80.0,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 8/10, L15 12/15; last 3 [3, 4, 8]; opp D TOUGH",
    "published_odds": -302,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -302,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -310,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -310,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -302
-    }
-   ]
-  },
-  {
-   "player": "Matthew Stafford",
-   "team": "LA",
-   "opp": "LAC",
-   "market": "pass_yds",
-   "rung": 210.0,
-   "floor_rung": 220.0,
-   "odds_est": -299,
-   "odds_real": -299,
-   "odds_model_est": -345,
-   "l10": 0.8,
-   "l15": 0.8,
-   "last3": [
-    383,
-    222,
-    195
-   ],
-   "opp_d": "TOUGH",
-   "own_vol": "SOFT",
-   "star": false,
-   "opp_d_rank": 4,
-   "own_vol_rank": 2,
-   "model_pct": 73.1,
-   "prob": 0.7314,
-   "fair_odds": -272,
-   "edge_pts": -1.8,
-   "novig_pct": 70.9,
-   "grade": "C",
-   "clear_pct": 80.0,
-   "injury_watch": null,
-   "note": "L10 8/10, L15 12/15; last 3 [383, 222, 195]; opp D TOUGH; floor rung 220+ graded lower",
-   "published_odds": -299,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -299,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -304,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -304,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -299
     }
    ]
   },
@@ -4955,69 +4386,17 @@
    "grade": "C",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 22.0,
    "note": "L10 8/10, L15 11/15; last 3 [110, 70, 73]; opp D TOUGH",
    "published_odds": -434,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -434,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -503,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -503,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -434
-    }
-   ]
-  },
-  {
-   "player": "Mike Gesicki",
-   "team": "CIN",
-   "opp": "TEN",
-   "market": "rec_yds",
-   "rung": 10.0,
-   "floor_rung": 10.0,
-   "odds_est": -402,
-   "odds_real": -402,
-   "odds_model_est": null,
-   "l10": 0.8,
-   "l15": 0.7333333333333333,
-   "last3": [
-    40,
-    4,
-    6
-   ],
-   "opp_d": "SOFT",
-   "own_vol": "SOFT",
-   "star": false,
-   "opp_d_rank": 25,
-   "own_vol_rank": 5,
-   "model_pct": 72.5,
-   "prob": 0.7252,
-   "fair_odds": -264,
-   "edge_pts": -7.6,
-   "novig_pct": 75.8,
-   "grade": "C",
-   "clear_pct": 77.3,
-   "injury_watch": null,
-   "note": "L10 8/10, L15 11/15; last 3 [40, 4, 6]; opp D SOFT",
-   "published_odds": -402,
-   "published_at": "2026-10-31T04:56+00:00",
-   "current_odds": -402,
-   "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -431,
-   "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -431,
-     "source": "thursday snapshot"
-    },
-    {
-     "at": "2026-10-31T04:56+00:00",
-     "odds": -402
     }
    ]
   },
@@ -5044,25 +4423,21 @@
    "opp_d_rank": 6,
    "own_vol_rank": 20,
    "model_pct": 72.4,
-   "prob": 0.7241,
+   "prob": 0.724,
    "fair_odds": -262,
-   "edge_pts": -7.3,
+   "edge_pts": -7.4,
    "novig_pct": 75.5,
    "grade": "C",
    "clear_pct": 77.3,
    "injury_watch": null,
+   "team_total": 19.5,
    "note": "L10 8/10, L15 11/15; last 3 [189, 121, 204]; opp D TOUGH; floor rung 180+ graded lower",
    "published_odds": -394,
    "published_at": "2026-10-31T04:56+00:00",
    "current_odds": -394,
    "current_at": "2026-10-31T04:56+00:00",
-   "thursday_odds": -407,
+   "thursday_odds": null,
    "price_history": [
-    {
-     "at": "2026-10-29T18:54+00:00",
-     "odds": -407,
-     "source": "thursday snapshot"
-    },
     {
      "at": "2026-10-31T04:56+00:00",
      "odds": -394
@@ -5150,6 +4525,7 @@
    ],
    "Reasons": [
     "team change (ARI->TEN)",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5170,6 +4546,7 @@
    ],
    "Reasons": [
     "team change (ARI->TEN)",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5274,43 +4651,61 @@
    ]
   },
   {
-   "Player": "Saquon Barkley",
-   "Market": "rush_yds",
-   "Rung": "56+",
-   "EstOdds": -113,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
+   "Player": "Tee Higgins",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -245,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    82,
-    8,
-    62
+    157,
+    22,
+    148
    ],
    "Reasons": [
-    "injury: did not practice (hamstring)",
-    "own volume low",
-    "grade below C"
+    "role down: targets 10\u21924\u21927"
    ]
   },
   {
-   "Player": "Stefon Diggs",
-   "Market": "receptions",
-   "Rung": "4+",
-   "EstOdds": -193,
-   "L10": "5/5",
-   "L15": "5/5",
+   "Player": "Drake Maye",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -261,
+   "L10": "10/10",
+   "L15": "12/15",
    "OppD": "neutral",
-   "OwnVol": "neutral",
+   "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    4,
-    5,
-    6
+    25,
+    24,
+    26
    ],
    "Reasons": [
-    "no qualifying rung"
+    "role down: carries 6\u21924\u21924"
+   ]
+  },
+  {
+   "Player": "Michael Wilson",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -532,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    30,
+    32,
+    55
+   ],
+   "Reasons": [
+    "role down: targets 11\u21927\u21928",
+    "price worse than -450"
    ]
   },
   {
@@ -5330,6 +4725,7 @@
    ],
    "Reasons": [
     "own volume low",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5347,25 +4743,6 @@
     2,
     4,
     2
-   ],
-   "Reasons": [
-    "own volume low"
-   ]
-  },
-  {
-   "Player": "Rico Dowdle",
-   "Market": "rush_att",
-   "Rung": "6+",
-   "EstOdds": -301,
-   "L10": "4/4",
-   "L15": "4/4",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
-   "TeamChange": false,
-   "Last3": [
-    7,
-    7,
-    9
    ],
    "Reasons": [
     "own volume low"
@@ -5452,6 +4829,7 @@
    ],
    "Reasons": [
     "team change (ARI->TEN)",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5472,6 +4850,7 @@
    ],
    "Reasons": [
     "team change (ARI->TEN)",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5576,43 +4955,61 @@
    ]
   },
   {
-   "Player": "Saquon Barkley",
-   "Market": "rush_yds",
-   "Rung": "56+",
-   "EstOdds": -113,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "neutral",
-   "OwnVol": "TOUGH",
+   "Player": "Tee Higgins",
+   "Market": "rec_yds",
+   "Rung": "50+",
+   "EstOdds": -245,
+   "L10": "9/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    82,
-    8,
-    62
+    157,
+    22,
+    148
    ],
    "Reasons": [
-    "injury: did not practice (hamstring)",
-    "own volume low",
-    "grade below C"
+    "role down: targets 10\u21924\u21927"
    ]
   },
   {
-   "Player": "Stefon Diggs",
-   "Market": "receptions",
-   "Rung": "4+",
-   "EstOdds": -193,
-   "L10": "5/5",
-   "L15": "5/5",
+   "Player": "Drake Maye",
+   "Market": "rush_yds",
+   "Rung": "15+",
+   "EstOdds": -261,
+   "L10": "10/10",
+   "L15": "12/15",
    "OppD": "neutral",
-   "OwnVol": "neutral",
+   "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    4,
-    5,
-    6
+    25,
+    24,
+    26
    ],
    "Reasons": [
-    "no qualifying rung"
+    "role down: carries 6\u21924\u21924"
+   ]
+  },
+  {
+   "Player": "Michael Wilson",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -532,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    30,
+    32,
+    55
+   ],
+   "Reasons": [
+    "role down: targets 11\u21927\u21928",
+    "price worse than -450"
    ]
   },
   {
@@ -5632,6 +5029,7 @@
    ],
    "Reasons": [
     "own volume low",
+    "price shorter than -200",
     "grade below C"
    ]
   },
@@ -5655,6 +5053,25 @@
    ]
   },
   {
+   "Player": "Michael Wilson",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -285,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    4,
+    4
+   ],
+   "Reasons": [
+    "role down: targets 11\u21927\u21928"
+   ]
+  },
+  {
    "Player": "Rico Dowdle",
    "Market": "rush_att",
    "Rung": "6+",
@@ -5671,6 +5088,64 @@
    ],
    "Reasons": [
     "own volume low"
+   ]
+  },
+  {
+   "Player": "Drake Maye",
+   "Market": "rush_att",
+   "Rung": "4+",
+   "EstOdds": -310,
+   "L10": "9/10",
+   "L15": "14/15",
+   "OppD": "neutral",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    7,
+    4,
+    4
+   ],
+   "Reasons": [
+    "role down: carries 6\u21924\u21924"
+   ]
+  },
+  {
+   "Player": "Mike Gesicki",
+   "Market": "rec_yds",
+   "Rung": "10+",
+   "EstOdds": -402,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "SOFT",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    40,
+    4,
+    6
+   ],
+   "Reasons": [
+    "role down: targets 5\u21922\u21921"
+   ]
+  },
+  {
+   "Player": "Cade Otton",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": -467,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "SOFT",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    25,
+    4,
+    0
+   ],
+   "Reasons": [
+    "role down: targets 6\u21922\u21921",
+    "price worse than -450"
    ]
   },
   {
@@ -5714,44 +5189,6 @@
    ]
   },
   {
-   "Player": "J.K. Dobbins",
-   "Market": "rush_att",
-   "Rung": "10+",
-   "EstOdds": 143,
-   "L10": "8/10",
-   "L15": "13/15",
-   "OppD": "neutral",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    18,
-    17,
-    6
-   ],
-   "Reasons": [
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Travis Hunter",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": 101,
-   "L10": "8/10",
-   "L15": "8/10",
-   "OppD": "neutral",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    8,
-    9,
-    59
-   ],
-   "Reasons": [
-    "no qualifying rung"
-   ]
-  },
-  {
    "Player": "Rhamondre Stevenson",
    "Market": "rec_yds",
    "Rung": "15+",
@@ -5767,26 +5204,8 @@
     93
    ],
    "Reasons": [
-    "own volume low"
-   ]
-  },
-  {
-   "Player": "Patrick Mahomes",
-   "Market": "rush_yds",
-   "Rung": "10+",
-   "EstOdds": -187,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "neutral",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    0,
-    16,
-    14
-   ],
-   "Reasons": [
-    "no qualifying rung"
+    "own volume low",
+    "price shorter than -200"
    ]
   },
   {
@@ -5843,6 +5262,7 @@
     23
    ],
    "Reasons": [
+    "role down: targets 6\u21923\u21924",
     "own volume low"
    ]
   },
@@ -5983,6 +5403,28 @@
    ]
   },
   {
+   "Player": "Saquon Barkley",
+   "Market": "rush_yds",
+   "Rung": "56+",
+   "EstOdds": -113,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "TOUGH",
+   "TeamChange": false,
+   "Last3": [
+    82,
+    8,
+    62
+   ],
+   "Reasons": [
+    "role down: snap share 53%\u21927%\u219215%, carries 11\u21922\u21927",
+    "injury: did not practice (hamstring)",
+    "own volume low",
+    "grade below C"
+   ]
+  },
+  {
    "Player": "Mason Taylor",
    "Market": "rec_yds",
    "Rung": "20+",
@@ -5998,7 +5440,8 @@
     62
    ],
    "Reasons": [
-    "own volume low"
+    "own volume low",
+    "price shorter than -200"
    ]
   },
   {
@@ -6017,7 +5460,8 @@
     213
    ],
    "Reasons": [
-    "own volume low"
+    "own volume low",
+    "price shorter than -200"
    ]
   },
   {
@@ -6176,63 +5620,6 @@
    ]
   },
   {
-   "Player": "Omarion Hampton",
-   "Market": "rec_yds",
-   "Rung": "6+",
-   "EstOdds": -122,
-   "L10": "8/10",
-   "L15": "11/14",
-   "OppD": "TOUGH",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    8,
-    6,
-    21
-   ],
-   "Reasons": [
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Jared Goff",
-   "Market": "pass_cmps",
-   "Rung": "22+",
-   "EstOdds": -149,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "TOUGH",
-   "OwnVol": "SOFT",
-   "TeamChange": false,
-   "Last3": [
-    32,
-    19,
-    22
-   ],
-   "Reasons": [
-    "grade below C"
-   ]
-  },
-  {
-   "Player": "Michael Mayer",
-   "Market": "receptions",
-   "Rung": "3+",
-   "EstOdds": -163,
-   "L10": "8/10",
-   "L15": "11/15",
-   "OppD": "TOUGH",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    1,
-    7,
-    3
-   ],
-   "Reasons": [
-    "grade below C"
-   ]
-  },
-  {
    "Player": "Darnell Washington",
    "Market": "receptions",
    "Rung": "2+",
@@ -6248,6 +5635,26 @@
     1
    ],
    "Reasons": [
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Puka Nacua",
+   "Market": "rec_yds",
+   "Rung": "70+",
+   "EstOdds": -273,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    138,
+    80,
+    68
+   ],
+   "Reasons": [
+    "role down: targets 15\u21927\u219210",
     "grade below C"
    ]
   },
@@ -6271,6 +5678,25 @@
    ]
   },
   {
+   "Player": "Sam LaPorta",
+   "Market": "rec_yds",
+   "Rung": "30+",
+   "EstOdds": -317,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
+   "OwnVol": "SOFT",
+   "TeamChange": false,
+   "Last3": [
+    84,
+    88,
+    18
+   ],
+   "Reasons": [
+    "role down: targets 8\u21925\u21922"
+   ]
+  },
+  {
    "Player": "Matthew Stafford",
    "Market": "pass_att",
    "Rung": "30+",
@@ -6290,22 +5716,42 @@
    ]
   },
   {
-   "Player": "Michael Wilson",
-   "Market": "rec_yds",
-   "Rung": "30+",
-   "EstOdds": -532,
-   "L10": "9/10",
-   "L15": "14/15",
-   "OppD": "SOFT",
+   "Player": "Puka Nacua",
+   "Market": "receptions",
+   "Rung": "6+",
+   "EstOdds": -471,
+   "L10": "8/10",
+   "L15": "12/15",
+   "OppD": "TOUGH",
    "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    30,
-    32,
-    55
+    17,
+    6,
+    8
    ],
    "Reasons": [
+    "role down: targets 15\u21927\u219210",
     "price worse than -450"
+   ]
+  },
+  {
+   "Player": "Stefon Diggs",
+   "Market": "receptions",
+   "Rung": "4+",
+   "EstOdds": -193,
+   "L10": "5/5",
+   "L15": "5/5",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    4,
+    5,
+    6
+   ],
+   "Reasons": [
+    "price shorter than -200"
    ]
   },
   {
@@ -6341,25 +5787,6 @@
     428,
     190,
     292
-   ],
-   "Reasons": [
-    "price worse than -450"
-   ]
-  },
-  {
-   "Player": "Cade Otton",
-   "Market": "rec_yds",
-   "Rung": "15+",
-   "EstOdds": -467,
-   "L10": "8/10",
-   "L15": "12/15",
-   "OppD": "SOFT",
-   "OwnVol": "neutral",
-   "TeamChange": false,
-   "Last3": [
-    25,
-    4,
-    0
    ],
    "Reasons": [
     "price worse than -450"
@@ -6477,6 +5904,64 @@
    ],
    "Reasons": [
     "price worse than -450"
+   ]
+  },
+  {
+   "Player": "J.K. Dobbins",
+   "Market": "rush_att",
+   "Rung": "10+",
+   "EstOdds": 143,
+   "L10": "8/10",
+   "L15": "13/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    18,
+    17,
+    6
+   ],
+   "Reasons": [
+    "price shorter than -200",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Travis Hunter",
+   "Market": "rec_yds",
+   "Rung": "15+",
+   "EstOdds": 101,
+   "L10": "8/10",
+   "L15": "8/10",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    9,
+    59
+   ],
+   "Reasons": [
+    "price shorter than -200"
+   ]
+  },
+  {
+   "Player": "Patrick Mahomes",
+   "Market": "rush_yds",
+   "Rung": "10+",
+   "EstOdds": -187,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "neutral",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    0,
+    16,
+    14
+   ],
+   "Reasons": [
+    "price shorter than -200"
    ]
   },
   {
@@ -6651,29 +6136,80 @@
    ]
   },
   {
-   "Player": "Puka Nacua",
-   "Market": "receptions",
+   "Player": "Omarion Hampton",
+   "Market": "rec_yds",
    "Rung": "6+",
-   "EstOdds": -471,
+   "EstOdds": -122,
    "L10": "8/10",
-   "L15": "12/15",
+   "L15": "11/14",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    8,
+    6,
+    21
+   ],
+   "Reasons": [
+    "price shorter than -200",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Jared Goff",
+   "Market": "pass_cmps",
+   "Rung": "22+",
+   "EstOdds": -149,
+   "L10": "8/10",
+   "L15": "11/15",
    "OppD": "TOUGH",
    "OwnVol": "SOFT",
    "TeamChange": false,
    "Last3": [
-    17,
-    6,
-    8
+    32,
+    19,
+    22
    ],
    "Reasons": [
-    "price worse than -450"
+    "price shorter than -200",
+    "grade below C"
+   ]
+  },
+  {
+   "Player": "Michael Mayer",
+   "Market": "receptions",
+   "Rung": "3+",
+   "EstOdds": -163,
+   "L10": "8/10",
+   "L15": "11/15",
+   "OppD": "TOUGH",
+   "OwnVol": "neutral",
+   "TeamChange": false,
+   "Last3": [
+    1,
+    7,
+    3
+   ],
+   "Reasons": [
+    "price shorter than -200",
+    "grade below C"
    ]
   }
  ],
  "notes": "",
+ "selection": "probability-first",
+ "price_window": [
+  -450,
+  -200
+ ],
+ "payout_window": [
+  2.5,
+  3.5
+ ],
+ "role_hold": true,
  "shadow": {
   "slug": "pfirst",
-  "label": "probability-first, live blend",
+  "label": "probability-first (live rules from Week 9)",
   "blend": {
    "market_games": 10,
    "history_weight": null,
@@ -6681,15 +6217,12 @@
   },
   "min_edge": null,
   "live_card": "card_2026_w8_sun.json",
-  "note": "research only: never published; graded Tuesday next to the live card",
+  "note": "research only: never published; graded Tuesday next to the live card; built 2026-10-31 from the publish-commit inputs (90d21181) with role-down flags added (weeks < 8)",
   "select": "probability-first",
-  "price": [
-   -450,
-   -200
-  ],
-  "payout_window": [
-   2.5,
-   3.5
-  ]
+  "rules": {
+   "min_edge": null,
+   "select": "prob",
+   "role_hold": true
+  }
  }
 }

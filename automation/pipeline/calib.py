@@ -125,8 +125,37 @@ def role_trend(data, key, market, week):
 def role_down(trend, threshold=ROLE_DOWN):
     """True when, for any role metric with a real prior role, BOTH of the last two games are below the prior-4 average
     by more than `threshold` (relative)"""
-    floor = {"snap": 0.20, "tgt": 2.0, "car": 2.0}
-    return any(prior >= floor[m] and all(x < prior * (1 - threshold) for x in last2) for m, (prior, last2) in trend.items())
+    return bool(role_down_metrics(trend, threshold))
+
+
+ROLE_FLOOR = {"snap": 0.20, "tgt": 2.0, "car": 2.0}      # a prior role worth losing
+ROLE_NAMES = {"snap": "snap share", "tgt": "targets", "car": "carries"}
+
+
+def role_down_metrics(trend, threshold=ROLE_DOWN):
+    """the metrics that fired, in ROLE_METRICS order"""
+    return [m for m, (prior, last2) in trend.items()
+            if prior >= ROLE_FLOOR[m] and all(x < prior * (1 - threshold) for x in last2)]
+
+
+def role_reason(trend, threshold=ROLE_DOWN):
+    """'role down: carries 20→12→8' (prior average → each of the last two games); None when it doesn't fire"""
+    fired = role_down_metrics(trend, threshold)
+    if not fired: return None
+    fmt = lambda m, x: f"{100 * x:.0f}%" if m == "snap" else f"{x:.0f}"
+    return "role down: " + ", ".join(f"{ROLE_NAMES[m]} " + "→".join(fmt(m, x) for x in [trend[m][0]] + list(trend[m][1]))
+                                     for m in fired)
+
+
+def annotate_roles(players, data, week, threshold=ROLE_DOWN):
+    """Sets role_trend / role_down / role_reason on every board row (held rows too), from games before `week` only.
+    grade_legs.py calls it for the live board; the live card (from Week 9, 2026) holds role_down rows (R13)."""
+    for p in players:
+        t = role_trend(data, norm_name(p["player"]), p["market"], week)
+        p["role_trend"] = {k: [round(v[0], 3), [round(x, 3) for x in v[1]]] for k, v in t.items()} or None
+        p["role_reason"] = role_reason(t, threshold)
+        p["role_down"] = bool(p["role_reason"])
+    return players
 
 
 FEATS = (["novig", "l10", "l15"] + [f"m_{m}" for m in MARKETS[1:]] + [f"pos_{p}" for p in POSITIONS[1:]] + ["pos_other"]

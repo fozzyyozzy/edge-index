@@ -27,7 +27,7 @@ def test_house_rules_are_exactly_the_builders():
 
 
 @pytest.mark.parametrize("text", [
-    "Under R12 the card now caps tough defenses.",                      # no R12
+    "Under R14 the card now caps tough defenses.",                      # no R14
     "The volume-cap rule kept two legs off.",                           # no such named rule
     INVENTED,                                                           # the Week 5 invention
     "A TOUGH defense tag against a receiver with soft volume should have been a harder filter.",

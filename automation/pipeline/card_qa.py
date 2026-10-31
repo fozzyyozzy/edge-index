@@ -17,6 +17,7 @@ SINGLE_GAME = {"tnf", "mnf", "snf"}
 GRADE_OK = {"A+", "A", "A-", "B", "C"}
 GRADE_RANK = {"A+": 5, "A": 4, "A-": 3, "B": 2, "C": 1}
 MAX_LEG_JUICE, MIN_EDGE_PTS, TARGET_DEC = -450, 2.0, 3.0
+PF_PRICE, PF_WINDOW = (-450, -200), (2.5, 3.5)     # probability-first cards (Week 9, 2026 on): R12 price, R8 window
 FLOOR_STAR = lambda l10, l15: l10 >= 0.9 and l15 >= 13 / 15
 
 def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
@@ -24,6 +25,7 @@ def dec(o): return 1 + (100 / -o if o < 0 else o / 100)
 def check(card, legs=None, avail=None):
     """[(rule, ok, detail)] — one row per rule; detail lists every offending leg/ticket (or a short pass note)."""
     T = card.get("tickets", []); single = card["slate"] in SINGLE_GAME
+    pfirst = card.get("selection") == "probability-first"          # absent = a legacy card (through Week 8)
     rows = []
     def add(rule, bad, ok_note=""):
         rows.append((rule, not bad, "; ".join(bad) if bad else ok_note))
@@ -60,9 +62,12 @@ def check(card, legs=None, avail=None):
            for t, l in allegs if l["l10"] < 0.8 or l["l15"] < 0.73 or (l.get("floor_rung") is not None and l["rung"] > l["floor_rung"])]
     add("R3 every leg is a qualifying rung (L10 ≥ 80%, L15 ≥ 73%, at or below the floor rung)", bad)
 
-    # R4 edge
-    bad = [tag(t, l) + f" edge {l.get('edge_pts')}" for t, l in allegs if l.get("edge_pts") is None or l["edge_pts"] < MIN_EDGE_PTS]
-    add("R4 every leg has edge ≥ +2 pts", bad)
+    if pfirst:                  # R4 retired; R12 price window instead
+        bad = [tag(t, l) + f" {l['odds_est']}" for t, l in allegs if not PF_PRICE[0] <= l["odds_est"] <= PF_PRICE[1]]
+        add("R12 every leg priced −450 to −200 (R4 retired: no edge minimum)", bad)
+    else:                       # R4 edge
+        bad = [tag(t, l) + f" edge {l.get('edge_pts')}" for t, l in allegs if l.get("edge_pts") is None or l["edge_pts"] < MIN_EDGE_PTS]
+        add("R4 every leg has edge ≥ +2 pts", bad)
 
     # R5 blowout
     bad = []
@@ -97,12 +102,17 @@ def check(card, legs=None, avail=None):
         d = 1.0
         for l in t["legs"]: d *= dec(l["odds_est"])
         if abs(d - t["est_payout"]) > 0.011: bad.append(f"{t['name']} payout {t['est_payout']} but legs multiply to {d:.2f}")
+        if pfirst:
+            if d > PF_WINDOW[1] + 0.011: bad.append(f"{t['name']} pays {d:.2f}x, above the +250 window")
+            if bool(t.get("reduced")) != (d < PF_WINDOW[0] or len(t["legs"]) == 2): bad.append(f"{t['name']} reduced label wrong")
+            continue
         if bool(t.get("reduced")) != (d < TARGET_DEC or len(t["legs"]) == 2): bad.append(f"{t['name']} reduced label wrong")
         if len(t["legs"]) == 4:
             d3 = 1.0
             for l in t["legs"][:3]: d3 *= dec(l["odds_est"])
             if d3 >= TARGET_DEC: bad.append(f"{t['name']} has a 4th leg but 3 legs already paid {d3:.2f}x")
-    add("R8 payout matches the legs; 4th leg only to reach +200; reduced label right", bad)
+    add("R8 payout matches the legs; " + ("+150..+250 window, nothing above +250" if pfirst else "4th leg only to reach +200")
+        + "; reduced label right", bad)
 
     # R9 grades
     bad = []
@@ -121,6 +131,9 @@ def check(card, legs=None, avail=None):
         cs = [l for l in t["legs"] if l.get("grade") == "C"]
         if cs and i >= 2: bad.append(f"{t['name']} is a third ticket with a C leg")
         if len(t["legs"]) == 4 and t["legs"][3].get("grade") == "C": bad.append(f"{t['name']} has a C 4th leg")
+        if pfirst:              # a C on a 4-leg ticket is a C 4th leg whatever order it's listed in
+            if len(t["legs"]) == 4 and cs: bad.append(f"{t['name']} is a 4-leg ticket with a C leg")
+            continue
         games = {frozenset([l["team"], l["opp"]]) for l in t["legs"] if l.get("grade") != "C"}
         for l in cs:
             fourth = t["legs"].index(l) == 3                     # a 4th leg must also be a floor price (<= -130)
@@ -129,7 +142,8 @@ def check(card, legs=None, avail=None):
                    and (not fourth or c["odds_est"] <= -130)]
             if alt: bad.append(f"{tag(t, l)} is C while {alt[0]['player']} {alt[0]['rung']:g}+ {alt[0]['market']} ({alt[0]['grade']}) sat unused")
     add("R10 grade first: no C leg while a B-or-better leg fits, never a C 4th leg, no third ticket with a C", bad,
-        "" if "candidates" in card else "card has no candidate list: unused-leg check skipped")
+        "probability-first card: C-free-ticket-first is the builder's search, not re-checked here" if pfirst
+        else "" if "candidates" in card else "card has no candidate list: unused-leg check skipped")
 
     # R11 injury watch: one ticket at most (flags recomputed from the snapshot, plus any on the card)
     bad = []
@@ -140,6 +154,12 @@ def check(card, legs=None, avail=None):
             watch = watch or bool(availability.reasons(avail, p, l0["market"], l0.get("team"))[1])
         if watch and n > 1: bad.append(f"{p} has an injury-watch flag and is on {n} tickets")
     add("R11 injury-watch players on one ticket at most", bad)
+
+    # R13 role down (probability-first live cards): no flagged player/market on any ticket, from the Legs board
+    if card.get("role_hold"):
+        bad = [tag(t, l) + ": " + (board.get((norm_name(l["player"]), l["market"])) or {}).get("role_reason", "role down")
+               for t, l in allegs if (board.get((norm_name(l["player"]), l["market"])) or {}).get("role_down")]
+        add("R13 no role-down leg on a ticket", bad, "" if legs else "no legs file: role down not checked")
 
     # price cap, one leg per game, published price
     bad = [tag(t, l) + f" {l.get('published_odds')}" for t, l in allegs if (l.get("published_odds") or l["odds_est"]) < MAX_LEG_JUICE]
@@ -158,6 +178,8 @@ def check(card, legs=None, avail=None):
     if legs is not None and not legs.get("players"):
         bad.append("no DK lines for this slate's games (props not posted yet?): re-run card.yml by hand once they are")
     if not card.get("prices_pulled"): bad.append("card has no prices_pulled")
+    if card.get("role_hold") and legs is not None and str((legs.get("meta") or {}).get("role_trend", "")).startswith("unavailable"):
+        bad.append(f"role trend {legs['meta']['role_trend']}: R13 can't be applied")
     if avail is None: bad.append("no availability snapshot")
     else:
         bad += [f"{k}: {v}" for k, v in (avail.get("sources") or {}).items() if str(v).startswith("unavailable")]

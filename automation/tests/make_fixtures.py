@@ -26,6 +26,8 @@ CASES = {
     "2026_w3_tnf": ("25fc99f6", 2026, 3, "tnf", "regraded Week 3 board (the TNF legs as published predate blended probability)"),
     "2026_w3_mnf": ("61aade4", 2026, 3, "mnf", "Week 3 MNF card build"),
     "2026_w4_mnf": ("2d932a2", 2026, 4, "mnf", "Week 4 MNF card build"),
+    # the last legacy-rules card (probability-first from Week 9): the legacy shadow must reproduce it exactly
+    "2026_w8_sun": ("90d21181", 2026, 8, "sun", "Week 8 Sunday card as published (the last legacy-rules Sunday)"),
 }
 
 def inputs(season, week, slate):

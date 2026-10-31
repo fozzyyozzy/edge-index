@@ -2,7 +2,9 @@
 build_card_json.py — Wed/Fri/Mon job. Turns the floor scan + edge scan into a slate card with tickets
 that obey the house rules, and writes it as JSON for the site and the newsletter draft.
 
-Rules encoded here (do not relax without changing the newsletter copy too):
+Rules encoded here (do not relax without changing the newsletter copy too). From Week 9, 2026 the live card selects
+probability-first (common.LIVE_PFIRST_FROM); cards through Week 8 were built with the legacy R4/R8/R10, which still run
+as the "legacy" shadow card.
   LOCK  a card locks when its newsletter is sent. Before that, a rule fix may rebuild it from the same pulled prices
         (logged in MODEL_CHANGELOG.md); after that, never. Prices, results and injury flags may update; tickets don't.
   R1  3–4 legs per ticket, 2–3 tickets per slate (single-game slates: 2 legs allowed, always "Reduced payout")
@@ -10,10 +12,10 @@ Rules encoded here (do not relax without changing the newsletter copy too):
       max 2 tickets, and a ticket may carry at most one repeated star — counted on every ticket the star is on, so no
       ticket shares more than one player with the rest of the card. Same player = same injury + same game script.
   R3  qualifying rung = any rung at or below the floor rung (the highest clearing L10 >= 80% and L15 >= 73%) that
-      still clears those rates; each player/market offers its BEST-GRADED qualifying rung that passes R4/R9 and the
-      price cap (ties: higher edge). Never stepped up for price.
-  R4  every leg needs edge >= +2 pts: blended probability (common.leg_prob — lower of L10/L15 add-one clear rates,
-      blended toward DK's no-vig price as 10 extra games, capped at 0.90) minus DK's implied probability at the price
+      still clears those rates; each player/market offers its BEST-GRADED qualifying rung that passes R9 and R12
+      (ties: higher blended probability). Never stepped up for price.
+  R4  retired from Week 9, 2026: there is no edge minimum on a leg. Cards through Week 8 required edge >= +2 pts
+      (blended probability minus DK's implied probability at the price). Edge is still shown on every leg.
   R5  attempt props excluded when the QB's team is favored by >= 7 (blowout flag)  [needs spreads.csv]
   R6  team-change and injury holds are hard holds. A team change stops being a hold once the player has 4+ games with
       his new team; from then on he's graded on new-team games only (4-game minimum) and stops counting as new target
@@ -22,20 +24,24 @@ Rules encoded here (do not relax without changing the newsletter copy too):
       notes/holds_<season>_w<week>.csv. Limited practice with no game status yet is an "injury watch" flag on the leg.
   R7  single-game slates (TNF/MNF): one ticket, correlation noted, plus floors listed as singles; a 2-leg ticket
       is allowed there (thin menu) and is always labelled "Reduced payout"
-  R8  Bloom target: each ticket aims for >= +200 (3.0x). Reach it by ADDING a 4th floor leg, never by stepping a rung up.
-      The 4th leg comes from the best grade available; payout only chooses between legs of that grade.
-      If 4 legs still fall short, publish as "reduced payout" — floors held, still recommended.
+  R8  payout target: each ticket is the most likely combination of 3 or 4 legs (2 on a single-game slate) that pays
+      +150 to +250. Nothing above +250 is built; if no combination reaches +150, the most likely one below it runs as
+      "reduced payout" — floors held, still recommended. (Through Week 8: aim for +200 by adding a 4th leg.)
   R9  every leg is graded C or better on the Legs board (same cutoff as the Legs tab); anything below is held
       "grade below C". If that leaves no valid ticket (R7: a single-game slate needs 2 legs), the card has no ticket —
       never padded with a weaker leg.
-  R10 selection is grade first (A+ > A > A- > B > C), then edge. A C leg is used only when no B-or-better leg can fill
-      one of a ticket's first three spots — never as a 4th leg (3 legs already make a ticket; it runs reduced instead).
-      A third ticket that would need a C leg is not built (two tickets beat a weaker third).
+  R10 selection is grade first, then probability: a ticket with no C leg always beats one with a C leg, and among those
+      the highest combined blended probability wins (R8's window). A C leg is never a 4th leg, and a third ticket that
+      would need a C leg is not built. (Through Week 8: grade first, then edge.)
   R11 a player with a watch flag (injury watch, or QB change) goes on one ticket at most (no star repeat).
+  R12 every leg is priced between -450 and -200 (the price DK shows when the card is built).
+  R13 role down: a player/market whose role fell in each of his last two games — snap share, or the market's targets
+      or carries, more than 25% below his average over the games before them (calib.py) — is held ("role down"). It
+      only removes legs; it never adds one.
 
-SHADOW ONLY (--shadow pfirst | calib; never the live card): probability-first selection. No R4; each player/market
-offers its best qualifying rung priced -450..-200 by (grade, probability); tickets from build_tickets_pfirst. calib
-re-grades the board with calib.py's calibrated model first and adds its "role down" hold (can't anchor a ticket).
+SHADOW ONLY (--shadow SLUG, common.SHADOW_RULES; never published): legacy (the Week 1-8 rules), blend variants of the
+legacy card (m20, m40, mkt10, m40e0, m40em1), pfirst_dog (live rules + underdog rushing hold), pfirst_norole, and
+calib (calib.py's calibrated model; a role-down leg can't anchor a ticket).
 
 Inputs : lines/dk_<season>_w<week>_<slate>.csv   Player,Market,Line,Odds
          projections.csv (from make_projections.py), floors_<...>.csv (from floors.py)
@@ -113,6 +119,18 @@ def hold_reasons(r, avail=None):
     edge = getattr(r, "EdgePts", None)
     if MIN_EDGE_PTS is not None and edge is not None and not pd.isna(edge) and edge < MIN_EDGE_PTS:
         why.append(f"edge {edge:+.1f} pts (< {MIN_EDGE_PTS:+g})")                 # R4
+    return why
+
+def rule_holds(r, row, rule):
+    """holds from the card's rule set, on top of R5/R6/own volume: R13 role down (the Legs board's role_down flag, set by
+    grade_legs.py with calib.role_trend) when the rules hold it, and the shadow-only underdog rushing hold"""
+    why = []
+    if rule.get("role_hold") and row and row.get("role_down"):
+        why.append(row.get("role_reason") or "role down")
+    if rule.get("dog_hold") and r.Market in ("rush_att", "rush_yds"):
+        sp, tt = getattr(r, "Spread", None), (row or {}).get("team_total")
+        if sp is not None and not pd.isna(sp) and sp >= 7: why.append(f"underdog rushing (dog by {sp:g})")
+        elif tt is not None and tt < 19: why.append(f"underdog rushing (team total {tt:g})")
     return why
 
 def hold_rank(h):
@@ -194,7 +212,7 @@ def build_tickets(cands, slate, n_tickets):
     return tickets
 
 def build_tickets_pfirst(cands, slate, n_tickets):
-    """SHADOW ONLY (pfirst / calib). Pure, like build_tickets. Ticket by ticket, every combination of the best PF_POOL
+    """Probability-first tickets (the live card from Week 9, 2026; R8/R10; also the pfirst*/calib shadows). Pure. Ticket by ticket, every combination of the best PF_POOL
     candidates (3 or 4 legs; 2 also allowed on a single-game slate) that obeys the card's sharing rules is scored:
       - R2/R11 as live: a player on one ticket, a floor star (no watch flag) on two at most, and a ticket shares at most
         one player with the other tickets (counted on both sides); one leg per game on multi-game slates
@@ -241,7 +259,8 @@ def build_tickets_pfirst(cands, slate, n_tickets):
         tickets.append(dict(name=f"{slate.upper()}-{i+1}", legs=list(legs), model_hit=round(p, 3), est_payout=round(payout, 2),
                             est_american=int(round((payout - 1) * 100)) if payout >= 2 else int(round(-100 / (payout - 1))),
                             reduced=not inwin, correlated=slate in SINGLE_GAME,
-                            label="Reduced payout (shadow: under +150)" if not inwin else "shadow: +150..+250 window met"))
+                            label="Reduced payout: floors held, not stretched — still recommended" if not inwin
+                            else "Target met: +150 to +250"))
     return tickets
 
 def main():
@@ -251,13 +270,11 @@ def main():
     ap.add_argument("--shadow", default=None, help="research: build a SHADOW card under common.BLEND_VARIANTS[slug] into "
                     "cards/shadow/ (never published; Tuesday grades it next to the live card)")
     a = ap.parse_args()
-    if a.shadow:                      # a shadow variant may relax R4 (research only; the live card never takes this path)
-        global MIN_EDGE_PTS
-        from common import SHADOW_RULES
-        MIN_EDGE_PTS = SHADOW_RULES.get(a.shadow, {}).get("min_edge", MIN_EDGE_PTS)
-    from common import SHADOW_RULES as _SR
-    RULE = _SR.get(a.shadow, {}) if a.shadow else {}
-    PROB_SELECT = RULE.get("select") == "prob"; MODEL = None
+    from common import card_rules, LIVE_BLEND
+    RULE = card_rules(a.season, a.week, a.shadow)     # live: probability-first from Week 9, 2026; legacy before
+    global MIN_EDGE_PTS
+    MIN_EDGE_PTS = RULE["min_edge"]                   # None = no edge minimum (R4 retired for probability-first)
+    PROB_SELECT = RULE["select"] == "prob"; MODEL = None
     fl = load_floors(a.season, a.week, a.slate)
     ladders_path = P("lines", f"ladders_{a.season}_w{a.week}.csv")
     REAL = load_real_ladders(ladders_path)                       # {(name, market): [(rung, odds)]} — real DK prices
@@ -272,13 +289,14 @@ def main():
         at_publish = []
     # grade letter + clear % per rung from grade_legs.py (runs first in card.yml) — the Record tab grades by letter
     legs_path = P("cards", f"legs_{a.season}_w{a.week}_{a.slate}.json")
-    GRADED, RUNGS, ROLE_DOWN = {}, {}, {}
+    GRADED, RUNGS, ROLE_DOWN, ROW = {}, {}, {}, {}
     if os.path.exists(legs_path):
         legs_doc = json.load(open(legs_path, encoding="utf-8"))
-        if a.shadow:                  # shadow card: the live board re-graded under the alternate blend
+        from common import BLEND_VARIANTS
+        if a.shadow and BLEND_VARIANTS[a.shadow][1] != LIVE_BLEND:   # shadow card: the board re-graded under its blend
             from grade_legs import reblend
-            from common import BLEND_VARIANTS
             legs_doc = reblend(legs_doc, BLEND_VARIANTS[a.shadow][1])
+        if a.shadow:
             if RULE.get("calib"):     # calib: every priced rung re-graded by the calibrated model (no model -> no card)
                 import calib
                 MODEL = json.load(open(calib.model_path(a.season, a.week), encoding="utf-8"))
@@ -288,7 +306,8 @@ def main():
                 GRADED[(norm_name(p["player"]), p["market"], float(r["rung"]))] = (r["grade"], r.get("clear_pct"))
             RUNGS[(norm_name(p["player"]), p["market"])] = p["rungs"]
             ROLE_DOWN[(norm_name(p["player"]), p["market"])] = bool(p.get("role_down"))
-        if a.shadow:                  # floor-rung edge in the hold reasons follows the alternate blend too
+            ROW[(norm_name(p["player"]), p["market"])] = p
+        if a.shadow and BLEND_VARIANTS[a.shadow][1] != LIVE_BLEND:   # floor-rung edge in the hold reasons follows it too
             edge_at = {(norm_name(p["player"]), p["market"], float(r["rung"])): r.get("edge_pts")
                        for p in legs_doc["players"] for r in p["rungs"]}
             fl["EdgePts"] = [edge_at.get((norm_name(r.Player), r.Market, float(str(r.Rung).rstrip("+"))), getattr(r, "EdgePts", None))
@@ -298,18 +317,20 @@ def main():
     cands, held = [], []
     for r in fl.itertuples():
         floor = float(r.Rung.rstrip("+"))
-        why = player_market_holds(r, AVAIL)
+        extra = rule_holds(r, ROW.get((norm_name(r.Player), r.Market)), RULE)   # R13 role down; shadow dog hold
+        why = extra + player_market_holds(r, AVAIL)
         opts = []
         if not why:                                                   # R3: best-graded qualifying rung at or below the floor
             for x in RUNGS.get((norm_name(r.Player), r.Market), []):
                 if x["rung"] > floor or x.get("grade") not in GRADE_OK or "l10" not in x: continue
                 if frac(x["l10"]) < 0.8 or frac(x["l15"]) < 0.73: continue
-                if PROB_SELECT:                                       # shadow pfirst/calib: price window, no R4
+                if PROB_SELECT:                                       # R12 price window; no edge minimum
                     if not (PF_PRICE[0] <= x["est_odds"] <= PF_PRICE[1]) or x.get("prob") is None: continue
                 elif x["est_odds"] < MAX_LEG_JUICE or x.get("edge_pts") is None or x["edge_pts"] < MIN_EDGE_PTS: continue
                 opts.append(x)
         if not opts:                                                  # held: the floor rung's reasons, as before
-            why = hold_reasons(r, AVAIL)
+            why = extra + hold_reasons(r, AVAIL)
+            if PROB_SELECT and not extra and r.EstOdds > PF_PRICE[1]: why.append(f"price shorter than {PF_PRICE[1]}")   # R12
             # R9: the leg's Legs-board grade must be C or better (the Legs tab's cutoff). No grade = trimmed below C.
             g = GRADED.get((norm_name(r.Player), r.Market, floor), (None, None))[0]
             if g not in GRADE_OK: why.append("grade below C")
@@ -334,6 +355,7 @@ def main():
                           grade=x["grade"], clear_pct=x.get("clear_pct"),
                           injury_watch=availability.reasons(AVAIL, r.Player, r.Market, r.Team)[1] or None,
                           **({"role_down": ROLE_DOWN.get((norm_name(r.Player), r.Market), False)} if MODEL else {}),
+                          **({"team_total": (ROW.get((norm_name(r.Player), r.Market)) or {}).get("team_total")} if PROB_SELECT else {}),
                           note=f"L10 {x['l10']}, L15 {x['l15']}; last 3 {last3}; opp D {r.OppD}"
                                + (f"; floor rung {floor:g}+ graded lower" if rung < floor else "")))
         # locked at publish, never changed: the price the card was built on and when. refresh_odds.py appends to
@@ -345,7 +367,7 @@ def main():
             hist.insert(0, dict(at=THU_AT, odds=thu, source="thursday snapshot"))
         c.update(published_odds=pub, published_at=pulled, current_odds=pub, current_at=pulled,
                  thursday_odds=thu, price_history=hist)
-    if PROB_SELECT:                                                   # shadow pfirst/calib: grade, then probability
+    if PROB_SELECT:                                                   # R10: grade, then probability (R8 window)
         cands.sort(key=lambda c: (-GRADE_RANK[c["grade"]], -c["prob"], c["odds_est"]))
         tickets = build_tickets_pfirst(cands, a.slate, 1 if a.slate in SINGLE_GAME else a.tickets)
     else:
@@ -360,13 +382,16 @@ def main():
                 tickets=tickets, floors_singles=cands[:12], candidates=cands, held=sorted(held, key=hold_rank)[:15],
                 held_all=sorted(held, key=hold_rank),        # every hold, for grading holds by reason (held = top 15, for display)
                 notes=notes)
+    if PROB_SELECT:                                   # legacy cards keep their exact old shape (golden fixtures)
+        card.update(rules="R1-R13 (see build_card_json.py)", selection="probability-first", price_window=list(PF_PRICE),
+                    payout_window=list(PF_WINDOW), role_hold=bool(RULE.get("role_hold")))
     out = P("cards", f"card_{a.season}_w{a.week}_{a.slate}.json")
     if a.shadow:
         from common import BLEND_VARIANTS
         label, cfg = BLEND_VARIANTS[a.shadow]
         card["shadow"] = dict(slug=a.shadow, label=label, blend=cfg, min_edge=MIN_EDGE_PTS, live_card=os.path.basename(out),
                               note="research only: never published; graded Tuesday next to the live card")
-        if PROB_SELECT: card["shadow"].update(select="probability-first", price=list(PF_PRICE), payout_window=list(PF_WINDOW))
+        card["shadow"].update(select="probability-first" if PROB_SELECT else "legacy", rules={k: v for k, v in RULE.items()})
         if MODEL: card["shadow"].update(model=dict(trained_on=MODEL.get("trained_on"), n=MODEL.get("n"),
                                                    role_down=MODEL.get("role_down"), file=os.path.basename(calib.model_path(a.season, a.week))))
         out = P("cards", "shadow", f"card_{a.season}_w{a.week}_{a.slate}_{a.shadow}.json")

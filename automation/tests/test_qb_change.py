@@ -41,7 +41,7 @@ def test_flag_touches_receiving_and_passing_legs_only():
 
 
 def test_qb_change_is_a_watch_one_ticket_max_and_qa_checks_it(slate_root):
-    avail = dict(season=2026, week=9, fetched_at="t", sources=dict(snap_counts="test", injuries="test"), team_games={},
+    avail = dict(season=2026, week=8, fetched_at="t", sources=dict(snap_counts="test", injuries="test"), team_games={},
                  qb_change={GAMES[0][0]: dict(recent="New", usual="Old", usual_games=9, games=10, week="2026 wk 8")}, players={})
     star = row("Star WR", GAMES[0], grade="A+", edge=9, market="rec_yds", floor=50)
     filler = [row(f"Fill{i}", GAMES[(i % 6) + 1], grade="A-", odds=-250, edge=3.0) for i in range(12)]
@@ -52,7 +52,7 @@ def test_qb_change_is_a_watch_one_ticket_max_and_qa_checks_it(slate_root):
     leg = next(l for t in card["tickets"] for l in t["legs"] if l["player"] == "Star WR")
     assert any(f.startswith("QB change") for f in leg["injury_watch"])
     import copy, json, os
-    legs = json.load(open(os.path.join(slate_root, "cards", "legs_2026_w9_sun.json")))
+    legs = json.load(open(os.path.join(slate_root, "cards", "legs_2026_w8_sun.json")))
     doctored = copy.deepcopy(card)
     doctored["tickets"][1]["legs"][0] = dict(leg)                           # force a second ticket for the flagged star
     assert any(r.startswith("R11") and not ok for r, ok, _ in card_qa.check(doctored, legs, avail))

@@ -42,13 +42,13 @@ def test_reblend_live_reproduces_and_variants_shift():
 def test_shadow_card_goes_to_its_own_folder_and_leaves_the_live_card_alone(slate_root):
     write_slate(slate_root, [row(f"S{i}", GAMES[i % 7], grade="A", odds=-250, edge=8) for i in range(10)])
     live = run_card(slate_root)
-    before = open(os.path.join(slate_root, "cards", "card_2026_w9_sun.json"), encoding="utf-8").read()
+    before = open(os.path.join(slate_root, "cards", "card_2026_w8_sun.json"), encoding="utf-8").read()
     env = dict(os.environ, EDGE_ROOT=str(slate_root), PYTHONIOENCODING="utf-8")
-    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "9",
+    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "8",
                     "--slate", "sun", "--shadow", "m20"], env=env, check=True, capture_output=True)
-    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w9_sun_m20.json"), encoding="utf-8"))
+    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w8_sun_m20.json"), encoding="utf-8"))
     assert sh["shadow"]["slug"] == "m20" and sh["shadow"]["blend"]["market_games"] == 20
-    assert open(os.path.join(slate_root, "cards", "card_2026_w9_sun.json"), encoding="utf-8").read() == before
+    assert open(os.path.join(slate_root, "cards", "card_2026_w8_sun.json"), encoding="utf-8").read() == before
     assert live["tickets"]
 
 
@@ -57,28 +57,28 @@ def test_grade_scores_old_rule_and_new_rule_the_same_way(tmp_path, monkeypatch):
     monkeypatch.setattr(common, "ROOT", str(tmp_path))
     leg = lambda p, rung, odds=-200: dict(player=p, market="receptions", rung=rung, odds_est=odds, published_odds=odds)
     os.makedirs(tmp_path / "cards" / "shadow")
-    json.dump(dict(tickets=[dict(name="SUN-1", legs=[leg("A", 3), leg("B", 3)])]), open(tmp_path / "cards" / "card_2026_w9_sun.json", "w"))
+    json.dump(dict(tickets=[dict(name="SUN-1", legs=[leg("A", 3), leg("B", 3)])]), open(tmp_path / "cards" / "card_2026_w8_sun.json", "w"))
     json.dump(dict(shadow=dict(slug="m20", label="market = 20 games", blend={}), tickets=[dict(name="SUN-1", legs=[leg("A", 3)])]),
-              open(tmp_path / "cards" / "shadow" / "card_2026_w9_sun_m20.json", "w"))
+              open(tmp_path / "cards" / "shadow" / "card_2026_w8_sun_m20.json", "w"))
     act = {("a", "receptions"): 5.0, ("b", "receptions"): 1.0}
-    out = grade.shadow_vs_live(2026, 9, act)
+    out = grade.shadow_vs_live(2026, 8, act)
     assert out["live"]["record"]["LOSS"] == 1 and out["live"]["legs_hit"] == 1 and out["live"]["legs_graded"] == 2
     assert out["m20"]["record"]["WIN"] == 1 and out["m20"]["units"] == 0.5
     monkeypatch.setattr(common, "ROOT", str(tmp_path / "empty"))
-    assert grade.shadow_vs_live(2026, 9, act) is None
+    assert grade.shadow_vs_live(2026, 8, act) is None
 
 
 def test_newsletter_never_sees_shadow_results(tmp_path, monkeypatch):
     sys.path.insert(0, os.path.join(REPO, "automation", "newsletter"))
     import draft
-    rec = tmp_path / "receipts_2026_w9.json"
-    json.dump(dict(week=9, ticket_record={}, shadow={"m20": {"units": 9.9}}), open(rec, "w"))
+    rec = tmp_path / "receipts_2026_w8.json"
+    json.dump(dict(week=8, ticket_record={}, shadow={"m20": {"units": 9.9}}), open(rec, "w"))
     real_p = draft.P
     monkeypatch.setattr(draft, "P", lambda *p: str(rec) if p[0] == "receipts" else real_p(*p))
     seen = []
     monkeypatch.setattr(draft, "claude", lambda s, u: (seen.append(u), "## What changed\n\nNothing changed this week.\n")[1])
     monkeypatch.setenv("DRY_RUN", "1")
-    monkeypatch.setattr(sys, "argv", ["draft.py", "--kind", "receipts", "--season", "2026", "--week", "9"])
+    monkeypatch.setattr(sys, "argv", ["draft.py", "--kind", "receipts", "--season", "2026", "--week", "8"])
     draft.main()
     assert seen and '"shadow"' not in seen[0] and "9.9" not in seen[0]
 
@@ -91,8 +91,8 @@ def test_card_workflow_builds_shadows_without_ever_blocking_or_publishing_them()
     assert "--shadow" in steps[i]["run"] and "::warning::" in steps[i]["run"]          # a failure only warns
     pub = next(s for s in steps if s.get("name") == "publish to site")["run"]
     assert "shadow" not in pub                                                           # never copied to the site
-    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["m20", "m40", "mkt10", "m40e0", "m40em1",
-                                                                                           "pfirst", "calib"]
+    assert json.load(open(os.path.join(REPO, "automation", "shadow_blends.json"))) == ["legacy", "m20", "m40", "mkt10", "m40e0",
+                                                                         "m40em1", "pfirst", "pfirst_dog", "calib"]
 
 
 def test_relaxed_r4_variants_are_shadow_only_and_keep_every_other_rule(slate_root):
@@ -103,8 +103,8 @@ def test_relaxed_r4_variants_are_shadow_only_and_keep_every_other_rule(slate_roo
     assert build_card_json.MIN_EDGE_PTS == 2.0 and build_card_json.MAX_LEG_JUICE == -450      # live R4 / cap untouched
     write_slate(slate_root, [row(f"S{i}", GAMES[i % 7], grade="A", odds=-250, edge=8) for i in range(8)])
     env = dict(os.environ, EDGE_ROOT=str(slate_root), PYTHONIOENCODING="utf-8")
-    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "9",
+    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "8",
                     "--slate", "sun", "--shadow", "m40em1"], env=env, check=True, capture_output=True)
-    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w9_sun_m40em1.json"), encoding="utf-8"))
+    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w8_sun_m40em1.json"), encoding="utf-8"))
     assert sh["shadow"]["min_edge"] == -1.0
     assert all(c["odds_est"] >= -450 and c["grade"] in ("A+", "A", "A-", "B", "C") for c in sh["candidates"])

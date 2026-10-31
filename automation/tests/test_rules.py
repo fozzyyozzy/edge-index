@@ -190,7 +190,7 @@ def test_tough_defense_is_not_a_hold(slate_root):
 
 
 def test_r6_injury_holds_from_the_availability_snapshot(slate_root):
-    avail = dict(season=2026, week=9, fetched_at="t", sources=dict(snap_counts="test", injuries="test"),
+    avail = dict(season=2026, week=8, fetched_at="t", sources=dict(snap_counts="test", injuries="test"),
                  team_games={GAMES[1][0]: {"7": ["missed"], "8": []}},                 # 'missed' sat out week 8
                  players={"byhand": dict(team=None, hold=[], flag=[], manual=[dict(reason="questionable", market=None)]),
                           "listed": dict(team=GAMES[2][0], hold=["questionable (knee)"], flag=[]),
@@ -214,8 +214,8 @@ def built(slate_root):
     write_slate(slate_root, stars + [row(f"B{i}", GAMES[(i + 3) % 7], grade="B", odds=-200, edge=3) for i in range(8)])
     card = run_card(slate_root)
     import json, os
-    legs = json.load(open(os.path.join(slate_root, "cards", "legs_2026_w9_sun.json")))
-    avail = json.load(open(os.path.join(slate_root, "cards", "availability_2026_w9_sun.json")))
+    legs = json.load(open(os.path.join(slate_root, "cards", "legs_2026_w8_sun.json")))
+    avail = json.load(open(os.path.join(slate_root, "cards", "availability_2026_w8_sun.json")))
     return card, legs, avail
 
 

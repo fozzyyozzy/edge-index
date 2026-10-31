@@ -3,6 +3,26 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-31 — rule change: the card picks probability-first from Week 9, with a role-down hold
+
+- **What:** starting with the Week 9 TNF card:
+  - There is no edge minimum on a leg any more (R4 retired). Edge is still shown.
+  - Every leg is graded C or better and priced between −450 and −200 (R12).
+  - Each ticket is the most likely combination of 3 or 4 legs that pays +150 to +250 (R8). TNF/MNF can still run a
+    2-leg ticket at a reduced payout. Grade comes first: a ticket with no C leg beats one with a C leg. Among those,
+    the highest combined probability wins (R10).
+  - New hold, role down (R13): a player whose snap share, targets or carries fell more than 25% below his earlier
+    average in each of his last two games is held for that market. It only removes legs; it never adds one. It
+    appears in the held list with the numbers, for example "role down: carries 20→12→8".
+  - Repeated players, injury-watch and QB-change flags (R2, R11) work as before.
+- **Why:** rebuilt from each slate's publish-time prices, the probability-first card would have done better than
+  the card we ran in Weeks 4–8: the live card went 2–12 (−9.17u), probability-first 7–13 (−3.75u). That is a small,
+  in-sample result (13 slates, chosen after looking), not proof. The role-down threshold was also picked from the
+  same data. Tuesday receipts now track role-down holds against their DK price, so we can see whether the hold
+  works out of sample.
+- **Effect:** Week 8 cards (Sunday and MNF) keep the old rules and are not rebuilt. The old rules keep running as a
+  shadow card ("legacy") and are graded every Tuesday next to the live card.
+
 ## 2026-10-31 — research: probability-first shadow cards (pfirst, calib) and a calibration study (shadow only, not live)
 
 - **What:** two shadow card variants, built next to the live card by card.yml and graded Tuesday in the receipts

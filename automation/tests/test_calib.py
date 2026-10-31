@@ -53,11 +53,11 @@ def test_pregame_board_takes_the_last_version_generated_before_kickoff(monkeypat
     ko = pd.Timestamp("2026-11-01T17:00+00:00")
     monkeypatch.setattr(calib, "first_kickoff", lambda *a: ko)
     v = lambda t: dict(meta=dict(generated=t), players=[])
-    doc, src = calib.pregame_board(2026, 9, "sun", versions=[("regrade", v("2026-11-01T17:30+00:00")),
+    doc, src = calib.pregame_board(2026, 8, "sun", versions=[("regrade", v("2026-11-01T17:30+00:00")),
                                                              ("refresh", v("2026-11-01T16:00+00:00")),
                                                              ("card", v("2026-10-30T18:00+00:00"))])
     assert src == "refresh"                                          # the post-kickoff regrade is skipped
-    doc, src = calib.pregame_board(2026, 9, "sun", versions=[("regrade", v("2026-11-01T17:30+00:00"))])
+    doc, src = calib.pregame_board(2026, 8, "sun", versions=[("regrade", v("2026-11-01T17:30+00:00"))])
     assert doc is None
 
 
@@ -66,8 +66,8 @@ def test_training_weeks_stop_before_the_card_week(monkeypatch):
     monkeypatch.setattr(calib, "training_items", lambda season, weeks, data: (seen.extend(weeks) or [], {}))
     monkeypatch.setattr(calib, "fit", lambda X, y, **k: dict(n=0))
     monkeypatch.setattr(calib, "matrix", lambda items, cols: np.zeros((0, len(cols))))
-    calib.fit_for_week(2026, 9, data=object())
-    assert seen and max(seen) == 8
+    calib.fit_for_week(2026, 8, data=object())
+    assert seen and max(seen) == 7
 
 
 def test_fit_recovers_a_known_logistic_and_is_deterministic():
@@ -146,14 +146,14 @@ def test_pfirst_card_keeps_price_window_and_holds_and_drops_r4(slate_root):
     rows.append(row("Held", GAMES[1], grade="A+", odds=-300, edge=5.0, team_change=True, prev_team="ZZZ"))
     write_slate(slate_root, rows)
     env = dict(os.environ, EDGE_ROOT=str(slate_root), PYTHONIOENCODING="utf-8")
-    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "9",
+    subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "8",
                     "--slate", "sun", "--shadow", "pfirst"], env=env, check=True, capture_output=True)
-    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w9_sun_pfirst.json"), encoding="utf-8"))
+    sh = json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w8_sun_pfirst.json"), encoding="utf-8"))
     names = {c["player"] for c in sh["candidates"]}
     assert {f"S{i}" for i in range(6)} <= names                          # no R4
     assert not names & {"Juiced", "Plus", "Held"}                        # price window; holds still hold
     assert sh["tickets"] and sh["shadow"]["select"] == "probability-first"
-    assert not os.path.exists(os.path.join(slate_root, "cards", "card_2026_w9_sun.json"))   # never the live card file
+    assert not os.path.exists(os.path.join(slate_root, "cards", "card_2026_w8_sun.json"))   # never the live card file
 
 
 # ── reproducibility ─────────────────────────────────────────────────────────────────────────────────────────────────
@@ -162,9 +162,9 @@ def test_retro_build_is_reproducible(slate_root):
     env = dict(os.environ, EDGE_ROOT=str(slate_root), PYTHONIOENCODING="utf-8")
     out = []
     for _ in range(2):
-        subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "9",
+        subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", "2026", "--week", "8",
                         "--slate", "sun", "--shadow", "pfirst"], env=env, check=True, capture_output=True)
-        out.append(json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w9_sun_pfirst.json"), encoding="utf-8"))["tickets"])
+        out.append(json.load(open(os.path.join(slate_root, "cards", "shadow", "card_2026_w8_sun_pfirst.json"), encoding="utf-8"))["tickets"])
     assert out[0] == out[1]
 
 

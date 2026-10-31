@@ -18,7 +18,8 @@ LETTER_ORDER = ["F", "D", "C", "B", "A-", "A", "A+"]
 HOLD_CATS = [("team change", "team change"), ("blowout", "blowout risk"), ("opp D tough", "tough defense"),
              ("own volume low", "low own volume"), ("price worse than", "price worse than −450"),
              ("edge", "edge below +2"), ("grade below C", "grade below C"),
-             ("injury", "injury"), ("held by hand", "held by hand")]          # R6 holds, counted from Week 5
+             ("injury", "injury"), ("held by hand", "held by hand"),          # R6 holds, counted from Week 5
+             ("role down", "role down")]                                      # R13, live from Week 9
 
 def tally(results):
     """list of 'hit'/'miss'/'void' -> {n, hits, misses, voids}"""
@@ -35,6 +36,29 @@ def held_by_reason(cards, act):
             cats = {cat for pre, cat in HOLD_CATS for why in h.get("Reasons") or [] if why.startswith(pre)}
             for cat in cats: res[cat].append(r)
     return [dict(reason=cat, **tally(rs)) for cat, rs in res.items()]
+
+def role_down_legs(cards, act):
+    """R13 role-down holds on the week's live cards, graded at the floor rung, next to DK's implied probability at the
+    floor price - does the hold keep out legs that miss more than the price says? (live from Week 9, 2026)"""
+    res, imp = [], []
+    for card in cards:
+        for h in card.get("held_all") or []:
+            if not any(str(x).startswith("role down") for x in h.get("Reasons") or []): continue
+            v = act.get((norm_name(h["Player"]), h["Market"]))
+            r = "void" if v is None or pd.isna(v) else ("hit" if float(v) >= float(str(h["Rung"]).rstrip("+")) else "miss")
+            res.append(r)
+            if r != "void": imp.append(1 / dec(h["EstOdds"]))
+    return dict(**tally(res), avg_implied=round(100 * sum(imp) / len(imp), 1) if imp else None)
+
+def role_down_total(weeks):
+    """cumulative R13 role-down holds: hits/misses/voids and the implied probability averaged over graded legs"""
+    rs = [wk["role_down"] for wk in weeks if wk.get("role_down")]
+    out = {k: sum(r[k] for r in rs) for k in ("n", "hits", "misses", "voids")}
+    g = [(r["avg_implied"], r["hits"] + r["misses"]) for r in rs if r.get("avg_implied") is not None]
+    out["avg_implied"] = round(sum(a * n for a, n in g) / sum(n for _, n in g), 1) if g and sum(n for _, n in g) else None
+    out["hit_pct"] = round(100 * out["hits"] / (out["hits"] + out["misses"]), 1) if out["hits"] + out["misses"] else None
+    out["weeks"] = [wk["week"] for wk in weeks if wk.get("role_down")]
+    return out
 
 def board_by_grade(season, week, act, w):
     """The whole Legs board, counted like the Legs tab's tally: one row per player/market at its best rung (highest
@@ -134,7 +158,7 @@ def shadow_vs_live(season, week, act):
         shadows.setdefault(sh.get("slug"), dict(label=sh.get("label"), blend=sh.get("blend"), cards=[]))["cards"].append(c)
     if not shadows: return None
     live = [json.load(open(f, encoding="utf-8")) for f in sorted(glob.glob(P("cards", f"card_{season}_w{week}_*.json")))]
-    out = {"live": dict(label="old rule: live (market = 10 games)", **score([c for c in live if not c.get("hand_built")]))}
+    out = {"live": dict(label="live card", **score([c for c in live if not c.get("hand_built")]))}
     for slug, s in shadows.items():
         out[slug] = dict(label=f"new rule candidate: {s['label']}", blend=s["blend"], **score(s["cards"]))
     return out
@@ -229,6 +253,7 @@ def main():
                         else "clear %") if "grade" in pg and pg.grade.notna().any() else None,
         "tickets": tickets,
         "held_by_reason": held_by_reason(pipe_cards, act),
+        "role_down": role_down_legs(pipe_cards, act),                    # R13 holds vs their DK price
         # Sunday card legs (one per player/market/rung): Thursday snapshot -> published -> close, in implied-prob points
         # (positive = the price shortened). Cards before the Thursday snapshot existed have no Thursday price.
         "sunday_price_moves": sunday_moves(tickets),
@@ -280,6 +305,7 @@ def write_season_record(season):
                   # cumulative across weeks: held legs by hold reason, and the whole board by grade (tally counting)
                   held_by_reason=[dict(reason=cat, **{k: sum(r[k] for wk in weeks for r in wk.get("held_by_reason", []) if r["reason"] == cat)
                                                      for k in ("n", "hits", "misses", "voids")}) for _, cat in HOLD_CATS],
+                  role_down=role_down_total(weeks),
                   board_by_grade=[dict(grade=g, **{k: sum(r[k] for wk in weeks for r in wk.get("board_by_grade", []) if r["grade"] == g)
                                                   for k in ("n", "hits", "misses", "voids")}) for g in GRADES],
                   clear_basis_weeks=[wk["week"] for wk in weeks if wk.get("grade_basis") == "clear %"

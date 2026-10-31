@@ -1,5 +1,6 @@
 """Shared helpers: pipeline on sys.path, made-up candidates for build_tickets(), and made-up slates (a whole fake
-automation/ folder) for running build_card_json.py end to end without the network."""
+automation/ folder) for running build_card_json.py end to end without the network. Fake slates are Week 8 by default,
+so they run the legacy rules (R4 edge, Bloom 4th leg); Week 9+ is probability-first (test_pfirst_live.py)."""
 import json, os, subprocess, sys
 import pytest
 
@@ -26,7 +27,7 @@ def ranked(cands):
 GAMES = [("AAA", "BBB"), ("CCC", "DDD"), ("EEE", "FFF"), ("GGG", "HHH"), ("III", "JJJ"), ("KKK", "LLL"), ("MMM", "NNN")]
 
 
-def write_slate(root, rows, season=2026, week=9, slate="sun", avail=None):
+def write_slate(root, rows, season=2026, week=8, slate="sun", avail=None):
     """A fake automation/ folder for build_card_json.py. rows: dicts with player, team, opp, market, floor (rung),
     rungs [(rung, odds, grade, edge, l10, l15)], and optional opp_d/own_vol/spread/team_change."""
     for d in ("floors", "cards", "lines", "notes"): os.makedirs(os.path.join(root, d), exist_ok=True)
@@ -59,7 +60,7 @@ def write_slate(root, rows, season=2026, week=9, slate="sun", avail=None):
               open(os.path.join(root, "cards", f"availability_{season}_w{week}_{slate}.json"), "w"))
 
 
-def run_card(root, season=2026, week=9, slate="sun"):
+def run_card(root, season=2026, week=8, slate="sun"):
     """build_card_json.py on a fake automation/ folder (EDGE_ROOT); returns the card"""
     env = dict(os.environ, EDGE_ROOT=str(root), PYTHONIOENCODING="utf-8")
     subprocess.run([sys.executable, os.path.join(PIPE, "build_card_json.py"), "--season", str(season), "--week",

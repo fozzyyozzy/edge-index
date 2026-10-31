@@ -187,7 +187,7 @@ def novig(odds, name, market, holds):
     else: h, src = DEFAULT_HOLD, "assumed"
     return implied(odds) / (1 + h), src
 
-# The blend is configurable for research and shadow cards. LIVE is what the live card, grades and R4 use; changing it
+# The blend is configurable for research and shadow cards. LIVE is what the live card and grades use; changing it
 # is a model change (MODEL_CHANGELOG + golden fixtures). A config: market_games (the market counts as that many extra
 # games), or history_weight (p = (1-w) * market + w * history), and cap.
 LIVE_BLEND = dict(market_games=MARKET_GAMES, history_weight=None, cap=PROB_CAP)
@@ -200,14 +200,37 @@ BLEND_VARIANTS = {          # slug -> (label, config); shadow cards and blend_st
     # heavier blend paired with a relaxed R4 (every other rule unchanged: -450 cap, C or better, every hold)
     "m40e0": ("market = 40 games, R4 edge >= 0", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
     "m40em1": ("market = 40 games, R4 edge >= -1", dict(market_games=40, history_weight=None, cap=PROB_CAP)),
-    # probability-first selection (build_card_json.build_tickets_pfirst): no R4, legs -450..-200, max combined probability
-    # in the +150..+250 window. pfirst keeps the live blend; calib replaces it with calib.py's calibrated logistic model
-    "pfirst": ("probability-first, live blend", LIVE_BLEND),
+    # probability-first selection (build_card_json.build_tickets_pfirst): no edge minimum, legs -450..-200, max combined
+    # probability in the +150..+250 window, role-down hold (R13). The LIVE card from Week 9, 2026 (LIVE_PFIRST_FROM).
+    "pfirst": ("probability-first (live rules from Week 9)", LIVE_BLEND),
+    "pfirst_norole": ("probability-first, no role-down hold", LIVE_BLEND),
+    "pfirst_dog": ("probability-first + underdog rushing hold", LIVE_BLEND),
     "calib": ("probability-first, calibrated model", LIVE_BLEND),
+    # the old live card (grade then edge, R4 edge >= +2, Bloom 4th leg): live through Week 8, a shadow from Week 9
+    "legacy": ("legacy rules (live through Week 8)", LIVE_BLEND),
 }
-SHADOW_RULES = {"m40e0": dict(min_edge=0.0), "m40em1": dict(min_edge=-1.0),     # shadow-only rule overrides
-                "pfirst": dict(min_edge=None, select="prob"), "calib": dict(min_edge=None, select="prob", calib=True)}
+# shadow-only rule overrides. No "select" = the legacy rules (m20..m40em1 are blends of the legacy card)
+SHADOW_RULES = {"m40e0": dict(min_edge=0.0), "m40em1": dict(min_edge=-1.0),
+                "legacy": dict(select="legacy"),
+                "pfirst": dict(min_edge=None, select="prob", role_hold=True),
+                "pfirst_norole": dict(min_edge=None, select="prob"),
+                "pfirst_dog": dict(min_edge=None, select="prob", role_hold=True, dog_hold=True),
+                "calib": dict(min_edge=None, select="prob", calib=True)}
 PROB_FIRST = {k for k, v in SHADOW_RULES.items() if v.get("select") == "prob"}
+LIVE_PFIRST_FROM = (2026, 9)       # (season, week) the live card switched to probability-first (MODEL_CHANGELOG 2026-10-31)
+
+
+def card_rules(season, week, shadow=None):
+    """the rule set a card is built under: {select: "prob" | "legacy", min_edge, role_hold, dog_hold, calib}"""
+    if shadow:
+        r = dict(SHADOW_RULES.get(shadow, {}))
+        r.setdefault("select", "legacy")
+    elif (season, week) >= LIVE_PFIRST_FROM:
+        r = dict(SHADOW_RULES["pfirst"])
+    else:
+        r = dict(select="legacy")
+    r.setdefault("min_edge", 2.0 if r["select"] == "legacy" else None)
+    return r
 
 def lower_window(h10, g10, h15, g15):
     """(hits, games) of the window with the lower add-one clear rate (the more cautious one)"""

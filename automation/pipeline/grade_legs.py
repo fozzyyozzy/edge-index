@@ -215,7 +215,12 @@ def main():
                         game_total=TOT.get(tm, (None, None))[0], team_total=TOT.get(tm, (None, None))[1],
                         last3=[float(x) for x in v[-3:]], rungs=rungs))
     out, omitted = trim_ladders(out, skipped, REAL)
-    meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(),
+    try:                              # R13 role down (live card from Week 9, 2026): snaps/targets/carries before this week
+        import calib
+        calib.annotate_roles(out, calib.Data(a.season, stats=w), a.week); role_src = "ok"
+    except Exception as ex:
+        role_src = f"unavailable ({type(ex).__name__})"
+    meta = dict(season=a.season, week=a.week, slate=a.slate, generated=pd.Timestamp.now(tz='UTC').isoformat(), role_trend=role_src,
                 grade_key="Grade = our estimated hit probability after blending with DK's price. Edge is shown separately. A+>=85 A>=80 A->=75 B 68-74 C 60-67 D<60 F=hard hold; modifiers for form, price, matchup, target competition.",
                 rules=["3-4 legs per ticket (2 on TNF/MNF, reduced payout)","no shared legs across tickets (A+ may anchor two)", "floor rung is the floor rung",
                        "never a leg we know is overpriced", "no attempt props when favored by 7+", "flat units"])

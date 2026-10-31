@@ -260,6 +260,24 @@ def grade_edge(b, held_df):
     return out
 
 
+def role_down_table(season, through):
+    """per week and cumulative R13 role-down holds (grade.py role_down_legs), from the weekly receipts"""
+    rows, acc = [], dict(n=0, hits=0, misses=0, voids=0, imp=0.0, g=0)
+    for f in sorted(glob.glob(P("receipts", f"receipts_{season}_w*.json")), key=lambda x: int(x.rsplit("_w", 1)[1].split(".")[0])):
+        r = json.load(open(f, encoding="utf-8")); rd = r.get("role_down")
+        if int(r.get("week", 0)) > through or not rd or not rd.get("n"): continue
+        g = rd["hits"] + rd["misses"]
+        rows.append(dict(week=r["week"], held=rd["n"], record=f"{rd['hits']}-{rd['misses']}" + (f"-{rd['voids']}" if rd["voids"] else ""),
+                         hit=f"{100 * rd['hits'] / g:.1f}%" if g else "-", implied=f"{rd['avg_implied']}%" if rd.get("avg_implied") is not None else "-"))
+        for k in ("n", "hits", "misses", "voids"): acc[k] += rd[k]
+        if rd.get("avg_implied") is not None: acc["imp"] += rd["avg_implied"] * g; acc["g"] += g
+    if rows:
+        g = acc["hits"] + acc["misses"]
+        rows.append(dict(week="cumulative", held=acc["n"], record=f"{acc['hits']}-{acc['misses']}" + (f"-{acc['voids']}" if acc["voids"] else ""),
+                         hit=f"{100 * acc['hits'] / g:.1f}%" if g else "-", implied=f"{acc['imp'] / acc['g']:.1f}%" if acc["g"] else "-"))
+    return rows
+
+
 def shadow_table(season, through):
     """cumulative 'old rule' (live) vs each shadow blend, from the weekly receipts (grade.py shadow_vs_live)"""
     acc = {}
@@ -317,9 +335,14 @@ def main():
            "beat implied, the grade is being dragged down by legs where our probability exceeds the market's.", "",
            table(grade_edge(b, held_df), ["group", "grade", "split", "share", "n", "record", "hit", "implied", "ours",
                                           "beat_price", "roi", "units"])]
+    rd = role_down_table(a.season, a.through)
+    md += ["## Role-down hold (R13, live from Week 9): held legs vs their DK price", "",
+           "Every leg the live card held for role down, graded at its floor rung; implied = DK's implied probability at "
+           "that price (vig in). The hold earns its place only if these legs keep hitting below implied, out of sample.", "",
+           table(rd, ["week", "held", "record", "hit", "implied"]) if rd else "No role-down holds graded yet.\n"]
     sh = shadow_table(a.season, a.through)
-    md += ["## Shadow cards: old rule vs new rule (research, not published)", "",
-           "Live cards vs shadow cards built from the same board under an alternate probability blend, scored the same "
+    md += ["## Shadow cards: live vs shadow variants (research, not published)", "",
+           "Live cards vs shadow cards built from the same board under alternate rules (legacy = the Week 1-8 rules), scored the same "
            "simple way (every leg clears, paid at the legs' card prices). Weeks with shadow cards only.", "",
            table(sh, ["blend", "weeks", "tickets", "record", "units", "legs"]) if sh else "No shadow cards graded yet.\n"]
     text = "\n".join(md)
