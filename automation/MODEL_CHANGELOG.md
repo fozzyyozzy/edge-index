@@ -3,6 +3,12 @@
 Changes to how the NFL card, grades and record are built. Newest first. Each entry: date, type, what changed, why,
 and what it did to published cards.
 
+## 2026-10-31 — data correction: Week 4 Legs-board tally recounted from the pre-kickoff TNF board
+
+- A late refresh on 2026-10-06 regenerated the Week 4 TNF board after kickoff, the same problem as Week 5 TNF. The
+  board is restored from its last pre-kickoff version, and the Week 4 board tally in the record is recounted from it.
+  For example, A− goes from 66 of 78 to 59 of 71. Ticket results are unchanged: the slate had no ticket.
+
 ## 2026-10-31 — rule change: the card picks probability-first from Week 9, with a role-down hold
 
 - **What:** starting with the Week 9 TNF card:

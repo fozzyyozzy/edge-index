@@ -1,7 +1,7 @@
 {
  "meta": {
   "season": 2026,
-  "generated": "2026-10-27T16:15+00:00",
+  "generated": "2026-10-31T16:52+00:00",
   "weeks": 6
  },
  "weeks": [
@@ -1856,8 +1856,24 @@
    "hits": 0,
    "misses": 0,
    "voids": 0
+  },
+  {
+   "reason": "role down",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
   }
  ],
+ "role_down": {
+  "n": 0,
+  "hits": 0,
+  "misses": 0,
+  "voids": 0,
+  "avg_implied": null,
+  "hit_pct": null,
+  "weeks": []
+ },
  "board_by_grade": [
   {
    "grade": "A+",
@@ -1868,36 +1884,36 @@
   },
   {
    "grade": "A",
-   "n": 78,
-   "hits": 53,
+   "n": 77,
+   "hits": 52,
    "misses": 24,
    "voids": 1
   },
   {
    "grade": "A-",
-   "n": 357,
-   "hits": 295,
+   "n": 350,
+   "hits": 288,
    "misses": 60,
    "voids": 2
   },
   {
    "grade": "B",
-   "n": 436,
-   "hits": 352,
+   "n": 439,
+   "hits": 355,
    "misses": 80,
    "voids": 4
   },
   {
    "grade": "C",
-   "n": 373,
-   "hits": 281,
+   "n": 376,
+   "hits": 284,
    "misses": 87,
    "voids": 5
   },
   {
    "grade": "D",
-   "n": 44,
-   "hits": 33,
+   "n": 42,
+   "hits": 31,
    "misses": 10,
    "voids": 1
   },
