@@ -115,13 +115,16 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "args=$ARGS" >> "$GITHUB_OUTPUT"
       - name: capture DK lines
+        id: capture
         if: steps.slot.outputs.args != ''
         run: python -m engine.cfb.lines.capture ${{ steps.slot.outputs.args }}
       - name: commit snapshots + usage ledger
         if: always() && steps.slot.outputs.args != ''
         run: |
           TAG="${{ steps.slot.outputs.tag }}"
-          [ -n "$TAG" ] && python -m engine.cfb.lines.slots --mark-served "$TAG"
+          # a slot is served only if its capture succeeded (2026-11-02: with the Odds API key deactivated, failed
+          # captures were being marked served, which hid the failure and blocked a later recovery of that slot)
+          [ -n "$TAG" ] && [ "${{ steps.capture.outcome }}" = "success" ] && python -m engine.cfb.lines.slots --mark-served "$TAG"
           git config user.name edge-index-bot
           git config user.email bot@edge-index.com
           git add data/cfb/lines
