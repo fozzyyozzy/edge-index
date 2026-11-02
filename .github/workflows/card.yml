@@ -64,7 +64,16 @@ jobs:
             python automation/pipeline/fetch_lines.py --season "$SEASON" --week "$WEEK" --days "$DAYS" --slate "$SLATE" --out automation/lines
             code=$?; set -e
             # 3 = nothing pulled (no unstarted games, or the weekly budget): carry on; card QA fails it with the reason
-            if [ $code -ne 0 ] && [ $code -ne 3 ]; then exit $code; fi
+            # 2026-11-02: the Odds API key was deactivated (plan cancelled; HTTP 401 DEACTIVATED_KEY). If the live pull
+            # fails but this slate's lines were already pulled pre-kickoff (e.g. by a Saturday refresh), build from those;
+            # common.prices_pulled() stamps the card with that earlier pull time, so the card never claims fresher prices.
+            if [ $code -ne 0 ] && [ $code -ne 3 ]; then
+              if [ -f "automation/lines/dk_${SEASON}_w${WEEK}_${SLATE}.csv" ]; then
+                echo "::warning::live odds pull failed (exit $code); building from the earlier pre-kickoff pull: $(cat automation/lines/pulled_${SEASON}_w${WEEK}_${SLATE}.txt 2>/dev/null || cat automation/lines/pulled_${SEASON}_w${WEEK}.txt)"
+              else
+                exit $code
+              fi
+            fi
           else
             test -d "automation/lines/raw/w${WEEK}" || { echo "::error::no ODDS_API_KEY and no pastes in automation/lines/raw/w${WEEK}/"; exit 1; }
             python automation/pipeline/parse_lines.py --season "$SEASON" --week "$WEEK"
