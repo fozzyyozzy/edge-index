@@ -1,0 +1,998 @@
+{
+ "season": 2026,
+ "week": 8,
+ "legs_graded": 14,
+ "legs_hit": 6,
+ "hit_rate": 0.429,
+ "avg_model_pct": 77.6,
+ "flat_pnl_1u": -5.87,
+ "by_market": [
+  {
+   "market": "rec_yds",
+   "n": 4,
+   "hit": 0.5
+  },
+  {
+   "market": "receptions",
+   "n": 2,
+   "hit": 0.5
+  },
+  {
+   "market": "rush_att",
+   "n": 3,
+   "hit": 0.33
+  },
+  {
+   "market": "rush_yds",
+   "n": 5,
+   "hit": 0.4
+  }
+ ],
+ "by_bucket": [
+  {
+   "bucket": "<75",
+   "n": 2,
+   "hit": 0.5
+  },
+  {
+   "bucket": "75-85",
+   "n": 12,
+   "hit": 0.42
+  }
+ ],
+ "near_misses": [
+  {
+   "player": "Jerry Jeudy",
+   "market": "receptions",
+   "rung": 2.0,
+   "actual": 0.0,
+   "miss_by": 2.0
+  }
+ ],
+ "misses": [
+  {
+   "player": "J.K. Dobbins",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "actual": 13.0,
+   "note": "L10 10/10, L15 15/15; last 3 [68, 41, 23]; opp D neutral; floor rung 30+ graded lower",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "Jonathan Taylor",
+   "market": "rush_att",
+   "rung": 14.0,
+   "actual": 8.0,
+   "note": "L10 10/10, L15 15/15; last 3 [15, 21, 18]; opp D TOUGH; floor rung 16+ graded lower",
+   "opp_d": "TOUGH",
+   "own_vol": "neutral",
+   "ticket": "SUN-1"
+  },
+  {
+   "player": "J.K. Dobbins",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "actual": 13.0,
+   "note": "L10 10/10, L15 15/15; last 3 [68, 41, 23]; opp D neutral; floor rung 30+ graded lower",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-2"
+  },
+  {
+   "player": "Jahmyr Gibbs",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "actual": 15.0,
+   "note": "L10 10/10, L15 14/15; last 3 [31, 56, 27]; opp D TOUGH; floor rung 25+ graded lower",
+   "opp_d": "TOUGH",
+   "own_vol": "SOFT",
+   "ticket": "SUN-2"
+  },
+  {
+   "player": "Jerry Jeudy",
+   "market": "receptions",
+   "rung": 2.0,
+   "actual": 0.0,
+   "note": "L10 9/10, L15 13/15; last 3 [3, 4, 4]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-2"
+  },
+  {
+   "player": "Derrick Henry",
+   "market": "rush_att",
+   "rung": 16.0,
+   "actual": 11.0,
+   "note": "L10 10/10, L15 13/15; last 3 [24, 17, 17]; opp D neutral",
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "ticket": "SUN-2"
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_yds",
+   "rung": 25.0,
+   "actual": 20.0,
+   "note": "L10 9/10, L15 13/15; last 3 [45, 33, 18]; opp D neutral; floor rung 33+ graded lower",
+   "opp_d": "neutral",
+   "own_vol": "neutral",
+   "ticket": "SUN-3"
+  },
+  {
+   "player": "Darren Waller",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "actual": 11.0,
+   "note": "L10 5/6, L15 5/6; last 3 [36, 0, 50]; opp D neutral; floor rung 25+ graded lower",
+   "opp_d": "neutral",
+   "own_vol": "SOFT",
+   "ticket": "TNF-1"
+  }
+ ],
+ "est_vs_real": [
+  {
+   "player": "J.K. Dobbins",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "est": -184.0,
+   "real": -256,
+   "hit": false
+  },
+  {
+   "player": "Aaron Jones",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "est": -181.0,
+   "real": -282,
+   "hit": true
+  },
+  {
+   "player": "Jonathan Taylor",
+   "market": "rush_att",
+   "rung": 14.0,
+   "est": -319.0,
+   "real": -241,
+   "hit": false
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "est": -291.0,
+   "real": -425,
+   "hit": true
+  },
+  {
+   "player": "J.K. Dobbins",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "est": -184.0,
+   "real": -256,
+   "hit": false
+  },
+  {
+   "player": "Jerry Jeudy",
+   "market": "receptions",
+   "rung": 2.0,
+   "est": -248.0,
+   "real": -223,
+   "hit": false
+  },
+  {
+   "player": "Derrick Henry",
+   "market": "rush_att",
+   "rung": 16.0,
+   "est": -574.0,
+   "real": -300,
+   "hit": false
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_yds",
+   "rung": 25.0,
+   "est": -165.0,
+   "real": -217,
+   "hit": false
+  },
+  {
+   "player": "Trey McBride",
+   "market": "receptions",
+   "rung": 7.0,
+   "est": -285.0,
+   "real": -247,
+   "hit": true
+  },
+  {
+   "player": "Drake Maye",
+   "market": "rush_att",
+   "rung": 4.0,
+   "est": -183.0,
+   "real": -310,
+   "hit": true
+  },
+  {
+   "player": "Darren Waller",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "est": -108.0,
+   "real": -108,
+   "hit": false
+  }
+ ],
+ "by_grade": [
+  {
+   "grade": "A+",
+   "n": 3,
+   "hits": 1,
+   "avg_prob": 81.1,
+   "avg_implied": 72.5,
+   "expected": 81.1
+  },
+  {
+   "grade": "A",
+   "n": 6,
+   "hits": 2,
+   "avg_prob": 80.4,
+   "avg_implied": 74.1,
+   "expected": 80.4
+  },
+  {
+   "grade": "A-",
+   "n": 4,
+   "hits": 3,
+   "avg_prob": 75.2,
+   "avg_implied": 70.3,
+   "expected": 75.2
+  },
+  {
+   "grade": "B",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "C",
+   "n": 1,
+   "hits": 0,
+   "avg_prob": 60.6,
+   "avg_implied": 51.9,
+   "expected": 60.6
+  },
+  {
+   "grade": "D",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  },
+  {
+   "grade": "F",
+   "n": 0,
+   "hits": 0,
+   "avg_prob": null,
+   "avg_implied": null,
+   "expected": null
+  }
+ ],
+ "grade_basis": "blended",
+ "tickets": [
+  {
+   "slate": "sun",
+   "name": "SUN-1",
+   "legs": 4,
+   "flag": null,
+   "est_american": 229,
+   "clv_pts": -3.03,
+   "leg_text": [
+    "J.K. Dobbins 20+ rush_yds (-256)",
+    "Aaron Jones 20+ rush_yds (-282)",
+    "Jonathan Taylor 14+ rush_att (-241)",
+    "Kyren Williams 40+ rush_yds (-425)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "J.K. Dobbins",
+     "team": "DEN",
+     "market": "rush_yds",
+     "rung": 20.0,
+     "odds": -256,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 13.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -261,
+     "clv_pts": 0.39,
+     "thursday_odds": -137,
+     "thu_to_pub_pts": 14.1
+    },
+    {
+     "player": "Aaron Jones",
+     "team": "MIN",
+     "market": "rush_yds",
+     "rung": 20.0,
+     "odds": -282,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 22.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -282,
+     "clv_pts": 0.0,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Jonathan Taylor",
+     "team": "IND",
+     "market": "rush_att",
+     "rung": 14.0,
+     "odds": -241,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 8.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -165,
+     "clv_pts": -8.41,
+     "thursday_odds": -258,
+     "thu_to_pub_pts": -1.39
+    },
+    {
+     "player": "Kyren Williams",
+     "team": "LA",
+     "market": "rush_yds",
+     "rung": 40.0,
+     "odds": -425,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 56.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -464,
+     "clv_pts": 1.32,
+     "thursday_odds": -429,
+     "thu_to_pub_pts": -0.14
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "J.K. Dobbins",
+    "Jonathan Taylor"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-2",
+   "legs": 4,
+   "flag": null,
+   "est_american": 275,
+   "clv_pts": -0.09,
+   "leg_text": [
+    "J.K. Dobbins 20+ rush_yds (-256)",
+    "Jahmyr Gibbs 20+ rec_yds (-253)",
+    "Jerry Jeudy 2+ receptions (-223)",
+    "Derrick Henry 16+ rush_att (-300)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "J.K. Dobbins",
+     "team": "DEN",
+     "market": "rush_yds",
+     "rung": 20.0,
+     "odds": -256,
+     "price_estimated": false,
+     "grade": "A+",
+     "actual": 13.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -261,
+     "clv_pts": 0.39,
+     "thursday_odds": -137,
+     "thu_to_pub_pts": 14.1
+    },
+    {
+     "player": "Jahmyr Gibbs",
+     "team": "DET",
+     "market": "rec_yds",
+     "rung": 20.0,
+     "odds": -253,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 15.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -242,
+     "clv_pts": -0.91,
+     "thursday_odds": -356,
+     "thu_to_pub_pts": -6.4
+    },
+    {
+     "player": "Jerry Jeudy",
+     "team": "CLE",
+     "market": "receptions",
+     "rung": 2.0,
+     "odds": -223,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 0.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -238,
+     "clv_pts": 1.37,
+     "thursday_odds": -212,
+     "thu_to_pub_pts": 1.09
+    },
+    {
+     "player": "Derrick Henry",
+     "team": "BAL",
+     "market": "rush_att",
+     "rung": 16.0,
+     "odds": -300,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 11.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -282,
+     "clv_pts": -1.18,
+     "thursday_odds": -278,
+     "thu_to_pub_pts": 1.46
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "J.K. Dobbins",
+    "Jahmyr Gibbs",
+    "Jerry Jeudy",
+    "Derrick Henry"
+   ]
+  },
+  {
+   "slate": "sun",
+   "name": "SUN-3",
+   "legs": 4,
+   "flag": null,
+   "est_american": 251,
+   "clv_pts": 3.48,
+   "leg_text": [
+    "Jameson Williams 30+ rec_yds (-343)",
+    "Omarion Hampton 25+ rush_yds (-217)",
+    "Trey McBride 7+ receptions (-247)",
+    "Drake Maye 4+ rush_att (-310)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "Jameson Williams",
+     "team": "DET",
+     "market": "rec_yds",
+     "rung": 30.0,
+     "odds": -343,
+     "price_estimated": false,
+     "grade": "A",
+     "actual": 70.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -371,
+     "clv_pts": 1.34,
+     "thursday_odds": -328,
+     "thu_to_pub_pts": 0.79
+    },
+    {
+     "player": "Omarion Hampton",
+     "team": "LAC",
+     "market": "rush_yds",
+     "rung": 25.0,
+     "odds": -217,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 20.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -228,
+     "clv_pts": 1.06,
+     "thursday_odds": -222,
+     "thu_to_pub_pts": -0.49
+    },
+    {
+     "player": "Trey McBride",
+     "team": "ARI",
+     "market": "receptions",
+     "rung": 7.0,
+     "odds": -247,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 7.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -241,
+     "clv_pts": -0.51,
+     "thursday_odds": -188,
+     "thu_to_pub_pts": 5.9
+    },
+    {
+     "player": "Drake Maye",
+     "team": "NE",
+     "market": "rush_att",
+     "rung": 4.0,
+     "odds": -310,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 8.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -478,
+     "clv_pts": 7.09,
+     "thursday_odds": -220,
+     "thu_to_pub_pts": 6.86
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Omarion Hampton"
+   ]
+  },
+  {
+   "slate": "tnf",
+   "name": "TNF-1",
+   "legs": 2,
+   "flag": null,
+   "est_american": 192,
+   "clv_pts": 3.67,
+   "leg_text": [
+    "John Metchie III 10+ rec_yds (-193)",
+    "Darren Waller 20+ rec_yds (-108)"
+   ],
+   "early_exit": [],
+   "legs_detail": [
+    {
+     "player": "John Metchie III",
+     "team": "CAR",
+     "market": "rec_yds",
+     "rung": 10.0,
+     "odds": -193,
+     "price_estimated": false,
+     "grade": "A-",
+     "actual": 14.0,
+     "hit": true,
+     "early_exit": false,
+     "closing": -201,
+     "clv_pts": 0.91,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    },
+    {
+     "player": "Darren Waller",
+     "team": "CAR",
+     "market": "rec_yds",
+     "rung": 20.0,
+     "odds": -108,
+     "price_estimated": false,
+     "grade": "C",
+     "actual": 11.0,
+     "hit": false,
+     "early_exit": false,
+     "closing": -131,
+     "clv_pts": 4.79,
+     "thursday_odds": null,
+     "thu_to_pub_pts": null
+    }
+   ],
+   "result": "LOSS",
+   "units": -1.0,
+   "result_standard": "LOSS",
+   "units_standard": -1.0,
+   "misses": [
+    "Darren Waller"
+   ]
+  }
+ ],
+ "held_by_reason": [
+  {
+   "reason": "team change",
+   "n": 2,
+   "hits": 0,
+   "misses": 0,
+   "voids": 2
+  },
+  {
+   "reason": "blowout risk",
+   "n": 3,
+   "hits": 2,
+   "misses": 1,
+   "voids": 0
+  },
+  {
+   "reason": "tough defense",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "reason": "low own volume",
+   "n": 27,
+   "hits": 20,
+   "misses": 7,
+   "voids": 0
+  },
+  {
+   "reason": "price worse than \u2212450",
+   "n": 28,
+   "hits": 19,
+   "misses": 8,
+   "voids": 1
+  },
+  {
+   "reason": "edge below +2",
+   "n": 99,
+   "hits": 66,
+   "misses": 32,
+   "voids": 1
+  },
+  {
+   "reason": "grade below C",
+   "n": 24,
+   "hits": 15,
+   "misses": 7,
+   "voids": 2
+  },
+  {
+   "reason": "injury",
+   "n": 6,
+   "hits": 4,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "reason": "held by hand",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "reason": "role down",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  }
+ ],
+ "role_down": {
+  "n": 0,
+  "hits": 0,
+  "misses": 0,
+  "voids": 0,
+  "avg_implied": null
+ },
+ "sunday_price_moves": [
+  {
+   "player": "J.K. Dobbins",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "thursday": -137,
+   "published": -256,
+   "closing": -261,
+   "thu_to_pub_pts": 14.1,
+   "pub_to_close_pts": 0.39
+  },
+  {
+   "player": "Aaron Jones",
+   "market": "rush_yds",
+   "rung": 20.0,
+   "thursday": null,
+   "published": -282,
+   "closing": -282,
+   "thu_to_pub_pts": null,
+   "pub_to_close_pts": 0.0
+  },
+  {
+   "player": "Jonathan Taylor",
+   "market": "rush_att",
+   "rung": 14.0,
+   "thursday": -258,
+   "published": -241,
+   "closing": -165,
+   "thu_to_pub_pts": -1.39,
+   "pub_to_close_pts": -8.41
+  },
+  {
+   "player": "Kyren Williams",
+   "market": "rush_yds",
+   "rung": 40.0,
+   "thursday": -429,
+   "published": -425,
+   "closing": -464,
+   "thu_to_pub_pts": -0.14,
+   "pub_to_close_pts": 1.32
+  },
+  {
+   "player": "Jahmyr Gibbs",
+   "market": "rec_yds",
+   "rung": 20.0,
+   "thursday": -356,
+   "published": -253,
+   "closing": -242,
+   "thu_to_pub_pts": -6.4,
+   "pub_to_close_pts": -0.91
+  },
+  {
+   "player": "Jerry Jeudy",
+   "market": "receptions",
+   "rung": 2.0,
+   "thursday": -212,
+   "published": -223,
+   "closing": -238,
+   "thu_to_pub_pts": 1.09,
+   "pub_to_close_pts": 1.37
+  },
+  {
+   "player": "Derrick Henry",
+   "market": "rush_att",
+   "rung": 16.0,
+   "thursday": -278,
+   "published": -300,
+   "closing": -282,
+   "thu_to_pub_pts": 1.46,
+   "pub_to_close_pts": -1.18
+  },
+  {
+   "player": "Jameson Williams",
+   "market": "rec_yds",
+   "rung": 30.0,
+   "thursday": -328,
+   "published": -343,
+   "closing": -371,
+   "thu_to_pub_pts": 0.79,
+   "pub_to_close_pts": 1.34
+  },
+  {
+   "player": "Omarion Hampton",
+   "market": "rush_yds",
+   "rung": 25.0,
+   "thursday": -222,
+   "published": -217,
+   "closing": -228,
+   "thu_to_pub_pts": -0.49,
+   "pub_to_close_pts": 1.06
+  },
+  {
+   "player": "Trey McBride",
+   "market": "receptions",
+   "rung": 7.0,
+   "thursday": -188,
+   "published": -247,
+   "closing": -241,
+   "thu_to_pub_pts": 5.9,
+   "pub_to_close_pts": -0.51
+  },
+  {
+   "player": "Drake Maye",
+   "market": "rush_att",
+   "rung": 4.0,
+   "thursday": -220,
+   "published": -310,
+   "closing": -478,
+   "thu_to_pub_pts": 6.86,
+   "pub_to_close_pts": 7.09
+  }
+ ],
+ "board_by_grade": [
+  {
+   "grade": "A+",
+   "n": 3,
+   "hits": 1,
+   "misses": 2,
+   "voids": 0
+  },
+  {
+   "grade": "A",
+   "n": 17,
+   "hits": 10,
+   "misses": 7,
+   "voids": 0
+  },
+  {
+   "grade": "A-",
+   "n": 71,
+   "hits": 55,
+   "misses": 16,
+   "voids": 0
+  },
+  {
+   "grade": "B",
+   "n": 103,
+   "hits": 72,
+   "misses": 30,
+   "voids": 1
+  },
+  {
+   "grade": "C",
+   "n": 74,
+   "hits": 50,
+   "misses": 22,
+   "voids": 2
+  },
+  {
+   "grade": "D",
+   "n": 0,
+   "hits": 0,
+   "misses": 0,
+   "voids": 0
+  },
+  {
+   "grade": "F",
+   "n": 102,
+   "hits": 34,
+   "misses": 62,
+   "voids": 6
+  }
+ ],
+ "clv": {
+  "n": 14,
+  "avg_leg_pts": 0.55
+ },
+ "ticket_record": {
+  "WIN": 0,
+  "LOSS": 4,
+  "VOID": 0
+ },
+ "ticket_record_standard": {
+  "WIN": 0,
+  "LOSS": 4,
+  "VOID": 0
+ },
+ "units": -4.0,
+ "units_standard": -4.0,
+ "shadow": {
+  "live": {
+   "label": "live card",
+   "tickets": 4,
+   "record": {
+    "WIN": 0,
+    "LOSS": 4,
+    "VOID": 0
+   },
+   "units": -4.0,
+   "legs_hit": 6,
+   "legs_graded": 14
+  },
+  "calib": {
+   "label": "new rule candidate: probability-first, calibrated model",
+   "blend": {
+    "market_games": 10,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 4,
+   "record": {
+    "WIN": 1,
+    "LOSS": 3,
+    "VOID": 0
+   },
+   "units": -2.31,
+   "legs_hit": 9,
+   "legs_graded": 12
+  },
+  "m20": {
+   "label": "new rule candidate: market = 20 games",
+   "blend": {
+    "market_games": 20,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 3,
+   "record": {
+    "WIN": 0,
+    "LOSS": 3,
+    "VOID": 0
+   },
+   "units": -3.0,
+   "legs_hit": 4,
+   "legs_graded": 11
+  },
+  "m40": {
+   "label": "new rule candidate: market = 40 games",
+   "blend": {
+    "market_games": 40,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 0,
+   "record": {
+    "WIN": 0,
+    "LOSS": 0,
+    "VOID": 0
+   },
+   "units": 0.0,
+   "legs_hit": 0,
+   "legs_graded": 0
+  },
+  "m40e0": {
+   "label": "new rule candidate: market = 40 games, R4 edge >= 0",
+   "blend": {
+    "market_games": 40,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 2,
+   "record": {
+    "WIN": 0,
+    "LOSS": 2,
+    "VOID": 0
+   },
+   "units": -2.0,
+   "legs_hit": 3,
+   "legs_graded": 8
+  },
+  "m40em1": {
+   "label": "new rule candidate: market = 40 games, R4 edge >= -1",
+   "blend": {
+    "market_games": 40,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 4,
+   "record": {
+    "WIN": 0,
+    "LOSS": 4,
+    "VOID": 0
+   },
+   "units": -4.0,
+   "legs_hit": 6,
+   "legs_graded": 14
+  },
+  "mkt10": {
+   "label": "new rule candidate: market + 10% history",
+   "blend": {
+    "market_games": null,
+    "history_weight": 0.1,
+    "cap": 0.97
+   },
+   "tickets": 0,
+   "record": {
+    "WIN": 0,
+    "LOSS": 0,
+    "VOID": 0
+   },
+   "units": 0.0,
+   "legs_hit": 0,
+   "legs_graded": 0
+  },
+  "pfirst": {
+   "label": "new rule candidate: probability-first (live rules from Week 9)",
+   "blend": {
+    "market_games": 10,
+    "history_weight": null,
+    "cap": 0.9
+   },
+   "tickets": 4,
+   "record": {
+    "WIN": 1,
+    "LOSS": 3,
+    "VOID": 0
+   },
+   "units": -2.43,
+   "legs_hit": 4,
+   "legs_graded": 11
+  }
+ }
+}
