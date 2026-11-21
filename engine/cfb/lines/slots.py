@@ -15,6 +15,7 @@ A close slot with no kickoffs in its window makes no paid call (capture.py check
 """
 from __future__ import annotations
 import argparse
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -44,6 +45,21 @@ SLOTS = {
 }
 
 
+def active(name: str) -> bool:
+    """Free tier (Tim, 2026-11-21): only the slots listed in engine/core/odds_budget.json run."""
+    from engine.core import odds_budget
+    return name in odds_budget.cfg().get("cfb_slots", list(SLOTS))
+
+
+def slot_args(name: str) -> str:
+    """The slot's capture args; ladders (and with them alt totals) off when cfb_ladders is false."""
+    from engine.core import odds_budget
+    args = SLOTS[name][2]
+    if not odds_budget.cfg().get("cfb_ladders", True):
+        args = re.sub(r"--ladders \S+", "--ladders none", args)
+    return args
+
+
 def served() -> set[str]:
     return set(SERVED.read_text().split()) if SERVED.exists() else set()
 
@@ -62,7 +78,10 @@ def which(now: datetime | None = None):
     now = (now or datetime.now(ET)).astimezone(ET)
     done = served()
     best = None
-    for name, (_, _, args) in SLOTS.items():
+    for name in SLOTS:
+        if not active(name):
+            continue
+        args = slot_args(name)
         start = last_occurrence(name, now)
         lag = (now - start).total_seconds() / 60
         tag = f"{start:%Y-%m-%d}:{name}"
@@ -77,11 +96,13 @@ def resolve(name: str, now: datetime | None = None):
     any lag. None if that occurrence is already served, so a GitHub cron that got there first and the
     Windows trigger never both make a paid capture."""
     now = (now or datetime.now(ET)).astimezone(ET)
+    if not active(name):
+        return None                                  # slot off on the free tier: no capture, no credits
     start = last_occurrence(name, now)
     tag = f"{start:%Y-%m-%d}:{name}"
     if tag in served():
         return None
-    return tag, round((now - start).total_seconds() / 60), SLOTS[name][2]
+    return tag, round((now - start).total_seconds() / 60), slot_args(name)
 
 
 def mark(tag: str) -> None:

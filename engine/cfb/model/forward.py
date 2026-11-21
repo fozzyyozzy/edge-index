@@ -324,6 +324,13 @@ def weekly_entry(season: int, week: int, log_dir: Path = FORWARD) -> str:
     wk = g[(g.week == week)] if len(g) else g
     todate = g[(g.week >= BARS["first_week"]) & (g.week <= week)] if len(g) else g
     lines = [f"### Week {week} ({season}), graded {datetime.now(timezone.utc):%Y-%m-%d}"]
+    from engine.core import odds_budget
+    ob = odds_budget.cfg()
+    if not ob.get("cfb_ladders", True):
+        lines.append(f"- **Tracks paused (free-tier odds since {ob.get('paused_since', '?')}):** DK main lines only, at the "
+                     "Tue bet slot and the Saturday close slots. No ladders or alt totals are captured, so the ladder "
+                     "(rung log / shape bar) and floor-card tracks get no new data; their to-date lines below carry "
+                     "only weeks captured before the pause. Weekday games close on CFBD's DK closing line.")
     if len(wk) and "bet_lag_min" in wk:
         b = wk.dropna(subset=["bet_lag_min"])
         src = wk.source.value_counts().to_dict()

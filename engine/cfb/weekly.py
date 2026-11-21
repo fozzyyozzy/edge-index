@@ -31,6 +31,11 @@ def main(argv=None) -> int:
              ("rung log (ladder_edge)", lambda _: ladder_edge.main(a.season), []),
              ("card (draft)", card.main, sw + ["--snapshot", a.snapshot]
               + (["--publish-at", a.publish_at] if a.publish_at else []))]
+    from engine.core import odds_budget
+    if not odds_budget.cfg().get("cfb_ladders", True):
+        # free tier (Tim, 2026-11-21): main lines only, no ladders -> rung log and floor card paused
+        print("free-tier odds: ladders off, so the rung log and the draft floor card are skipped (tracks paused)")
+        steps = steps[:2]
     for name, fn, args in steps:
         print(f"\n=== {name} ===", flush=True)
         rc = fn(args)

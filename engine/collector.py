@@ -98,6 +98,12 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
     now = datetime.now(timezone.utc)
     pull = now.isoformat(timespec="seconds")
     season, week = _nfl_week()
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))      # repo root
+    from engine.core import odds_budget        # free tier (2026-11-21): shared NFL+CFB monthly cap, NFL auto pulls paused
+    if not odds_budget.cfg().get("nfl_auto_pulls", True) and os.environ.get("NFL_ODDS_MANUAL") != "1":
+        print(f"[{pull}] {sport}: NFL odds pulls are paused (engine/core/odds_budget.json); set NFL_ODDS_MANUAL=1 "
+              "for a deliberate manual pull (still capped)")
+        return
     budget = int(os.environ.get("COLLECTOR_WEEKLY_BUDGET", "1000"))
     spent = _collector_spend(season, week)
     if spent >= budget:
@@ -108,12 +114,15 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
         sys.exit(_redact(f"events: HTTP {r.status_code}"))
     stored = skipped = cost = pulled = 0
     remaining = "?"
+    last_h = {"used": r.headers.get("x-requests-used"), "remaining": r.headers.get("x-requests-remaining")}
+    per_call = len(MARKETS[sport]) * max(1, -(-len(books.split(",")) // 10))   # markets x regions (<= 10 books = 1)
     for ev in r.json():
         commence = datetime.fromisoformat(
             ev["commence_time"].replace("Z", "+00:00"))
         if commence <= now:
             skipped += 1
             continue                       # PREGAME ONLY — no exceptions
+        odds_budget.check(last_h["used"], last_h["remaining"], per_call, "collector")
         ro = _get(f"{BASE}/sports/{sport}/events/{ev['id']}/odds",
                   {"apiKey": key, "regions": "us", "oddsFormat": "american",
                    "markets": ",".join(MARKETS[sport]), "bookmakers": books})
@@ -121,6 +130,8 @@ def collect(sport: str, key: str, books: str = BOOKS) -> None:
             print(f"  skip {ev['id']}: HTTP {ro.status_code}")
             continue
         remaining = ro.headers.get("x-requests-remaining", "?")
+        if ro.headers.get("x-requests-used") is not None:
+            last_h = {"used": ro.headers.get("x-requests-used"), "remaining": ro.headers.get("x-requests-remaining")}
         cost += int(ro.headers.get("x-requests-last", 0) or 0); pulled += 1
         for bk in ro.json().get("bookmakers", []):
             for m in bk.get("markets", []):

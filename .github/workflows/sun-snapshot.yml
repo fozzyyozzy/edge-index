@@ -5,9 +5,11 @@ name: sun-snapshot
 # -> close), and Tuesday receipts report both moves. No floors, no card, no site publish, no newsletter draft: it commits
 # the snapshot files plus its row in the usage ledger (so the weekly Odds API cap counts it). ~14 requests per game.
 on:
-  schedule:
-    - cron: "7 13 * * 4"      # Thu 9:07am EDT
-    - cron: "7 14 * * 4"      # Thu 9:07am EST
+  # PAUSED (free-tier Odds API, Tim 2026-11-21): automatic NFL pulls are off; see engine/core/odds_budget.json.
+  # Restore by uncommenting the schedule. A manual run is still refused by fetch_lines.py unless NFL_ODDS_MANUAL=1.
+  # schedule:
+  #   - cron: "7 13 * * 4"      # Thu 9:07am EDT
+  #   - cron: "7 14 * * 4"      # Thu 9:07am EST
   workflow_dispatch:
 
 concurrency:                   # shared with the other jobs that commit to main

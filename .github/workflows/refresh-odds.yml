@@ -7,29 +7,31 @@ name: refresh-odds
 # start a run hours late, so the guard serves the most recent ET slot within 6 hours that isn't in
 # automation/lines/refresh_slots.txt yet, and records it — the twin cron (or a late duplicate) then finds it served.
 on:
-  schedule:
-    - cron: "7 19 * * 3"      # Wed 3pm EDT
-    - cron: "7 20 * * 3"      # Wed 3pm EST
-    - cron: "7 13 * * 4"      # Thu 9am EDT
-    - cron: "7 14 * * 4"      # Thu 9am EST
-    - cron: "7 19 * * 4"      # Thu 3pm EDT
-    - cron: "7 20 * * 4"      # Thu 3pm EST
-    - cron: "7 23 * * 4"      # Thu 7pm EDT
-    - cron: "7 0 * * 5"       # Thu 7pm EST
-    - cron: "7 19 * * 5"      # Fri 3pm EDT
-    - cron: "7 20 * * 5"      # Fri 3pm EST
-    - cron: "7 16 * * 6"      # Sat 12pm EDT
-    - cron: "7 17 * * 6"      # Sat 12pm EST
-    - cron: "7 13 * * 0"      # Sun 9am EDT
-    - cron: "7 14 * * 0"      # Sun 9am EST
-    - cron: "7 16 * * 0"      # Sun 12pm EDT
-    - cron: "7 17 * * 0"      # Sun 12pm EST
-    - cron: "7 13 * * 1"      # Mon 9am EDT
-    - cron: "7 14 * * 1"      # Mon 9am EST
-    - cron: "7 19 * * 1"      # Mon 3pm EDT
-    - cron: "7 20 * * 1"      # Mon 3pm EST
-    - cron: "7 23 * * 1"      # Mon 7pm EDT
-    - cron: "7 0 * * 2"       # Mon 7pm EST
+  # PAUSED (free-tier Odds API, Tim 2026-11-21): automatic NFL pulls are off; see engine/core/odds_budget.json.
+  # Restore by uncommenting the schedule. A manual run is still refused by fetch_lines.py unless NFL_ODDS_MANUAL=1.
+  # schedule:
+  #   - cron: "7 19 * * 3"      # Wed 3pm EDT
+  #   - cron: "7 20 * * 3"      # Wed 3pm EST
+  #   - cron: "7 13 * * 4"      # Thu 9am EDT
+  #   - cron: "7 14 * * 4"      # Thu 9am EST
+  #   - cron: "7 19 * * 4"      # Thu 3pm EDT
+  #   - cron: "7 20 * * 4"      # Thu 3pm EST
+  #   - cron: "7 23 * * 4"      # Thu 7pm EDT
+  #   - cron: "7 0 * * 5"       # Thu 7pm EST
+  #   - cron: "7 19 * * 5"      # Fri 3pm EDT
+  #   - cron: "7 20 * * 5"      # Fri 3pm EST
+  #   - cron: "7 16 * * 6"      # Sat 12pm EDT
+  #   - cron: "7 17 * * 6"      # Sat 12pm EST
+  #   - cron: "7 13 * * 0"      # Sun 9am EDT
+  #   - cron: "7 14 * * 0"      # Sun 9am EST
+  #   - cron: "7 16 * * 0"      # Sun 12pm EDT
+  #   - cron: "7 17 * * 0"      # Sun 12pm EST
+  #   - cron: "7 13 * * 1"      # Mon 9am EDT
+  #   - cron: "7 14 * * 1"      # Mon 9am EST
+  #   - cron: "7 19 * * 1"      # Mon 3pm EDT
+  #   - cron: "7 20 * * 1"      # Mon 3pm EST
+  #   - cron: "7 23 * * 1"      # Mon 7pm EDT
+  #   - cron: "7 0 * * 2"       # Mon 7pm EST
   workflow_dispatch:
     inputs:
       week:

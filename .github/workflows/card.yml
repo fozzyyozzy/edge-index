@@ -58,7 +58,9 @@ jobs:
       - name: fetch DK ladders (The Odds API) - falls back to pastes if no key
         if: env.SKIP != '1'
         run: |
-          if [ -n "$ODDS_API_KEY" ]; then
+          # free tier (2026-11-21): automatic NFL pulls paused in engine/core/odds_budget.json -> the paste path
+          AUTO=$(python -c "import json; print(json.load(open('engine/core/odds_budget.json')).get('nfl_auto_pulls', True))")
+          if [ -n "$ODDS_API_KEY" ] && [ "$AUTO" = "True" ]; then
             case "$SLATE" in tnf|mnf) DAYS=2 ;; *) DAYS=5 ;; esac
             set +e
             python automation/pipeline/fetch_lines.py --season "$SEASON" --week "$WEEK" --days "$DAYS" --slate "$SLATE" --out automation/lines
@@ -75,7 +77,7 @@ jobs:
               fi
             fi
           else
-            test -d "automation/lines/raw/w${WEEK}" || { echo "::error::no ODDS_API_KEY and no pastes in automation/lines/raw/w${WEEK}/"; exit 1; }
+            test -d "automation/lines/raw/w${WEEK}" || { echo "::error::odds pulls off (no key, or paused on the free tier) and no pastes in automation/lines/raw/w${WEEK}/"; exit 1; }
             python automation/pipeline/parse_lines.py --season "$SEASON" --week "$WEEK"
           fi
       - name: floor scan

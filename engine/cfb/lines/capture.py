@@ -14,7 +14,9 @@ Every paid call is logged to data/cfb/lines/odds_usage_cfb.csv, a separate file
 from automation/lines/odds_usage.csv (NFL's weekly budget guard sums that file).
 
 Guards (protect the NFL card pulls on the shared key):
-  * refuses any paid call if x-requests-remaining < CFB_ODDS_RESERVE (default 100,000)
+  * every paid call first passes engine/core/odds_budget.check() (free tier, Tim 2026-11-21: shared
+    NFL+CFB monthly cap of 450 credits, from the key's own x-requests-used counter)
+  * refuses any paid call if x-requests-remaining < CFB_ODDS_RESERVE (default 100,000; 0 on the free tier)
   * refuses if this cycle's CFB credits would pass CFB_ODDS_CYCLE_CAP (default 3,000)
   * ladder calls per snapshot capped at --ladder-cap (default 30)
 PREGAME ONLY: games that have kicked off are never written.
@@ -88,10 +90,20 @@ def key() -> str:
     return k
 
 
-def call(path: str, params: dict):
+LAST_H: dict = {}
+
+
+def call(path: str, params: dict, cost: int = 0):
+    """cost = the most this call can be billed (0 for the free /events list); a paid call is checked
+    against the shared monthly cap with the previous response's quota headers BEFORE it is made."""
     import requests
+    if cost:
+        from engine.core import odds_budget
+        odds_budget.check(LAST_H.get("x-requests-used"), LAST_H.get("x-requests-remaining"), cost, "cfb")
     r = requests.get(API + path, params={**params, "apiKey": key()}, timeout=60)
     h = {x: r.headers.get(x) for x in ("x-requests-used", "x-requests-remaining", "x-requests-last")}
+    if h.get("x-requests-used") is not None:
+        LAST_H.update(h)
     if r.status_code != 200:
         raise RuntimeError(f"Odds API {path} -> HTTP {r.status_code}: {r.text[:200]}")
     return r.json(), h
@@ -126,6 +138,8 @@ def cycle_spent(used_now: int) -> int:
 
 
 def guard(h: dict, planned: int):
+    from engine.core import odds_budget
+    odds_budget.check(h.get("x-requests-used"), h.get("x-requests-remaining"), planned, "cfb (whole run)")
     rem, used = int(h["x-requests-remaining"]), int(h["x-requests-used"])
     spent = cycle_spent(used)
     if rem - planned < RESERVE:
@@ -273,7 +287,8 @@ def main(argv=None) -> int:
         return 0
 
     data, h = call(f"/sports/{SPORT}/odds", {"regions": "us", "bookmakers": "draftkings",
-                                              "markets": MAIN_MARKETS, "oddsFormat": "american"})
+                                              "markets": MAIN_MARKETS, "oddsFormat": "american"},
+                   cost=len(MAIN_MARKETS.split(",")))
     log_usage(a.label, "odds:spreads,totals,h2h", len(data), h)
     emap = m.set_index("event_id")
     rows = []
@@ -326,7 +341,7 @@ def main(argv=None) -> int:
             mkts = ",".join(["alternate_spreads"] + EXTRA_MARKETS)
             d, h = call(f"/sports/{SPORT}/events/{eid}/odds",
                         {"regions": "us", "bookmakers": "draftkings",
-                         "markets": mkts, "oddsFormat": "american"})
+                         "markets": mkts, "oddsFormat": "american"}, cost=1 + len(EXTRA_MARKETS))
             log_usage(a.label, "event:" + mkts, 1, h)
             spent_l += int(h.get("x-requests-last") or 0)
             for b in d.get("bookmakers", []):

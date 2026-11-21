@@ -2,9 +2,18 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from engine.cfb.lines import slots
 
 ET = ZoneInfo("America/New_York")
+
+
+@pytest.fixture(autouse=True)
+def _all_slots_paid_config(monkeypatch, request):
+    """Tests written for the paid plan: every slot active, ladders on (the free-tier test overrides this)."""
+    from engine.core import odds_budget as ob
+    monkeypatch.setattr(ob, "cfg", lambda: {"cfb_slots": list(slots.SLOTS), "cfb_ladders": True, "monthly_cap": 10**9})
 
 
 def at(s):
@@ -91,3 +100,16 @@ def test_shape_bar_verdict_recorded_once_at_60_graded(tmp_path, monkeypatch):
     monkeypatch.setattr(le, "grade", lambda season: p[p.game_id < 30])  # < 60 graded: no verdict
     doc2 = tmp_path / "b.md"; doc2.write_text("x", encoding="utf-8")
     assert le.record_verdict(2026, doc2) is None
+
+
+def test_free_tier_only_tue10_and_saturday_closes_main_lines_only(monkeypatch):
+    from engine.core import odds_budget as ob
+    monkeypatch.setattr(ob, "cfg", lambda: {"cfb_slots": ["tue10", "sat11", "sat15", "sat19"], "cfb_ladders": False})
+    monkeypatch.setattr(slots, "served", lambda: set())
+    tag, lag, args = slots.which(at("2026-11-24 10:05"))
+    assert tag == "2026-11-24:tue10" and "--ladders none" in args and "--label bet" in args
+    assert slots.which(at("2026-11-23 09:05")) is None                       # mon09 open-watch: off
+    assert slots.resolve("wed10", at("2026-11-25 10:03")) is None             # off: a dispatch spends nothing
+    assert slots.resolve("tue18", at("2026-11-24 18:03")) is None
+    t = slots.resolve("sat15", at("2026-11-28 15:03"))
+    assert t[0] == "2026-11-28:sat15" and "--ladders none" in t[2] and "--label close" in t[2]

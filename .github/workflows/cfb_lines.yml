@@ -87,10 +87,12 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-      CFB_ODDS_RESERVE: 100000        # never spend below this many remaining credits (NFL protection)
-      CFB_ODDS_CYCLE_CAP: 6000        # CFB credits per quota cycle (plan with 5C extras: ~2,750)
+      # Free tier (Tim, 2026-11-21): the shared NFL+CFB 450-credit monthly cap in engine/core/odds_budget.py is checked
+      # before every paid call; active slots (tue10 + Saturday closes) and ladders-off come from odds_budget.json.
+      CFB_ODDS_RESERVE: 0             # was 100000 on the paid plan; the free quota is ~500, the shared cap governs now
+      CFB_ODDS_CYCLE_CAP: 450         # CFB alone can never pass the shared cap either
       CFB_LADDER_CAP: 70
-      CFB_EXTRA_MARKETS: "alternate_totals,alternate_team_totals"   # Phase 5C, approved 2026-10-12 (+2/game)
+      CFB_EXTRA_MARKETS: ""           # alt totals / team totals OFF on the free tier (were on from 2026-10-12)
     steps:
       - uses: actions/checkout@v7
         with:

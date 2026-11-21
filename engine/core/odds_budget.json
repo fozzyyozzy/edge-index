@@ -1,0 +1,9 @@
+{
+  "_note": "Free-tier mode (Tim, 2026-11-21). One Odds API key (~500 credits/month) shared by NFL and CFB. Read by engine/core/odds_budget.py before every paid call, by engine/cfb/lines/slots.py and engine/cfb/weekly.py, and by .github/workflows/card.yml.",
+  "mode": "free",
+  "monthly_cap": 450,
+  "nfl_auto_pulls": false,
+  "cfb_slots": ["tue10", "sat11", "sat15", "sat19"],
+  "cfb_ladders": false,
+  "paused_since": "2026-11-21"
+}

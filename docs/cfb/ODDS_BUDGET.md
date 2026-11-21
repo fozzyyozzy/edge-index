@@ -98,3 +98,17 @@ Worst case total with NFL (~13,000 a month) stays **< 0.4% of the 5,000,000 plan
 **Approved by Tim, 2026-10-12: option A.** `cfb_lines.yml` sets
 `CFB_EXTRA_MARKETS=alternate_totals,alternate_team_totals` and `CFB_ODDS_CYCLE_CAP=6000`.
 New rows go to `data/cfb/lines/snapshots/dk_alt_totals_<season>_wk<NN>.csv`.
+
+## Free tier (Tim, 2026-11-21)
+
+The paid key was deactivated about 2026-11-01. The new free key has about 500 credits/month, shared by NFL and CFB.
+Switches live in `engine/core/odds_budget.json`; `engine/core/odds_budget.py` enforces them.
+
+- **Hard cap:** 450 credits per month across every caller of the key: NFL `fetch_lines.py`, `engine/collector.py` and CFB `capture.py`. Every paid call is checked first against the key's own `x-requests-used` counter, using the previous response's headers. A call that would pass 450, or overdraw what remains, stops before it is made. A run with no quota headers yet makes no paid call.
+- **CFB:** DK main lines only (spreads, totals, h2h; 3 credits a snapshot), in four slots:
+  - `tue10`, the bet line
+  - `sat11`, `sat15` and `sat19`, the closes
+
+  Ladders, alt totals, the open-watch slots, `wed10`, `fri10` and the weekday closes are off. A dispatch of an off slot spends nothing. Weekday games fall back to CFBD's DK close. Expected spend is about 12 credits a week, roughly 50 a month.
+- **NFL:** automatic pulls are paused. The `refresh-odds` and `sun-snapshot` schedules are commented out. `fetch_lines.py` and the collector refuse to pull unless `NFL_ODDS_MANUAL=1` is set, and that path is still capped. `card.yml` builds from pastes in `automation/lines/raw/w<N>/`.
+- **Forward test:** the ladder (rung log / shape bar) and floor-card tracks are paused, and each weekly entry says so. The spread CLV/ATS forward test continues on main lines.

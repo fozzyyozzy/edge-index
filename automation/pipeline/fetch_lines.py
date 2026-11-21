@@ -22,6 +22,8 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import P, download
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))   # repo root
+from engine.core import odds_budget   # shared NFL+CFB monthly credit cap (free tier)
 
 MARKETS = {                      # Odds API market key -> pipeline market
     "player_reception_yds_alternate": "rec_yds",
@@ -45,9 +47,18 @@ def slate_of(commence_iso):
     d = datetime.fromisoformat(commence_iso.replace("Z", "+00:00")).astimezone(ET).strftime("%A")
     return "tnf" if d == "Thursday" else "mnf" if d == "Monday" else "sun"
 
-def get(path):
-    """The Odds API via common.download (retries + backoff; errors name the source with the key redacted)"""
+LAST_H = {}
+
+
+def get(path, cost=0):
+    """The Odds API via common.download (retries + backoff; errors name the source with the key redacted).
+    cost = the most this call can be billed (0 for the free /events list): a paid call is first checked against the
+    shared NFL+CFB monthly cap (engine/core/odds_budget.py) with the previous response's quota headers."""
+    if cost:
+        odds_budget.check(LAST_H.get("used"), LAST_H.get("remaining"), cost, "nfl")
     raw, h, _ = download("The Odds API", timeout=60, path=path)
+    if h.get("x-requests-used") is not None:
+        LAST_H.update(used=h.get("x-requests-used"), remaining=h.get("x-requests-remaining"))
     return json.loads(raw), h.get("x-requests-remaining"), h.get("x-requests-last")
 
 def in_week(events, season, week):
@@ -82,6 +93,10 @@ def main():
                          "ladders, main lines and pull times are left alone")
     ap.add_argument("--out", default=None); a = ap.parse_args()
     key = os.environ.get("ODDS_API_KEY") or sys.exit("set ODDS_API_KEY")
+    if not odds_budget.cfg().get("nfl_auto_pulls", True) and os.environ.get("NFL_ODDS_MANUAL") != "1":
+        print("::warning::NFL odds pulls are paused (free tier, engine/core/odds_budget.json); cards use the paste "
+              "path. Set NFL_ODDS_MANUAL=1 for a deliberate manual pull (still capped).")
+        sys.exit(3)
     budget = int(os.environ.get("ODDS_WEEKLY_BUDGET", "3000"))
     a.out = a.out or P("lines")
 
@@ -107,7 +122,9 @@ def main():
     for e in events:
         path = f"/events/{e['id']}/odds?apiKey={key}&regions=us&bookmakers={a.book}&markets={mk}&oddsFormat=american"
         try:
-            d, rem, last = get(path)
+            d, rem, last = get(path, cost=len(MARKETS) + len(TWOWAY))
+        except odds_budget.BudgetStop:
+            raise
         except Exception as ex:
             print("  skip", e["away_team"], "@", e["home_team"], ex); continue
         cost += int(last or 0)
